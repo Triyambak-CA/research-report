@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crizac Limited - Valuation Verdict: CCM vs DCF</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    :root {
+      --ink: #142033; --muted: #5f6b7a; --line: #d8e0ea; --paper: #ffffff; --wash: #eef2f6;
+      --navy: #173753; --teal: #0f766e; --green: #1f7a4d; --amber: #a86612; --red: #b42318; --blue: #285ea8;
+    }
+    html, body { margin: 0; background: var(--wash); color: var(--ink); font-family: Arial, Helvetica, sans-serif; line-height: 1.34; font-size: 8.2pt; }
+    .sheet { width: 210mm; height: 297mm; margin: 0 auto; padding: 10mm 10.5mm 11.5mm; background: var(--paper); position: relative; overflow: hidden; }
+    .sheet:not(:last-child) { break-after: page; page-break-after: always; }
+    @media screen { .sheet { margin: 14px auto; box-shadow: 0 12px 32px rgba(18,32,48,.18); } }
+    @media print { body { background: #fff; } .sheet { margin: 0; box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+    .topbar { border: 1px solid #cbd6e2; border-left: 5px solid var(--navy); border-bottom: 2px solid var(--navy); border-radius: 7px; padding: 7px 9px 8px; margin-bottom: 7px; background: linear-gradient(135deg, #f9fbfd 0%, #eef7f5 70%, #f7faf6 100%); }
+    .eyebrow { margin: 0 0 3px; color: var(--teal); font-size: 6.7pt; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0; color: var(--navy); font-size: 17.5pt; line-height: 1.08; }
+    h2 { margin: 0 0 4px; color: var(--navy); font-size: 10pt; line-height: 1.14; }
+    h3 { margin: 0 0 4px; color: var(--ink); font-size: 8.5pt; line-height: 1.18; }
+    p { margin: 0 0 5px; }
+    ul { margin: 0; padding-left: 13px; }
+    li { margin: 0 0 2.8px; }
+    .subtitle { margin: 4px 0 0; color: var(--muted); font-size: 7.5pt; max-width: 176mm; }
+    .meta { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .pill, .tag { display: inline-flex; align-items: center; border-radius: 999px; border: 1px solid #cbd6e2; background: #fff; color: #33465c; font-size: 6.4pt; font-weight: 800; padding: 2.4px 6px; white-space: nowrap; }
+    .tag.good { background: #e7f6ee; color: var(--green); border-color: #bbdec9; }
+    .tag.watch { background: #fff4df; color: var(--amber); border-color: #ead09a; }
+    .tag.risk { background: #fdeceb; color: var(--red); border-color: #f2b8b4; }
+    .tag.info { background: #eaf1fb; color: var(--blue); border-color: #bcd0ed; }
+    .grid { display: grid; gap: 6px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .kpi { border: 1px solid var(--line); border-top: 3px solid var(--teal); border-radius: 7px; background: #fbfcfe; padding: 6px 7px; min-height: 43px; }
+    .kpi .label { display: block; color: var(--muted); font-size: 6.2pt; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px; }
+    .kpi .value { display: block; color: var(--navy); font-size: 12.4pt; line-height: 1; font-weight: 900; }
+    .kpi .detail { display: block; color: var(--muted); font-size: 6.4pt; line-height: 1.22; margin-top: 3px; }
+    .panel { border: 1px solid var(--line); border-radius: 7px; background: #fff; padding: 7px 8px; margin-bottom: 6px; }
+    .panel.shade { background: #f8fafc; }
+    .panel.good { border-left: 4px solid var(--green); }
+    .panel.watch { border-left: 4px solid var(--amber); }
+    .panel.risk { border-left: 4px solid var(--red); }
+    .panel.info { border-left: 4px solid var(--blue); }
+    table { width: 100%; border-collapse: collapse; font-size: 7pt; margin-top: 4px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 4px 4.6px; text-align: left; vertical-align: top; }
+    th { background: #f1f5f9; color: var(--navy); font-size: 6.1pt; letter-spacing: .04em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    td.num, th.num { text-align: right; white-space: nowrap; font-weight: 800; color: var(--navy); }
+    td.dim { color: var(--muted); font-weight: 400; }
+    tr.hl td { background: #eef8f6; font-weight: 800; color: var(--navy); }
+    .note { color: var(--muted); font-size: 6.8pt; line-height: 1.28; }
+    .verdict { border: 1px solid #cbd6e2; border-left: 5px solid var(--teal); border-radius: 8px; background: linear-gradient(135deg, #f8fafc 0%, #eef8f6 100%); padding: 8px 9px; margin-bottom: 7px; }
+    .verdict.red { border-left-color: var(--red); background: linear-gradient(135deg, #fdf7f6 0%, #fdefee 100%); }
+    .footer { position: absolute; left: 10.5mm; right: 10.5mm; bottom: 5.8mm; border-top: 1px solid #c7d0d9; padding-top: 3px; color: #566575; font-size: 6.4pt; display: flex; justify-content: space-between; gap: 10px; }
+    .sources { font-size: 6.35pt; line-height: 1.25; color: #4d5b6b; }
+    a { color: var(--blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <section class="sheet">
+    <div class="topbar">
+      <p class="eyebrow">Valuation Verdict - Page 1</p>
+      <h1>Crizac Limited - CCM vs DCF: Judgment and Reconciliation</h1>
+      <p class="subtitle">Both valuation files were independently rebuilt and every output replicated exactly (DCF Rs 148.46; CCM mean Rs 247.98 / median Rs 277.66). The arithmetic in both models is clean - this verdict is therefore entirely about assumptions, peer logic and method quality, not computation.</p>
+      <div class="meta">
+        <span class="pill">Verified: 06 July 2026</span>
+        <span class="pill">Price reference: Rs 199 (03 July close)</span>
+        <span class="pill">Both models: FY26 financial base</span>
+      </div>
+    </div>
+
+    <div class="grid four" style="margin-bottom:6px">
+      <div class="kpi"><span class="label">DCF value</span><span class="value">Rs 148</span><span class="detail">25% below market; 8.5x implied FY26 EV/EBITDA</span></div>
+      <div class="kpi"><span class="label">CCM selected band</span><span class="value">245-280</span><span class="detail">23-41% above market; 14-16x implied EV/EBITDA</span></div>
+      <div class="kpi"><span class="label">Market price</span><span class="value">Rs 199</span><span class="detail">11.9x EV/EBITDA - sits between the two models</span></div>
+      <div class="kpi"><span class="label">Concluded fair band</span><span class="value">150-185</span><span class="detail">Central ~Rs 165; DCF-weighted triangulation</span></div>
+    </div>
+
+    <div class="panel">
+      <h3>The Two Answers Side by Side</h3>
+      <table>
+        <thead><tr><th>Parameter</th><th class="num">DCF model</th><th class="num">CCM note</th><th class="num">Market (03 Jul)</th></tr></thead>
+        <tbody>
+          <tr><td>Value per share</td><td class="num">Rs 148.46</td><td class="num">Rs 245-280</td><td class="num">Rs 199</td></tr>
+          <tr><td>Implied equity value</td><td class="num">2,599 cr</td><td class="num">4,288-4,900 cr</td><td class="num">3,481 cr</td></tr>
+          <tr><td>Implied FY26 EV/EBITDA</td><td class="num">8.5x</td><td class="num">14.0-16.0x</td><td class="num">11.9x</td></tr>
+          <tr><td>Implied FY26 EV/Revenue</td><td class="num">2.31x</td><td class="num">4.4-4.8x</td><td class="num">3.21x</td></tr>
+          <tr><td>Stance vs price</td><td class="num">-25%</td><td class="num">+23% to +41%</td><td class="num">-</td></tr>
+        </tbody>
+      </table>
+      <p class="note" style="margin-top:4px">An 85% spread between the pack's own two methods (Rs 148 vs Rs 278) means at least one of them is wrong. The sections below judge each on its own logic.</p>
+    </div>
+
+    <div class="verdict">
+      <h2>Verdict</h2>
+      <p><strong>The DCF is justified</strong> - as a conservative base case. Its assumptions are internally coherent and anchored to management's own disclosures: the 24% forecast EBITDA margin is management's stated sustainable band (24-25%), correctly refusing to annualise the FX-aided FY26 print of 27.1%; the growth taper to an 11.9% seven-year CAGR is consistent with conversion falling from 7.9% to 6.3% and FY27 guidance being deferred. Its bias is mildly punitive (risk charged in both cash flows and a 2% company-specific premium); on balanced settings the same engine gives Rs 160-175.</p>
+      <p><strong>The CCM as constructed is not justified.</strong> Its Rs 245-280 band is produced by valuing Crizac at the multiples of two non-comparable Indian internet franchises while neutralising the only true peer, applying zero discount for concentration, moat and track record, and anchoring the selected band to the promoters' own IPO offer price. A coherent CCM from the same peer set lands at Rs 140-185 - converging with the DCF, not contradicting it.</p>
+      <p><strong>Where value sits:</strong> weight the DCF 75-80% and use only a properly discounted CCM as cross-check. Fair value today is approximately <strong>Rs 150-185, centre near Rs 165</strong>. At Rs 199 the stock is fairly-to-fully priced with no margin of safety on conservative assumptions - not 24% undervalued as the CCM note concludes.</p>
+    </div>
+
+    <div class="grid three">
+      <div class="panel good" style="margin-bottom:0">
+        <h3><span class="tag good">Justified</span> &nbsp;DCF - Rs 148</h3>
+        <p class="note">Management-anchored margin, evidence-based taper, clean mechanics, mid-year convention, all tie-outs pass. Read it as the floor of a Rs 148-175 band rather than a point estimate.</p>
+      </div>
+      <div class="panel risk" style="margin-bottom:0">
+        <h3><span class="tag risk">Not justified</span> &nbsp;CCM - Rs 245-280</h3>
+        <p class="note">Method failure, not math failure: wrong peer weighting, no comparability discount, circular IPO-price support. Usable only as an undiscounted bull-case reference.</p>
+      </div>
+      <div class="panel info" style="margin-bottom:0">
+        <h3><span class="tag info">Coherent</span> &nbsp;Market - Rs 199</h3>
+        <p class="note">11.9x EV/EBITDA = a 26% discount to the Indian-platform median and 2.3x the direct peer IDP. The market is applying exactly the discount structure the CCM refused to apply.</p>
+      </div>
+    </div>
+
+    <div class="footer"><span>Crizac Valuation Verdict - judgment on the CCM and DCF add-ons to the research pack</span><span>Page 1 / 3</span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="topbar">
+      <p class="eyebrow">Valuation Verdict - Page 2</p>
+      <h1>Why the DCF Passes and the CCM Fails</h1>
+      <p class="subtitle">Judgment against the research pack's own evidence base: FY26 filings, four quarterly concalls, the operational-quality report and the red-flags report.</p>
+      <div class="meta">
+        <span class="pill">Test: are the assumptions consistent with the pack's own findings?</span>
+      </div>
+    </div>
+
+    <div class="grid two">
+      <div class="panel good">
+        <h3>DCF - What It Gets Right</h3>
+        <ul>
+          <li><strong>Margin honesty:</strong> 24% EBITDA margin is management's own sustainable band (Q2/Q4 concalls) rather than FY26's FX-aided 27.1%.</li>
+          <li><strong>Growth realism:</strong> 18% tapering to 6% (11.9% CAGR) respects the pack's core finding - applications +43%, enrolments +13.8%, conversion down to 6.3%, guidance deferred.</li>
+          <li><strong>Mechanics:</strong> FCFF, mid-year convention, 25.17% tax, terminal g 4% &lt; WACC, TV only 50.2% of EV, all tie-outs pass.</li>
+          <li><strong>Risk pricing:</strong> a 2% company-specific premium for ~97% UK concentration and policy exposure is a legitimate small-cap overlay.</li>
+        </ul>
+      </div>
+      <div class="panel watch">
+        <h3>DCF - Fair Critiques (none fatal)</h3>
+        <ul>
+          <li><strong>Conservatism stacking:</strong> margin haircut + growth taper + 2% CSP charges some risk twice; beta 1.0 (light for a policy-cyclical name) partially offsets. Base is floor-ish.</li>
+          <li><strong>Terminal capex 2.0% vs D&amp;A 2.5%:</strong> a growing perpetuity should not depreciate more than it invests (~Rs 2.5/share).</li>
+          <li><strong>Cosmetics:</strong> broken sensitivity-grid corner columns; equity bridge (Rs 196.0 cr) not harmonised with the CCM's Rs 133.8 cr.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="verdict red">
+      <h2>CCM - Four Structural Flaws</h2>
+      <table>
+        <thead><tr><th style="width:24%">Flaw</th><th>Evidence and consequence</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. The median IS IndiaMART</strong></td><td class="dim">In a three-company set the median on both metrics (4.84x / 15.98x) is literally IndiaMART's row. "Median result Rs 278" means rating an 11-month-listed microcap with ~97% UK concentration, 66% of revenue from ten universities and non-exclusive relationships at the multiple of a decade-listed, diversified, moated franchise. The pack's own red-flags report says this business "should not be valued as a clean, diversified, high-moat platform" - the CCM does exactly that.</td></tr>
+          <tr><td><strong>2. The only true peer is neutralised</strong></td><td class="dim">IDP Education - the one listed student-placement comparable - trades at 0.90x revenue / 5.19x EBITDA, implying Rs 61-91 per share. The note sets it aside as a "policy-led downturn"; but that downturn is the base-rate evidence of what tightening destination policy does to placement economics - the very risk Crizac holds in concentrated form. Dropping the direct peer while keeping the marketplace proxies can only produce a high number.</td></tr>
+          <tr><td><strong>3. Zero comparability discount</strong></td><td class="dim">The note itself lists Crizac's gaps versus the proxies (size, diversification, listing history, moat, commission-intermediation economics - management's own "do not compare us to high-operating-leverage platforms") and then applies no discount at all. Standard practice for this gap is 30-40%.</td></tr>
+          <tr><td><strong>4. Circular IPO-price anchor</strong></td><td class="dim">The Rs 245-280 band is "supported by the IPO-price multiple reference". Rs 245 was the promoters' ask in a pure offer-for-sale - a seller's number, not market evidence; the stock has traded below it since listing. The support is the thing the analysis was meant to test.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel shade">
+      <h3>What a Coherent CCM From the Same Peer Set Produces</h3>
+      <table>
+        <thead><tr><th>Approach</th><th class="num">Value/share</th><th>Logic</th></tr></thead>
+        <tbody>
+          <tr><td>IDP-only (raw direct peer)</td><td class="num">Rs 61-91</td><td class="dim">0.90x revenue / 5.19x EBITDA + net cash. Too harsh: IDP's margins have collapsed while Crizac is growing at 23% with 27% margins.</td></tr>
+          <tr><td>IDP-anchored + growth/margin premium</td><td class="num">Rs 140-170</td><td class="dim">8-10x EBITDA: direct-peer base rate, premium for superior delivery.</td></tr>
+          <tr><td>Platform multiples less 30-35% discount</td><td class="num">Rs 176-183</td><td class="dim">IndiaMART/Info Edge economics minus the size / concentration / track-record / moat gap.</td></tr>
+          <tr class="hl"><td>Coherent CCM range</td><td class="num">~Rs 140-185</td><td class="dim">Converges with the DCF band (148-175) and with the traded price - which is the tell.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer"><span>Crizac Valuation Verdict - peer logic tested against the pack's own risk findings</span><span>Page 2 / 3</span></div>
+  </section>
+
+  <section class="sheet">
+    <div class="topbar">
+      <p class="eyebrow">Valuation Verdict - Page 3</p>
+      <h1>Reconciliation, Final View and What Would Change It</h1>
+      <p class="subtitle">Reverse-engineering the market price through the DCF engine, and the conditions under which the CCM band would become defensible.</p>
+      <div class="meta">
+        <span class="pill">Reverse-DCF: one lever at a time</span>
+        <span class="pill">Fair band: Rs 150-185</span>
+      </div>
+    </div>
+
+    <div class="panel info">
+      <h3>What Each Price Level Requires the Business to Deliver</h3>
+      <table>
+        <thead><tr><th class="num">Price</th><th>Required assumption (holding everything else at DCF base)</th><th>Plausibility</th></tr></thead>
+        <tbody>
+          <tr><td class="num">Rs 148</td><td class="dim">24% margin, 11.9% revenue CAGR, WACC 16.26% - the modelled base.</td><td><span class="tag good">Conservative floor</span></td></tr>
+          <tr><td class="num">Rs 165</td><td class="dim">Margin ~25.5% (half the FY26 beat retained), CSP trimmed to 1%.</td><td><span class="tag good">Balanced central</span></td></tr>
+          <tr class="hl"><td class="num">Rs 199</td><td class="dim">WACC 13.02%, <strong>or</strong> margin 32.1%, <strong>or</strong> +6.6pp growth every year (FY27 ~25%).</td><td><span class="tag watch">Full price</span></td></tr>
+          <tr><td class="num">Rs 245</td><td class="dim">IPO-price zone; needs FY26 margins plus high-teens growth to persist for years.</td><td><span class="tag risk">Needs proof</span></td></tr>
+          <tr><td class="num">Rs 278</td><td class="dim">WACC 10.39% <strong>or</strong> margin 44.8% - indefensible for this risk profile today.</td><td><span class="tag risk">Not defensible</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid two">
+      <div class="panel">
+        <h3>Market-Coherence Check</h3>
+        <ul>
+          <li>At Rs 199 the market pays <strong>11.9x FY26 EV/EBITDA</strong>: a 26% discount to the platform median (15.98x) and 2.3x the direct peer IDP (5.19x).</li>
+          <li>That is the right intermediate rating for a concentrated, newly-listed, policy-exposed but fast-growing platform - the market is pricing the discount the CCM refused to apply.</li>
+          <li>The CCM reads the gap to Rs 245-280 as mispricing; the simpler reading is that its band is anchored and the market's relative pricing is rational.</li>
+          <li>The DCF workbook's own Conclusion sheet weights DCF 100% at Rs 148.46 - consistent with this verdict.</li>
+        </ul>
+      </div>
+      <div class="panel good">
+        <h3>Final View</h3>
+        <ul>
+          <li><strong>Method weighting:</strong> DCF 75-80%; discounted-CCM cross-check 20-25%; the as-published CCM band 0%.</li>
+          <li><strong>Fair value today: ~Rs 150-185, centre near Rs 165.</strong></li>
+          <li><strong>At Rs 199:</strong> fairly-to-fully priced; no margin of safety on conservative assumptions. A fresh-purchase case needs either a lower entry or FY27 proof of the monitorables.</li>
+          <li><strong>Judgment in one line:</strong> the DCF earns its number; the CCM asserts its number.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel watch">
+      <h3>What Would Upgrade the CCM Band (the pack's own monitorables)</h3>
+      <table>
+        <thead><tr><th>Trigger</th><th>Effect on valuation stance</th></tr></thead>
+        <tbody>
+          <tr><td>UK mix visibly below ~90%, falling toward the &lt;60% target</td><td class="dim">Concentration discount narrows; platform-proxy multiples gain legitimacy.</td></tr>
+          <tr><td>Conversion stabilises at or above 6.3%</td><td class="dim">Validates funnel quality; supports growth above the DCF taper.</td></tr>
+          <tr><td>CFO/EBITDA above 80% ex one-offs (FY26: 56% after Rs 55 cr fee)</td><td class="dim">Earnings-quality proof; justifies trimming the CSP.</td></tr>
+          <tr><td>Clean organic vs acquisition bridge (StudiesPlanet / Global Tree / EduMentor / Medway)</td><td class="dim">Removes the acquisition-led-growth haircut.</td></tr>
+          <tr><td>FY27 guidance reinstated with country/conversion assumptions</td><td class="dim">Restores visibility; supports margin retention above 24%.</td></tr>
+        </tbody>
+      </table>
+      <p class="note" style="margin-top:4px">Two or three of these printing in FY27 would justify migrating toward Rs 200-230; all five would begin to legitimise the CCM's Rs 245+ zone. None have printed yet.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Housekeeping Fixes for the Two Workbooks</h3>
+      <p class="sources">1) Harmonise the equity bridge - DCF adds Rs 196.0 cr cash/bank/investments; CCM adds only Rs 133.8 cr net cash (~Rs 3.3/share). 2) Repair the DCF sensitivity grid's outer WACC columns (corrected grid on DCF page 3). 3) Set terminal capex at least equal to D&amp;A (~Rs 2.5/share). 4) Populate the CCM workbook's empty Sources sheet. Both workbooks were rebuilt independently and all outputs replicated exactly. Prepared 06 July 2026; educational purpose, not investment advice.</p>
+    </div>
+
+    <div class="footer"><span>Crizac Valuation Verdict - CCM vs DCF reconciliation and final view</span><span>Page 3 / 3</span></div>
+  </section>
+
+</body>
+</html>

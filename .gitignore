@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Editor / tooling
+.vscode/
+.claude/
+
+# Local memory buffers (personal, not for version control)
+.remember/
+
+# Temp / scratch
+*.tmp
+*~

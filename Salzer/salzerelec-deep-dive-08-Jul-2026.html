@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salzer Electronics - Deep Dive - 08 Jul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#ffb000;
+    --bg:#05070a;
+    --card:#0a0e13;
+    --card2:#0b1017;
+    --border:#182029;
+    --border2:#243244;
+    --text:#c3ceda;
+    --bright:#eef4fa;
+    --muted:#647689;
+    --dim:#3a4756;
+    --bull:#23d18b;
+    --bear:#ff5c57;
+    --amber:#ffb000;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background-color:var(--bg);
+    color:var(--text);
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    font-size:14px;
+    line-height:1.6;
+    font-variant-numeric:tabular-nums;
+    background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+    background-size:34px 34px;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.955;z-index:-1}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(1100px 520px at 78% -8%,rgba(255,176,0,.05),transparent 60%)}
+  ::selection{background:rgba(255,176,0,.25);color:#fff}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .mono{font-variant-numeric:tabular-nums}
+  h1,h2,h3,h4,.fr{font-family:inherit}
+  /* scrollbars */
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:#070a0e}
+  ::-webkit-scrollbar-thumb{background:#1c2733;border:2px solid #070a0e}
+  ::-webkit-scrollbar-thumb:hover{background:#2a3a4a}
+  /* scroll progress */
+  #progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:1000;box-shadow:0 0 8px rgba(255,176,0,.6)}
+  /* layout */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .layout{display:flex;gap:36px;max-width:1340px;margin:0 auto;padding:0 26px}
+  .toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:214px;padding:30px 0;flex-shrink:0;font-size:11.5px}
+  .toc ol{list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;margin:1px 0}
+  .toc a{display:block;color:var(--muted);padding:5px 10px;border-left:2px solid var(--border);line-height:1.3;text-transform:uppercase;letter-spacing:.03em}
+  .toc a::before{content:counter(t,decimal-leading-zero) " ";color:var(--accent);opacity:.6}
+  .toc a.active{color:var(--bright);border-left-color:var(--accent);background:linear-gradient(90deg,rgba(255,176,0,.07),transparent)}
+  .toc a:hover{color:var(--bright);text-decoration:none}
+  .toc .toctitle{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);padding:0 10px 11px;border-bottom:1px solid var(--border);margin-bottom:10px}
+  .toc .toctitle::before{content:"● "}
+  .content{flex:1;min-width:0;padding-bottom:100px}
+  @media(max-width:960px){.toc{display:none}.layout{padding:0 16px}}
+  /* hero */
+  .hero{padding:52px 0 34px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:inline-block;border:1px solid rgba(255,176,0,.4);padding:4px 10px}
+  .hero h1{font-size:52px;font-weight:800;line-height:1.0;letter-spacing:-.01em;margin-bottom:14px;text-transform:uppercase;color:var(--bright)}
+  .hero h1::after{content:"_";color:var(--accent);animation:blink 1.1s steps(1) infinite;font-weight:800}
+  @keyframes blink{50%{opacity:0}}
+  .hero .sub{font-size:12.5px;color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
+  .hero .desc{color:var(--text);max-width:680px;margin-top:14px;font-size:13.5px;line-height:1.65}
+  @media(max-width:640px){.hero h1{font-size:34px}}
+  /* price scenario bar */
+  .scenbar{margin:32px 0 4px}
+  .track{position:relative;height:12px;background:linear-gradient(90deg,var(--bear),var(--amber) 48%,var(--bull));margin:30px 0 8px}
+  .track .cmp{position:absolute;top:-8px;width:2px;height:28px;background:var(--bright)}
+  .track .cmp::after{content:attr(data-lbl);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--bright);white-space:nowrap}
+  .track .tick{position:absolute;top:18px;transform:translateX(-50%);font-size:10.5px;color:var(--muted);white-space:nowrap;text-align:center}
+  .scenrow{display:flex;justify-content:space-between;gap:16px;font-size:11.5px;color:var(--muted);margin-top:46px}
+  /* stat grid */
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:28px 0}
+  .stat{background:var(--card);border:1px solid var(--border);padding:13px 14px}
+  .stat .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .stat .v{font-size:21px;font-weight:700;margin-top:6px;color:var(--bright)}
+  .stat .n{font-size:11px;color:var(--muted);margin-top:3px}
+  .v.bull{color:var(--bull)}.v.bear{color:var(--bear)}.v.amber{color:var(--amber)}
+  /* sections */
+  section{padding:46px 0 6px;border-top:1px solid var(--border);position:relative}
+  section:first-of-type{border-top:none}
+  .ghost{display:none}
+  .sectag{position:relative;z-index:1;display:inline-block;font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;border:1px solid rgba(255,176,0,.35);padding:3px 9px}
+  .sectag::before{content:"// "}
+  section h2{position:relative;z-index:1;font-size:25px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px;line-height:1.18;text-transform:uppercase;color:var(--bright)}
+  section h3{font-size:14.5px;font-weight:700;margin:24px 0 9px;color:var(--bright);text-transform:uppercase;letter-spacing:.02em}
+  section h3::before{content:"> ";color:var(--accent)}
+  p{margin:11px 0;color:var(--text)}
+  strong{color:var(--bright);font-weight:700}
+  em{color:var(--text);font-style:italic}
+  ul,ol{margin:11px 0 11px 20px;color:var(--text)}
+  li{margin:6px 0}
+  li::marker{color:var(--accent)}
+  .lead{font-size:15px;color:var(--bright);line-height:1.6}
+  /* tables */
+  .tw{overflow-x:auto;margin:18px 0;border:1px solid var(--border)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px}
+  th,td{padding:7px 11px;text-align:right;border-bottom:1px solid var(--border);border-right:1px solid var(--border);white-space:nowrap}
+  th:last-child,td:last-child{border-right:none}
+  th:first-child,td:first-child{text-align:left}
+  thead th{background:var(--card2);color:var(--accent);font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;position:sticky;top:0}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover td{background:rgba(255,176,0,.04)}
+  td.mono,th.mono{font-variant-numeric:tabular-nums}
+  tbody td{color:var(--text);font-variant-numeric:tabular-nums}
+  tbody td:first-child{color:var(--bright)}
+  .rowlabel{color:var(--muted)}
+  caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:11px;padding:8px 11px;border-top:1px solid var(--border);background:var(--card2)}
+  /* chips */
+  .chip{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent}
+  .chip.hit{background:rgba(35,209,139,.1);color:var(--bull);border-color:rgba(35,209,139,.4)}
+  .chip.miss{background:rgba(255,92,87,.1);color:var(--bear);border-color:rgba(255,92,87,.4)}
+  .chip.over{background:rgba(255,176,0,.1);color:var(--accent);border-color:rgba(255,176,0,.4)}
+  .chip.part{background:rgba(255,176,0,.08);color:var(--amber);border-color:rgba(255,176,0,.3)}
+  .badge{display:inline-block;font-size:9.5px;font-weight:700;padding:3px 9px;letter-spacing:.06em;text-transform:uppercase;border:1px solid transparent}
+  .b-strong{background:rgba(35,209,139,.12);color:var(--bull);border-color:rgba(35,209,139,.4)}
+  .b-mod{background:rgba(255,176,0,.12);color:var(--amber);border-color:rgba(255,176,0,.4)}
+  .b-weak{background:rgba(255,92,87,.12);color:var(--bear);border-color:rgba(255,92,87,.4)}
+  .b-none{background:rgba(100,118,137,.12);color:var(--muted);border-color:rgba(100,118,137,.4)}
+  /* red flag box */
+  .flag{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--bear);padding:13px 17px;margin:16px 0}
+  .flag .ft{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bear);margin-bottom:5px}
+  .flag .ft::before{content:"! "}
+  .flag p{color:var(--text);font-size:12.5px;margin:0}
+  .green{border-left-color:var(--bull)}
+  .green .ft{color:var(--bull)}
+  .amberbox{border-left-color:var(--amber)}
+  .amberbox .ft{color:var(--amber)}
+  /* moat grid */
+  .moatgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .moat{background:var(--card);border:1px solid var(--border);padding:15px}
+  .moat .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
+  .moat .mh .mn{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright)}
+  .moat p{font-size:12px;margin:6px 0 0;color:var(--muted)}
+  /* scenario cards */
+  .scengrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .scen{background:var(--card);border:1px solid var(--border);padding:16px;border-top:2px solid var(--muted)}
+  .scen.bull{border-top-color:var(--bull)}
+  .scen.base{border-top-color:var(--amber)}
+  .scen.bear{border-top-color:var(--bear)}
+  .scen .st{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+  .scen .sp{font-size:28px;font-weight:700;margin:7px 0 2px}
+  .scen.bull .sp{color:var(--bull)}.scen.base .sp{color:var(--amber)}.scen.bear .sp{color:var(--bear)}
+  .scen .su{font-size:11px;color:var(--muted)}
+  .scen p{font-size:12px;margin-top:9px}
+  /* monitorables */
+  .mongrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:18px 0}
+  .mon{background:var(--card);border:1px solid var(--border);padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
+  .dot{width:8px;height:8px;margin-top:6px;flex-shrink:0}
+  .dot.r{background:var(--bear);box-shadow:0 0 6px rgba(255,92,87,.6)}
+  .dot.a{background:var(--amber);box-shadow:0 0 6px rgba(255,176,0,.6)}
+  .dot.g{background:var(--bull);box-shadow:0 0 6px rgba(35,209,139,.6)}
+  .mon .mk{font-size:12px;color:var(--bright);font-weight:500}
+  .mon .mv{font-size:11px;color:var(--muted);margin-top:2px}
+  /* eq score bar */
+  .eqbar{display:flex;gap:4px;margin:14px 0}
+  .eqseg{flex:1;height:24px;background:var(--border)}
+  .eqseg.on{background:var(--accent);box-shadow:0 0 10px rgba(255,176,0,.35)}
+  /* trigger calendar */
+  .caltrack{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+  .cal{background:var(--card);border:1px solid var(--border);padding:13px}
+  .cal .cq{font-size:11px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+  .cal ul{margin:8px 0 0 15px;font-size:12px}
+  .cal li{margin:5px 0;color:var(--muted)}
+  /* pullquote */
+  .pull{font-size:17px;font-weight:500;line-height:1.5;color:var(--bright);border-left:3px solid var(--accent);padding:4px 0 4px 20px;margin:26px 0}
+  /* two col */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .box{background:var(--card);border:1px solid var(--border);padding:17px}
+  .box h4{font-size:13px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);font-weight:700}
+  .box.buy{border-top:2px solid var(--bull)}
+  .box.sell{border-top:2px solid var(--bear)}
+  .box p,.box li{font-size:12.5px}
+  /* footer */
+  footer{border-top:1px solid var(--border);padding:36px 0 60px;margin-top:56px;color:var(--muted);font-size:12.5px}
+  footer h3{color:var(--bright);margin-bottom:12px;text-transform:uppercase;letter-spacing:.03em;font-size:14px;font-weight:700}
+  footer h3::before{content:"> ";color:var(--accent)}
+  footer .gen{font-size:10.5px;margin-top:20px;color:var(--muted);letter-spacing:.02em}
+  .srclist{list-style:none;margin-left:0}
+  .srclist li{margin:6px 0;font-size:12px;padding-left:12px;border-left:1px solid var(--border)}
+  .disc{background:var(--card);border:1px solid var(--border);padding:13px 17px;font-size:11.5px;color:var(--muted);margin-top:22px}
+  .kv{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:6px 0;font-size:12.5px}
+  .kv:last-child{border-bottom:none}
+  .kv .kk{color:var(--muted)}
+  .kv .vv{color:var(--text)}
+  /* ratings toggle */
+  #ratetog{position:fixed;right:16px;bottom:16px;z-index:1001;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;cursor:pointer;user-select:none;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+  #ratetog:hover{border-color:var(--accent);color:var(--text)}
+  #ratetog .sw{position:relative;width:30px;height:15px;background:var(--border2);flex-shrink:0;transition:background .15s}
+  #ratetog .sw i{position:absolute;top:2px;left:2px;width:11px;height:11px;background:var(--muted);transition:.15s}
+  #ratetog.on .sw{background:rgba(255,176,0,.35)}
+  #ratetog.on .sw i{left:17px;background:var(--accent)}
+  #ratetog .st{min-width:22px;color:var(--muted)}
+  #ratetog.on .st{color:var(--accent)}
+  body.badges-off .badge{display:none}
+  @media(max-width:600px){#ratetog{right:10px;bottom:10px;font-size:10px;padding:7px 10px}}
+  @media print{#ratetog{display:none}}
+  /* toc primer link */
+  .toc .tocprimer{display:block;color:var(--muted);padding:5px 10px;border-left:2px solid var(--border);line-height:1.3;text-transform:uppercase;letter-spacing:.03em;margin:0 0 4px}
+  .toc .tocprimer::before{content:"\25C6  ";color:var(--accent);opacity:.6}
+  .toc .tocprimer.active{color:var(--bright);border-left-color:var(--accent);background:linear-gradient(90deg,rgba(255,176,0,.07),transparent)}
+  .toc .tocprimer:hover{color:var(--bright);text-decoration:none}
+  .toc li.primerli{counter-increment:none;margin:0}
+  /* ===== business model / value chain ===== */
+  .bm-intro{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:15px 20px;margin:18px 0;font-size:13.5px;color:var(--text);line-height:1.65}
+  .bm-intro .bl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .bm-intro p{margin:8px 0 0}
+  /* value chain flow: INPUT -> PROCESS -> CUSTOMER -> END USE */
+  .vchain{display:grid;grid-template-columns:repeat(4,1fr);margin:16px 0;border:1px solid var(--border)}
+  .vstage{position:relative;background:var(--card);padding:13px 15px;border-right:1px solid var(--border)}
+  .vstage:last-child{border-right:none}
+  .vstage .vh{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+  .vstage .vh::before{content:"";width:7px;height:7px;background:var(--accent);flex-shrink:0}
+  .vstage ul{margin:0;list-style:none}
+  .vstage li{font-size:12px;color:var(--text);margin:4px 0;padding-left:12px;position:relative;line-height:1.45}
+  .vstage li::before{content:"-";position:absolute;left:0;color:var(--muted)}
+  .vstage li::marker{content:""}
+  .vstage:not(:last-child)::after{content:"\25B6";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:11px;z-index:2;background:var(--bg);line-height:1}
+  @media(max-width:760px){
+    .vchain{grid-template-columns:1fr}
+    .vstage{border-right:none;border-bottom:1px solid var(--border)}
+    .vstage:last-child{border-bottom:none}
+    .vstage:not(:last-child)::after{content:"\25BC";right:auto;left:50%;top:auto;bottom:-8px;transform:translateX(-50%)}
+  }
+  /* segment block */
+  .seg{border:1px solid var(--border);margin:20px 0;background:linear-gradient(180deg,rgba(255,176,0,.025),transparent 42%)}
+  .seg .segh{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--border);background:var(--card2)}
+  .seg .segh .sn{font-size:14.5px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);min-width:0}
+  .seg .segh .sn .sx{color:var(--muted);font-weight:400;text-transform:none;font-size:11.5px;display:block;margin-top:3px;letter-spacing:0;line-height:1.4}
+  .seg .segh .mix{font-size:11px;color:var(--accent);border:1px solid rgba(255,176,0,.35);padding:3px 9px;white-space:nowrap;flex-shrink:0}
+  .seg .segbody{padding:15px 16px}
+  .seg .segbody>p{font-size:13px;margin:0 0 4px;color:var(--text)}
+  .seg .segbody>p.note{font-size:12px;color:var(--muted);margin-top:8px}
+  /* io detail grid (supplier/role/customer/enduse) */
+  .iogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:14px 0 4px}
+  .io{background:var(--card);border:1px solid var(--border);padding:12px 13px}
+  .io .iok{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+  .io .iok::before{content:"";width:6px;height:6px;background:var(--accent);flex-shrink:0}
+  .io p{font-size:12px;margin:0;color:var(--text);line-height:1.5}
+  /* revenue mix stacked bar */
+  .mixbar{display:flex;height:36px;margin:16px 0 10px;border:1px solid var(--border);overflow:hidden;font-variant-numeric:tabular-nums}
+  .mixseg{display:flex;align-items:center;justify-content:center;font-size:10.5px;color:#05070a;font-weight:700;min-width:0;overflow:hidden;white-space:nowrap;border-right:1px solid rgba(5,7,10,.5)}
+  .mixseg:last-child{border-right:none}
+  .mixkey{display:flex;flex-wrap:wrap;gap:7px 16px;font-size:11px;color:var(--muted);margin-bottom:14px}
+  .mixkey span{display:flex;align-items:center;gap:6px}
+  .mixkey i{width:10px;height:10px;flex-shrink:0}
+  /* unknown-unknowns callout */
+  .uu{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--amber);padding:13px 17px;margin:16px 0}
+  .uu .ut{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:7px}
+  .uu .ut::before{content:"? "}
+  .uu ul{margin:6px 0 0 17px;font-size:12.5px;color:var(--text)}
+  .uu li{margin:6px 0;line-height:1.5}
+  .uu li::marker{color:var(--amber)}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<button id="ratetog" class="on" title="Show or hide the qualitative moat rating badges (Weak / Moderate / Strong / None)"><span class="tl">Ratings</span><span class="sw"><i></i></span><span class="st">On</span></button>
+<div class="layout">
+  <nav class="toc">
+    <div class="toctitle">Salzer Deep Dive</div>
+    <ol>
+      <li><a href="#s1">Industry &amp; Sector</a></li>
+      <li><a href="#s0">Business Model</a></li>
+      <li><a href="#s2">Competitive Landscape</a></li>
+      <li><a href="#s3">6 Cs Moat</a></li>
+      <li><a href="#s4">Financial Analysis</a></li>
+      <li><a href="#s5">Earnings Quality</a></li>
+      <li><a href="#s6">Promoter &amp; Governance</a></li>
+      <li><a href="#s7">Guidance Scorecard</a></li>
+      <li><a href="#s8">Regulatory &amp; Risk</a></li>
+      <li><a href="#s9">Scuttlebutt</a></li>
+      <li><a href="#s10">Headwinds/Tailwinds</a></li>
+      <li><a href="#s11">Triggers &amp; Schemes</a></li>
+      <li><a href="#s12">Shareholding &amp; Flows</a></li>
+      <li><a href="#s13">Valuation</a></li>
+      <li><a href="#s14">Pre-Mortem</a></li>
+      <li><a href="#s15">Investment Pitch</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="eyebrow">Buy-Side Deep Dive // Not a Recommendation</div>
+      <h1>Salzer Electronics</h1>
+      <div class="sub">NSE: SALZERELEC&nbsp; &middot;&nbsp; BSE: 517059&nbsp; &middot;&nbsp; CMP INR 633&nbsp; &middot;&nbsp; 08-Jul-2026&nbsp; &middot;&nbsp; Data as of Q4/FY26 (Mar-2026)</div>
+      <p class="desc">A Coimbatore switchgear-and-cables manufacturer growing its top line at ~20-24% while profits, margins and return ratios stay stubbornly flat. The stock is ~44% off its 52-week high as the market re-rates a "smart-meter optionality" story that has so far under-delivered. This note presents the evidence and a two-way pitch - it issues no rating.</p>
+
+      <div class="scenbar">
+        <div class="track">
+          <div class="cmp" data-lbl="CMP 633" style="left:41%"></div>
+          <div class="tick" style="left:4%">Bear<br>450</div>
+          <div class="tick" style="left:50%">Base<br>700</div>
+          <div class="tick" style="left:96%">Bull<br>1150</div>
+        </div>
+        <div class="scenrow"><span>12-24 month fair-value range, evidence-weighted</span><span>Downside -29% / Upside +82%</span></div>
+      </div>
+    </div>
+
+    <!-- EXEC SUMMARY -->
+    <div class="statgrid">
+      <div class="stat"><div class="k">FV Range (12-24m)</div><div class="v">450-1150</div><div class="n">Bear / Base 700 / Bull</div></div>
+      <div class="stat"><div class="k">Earnings Quality</div><div class="v amber">5 / 10</div><div class="n">Clean books, poor cash conv.</div></div>
+      <div class="stat"><div class="k">Guidance Credibility</div><div class="v bear">~0.35</div><div class="n">ROCE &amp; NWC targets missed</div></div>
+      <div class="stat"><div class="k">Moat Strength</div><div class="v amber">Narrow</div><div class="n">Niche switches, weak pricing</div></div>
+      <div class="stat"><div class="k">FY26 Revenue</div><div class="v">1,758 Cr</div><div class="n">+24% YoY (consol.)</div></div>
+      <div class="stat"><div class="k">FY26 PAT</div><div class="v bear">53.8 Cr</div><div class="n">+2.5% YoY, margin squeeze</div></div>
+      <div class="stat"><div class="k">P/E (FY26)</div><div class="v">~21x</div><div class="n">vs peer median ~31x</div></div>
+      <div class="stat"><div class="k">ROCE / ROE</div><div class="v amber">~13% / 10%</div><div class="n">Below 15% for a decade</div></div>
+    </div>
+
+    <div class="two">
+      <div class="box green" style="border-top:3px solid var(--bull)">
+        <h4>Top 3 Positives</h4>
+        <ul>
+          <li><strong>Structural demand tailwind</strong> across power T&amp;D, renewables, railways and building electricals; 20-24% revenue CAGR is real, not accounting.</li>
+          <li><strong>Genuine niche leadership</strong> - #1 in cam-operated rotary switches (~25% share) and wire ducts (~20%); largest supplier of these to Indian Railways; Kaycee (73.5%) removed the main competitor.</li>
+          <li><strong>Optionality</strong> in smart meters (RDSS, ~25 Cr meter national target) and DC fast charging (Kostad JV) - low base, high potential if execution lands.</li>
+        </ul>
+      </div>
+      <div class="box sell" style="border-top:3px solid var(--bear)">
+        <h4>Top 3 Risks</h4>
+        <ul>
+          <li><strong>Cash never follows profit</strong> - CFO/EBITDA has averaged ~30% over six years; FY25 CFO was negative and FCF was ~ -83 Cr. Growth is debt-funded.</li>
+          <li><strong>Promoter pledge ~17% of capital</strong> (~45% of promoter stake) against a rising ~500 Cr debt load - a balance-sheet fragility flag.</li>
+          <li><strong>Chronic broken promises</strong> - 18% ROCE and 100-day NWC "by FY26" both missed badly; smart-meter revenue is a rounding error vs the ~1,000 Cr aspiration.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pull">"This is a bet on a niche electricals manufacturer finally converting two decades of top-line growth into cash and returns - priced as if the smart-meter option is worth something - and it breaks if working capital and margins stay exactly where they have been for ten years."</p>
+
+    <!-- SECTION 1 -->
+    <section id="s1">
+      <div class="ghost">01</div>
+      <div class="sectag">SECTION 01</div>
+      <h2>Industry &amp; Sector Analysis</h2>
+      <p class="lead">Salzer sits at the low-voltage, sub-component end of India's electrical equipment chain - a ~USD 10bn switchgear market and a ~INR 70,000-73,000 Cr wires-and-cables market, both compounding high-single to low-double digits on a durable capex supercycle.</p>
+
+      <p><strong>Size &amp; growth.</strong> The Indian switchgear industry is ~USD 10bn (~INR 80,000 Cr) growing ~7% CAGR; the wires &amp; cables industry was ~INR 68,000-73,000 Cr in FY23, expected to reach ~INR 90,000-95,000 Cr over 3-4 years (~10% CAGR, per Polycab AR). India remains a sub-scale, fragmented supplier globally - the high-value transmission gear is dominated by Siemens, Schneider, ABB and Hitachi, with domestic players (L&amp;T, CG Power, BHEL) in the middle and sub-component makers like Salzer at the base.</p>
+
+      <p><strong>Cycle position - mid-to-late upcycle.</strong> India is in a multi-year electrical capex upcycle: grid modernisation of 30-50 year-old infrastructure, renewables integration (solar/wind inverters need transformers), railway electrification, EV load growth and data-centre build-out. Capacity utilisation and pricing across cables have been firm; copper is the swing input. Salzer's own 20-24% revenue growth through FY24-FY26 confirms the demand is live - but the flat margins reveal that a sub-component supplier captures little of the cycle's economics.</p>
+
+      <p><strong>Structural shifts.</strong> Formalisation and import substitution favour organised domestic makers; QCOs (quality control orders) and BIS mandates raise the entry bar on wires/switchgear; China+1 sourcing is bringing OEM enquiries to Indian ancillaries. The two policy-driven verticals - RDSS smart metering (25 Cr meters targeted by ~2027 in three phases) and EV DC fast charging - are the industry's fastest-growing adjacencies and the axis of Salzer's re-rating story.</p>
+
+      <p><strong>Value capture across the chain.</strong> This is Salzer's central problem. In switchgear sub-components sold B2B to Siemens/Schneider/Eaton/ABB/Honeywell/GE, the brand-owner and system integrator capture the margin; the component maker is a price-taker on annually-negotiated contracts. In agri wires &amp; cables, copper is a pass-through and the product is near-commoditised (6-8% EBITDA). Value migrates to whoever owns the customer relationship or the certification - rarely the sub-supplier.</p>
+
+      <p><strong>Regulatory architecture.</strong> BIS standards and QCOs on cables and switchgear (import barrier and tailwind); RDSS and DISCOM metering norms; ARAI/AIS certification for EV chargers; RoDTEP export incentives; PLI is largely oriented to higher-tech categories where Salzer has limited entitlement.</p>
+    </section>
+
+    <!-- BUSINESS MODEL & VALUE CHAIN (primer) -->
+    <section id="s0">
+      <div class="ghost">02</div>
+      <div class="sectag">SECTION 02</div>
+      <h2>How Salzer Actually Makes Money</h2>
+
+      <div class="bm-intro">
+        <div class="bl">Briefing note - the company, end to end</div>
+        <p>Boss, now that the sector is framed, here is what this company physically does and where it sits in that value chain, told plainly. Salzer sits at the <strong>base of the electrical-equipment chain</strong> - it makes the switches, contactors, ducts, transformers, wires and meters that go <em>inside</em> other companies' branded panels, boards and grids. It is largely a <strong>price-taker</strong>: the products are replicable, it fights the unorganised sector and Chinese imports, and it passes copper and silver costs through to customers with a lag. Six plants, <strong>all in Tamil Nadu</strong> (five Coimbatore, one Hosur); exports are ~27% of sales to 50+ countries.</p>
+        <p>The business runs as <strong>five product lines</strong> - two that pay the bills today (Industrial Switchgear and Wires &amp; Cables), one small consumer line (Building Products), and two policy-driven bets that are still tiny (Smart Meters and EV DC Charging). Here is each one, end to end.</p>
+      </div>
+
+      <div class="vchain">
+        <div class="vstage"><div class="vh">Inputs</div><ul>
+          <li>Copper (the dominant cost)</li>
+          <li>Silver contacts, brass, steel</li>
+          <li>Transformer cores, thermoplastics, electronics</li>
+          <li>Foreign tech licences (Noratel, Trafomodern, Kostad)</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">What Salzer does</div><ul>
+          <li>Manufactures + assembles the components</li>
+          <li>Owns niche leadership: cam switches (~25%), wire ducts (~20%)</li>
+          <li>Holds BIS / railway / OEM certifications</li>
+          <li>Little brand at the point of final sale</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">Customers</div><ul>
+          <li>B2B OEMs: Schneider, Siemens, ABB, Eaton, GE, Honeywell</li>
+          <li>Indian Railways, NPCIL</li>
+          <li>DISCOMs - but only via AMISP intermediaries</li>
+          <li>Dealers / distributors + 50+ export markets</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">End use</div><ul>
+          <li>Control panels, MCCs, distribution boards</li>
+          <li>Railway rolling stock &amp; signalling</li>
+          <li>Building &amp; agricultural electrical</li>
+          <li>Smart-grid metering, EV charging</li>
+        </ul></div>
+      </div>
+
+      <div class="iogrid">
+        <div class="io"><div class="iok">Where it sits</div><p>A sub-component / component maker, one layer below the branded panel-builder and system integrator. It sells parts, not finished systems.</p></div>
+        <div class="io"><div class="iok">Who captures the margin</div><p>The brand-owner and integrator who owns the customer relationship. Salzer negotiates annually and re-prices on a lag - so it earns an ordinary, not a franchise, margin.</p></div>
+        <div class="io"><div class="iok">The concentration hiding in plain sight</div><p>The famous "L&amp;T 350+ distributor network" was sold to <strong>Schneider</strong> in 2020. Schneider (SEIPL) is now both the rented channel <em>and</em> the single-largest cables customer - one counterparty on both sides.</p></div>
+      </div>
+
+      <h3>Revenue mix (FY25, approximate)</h3>
+      <div class="mixbar">
+        <div class="mixseg" style="width:58%;background:#ffb000;flex-shrink:0">Switchgear 58%</div>
+        <div class="mixseg" style="width:37%;background:#36c5d6;flex-shrink:0">Cables 37%</div>
+        <div class="mixseg" style="width:5%;background:#23d18b;flex-shrink:0"></div>
+      </div>
+      <div class="mixkey">
+        <span><i style="background:#ffb000"></i>Industrial Switchgear ~58%</span>
+        <span><i style="background:#36c5d6"></i>Wires &amp; Cables ~37%</span>
+        <span><i style="background:#23d18b"></i>Building Products ~5%</span>
+        <span><i style="background:var(--dim)"></i>Smart Meters + EV DC Charging: emerging, &lt;2% of FY25 sales</span>
+      </div>
+      <p class="note" style="font-size:12px;color:var(--muted)">Mix figures are indicative from segment disclosures (FY24 arithmetic: switchgear 637 + cables 460 + building 69 = ~1,166 Cr); smart-meter and DCFC revenue is nascent and partly booked inside the lines above.</p>
+
+      <h3>Segment by Segment</h3>
+
+      <!-- SEG 1 -->
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">1 &middot; Industrial Switchgear<span class="sx">The core - switches, contactors, ducts, transformers and harnesses that populate other companies' control panels</span></div>
+          <div class="mix">~58% FY25</div>
+        </div>
+        <div class="segbody">
+          <p>This is the engine and the best of the business. Salzer is <strong>#1 in India in cam-operated rotary switches (~25% share) and wire ducts (~20%)</strong>, reinforced by the 2019 Kaycee buyout that took out the #2. It also makes load-break switches, relays, contactors, MPCBs, wiring harnesses and transformers (toroidal + dry-type, on licensed foreign tech).</p>
+          <div class="vchain">
+            <div class="vstage"><div class="vh">Inputs</div><ul><li>Copper + silver contacts (documented cost drivers)</li><li>Brass, transformer cores, thermoplastics, electronics</li><li>Tech licences: Noratel / Trafomodern</li></ul></div>
+            <div class="vstage"><div class="vh">What Salzer does</div><ul><li>Makes + assembles the switchgear parts</li><li>Cam switches, ducts, LB switches, relays, contactors, harnesses, transformers</li><li>Kaycee subsidiary consolidates the niche</li></ul></div>
+            <div class="vstage"><div class="vh">Customers</div><ul><li>OEMs: Schneider, Siemens, ABB, Eaton, GE, Honeywell</li><li>Indian Railways, NPCIL</li><li>No single customer &gt;10%; top-15 ~45%</li></ul></div>
+            <div class="vstage"><div class="vh">End use</div><ul><li>Control panels, MCCs, distribution boards</li><li>Railway rolling stock &amp; signalling</li><li>Renewables, data centres</li></ul></div>
+          </div>
+          <div class="uu"><div class="ut">Not obvious</div><ul>
+            <li>Growth is <strong>transformer- and harness-led, which dilutes mix margin</strong> - cam switches / ducts earn ~15% EBITDA vs ~11-12% for transformers and harnesses. Growing fast in the lower-margin parts.</li>
+            <li>Railway / BIS certification is a moat but cuts both ways - it locks Salzer in as much as it locks rivals out, and re-approval friction is real.</li>
+            <li>The Hosur plant was placed to sit <strong>near 2-wheeler OEMs</strong> for harnesses - a quiet push to crack the stickier auto supply chain.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- SEG 2 -->
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">2 &middot; Wires &amp; Cables<span class="sx">Copper building, agri and industrial cables - a commoditised volume business, thin margin</span></div>
+          <div class="mix">~37% FY25</div>
+        </div>
+        <div class="segbody">
+          <p>Big revenue, small profit. This is a near-commodity: copper is most of the cost, differentiation is low, and EBITDA is only ~6-7%. Salzer makes <strong>copper cable only, no aluminium</strong>, and stocks copper opportunistically - so margins swing with copper timing.</p>
+          <div class="vchain">
+            <div class="vstage"><div class="vh">Inputs</div><ul><li>Copper (overwhelming cost driver)</li><li>PVC / XLPE insulation</li><li>Copper stocked when prices are favourable</li></ul></div>
+            <div class="vstage"><div class="vh">What Salzer does</div><ul><li>Draws + insulates copper into cable</li><li>Building wires, agri cables, power / flexible cables</li></ul></div>
+            <div class="vstage"><div class="vh">Customers</div><ul><li><strong>Schneider (SEIPL) = single-largest cables customer</strong></li><li>Sold through the 350+ distributor network (now Schneider-owned)</li><li>Agri / rural dealers</li></ul></div>
+            <div class="vstage"><div class="vh">End use</div><ul><li>Agricultural pumpsets</li><li>Building &amp; infrastructure wiring</li></ul></div>
+          </div>
+          <div class="uu"><div class="ut">Not obvious</div><ul>
+            <li><strong>Schneider is on both sides</strong> - the biggest cables customer and the owner of the distribution channel. Concentration that a first read misses.</li>
+            <li>Copper <strong>pass-through lag</strong> compresses margin in volatile quarters; agri demand is monsoon-seasonal.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- SEG 3 -->
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">3 &middot; Building Products<span class="sx">MCBs, house wires, modular switches - the small, B2C-facing consumer line</span></div>
+          <div class="mix">~5% FY25</div>
+        </div>
+        <div class="segbody">
+          <p>The smallest core line and the perennial underperformer. Consumer electrical sold at retail, where Salzer has weak brand pull against Havells, Legrand and Anchor. Long stagnant; FY25 rebounded off a low base rather than structurally re-rating.</p>
+          <div class="vchain">
+            <div class="vstage"><div class="vh">Inputs</div><ul><li>Copper, thermoplastics, electronics</li></ul></div>
+            <div class="vstage"><div class="vh">What Salzer does</div><ul><li>Makes MCBs, house wires, modular &amp; remote switches, distribution boards</li></ul></div>
+            <div class="vstage"><div class="vh">Customers</div><ul><li>Retail / B2C via dealers</li></ul></div>
+            <div class="vstage"><div class="vh">End use</div><ul><li>Residential &amp; commercial building electrical</li></ul></div>
+          </div>
+          <div class="uu"><div class="ut">Not obvious</div><ul>
+            <li>Under-invested and out-branded; six years of stagnation is the base case here, not the rebound.</li>
+            <li>Energy-management / smart-meter revenue may be <strong>booked inside this line</strong>, flattering its growth optics - read the segment note carefully.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- SEG 4 -->
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">4 &middot; Smart Meters &amp; Energy Management<span class="sx">RDSS smart meters - but sold to AMISPs, not DISCOMs. A supplier to a supplier</span></div>
+          <div class="mix">Emerging &lt;2%</div>
+        </div>
+        <div class="segbody">
+          <p>The re-rating story, and the one to understand most carefully. Salzer <strong>does not bid DISCOM tenders</strong>. It sells BIS-certified meters to AMISPs (the metering operators) who own the DISCOM contract. Capacity is 4mn meters (scalable to 10mn); the ~1,000 Cr full-capacity aspiration is years away - only ~25 Cr of smart-meter revenue landed in 9M FY26.</p>
+          <div class="vchain">
+            <div class="vstage"><div class="vh">Inputs</div><ul><li>Meter electronics + communication modules (likely imported)</li><li>BIS certification</li><li>4mn-unit line (Rs 40 Cr capex)</li></ul></div>
+            <div class="vstage"><div class="vh">What Salzer does</div><ul><li>Manufactures smart meters</li><li>Plus energy-saving devices + smart street-lighting (CCMS + LED)</li></ul></div>
+            <div class="vstage"><div class="vh">Customers</div><ul><li><strong>AMISPs</strong>: Genus, HPL, Schneider, Adani, Intellismart, L&amp;T, ECIL</li><li>Municipalities (BBMP 192 Cr street-light order)</li></ul></div>
+            <div class="vstage"><div class="vh">End use</div><ul><li>DISCOM consumer metering under RDSS</li><li>Municipal street lighting</li></ul></div>
+          </div>
+          <div class="uu"><div class="ut">The big one</div><ul>
+            <li>Salzer owns <strong>neither the DISCOM relationship nor the 7-8 year metering annuity</strong> - only the AMISP counterparty and its payment stretch. The AMISP carries the long receivable; Salzer carries AMISP credit risk, which feeds its own 200+ day working capital.</li>
+            <li>It competes with the same AMISPs (Genus, HPL, Schneider) who also have larger in-house meter capacity - customer and competitor at once.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- SEG 5 -->
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">5 &middot; EV DC Fast Charging<span class="sx">30-240 kW DC fast chargers via a 60%-owned JV with Austria's Kostad</span></div>
+          <div class="mix">Emerging &lt;2%</div>
+        </div>
+        <div class="segbody">
+          <p>The second option ticket. A JV with Kostad GmbH (Austria), stake raised to 60% in Dec-2023. Makes DC fast / ultra-fast chargers for highways, utilities and fleets. ~100 chargers sold in 9M FY26 - early sales partly buyback-supported by the Austrian partner.</p>
+          <div class="vchain">
+            <div class="vstage"><div class="vh">Inputs</div><ul><li>Power-electronics modules (~60% imported, localising)</li><li>ARAI certification</li><li>Kostad technology</li></ul></div>
+            <div class="vstage"><div class="vh">What Salzer does</div><ul><li>Assembles / manufactures 30-240 kW DC chargers</li><li>~30-minute charge units</li></ul></div>
+            <div class="vstage"><div class="vh">Customers</div><ul><li>Charge-point operators</li><li>Fleet operators, highway infra</li></ul></div>
+            <div class="vstage"><div class="vh">End use</div><ul><li>Public / highway / fleet EV charging</li></ul></div>
+          </div>
+          <div class="uu"><div class="ut">Not obvious</div><ul>
+            <li>Early demand is <strong>partly partner-buyback supported</strong>, so reported traction overstates independent pull.</li>
+            <li>The ~500 Cr aspiration hinges on EV adoption pace, grid readiness, certification and import-localisation - it is optionality, not a proven earner. A prior 3-wheeler EV-kit programme was scrapped.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <p class="note" style="font-size:12px;color:var(--muted);margin-top:14px">A sixth entity - <strong>Salzer Electronics Arabia</strong> (wholly-owned Saudi subsidiary, ~Rs 10 Cr, commercial start ~Jun-2026) - makes existing products for the GCC. It is a geographic extension, not a new segment.</p>
+
+      <div class="uu" style="border-left-color:var(--accent)">
+        <div class="ut" style="color:var(--accent)">Unknown unknowns - the five things a first read misses</div>
+        <ul>
+          <li><strong>Schneider double-exposure.</strong> The "L&amp;T 350+ distributor network" everyone cites was sold to Schneider in 2020. Schneider is now both the rented channel and the largest cables customer - a single counterparty on both the demand and the distribution side.</li>
+          <li><strong>Supplier-to-a-supplier in smart meters.</strong> Salzer never touches the DISCOM. It sells to AMISPs, so it captures none of the metering annuity and all of the AMISP credit-and-payment risk - a structural reason the working capital stays stretched (~211-day gross current assets).</li>
+          <li><strong>Single-state footprint.</strong> All six plants are in Tamil Nadu. One climate, labour or power shock hits the whole company at once.</li>
+          <li><strong>Copper + silver pass-through lag.</strong> The two priced inputs re-set on a lag (~200 bps hit in Q3 FY26), so margins wobble quarter to quarter regardless of demand.</li>
+          <li><strong>Optionality dressed as strategy.</strong> Smart meters, DCFC and Saudi are execution bets riding on licensed foreign technology (Noratel, Trafomodern, Kostad), not yet proven earners - and this management's execution record is inconsistent.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section id="s2">
+      <div class="ghost">03</div>
+      <div class="sectag">SECTION 03</div>
+      <h2>Competitive Landscape &amp; Peer Benchmarking</h2>
+      <p class="lead">Salzer has no clean listed comparable - it is a "portfolio" micro-cap straddling switchgear sub-components, agri cables, building electricals and two policy adjacencies. On the metrics that matter (margin, ROCE, cash conversion) it ranks in the lower half of any peer set.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Indicative peer snapshot. Figures approximate, latest reported / TTM; multiples as of early Jul-2026. Salzer figures consolidated FY26.</caption>
+          <thead><tr><th>Company</th><th>Rev (Cr)</th><th>EBITDA %</th><th>ROCE %</th><th>Net D/E</th><th>P/E (x)</th></tr></thead>
+          <tbody>
+            <tr><td>Salzer Electronics</td><td>1,758</td><td>8.4</td><td>~13</td><td>~0.8</td><td>~21</td></tr>
+            <tr><td>HPL Electric (switchgear/meters)</td><td>~1,600</td><td>~11</td><td>~13</td><td>~0.6</td><td>~35</td></tr>
+            <tr><td>Genus Power (smart meters)</td><td>~2,800</td><td>~14</td><td>~14</td><td>~0.2</td><td>~30</td></tr>
+            <tr><td>V-Guard / Orient (FMEG proxy)</td><td>~5,000+</td><td>~9-10</td><td>~16-18</td><td>net cash</td><td>~45</td></tr>
+            <tr><td>Kaycee Industries (subsidiary, listed)</td><td>~80</td><td>~15</td><td>~18</td><td>low</td><td>~40</td></tr>
+            <tr><td>Peer median</td><td>n/a</td><td>~11</td><td>~14-16</td><td>n/a</td><td>~31</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Where Salzer ranks.</strong> On growth it is competitive (~20%+). On <em>quality</em> - EBITDA margin (8.4% vs peer ~11%), ROCE (~13% vs ~14-16%), and especially cash conversion - it sits at the bottom. Its ~33% discount on P/E to the peer median is therefore not a "cheapness" free lunch; it is the market correctly pricing a lower-quality, more leveraged, working-capital-heavy business model.</p>
+
+      <p><strong>Competitor milestones.</strong> Genus Power and HPL Electric are both scaling smart-meter capacity aggressively (Genus ~12mn, HPL ~11mn, Schneider ~17mn units p.a.) and act as both competitors and potential <em>customers</em> for Salzer's meters. In switchgear, the MNC OEMs are Salzer's customers, not head-to-head rivals - Salzer supplies sub-assemblies into their systems.</p>
+
+      <p><strong>Distress / share-gain angle.</strong> No obvious peer is exiting. The one structural share gain Salzer already banked was the 2019 acquisition of Kaycee Industries (now 73.5% owned) - its largest rival in cam-operated rotary switches and wire ducts - which cemented its ~25%/20% niche leadership.</p>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section id="s3">
+      <div class="ghost">04</div>
+      <div class="sectag">SECTION 04</div>
+      <h2>Competitive Advantage: 6 Cs Moat Framework</h2>
+      <p class="lead">Salzer has a genuine but <strong>narrow</strong> moat: dominance in two low-value niches and long OEM approvals. It has almost no moat where it matters most - pricing power and capital efficiency.</p>
+
+      <div class="moatgrid">
+        <div class="moat">
+          <div class="mh"><span class="mn">Cost</span><span class="badge b-weak">Weak</span></div>
+          <p>Backward integration into copper wire and coils helps, but no structural cost edge vs larger, better-utilised peers. Sub-scale gross-asset turnover keeps unit economics ordinary.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Capacity</span><span class="badge b-mod">Moderate</span></div>
+          <p>Six+ plants in Tamil Nadu plus new Hosur (harnesses/toroidals) and a 4mn-unit smart-meter line. Headroom exists, but capacity is only a moat when it is filled and returns-accretive - here it is under-utilised (smart meters).</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Capital</span><span class="badge b-weak">Weak</span></div>
+          <p>CRISIL A/A1 is respectable but the balance sheet is a liability, not a weapon: ~500 Cr mostly short-term working-capital debt, negative FCF, ~17% of equity pledged. Cannot out-invest peers in a downturn.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Channel</span><span class="badge b-mod">Moderate</span></div>
+          <p>Access to L&amp;T's 350+ distributor network plus own pan-India dealers and exports to 50+ countries is a real asset in B2C/building products - but that division has stagnated for six years.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Customer captivity</span><span class="badge b-mod">Moderate</span></div>
+          <p>OEM approvals (Siemens, Schneider, Eaton, ABB, GE, Honeywell) and railway qualifications create switching cost and are hard-won. But no single customer &gt;10%, top-15 ~45% - low concentration, and annual price resets mean captivity does <em>not</em> translate into pricing power.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Compliance moat</span><span class="badge b-strong">Strong (niche)</span></div>
+          <p>BIS certification on smart meters, railway approvals, OEM qualifications, and 25%/20% share in cam switches / wire ducts are the durable barriers. Strongest in the small, slow-growing niches; weakest in the large, fast-growing ones.</p>
+        </div>
+      </div>
+
+      <p><strong>Single most important moat &amp; half-life.</strong> The durable core is the <strong>certification-plus-installed-base leadership in cam-operated rotary switches and wire ducts</strong> (reinforced by the Kaycee buyout and Railways relationship). Its half-life is long (10+ years) but the addressable market is small and slow-growing - so the moat protects a modest profit pool rather than powering compounding. Everywhere the growth is (transformers, agri cables, smart meters, DCFC), Salzer is a price-taker facing entrenched, better-capitalised incumbents. <strong>Net: a real moat around the wrong 15% of the business.</strong></p>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section id="s4">
+      <div class="ghost">05</div>
+      <div class="sectag">SECTION 05</div>
+      <h2>Financial Analysis: 8 Quarters + 5 Years</h2>
+      <p class="lead">The defining pattern: revenue compounds at ~20%, operating profit lags it, PAT lags further, and cash flow diverges completely. Growth is real; its conversion into shareholder value is not.</p>
+
+      <h3>Eight-quarter trend (standalone, INR Cr)</h3>
+      <div class="tw">
+        <table>
+          <caption>Standalone quarterly. Source: Screener / exchange filings. Q2FY25 (Sep-24) PAT flattered by ~16 Cr one-off other income.</caption>
+          <thead><tr><th>Quarter</th><th>Sep24</th><th>Dec24</th><th>Mar25</th><th>Jun25</th><th>Sep25</th><th>Dec25</th></tr></thead>
+          <tbody>
+            <tr><td>Sales</td><td>336</td><td>334</td><td>366</td><td>432</td><td>409</td><td>412</td></tr>
+            <tr><td>Op. Profit</td><td>33</td><td>34</td><td>26</td><td>41</td><td>35</td><td>36</td></tr>
+            <tr><td>OPM %</td><td>10</td><td>10</td><td>7</td><td>10</td><td>8</td><td>9</td></tr>
+            <tr><td>Other Income</td><td>16</td><td>2</td><td>2</td><td>1</td><td>1</td><td>0</td></tr>
+            <tr><td>Interest</td><td>10</td><td>10</td><td>11</td><td>12</td><td>11</td><td>12</td></tr>
+            <tr><td>PBT</td><td>34</td><td>20</td><td>12</td><td>24</td><td>18</td><td>17</td></tr>
+            <tr><td>Net Profit</td><td>26</td><td>15</td><td>8</td><td>18</td><td>13</td><td>13</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Strip out the Sep-24 one-off and the underlying quarterly PAT has been range-bound at ~13-18 Cr for two years while sales rose from ~336 to ~412 Cr. The Mar-25 quarter (7% OPM, 8 Cr PAT) and the soft Q3-Q4 FY26 exit show margins compressing as the mix tilts to lower-margin transformers, cables and low-margin early smart-meter volumes. Interest cost (~12 Cr/qtr, ~48 Cr annualised) now eats a third of operating profit.</p>
+
+      <h3>Five-year record (standalone, INR Cr)</h3>
+      <div class="tw">
+        <table>
+          <caption>Standalone P&amp;L. FY26 figures consolidated (Rev 1,758 / EBITDA 147 / PAT 53.8) per company FY26 release.</caption>
+          <thead><tr><th>Year</th><th>FY21</th><th>FY22</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26*</th></tr></thead>
+          <tbody>
+            <tr><td>Sales</td><td>606</td><td>784</td><td>1,013</td><td>1,136</td><td>1,383</td><td>1,758</td></tr>
+            <tr><td>Op. Profit</td><td>62</td><td>64</td><td>91</td><td>110</td><td>127</td><td>147</td></tr>
+            <tr><td>OPM %</td><td>10</td><td>8</td><td>9</td><td>10</td><td>9</td><td>8.4</td></tr>
+            <tr><td>PAT</td><td>21</td><td>22</td><td>36</td><td>43</td><td>62</td><td>53.8</td></tr>
+            <tr><td>EPS (Rs)</td><td>12.9</td><td>14.1</td><td>22.5</td><td>24.9</td><td>35.2</td><td>~30</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Revenue.</strong> 5-yr sales CAGR ~20%, driven chiefly by the switchgear division (transformers) rising from ~41% of mix (FY21) to ~55% (FY24), and wires/cables steady at ~40%. Exports are ~25-27% of sales. FY26 revenue grew ~24% - but transformers and cables are the lowest-margin lines, so growth is EBITDA-dilutive.</p>
+
+      <p><strong>Margins.</strong> OPM has hovered 8-10% for five years with no durable expansion - the exact opposite of management's repeated "margin improvement" guidance. The FY26 dip to 8.4% (from 9.4%) was blamed on raw-material (copper) volatility and mix. Switchgear runs ~12-13% EBITDA, cables ~6-8%, building ~ mid-single. There is no operating-leverage story visible in a decade of data.</p>
+
+      <p><strong>Return ratios.</strong> ROCE ~13%, ROE ~10% (FY26); 10-year average ROCE ~11%, ROE ~9%. DuPont: ordinary net margin (~3%), moderate asset turnover dragged by heavy working capital, leverage doing much of the ROE work. Incremental ROCE on the last three years of capital deployed is <em>below</em> the reported average - the company is getting less efficient as it grows, not more.</p>
+
+      <div class="flag">
+        <div class="ft">Red Flag - Cash Flow</div>
+        <p>Over FY14-FY25, cumulative free cash flow is deeply negative. FY25: CFO <strong>-17 Cr</strong>, FCF <strong>-83 Cr</strong>, CFO/OP just <strong>1%</strong>. Six-year average CFO/EBITDA ~30%. Every rupee of reported profit has been consumed by working capital and capex and funded with debt. This is the single most important number in the file.</p>
+      </div>
+
+      <p><strong>Working capital.</strong> Cash conversion cycle ~180-183 days (FY25): debtor days ~108, inventory days ~138, payable days ~62. This has been structurally high for a decade (wide SKU range, raw-material stocking, OEM-dictated long receivables). The promised march to 100 NWC days has not happened.</p>
+
+      <p><strong>Balance sheet.</strong> Borrowings rose from ~204 Cr (FY21) to ~418 Cr (FY25) to ~477 Cr (Sep-25), overwhelmingly short-term working-capital debt (~406 Cr ST vs ~22 Cr LT at Mar-25). Net worth ~557-580 Cr. Net debt/equity ~0.8x. Interest cover is thin at ~3x EBIT. The 27-Apr-2026 "not a Large Corporate" filing (long-term listed borrowings only 40.14 Cr) refers narrowly to debt-securities and understates total leverage.</p>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section id="s5">
+      <div class="ghost">06</div>
+      <div class="sectag">SECTION 06</div>
+      <h2>Earnings Quality &amp; Forensic Checks</h2>
+      <p class="lead">The accounts are broadly clean - Salzer is not an aggressive-accounting story. The problem is not fabricated profit; it is <em>real profit that never becomes cash</em>. That is a business-model flaw, and it is what caps the earnings-quality score.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Forensic checklist - direction and reading.</caption>
+          <thead><tr><th>Check</th><th>Reading</th><th>Flag</th></tr></thead>
+          <tbody>
+            <tr><td class="rowlabel">Receivables vs revenue growth</td><td>Debtor days flat ~100-108; grows with sales, not ahead of it</td><td><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Cash yield / real cash</td><td>Minimal cash balances; company is a net borrower - little idle "cash" to fake</td><td><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">CWIP ageing</td><td>CWIP small (1-6 Cr), converts to gross block - no perpetual CWIP</td><td><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Other-income dependence</td><td>Usually &lt;5% of PBT; Sep-24 had a ~16 Cr one-off that inflated that quarter</td><td><span class="chip part">Watch</span></td></tr>
+            <tr><td class="rowlabel">Effective tax rate</td><td>24-30%, near statutory - no suspicious low cash tax</td><td><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Contingent liabilities</td><td>Small (&lt;1% of net worth per FY23 AR); tax matters only</td><td><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Related-party transactions</td><td>~3% of sales to promoter-linked cos; ~1% services in; disclose but monitor</td><td><span class="chip part">Watch</span></td></tr>
+            <tr><td class="rowlabel">CFO / EBITDA conversion</td><td>~30% six-yr avg; FY25 ~1%. Chronic non-conversion</td><td><span class="chip miss">Red</span></td></tr>
+            <tr><td class="rowlabel">Auditor / CARO</td><td>No known resignation or adverse qualification surfaced; standard audit</td><td><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Capitalisation / policy churn</td><td>No evidence of expense capitalisation or frequent policy changes</td><td><span class="chip hit">OK</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Earnings Quality Score</h3>
+      <div class="eqbar">
+        <div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div>
+        <div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div>
+      </div>
+      <p><strong>5 / 10.</strong> Accrual accounting looks honest and conservative - no P/L engineering, tiny contingent liabilities, clean tax, small related-party flows. But an earnings-quality score is ultimately about whether earnings are <em>economic</em>, and here they are not: profit does not convert to cash, so the reported PAT overstates true owner earnings materially. A business that borrows to fund its own reported profit cannot score above the mid-point regardless of how tidy the disclosures are. <em>Insufficient data</em> on the latest CARO annexure and RPT schedule from FY25/FY26 to move the score up or down until the FY26 annual report is read in full.</p>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section id="s6">
+      <div class="ghost">07</div>
+      <div class="sectag">SECTION 07</div>
+      <h2>Promoter, Governance &amp; Capital Allocation</h2>
+      <p class="lead">A genuine first-generation technocrat-promoter with 40 years of domain credibility - but a mediocre capital-allocation record, an elderly board, a rising pledge, and a habit of entering many businesses without mastering the economics of any.</p>
+
+      <p><strong>Promoter background.</strong> Founder Mr. Rangaswamy Doraiswamy (MD) is an electrical engineer (ex-Lakshmi Machine Works, 15 yrs) who started Salzer in 1985 in technical collaboration with Germany's Saelzer Schaltgerate. Son Mr. D. Rajeshkumar (Joint MD) is US-educated. This is a hands-on, engineering-led, promoter-driven house - a strength for product breadth, a weakness for financial discipline.</p>
+
+      <p><strong>Shareholding &amp; pledge.</strong> Promoter holding ~37.5% (Mar-2026), up from ~33% in FY23 (creeping acquisition + warrant conversions). The concern is the <strong>pledge of ~17% of total shares</strong> - roughly <em>45% of the promoter's own stake</em> pledged against the company's working-capital borrowings. In a leveraged micro-cap, a high pledge on a stock that has already fallen ~44% from its high is a first-order fragility.</p>
+
+      <div class="flag amberbox">
+        <div class="ft">Governance Watch - Pledge</div>
+        <p>~17% of equity capital pledged while total debt sits near ~500 Cr and the stock is well off its highs. Not a solvency alarm today (CRISIL A/Stable), but it removes the promoter's financial flexibility and links personal net worth to the share price - track pledge % every quarter.</p>
+      </div>
+
+      <p><strong>Board.</strong> 11 members, chaired by an independent director, &gt;50% independent - structurally sound on paper. But the independent directors are largely in their 70s-80s (chairman Mr. S. Rangachary, ex-IRS, ~85). For a company staking its future on smart meters, power electronics and EV charging, the board's technological currency and challenge capacity are questionable.</p>
+
+      <p><strong>Promoter remuneration &amp; RPT.</strong> Promoter/relative remuneration ~1.9 Cr in FY23 (~5.4% of PAT) - within norms. Related-party sales ~3% of turnover to promoter-controlled entities; ~1% services inbound. Disclosed and modest, but a standing monitorable given the number of promoter group entities.</p>
+
+      <p><strong>Capital-allocation track record - the crux.</strong> Ten years of incremental rupees have produced ~20% revenue growth but no ROCE improvement, which by definition means capital was deployed at low incremental returns. Specific misses: the 2006 push into low-margin (6-8% EBITDA) agri cables; a 3-wheeler EV conversion-kit programme developed and then <em>scrapped</em> when the economics did not work; a building-products division that has not grown in six years. Wins: the Kaycee acquisition (consolidated a niche). Dilution has been modest (small warrant/preferential issues; equity capital 16 -&gt; 18 Cr over the period). <strong>The pattern is "grow the top line, enter new segments, under-earn on capital" - the opposite of a disciplined compounder.</strong></p>
+    </section>
+
+    <!-- SECTION 8 -->
+    <section id="s7">
+      <div class="ghost">08</div>
+      <div class="sectag">SECTION 08</div>
+      <h2>Management Guidance Scorecard</h2>
+      <p class="lead">The credibility gap is wide. The two flagship targets management repeated for years - 18% ROCE and 100-day net working capital "by FY26" - both landed well short, and the smart-meter revenue narrative has badly lagged the framing.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Guidance vs delivery, compiled from concalls / investor presentations FY24-FY26.</caption>
+          <thead><tr><th>Claim / Target</th><th>Guided</th><th>Actual</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td class="rowlabel">ROCE by FY26</td><td>18%</td><td>~13%</td><td><span class="chip miss">Miss</span></td></tr>
+            <tr><td class="rowlabel">Net working capital days by FY26</td><td>100</td><td>~180</td><td><span class="chip miss">Miss</span></td></tr>
+            <tr><td class="rowlabel">Base revenue growth</td><td>18-23% p.a.</td><td>~24% (FY26)</td><td><span class="chip over">Hit+</span></td></tr>
+            <tr><td class="rowlabel">EBITDA margin expansion (+50-100bps)</td><td>~10.5-11%</td><td>8.4% (fell)</td><td><span class="chip miss">Miss</span></td></tr>
+            <tr><td class="rowlabel">Smart meter revenue (aspiration)</td><td>~1,000 Cr at scale</td><td>~25 Cr in 9M FY26</td><td><span class="chip miss">Miss</span></td></tr>
+            <tr><td class="rowlabel">Smart meter commercial start</td><td>Q1 FY25</td><td>Started, but trickle orders</td><td><span class="chip part">Partial</span></td></tr>
+            <tr><td class="rowlabel">DC fast charger commercialisation</td><td>FY25 initial sales</td><td>Nascent; buyback-led</td><td><span class="chip part">Partial</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Guidance credibility ratio ~0.35.</strong> Revenue growth is the one promise consistently kept - but revenue growth is the easy promise in an up-cycle. On everything that determines value - margins, returns, working capital, new-segment monetisation - management has over-promised and under-delivered. The one bankable read from this scorecard is: <em>trust the top-line guidance, discount everything about profitability and returns.</em></p>
+
+      <p><strong>Concall forensics.</strong> Language on smart meters has drifted from confident ("1,000 Cr opportunity", "4mn capacity") to hedged ("stringent eligibility for new players", "evolving tender conditions", "aggressive pricing", "waiting for large-scale orders"). Management does engage on hard questions (working capital, margins) and analyst coverage/attendance has risen through the discovery phase - a positive signal offset by the repeated dodging of a concrete NWC-reduction timeline.</p>
+    </section>
+
+    <!-- SECTION 9 -->
+    <section id="s8">
+      <div class="ghost">09</div>
+      <div class="sectag">SECTION 09</div>
+      <h2>Regulatory &amp; Company-Specific Risk / Advantage</h2>
+
+      <p><strong>Live regulatory matters.</strong> No known SEBI order, NCLT/NCLAT proceeding or environmental show-cause of materiality surfaced. Contingent liabilities are small tax matters (&lt;1% of net worth per FY23). Clean regulatory record - a positive.</p>
+
+      <p><strong>Rating agency view (the un-glossed picture).</strong> CRISIL reaffirmed <strong>A/Stable (long-term) and A1 (short-term)</strong> on ~534.62 Cr of rated bank facilities (Jul-2025; reviewed again Feb-2026). The rating rests on the established market position, diversified products and promoter experience; the flagged weaknesses are the <strong>working-capital-intensive operations, modest operating margins and leverage</strong> - precisely the risks that investor presentations soft-pedal. An A category rating for a ~1,750 Cr-revenue firm with ~500 Cr debt is fair but not a fortress; a downgrade trigger would be further working-capital stretch or debt-funded capex without cash generation.</p>
+
+      <div class="two">
+        <div class="box">
+          <h4>Regulatory tailwinds</h4>
+          <ul>
+            <li>RDSS smart-meter mandate (25 Cr meters) - direct addressable demand.</li>
+            <li>BIS/QCO import barriers on cables &amp; switchgear favour organised domestic makers.</li>
+            <li>EV charging policy &amp; FAME-era incentives; grid capex under national programmes.</li>
+            <li>RoDTEP export incentives (25-27% export mix).</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Concentration &amp; specific risks</h4>
+          <ul>
+            <li>Single-state manufacturing footprint (all plants in Tamil Nadu) - climate/labour/power concentration.</li>
+            <li>Copper price pass-through lag compresses margins in volatile quarters.</li>
+            <li>Customer relationships strong but low pricing power (annual OEM resets).</li>
+            <li>Smart-meter eligibility criteria exclude sub-scale new entrants from the largest tenders.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10 -->
+    <section id="s9">
+      <div class="ghost">10</div>
+      <div class="sectag">SECTION 10</div>
+      <h2>Scuttlebutt &amp; Unpublished Signals</h2>
+      <p class="lead" style="color:var(--amber)">Lower-reliability signals - directional, not verified fact.</p>
+      <ul>
+        <li><strong>Hiring / capacity signal:</strong> New Hosur facility (leased) for wire harnesses &amp; toroidal transformers was set up partly to be near 2-wheeler OEMs - a scuttlebutt tell that Salzer is trying to crack auto wire-harness supply, a potentially larger, stickier B2B pool than agri cables.</li>
+        <li><strong>New verticals surfacing:</strong> References to a Saudi Arabia overseas subsidiary and an "ultrafast charger" investment (Salzer NexCharge / Salzer Kostad) suggest continued segment proliferation - consistent with the "too many bets" risk, and worth watching for capital leakage.</li>
+        <li><strong>Smart-meter ground truth:</strong> Trade-press confirms a first ~5 Cr order and a second ~50 Cr RDSS order from an AMISP - real but small; the plant (4mn units) is running far below potential. The gap between the ~1,000 Cr framing and ~25 Cr of 9M FY26 revenue is the loudest unpublished-to-published signal in the file.</li>
+        <li><strong>Investor-relations posture:</strong> Management is actively doing the conference circuit (e.g. Arihant "Rising Stars" investor conference) - a discovery-phase behaviour that can support the stock but also signals a company that needs to keep the equity story warm.</li>
+        <li><strong>Dealer/OEM commentary:</strong> No adverse channel signal surfaced; switchgear OEM demand described as steady, agri cables seasonal/rural-dependent.</li>
+      </ul>
+      <p style="color:var(--muted);font-size:13px">Data gap: no reliable Glassdoor/AmbitionBox attrition read or import-export shipment granularity was available at research time. Treat all of the above as amber-grade.</p>
+    </section>
+
+    <!-- SECTION 11 -->
+    <section id="s10">
+      <div class="ghost">11</div>
+      <div class="sectag">SECTION 11</div>
+      <h2>External Headwinds &amp; Tailwinds</h2>
+      <div class="two">
+        <div class="box green" style="border-top:3px solid var(--bull)">
+          <h4>Tailwinds</h4>
+          <ul>
+            <li><strong>Power/grid capex supercycle</strong> - transformers, switchgear, cables all in structural demand.</li>
+            <li><strong>Renewables &amp; EV electrification</strong> - more low-voltage gear per MW and per vehicle.</li>
+            <li><strong>RDSS smart metering</strong> - a policy-guaranteed demand pool if execution lands.</li>
+            <li><strong>Import substitution / China+1</strong> - OEM localisation of sub-components.</li>
+            <li><strong>Railway electrification</strong> - Salzer is the largest supplier of cam/load-break switches to Indian Railways.</li>
+          </ul>
+        </div>
+        <div class="box sell" style="border-top:3px solid var(--bear)">
+          <h4>Headwinds</h4>
+          <ul>
+            <li><strong>Copper price volatility</strong> - the dominant input; a sharp move compresses gross margin faster than annual OEM contracts can re-price. Rule of thumb: cables/wires margins are highly copper-sensitive.</li>
+            <li><strong>Interest rates</strong> - ~500 Cr of mostly floating short-term debt; every 100bps ~ 5 Cr of PBT.</li>
+            <li><strong>Rural/monsoon demand</strong> - agri-cable seasonality.</li>
+            <li><strong>Export/tariff &amp; FX</strong> - ~25-27% exports expose it to global demand and INR/USD; US-tariff and global-slowdown episodes already cited by management for FY24 softness.</li>
+          </ul>
+        </div>
+      </div>
+      <p><strong>Net sensitivity read.</strong> Salzer is a leveraged, copper-and-rate-sensitive play on the Indian electrical capex cycle. The tailwinds explain the top-line; the headwinds (copper, rates, working capital) explain why none of it reaches the bottom line. It is high-beta to the theme and low-beta to its own profitability.</p>
+    </section>
+
+    <!-- SECTION 12 -->
+    <section id="s11">
+      <div class="ghost">12</div>
+      <div class="sectag">SECTION 12</div>
+      <h2>Triggers, Themes &amp; Government Scheme Plays</h2>
+
+      <p><strong>Scheme linkage.</strong> The central play is <strong>RDSS smart metering</strong> - a ~25 Cr-meter national target, of which ~22 Cr sanctioned, ~11 Cr awarded, only ~1.2 Cr installed (per FY24 industry data): a long runway but slow, politically-sensitive execution. Salzer does not bid tenders directly; it supplies AMISPs (L&amp;T, Genus, HPL, Adani, Intellismart, ECIL). Secondary scheme angles: EV charging policy for the Kostad DCFC JV; grid/T&amp;D capex programmes for transformers and switchgear.</p>
+
+      <h3>Trigger calendar - next 4 quarters</h3>
+      <div class="caltrack">
+        <div class="cal"><div class="cq">Q1 FY27</div><ul><li>AGM 12-Sep-2026; dividend 2.50</li><li>Smart-meter order-flow update</li><li>Copper trend on Q1 margin</li></ul></div>
+        <div class="cal"><div class="cq">Q2 FY27</div><ul><li>Large AMISP tender conversions?</li><li>DCFC ARAI cert / order news</li><li>NWC-day trajectory check</li></ul></div>
+        <div class="cal"><div class="cq">Q3 FY27</div><ul><li>Festive/H2 demand</li><li>Auto wire-harness traction</li><li>Margin recovery evidence</li></ul></div>
+        <div class="cal"><div class="cq">Q4 FY27</div><ul><li>FY27 exit-margin &amp; ROCE</li><li>Debt/pledge reduction?</li><li>FY28 guidance reset</li></ul></div>
+      </div>
+
+      <p><strong>Thematic classification.</strong> The market <em>was</em> paying handsomely for the smart-meter/electricals theme (the stock tripled to ~1,127 on the Feb-2024 smart-meter announcement). It is now <em>fading/repricing</em> that theme for Salzer specifically after weak conversion - the ~44% drawdown is the theme being taken back out of the price. A genuine large smart-meter order would be the highest-impact re-rating trigger; continued trickle keeps it a "show-me" stock.</p>
+    </section>
+
+    <!-- SECTION 13 -->
+    <section id="s12">
+      <div class="ghost">13</div>
+      <div class="sectag">SECTION 13</div>
+      <h2>Shareholding, Positioning &amp; Flows</h2>
+
+      <div class="tw">
+        <table>
+          <caption>Shareholding pattern (%), quarterly. Source: exchange filings / Screener.</caption>
+          <thead><tr><th>Holder</th><th>Jun24</th><th>Dec24</th><th>Jun25</th><th>Sep25</th><th>Mar26</th></tr></thead>
+          <tbody>
+            <tr><td>Promoters</td><td>37.5</td><td>37.5</td><td>37.5</td><td>37.5</td><td>37.5</td></tr>
+            <tr><td>FIIs</td><td>2.8</td><td>4.0</td><td>2.4</td><td>2.4</td><td>4.5</td></tr>
+            <tr><td>DIIs</td><td>0.1</td><td>0.4</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+            <tr><td>Public/Retail</td><td>59.6</td><td>58.1</td><td>60.1</td><td>60.1</td><td>58.1</td></tr>
+            <tr><td>Shareholders (no.)</td><td>42,501</td><td>45,673</td><td>51,081</td><td>51,669</td><td>48,817</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Ownership read.</strong> This is a <strong>retail-dominated float</strong> (~58-60% public) with almost no domestic-institutional conviction (DII ~0%). Retail shareholder count roughly doubled from ~24k (FY23) to a peak ~52k (Sep-25) - a classic froth signature that coincided with the smart-meter run-up - and has since ticked down to ~49k as the stock fell. FII holding is small and choppy (2.4% -&gt; 4.5% into Mar-26), the only institutional footprint of note; MF holding is negligible and described as decreasing. The absence of marquee long-only institutional holders is itself a signal: quality funds have looked and passed, largely on the cash-conversion and returns record.</p>
+
+      <p><strong>Pledge &amp; surveillance.</strong> Promoter pledge ~17% of capital (see Section 7). No confirmed current ASM/GSM surveillance flag surfaced at research time, but a low-float, high-retail, high-pledge micro-cap is inherently more volatile and more susceptible to surveillance episodes - verify ASM/GSM status before sizing. Not in F&amp;O. Not an index constituent of note.</p>
+
+      <div class="flag amberbox">
+        <div class="ft">Positioning Signal</div>
+        <p>Retail up ~2x into the theme, institutions absent, promoter pledged, MF exiting. The ownership structure is the mirror image of a high-conviction compounder - it is a story stock still owned mostly by the crowd that bought the story.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 14 -->
+    <section id="s13">
+      <div class="ghost">14</div>
+      <div class="sectag">SECTION 14</div>
+      <h2>Valuation</h2>
+      <p class="lead">At ~633 the stock trades ~21x FY26 earnings and ~1.9x book - a ~33% P/E discount to peers that is <em>earned</em> by inferior cash and returns. The right question is not "is it cheap" but "what does the price already assume, and can this management deliver it."</p>
+
+      <div class="tw">
+        <table>
+          <caption>Valuation snapshot. CMP 633 (03-Jul-2026); ~1.77 Cr shares; net debt ~470 Cr.</caption>
+          <thead><tr><th>Metric</th><th>Value</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td class="rowlabel">Market cap</td><td>~1,123 Cr</td><td>Micro-cap</td></tr>
+            <tr><td class="rowlabel">Enterprise value</td><td>~1,590 Cr</td><td>Debt is ~30% of EV</td></tr>
+            <tr><td class="rowlabel">P/E (FY26)</td><td>~21x</td><td>vs peer median ~31x</td></tr>
+            <tr><td class="rowlabel">P/B</td><td>~1.9x</td><td>vs peer ~2.3x</td></tr>
+            <tr><td class="rowlabel">EV/EBITDA (FY26)</td><td>~10.8x</td><td>Fair for the quality</td></tr>
+            <tr><td class="rowlabel">EV/Sales</td><td>~0.9x</td><td>Low, reflecting thin margin</td></tr>
+            <tr><td class="rowlabel">Dividend yield</td><td>~0.4%</td><td>Token; cash goes to WC</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted)">Own-history context: the stock de-rated from a euphoric ~35x+ P/E at the FY24 smart-meter peak to ~21x now - roughly its longer-run median, i.e. no longer expensive, not yet distressed-cheap.</p>
+
+      <h3>Reverse DCF - what the price assumes (do this first)</h3>
+      <p>At EV ~1,590 Cr with a ~12% WACC (micro-cap, leveraged, high-beta) and ~8.4% EBITDA margins, the current price implies the market expects Salzer to <strong>sustain ~15-18% revenue growth for 8-10 years AND lift EBITDA margins toward ~10-11% AND finally convert a normal share of that to free cash</strong> (i.e. break the decade-long working-capital trap). In other words, today's price is <em>not</em> pricing failure - it is pricing a meaningful operational turnaround plus modest smart-meter success. Given the guidance-miss history (Section 8) and the cash record (Section 5), that is an above-even bar, not a bargain-basement bet. The de-rating has removed the euphoria premium but not created a margin of safety on unchanged fundamentals.</p>
+
+      <h3>Forward scenarios (12-24 months)</h3>
+      <div class="scengrid">
+        <div class="scen bear">
+          <div class="st"><span>Bear</span><span>~30%</span></div>
+          <div class="sp">450</div>
+          <div class="su">~15x on ~30 EPS; -29%</div>
+          <p>Margins stay ~8%, working capital and debt stay high, smart-meter/DCFC keep disappointing, copper spikes. Re-rated as an ordinary leveraged ancillary. Pledge becomes a talking point.</p>
+        </div>
+        <div class="scen base">
+          <div class="st"><span>Base</span><span>~45%</span></div>
+          <div class="sp">700</div>
+          <div class="su">~18x on ~38-40 EPS; +11%</div>
+          <p>~18-20% revenue growth, margins nudge to ~9-9.5%, ROCE creeps to ~14%, smart meter adds ~100-150 Cr. Steady, unspectacular - the market keeps it near a market multiple.</p>
+        </div>
+        <div class="scen bull">
+          <div class="st"><span>Bull</span><span>~25%</span></div>
+          <div class="sp">1150</div>
+          <div class="su">~24x on ~48-55 EPS; +82%</div>
+          <p>A large AMISP smart-meter order lands, DCFC commercialises, margins reach ~11%, NWC finally falls and ROCE prints ~16%+. The optionality re-rates and earnings inflect together.</p>
+        </div>
+      </div>
+      <p><strong>Primary multiple: P/E cross-checked with EV/EBITDA</strong> is the right frame here (asset-heavy but not asset-play; earnings, not book, drive the story). The scenario spread is wide because the entire debate reduces to one binary the data cannot yet resolve: <em>does the working-capital-and-margin profile finally change, or not.</em></p>
+    </section>
+
+    <!-- SECTION 15 -->
+    <section id="s14">
+      <div class="ghost">15</div>
+      <div class="sectag">SECTION 15</div>
+      <h2>Pre-Mortem &amp; Anti-Thesis</h2>
+
+      <h3>The short-seller's case (argued sincerely)</h3>
+      <ol>
+        <li><strong>A ten-year cash mirage.</strong> Cumulative FCF is deeply negative; the company borrows to fund its own reported profit. Reported PAT overstates owner earnings, so ~21x P/E is really much richer on a cash basis.</li>
+        <li><strong>Serial over-promiser.</strong> 18% ROCE and 100-day NWC "by FY26" both missed by a mile; the smart-meter "1,000 Cr" narrative has produced ~25 Cr. Guidance credibility ~0.35.</li>
+        <li><strong>Structurally low pricing power.</strong> A sub-component price-taker to MNC OEMs with annual resets and copper pass-through lag - margins have gone nowhere in a decade and won't inflect just because revenue grows.</li>
+        <li><strong>Balance-sheet fragility.</strong> ~500 Cr mostly short-term debt, ~17% equity pledged, thin interest cover, negative FCF - one demand air-pocket or copper spike and the model is stressed.</li>
+        <li><strong>Too many bets, too little bandwidth.</strong> Switchgear, cables, building products, smart meters, DC chargers, Saudi subsidiary, auto harnesses - a sub-1,200 Cr-mcap management spread across six frontiers, with a scrapped-EV-kit precedent.</li>
+        <li><strong>Ownership quality.</strong> No marquee institutions, MFs exiting, retail count doubled into the top - the classic profile of a story stock whose story is fading.</li>
+        <li><strong>Elderly board</strong> ill-equipped to govern a pivot into power electronics and metering.</li>
+      </ol>
+
+      <h3>Thesis-killers (specific, observable)</h3>
+      <ul>
+        <li>FY27 CFO/EBITDA stays &lt;40% again - proof the model can't convert.</li>
+        <li>NWC days remain &gt;160 through FY27 - the promised structural fix isn't happening.</li>
+        <li>Promoter pledge rises above ~20% or any pledge-invocation news.</li>
+        <li>A full year passes with smart-meter revenue still &lt;5% of sales - the option expires worthless.</li>
+        <li>EBITDA margin prints below 8% for two consecutive quarters on copper/mix.</li>
+      </ul>
+
+      <h3>Monitorables dashboard</h3>
+      <div class="mongrid">
+        <div class="mon"><div class="dot r"></div><div><div class="mk">CFO / EBITDA</div><div class="mv">Trigger: &lt; 40% (FY25 ~1%)</div></div></div>
+        <div class="mon"><div class="dot r"></div><div><div class="mk">Net working-capital days</div><div class="mv">Trigger: &gt; 160 (now ~180)</div></div></div>
+        <div class="mon"><div class="dot a"></div><div><div class="mk">EBITDA margin</div><div class="mv">Trigger: &lt; 8% (now 8.4%)</div></div></div>
+        <div class="mon"><div class="dot a"></div><div><div class="mk">Promoter pledge</div><div class="mv">Trigger: &gt; 20% (now ~17%)</div></div></div>
+        <div class="mon"><div class="dot a"></div><div><div class="mk">ROCE</div><div class="mv">Target: 15%+ (now ~13%)</div></div></div>
+        <div class="mon"><div class="dot g"></div><div><div class="mk">Smart-meter revenue</div><div class="mv">Watch: &gt;5% of sales</div></div></div>
+        <div class="mon"><div class="dot a"></div><div><div class="mk">Total debt</div><div class="mv">Trigger: &gt; 550 Cr</div></div></div>
+        <div class="mon"><div class="dot g"></div><div><div class="mk">Order-book / large AMISP win</div><div class="mv">Watch: &gt;100 Cr single order</div></div></div>
+      </div>
+
+      <p><strong>Base-rate check.</strong> Working-capital-heavy, low-ROCE Indian ancillaries that re-rate on a "new high-margin adjacency" story most often resolve as <em>range-bound de-rates</em> once the adjacency underwhelms - the euphoria multiple compresses to a market multiple and the stock tracks modest earnings. Genuine step-changes happen only when the balance sheet and returns actually inflect, which is the minority outcome. Salzer's ~44% drawdown is consistent with the common path so far.</p>
+    </section>
+
+    <!-- SECTION 16 -->
+    <section id="s15">
+      <div class="ghost">16</div>
+      <div class="sectag">SECTION 16</div>
+      <h2>Investment Pitch</h2>
+      <div class="two">
+        <div class="box buy">
+          <h4>The 90-second pitch to BUY</h4>
+          <p>Salzer is a ~1,750 Cr-revenue, 20%+ grower riding India's electrical-capex supercycle, with genuine niche leadership (cam switches, wire ducts, Railways) and two free options - RDSS smart meters and EV DC charging - that the market has just stopped paying for after a ~44% drawdown. It now trades at ~21x, a ~33% discount to peers and near its own long-run median. If management delivers even the base case - ~9-10% margins, ROCE toward 14-16%, one real smart-meter order and a genuine dent in working capital - earnings and multiple re-rate together toward the bull zone. You are buying a real business with real tailwinds at a de-risked price, with the balance-sheet-fix and smart-meter-win as unpaid-for lottery tickets. Time horizon: 2-3 years for the operational turnaround to prove out.</p>
+        </div>
+        <div class="box sell">
+          <h4>The 90-second pitch to EXIT / AVOID</h4>
+          <p>For a holder: the reason you may have owned this - the smart-meter growth story - has under-delivered by an order of magnitude, and the stock has already given back the euphoria. What remains is a leveraged, low-pricing-power sub-component maker that has not earned above ~13% ROCE or converted profit to cash in a decade, run by a well-meaning promoter who over-promises, on a board too old to challenge the pivot, with ~17% of equity pledged. At ~21x on cash-poor earnings there is no margin of safety if the base case simply repeats the last ten years - which is the base rate. If CFO/EBITDA and NWC days don't visibly improve within two quarters, the reason to hold is gone; sell into any theme-driven bounce rather than wait for a large order that keeps not arriving.</p>
+        </div>
+      </div>
+      <p class="pull">One-line summary: "A bet on a niche electricals grower finally turning a decade of top-line into cash and returns - priced as if the smart-meter option still has value - that breaks if working capital and margins stay exactly where they have always been."</p>
+      <p style="color:var(--muted);font-size:13px">No Buy / Sell / Hold rating is issued. Both cases are presented; position sizing and the decision are the reader's. The pivotal, still-unresolved variable is cash conversion - resolve that and the rest follows.</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <h3>Sources &amp; Filings Used</h3>
+      <ul class="srclist">
+        <li>Screener.in - Salzer Electronics standalone &amp; consolidated financials, shareholding, ratios (accessed 08-Jul-2026)</li>
+        <li>Company FY26 results release / Q4 &amp; FY26 investor presentation and earnings call (26-May-2026) - Rev 1,758.38 Cr, EBITDA 147.06 Cr, PAT 53.77 Cr, dividend 2.50</li>
+        <li>Salzer Q3 FY26 (Dec-2025) results &amp; concall; Q2 FY26 (Sep-2025) transcript &amp; presentation</li>
+        <li>CRISIL rating rationale - A/Stable &amp; A1 reaffirmed (25-Jul-2025; reviewed 10-Feb-2026), ~534.62 Cr rated facilities</li>
+        <li>BSE/NSE announcements - smart-meter order intimations (~5 Cr, ~50 Cr RDSS/AMISP), Large-Corporate non-applicability (27-Apr-2026), board-meeting intimations</li>
+        <li>Congruence Advisers - "Salzer Electronics Share Analysis" (Jul-2024, Nirvana Laha) - business, segment economics, governance, capital-allocation history</li>
+        <li>Business Standard / MarketsMojo / Whalesbook / trade press (tndindia, Energetica India) - quarterly results &amp; smart-meter order coverage</li>
+      </ul>
+      <p style="margin-top:16px;color:var(--muted);font-size:12.5px"><strong style="color:var(--amber)">Unverified / to-confirm from primary docs:</strong> exact FY26 net-debt, pledge % and RPT/CARO detail pending the full FY26 annual report; some third-party quarterly PAT figures (e.g. "51.53% YoY", consolidated one-offs) were internally inconsistent across media and were disregarded in favour of Screener standalone data and the company's own FY26 release. Peer multiples are indicative. Current ASM/GSM status not independently confirmed at research time.</p>
+      <div class="disc">
+        This document is an independent research synthesis prepared for internal analytical use. It contains no Buy / Sell / Hold recommendation, price target as advice, or assurance of returns. Figures are drawn from public filings and third-party aggregators and may contain inaccuracies. Not investment advice. Do your own diligence.
+      </div>
+      <p class="gen">Generated 08-Jul-2026 &middot; Data as of Q4/FY26 (quarter ended 31-Mar-2026) &middot; CMP INR 633 (03-Jul-2026) &middot; All figures INR lakh/crore notation</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // scroll progress
+  var prog=document.getElementById('progress');
+  var secs=Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var links=Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  function onScroll(){
+    var st=window.scrollY||document.documentElement.scrollTop;
+    var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+    prog.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=null;
+    for(var i=0;i<secs.length;i++){
+      if(secs[i].getBoundingClientRect().top<=140) cur=secs[i].id;
+    }
+    links.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href')==='#'+cur);
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  // moat ratings toggle
+  (function(){
+    var t=document.getElementById('ratetog');
+    if(!t)return;
+    var KEY='salzer_ratings_hidden';
+    function apply(hidden){
+      document.body.classList.toggle('badges-off',hidden);
+      t.classList.toggle('on',!hidden);
+      t.querySelector('.st').textContent=hidden?'Off':'On';
+    }
+    var hidden=false;
+    try{hidden=localStorage.getItem(KEY)==='1';}catch(e){}
+    apply(hidden);
+    t.addEventListener('click',function(){
+      hidden=!hidden;
+      try{localStorage.setItem(KEY,hidden?'1':'0');}catch(e){}
+      apply(hidden);
+    });
+  })();
+</script>
+</body>
+</html>
