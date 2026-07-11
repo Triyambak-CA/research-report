@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markolines Pavement Technologies - Deep Dive - 12 Jul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#ffb000;
+    --bg:#05070a;
+    --card:#0a0e13;
+    --card2:#0b1017;
+    --border:#182029;
+    --border2:#243244;
+    --text:#c3ceda;
+    --bright:#eef4fa;
+    --muted:#647689;
+    --dim:#3a4756;
+    --bull:#23d18b;
+    --bear:#ff5c57;
+    --amber:#ffb000;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background-color:var(--bg);
+    color:var(--text);
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    font-size:14px;
+    line-height:1.6;
+    font-variant-numeric:tabular-nums;
+    background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+    background-size:34px 34px;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.955;z-index:-1}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(1100px 520px at 78% -8%,rgba(255,176,0,.05),transparent 60%)}
+  ::selection{background:rgba(255,176,0,.25);color:#fff}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .mono{font-variant-numeric:tabular-nums}
+  h1,h2,h3,h4,.fr{font-family:inherit}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:#070a0e}
+  ::-webkit-scrollbar-thumb{background:#1c2733;border:2px solid #070a0e}
+  ::-webkit-scrollbar-thumb:hover{background:#2a3a4a}
+  #progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:1000;box-shadow:0 0 8px rgba(255,176,0,.6)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .layout{display:flex;gap:36px;max-width:1340px;margin:0 auto;padding:0 26px}
+  .toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:214px;padding:30px 0;flex-shrink:0;font-size:11.5px}
+  .toc ol{list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;margin:1px 0}
+  .toc a{display:block;color:var(--muted);padding:5px 10px;border-left:2px solid var(--border);line-height:1.3;text-transform:uppercase;letter-spacing:.03em}
+  .toc a::before{content:counter(t,decimal-leading-zero) " ";color:var(--accent);opacity:.6}
+  .toc a.active{color:var(--bright);border-left-color:var(--accent);background:linear-gradient(90deg,rgba(255,176,0,.07),transparent)}
+  .toc a:hover{color:var(--bright);text-decoration:none}
+  .toc .toctitle{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);padding:0 10px 11px;border-bottom:1px solid var(--border);margin-bottom:10px}
+  .toc .toctitle::before{content:"● "}
+  .content{flex:1;min-width:0;padding-bottom:100px}
+  @media(max-width:960px){.toc{display:none}.layout{padding:0 16px}}
+  .hero{padding:52px 0 34px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:inline-block;border:1px solid rgba(255,176,0,.4);padding:4px 10px}
+  .hero h1{font-size:52px;font-weight:800;line-height:1.0;letter-spacing:-.01em;margin-bottom:14px;text-transform:uppercase;color:var(--bright)}
+  .hero h1::after{content:"_";color:var(--accent);animation:blink 1.1s steps(1) infinite;font-weight:800}
+  @keyframes blink{50%{opacity:0}}
+  .hero .sub{font-size:12.5px;color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
+  .hero .desc{color:var(--text);max-width:680px;margin-top:14px;font-size:13.5px;line-height:1.65}
+  @media(max-width:640px){.hero h1{font-size:34px}}
+  .scenbar{margin:32px 0 4px}
+  .track{position:relative;height:12px;background:linear-gradient(90deg,var(--bear),var(--amber) 48%,var(--bull));margin:30px 0 8px}
+  .track .cmp{position:absolute;top:-8px;width:2px;height:28px;background:var(--bright)}
+  .track .cmp::after{content:attr(data-lbl);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--bright);white-space:nowrap}
+  .track .tick{position:absolute;top:18px;transform:translateX(-50%);font-size:10.5px;color:var(--muted);white-space:nowrap;text-align:center}
+  .scenrow{display:flex;justify-content:space-between;gap:16px;font-size:11.5px;color:var(--muted);margin-top:46px}
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:28px 0}
+  .stat{background:var(--card);border:1px solid var(--border);padding:13px 14px}
+  .stat .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .stat .v{font-size:21px;font-weight:700;margin-top:6px;color:var(--bright)}
+  .stat .n{font-size:11px;color:var(--muted);margin-top:3px}
+  .v.bull{color:var(--bull)}.v.bear{color:var(--bear)}.v.amber{color:var(--amber)}
+  section{padding:46px 0 6px;border-top:1px solid var(--border);position:relative}
+  section:first-of-type{border-top:none}
+  .ghost{display:none}
+  .sectag{position:relative;z-index:1;display:inline-block;font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;border:1px solid rgba(255,176,0,.35);padding:3px 9px}
+  .sectag::before{content:"// "}
+  section h2{position:relative;z-index:1;font-size:25px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px;line-height:1.18;text-transform:uppercase;color:var(--bright)}
+  section h3{font-size:14.5px;font-weight:700;margin:24px 0 9px;color:var(--bright);text-transform:uppercase;letter-spacing:.02em}
+  section h3::before{content:"> ";color:var(--accent)}
+  p{margin:11px 0;color:var(--text)}
+  strong{color:var(--bright);font-weight:700}
+  em{color:var(--text);font-style:italic}
+  ul,ol{margin:11px 0 11px 20px;color:var(--text)}
+  li{margin:6px 0}
+  li::marker{color:var(--accent)}
+  .lead{font-size:15px;color:var(--bright);line-height:1.6}
+  .tw{overflow-x:auto;margin:18px 0;border:1px solid var(--border)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px}
+  th,td{padding:7px 11px;text-align:right;border-bottom:1px solid var(--border);border-right:1px solid var(--border);white-space:nowrap}
+  th:last-child,td:last-child{border-right:none}
+  th:first-child,td:first-child{text-align:left}
+  thead th{background:var(--card2);color:var(--accent);font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;position:sticky;top:0}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover td{background:rgba(255,176,0,.04)}
+  td.mono,th.mono{font-variant-numeric:tabular-nums}
+  tbody td{color:var(--text);font-variant-numeric:tabular-nums}
+  tbody td:first-child{color:var(--bright)}
+  .rowlabel{color:var(--muted)}
+  caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:11px;padding:8px 11px;border-top:1px solid var(--border);background:var(--card2)}
+  .chip{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent}
+  .chip.hit{background:rgba(35,209,139,.1);color:var(--bull);border-color:rgba(35,209,139,.4)}
+  .chip.miss{background:rgba(255,92,87,.1);color:var(--bear);border-color:rgba(255,92,87,.4)}
+  .chip.over{background:rgba(255,176,0,.1);color:var(--accent);border-color:rgba(255,176,0,.4)}
+  .chip.part{background:rgba(255,176,0,.08);color:var(--amber);border-color:rgba(255,176,0,.3)}
+  .badge{display:inline-block;font-size:9.5px;font-weight:700;padding:3px 9px;letter-spacing:.06em;text-transform:uppercase;border:1px solid transparent}
+  .b-strong{background:rgba(35,209,139,.12);color:var(--bull);border-color:rgba(35,209,139,.4)}
+  .b-mod{background:rgba(255,176,0,.12);color:var(--amber);border-color:rgba(255,176,0,.4)}
+  .b-weak{background:rgba(255,92,87,.12);color:var(--bear);border-color:rgba(255,92,87,.4)}
+  .b-none{background:rgba(100,118,137,.12);color:var(--muted);border-color:rgba(100,118,137,.4)}
+  .flag{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--bear);padding:13px 17px;margin:16px 0}
+  .flag .ft{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bear);margin-bottom:5px}
+  .flag .ft::before{content:"! "}
+  .flag p{color:var(--text);font-size:12.5px;margin:0}
+  .green{border-left-color:var(--bull)}
+  .green .ft{color:var(--bull)}
+  .amberbox{border-left-color:var(--amber)}
+  .amberbox .ft{color:var(--amber)}
+  .moatgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .moat{background:var(--card);border:1px solid var(--border);padding:15px}
+  .moat .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
+  .moat .mh .mn{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright)}
+  .moat p{font-size:12px;margin:6px 0 0;color:var(--muted)}
+  .scengrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .scen{background:var(--card);border:1px solid var(--border);padding:16px;border-top:2px solid var(--muted)}
+  .scen.bull{border-top-color:var(--bull)}
+  .scen.base{border-top-color:var(--amber)}
+  .scen.bear{border-top-color:var(--bear)}
+  .scen .st{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+  .scen .sp{font-size:28px;font-weight:700;margin:7px 0 2px}
+  .scen.bull .sp{color:var(--bull)}.scen.base .sp{color:var(--amber)}.scen.bear .sp{color:var(--bear)}
+  .scen .su{font-size:11px;color:var(--muted)}
+  .scen p{font-size:12px;margin-top:9px}
+  .mongrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:18px 0}
+  .mon{background:var(--card);border:1px solid var(--border);padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
+  .dot{width:8px;height:8px;margin-top:6px;flex-shrink:0}
+  .dot.r{background:var(--bear);box-shadow:0 0 6px rgba(255,92,87,.6)}
+  .dot.a{background:var(--amber);box-shadow:0 0 6px rgba(255,176,0,.6)}
+  .dot.g{background:var(--bull);box-shadow:0 0 6px rgba(35,209,139,.6)}
+  .mon .mk{font-size:12px;color:var(--bright);font-weight:500}
+  .mon .mv{font-size:11px;color:var(--muted);margin-top:2px}
+  .eqbar{display:flex;gap:4px;margin:14px 0}
+  .eqseg{flex:1;height:24px;background:var(--border)}
+  .eqseg.on{background:var(--accent);box-shadow:0 0 10px rgba(255,176,0,.35)}
+  .caltrack{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+  .cal{background:var(--card);border:1px solid var(--border);padding:13px}
+  .cal .cq{font-size:11px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+  .cal ul{margin:8px 0 0 15px;font-size:12px}
+  .cal li{margin:5px 0;color:var(--muted)}
+  .pull{font-size:17px;font-weight:500;line-height:1.5;color:var(--bright);border-left:3px solid var(--accent);padding:4px 0 4px 20px;margin:26px 0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .box{background:var(--card);border:1px solid var(--border);padding:17px}
+  .box h4{font-size:13px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);font-weight:700}
+  .box.buy{border-top:2px solid var(--bull)}
+  .box.sell{border-top:2px solid var(--bear)}
+  .box p,.box li{font-size:12.5px}
+  footer{border-top:1px solid var(--border);padding:36px 0 60px;margin-top:56px;color:var(--muted);font-size:12.5px}
+  footer h3{color:var(--bright);margin-bottom:12px;text-transform:uppercase;letter-spacing:.03em;font-size:14px;font-weight:700}
+  footer h3::before{content:"> ";color:var(--accent)}
+  footer .gen{font-size:10.5px;margin-top:20px;color:var(--muted);letter-spacing:.02em}
+  .srclist{list-style:none;margin-left:0}
+  .srclist li{margin:6px 0;font-size:12px;padding-left:12px;border-left:1px solid var(--border)}
+  .disc{background:var(--card);border:1px solid var(--border);padding:13px 17px;font-size:11.5px;color:var(--muted);margin-top:22px}
+  .kv{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:6px 0;font-size:12.5px}
+  .kv:last-child{border-bottom:none}
+  .kv .kk{color:var(--muted)}
+  .kv .vv{color:var(--text)}
+  #ratetog{position:fixed;right:16px;bottom:16px;z-index:1001;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;cursor:pointer;user-select:none;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+  #ratetog:hover{border-color:var(--accent);color:var(--text)}
+  #ratetog .sw{position:relative;width:30px;height:15px;background:var(--border2);flex-shrink:0;transition:background .15s}
+  #ratetog .sw i{position:absolute;top:2px;left:2px;width:11px;height:11px;background:var(--muted);transition:.15s}
+  #ratetog.on .sw{background:rgba(255,176,0,.35)}
+  #ratetog.on .sw i{left:17px;background:var(--accent)}
+  #ratetog .st{min-width:22px;color:var(--muted)}
+  #ratetog.on .st{color:var(--accent)}
+  body.badges-off .badge{display:none}
+  @media(max-width:600px){#ratetog{right:10px;bottom:10px;font-size:10px;padding:7px 10px}}
+  @media print{#ratetog{display:none}}
+  .bm-intro{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:15px 20px;margin:18px 0;font-size:13.5px;color:var(--text);line-height:1.65}
+  .bm-intro .bl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .bm-intro p{margin:8px 0 0}
+  .vchain{display:grid;grid-template-columns:repeat(4,1fr);margin:16px 0;border:1px solid var(--border)}
+  .vstage{position:relative;background:var(--card);padding:13px 15px;border-right:1px solid var(--border)}
+  .vstage:last-child{border-right:none}
+  .vstage .vh{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+  .vstage .vh::before{content:"";width:7px;height:7px;background:var(--accent);flex-shrink:0}
+  .vstage ul{margin:0;list-style:none}
+  .vstage li{font-size:12px;color:var(--text);margin:4px 0;padding-left:12px;position:relative;line-height:1.45}
+  .vstage li::before{content:"-";position:absolute;left:0;color:var(--muted)}
+  .vstage li::marker{content:""}
+  .vstage:not(:last-child)::after{content:"\25B6";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:11px;z-index:2;background:var(--bg);line-height:1}
+  @media(max-width:760px){
+    .vchain{grid-template-columns:1fr}
+    .vstage{border-right:none;border-bottom:1px solid var(--border)}
+    .vstage:last-child{border-bottom:none}
+    .vstage:not(:last-child)::after{content:"\25BC";right:auto;left:50%;top:auto;bottom:-8px;transform:translateX(-50%)}
+  }
+  .seg{border:1px solid var(--border);margin:20px 0;background:linear-gradient(180deg,rgba(255,176,0,.025),transparent 42%)}
+  .seg .segh{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--border);background:var(--card2)}
+  .seg .segh .sn{font-size:14.5px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);min-width:0}
+  .seg .segh .sn .sx{color:var(--muted);font-weight:400;text-transform:none;font-size:11.5px;display:block;margin-top:3px;letter-spacing:0;line-height:1.4}
+  .seg .segh .mix{font-size:11px;color:var(--accent);border:1px solid rgba(255,176,0,.35);padding:3px 9px;white-space:nowrap;flex-shrink:0}
+  .seg .segbody{padding:15px 16px}
+  .seg .segbody>p{font-size:13px;margin:0 0 4px;color:var(--text)}
+  .seg .segbody>p.note{font-size:12px;color:var(--muted);margin-top:8px}
+  .iogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:14px 0 4px}
+  .io{background:var(--card);border:1px solid var(--border);padding:12px 13px}
+  .io .iok{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+  .io .iok::before{content:"";width:6px;height:6px;background:var(--accent);flex-shrink:0}
+  .io p{font-size:12px;margin:0;color:var(--text);line-height:1.5}
+  .mixbar{display:flex;height:36px;margin:16px 0 10px;border:1px solid var(--border);overflow:hidden;font-variant-numeric:tabular-nums}
+  .mixseg{display:flex;align-items:center;justify-content:center;font-size:10.5px;color:#05070a;font-weight:700;min-width:0;overflow:hidden;white-space:nowrap;border-right:1px solid rgba(5,7,10,.5)}
+  .mixseg:last-child{border-right:none}
+  .mixkey{display:flex;flex-wrap:wrap;gap:7px 16px;font-size:11px;color:var(--muted);margin-bottom:14px}
+  .mixkey span{display:flex;align-items:center;gap:6px}
+  .mixkey i{width:10px;height:10px;flex-shrink:0}
+  .uu{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--amber);padding:13px 17px;margin:16px 0}
+  .uu .ut{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:7px}
+  .uu .ut::before{content:"? "}
+  .uu ul{margin:6px 0 0 17px;font-size:12.5px;color:var(--text)}
+  .uu li{margin:6px 0;line-height:1.5}
+  .uu li::marker{color:var(--amber)}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<button id="ratetog" class="on" title="Show or hide the qualitative moat rating badges (Weak / Moderate / Strong / None)"><span class="tl">Ratings</span><span class="sw"><i></i></span><span class="st">On</span></button>
+<div class="layout">
+  <nav class="toc">
+    <div class="toctitle">Markolines Deep Dive</div>
+    <ol>
+      <li><a href="#s1">Industry &amp; Sector</a></li>
+      <li><a href="#s0">Business Model</a></li>
+      <li><a href="#s2">Competitive Landscape</a></li>
+      <li><a href="#s3">6 Cs Moat</a></li>
+      <li><a href="#s4">Financial Analysis</a></li>
+      <li><a href="#s5">Earnings Quality</a></li>
+      <li><a href="#s6">Promoter &amp; Governance</a></li>
+      <li><a href="#s7">Guidance Scorecard</a></li>
+      <li><a href="#s8">Regulatory &amp; Risk</a></li>
+      <li><a href="#s9">Scuttlebutt</a></li>
+      <li><a href="#s10">Headwinds/Tailwinds</a></li>
+      <li><a href="#s11">Triggers &amp; Schemes</a></li>
+      <li><a href="#s12">Shareholding &amp; Flows</a></li>
+      <li><a href="#s13">Valuation</a></li>
+      <li><a href="#s14">Pre-Mortem</a></li>
+      <li><a href="#s15">Investment Pitch</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="eyebrow">Buy-Side Deep Dive // Not a Recommendation</div>
+      <h1>Markolines Pavement Technologies</h1>
+      <div class="sub">NSE: MARKOLINES&nbsp; &middot;&nbsp; BSE: 543364&nbsp; &middot;&nbsp; CMP INR 167&nbsp; &middot;&nbsp; 12-Jul-2026&nbsp; &middot;&nbsp; Data as of Q4/FY26 (Mar-2026)</div>
+      <p class="desc">India's only listed pure-play highway operations-and-maintenance specialist ("the road doctor"), ~INR 348 Cr revenue, re-rated on an SME-to-mainboard migration, a promoter-entity merger and a marine "optionality" headline the market has already sold. Profit keeps rising on a richer mix - but cumulative five-year operating cash flow is negative. This note presents the evidence and a two-way pitch; it issues no rating.</p>
+
+      <div class="scenbar">
+        <div class="track">
+          <div class="cmp" data-lbl="CMP 167" style="left:28%"></div>
+          <div class="tick" style="left:2%">Bear<br>115</div>
+          <div class="tick" style="left:30%">Base<br>170</div>
+          <div class="tick" style="left:98%">Bull<br>300</div>
+        </div>
+        <div class="scenrow"><span>12-24 month fair-value range, evidence-weighted (standalone MPTL basis)</span><span>Downside -31% / Upside +80%</span></div>
+      </div>
+    </div>
+
+    <!-- EXEC SUMMARY -->
+    <div class="statgrid">
+      <div class="stat"><div class="k">FV Range (12-24m)</div><div class="v">115-300</div><div class="n">Bear / Base ~170 / Bull</div></div>
+      <div class="stat"><div class="k">Earnings Quality</div><div class="v amber">5 / 10</div><div class="n">Clean books, cash never follows</div></div>
+      <div class="stat"><div class="k">Guidance Credibility</div><div class="v bear">Low</div><div class="n">Thin history; FY26 missed</div></div>
+      <div class="stat"><div class="k">Moat Strength</div><div class="v amber">Narrow</div><div class="n">Channel + prequal, ~3-5yr</div></div>
+      <div class="stat"><div class="k">FY26 Revenue</div><div class="v">348 Cr</div><div class="n">+13% YoY (consol); 324 s/a</div></div>
+      <div class="stat"><div class="k">FY26 PAT</div><div class="v">26.2 Cr</div><div class="n">+15% YoY, mix-led</div></div>
+      <div class="stat"><div class="k">P/E (FY26)</div><div class="v">~14x</div><div class="n">EV/EBITDA ~11x (top of range)</div></div>
+      <div class="stat"><div class="k">ROCE / ROE</div><div class="v amber">~15% / 14%</div><div class="n">Cash ROCE only ~5%</div></div>
+    </div>
+
+    <div class="two">
+      <div class="box green" style="border-top:3px solid var(--bull)">
+        <h4>Top 3 Positives</h4>
+        <ul>
+          <li><strong>A genuine, counter-cyclical demand tailwind.</strong> India's highway base is ageing and being privatised into TOT/InvIT hands; major maintenance is mandatory every 5-7 years, so O&amp;M demand grows even as fresh NHAI awards fall (-22% in FY26). Markolines is the only listed pure-play, with relationships across most road funds.</li>
+          <li><strong>Real, mix-led profitability with an asset-light, low-geared balance sheet.</strong> PAT rose on a shift into ~24%-EBIT specialised construction; asset turns ~10x; net D/E ~0.35x; zero promoter pledge; cost-plus contracts passed the 2026 bitumen shock straight to clients (Q4 OPM held at ~18%).</li>
+          <li><strong>The Markolines Infra merger adds an annuity.</strong> The promoter-owned sister brings recurring toll/O&amp;M cash flow (~INR 14-15 Cr/month, 9-10% margin, 28 toll projects), lifts solo bid-eligibility to INR 500 Cr, and underpins a ~INR 600 Cr order book plus a claimed INR 2,000 Cr pipeline.</li>
+        </ul>
+      </div>
+      <div class="box sell" style="border-top:3px solid var(--bear)">
+        <h4>Top 3 Risks</h4>
+        <ul>
+          <li><strong>Cash never follows profit.</strong> Cumulative 5-yr CFO is roughly -INR 19 Cr against +INR 92 Cr of PAT; FY25 alone burned ~INR 37 Cr of operating cash while reporting ~INR 23 Cr profit, as debtor days hit 261 (Ind-Ra). Working-capital lines run 91-100% drawn; free cash is ~INR 0.5 Cr. Growth is receivable- and financing-funded.</li>
+          <li><strong>Narrow moat, thin governance.</strong> Cost-plus removes pricing power; the "fleet" is mostly rented; a INR 2 lakh audit fee, an Apr-2026 SEBI settlement for a 3-year disclosure lapse, pending Sec 441 compounding, a dense related-party web, a promoter-on-both-sides merger with a fumbled swap ratio, and a CMD who does not speak on calls.</li>
+          <li><strong>Priced for the story, owned by operators.</strong> P/E 14 is deserved, not cheap (EV/EBITDA ~11x, top of the EPC range, vs ~5% cash ROCE). Zero MF/insurance ownership, token FII; the only &gt;1% "names" are HNIs and two trading outfits that also churn the tape; retail count +12% QoQ into the highs. Guidance already missed (FY26) and was downgraded (FY27) within ten weeks.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pull">"This is a bet on India's only listed highway-O&amp;M pure-play turning a real maintenance-demand tailwind and a sister-company merger into cash and scale - priced as if the INR 1,000 Cr annuity story is already de-risked - and it breaks if receivables and negative operating cash flow stay exactly where they have been."</p>
+
+    <!-- SECTION 1 -->
+    <section id="s1">
+      <div class="sectag">SECTION 01</div>
+      <h2>Industry &amp; Sector Analysis</h2>
+      <p class="lead">Markolines sells into the recurring-maintenance layer of India's roads - a segment whose demand is driven by the ageing and privatisation of a ~1.46 lakh km national-highway base, and is therefore counter-cyclical to the new-construction award cycle that is currently at a multi-year low.</p>
+
+      <p><strong>Network and the distinct maintenance sub-segment.</strong> India runs the world's largest road network (~6.7 mn km) and a national-highway network that has expanded from 91,287 km (Mar-2014) to <strong>1,46,342 km (Mar-2026)</strong>. The maintenance sub-segment is distinct from construction: MoRTH's <em>direct</em> short-term-maintenance-contract (STMC) spend on government-retained NH is only ~<strong>INR 6,000 Cr/yr</strong> across ~29,000 km - but this excludes the far larger O&amp;M pool inside operational BOT/HAM/TOT concessions and municipal roads, where Markolines actually earns most of its revenue. A clean rupee-size for the <em>total</em> addressable maintenance market does not exist in public sources (insufficient data). The best directional anchor: Indian maintenance is only ~<strong>15% of road life-cycle cost vs ~40% globally</strong> - a multi-year catch-up as the base matures.</p>
+
+      <p><strong>Cycle position - construction slowing, monetisation accelerating.</strong> The MoRTH FY27 budget is ~INR 3.10 lakh Cr (+8%) and NHAI ~INR 1.87 lakh Cr (+10%), but <strong>award momentum is weak</strong> - FY26 NH awards fell ~22% YoY to 3,124 km (a multi-year low) and Nuvama (Jul-2026) expects no rebound in FY27. Bharatmala new awards are paused. What <em>is</em> accelerating is asset monetisation: ~INR 28,307 Cr realised in FY26, with a ~<strong>INR 35,000 Cr FY27 target</strong> across ~28 assets via InvIT and TOT. Each transfer puts an asset into private hands whose incentive is life-cycle preservation - Markolines' exact customer. <strong>O&amp;M demand is thus counter-cyclical to the award cycle</strong>, the single most important industry fact for this name.</p>
+
+      <p><strong>Structural shifts favouring the specialist.</strong> Mandatory periodic ("major") maintenance is embedded in concession agreements and defect-liability periods, creating non-discretionary demand; MoRTH is formalising NH upkeep into performance-based / short-term maintenance contracts that favour technique-led specialists; and advanced techniques - micro-surfacing (IRC:SP:81), cold-in-place recycling / CIPR (IRC:SP:100-2014), full-depth reclamation, soil stabilisation and rigid/white-topping - are displacing conventional mill-and-overlay because they are cheaper per lane-km and extend life. The recent opening of PPP highways to sovereign/international funds at the <em>construction</em> phase deepens the pool of institutional asset owners who outsource O&amp;M.</p>
+
+      <p><strong>Value capture.</strong> The chain runs NHAI / concessionaire (asset owner) &rarr; EPC builder &rarr; O&amp;M specialist &rarr; bitumen/aggregate suppliers. Versus the EPC builder, the O&amp;M specialist is lower fixed-capital and steadier (asset turns ~10x) but <strong>working-capital-heavy</strong>; versus the asset owner's toll annuity, it earns an ordinary contractor margin (~7-8% PAT). Within Markolines, niche specialised construction (tunnel/UHPC/FDR) earns a materially higher segment margin (~24% EBIT) than routine maintenance (~12%) - the mix, not volume, is where recent profit growth came from.</p>
+
+      <p><strong>Regulatory architecture &amp; inputs.</strong> Standards are set by IRC codes and the Model Concession Agreement's O&amp;M obligations. GST on general road works-contract services is 18% (SAC 9954); notified infra works contracts were reduced to 5% under the 22-Sep-2025 GST reform - classification-dependent, and evolving. The dominant input is <strong>bitumen</strong>, which shocked +40-80% in 2026 (to ~INR 70,000-80,000/MT) on the West Asia conflict, halting 600+ km of Delhi PWD work - a sector-wide headwind that Markolines is structurally insulated from via cost-plus / price-variation clauses (Section 02).</p>
+    </section>
+
+    <!-- BUSINESS MODEL & VALUE CHAIN -->
+    <section id="s0">
+      <div class="sectag">SECTION 02</div>
+      <h2>How Markolines Actually Makes Money</h2>
+
+      <div class="bm-intro">
+        <div class="bl">Briefing note - the company, end to end</div>
+        <p>Boss, with the sector framed, here is what this company physically does. Markolines is a <strong>technique-led highway maintenance contractor</strong> - it diagnoses tired roads and relays or reseals them using specialised methods (micro-surfacing, cold-in-place recycling, full-depth reclamation), and increasingly builds niche structures (tunnels, UHPC). It is <strong>asset-light</strong> (owns just 3 pavers + 3 plants, ~INR 30 Cr block, and rents the rest), works on a <strong>cost-plus / open-book basis</strong> that passes input cost to clients and holds a steady 7-8% PAT margin, and sells largely <strong>as a subcontractor to the private road-fund / concessionaire ecosystem</strong>. ~320 employees; incorporated 2002 as Mark-O-Line Traffic Controls (road-marking), it is today "India's Road Doctor".</p>
+        <p>Revenue runs through <strong>two audited segments</strong> - Major Maintenance (incl. legacy toll) and Specialised Construction - which management describes verbally as three verticals plus a new marine exploration. The recurring toll/operations business sits in a <strong>separate promoter-owned company, Markolines Infra Ltd (MIL)</strong>, now being merged in. Here is the business, segment by segment.</p>
+      </div>
+
+      <div class="vchain">
+        <div class="vstage"><div class="vh">Inputs</div><ul>
+          <li>Bitumen / emulsion (dominant cost, ~32% of revenue in materials)</li>
+          <li>Aggregates, cement, fuel/diesel</li>
+          <li>Owned fleet: 3 pavers, 3 plants; rest rented locally</li>
+          <li>Micro-surfacing paver tech via Bergkamp Inc. (USA)</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">What Markolines does</div><ul>
+          <li>Diagnoses roads, designs a tailored fix (not just BOQ)</li>
+          <li>Micro-surfacing, CIPR, FDR, soil stabilisation, rigid pavement</li>
+          <li>Specialised construction: tunnels, UHPC, bridges</li>
+          <li>Technology Centre for Pavement Preservation (2014)</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">Customers</div><ul>
+          <li>Private road funds / InvITs / concession SPVs (gatekeepers)</li>
+          <li>NHAI, NHIDCL, state PWDs, municipal corporations</li>
+          <li>Orders INR 40-100 Cr, consumed within ~18 months</li>
+          <li>"A very limited fraternity" of asset owners</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">End use</div><ul>
+          <li>Life-extension &amp; overhaul of operating highways</li>
+          <li>Toll-road preventive &amp; major maintenance</li>
+          <li>Tunnels, bridges, concrete roads</li>
+          <li>Riding-quality / preservation for asset owners</li>
+        </ul></div>
+      </div>
+
+      <div class="iogrid">
+        <div class="io"><div class="iok">Where it sits</div><p>A technique-owning maintenance subcontractor, one layer below the asset owner and often below the EPC major - it sells specialised repair, not toll annuities.</p></div>
+        <div class="io"><div class="iok">Who captures the margin</div><p>Cost-plus means input savings pass to the client and Markolines keeps a fixed 7-8% PAT. Its edge is capital efficiency + counter-cyclical demand, not pricing power.</p></div>
+        <div class="io"><div class="iok">The annuity that lives next door</div><p>The recurring toll/O&amp;M cash flow sits in promoter-owned <strong>Markolines Infra Ltd</strong>, not the listco - which is precisely why it is being merged in (Section 06).</p></div>
+      </div>
+
+      <h3>Revenue mix (FY26, management basis)</h3>
+      <div class="mixbar">
+        <div class="mixseg" style="width:65%;background:#ffb000;flex-shrink:0">Highway Maintenance 65%</div>
+        <div class="mixseg" style="width:35%;background:#36c5d6;flex-shrink:0">Specialised Construction 35%</div>
+      </div>
+      <div class="mixkey">
+        <span><i style="background:#ffb000"></i>Highway Maintenance ~65% (FY24: ~77%)</span>
+        <span><i style="background:#36c5d6"></i>Specialised Construction ~35% (FY24: ~23%)</span>
+        <span><i style="background:var(--dim)"></i>Toll operations: migrated to Markolines Infra; returns via merger</span>
+      </div>
+      <p class="note" style="font-size:12px;color:var(--muted)">Audited AS-17 segments (FY25 consol): Major Maintenance &amp; Toll INR 219.5 Cr (71.4%) at ~11.7% EBIT; Specialised Construction INR 88.0 Cr (28.6%) at ~<strong>23.7% EBIT</strong>. The FY26 "65 / 35" verbal split is post-toll (toll now sits in MIL). Finer per-technique splits are not disclosed - insufficient data.</p>
+
+      <h3>Segment by Segment</h3>
+
+      <!-- SEG 1 -->
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">1 &middot; Highway Maintenance<span class="sx">Preventive + major maintenance - micro-surfacing, CIPR, FDR, soil stabilisation, rigid pavement</span></div>
+          <div class="mix">~65% FY26</div>
+        </div>
+        <div class="segbody">
+          <p>The core and the volume engine. Major maintenance is mandatory every 5-7 years; preventive work (micro-surfacing, crack/slurry seals) extends life. Markolines claims India-firsts in reviving <strong>micro-surfacing</strong>, in micro-surfacing-with-fibre (MS-SFT) and in bringing <strong>CIPR</strong> to the mainstream (197 lane-km recycled, highest in India; 5,500+ lane-km maintained).</p>
+          <div class="vchain">
+            <div class="vstage"><div class="vh">Inputs</div><ul><li>Bitumen / emulsion (dominant), aggregates, cement</li><li>Owned pavers + rented equipment</li><li>Bergkamp (USA) micro-surfacing tech</li></ul></div>
+            <div class="vstage"><div class="vh">What it does</div><ul><li>Diagnose-then-relay via specialised techniques</li><li>Milling + overlay, micro-surfacing, CIPR, FDR</li><li>Rigid (concrete) pavement maintenance division (2024)</li></ul></div>
+            <div class="vstage"><div class="vh">Customers</div><ul><li>Concession SPVs / funds / InvITs (subcontract)</li><li>NHAI, PMC, BMC directly</li><li>Recurring cycle, but re-tendered each time</li></ul></div>
+            <div class="vstage"><div class="vh">End use</div><ul><li>Highway life-extension &amp; overhaul</li><li>Riding-quality preservation</li></ul></div>
+          </div>
+          <div class="uu"><div class="ut">Not obvious</div><ul>
+            <li>Recurrence is a property of <strong>the road, not the contract</strong> - each maintenance cycle is competitively re-bid, so there is little client-level captivity even though physics guarantees the work returns.</li>
+            <li>~32% of revenue is bought-in materials; the <strong>cost-plus structure passes bitumen risk through</strong> (a shield in 2026) but also caps margin - "growth comes from volumes, not the percentage" (CFO).</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- SEG 2 -->
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">2 &middot; Specialised Construction<span class="sx">Soil stabilisation / FDR (2022), tunnelling (2023), UHPC &amp; bridges - the higher-margin niche</span></div>
+          <div class="mix">~35% FY26</div>
+        </div>
+        <div class="segbody">
+          <p>Where the margin lives. Entered ~3-4 years ago deliberately "to add ~1% to the bottom line" via niche skill. FY25 segment EBIT margin was ~<strong>24%</strong> (vs ~12% for maintenance), up from just 6% in FY24 as tunnel/UHPC work matured. A near-complete Maharashtra tunnel project lifted solo bid-eligibility to <strong>INR 500 Cr</strong>, unlocking the claimed INR 2,000 Cr pipeline of INR 300-500 Cr single projects.</p>
+          <div class="vchain">
+            <div class="vstage"><div class="vh">Inputs</div><ul><li>Concrete / UHPC, steel, specialised plant</li><li>Tunnelling expertise via JV partner</li></ul></div>
+            <div class="vstage"><div class="vh">What it does</div><ul><li>FDR, soil stabilisation, tunnelling, UHPC structures</li><li>Via Markolines Evrascon JV (tunnel, wholly-owned sub) + Unique UHPC Markolines LLP (26% associate)</li></ul></div>
+            <div class="vstage"><div class="vh">Customers</div><ul><li>Government / concessionaire projects</li><li>Higher-value, longer-cycle (2-3 years)</li></ul></div>
+            <div class="vstage"><div class="vh">End use</div><ul><li>Tunnels, bridges, reclaimed road bases</li></ul></div>
+          </div>
+          <div class="uu"><div class="ut">Not obvious</div><ul>
+            <li>The ~24% <strong>segment</strong> EBIT is not bankable net - after ~INR 16.6 Cr of unallocated overhead + finance + tax, group PAT is a steady ~7-8%. Do not read 24% as a franchise margin.</li>
+            <li>Tunnelling/UHPC are executed <strong>through a JV and an associate</strong> (Evrascon, Unique UHPC LLP) - capital flows out to related vehicles, and the technique credential is partly borrowed, not owned.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- SEG 3 -->
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">3 &middot; Highway Operations (Markolines Infra)<span class="sx">Toll-plaza operation, route patrolling, routine upkeep - recurring, in the promoter entity being merged in</span></div>
+          <div class="mix">Merging in ~FY27</div>
+        </div>
+        <div class="segbody">
+          <p>The annuity. Toll operations, route patrolling, incident management and routine maintenance - <strong>~60 work orders across ~30 projects incl. 28 toll projects</strong>, billed ~INR 14-15 Cr/month (~INR 150 Cr FY26), at a 9-10% PAT margin (higher than the parent). Historically housed in <strong>Markolines Infra Ltd</strong> (erstwhile Markoline Traffic Systems, 2005); the merger into the listco (swap 1:1.05) is expected by FY27-end, creating a ~INR 500 Cr integrated platform.</p>
+          <div class="vchain">
+            <div class="vstage"><div class="vh">Inputs</div><ul><li>Manpower (3,000+), toll systems</li><li>Low capital intensity</li></ul></div>
+            <div class="vstage"><div class="vh">What it does</div><ul><li>Operates toll plazas, patrols routes</li><li>Routine maintenance, incident management</li></ul></div>
+            <div class="vstage"><div class="vh">Customers</div><ul><li>Concessionaires / asset owners</li><li>Recurring monthly contracts</li></ul></div>
+            <div class="vstage"><div class="vh">End use</div><ul><li>Day-to-day running of tolled highways</li></ul></div>
+          </div>
+          <div class="uu"><div class="ut">Not obvious</div><ul>
+            <li>This is the <strong>recurring-revenue moat the listed core structurally lacks</strong> - the merger is best read as management <em>buying</em> annuity stickiness, not building it.</li>
+            <li>It is a <strong>promoter-on-both-sides</strong> transaction ("friends and family also hold MIL"); the swap ratio was filed at 1:1.15, then "corrected" to 1:1.05 for a clerical error - the ratio directly sets promoter economics (Section 06).</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- SEG 4 -->
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">4 &middot; Marine &amp; Adjacent Infra<span class="sx">Jetty construction/repair, port fire-protection - plus school &amp; sports-complex orders. Exploratory</span></div>
+          <div class="mix">Pre-revenue</div>
+        </div>
+        <div class="segbody">
+          <p>The newest narrative, and the one to discount. Announced 4-Jul-2026: exploring <strong>jetty construction/repair, jetty strengthening and port fire-protection systems</strong>. It is exploration only - no order, no capex, no size disclosed - yet the stock hit a 52-week high on the news, then fell ~11.5% over five days (a sell-the-news). It follows recent <strong>school-infrastructure and sports-complex orders</strong> (Andhra Pradesh) under the same "leverage our skill set into adjacent infra" logic.</p>
+          <div class="uu"><div class="ut">The di-worsification flag</div><ul>
+            <li>Three unrelated verticals (schools, sports, marine) opened <strong>while core receivables and bank lines are stretched</strong> - a focus and capital-discipline concern, not a strength. Treat as optionality/risk, not base case.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="uu" style="border-left-color:var(--accent)">
+        <div class="ut" style="color:var(--accent)">Unknown unknowns - the five things a first read misses</div>
+        <ul>
+          <li><strong>The capital is in receivables, not machines.</strong> This looks asset-light (PP&amp;E ~INR 31 Cr, asset turns ~10x) but ~INR 220 Cr is locked in trade receivables (~INR 184 Cr) + retention (~INR 39 Cr) against INR 307 Cr revenue - the true balance-sheet intensity is working capital, tied to slow concessionaire/NHAI payments.</li>
+          <li><strong>Gatekeeper and single-state concentration.</strong> ~84% of revenue is Maharashtra; the client base is "a very limited fraternity" of funds whose project cycles vary year to year. A "pan-India" pitch rests on a narrow base.</li>
+          <li><strong>The recurring business was kept outside the listco.</strong> Toll O&amp;M cash flow sat in promoter-owned MIL; minorities only get it via a related-party merger whose ratio was fumbled once.</li>
+          <li><strong>Cost-plus cuts both ways.</strong> It shields margin from the 2026 bitumen shock but eliminates pricing power - the model cannot inflect margin, only volume.</li>
+          <li><strong>Monsoon-skewed billing.</strong> H2 is ~57% of revenue (Q4 FY26 ~30%); a soft Q1/Q2 is normal and any Q4 slip cascades into the full-year print. (The widely-cited "38% in Q4" overstates it for FY26.)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section id="s2">
+      <div class="sectag">SECTION 03</div>
+      <h2>Competitive Landscape &amp; Peer Benchmarking</h2>
+      <p class="lead">Markolines has no clean listed comparable - it is a sub-scale (~INR 348 Cr) pure-play maintenance subcontractor, while every listed "road" name of size is a diversified EPC/BOT builder 7-22x larger. Read the peer set as valuation context, not head-to-head rivals.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Peer snapshot, FY26 consolidated (Screener.in, accessed 12-Jul-2026). EV/EBITDA computed on gross-debt basis; D/E derived and approximate. KNR &amp; Ashoka FY26 figures are distorted by HAM/BOT asset-monetisation gains; IRB is a toll operator, not an EPC.</caption>
+          <thead><tr><th>Company</th><th>Rev (Cr)</th><th>Rev YoY</th><th>EBITDA %</th><th>ROCE %</th><th>P/E (x)</th><th>EV/EBITDA</th></tr></thead>
+          <tbody>
+            <tr><td>Markolines</td><td>348</td><td>+14%</td><td>12*</td><td>15.4</td><td>14.0</td><td>~11x</td></tr>
+            <tr><td>KNR Constructions</td><td>2,698</td><td>-43%</td><td>26&#8225;</td><td>10.4</td><td>8.3</td><td>~8.5x</td></tr>
+            <tr><td>PNC Infratech</td><td>5,368</td><td>-21%</td><td>21</td><td>8.5</td><td>13.9</td><td>~10.0x</td></tr>
+            <tr><td>HG Infra Engineering</td><td>5,235</td><td>+4%</td><td>19</td><td>11.3</td><td>12.4</td><td>~8.6x</td></tr>
+            <tr><td>Ashoka Buildcon</td><td>7,520</td><td>-25%</td><td>25&#8225;</td><td>26.5&#8225;</td><td>4.6&#8225;</td><td>~2.8x</td></tr>
+            <tr><td>Ceigall India</td><td>4,022</td><td>+17%</td><td>15</td><td>17.3</td><td>20.4</td><td>~13.1x</td></tr>
+            <tr><td>IRB Infrastructure&dagger;</td><td>7,648</td><td>flat</td><td>52&dagger;</td><td>7.5</td><td>27.9</td><td>~11.2x</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:11.5px;color:var(--muted);margin-top:-6px">* Markolines core EBITDA ~INR 40 Cr / 12% is ex-other-income; on management's INR 48.5 Cr (incl. other income) EV/EBITDA is ~9x. &#8225; distorted by one-off monetisation gains. &dagger; toll/BOT operator, included only for the toll-O&amp;M/InvIT read-through.</p>
+
+      <p><strong>Where Markolines ranks.</strong> On <em>scale</em>, dead last by an order of magnitude - even post-merger (~INR 500 Cr) it is a fraction of the smallest major, and closing that gap organically at 30% p.a. would take &gt;8 years. On <em>growth</em>, top-quartile <em>this year</em> (KNR -43%, Ashoka -25%, PNC -21% actually shrank in FY26's execution air-pocket) - but its own 3-year revenue CAGR is only ~4%: the "17% CAGR" rides a low FY22 base and masks two flat-to-down years. On <em>margin</em>, lowest of the set (by design - cost-plus). On <em>ROCE</em>, mid-tier on accounting basis (15.4%) but <strong>~5% on a cash basis</strong> given negative cumulative CFO. On <em>leverage</em>, best-in-class (net D/E ~0.35x) - but partly because it is too small to carry HAM/BOT SPV debt.</p>
+
+      <p><strong>Order-book visibility - worst in the set.</strong> The majors carry 3-4.5x book-to-bill (KNR ~4.4x, Ceigall ~4.6x, PNC ~3.4x); Markolines carries ~1.7x. Mitigant: its maintenance orders are structurally short-cycle (consumed &le;18 months, recurring), so a lower book-to-bill is normal - but the INR 2,000 Cr "active pipeline" and "50% win-rate" are management claims, not orders. Peers are all <strong>diversifying away from pure roads</strong> (KNR into coal mining, PNC into water/rail/airport, HG into solar/BESS, Ashoka into power T&amp;D) - a tacit signal that the pure-roads pool is maturing.</p>
+
+      <h3>The real competitors are all unlisted</h3>
+      <p>Markolines' actual rivals for micro-surfacing / CIPR / emulsion preservation are unlisted and mostly sub-scale: <strong>ALSEC Engineering</strong> (Vadodara, the most direct technique competitor), <strong>HINCOL</strong> (a JV of HPCL and France's Colas SA - the global micro-surfacing leader, and the most credible deep-pocketed threat), Blacktop Infrastructure and Neha Infra Services. The listed InvIT/toll universe (IRB, IndInfravit, NHAI InvIT, Cube Highways) are its <strong>clients, not competitors</strong>. There is no truly comparable listed peer - a scarcity argument (only listed pure-play) that is simultaneously a red flag (the niche may be too small to have produced one). Among the majors, <strong>Dilip Buildcon</strong> is the distress-to-turnaround name (record order book but revenue -23%, selling HAM assets to deleverage) - a weakened major is a modest share-gain opening.</p>
+
+      <div class="flag amberbox">
+        <div class="ft">Valuation read</div>
+        <p>P/E ~14 is <strong>deserved, not cheap</strong>. It sits in line with the EPC pack (PNC 13.9, HG 12.4) and only looks low against KNR/Ashoka whose earnings are inflated by one-off monetisation gains. On EV/EBITDA (~11x) it is at the <em>top</em> of the EPC range - the low P/E is an artefact of minimal debt flattering equity multiples. For a firm with negative cumulative CFO, ~5% cash ROCE, BBB- credit, 84% single-state concentration and zero institutional ownership, 14x is the market correctly withholding an annuity premium, not mispricing a compounder.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section id="s3">
+      <div class="sectag">SECTION 04</div>
+      <h2>Competitive Advantage: The 6 Cs Moat</h2>
+      <p class="lead">The concall is a sales pitch ("India's Road Doctor", "leaders", "only listed player"). Triangulated against the financials and the cost-plus reality management itself admits, the evidence skews weak-to-moderate. This is a competent niche specialist riding a real tailwind - not a wide-moat franchise.</p>
+
+      <div class="moatgrid">
+        <div class="moat">
+          <div class="mh"><span class="mn">Cost</span><span class="badge b-weak">Weak</span></div>
+          <p>Cost-plus / open-book pricing ("we open our spreadsheets") passes input savings to the client and removes pricing power. CIPR/micro-surfacing genuinely lowers cost per lane-km - but it lowers the <em>client's</em> cost, and several unlisted firms can deploy it. The 12% EBITDA margin, lowest in the set, shows no signature of a cost advantage.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Capacity</span><span class="badge b-weak">Weak-Mod</span></div>
+          <p>Owns just 3 pavers + 3 plants (~INR 30 Cr) and rents the rest locally, churning the fleet every 3-4 years. The fleet is not a scarce barrier - a competitor can rent the same pavers. The harder-to-copy element (trained crews + 197 km CIPR track record) is real but embodied in ~320 people, not protected IP.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Capital</span><span class="badge b-weak">Weak</span></div>
+          <p>Low gearing (net D/E ~0.35x) is the one genuine strength - but it is a constraint, not a weapon: debt tripled to INR 86 Cr to fund working capital, cumulative CFO is negative, and the rating is BBB-/A3 on watch. Access to and cost of capital are inferior to the majors; the merger is partly a capital/eligibility fix.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Channel</span><span class="badge b-mod">Moderate</span></div>
+          <p>The strongest C. Wins work via relationships across the private road-fund/InvIT owner ecosystem ("every fund in India is our client") plus being the only listed pure-play. Genuinely valuable as roads move to funds - but dangerously concentrated: ~84% Maharashtra, a "very limited fraternity" of buyers holding the whip hand on cost-plus terms.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Customer captivity</span><span class="badge b-weak">Weak-Mod</span></div>
+          <p>The CFO is explicit: "it is not a client per se, but a project"; work is re-tendered, order cycles vary year to year. Recurrence benefits the whole niche, not Markolines specifically. Genuine annuity captivity sits in MIL (toll O&amp;M) - which is exactly why it is being merged in.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Compliance</span><span class="badge b-mod">Moderate</span></div>
+          <p>The most durable of the six: NHAI/MoRTH prequalification, IRC-code compliance and experience thresholds gate small entrants; the tunnel project lifted eligibility to INR 500 Cr. But it is shallow - it does not stop the majors or a resourced strategic like HINCOL/HPCL-Colas, and the technique IP is know-how, not patent ("first in India" is marketing, not legal exclusion).</p>
+        </div>
+      </div>
+
+      <p><strong>Conclusion - overall moat is NARROW.</strong> The single most important source is the <strong>incumbency package</strong>: prequalification credentials + a 23-year reference track record + warm relationships across the road-fund/InvIT ecosystem, reinforced by being the only listed pure-play. This is a channel-plus-compliance moat, not a cost or IP moat. <strong>Expected half-life ~3-5 years</strong> - it erodes at the edges (relationships are personal and single-state; thresholds are cleared by diversifying majors; a strategic like HPCL-Colas could neutralise the technique edge). The tailwind (maintenance-pool growth) is more durable than the firm's <em>share</em> of it. The MIL merger is best framed as management buying the annuity moat the core business structurally lacks.</p>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section id="s4">
+      <div class="sectag">SECTION 05</div>
+      <h2>Financial Analysis: 8 Quarters + 5 Years</h2>
+      <p class="lead">The headline paradox: PAT compounded while revenue went nowhere for two years and borrowings tripled. The resolution is that reported profit converted into receivables, retention money and JV stakes - not cash.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Quarterly, standalone (INR Cr). Source: Screener.in / exchange filings. Q4 FY26 consolidated revenue was ~INR 105 Cr (vs INR 93 Cr standalone); note the recurring Q4 margin spike.</caption>
+          <thead><tr><th>Quarter</th><th>Jun-24</th><th>Sep-24</th><th>Dec-24</th><th>Mar-25</th><th>Jun-25</th><th>Sep-25</th><th>Dec-25</th><th>Mar-26</th></tr></thead>
+          <tbody>
+            <tr><td>Revenue</td><td>50</td><td>56</td><td>80</td><td>115</td><td>73</td><td>78</td><td>80</td><td>93</td></tr>
+            <tr><td>Op. profit</td><td>5</td><td>6</td><td>8</td><td>19</td><td>7</td><td>7</td><td>10</td><td>16</td></tr>
+            <tr><td>OPM %</td><td>10</td><td>11</td><td>9</td><td>17</td><td>10</td><td>9</td><td>12</td><td>18</td></tr>
+            <tr><td>Net profit</td><td>2</td><td>2</td><td>6</td><td>12</td><td>4</td><td>4</td><td>7</td><td>11</td></tr>
+            <tr><td>EPS (INR)</td><td>0.78</td><td>1.10</td><td>2.86</td><td>5.59</td><td>1.72</td><td>1.81</td><td>3.22</td><td>5.12</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tw">
+        <table>
+          <caption>Annual, standalone unless noted (INR Cr). Consolidated revenue: FY24 347, FY25 307, FY26 348. Source: audited ARs FY22-25; FY26 from results release / concall.</caption>
+          <thead><tr><th>Metric</th><th>FY22</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26</th></tr></thead>
+          <tbody>
+            <tr><td>Revenue</td><td>187</td><td>312</td><td>347</td><td>300</td><td>324</td></tr>
+            <tr><td>Op. profit</td><td>23</td><td>28</td><td>32</td><td>39</td><td>41</td></tr>
+            <tr><td>OPM %</td><td>13</td><td>9</td><td>9</td><td>13</td><td>13</td></tr>
+            <tr><td>Net profit</td><td>10</td><td>16</td><td>17</td><td>23</td><td>26</td></tr>
+            <tr><td>Borrowings</td><td>27</td><td>31</td><td>59</td><td>63</td><td>86</td></tr>
+            <tr><td>Debtor days</td><td>114</td><td>89</td><td>127</td><td>215</td><td>154</td></tr>
+            <tr><td>ROCE %</td><td>24</td><td>22</td><td>19</td><td>16</td><td>~15</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Revenue - lumpy, not compounding.</strong> Revenue peaked at INR 347 Cr in FY24, fell ~11-13% to INR 300-307 Cr in FY25 (weak H1 on a prolonged monsoon + the 2024 general elections delaying execution), then recovered to INR 324 Cr standalone / 348 Cr consolidated in FY26. So FY26 is essentially back to the FY24 level - <strong>three years of no net top-line growth</strong>, dressed as a smooth CAGR off a low FY22 base. Seasonality is severe: Q4 alone was ~30-38% of the year; H2 ~57%.</p>
+
+      <p><strong>Margins - mix, not operating leverage.</strong> Core EBITDA margin rose FY24-FY25 (~9% to ~12.5%) driven by the shift into ~24%-EBIT specialised construction, not pricing (cost-plus fixes that). The recurring <strong>Q4 OPM spike to 17-18%</strong> reflects year-end billing concentration and final-bill true-ups (Ind-Ra's "skewed execution and billing") - a quality caution, not durable operating one-offs. PAT margin holds a steady ~7.5-8%.</p>
+
+      <p><strong>Return ratios - the accounting/cash gap.</strong> ROCE has fallen every year (24% &rarr; 22% &rarr; 19% &rarr; 16% &rarr; ~15%) as capital ballooned. DuPont FY25: net margin ~7.5% &times; asset turnover ~1.0x &times; equity multiplier ~1.75 &asymp; ROE ~13% - the low asset turnover <em>is</em> the receivables drag. The decisive metric is <strong>incremental ROCE: FY22&rarr;FY26 = &Delta;EBIT 14 / &Delta;capital 190 = ~7.4%; last-3-yr ~4.7%</strong> - roughly a third of the headline, at or below the cost of capital, because fresh capital went into receivables and JV stakes, not high-return operating assets.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Cash flow, standalone (INR Cr). FY22-25 audited; FY26 CFO ~INR 11 Cr per Screener. FY25 consolidated CFO was -INR 35.6 Cr; Ind-Ra cites -INR 37 Cr.</caption>
+          <thead><tr><th>Metric</th><th>FY22</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26e</th><th>Cumulative</th></tr></thead>
+          <tbody>
+            <tr><td>PAT</td><td>10</td><td>16</td><td>17</td><td>23</td><td>26</td><td>~92</td></tr>
+            <tr><td>CFO</td><td>-20</td><td>+20</td><td>+2</td><td>-33</td><td>+11</td><td>~-19</td></tr>
+            <tr><td>Capex + JV (CFI)</td><td>-2</td><td>-22</td><td>-23</td><td>-16</td><td>-26</td><td>~-89</td></tr>
+            <tr><td>Financing (CFF)</td><td>+22</td><td>+1</td><td>+21</td><td>+50</td><td>+16</td><td>~+109</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flag">
+        <div class="ft">The central finding</div>
+        <p>Over five years ~INR 92 Cr of reported PAT produced <strong>cumulative CFO of roughly -INR 19 Cr</strong> (CFO/EBITDA ~-12%); excluding the FY22 base year, FY23-FY26 CFO was ~+INR 0.3 Cr against ~INR 82 Cr of PAT - essentially zero operating cash. Cumulative FCF is ~-INR 63 Cr. FY25 CFO of -INR 33 Cr was driven by a ~-INR 55 Cr swing in receivables. The ~INR 89 Cr of investing and the working-capital hole were funded entirely by ~INR 109 Cr of external financing - debt tripling (27&rarr;86 Cr) plus the FY25 equity raise (INR 47.8 Cr preferential @ INR 165 + warrants). <strong>The profit-grew-while-borrowings-tripled paradox is receivable- and financing-funded growth, not cash-funded growth.</strong></p>
+      </div>
+
+      <p><strong>Balance sheet.</strong> Net debt ~INR 70 Cr (gross INR 86 Cr less ~INR 16 Cr cash &amp; bank - of which ~INR 14 Cr is fixed deposits <em>pledged as bank-guarantee margin</em>, so free-cash net debt is closer to INR 85 Cr; free cash was ~INR 0.5 Cr at FY25). Net D/E ~0.35x and interest cover &gt;5x screen conservatively, but this relies on near-fully-drawn working-capital lines and unsecured promoter/sister loans. Off-balance-sheet: bank guarantees ~INR 41.8 Cr (up from ~INR 20 Cr in FY23); large mobilisation-advance and retention balances. Cost of borrowing ~9%; near-term debt maturities are modest (INR 6-7 Cr/yr).</p>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section id="s5">
+      <div class="sectag">SECTION 06</div>
+      <h2>Earnings Quality &amp; Forensic Checks</h2>
+      <p class="lead">The mandate expected consolidation to expose a hidden "group". It does not - consolidated PAT equals standalone, and there are no subsidiary losses parked outside. The forensic question flips: the cash-generative business was kept in a promoter vehicle (MIL), now being merged in, and profit does not convert to cash.</p>
+
+      <ol>
+        <li><strong>Receivables vs revenue - FAIL.</strong> FY25 receivables +46% (121&rarr;176 Cr) while revenue <em>fell</em> -13%; 3-yr receivables +132% vs roughly flat revenue. <strong>INR ~11 Cr of receivables are &gt;3 years old</strong>, all "considered good by management" with <em>zero</em> doubtful-debt provision. Retention money INR 38.8 Cr sits on top. (WIP is not the issue - it fell.)</li>
+        <li><strong>Cash-yield / is cash real - MIXED.</strong> Free cash was ~INR 0.5 Cr at FY25 - there is no idle pile to test. Other income (~INR 6.2 Cr, ~21% of PBT) is ~40% interest and profit-share <em>from the group JVs Markolines itself funds</em>. Cash is real but fully deployed/borrowed, not earning market yield.</li>
+        <li><strong>CWIP aging - PASS.</strong> CWIP is INR 0-1 Cr throughout; no capital-WIP that never converts to gross block.</li>
+        <li><strong>Other income dependence - mild flag.</strong> ~16% (FY24) &rarr; ~21% (FY25) &rarr; ~23% (FY26) of PBT, rising and largely related-party-sourced.</li>
+        <li><strong>Effective tax - PASS.</strong> ETR 32% &rarr; 24% &rarr; 25%, consistent with a Sec 115BAA election (25.17%), not gaming. Cash taxes PAID (INR 8.8 Cr FY25) <em>exceeded</em> book tax (INR 6.9 Cr) - a positive signal.</li>
+        <li><strong>Contingent liabilities - moderate.</strong> ~INR 52 Cr (~29% of net worth): BGs INR 41.8 Cr + a INR 10.4 Cr service-tax dispute (CESTAT, FY16-18) + minor GST/VAT. BGs are normal for a contractor; the service-tax claim (~6% of net worth) is the one real item.</li>
+        <li><strong>Related-party transactions - the main governance concern.</strong> Same promoters on both sides; dense, multi-directional flows. MD Sanjay Patil rotated INR 46.6 Cr of director loans (INR 7.25 Cr payable at year-end); ~INR 39 Cr of intercompany advances with MIL (Markolines <em>pays</em> MIL interest + manpower fees); MPTL <em>funds</em> the JVs (Unique UHPC LLP ~INR 18.7 Cr, Evrascon INR 2.7 Cr) and pays sister Markolines Technologies ~INR 1.0 Cr for lab testing. Working capital is propped up by promoter/sister loans while service fees and JV capital flow out.</li>
+        <li><strong>Auditor - flag.</strong> Jay Gupta &amp; Associates (Kolkata; erstwhile Gupta Agarwal &amp; Associates), reappointed to FY30. Clean report, no CARO qualification, no Sec 143(12) fraud - <em>but</em> the statutory + tax audit fee is just <strong>INR 2.00 lakh</strong> for a ~INR 300+ Cr multi-entity group with a subsidiary, associate and merger in flight, and a Kolkata auditor for a Navi-Mumbai company. An audit-quality/independence flag despite the clean opinion.</li>
+        <li><strong>Revenue recognition / capitalisation - PASS on paper.</strong> Delivery/completion-based ("recognised when earned, no significant uncertainty as to realization") - conservative wording, not explicit percentage-of-completion. Capex modestly exceeds depreciation as genuine equipment growth; no evidence of expense capitalisation. The recognition risk is <em>timing</em> (year-end billing skew), not method.</li>
+      </ol>
+
+      <h3>Earnings quality score: 5 / 10</h3>
+      <div class="eqbar">
+        <div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div>
+        <div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div>
+      </div>
+      <p><strong>Severe negatives:</strong> cumulative 5-yr CFO negative against +INR 92 Cr PAT; receivables +46% while revenue -13%; Q4 billing skew; near-zero free cash and ~100%-drawn lines; incremental ROCE ~5-7%; INR 11 Cr of &gt;3-yr receivables unprovided; dense same-promoter RPT with a INR 2 lakh audit fee. <strong>Mitigants that keep it off the floor:</strong> no consolidation games (consolidated = standalone; no hidden subsidiary losses); the off-book entity (MIL) is <em>profitable and cash-generative, not sick</em>; real cash tax paid; real dividends; blue-chip counterparties (NHAI, PMC, BMC, Cube Highways); clean audit/CARO; genuine input pass-through. <strong>What would move it:</strong> two-three years of sustained positive CFO and debtor days below ~120 would lift it toward 6.5-7; a value-transferring merger swap or continued receivable stretch would drop it toward 3.5-4.</p>
+
+      <div class="flag amberbox">
+        <div class="ft">The open governance question - the merger swap</div>
+        <p>MIL (profitable, ~40% ROE, 9-10% margin) merges into MPTL at 1:1.05 (revised from 1:1.15 for a "clerical error"), valuation by a registered valuer, fairness opinion filed, NCLT pending, ~FY27 completion. Because MIL is <em>profitable</em>, the minority risk is over-payment/dilution to promoters, not absorbing losses. Fairness cannot be judged without the relative valuation multiples (a data gap). Management says the merger "will further strengthen our cash flows" - which does cut in minorities' favour on cash, even as the value-transfer question stays open.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section id="s6">
+      <div class="sectag">SECTION 07</div>
+      <h2>Promoter, Governance &amp; Capital Allocation</h2>
+      <p class="lead">A first-generation, founder-run business with a real operating history but a distinctly SME-era compliance record - a INR 2 lakh audit fee, an Apr-2026 SEBI settlement, pending Sec 441 compounding, a dense related-party web, and a combined Chairman-MD who does not speak on earnings calls.</p>
+
+      <h3>The promoters</h3>
+      <p><strong>Sanjay Bhanudas Patil</strong> (Founder, Chairman &amp; MD) - mechanical engineer, 20+ years in industrial-goods trading, construction, infrastructure and O&amp;M; started the company in 2002 as a road-marking venture; member of ASSOCHAM's roads council. <strong>Vijay Ratanchand Oswal</strong> (Founder &amp; CFO) - chemical engineer + management degree, ICF-certified business coach, ex-director of VARM Press-e-Gen; holds only 3,200 shares personally, yet runs finance and is the sole management voice on calls. <strong>Karan Bora</strong> (Cardiff civil engineer) resigned from the board on 7-Jan-2025 but remains a ~6.4% promoter-group holder. On the "no industry lineage" claim: misleading operationally (the family has run road marking &rarr; traffic systems &rarr; O&amp;M since 2005 via MIL) but fair on pedigree - they are self-made first-generation entrepreneurs, not an inherited infrastructure house.</p>
+
+      <h3>Promoter holding - the ~18pp drop decomposed</h3>
+      <div class="tw">
+        <table>
+          <caption>Promoter shareholding. Source: Screener / FY24-25 ARs. The decline is primarily dilution, layered with one genuine promoter-group exit.</caption>
+          <thead><tr><th>Period</th><th>Promoter %</th><th>Driver</th></tr></thead>
+          <tbody>
+            <tr><td>Mar-2022</td><td>73.16</td><td>SME IPO base (Sep-2021)</td></tr>
+            <tr><td>Mar-2024</td><td>71.32</td><td>Minor drift</td></tr>
+            <tr><td>Mar-2025</td><td>58.14</td><td>Sep-2024 preferential + warrants; Bora-family sell-down</td></tr>
+            <tr><td>Jun-2026</td><td>55.00</td><td>Warrant conversions to non-promoters</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two forces, layered: <strong>(1) preferential + warrant dilution</strong> - on 6-Sep-2024 the company issued 28,97,000 shares at INR 165 (INR 47.8 Cr) plus 15,70,400 warrants at INR 165; the core promoters' <em>absolute</em> share counts were unchanged, so the % fell only because new non-promoter shares were created (allottees include outside investors such as Anushree Gadodia). <strong>(2) A genuine promoter-group sell-down</strong> - Kunal Bora cut his stake from 6.18% to 1.58% (a ~71% reduction), coinciding with Karan Bora's board exit. So ~13pp is dilution + a Bora-family exit, and the final ~3pp is warrant conversion to outsiders. A Jan-2023 rights issue <em>failed</em> (below 90% minimum subscription) and a Feb-2024 preferential was <em>not completed</em> - the company needed a discounted preferential to raise equity. <strong>No promoter pledge is disclosed (reported nil).</strong></p>
+
+      <h3>Remuneration, KMP, board</h3>
+      <p>Founder pay is moderate (~8% of PAT combined; Patil INR 108 lakh, Oswal INR 72 lakh) with <strong>no royalty, brand fee or profit commission</strong> - a positive. The one flag: Oswal's pay rose +300% in a year revenue fell. FY25 saw heavy <strong>KMP churn</strong> - CS, ED and a new CEO all changed within months. The board is six directors, but independence is structurally weak at the top: <strong>Chairman and MD are combined in Sanjay Patil</strong> (no separate chair), two of six seats are the promoter husband-and-wife (Sanjay + Kirtinandini Patil), and the independent bench has no evident road-sector or capital-markets heavyweight. Per-director attendance is not disclosed (SME Reg 15(2) exemption applied for all of FY25).</p>
+
+      <h3>Capital allocation</h3>
+      <p>Deliberately capex-light (owns 3 pavers/3 plants, rents the rest, ~INR 10 Cr/yr). But the <strong>FY25 INR 54 Cr equity raise earned a poor near-term return</strong> - ROCE fell as revenue declined; the fresh equity substantially funded a receivables blow-out (CFO -INR 37 Cr FY25) and a related-party associate (Unique UHPC LLP, topped to INR 18.2 Cr for INR 0.56 Cr of profit-share) rather than capacity. Dividends were ~15% payout (INR 1.50/share FY25); <strong>Screener shows a 0% FY26 payout</strong> - an apparent suspension consistent with the liquidity stretch. The Jul-2026 marine push, on top of school/sports orders, is a <strong>di-worsification signal</strong> while core working capital is tight. An ESOP was only enabled (FY26-30), so dilution to date is nil.</p>
+
+      <div class="flag">
+        <div class="ft">Three compliance stains from the SME era</div>
+        <p><strong>(1)</strong> A <strong>SEBI settlement (Apr-2026, INR 12.35 lakh)</strong> for failing to file mandatory half-yearly IPO fund-utilisation deviation statements (Reg 32) across Sep-2021 to Sep-2024 - a three-year disclosure lapse. <strong>(2)</strong> Pending <strong>Sec 441 compounding</strong> (Sec 96 AGM, and Sec 185/186 loans/investments involving related parties), filed 2021, still before the RoC/RD. <strong>(3)</strong> The dense related-party financing web behind both. Procedural, not fraud - but a pattern of lax statutory compliance to weigh against the clean audit opinion.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 8 -->
+    <section id="s7">
+      <div class="sectag">SECTION 08</div>
+      <h2>Management Guidance Scorecard</h2>
+      <p class="lead">Public concall history effectively begins at Q3 FY26 (mainboard migration was Jun-2025), so there are only one-to-two closed data points - insufficient for a conviction-grade credibility ratio. The early read is cautionary: the first testable guide was missed and the next was downgraded within ten weeks.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Guidance vs delivery. Sources: Q3 FY26 (16-Mar-2026) guidance interaction; Q4 FY26 concall (29-May-2026); results releases.</caption>
+          <thead><tr><th>Claim (date)</th><th>Actual / status</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td>FY26 revenue INR 375-400 Cr (16-Mar-26)</td><td>INR 348.5 Cr (consol)</td><td><span class="chip miss">Miss</span></td></tr>
+            <tr><td>FY27 growth 40-50% (16-Mar-26)</td><td>Cut to "at least 30%" (29-May-26)</td><td><span class="chip miss">Downgraded</span></td></tr>
+            <tr><td>Order book INR 695 Cr (Dec-25)</td><td>~INR 600 Cr by Mar-26</td><td><span class="chip miss">Declined</span></td></tr>
+            <tr><td>PAT margin "steady 7-8%"</td><td>FY26 ~7.5%</td><td><span class="chip hit">On track</span></td></tr>
+            <tr><td>INR 1,000 Cr revenue in ~3 yrs</td><td>Aspiration; "trying to prepone"</td><td><span class="chip part">TBD</span></td></tr>
+            <tr><td>Merger complete by FY27-end</td><td>NCLT pending; no order yet</td><td><span class="chip part">TBD</span></td></tr>
+            <tr><td>FY27 capex ~INR 10 Cr</td><td>Pending</td><td><span class="chip part">TBD</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Narrative vs reality.</strong> Management frames the story as "17% revenue / 27% PAT CAGR FY22-FY26" - true off the FY22 base, but it masks two flat-to-down years (revenue peaked in FY24, fell in FY25, merely recovered in FY26). PAT did keep rising on a richer specialised-construction mix - but <strong>that profit did not convert to cash</strong> (FY25 operating cash flow -INR 37 Cr), the one thing the growth narrative omits.</p>
+
+      <p><strong>Concall forensics.</strong> On the Q4 FY26 call, <strong>every question was fielded by the CFO; the Chairman &amp; MD did not speak</strong> - for a founder-run microcap, the MD's absence from the earnings call is a mild governance/communication flag. Tone is promotional ("India's Road Doctor", "the only listed player", "every fund is our client") but not evasive; margins were repeatedly deflected as "subjective / cost-plus, bottom line steady" and client/project specifics withheld "due to competitive nature". Coverage is negligible and retail-heavy (questioners were individuals and micro-boutiques - Sapphire, Kairon, Raghunath Capital); there is no mainstream sell-side, so management quality cannot yet be triangulated externally. <strong>Guidance credibility: Low, on a thin sample.</strong></p>
+    </section>
+
+    <!-- SECTION 9 -->
+    <section id="s8">
+      <div class="sectag">SECTION 09</div>
+      <h2>Regulatory &amp; Company-Specific Risk</h2>
+      <p class="lead">No going-concern-level regulatory threat - but the credit-rating rationale tells a very different story from the "disciplined, prudent" investor deck, and it is the rating agency, not the presentation, that has the numbers right.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Live matters (FY25 AR contingent-liability schedule + filings).</caption>
+          <thead><tr><th>Matter</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Service-tax / excise dispute (FY15-17)</td><td>INR 10.38 Cr</td><td>Part-paid; appeal before CESTAT</td></tr>
+            <tr><td>Bank guarantees</td><td>INR 41.76 Cr</td><td>Outstanding (Fin. 17.6 + Perf. 24.2)</td></tr>
+            <tr><td>GST / VAT demands (multi-state)</td><td>~INR 1.9 Cr</td><td>Under appeal</td></tr>
+            <tr><td>SEBI (Reg 32 fund-utilisation)</td><td>INR 12.35 lakh</td><td>Settled Apr-2026</td></tr>
+            <tr><td>Sec 441 compounding (Sec 96/185/186)</td><td>Unquantified</td><td>Pending before RoC/RD since 2021</td></tr>
+            <tr><td>NCLT (MIL merger)</td><td>-</td><td>Petition pending; no order</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Dependencies &amp; tailwinds.</strong> The client base is government agencies (NHAI, MoRTH, NHIDCL, state PWDs, municipal corporations) plus private/InvIT road owners - so NHAI/MoRTH prequalification, works-contract GST, and <strong>delayed-payment risk from government/concessionaire counterparties</strong> (management's own top-listed risk) are structural. Tailwinds are genuine and central: mandatory 5-7-year major maintenance; the shift from greenfield build to life-cycle maintenance as the world's-largest network matures; TOT/InvIT monetisation and the opening of PPP highways to sovereign funds; and India's ~15%-of-cost maintenance spend vs a ~40% global benchmark.</p>
+
+      <p><strong>Concentration.</strong> Historically Maharashtra-heavy (~84%, though management now claims pan-India - not independently confirmable from filings); a "very limited fraternity" of fund clients; only 3 owned pavers/plants; a single-product heritage that the risky marine/school/sports pushes are meant to broaden.</p>
+
+      <h3>Credit rating - where the deck and the numbers diverge</h3>
+      <p><strong>India Ratings: IND BBB- / IND A3, "Rating Watch with Developing Implications"</strong> on INR 109.4 Cr facilities (~29-Jan-2026, tied to the pending MIL amalgamation; the watch resolves on the scheme). The rating has held at BBB-/A3 through assign &rarr; migrate &rarr; watch. The sister MIL is rated higher by Infomerics (IVR A-/Stable, Nov-2025) - the recurring-cash-flow entity is the steadier credit, which is why Ind-Ra views the merger as potentially rating-positive.</p>
+
+      <div class="tw">
+        <table>
+          <caption>What Ind-Ra flags (PR, Jan-2026) - and what the investor presentation omits.</caption>
+          <thead><tr><th>Metric</th><th>Ind-Ra figure</th><th>Deck says</th></tr></thead>
+          <tbody>
+            <tr><td>Debtor days (FY25)</td><td>261 (FY24: 149)</td><td>"disciplined balance sheet"</td></tr>
+            <tr><td>Net working capital / revenue</td><td>55% FY25 (FY24: 28%)</td><td>never quantified</td></tr>
+            <tr><td>Operating cash flow FY25</td><td>NEGATIVE INR 37 Cr</td><td>"disciplined, prudent capital allocation"</td></tr>
+            <tr><td>Free cash &amp; equivalents</td><td>~INR 0.5 Cr</td><td>not mentioned</td></tr>
+            <tr><td>WC line utilisation</td><td>~91% avg; 100% some months</td><td>not mentioned</td></tr>
+            <tr><td>Net leverage / interest cover</td><td>1.66x / &gt;5x (genuine strengths)</td><td>emphasised</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12px;color:var(--muted)">Ind-Ra's own constraint language: ratings "constrained by modest revenue, long receivable period and a stretched liquidity position." In FY25 the company reported ~INR 23 Cr PAT but burned ~INR 37 Cr of operating cash - none of which appears in the "Road Doctor" presentation.</p>
+    </section>
+
+    <!-- SECTION 10 -->
+    <section id="s9">
+      <div class="sectag">SECTION 10</div>
+      <h2>Scuttlebutt &amp; Unpublished Signals</h2>
+      <p><em style="color:var(--amber)">Lower-reliability signal - forum opinion, operator-flow inference and platform gaps. Treat as hypotheses to disconfirm, not verified fact.</em></p>
+
+      <h3>Forum debate (ValuePickr, mostly Dec-2023 to Feb-2024 vintage)</h3>
+      <p><strong>Bull points:</strong> cost-plus / price-variation contracts mitigate bitumen risk ("stable margins") - empirically corroborated by the 2026 bitumen shock passing through; the 5% performance guarantee has never been invoked; won a tunnelling contract with no prior track record. <strong>Bear points:</strong> receivables far exceed net profit; an ILFS-linked acquisition target with aged payables (~INR 726 Cr) and receivables "&gt;3 years old, all haywire"; historic non-cooperation with rating agencies and reliance on 15%+ unsecured borrowing; a nest of related private entities with inter-company loans; and a structural worry that concrete/rigid national highways "don't really require maintenance" - a long-term threat to the TAM. Little fresh 2026 retail chatter surfaced, so this reflects the pre-mainboard map, not current positioning.</p>
+
+      <h3>Operator flow and froth</h3>
+      <p>The names recurring in bulk deals - <strong>Hi Klass Trading, L7 Hitech, Vistaar Trading</strong> - are also the &gt;1% "public" holders, and Vistaar shows matched intraday buy-sell pairs. This is the classic microcap trading-outfit footprint: manufactured liquidity, not institutional accumulation. Shareholder count rose <strong>+12% QoQ (6,911 &rarr; 7,743)</strong> into a stock near its 52-week high - retail piling in at the highs. A minor governance tell: the merger share-exchange ratio was disclosed as 1:1.15, then corrected to 1:1.05 as a "clerical error", requiring multiple exchange clarifications.</p>
+
+      <div class="uu">
+        <div class="ut">Genuine data gaps (not a clean bill of health)</div>
+        <ul>
+          <li><strong>AmbitionBox / Glassdoor:</strong> no Markolines-specific employee ratings, attrition or payment-delay data retrievable.</li>
+          <li><strong>LinkedIn senior hires/exits:</strong> no named CXO hire from a larger competitor (the ambition signal to watch) surfaced; company page exists but content not enumerable.</li>
+          <li><strong>Live job-portal volume, import/export shipment data:</strong> not captured - the leading indicators for a marine/tunnelling capacity build are dark.</li>
+          <li><strong>Management video interviews:</strong> none located; the traceable primary voice is the 16-Mar-2026 guidance and the 29-May-2026 call.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 11 -->
+    <section id="s10">
+      <div class="sectag">SECTION 11</div>
+      <h2>External Headwinds &amp; Tailwinds</h2>
+
+      <div class="two">
+        <div class="box">
+          <h4 style="color:var(--bull)">Tailwinds</h4>
+          <ul>
+            <li><strong>Counter-cyclical O&amp;M demand.</strong> Mandatory 5-7-year major maintenance on an ageing, increasingly-privatised base; ~INR 35,000 Cr of TOT/InvIT monetisation in FY27 puts assets into owners who need maintenance. Less exposed than EPC to the flat FY27 award cycle.</li>
+            <li><strong>Bitumen pass-through.</strong> Cost-plus / price-variation clauses insulated margin through the 2026 bitumen spike (+40-80%); Q4 FY26 OPM held at ~18% while others halted work. The shield is real for maintenance; fixed-price construction and diesel remain exposed.</li>
+            <li><strong>Formalisation.</strong> The shift to performance-based / short-term maintenance contracts favours technique-led specialists over local labour contractors.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4 style="color:var(--bear)">Headwinds</h4>
+          <ul>
+            <li><strong>Working capital + rates.</strong> A model that runs 154-261 debtor days on near-fully-drawn lines is acutely sensitive to interest rates and any counterparty payment delay - FY25 operating cash was -INR 37 Cr.</li>
+            <li><strong>Monsoon seasonality.</strong> Q1/Q2 are structurally soft; management expects ~90% of an average monsoon in FY27. A weak Q4 (post-monsoon billing) cascades into the full-year print.</li>
+            <li><strong>Award-cycle softness.</strong> FY26 NH awards -22% pressures the whole road complex; the O&amp;M read-through is neutral-to-positive, but sentiment de-rates the sector regardless.</li>
+          </ul>
+        </div>
+      </div>
+      <p><strong>Global linkages are minimal.</strong> Revenue is effectively domestic (no export segment); INR exposure is indirect via imported equipment (Bergkamp micro-surfacing pavers). No material China linkage disclosed. The dominant macro variable is domestic - government road budgets, bitumen and interest rates - not trade policy.</p>
+    </section>
+
+    <!-- SECTION 12 -->
+    <section id="s11">
+      <div class="sectag">SECTION 12</div>
+      <h2>Triggers, Themes &amp; Scheme Plays</h2>
+
+      <p><strong>Order book &amp; wins.</strong> Unexecuted order book ~INR 600 Cr at Mar-2026 (down from INR 695 Cr at Q3), book-to-bill ~1.7x, with a claimed INR 2,000 Cr pipeline (4-5 projects of INR 300-500 Cr) and an L1 position on a INR 120 Cr contract. Recent wins are largely <strong>as subcontractor to tollway/expressway SPVs</strong> - a INR 439.75 Cr aggregate of LoAs (Mar-2026, incl. NH-2 Tollway and Delhi-Hapur-Meerut Expressway), a INR 100 Cr 5-year patch-repair order from Trans Metalite (Andhra), and smaller road-maintenance awards. Management's stated aim is to bid NHAI <em>directly</em> to capture margin - aspirational, not yet demonstrated in the win list.</p>
+
+      <p><strong>Scheme linkage is indirect.</strong> Demand comes from short-term/performance-based maintenance of operating assets and the ~INR 35,000 Cr FY27 TOT/InvIT pipeline, not a specific named entitlement (no direct Bharatmala/Gati Shakti allocation found). The <strong>marine diversification</strong> (4-Jul-2026) is exploratory - no order, and the market already sold the news (52-week high &rarr; -11.5%). The <strong>Markolines Infra merger</strong> is the one real structural trigger: a ~INR 500 Cr integrated platform, EPS/cash-flow impact dependent on the (undisclosed) relative valuation, targeted ~FY27.</p>
+
+      <h3>Trigger calendar - next 4 quarters</h3>
+      <div class="caltrack">
+        <div class="cal"><div class="cq">Q1 FY27 (Aug-26)</div><ul><li>Seasonally soft (monsoon)</li><li>Order-book replenishment vs INR 600 Cr</li><li>MIL FY26 audited results</li></ul></div>
+        <div class="cal"><div class="cq">Q2 FY27 (Nov-26)</div><ul><li>Post-monsoon order inflow</li><li>NCLT merger progress</li><li>Direct-NHAI bid outcomes?</li></ul></div>
+        <div class="cal"><div class="cq">Q3 FY27 (Feb-27)</div><ul><li>Execution ramp; margin mix</li><li>First marine order (if any)</li><li>FY27 growth vs "30%" guide</li></ul></div>
+        <div class="cal"><div class="cq">Q4 FY27 (May-27)</div><ul><li>Merger completion target</li><li>Year-end billing / Q4 spike</li><li>FY28 guidance reset</li></ul></div>
+      </div>
+      <p><strong>Theme classification.</strong> The sector award theme is flat/cooling; the re-rating leg here is <em>company-specific</em> (SME-to-mainboard migration + merger + marine headline), not sector beta. The mainboard migration itself broadened the eligible-buyer base and drove much of the FY25-26 re-rating - a one-time event now largely in the price.</p>
+    </section>
+
+    <!-- SECTION 13 -->
+    <section id="s12">
+      <div class="sectag">SECTION 13</div>
+      <h2>Shareholding, Positioning &amp; Flows</h2>
+      <p class="lead">A textbook freshly-mainboarded microcap: no institutional validation, token FII, HNI-and-operator ownership, and retail piling in near the highs.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Shareholding trend. Source: Screener / Trendlyne (Jun-2026).</caption>
+          <thead><tr><th>Quarter</th><th>Promoter</th><th>FII</th><th>DII / MF</th><th>Public</th></tr></thead>
+          <tbody>
+            <tr><td>Jun-2025</td><td>56.91</td><td>0.18</td><td>0 / 0</td><td>~42.9</td></tr>
+            <tr><td>Sep-2025</td><td>55.00</td><td>0.18</td><td>0 / 0</td><td>44.82</td></tr>
+            <tr><td>Dec-2025</td><td>55.00</td><td>0.18</td><td>0.11 / 0</td><td>44.70</td></tr>
+            <tr><td>Mar-2026</td><td>55.00</td><td>0.18</td><td>0.10 / 0</td><td>44.70</td></tr>
+            <tr><td>Jun-2026</td><td>55.00</td><td>0.59</td><td>0.10 / 0</td><td>44.31</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>No institutional sponsorship.</strong> Mutual funds and insurance hold <em>zero</em>; FII is a token 0.59% (up from 0.18% - the first flicker of foreign interest, 3&rarr;4 holders). The only &gt;1% "public" names are HNIs (Karan Kapoor 1.92%, Rahul Jhunjhunwala 1.40% - <em>not</em> Rakesh Jhunjhunwala; Brijesh Thakkar 1.36%) and two bodies corporate (Hi Klass 3.09%, L7 Hitech 1.31%) that also transact in the bulk-deal tape. There is no recognisable smart-money holder.</p>
+
+      <p><strong>Flows &amp; surveillance.</strong> Bulk deals over the last year are dominated by the same trading outfits (Hi Klass buying 1.35 lakh @ INR 180 on 6-Jul-2026; L7 Hitech 2 lakh @ INR 172; Vistaar matched pairs) - jobber churn, not accumulation. Retail count +12% QoQ into the highs is a froth marker. <strong>F&amp;O: not eligible</strong> (microcap; far below thresholds - a reasoned no, not a gap). ASM/GSM status was not flagged on the pages checked but was not verified against the live surveillance lists (SME-migrants often cycle through short-term ASM - worth a direct check). Delivery-% trend: insufficient data. No confirmed index-inclusion candidacy.</p>
+    </section>
+
+    <!-- SECTION 14 -->
+    <section id="s13">
+      <div class="sectag">SECTION 14</div>
+      <h2>Valuation</h2>
+      <p class="lead">Reverse DCF first: at INR 167 the market already prices the growth-and-cash-conversion story as if it is de-risked. A negative-FCF contractor cannot be valued on a clean DCF, so the honest anchor is the multiple the price implies and whether the returns justify it.</p>
+
+      <h3>Reverse DCF - what INR 167 already assumes</h3>
+      <div class="tw">
+        <table>
+          <caption>Reverse-DCF anchor. EV = market cap ~INR 370 Cr + net debt ~INR 70 Cr = ~INR 440 Cr. Ke ~14% (microcap, illiquid, BBB-, single-state, high working-capital risk). NOPAT = core EBIT ~INR 34 Cr &times; (1-25%).</caption>
+          <thead><tr><th>Lens</th><th>Implied by the price</th><th>Reality check</th></tr></thead>
+          <tbody>
+            <tr><td>P/E &rarr; implied growth</td><td>14x at Ke 14% implies ~7% perpetual growth <em>if</em> retained capital earns Ke</td><td>Incremental ROCE is only ~5-7% (below Ke) - so retention is value-neutral-to-destructive</td></tr>
+            <tr><td>No-growth perpetuity (EV)</td><td>NOPAT ~INR 25.5 Cr / WACC ~12.5% = ~INR 204 Cr</td><td>EV is ~INR 440 Cr - so ~54% of EV is "growth value" not yet in cash</td></tr>
+            <tr><td>Cash vs accounting return</td><td>15% accounting ROCE priced</td><td>~5% cash ROCE delivered (negative cumulative CFO)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>The reverse-DCF conclusion:</strong> 14x is only defensible if <em>both</em> the ~INR 1,000 Cr growth ambition lands <em>and</em> the working-capital/cash-return problem is fixed so incremental capital starts earning at least the cost of capital. Neither is yet evidenced. Over half the enterprise value rests on growth and cash conversion that have not shown up in cash. The price is paying for the annuity story while the cash flows remain project-lumpy and receivable-heavy.</p>
+
+      <h3>Multiples in context</h3>
+      <p>P/E ~14x (FY26), EV/EBITDA ~11x (core) / ~9x (management EBITDA), EV/sales ~1.3x, P/B ~1.8x (book value ~INR 91). The stock has no meaningful own-history percentile (mainboard-listed &lt;12 months). Versus peers, the P/E is in line with the EPC pack and the EV/EBITDA is at the top of it - fairly valued for the quality, not cheap. The right primary lens for a cash-hungry contractor is <strong>cash conversion</strong>, on which it screens poorly.</p>
+
+      <h3>Scenarios (12-24 month, standalone MPTL)</h3>
+      <div class="tw">
+        <table>
+          <caption>Derived from FY28E EPS &times; exit multiple, standalone (FY26 base EPS ~INR 11.9, ~2.2 Cr shares). The MIL merger adds ~INR 13-15 Cr PAT but also new shares (ratio-dependent) - treated as separate optionality, broadly EPS-neutral-to-mildly-accretive.</caption>
+          <thead><tr><th>Scenario</th><th>FY28E rev</th><th>PAT margin</th><th>FY28E EPS</th><th>Exit P/E</th><th>Target</th><th>vs CMP</th></tr></thead>
+          <tbody>
+            <tr><td>Bull</td><td>~INR 550 Cr</td><td>~8%</td><td>~INR 20</td><td>~15x</td><td>INR 300</td><td>+80%</td></tr>
+            <tr><td>Base</td><td>~INR 460 Cr</td><td>~7.5%</td><td>~INR 15.5</td><td>~11x</td><td>INR 170</td><td>+2%</td></tr>
+            <tr><td>Bear</td><td>~INR 385 Cr</td><td>~7%</td><td>~INR 12</td><td>~9.5x</td><td>INR 115</td><td>-31%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="scengrid">
+        <div class="scen bull">
+          <div class="st"><span>Bull</span><span>~25% prob.</span></div>
+          <div class="sp">INR 300</div>
+          <div class="su">+80%</div>
+          <p>Hits the ~30% growth guide, merger completes and accretes, cash conversion visibly inflects (debtor days &lt;120, positive CFO); re-rates to ~15x on the INR 1,000 Cr trajectory. Key driver: <strong>cash follows profit.</strong></p>
+        </div>
+        <div class="scen base">
+          <div class="st"><span>Base</span><span>~50% prob.</span></div>
+          <div class="sp">INR 170</div>
+          <div class="su">+2% - fairly valued</div>
+          <p>~18-20% growth (below guide), steady 7.5% margin, working capital eases only marginally; quality does not inflect so the multiple holds/de-rates slightly. Central case = <strong>no margin of safety at CMP.</strong></p>
+        </div>
+        <div class="scen bear">
+          <div class="st"><span>Bear</span><span>~25% prob.</span></div>
+          <div class="sp">INR 115</div>
+          <div class="su">-31%</div>
+          <p>Merger delays/dilutes, FY27 misses "30%", receivables stay stretched, bitumen/monsoon bite; the story fades and retail exits, de-rating to ~9.5x on flat earnings (near the 52-week low). Key driver: <strong>another cash-poor year.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 15 -->
+    <section id="s14">
+      <div class="sectag">SECTION 15</div>
+      <h2>Pre-Mortem &amp; Anti-Thesis</h2>
+
+      <h3>The short-seller's case (argued sincerely)</h3>
+      <ol>
+        <li><strong>A five-year cash mirage.</strong> Cumulative operating cash flow is negative while INR 92 Cr of PAT was reported; the company borrows and dilutes to fund its own profit. Reported PAT overstates owner earnings, so ~14x is much richer on a cash basis.</li>
+        <li><strong>No pricing power by design.</strong> A cost-plus subcontractor with a fixed 7-8% margin, the lowest EBITDA in the peer set, and a "very limited fraternity" of clients holding the whip hand - margin cannot inflect, only volume.</li>
+        <li><strong>The recurring business was kept outside the listco</strong> and is now being merged back in via a promoter-on-both-sides deal whose swap ratio was fumbled once - minorities pay to acquire the annuity the core lacks.</li>
+        <li><strong>SME-era governance in a mainboard wrapper.</strong> INR 2 lakh audit fee, an Apr-2026 SEBI settlement for a 3-year disclosure lapse, pending Sec 441 compounding, combined Chairman-MD who skips the earnings call, heavy KMP churn, and an apparent FY26 dividend suspension.</li>
+        <li><strong>Guidance already broke.</strong> The first testable guide missed (FY26 revenue) and the next was downgraded within ten weeks (FY27 40-50% &rarr; 30%); the INR 1,000 Cr target is a slogan.</li>
+        <li><strong>Ownership quality is poor.</strong> Zero MF/insurance, token FII, HNI-and-trading-outfit register, retail count +12% into the highs - a story stock whose story (SME re-rating + marine) is already being sold.</li>
+        <li><strong>Di-worsification.</strong> Marine, schools and sports opened while receivables and bank lines are stretched.</li>
+      </ol>
+
+      <h3>Thesis-killers (specific, observable)</h3>
+      <ul>
+        <li>FY27 CFO stays negative or CFO/PAT &lt; 0.5 again - proof the model cannot convert.</li>
+        <li>Debtor days remain &gt; 150 through FY27 - the working-capital "fix" isn't happening.</li>
+        <li>The MIL merger swap, once relative multiples are disclosed, transfers value to promoters (or the merger lapses/delays materially).</li>
+        <li>FY27 revenue growth prints below ~20% (well under the "30%" guide) - the growth story stalls.</li>
+        <li>Any promoter pledge appears, or a further discounted preferential/equity raise is needed to fund working capital.</li>
+      </ul>
+
+      <h3>Monitorables dashboard</h3>
+      <div class="mongrid">
+        <div class="mon"><div class="dot r"></div><div><div class="mk">CFO (annual)</div><div class="mv">Trigger: negative again (FY25 -INR 37 Cr)</div></div></div>
+        <div class="mon"><div class="dot r"></div><div><div class="mk">Debtor days</div><div class="mv">Trigger: &gt; 150 (FY26 ~154; Ind-Ra 261)</div></div></div>
+        <div class="mon"><div class="dot a"></div><div><div class="mk">WC line utilisation</div><div class="mv">Trigger: sustained &gt; 90%</div></div></div>
+        <div class="mon"><div class="dot a"></div><div><div class="mk">Order book</div><div class="mv">Watch: &lt; INR 600 Cr / falling</div></div></div>
+        <div class="mon"><div class="dot a"></div><div><div class="mk">FY27 revenue growth</div><div class="mv">Trigger: &lt; 20% vs 30% guide</div></div></div>
+        <div class="mon"><div class="dot g"></div><div><div class="mk">Merger completion + swap fairness</div><div class="mv">Watch: NCLT order, relative multiples</div></div></div>
+        <div class="mon"><div class="dot a"></div><div><div class="mk">Promoter pledge</div><div class="mv">Trigger: any pledge appears (now nil)</div></div></div>
+        <div class="mon"><div class="dot g"></div><div><div class="mk">Institutional entry</div><div class="mv">Watch: first MF/insurance holding</div></div></div>
+      </div>
+
+      <p><strong>Base-rate check.</strong> Working-capital-heavy, low-cash-conversion Indian contractors that re-rate on an SME-to-mainboard migration plus a "new adjacency" story (here, marine) most often resolve as <em>range-bound de-rates</em> once the migration premium is banked and the adjacency underwhelms - the euphoria multiple compresses toward a market multiple and the stock tracks modest, cash-poor earnings. Genuine step-changes happen only when the balance sheet and cash returns actually inflect, which is the minority outcome. The 52-week-high-then--11.5% marine reaction is consistent with the common path.</p>
+    </section>
+
+    <!-- SECTION 16 -->
+    <section id="s15">
+      <div class="sectag">SECTION 16</div>
+      <h2>Investment Pitch</h2>
+      <div class="two">
+        <div class="box buy">
+          <h4>The 90-second pitch to BUY</h4>
+          <p>Markolines is India's only listed pure-play highway-O&amp;M specialist, riding a genuine, counter-cyclical tailwind: an ageing, rapidly-privatising highway base needs mandatory maintenance every 5-7 years, and Markolines has relationships across most of the road funds and InvITs that now own those assets. It is asset-light (asset turns ~10x), low-geared (net D/E ~0.35x, zero pledge), and its cost-plus model passed the brutal 2026 bitumen shock straight to clients. Profit is compounding on a shift into ~24%-margin specialised construction, and the Markolines Infra merger bolts on a recurring toll/O&amp;M annuity (~INR 150 Cr, 9-10% margin) that smooths the lumpy core and lifts bid-eligibility to INR 500 Cr - a INR 1,000 Cr revenue trajectory with a INR 600 Cr order book behind it. If cash conversion inflects as the merger's recurring revenue lands, both earnings and multiple re-rate together. Time horizon: 2-3 years for the balance-sheet turn to prove out.</p>
+        </div>
+        <div class="box sell">
+          <h4>The 90-second pitch to EXIT / AVOID</h4>
+          <p>For a holder: the two things that drove the re-rating - the SME-to-mainboard migration and the marine headline - are largely banked and already sold (52-week high, then -11.5%). What remains is a sub-scale, cost-plus subcontractor with no pricing power that has <em>not converted profit to cash in five years</em> (cumulative CFO negative; FY25 burned INR 37 Cr while reporting INR 23 Cr profit; debtor days 261; lines ~100% drawn), a narrow moat, and SME-era governance in a mainboard wrapper (INR 2 lakh audit fee, SEBI settlement, Sec 441 compounding, a promoter-on-both-sides merger, a CMD who skips the call). At ~14x on cash-poor earnings - EV/EBITDA already top-of-range - there is no margin of safety if the base case simply repeats, which is the base rate. Guidance has already missed and been downgraded. If FY27 CFO and debtor days don't visibly improve within two-three quarters, the reason to own it is gone; sell into any theme-driven bounce rather than wait for the direct-NHAI wins and cash inflection that keep not arriving.</p>
+        </div>
+      </div>
+      <p class="pull">One-line summary: "A bet on India's only listed highway-O&amp;M pure-play turning a real maintenance-demand tailwind and a sister-company merger into cash and scale - priced as if the INR 1,000 Cr annuity story is already de-risked - that breaks if receivables and negative operating cash flow stay exactly where they have been."</p>
+      <p style="color:var(--muted);font-size:13px">No Buy / Sell / Hold rating is issued. Both cases are presented; position sizing and the decision are the reader's. The pivotal, still-unresolved variable is cash conversion - resolve that (sustained positive CFO, debtor days below ~120) and the growth, the merger and the multiple all follow; leave it unresolved and the accounting profit is a mirage.</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <h3>Sources &amp; Filings Used</h3>
+      <ul class="srclist">
+        <li>Markolines Pavement Technologies - audited Annual Reports FY22, FY23, FY24, FY25 (BSE filings): financials, cash flow, segment reporting, RPT and contingent-liability notes, board/remuneration, share-capital and preferential-allotment disclosures, auditor and CARO</li>
+        <li>Markolines Q4/FY26 earnings call transcript (held 29-May-2026, filed 02-Jun-2026): FY26 consol revenue INR 348.49 Cr, EBITDA INR 48.54 Cr, PAT INR 26.23 Cr; guidance, merger detail, mix, cost-plus, capex</li>
+        <li>India Ratings &amp; Research (Ind-Ra) rating rationale - IND BBB-/A3, Rating Watch Developing on ~INR 109.37 Cr facilities (~29-Jan-2026); debtor days 261, NWC/revenue 55%, CFO -INR 37 Cr FY25, liquidity commentary</li>
+        <li>Infomerics rating rationale - Markolines Infra Ltd, IVR A-/Stable (19-Nov-2025): MIL FY25 revenue INR 131.7 Cr, PAT INR 12.1 Cr, ~40% ROE</li>
+        <li>SEBI settlement order (Apr-2026) - Reg 32 IPO fund-utilisation disclosure lapse, INR 12.35 lakh; SME IPO DRHP (2021) - promoter/director bios, group entities, litigation</li>
+        <li>Screener.in (company/MARKOLINES &amp; /543364) and Trendlyne (Jun-2026 shareholding, &gt;1% holders, bulk/block deals) - accessed 10-12-Jul-2026; secondary aggregators, key figures cross-checked to audited ARs</li>
+        <li>Order wins &amp; corporate actions: HDFC Sky (INR 439.75 Cr aggregate), APN News (INR 100 Cr Trans Metalite), Business Standard/ANI (INR 30.39 Cr); ScanX / TradingView / TradeBrains (marine entry, 4-Jul-2026); Whalesbook / ScanX (merger ratio 1:1.05, guidance)</li>
+        <li>Industry: MoRTH / NHAI budget FY27 (ETV Bharat, Multibagg, Indian Infrastructure); Nuvama via ANI (FY26 awards -22%, flat FY27); asset monetisation FY26/FY27 (Manorama, Maritime Gateway); bitumen 2026 (CLAT Gurukul, PetroBazaar, Nexizo); GST on road works (Razorpay, TaxGuru); IRC:SP:81 / IRC:SP:100. Peer data: Screener consolidated pages + Q4 FY26 concalls (KNR, PNC, HG Infra, Ashoka, Ceigall, IRB, Dilip Buildcon)</li>
+      </ul>
+      <p style="margin-top:16px;color:var(--muted);font-size:12.5px"><strong style="color:var(--amber)">Unverified / to-confirm from primary docs:</strong> FY26 audited cash flow (used Screener CFO ~INR 11 Cr; FY26 AR not yet published); the MIL merger relative-valuation multiples behind the 1:1.05 ratio (cannot independently judge fairness to minorities); the ~84% Maharashtra concentration (asserted, not in filings - management now claims pan-India); FY26 dividend suspension (Screener 0% payout, not confirmed to a board resolution); promoter pledge = nil (reported, not confirmed from an encumbrance column); live ASM/GSM status; delivery-% trend; the "INR 2,000 Cr pipeline / 50% win-rate / L1 on INR 120 Cr" are management claims. Peer multiples are indicative; KNR/Ashoka FY26 figures are distorted by one-off monetisation gains. Reverse-DCF and scenario outputs are model estimates on stated assumptions, not price targets.</p>
+      <div class="disc">
+        This document is an independent research synthesis prepared for internal analytical use. It contains no Buy / Sell / Hold recommendation, price target as advice, or assurance of returns. Figures are drawn from public filings and third-party aggregators and may contain inaccuracies. Not investment advice. Do your own diligence.
+      </div>
+      <p class="gen">Generated 12-Jul-2026 &middot; Data as of Q4/FY26 (quarter ended 31-Mar-2026) &middot; CMP INR 167 (10-Jul-2026) &middot; All figures INR lakh/crore notation</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+  var prog=document.getElementById('progress');
+  var secs=Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var links=Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  function onScroll(){
+    var st=window.scrollY||document.documentElement.scrollTop;
+    var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+    prog.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=null;
+    for(var i=0;i<secs.length;i++){
+      if(secs[i].getBoundingClientRect().top<=140) cur=secs[i].id;
+    }
+    links.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href')==='#'+cur);
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  (function(){
+    var t=document.getElementById('ratetog');
+    if(!t)return;
+    var KEY='markolines_ratings_hidden';
+    function apply(hidden){
+      document.body.classList.toggle('badges-off',hidden);
+      t.classList.toggle('on',!hidden);
+      t.querySelector('.st').textContent=hidden?'Off':'On';
+    }
+    var hidden=false;
+    try{hidden=localStorage.getItem(KEY)==='1';}catch(e){}
+    apply(hidden);
+    t.addEventListener('click',function(){
+      hidden=!hidden;
+      try{localStorage.setItem(KEY,hidden?'1':'0');}catch(e){}
+      apply(hidden);
+    });
+  })();
+</script>
+</body>
+</html>

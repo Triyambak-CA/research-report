@@ -11,3 +11,6 @@
 # Temp / scratch
 *.tmp
 *~
+
+# Research source documents (annual reports, DRHP, transcripts) - kept in-folder, not versioned
+source-docs/
