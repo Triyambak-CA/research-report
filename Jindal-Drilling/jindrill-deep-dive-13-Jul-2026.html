@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jindal Drilling &amp; Industries - Deep Dive - 13 Jul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#ffb000;
+    --bg:#05070a;
+    --card:#0a0e13;
+    --card2:#0b1017;
+    --border:#182029;
+    --border2:#243244;
+    --text:#c3ceda;
+    --bright:#eef4fa;
+    --muted:#647689;
+    --dim:#3a4756;
+    --bull:#23d18b;
+    --bear:#ff5c57;
+    --amber:#ffb000;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background-color:var(--bg);
+    color:var(--text);
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    font-size:14px;
+    line-height:1.6;
+    font-variant-numeric:tabular-nums;
+    background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+    background-size:34px 34px;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.955;z-index:-1}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(1100px 520px at 78% -8%,rgba(255,176,0,.05),transparent 60%)}
+  ::selection{background:rgba(255,176,0,.25);color:#fff}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .mono{font-variant-numeric:tabular-nums}
+  h1,h2,h3,h4,.fr{font-family:inherit}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:#070a0e}
+  ::-webkit-scrollbar-thumb{background:#1c2733;border:2px solid #070a0e}
+  ::-webkit-scrollbar-thumb:hover{background:#2a3a4a}
+  #progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:1000;box-shadow:0 0 8px rgba(255,176,0,.6)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .layout{display:flex;gap:36px;max-width:1340px;margin:0 auto;padding:0 26px}
+  .toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:214px;padding:30px 0;flex-shrink:0;font-size:11.5px}
+  .toc ol{list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;margin:1px 0}
+  .toc a{display:block;color:var(--muted);padding:5px 10px;border-left:2px solid var(--border);line-height:1.3;text-transform:uppercase;letter-spacing:.03em}
+  .toc a::before{content:counter(t,decimal-leading-zero) " ";color:var(--accent);opacity:.6}
+  .toc a.active{color:var(--bright);border-left-color:var(--accent);background:linear-gradient(90deg,rgba(255,176,0,.07),transparent)}
+  .toc a:hover{color:var(--bright);text-decoration:none}
+  .toc .toctitle{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);padding:0 10px 11px;border-bottom:1px solid var(--border);margin-bottom:10px}
+  .toc .toctitle::before{content:"● "}
+  .content{flex:1;min-width:0;padding-bottom:100px}
+  @media(max-width:960px){.toc{display:none}.layout{padding:0 16px}}
+  .hero{padding:52px 0 34px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:inline-block;border:1px solid rgba(255,176,0,.4);padding:4px 10px}
+  .hero h1{font-size:52px;font-weight:800;line-height:1.0;letter-spacing:-.01em;margin-bottom:14px;text-transform:uppercase;color:var(--bright)}
+  .hero h1::after{content:"_";color:var(--accent);animation:blink 1.1s steps(1) infinite;font-weight:800}
+  @keyframes blink{50%{opacity:0}}
+  .hero .sub{font-size:12.5px;color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
+  .hero .desc{color:var(--text);max-width:680px;margin-top:14px;font-size:13.5px;line-height:1.65}
+  @media(max-width:640px){.hero h1{font-size:34px}}
+  .scenbar{margin:32px 0 4px}
+  .track{position:relative;height:12px;background:linear-gradient(90deg,var(--bear),var(--amber) 48%,var(--bull));margin:30px 0 8px}
+  .track .cmp{position:absolute;top:-8px;width:2px;height:28px;background:var(--bright)}
+  .track .cmp::after{content:attr(data-lbl);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--bright);white-space:nowrap}
+  .track .tick{position:absolute;top:18px;transform:translateX(-50%);font-size:10.5px;color:var(--muted);white-space:nowrap;text-align:center}
+  .scenrow{display:flex;justify-content:space-between;gap:16px;font-size:11.5px;color:var(--muted);margin-top:46px}
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:28px 0}
+  .stat{background:var(--card);border:1px solid var(--border);padding:13px 14px}
+  .stat .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .stat .v{font-size:21px;font-weight:700;margin-top:6px;color:var(--bright)}
+  .stat .n{font-size:11px;color:var(--muted);margin-top:3px}
+  .v.bull{color:var(--bull)}.v.bear{color:var(--bear)}.v.amber{color:var(--amber)}
+  section{padding:46px 0 6px;border-top:1px solid var(--border);position:relative}
+  section:first-of-type{border-top:none}
+  .ghost{display:none}
+  .sectag{position:relative;z-index:1;display:inline-block;font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;border:1px solid rgba(255,176,0,.35);padding:3px 9px}
+  .sectag::before{content:"// "}
+  section h2{position:relative;z-index:1;font-size:25px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px;line-height:1.18;text-transform:uppercase;color:var(--bright)}
+  section h3{font-size:14.5px;font-weight:700;margin:24px 0 9px;color:var(--bright);text-transform:uppercase;letter-spacing:.02em}
+  section h3::before{content:"> ";color:var(--accent)}
+  p{margin:11px 0;color:var(--text)}
+  strong{color:var(--bright);font-weight:700}
+  em{color:var(--text);font-style:italic}
+  ul,ol{margin:11px 0 11px 20px;color:var(--text)}
+  li{margin:6px 0}
+  li::marker{color:var(--accent)}
+  .lead{font-size:15px;color:var(--bright);line-height:1.6}
+  .tw{overflow-x:auto;margin:18px 0;border:1px solid var(--border)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px}
+  th,td{padding:7px 11px;text-align:right;border-bottom:1px solid var(--border);border-right:1px solid var(--border);white-space:nowrap}
+  th:last-child,td:last-child{border-right:none}
+  th:first-child,td:first-child{text-align:left}
+  thead th{background:var(--card2);color:var(--accent);font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;position:sticky;top:0}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover td{background:rgba(255,176,0,.04)}
+  td.mono,th.mono{font-variant-numeric:tabular-nums}
+  tbody td{color:var(--text);font-variant-numeric:tabular-nums}
+  tbody td:first-child{color:var(--bright)}
+  .rowlabel{color:var(--muted)}
+  caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:11px;padding:8px 11px;border-top:1px solid var(--border);background:var(--card2)}
+  .chip{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent}
+  .chip.hit{background:rgba(35,209,139,.1);color:var(--bull);border-color:rgba(35,209,139,.4)}
+  .chip.miss{background:rgba(255,92,87,.1);color:var(--bear);border-color:rgba(255,92,87,.4)}
+  .chip.over{background:rgba(255,176,0,.1);color:var(--accent);border-color:rgba(255,176,0,.4)}
+  .chip.part{background:rgba(255,176,0,.08);color:var(--amber);border-color:rgba(255,176,0,.3)}
+  .badge{display:inline-block;font-size:9.5px;font-weight:700;padding:3px 9px;letter-spacing:.06em;text-transform:uppercase;border:1px solid transparent}
+  .b-strong{background:rgba(35,209,139,.12);color:var(--bull);border-color:rgba(35,209,139,.4)}
+  .b-mod{background:rgba(255,176,0,.12);color:var(--amber);border-color:rgba(255,176,0,.4)}
+  .b-weak{background:rgba(255,92,87,.12);color:var(--bear);border-color:rgba(255,92,87,.4)}
+  .b-none{background:rgba(100,118,137,.12);color:var(--muted);border-color:rgba(100,118,137,.4)}
+  .flag{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--bear);padding:13px 17px;margin:16px 0}
+  .flag .ft{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bear);margin-bottom:5px}
+  .flag .ft::before{content:"! "}
+  .flag p{color:var(--text);font-size:12.5px;margin:0}
+  .green{border-left-color:var(--bull)}
+  .green .ft{color:var(--bull)}
+  .amberbox{border-left-color:var(--amber)}
+  .amberbox .ft{color:var(--amber)}
+  .moatgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .moat{background:var(--card);border:1px solid var(--border);padding:15px}
+  .moat .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
+  .moat .mh .mn{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright)}
+  .moat p{font-size:12px;margin:6px 0 0;color:var(--muted)}
+  .scengrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .scen{background:var(--card);border:1px solid var(--border);padding:16px;border-top:2px solid var(--muted)}
+  .scen.bull{border-top-color:var(--bull)}
+  .scen.base{border-top-color:var(--amber)}
+  .scen.bear{border-top-color:var(--bear)}
+  .scen .st{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+  .scen .sp{font-size:28px;font-weight:700;margin:7px 0 2px}
+  .scen.bull .sp{color:var(--bull)}.scen.base .sp{color:var(--amber)}.scen.bear .sp{color:var(--bear)}
+  .scen .su{font-size:11px;color:var(--muted)}
+  .scen p{font-size:12px;margin-top:9px}
+  .mongrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:18px 0}
+  .mon{background:var(--card);border:1px solid var(--border);padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
+  .dot{width:8px;height:8px;margin-top:6px;flex-shrink:0}
+  .dot.r{background:var(--bear);box-shadow:0 0 6px rgba(255,92,87,.6)}
+  .dot.a{background:var(--amber);box-shadow:0 0 6px rgba(255,176,0,.6)}
+  .dot.g{background:var(--bull);box-shadow:0 0 6px rgba(35,209,139,.6)}
+  .mon .mk{font-size:12px;color:var(--bright);font-weight:500}
+  .mon .mv{font-size:11px;color:var(--muted);margin-top:2px}
+  .eqbar{display:flex;gap:4px;margin:14px 0}
+  .eqseg{flex:1;height:24px;background:var(--border)}
+  .eqseg.on{background:var(--accent);box-shadow:0 0 10px rgba(255,176,0,.35)}
+  .caltrack{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+  .cal{background:var(--card);border:1px solid var(--border);padding:13px}
+  .cal .cq{font-size:11px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+  .cal ul{margin:8px 0 0 15px;font-size:12px}
+  .cal li{margin:5px 0;color:var(--muted)}
+  .pull{font-size:17px;font-weight:500;line-height:1.5;color:var(--bright);border-left:3px solid var(--accent);padding:4px 0 4px 20px;margin:26px 0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .box{background:var(--card);border:1px solid var(--border);padding:17px}
+  .box h4{font-size:13px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);font-weight:700}
+  .box.buy{border-top:2px solid var(--bull)}
+  .box.sell{border-top:2px solid var(--bear)}
+  .box p,.box li{font-size:12.5px}
+  footer{border-top:1px solid var(--border);padding:36px 0 60px;margin-top:56px;color:var(--muted);font-size:12.5px}
+  footer h3{color:var(--bright);margin-bottom:12px;text-transform:uppercase;letter-spacing:.03em;font-size:14px;font-weight:700}
+  footer h3::before{content:"> ";color:var(--accent)}
+  footer .gen{font-size:10.5px;margin-top:20px;color:var(--muted);letter-spacing:.02em}
+  .srclist{list-style:none;margin-left:0}
+  .srclist li{margin:6px 0;font-size:12px;padding-left:12px;border-left:1px solid var(--border)}
+  .disc{background:var(--card);border:1px solid var(--border);padding:13px 17px;font-size:11.5px;color:var(--muted);margin-top:22px}
+  .kv{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:6px 0;font-size:12.5px}
+  .kv:last-child{border-bottom:none}
+  .kv .kk{color:var(--muted)}
+  .kv .vv{color:var(--text)}
+  #ratetog{position:fixed;right:16px;bottom:16px;z-index:1001;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;cursor:pointer;user-select:none;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+  #ratetog:hover{border-color:var(--accent);color:var(--text)}
+  #ratetog .sw{position:relative;width:30px;height:15px;background:var(--border2);flex-shrink:0;transition:background .15s}
+  #ratetog .sw i{position:absolute;top:2px;left:2px;width:11px;height:11px;background:var(--muted);transition:.15s}
+  #ratetog.on .sw{background:rgba(255,176,0,.35)}
+  #ratetog.on .sw i{left:17px;background:var(--accent)}
+  #ratetog .st{min-width:22px;color:var(--muted)}
+  #ratetog.on .st{color:var(--accent)}
+  body.badges-off .badge{display:none}
+  @media(max-width:600px){#ratetog{right:10px;bottom:10px;font-size:10px;padding:7px 10px}}
+  @media print{#ratetog{display:none}}
+  .bm-intro{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:15px 20px;margin:18px 0;font-size:13.5px;color:var(--text);line-height:1.65}
+  .bm-intro .bl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .bm-intro p{margin:8px 0 0}
+  .vchain{display:grid;grid-template-columns:repeat(4,1fr);margin:16px 0;border:1px solid var(--border)}
+  .vstage{position:relative;background:var(--card);padding:13px 15px;border-right:1px solid var(--border)}
+  .vstage:last-child{border-right:none}
+  .vstage .vh{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+  .vstage .vh::before{content:"";width:7px;height:7px;background:var(--accent);flex-shrink:0}
+  .vstage ul{margin:0;list-style:none}
+  .vstage li{font-size:12px;color:var(--text);margin:4px 0;padding-left:12px;position:relative;line-height:1.45}
+  .vstage li::before{content:"-";position:absolute;left:0;color:var(--muted)}
+  .vstage li::marker{content:""}
+  .vstage:not(:last-child)::after{content:"\25B6";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:11px;z-index:2;background:var(--bg);line-height:1}
+  @media(max-width:760px){
+    .vchain{grid-template-columns:1fr}
+    .vstage{border-right:none;border-bottom:1px solid var(--border)}
+    .vstage:last-child{border-bottom:none}
+    .vstage:not(:last-child)::after{content:"\25BC";right:auto;left:50%;top:auto;bottom:-8px;transform:translateX(-50%)}
+  }
+  .seg{border:1px solid var(--border);margin:20px 0;background:linear-gradient(180deg,rgba(255,176,0,.025),transparent 42%)}
+  .seg .segh{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--border);background:var(--card2)}
+  .seg .segh .sn{font-size:14.5px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);min-width:0}
+  .seg .segh .sn .sx{color:var(--muted);font-weight:400;text-transform:none;font-size:11.5px;display:block;margin-top:3px;letter-spacing:0;line-height:1.4}
+  .seg .segh .mix{font-size:11px;color:var(--accent);border:1px solid rgba(255,176,0,.35);padding:3px 9px;white-space:nowrap;flex-shrink:0}
+  .seg .segbody{padding:15px 16px}
+  .seg .segbody>p{font-size:13px;margin:0 0 4px;color:var(--text)}
+  .seg .segbody>p.note{font-size:12px;color:var(--muted);margin-top:8px}
+  .iogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:14px 0 4px}
+  .io{background:var(--card);border:1px solid var(--border);padding:12px 13px}
+  .io .iok{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+  .io .iok::before{content:"";width:6px;height:6px;background:var(--accent);flex-shrink:0}
+  .io p{font-size:12px;margin:0;color:var(--text);line-height:1.5}
+  .mixbar{display:flex;height:36px;margin:16px 0 10px;border:1px solid var(--border);overflow:hidden;font-variant-numeric:tabular-nums}
+  .mixseg{display:flex;align-items:center;justify-content:center;font-size:10.5px;color:#05070a;font-weight:700;min-width:0;overflow:hidden;white-space:nowrap;border-right:1px solid rgba(5,7,10,.5)}
+  .mixseg:last-child{border-right:none}
+  .mixkey{display:flex;flex-wrap:wrap;gap:7px 16px;font-size:11px;color:var(--muted);margin-bottom:14px}
+  .mixkey span{display:flex;align-items:center;gap:6px}
+  .mixkey i{width:10px;height:10px;flex-shrink:0}
+  .uu{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--amber);padding:13px 17px;margin:16px 0}
+  .uu .ut{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:7px}
+  .uu .ut::before{content:"? "}
+  .uu ul{margin:6px 0 0 17px;font-size:12.5px;color:var(--text)}
+  .uu li{margin:6px 0;line-height:1.5}
+  .uu li::marker{color:var(--amber)}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<button id="ratetog" class="on" title="Show or hide the qualitative moat rating badges (Weak / Moderate / Strong / None)"><span class="tl">Ratings</span><span class="sw"><i></i></span><span class="st">On</span></button>
+<div class="layout">
+  <nav class="toc">
+    <div class="toctitle">Jindal Drilling Deep Dive</div>
+    <ol>
+      <li><a href="#s1">Industry &amp; Sector</a></li>
+      <li><a href="#s2">Business Model</a></li>
+      <li><a href="#s3">Competitive Landscape</a></li>
+      <li><a href="#s4">6 Cs Moat</a></li>
+      <li><a href="#s5">Financial Analysis</a></li>
+      <li><a href="#s6">Earnings Quality</a></li>
+      <li><a href="#s7">Promoter &amp; Governance</a></li>
+      <li><a href="#s8">Guidance Scorecard</a></li>
+      <li><a href="#s9">Regulatory &amp; Risk</a></li>
+      <li><a href="#s10">Scuttlebutt</a></li>
+      <li><a href="#s11">Headwinds/Tailwinds</a></li>
+      <li><a href="#s12">Triggers &amp; Themes</a></li>
+      <li><a href="#s13">Shareholding &amp; Flows</a></li>
+      <li><a href="#s14">Valuation</a></li>
+      <li><a href="#s15">Pre-Mortem</a></li>
+      <li><a href="#s16">Investment Pitch</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="eyebrow">Buy-Side Deep Dive // Not a Recommendation</div>
+      <h1>Jindal Drilling &amp; Industries</h1>
+      <div class="sub">NSE: JINDRILL&nbsp; &middot;&nbsp; BSE: 511034&nbsp; &middot;&nbsp; CMP INR 603&nbsp; &middot;&nbsp; 13-Jul-2026&nbsp; &middot;&nbsp; Data as of Q4/FY26 (Mar-2026)</div>
+      <p class="desc">India's largest private offshore drilling-rig contractor to ONGC, riding a genuine jack-up day-rate upcycle: FY26 revenue INR 997 Cr, EBITDA up to INR 349 Cr (35% margin), nearly debt-free - and optically cheap at ~8x earnings and below book. But roughly a third to a half of pre-tax profit is non-operating, swinging +INR 121 Cr to -INR 77 Cr a quarter on a group-linked investment book. This note separates the operating rig business from the financial portfolio, tests whether "cheap" means "value" or "value trap", and issues no rating.</p>
+
+      <div class="scenbar">
+        <div class="track">
+          <div class="cmp" data-lbl="CMP 603" style="left:44%"></div>
+          <div class="tick" style="left:2%">Bear<br>360</div>
+          <div class="tick" style="left:46%">Base<br>620</div>
+          <div class="tick" style="left:98%">Bull<br>950</div>
+        </div>
+        <div class="scenrow"><span>12-24 month fair-value range, evidence-weighted (consolidated basis)</span><span>Downside -40% / Upside +58%</span></div>
+      </div>
+    </div>
+
+    <!-- EXEC SUMMARY -->
+    <div class="statgrid">
+      <div class="stat"><div class="k">FV Range (12-24m)</div><div class="v">360-950</div><div class="n">Bear / Base ~620 / Bull</div></div>
+      <div class="stat"><div class="k">Earnings Quality</div><div class="v amber">6 / 10</div><div class="n">Clean audit, non-operating heavy</div></div>
+      <div class="stat"><div class="k">Guidance Credibility</div><div class="v amber">Moderate</div><div class="n">Delivers rigs; thin numeric guidance</div></div>
+      <div class="stat"><div class="k">Moat Strength</div><div class="v amber">Narrow</div><div class="n">ONGC relationship + balance sheet</div></div>
+      <div class="stat"><div class="k">FY26 Revenue</div><div class="v">997 Cr</div><div class="n">+20% YoY (consol)</div></div>
+      <div class="stat"><div class="k">FY26 PAT</div><div class="v">211 Cr</div><div class="n">173 s/a; ~30% is other income</div></div>
+      <div class="stat"><div class="k">P/E (FY26)</div><div class="v">~8x</div><div class="n">EV/EBITDA ~5x; below book</div></div>
+      <div class="stat"><div class="k">ROCE / ROE</div><div class="v amber">15.4% / 12.5%</div><div class="n">Operating ROCE lower ex-OI</div></div>
+    </div>
+
+    <div class="two">
+      <div class="box green" style="border-top:3px solid var(--bull)">
+        <h4>Top 3 Positives</h4>
+        <ul>
+          <li><strong>A real offshore upcycle ridden from a fortress balance sheet.</strong> FY26 revenue INR 997 Cr (+20%), EBITDA INR 349 Cr at a 35% margin - the best in a decade - as ONGC day-rates re-set higher. Crucially, borrowings have fallen 294 -&gt; 164 -&gt; 93 Cr and the company is near-debt-free with an investment book. Leverage is exactly what bankrupted the last-cycle comparables (Aban Offshore, Shiv-Vani); Jindal has removed that failure mode.</li>
+          <li><strong>Structural jack-up scarcity gives genuine re-pricing optionality.</strong> ~30% of the ~471-rig global jack-up fleet is over 35 years old and the orderbook is thin (~20 newbuilds vs ~120 at the 2013-14 peak). When Jindal Supreme re-contracted with ONGC it jumped from ~USD 40,700/day to ~USD 88,859/day - the operating leverage on a fixed cost base is enormous, and the order book is contracted through FY27.</li>
+          <li><strong>Optically cheap, with the promoter buying.</strong> ~8x earnings, EV/EBITDA ~5x, and trading around book value (BV INR 628 vs CMP 603) against a 15% ROCE. The promoter lifted its stake from 64.4% to 66.8% - roughly +2 points in a single quarter (Sep-&gt;Dec 2025) - into share-price weakness, i.e. voting with its own wallet.</li>
+        </ul>
+      </div>
+      <div class="box sell" style="border-top:3px solid var(--bear)">
+        <h4>Top 3 Risks</h4>
+        <ul>
+          <li><strong>A third to a half of pre-tax profit is non-operating - and it lies about the trend.</strong> Reported PBT swung from +INR 173 Cr (Sep-2025) to -INR 45 Cr (Dec-2025) on "other income" that went +121 to -77. The main driver: a ~INR 100 Cr ONGC arbitration award booked in Q2FY26 and then reversed in Q3FY26 after ONGC appealed to the Supreme Court. Strip the arbitration, the investment-book mark-to-market and the equity-method JV profit, and the true operating PBT is a much smaller, steadier ~INR 40-67 Cr a quarter. The ~8x P/E is on flattered earnings.</li>
+          <li><strong>Day-rates are rolling over, and the single customer is fighting back.</strong> Global jack-up rates fell ~17% in 2025; Jindal Explorer re-contracted DOWN to ~USD 35,139/day. In Apr-2026 ONGC cancelled a four-rig tender citing a "~60% escalation" and possible "collusive practices", is negotiating rates lower, and plans to build its OWN jack-ups (~USD 500-550 mn) - a structural threat to the third-party charter model on which ~90%+ of revenue depends.</li>
+          <li><strong>No institutional anchor, and related-party plumbing.</strong> DII and mutual-fund ownership is literally zero, no marquee investor holds it, retail holders went 18,000 -&gt; 41,600 in two years, and every large "bulk deal" is a proprietary/HFT desk churning the tape. One of the rigs (Jindal Explorer) is owned by sister-company Maharashtra Seamless and merely "facilitated through" Jindal Drilling; a meaningful slice of profit sits in offshore JVs outside the listed operating entity.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pull">"This is a bet on India's largest private offshore driller compounding a genuine jack-up upcycle from a near-debt-free balance sheet - priced at ~8x and around book as if the cycle has already peaked - and it breaks if ONGC re-prices the fleet down as day-rates normalise while the non-operating income that flatters the P/E quietly reverses."</p>
+
+    <!-- SECTION 1 -->
+    <section id="s1">
+      <div class="sectag">SECTION 01</div>
+      <h2>Industry &amp; Sector Analysis</h2>
+      <p class="lead">Jindal Drilling sells one thing to essentially one buyer: offshore jack-up rig-days to ONGC in India's shallow waters. Its fortunes are therefore a levered play on the global jack-up day-rate cycle - which, after a powerful 2021-2024 recovery, is now plateauing to rolling over, even as an ageing world fleet keeps a structural floor under rates.</p>
+
+      <p><strong>What the industry is.</strong> Offshore contract drilling supplies mobile rigs (and crews) that drill and work over oil and gas wells at sea, on multi-year day-rate charters. The relevant sub-segment for Jindal is the <strong>jack-up</strong> - a self-elevating shallow-water rig for water depths up to ~350-400 ft - as distinct from the deepwater drillships and semi-submersibles that ONGC tenders separately. Demand is derived from upstream E&amp;P capex, which in turn tracks oil prices with a lag; supply is a slow-moving global fleet of ~470 marketed jack-ups whose economics turn on utilisation and day-rate.</p>
+
+      <p><strong>Cycle position: past the inflection, now normalising.</strong> The 2021-2024 upcycle was real and large - Middle East benchmark jack-up rates ran ~USD 108,000/day (2023), the tightest market in a decade. But the cycle has turned: average Middle East rates eased to ~USD 92,000 (2024) and ~USD 90,000 (2025), and 2026 forecasts sit in the low-to-high USD 80,000s. Global marketed jack-up rates fell roughly <strong>17% through 2025</strong>. The proximate cause is a supply shock: <strong>Saudi Aramco suspended ~36 jack-ups from Apr-2024</strong> (capping production at 12 mbpd), and roughly 40% of those released units migrated to the Far East / South-East Asia - precisely the "regular" (non-premium) tier that competes closest to Indian ONGC work. Utilisation remains healthy (~89-90%) and Aramco is now recalling a handful of rigs from early 2026, but the tape is normalising down, not up. <strong>This is the single most important fact for the name: a low P/E on a driller as day-rates roll over is the textbook definition of a potential value trap, not automatically a bargain.</strong></p>
+
+      <div class="flag amberbox"><div class="ft">Cycle read</div><p>The last time global jack-up rates peaked (2013-14) the Indian offshore drillers that had geared into the top - Aban Offshore, Shiv-Vani - did not survive the down-leg. The cycle risk is not hypothetical; it is the base rate for this sub-sector (see Section 15).</p></div>
+
+      <p><strong>The structural floor: an old fleet nobody is replacing.</strong> Against the cyclical softening sits a genuine multi-year support. Roughly <strong>30% of the ~471-rig global jack-up fleet is over 35 years old</strong>, and the newbuild orderbook has collapsed to ~20 units versus ~120 at the 2013-14 peak - shipyards, financiers and buyers have all been burned. Aging attrition plus a thin pipeline means that if E&amp;P demand merely holds, effective supply tightens over the back half of the decade. The bull case for day-rates is scarcity; the bear case is that ONGC's shallow-water programme is not big enough to absorb the Aramco-released tonnage at the old rates.</p>
+
+      <p><strong>India / ONGC demand - the whole market for this company.</strong> ONGC hires ~30+ jack-up rigs from third parties for its Western Offshore (Mumbai High) and Eastern Offshore fields; Jindal is the largest private Indian owner-operator in that pool. ONGC's exploration capex is guided up from ~INR 10,000 Cr (FY26) toward ~<strong>INR 12,000 Cr (FY27, +20%)</strong>, funding 100+ wells - a real domestic volume tailwind. Two caveats temper it: (1) ONGC's much-touted USD 18-20 bn tender is for <em>deepwater</em> drillships/semis, outside Jindal's jack-up fleet; and (2) in <strong>Apr-2026 ONGC cancelled a four-rig jack-up tender</strong>, alleging a "~60% escalation" (day-rate quotes jumping ~USD 35,600 to ~USD 56,200 in nine months) and possible "collusive practices" - a clear signal that the monopsony buyer is actively pushing back on rate inflation (Section 9).</p>
+
+      <p><strong>Regulatory architecture.</strong> Upstream E&amp;P is administered by the DGH under the Ministry of Petroleum &amp; Natural Gas (established 1993; oversees NELP/HELP/OALP/DSF). ONGC procures rigs through open International Competitive Bidding on a two-bid, e-procurement basis, historically on a three-year firm charter (moving toward five years on some recent tenders). Since 01-Apr-2022 ONGC/MoPNG PSUs follow the DPIIT "Public Procurement (Preference to Make in India)" order - a Class-I local supplier (&ge;50% local content) can earn a purchase preference - which structurally favours a domestic operator like Jindal over pure foreign charterers, though the rig-specific local-content threshold under the current regime is not publicly pinned down.</p>
+
+      <p><strong>Who captures value.</strong> The chain runs rig-owner/charterer (Jindal) -&gt; national oil company (ONGC, the gatekeeper) -&gt; the barrels. The driller earns a day-rate spread over a largely fixed operating cost base, so incremental day-rate drops almost entirely to EBIT - superb operating leverage on the way up, brutal on the way down. The single customer, ONGC, holds the pricing whip through its tender design; the driller's leverage is scarcity of suitable rigs and an incumbent operating record.</p>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="s2">
+      <div class="sectag">SECTION 02</div>
+      <h2>How Jindal Drilling Actually Makes Money</h2>
+
+      <div class="bm-intro">
+        <div class="bl">Briefing note - the company, end to end</div>
+        <p>Boss, in plain terms: Jindal Drilling is a <strong>rig landlord to ONGC</strong>. It owns (or bare-boat charters) offshore <strong>jack-up drilling rigs</strong>, mans and maintains them, and hires them out to ONGC on multi-year day-rate contracts to drill wells in the shallow waters off Mumbai. It earns a fixed USD day-rate per rig-day, whether ONGC strikes oil or not - so it is a service contractor, not an explorer, and carries no reserves risk. Alongside the rigs it runs a smaller <strong>oilfield-services</strong> arm (directional drilling, measurement-while-drilling, mud-logging) that sells technical well services, historically via foreign-technology tie-ups.</p>
+        <p>The important subtlety is the corporate plumbing. The rig-charter revenue that bills ONGC books almost entirely in the <strong>listed standalone entity</strong> (FY26 sales INR 997 Cr, PAT INR 173 Cr). But a chunk of the rig-owning economics has historically sat in <strong>offshore joint ventures</strong> (Singapore-based Discovery Drilling Pte and associates), which are <em>equity-accounted</em> - their profit shows up as a single "share of profit of JV" line that lifted consolidated PAT to INR 216 Cr in FY25 (a ~INR 75 Cr JV contribution) and ~INR 211 Cr in FY26. In Mar-2025 the company bought the rig <strong>Jindal Pioneer</strong> out of that JV for ~USD 75 mn, which is why fixed assets jumped from INR 551 Cr to INR 1,294 Cr and the "investments" line fell. Here is the business, segment by segment.</p>
+      </div>
+
+      <div class="vchain">
+        <div class="vstage"><div class="vh">Inputs</div><ul>
+          <li>Jack-up rigs (owned + bare-boat chartered)</li>
+          <li>Rig crews (largely contracted, not on payroll)</li>
+          <li>Drilling tech / tools; USD-denominated cost base</li>
+          <li>Capital for rig purchases (part debt, mostly internal)</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">What Jindal does</div><ul>
+          <li>Owns / charters, mobilises &amp; operates jack-ups</li>
+          <li>Maintains rigs to ONGC/class spec, mans crews</li>
+          <li>Directional drilling, MWD, mud-logging services</li>
+          <li>Wins &amp; renews ONGC tenders; manages day-rate contracts</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">Customers</div><ul>
+          <li>ONGC (the overwhelming majority of revenue)</li>
+          <li>International charters (e.g. Jindal Pioneer, Mexico via Saipem)</li>
+          <li>Single-buyer / gatekeeper relationship</li>
+          <li>Contracts USD-denominated, 3-5 year firm periods</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">End use</div><ul>
+          <li>Drilling &amp; workover of offshore oil/gas wells</li>
+          <li>Mumbai High &amp; other Western/Eastern Offshore fields</li>
+          <li>India's domestic crude &amp; gas production</li>
+          <li>National energy security</li>
+        </ul></div>
+      </div>
+
+      <div class="iogrid">
+        <div class="io"><div class="iok">Where it sits</div><p>An asset-owning rig contractor one layer below the national oil company. It captures a day-rate spread over a fixed cost base; ONGC captures the barrel economics and sets the tender terms.</p></div>
+        <div class="io"><div class="iok">Who owns the customer</div><p>ONGC owns the end relationship and the pricing whip. Jindal's leverage is scarcity of suitable rigs, an incumbent track record, and domestic-preference procurement rules - not brand or switching costs.</p></div>
+        <div class="io"><div class="iok">Where the profit really books</div><p>Rig-charter revenue in the listed standalone entity; a slice of rig-owning profit in equity-accounted offshore JVs; plus a lumpy investment/other-income layer that is not operating at all (Sections 5-6).</p></div>
+      </div>
+
+      <h3>Revenue mix (FY26, estimated - segment split not cleanly disclosed)</h3>
+      <div class="mixbar">
+        <div class="mixseg" style="width:88%;background:#ffb000;flex-shrink:0">Offshore Drilling ~88%</div>
+        <div class="mixseg" style="width:12%;background:#36c5d6;flex-shrink:0">Services ~12%</div>
+      </div>
+      <div class="mixkey">
+        <span><i style="background:#ffb000"></i>Offshore rig charter (ONGC + intl.) ~85-90%</span>
+        <span><i style="background:#36c5d6"></i>Oilfield services: directional drilling / MWD / mud-logging ~10-15%</span>
+        <span><i style="background:var(--dim)"></i>Split is inferred - the company does not publish a clean segment revenue table</span>
+      </div>
+
+      <h3>Segment by Segment</h3>
+
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">1 &middot; Offshore Drilling (Rig Charter)<span class="sx">Owns/charters jack-up rigs and hires them to ONGC on multi-year USD day-rate contracts</span></div>
+          <div class="mix">~88% FY26</div>
+        </div>
+        <div class="segbody">
+          <p>The engine. The fleet comprises roughly five jack-ups working with ONGC in Indian waters - <strong>Jindal Star</strong> (350' ILC, ~USD 42,750/day), <strong>Discovery-I</strong> (~USD 46,907/day), <strong>Jindal Supreme</strong> (re-contracted at ~USD 88,859/day, deployed Oct-2024), <strong>Jindal Explorer</strong> (new 3-yr ONGC charter at ~USD 35,139/day from Nov-2025) - plus <strong>Jindal Pioneer</strong> (LeTourneau Super 116E) chartered internationally in Mexican waters (bare-boat, operated by Saipem). Earnings are a nearly linear function of rig-count x day-rate x utilisation, translated at USD/INR.</p>
+          <div class="uu"><div class="ut">Not obvious</div><ul>
+            <li><strong>One of the rigs is a related-party pass-through.</strong> Jindal Explorer is owned by sister-company <strong>Maharashtra Seamless Ltd</strong> and only "facilitated through" Jindal Drilling - so part of the "fleet" is not Jindal's asset, and its low USD 35,139 rate may reflect intra-group economics rather than an arm's-length owned-rig margin. Watch how revenue and margin are attributed.</li>
+            <li><strong>The re-contracting cliff cuts both ways.</strong> Supreme re-priced UP (40k -&gt; 89k); Explorer re-priced DOWN (to 35k). With Star and Discovery-I rolling into re-contracting windows in 2025-27 against a softening global market, the single biggest earnings variable is the rate on the <em>next</em> ONGC contract - not the current run-rate.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="seg">
+        <div class="segh">
+          <div class="sn">2 &middot; Oilfield Services<span class="sx">Directional drilling, measurement-while-drilling (MWD), mud-logging - technical well services</span></div>
+          <div class="mix">~12% FY26</div>
+        </div>
+        <div class="segbody">
+          <p>The smaller, higher-technology arm. Jindal provides directional-drilling, MWD and mud-logging services - historically built on tie-ups with foreign technology providers - sold largely into the same ONGC ecosystem. It diversifies the revenue line item but not the customer, and is not separately quantified in public disclosure (treat the ~12% as an estimate).</p>
+          <div class="uu"><div class="ut">Not obvious</div><ul>
+            <li>The services arm deepens ONGC dependence rather than reducing it - it is a second product sold to the <em>same</em> single buyer, so it does not diversify the concentration risk that defines this business.</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="uu" style="border-left-color:var(--accent)">
+        <div class="ut" style="color:var(--accent)">Unknown unknowns - what a first read misses</div>
+        <ul>
+          <li><strong>The listed entity is not the whole business.</strong> A material part of rig-owning profit has sat in equity-accounted offshore JVs (Singapore). Consolidated PAT can move on JV performance that never touches the standalone revenue line - and capital can be deployed into, or trapped in, those vehicles.</li>
+          <li><strong>Single-customer, single-basin.</strong> ONGC is effectively the only customer and Indian Western Offshore effectively the only market. A tender cancellation, a rate reset or a payment delay from ONGC hits the whole P&amp;L at once - there is no second leg.</li>
+          <li><strong>The "cheapness" is partly a financial-portfolio artifact.</strong> A large investment book generates lumpy mark-to-market gains/losses in other income, and a one-off ONGC arbitration award was booked then reversed inside FY26. The reported ~8x P/E is on profit that is materially non-operating (Sections 5-6).</li>
+          <li><strong>USD on both sides.</strong> Revenues and much of the cost base are dollar-denominated - a partial natural hedge, so a weak rupee helps translated revenue but less than a naive model would assume.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section id="s3">
+      <div class="sectag">SECTION 03</div>
+      <h2>Competitive Landscape &amp; Peer Benchmarking</h2>
+      <p class="lead">Jindal's competitive position is defined by a graveyard. The two largest Indian offshore/onshore drillers of the last cycle - Aban Offshore and Shiv-Vani - were destroyed by leverage, leaving Jindal as the last major domestic private jack-up owner standing. Its real competition for ONGC tenders is now global charterers, and its edge over them is a clean balance sheet and domestic preference, not technology or scale.</p>
+
+      <h3>Indian listed comparables</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Company</th><th>What it does</th><th>Balance sheet / status</th><th>Read-across</th></tr></thead>
+          <tbody>
+            <tr><td>Aban Offshore</td><td>Offshore jack-up/drillship contractor - once the largest Indian private driller</td><td>Collapsed under ~INR 15,000+ Cr debt taken on at the 2013-14 peak; years of defaults, insolvency proceedings, near-zero equity</td><td>The canonical warning: same business, killed by leverage into a downcycle</td></tr>
+            <tr><td>Shiv-Vani Oil &amp; Gas</td><td>Large onshore drilling / OFS contractor</td><td>Defunct - debt-driven collapse, delisted / insolvency</td><td>Second data point that this sector's cause of death is the balance sheet</td></tr>
+            <tr><td>Deep Industries</td><td>Onshore gas dehydration, workover/drilling rigs, OFS</td><td>Low-debt, profitable; different (onshore/gas-services) niche</td><td>Healthier peer but not a jack-up competitor</td></tr>
+            <tr><td>Dolphin Offshore</td><td>Offshore installation / diving / OFS services</td><td>Long-troubled, sub-scale</td><td>Not a rig-charter competitor</td></tr>
+            <tr><td>Asian Energy (Asian Oilfield)</td><td>Seismic / OFS services</td><td>Sub-scale, services-only</td><td>Adjacent, not competing for rig tenders</td></tr>
+            <tr><td>Selan Exploration</td><td>Small onshore E&amp;P (owns fields)</td><td>Debt-free, small</td><td>Different model (owns barrels, not rigs)</td></tr>
+          </tbody>
+          <caption>Peer financial multiples were not individually verified in this research pass (flagged); the qualitative positioning is the point. No listed Indian peer today combines Jindal's jack-up fleet, ONGC incumbency and near-zero debt.</caption>
+        </table>
+      </div>
+
+      <h3>The real competition: global charterers</h3>
+      <p>For any ONGC jack-up tender Jindal actually bids against international rig owners - <strong>Shelf Drilling, Borr Drilling, ADES, COSL (China), Valaris</strong> and others - who have far larger fleets and can redeploy rigs released from Saudi Aramco into the Indian market. This is precisely why ONGC's Apr-2026 tender saw "60% escalation" and why ONGC pushed back: the global players set the marginal price. Jindal's counter-advantages are (1) domestic Class-I local-supplier preference, (2) an established ONGC operating track record and relationships, and (3) rigs already mobilised in-country (no mobilisation cost/time). These are real but modest edges on price, not a moat that lets it dictate terms.</p>
+
+      <h3>Where Jindal ranks</h3>
+      <p><strong>Scale:</strong> small globally (~5 rigs) but the largest Indian <em>private</em> offshore driller. <strong>Balance sheet:</strong> best-in-class in the domestic peer set (near-debt-free) - the dimension that actually matters in this industry. <strong>Distress-driven share gain:</strong> the exit of Aban and Shiv-Vani has already happened; Jindal is the beneficiary, which is part of why it survived to ride this upcycle. The gap-to-leader (global charterers) on fleet size and technology is wide and not closing - Jindal competes on survivability and locality, not leadership.</p>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section id="s4">
+      <div class="sectag">SECTION 04</div>
+      <h2>Competitive Advantage: 6 Cs Moat</h2>
+      <p class="lead">Be honest: this is a narrow, survivability-based moat, not a pricing moat. The one genuinely strong "C" is Capital - the balance sheet. Everything else is moderate-to-weak, because the customer, not the company, holds the pricing power.</p>
+
+      <div class="moatgrid">
+        <div class="moat"><div class="mh"><span class="mn">Cost</span><span class="badge b-mod">Moderate</span></div><p>Some structural edge as a domestic operator - rigs already in-country (no mobilisation cost), lower overhead than global majors - but day-rates are set by competitive ONGC tender, so no durable cost-driven pricing advantage.</p></div>
+        <div class="moat"><div class="mh"><span class="mn">Capacity</span><span class="badge b-weak">Weak</span></div><p>Owns ~5 scarce jack-ups, and global supply is tight - but capacity is just capital plus a rig order; any well-funded charterer can replicate it. Scarcity is an industry condition, not a Jindal-specific asset.</p></div>
+        <div class="moat"><div class="mh"><span class="mn">Capital</span><span class="badge b-strong">Strong</span></div><p>The real moat. Near-debt-free (borrowings INR 93 Cr) with an investment book, versus a sector whose leaders (Aban, Shiv-Vani) died of leverage. In a downcycle, survival IS the advantage - and Jindal can buy assets/contracts when others are forced sellers.</p></div>
+        <div class="moat"><div class="mh"><span class="mn">Channel</span><span class="badge b-mod">Moderate</span></div><p>A decades-long ONGC operating relationship and Class-I domestic-preference access. But ONGC is a gatekeeper Jindal sells THROUGH, not a channel it owns - and every contract is competitively re-tendered.</p></div>
+        <div class="moat"><div class="mh"><span class="mn">Customer captivity</span><span class="badge b-weak">Weak</span></div><p>Inverted: Jindal is captive to ONGC, not the reverse. Single customer, 3-5 year re-tenders, no switching cost, no brand pull. ONGC can cancel a tender (Apr-2026) or in-source rigs at will.</p></div>
+        <div class="moat"><div class="mh"><span class="mn">Compliance</span><span class="badge b-mod">Moderate</span></div><p>ONGC pre-qualification, class certifications, HSE track record and local-content rules do raise entry barriers for a new domestic entrant - a modest, real barrier, but one every incumbent charterer clears.</p></div>
+      </div>
+
+      <p><strong>Most important moat source and its half-life.</strong> The load-bearing advantage is <strong>Capital - the fortress balance sheet - reinforced by ONGC incumbency</strong>. Together they make Jindal a survivor that can compound through a cycle where leveraged peers cannot. But this is a moat against <em>ruin</em>, not a moat around <em>pricing</em>: it does not stop day-rates falling, it just ensures Jindal is still standing (and possibly buying) when they do. Its half-life is roughly one full cycle - it is only as durable as management's discipline in not re-leveraging at the top, which the FY20 impairment shows is the exact mistake this sector makes.</p>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section id="s5">
+      <div class="sectag">SECTION 05</div>
+      <h2>Financial Analysis: 8 Quarters + 5 Years</h2>
+      <p class="lead">The operating business is genuinely good and genuinely cyclical: FY26 revenue INR 997 Cr and a 35% EBITDA margin, the best in a decade, driven by re-set day-rates. But the reported bottom line is a poor guide to it, because a third to a half of pre-tax profit is non-operating - so the first job is to separate the two.</p>
+
+      <h3>The eight-quarter trend (consolidated)</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>INR Cr</th><th>Sep-24</th><th>Dec-24</th><th>Mar-25</th><th>Jun-25</th><th>Sep-25</th><th>Dec-25</th><th>Mar-26</th></tr></thead>
+          <tbody>
+            <tr><td>Revenue</td><td>172</td><td>239</td><td>245</td><td>254</td><td>238</td><td>242</td><td>263</td></tr>
+            <tr><td>EBITDA</td><td>31</td><td>81</td><td>87</td><td>107</td><td>93</td><td>72</td><td>78</td></tr>
+            <tr><td class="rowlabel">EBITDA margin %</td><td>18</td><td>34</td><td>36</td><td>42</td><td>39</td><td>30</td><td>30</td></tr>
+            <tr><td>Depreciation</td><td>16</td><td>26</td><td>31</td><td>37</td><td>38</td><td>38</td><td>38</td></tr>
+            <tr><td>Interest</td><td>4</td><td>4</td><td>3</td><td>3</td><td>2</td><td>2</td><td>2</td></tr>
+            <tr><td style="color:var(--amber)">Other income</td><td>29</td><td>32</td><td>37</td><td>18</td><td style="color:var(--bull)">121</td><td style="color:var(--bear)">-77</td><td>18</td></tr>
+            <tr><td>Reported PBT</td><td>40</td><td>82</td><td>90</td><td>85</td><td style="color:var(--bull)">173</td><td style="color:var(--bear)">-45</td><td>57</td></tr>
+            <tr><td>Net profit</td><td>34</td><td>66</td><td>72</td><td>66</td><td style="color:var(--bull)">133</td><td style="color:var(--bear)">-33</td><td>45</td></tr>
+            <tr><td style="color:var(--accent)">Operating PBT (ex-OI)*</td><td>11</td><td>51</td><td>53</td><td>67</td><td>53</td><td>32</td><td>38</td></tr>
+          </tbody>
+          <caption>*Operating PBT = EBITDA - depreciation - interest, i.e. before other income. Source: consolidated results via screener.in. The reported line swings from +173 to -45; the operating line is a far steadier 32-67. Q4FY24 (Mar-24, not shown) was a reported loss on a cost spike.</caption>
+        </table>
+      </div>
+
+      <div class="flag amberbox"><div class="ft">The single most important chart in this report</div><p>In Sep-2025 reported PBT was +INR 173 Cr; one quarter later it was -INR 45 Cr. Nothing in the rig business changed that much - EBITDA went 93 -&gt; 72. The entire swing is "other income" going from +121 to -77, driven mainly by a ~INR 100 Cr ONGC arbitration award recognised in Q2 and reversed in Q3 (ONGC appealed to the Supreme Court; auditors advised reversal). Judge this company on the amber "operating PBT" row, never on the reported row.</p></div>
+
+      <h3>Five-year record (consolidated)</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>INR Cr</th><th>FY22</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26</th></tr></thead>
+          <tbody>
+            <tr><td>Revenue</td><td>420</td><td>512</td><td>617</td><td>828</td><td>997</td></tr>
+            <tr><td>EBITDA</td><td>110</td><td>163</td><td>139</td><td>241</td><td>349</td></tr>
+            <tr><td class="rowlabel">EBITDA margin %</td><td>26</td><td>32</td><td>23</td><td>29</td><td>35</td></tr>
+            <tr><td>Depreciation</td><td>43</td><td>63</td><td>64</td><td>89</td><td>151</td></tr>
+            <tr><td style="color:var(--amber)">Other income</td><td>32</td><td>47</td><td>29</td><td>131</td><td>80</td></tr>
+            <tr><td>Reported PBT</td><td>87</td><td>136</td><td>89</td><td>263</td><td>270</td></tr>
+            <tr><td class="rowlabel">Tax rate %</td><td>26</td><td>29</td><td>42</td><td>18</td><td>22</td></tr>
+            <tr><td>Net profit (consol)</td><td>64</td><td>97</td><td>51</td><td>216</td><td>211</td></tr>
+            <tr><td class="rowlabel">Net profit (standalone)</td><td>65</td><td>112</td><td>114</td><td>141</td><td>173</td></tr>
+            <tr><td style="color:var(--accent)">Operating PBT (ex-OI)</td><td>55</td><td>89</td><td>60</td><td>133</td><td>190</td></tr>
+            <tr><td class="rowlabel">Other income % of PBT</td><td>37</td><td>35</td><td>33</td><td>50</td><td>30</td></tr>
+          </tbody>
+          <caption>Source: screener.in consolidated &amp; standalone. Operating PBT ex-OI is the honest earnings trend: 55 -&gt; 89 -&gt; 60 -&gt; 133 -&gt; 190 - real, day-rate-driven growth, but roughly half the level implied by peak reported PAT of 216.</caption>
+        </table>
+      </div>
+
+      <p><strong>Revenue and margin.</strong> The operating story is legitimate. Revenue compounded ~24% over three years and EBITDA margin expanded from 23% (FY24) to 35% (FY26) as older rigs re-contracted at materially higher day-rates - operating leverage on a fixed cost base. This is real and it is the bull case. It is also, by construction, cyclical: the same leverage that took margin to 35% will take it back down if ONGC re-prices the fleet lower (Explorer at USD 35k is the warning shot). Depreciation nearly doubling (INR 64 Cr -&gt; 151 Cr) reflects the Jindal Pioneer acquisition and rig capitalisation - a real cash cost of running an owned fleet that will keep rising.</p>
+
+      <p><strong>The consolidated-vs-standalone bridge is itself a signal.</strong> Note the two net-profit rows. In FY23-FY24 consolidated PAT was <em>below</em> standalone (by ~15 and ~63 Cr) - the offshore JVs were a drag. In FY25-FY26 they flipped to a ~INR 75 Cr and ~INR 38 Cr <em>contribution</em>. That ~INR 140 Cr swing is the offshore-JV rigs moving from idle/low-rate to re-contracted - a second, less visible layer of the same day-rate cycle, carried through an equity-method line rather than revenue. It cuts both ways: JV profitability can fall as fast as it rose.</p>
+
+      <p><strong>Return ratios.</strong> Reported ROCE is ~15-16% and ROE ~12.5% (FY26). But because ~30-50% of PBT is non-operating, the <em>operating</em> return on the rig capital employed is lower than the headline - a large, low-yielding investment book sits inside the capital base and inflates neither its own return nor the denominator's efficiency. Incremental ROCE on the FY24-25 rig capex (roughly INR 700+ Cr into fixed assets) is the number that matters, and it looks healthy <em>at current day-rates</em> - the entire question is whether current day-rates hold.</p>
+
+      <p><strong>Working capital.</strong> Debtor days have actually improved: 112 (FY24) -&gt; 90 (FY25) -&gt; 82 (FY26). ONGC is a slow but ultimately certain payer, and there is no channel-stuffing dynamic here (one customer, contracted day-rates). Working capital is not the risk in this business - the day-rate is.</p>
+
+      <p><strong>Cash flow.</strong> Cash conversion across the cycle is decent but lumpy. Reported operating cash flow (consolidated) was INR 64 Cr (FY22), -44 Cr (FY23), a very large 864 Cr (FY24), and 178 Cr (FY25). The FY24 figure looks anomalous relative to ~INR 89 Cr of PBT that year and is almost certainly distorted by working-capital and JV/rig-transaction mechanics - treat it with caution rather than as sustainable free cash. FY26 consolidated cash flow is not yet published (the FY26 annual report is not out as of Jul-2026). Aggregating FY22-FY25, operating cash comfortably exceeds cumulative PAT, so - unlike a working-capital-trap business - the cash does broadly follow the profit; the caveat is that the reported "profit" itself is inflated by non-cash mark-to-market other income.</p>
+
+      <p><strong>Balance sheet - the genuine differentiator.</strong> Borrowings have fallen from INR 294 Cr (FY24) to 164 Cr (FY25) to 93 Cr (FY26) against reserves of ~INR 1,806 Cr; the company is effectively net-cash once the investment book (~INR 220 Cr consolidated) is netted. This is the whole reason the Aban/Shiv-Vani base rate need not repeat: those firms died of leverage into a downcycle; Jindal enters any downcycle with almost none. Off-balance-sheet items (rig-import customs/service-tax disputes) sit in contingent liabilities and are covered in Section 6/9.</p>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section id="s6">
+      <div class="sectag">SECTION 06</div>
+      <h2>Earnings Quality &amp; Forensic Checks</h2>
+      <p class="lead">The books are clean and the cash is broadly real - this is not an accounting-fraud story. The earnings-quality problem is different and more subtle: the reported profit is a volatile blend of operating rig earnings, equity-method JV profit, mark-to-market on a financial portfolio, and one-off legal items - so the headline number and its ~8x multiple mislead on both level and trend.</p>
+
+      <div class="eqbar" title="Earnings quality: 6 of 10">
+        <div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div>
+      </div>
+      <p style="color:var(--muted);font-size:12px;margin-top:0">Earnings quality: <strong style="color:var(--amber)">6 / 10</strong> - clean audit, real cash generation and a strong balance sheet, marked down for heavy non-operating income, mark-to-market volatility, a booked-then-reversed legal gain, related-party fleet economics, and profit that sits partly outside the listed entity.</p>
+
+      <h3>Other-income dependence - the headline check</h3>
+      <p>Other income was <strong>50% of PBT in FY25</strong> and <strong>30% in FY26</strong>, and it is not stable "treasury yield" income - it is lumpy. The FY26 quarterly path (18, 121, -77, 18) decomposes into roughly USD-neutral base income of ~INR 18-23 Cr/quarter <em>plus</em> a ~INR 100 Cr ONGC arbitration award booked in Q2FY26 and reversed in Q3FY26 when ONGC took the matter to the Supreme Court and the auditors advised de-recognition. On top of that, a quoted investment portfolio produces fair-value (mark-to-market) gains and losses under Ind AS 109 that flow through the P&amp;L. The precise FY26 split of arbitration vs mark-to-market vs base income cannot be pinned from public quarterly notes alone and needs the FY26 annual report (not yet published) - flagged.</p>
+
+      <div class="flag"><div class="ft">Red flag - profit composition</div><p>Two distinct non-operating layers inflate the multiple: (1) a booked-then-reversed ~INR 100 Cr legal award still sub-judice at the Supreme Court - a binary item that could swing future quarters either way; and (2) mark-to-market on a financial book that has no connection to drilling. Neither is a repeatable operating earning. On operating PBT (ex-OI) of ~INR 190 Cr, the true operating P/E is closer to ~11-13x than the headline ~8x.</p></div>
+
+      <h3>Related-party transactions - the fleet is partly intra-group</h3>
+      <p>The clearest governance-flavoured earnings-quality flag is that <strong>Jindal Explorer, one of the ONGC rigs, is owned by sister-company Maharashtra Seamless Ltd</strong> and only "facilitated through" Jindal Drilling. Group-owned rigs routed through the listco, and an investment book that has historically included group/associate holdings, mean a slice of both revenue attribution and portfolio value is related-party in nature. This is not inherently abusive - it may be efficient use of group balance sheets - but it means an outside shareholder cannot cleanly separate Jindal Drilling's own economics from the D.P. Jindal group's. The exact quantum and pricing of related-party transactions needs the annual-report RPT schedule (Section 7).</p>
+
+      <h3>The rest of the forensic battery</h3>
+      <ul>
+        <li><strong>Receivables vs revenue:</strong> clean - debtor days fell 112 -&gt; 90 -&gt; 82 (FY24-26) while revenue grew, i.e. no receivable-funded growth. <span class="chip hit">Pass</span></li>
+        <li><strong>CWIP aging:</strong> negligible (INR 7 Cr, FY26) - no capital parked indefinitely in work-in-progress. <span class="chip hit">Pass</span></li>
+        <li><strong>Effective tax rate:</strong> volatile - 42% (FY24), 18% (FY25), 22% (FY26). The swings track the non-operating items (arbitration, JV profit, MTM) which carry different tax treatment; not a cash-tax-avoidance flag, but it makes normalised earnings harder to model. <span class="chip part">Watch</span></li>
+        <li><strong>Auditor:</strong> M/s Kanodia Sanyal &amp; Associates. The FY26 audited results are clean (no qualification surfaced). It is a mid-tier firm rather than a Big-4/large-national name - not a red flag in itself, but worth noting for a company with offshore JVs and a financial portfolio of this complexity. Tenure and any prior change should be checked against the annual report. <span class="chip part">Watch</span></li>
+        <li><strong>Contingent liabilities:</strong> offshore drillers characteristically carry sizeable customs / service-tax / GST disputes on rig imports and charter-hire, plus the live ONGC arbitration. The exact quantum as a % of net worth requires the annual-report schedule - flagged as an open item (Section 9). <span class="chip part">Open</span></li>
+        <li><strong>Cash yield on investments:</strong> the investment book is large but low-cash-yielding (much of its return comes through mark-to-market rather than dividends/interest), which is why it flatters book value more than it flatters cash earnings. <span class="chip part">Watch</span></li>
+      </ul>
+
+      <div class="flag"><div class="ft">Base-rate memory - the FY20 write-down</div><p>Do not forget FY20: the company reported a catastrophic net loss of ~INR 591 Cr (OPM -267%) - a large rig impairment / write-down as the previous cycle rolled over. That is the same asset class, the same customer and the same management now reporting 35% margins. The FY20 scar is the most important single piece of evidence that this is a cyclical, impairment-prone business, not a compounder - and it is why the balance-sheet de-leveraging since then is the thesis' load-bearing wall.</p></div>
+
+      <p><strong>Verdict.</strong> Earnings quality 6/10. The positives are genuine: clean audit, cash that broadly follows profit, falling receivable days, near-zero debt. The marks against are that the reported number is a poor proxy for repeatable operating earnings - inflated by non-operating income, carried partly in JVs and related-party rigs, and scarred by a prior cycle's impairment. An analyst who values this on reported EPS will overpay; one who values it on operating EBITDA and a normalised day-rate will not.</p>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section id="s7">
+      <div class="sectag">SECTION 07</div>
+      <h2>Promoter, Governance &amp; Capital Allocation</h2>
+      <p class="lead">Jindal Drilling belongs to the D.P. Jindal group - a real, cash-generative industrial house, and NOT one of the larger, better-known Jindal groups. The capital-allocation record is a study in conservatism verging on hoarding: no dilution in a decade, minimal dividends, and a large financial investment book held alongside the operating business.</p>
+
+      <h3>Which Jindal group this is</h3>
+      <p>This is the <strong>D.P. Jindal (Dharam Pal Jindal) group</strong>, whose flagship is <strong>Maharashtra Seamless Ltd</strong> (seamless steel pipes/tubes), alongside <strong>Jindal Pipes</strong>, <strong>Jindal Drilling</strong> and related entities. It must not be confused with the far larger O.P. Jindal lineage - Sajjan Jindal's JSW, Naveen Jindal's Jindal Steel &amp; Power, and Prithviraj Jindal's Jindal SAW - which are separate families and businesses. The D.P. Jindal group is smaller, older-economy and closely held. The single most important intra-group fact for this analysis is that <strong>Maharashtra Seamless owns the rig Jindal Explorer</strong>, operated for ONGC through Jindal Drilling - a live related-party link between the two listed companies (Sections 6, 10).</p>
+
+      <h3>Ownership and alignment</h3>
+      <ul>
+        <li><strong>Promoter holding 66.8%</strong>, raised ~+2 points into weakness in late 2025 (a genuine alignment signal). The largest promoter vehicles are Jindal Global Finance &amp; Investment (~17.4%) and Babul Holdings (~3.45%); named family members on the register include Raghav Jindal (~0.67%) and Dharam Pal Jindal (~0.63%).</li>
+        <li><strong>No equity dilution in a decade:</strong> share capital has been flat at ~INR 14 Cr throughout - no QIPs, no serial preferential allotments, no visible ESOP dilution. For minority holders this is a real positive; the per-share count is not being quietly inflated.</li>
+      </ul>
+
+      <h3>Capital allocation - conservative to a fault</h3>
+      <p>Over the last decade the company earned well (FY15-17), took a brutal impairment (FY18-20), then recovered strongly (FY22-26). What has it done with the cash?</p>
+      <ul>
+        <li><strong>Deleveraged aggressively</strong> - borrowings down to INR 93 Cr. Unambiguously good given the sector.</li>
+        <li><strong>Reinvested in rigs</strong> - the FY24-25 capex and the ~USD 75 mn Jindal Pioneer buy-in from the Singapore JV. Sensible if day-rates hold; the returns are cycle-dependent.</li>
+        <li><strong>Held a large financial investment book</strong> rather than returning cash - the portfolio (part quoted, historically including group/associate exposure) generates the lumpy mark-to-market other income that clouds the P&amp;L. This is the crux governance question: is surplus capital being productively deployed, or parked?</li>
+        <li><strong>Paid trivial dividends</strong> - payout of just 1-3% (FY26: ~INR 1/share, ~0.17% yield) despite ~INR 1,800 Cr of reserves and near-zero debt.</li>
+      </ul>
+
+      <div class="flag amberbox"><div class="ft">Governance watch - hoarding vs allocation</div><p>A near-debt-free company earning 15% ROCE that pays a token dividend and holds a big low-cash-yield investment portfolio is choosing balance-sheet accumulation over shareholder return. That conservatism is a genuine strength in a cyclical, impairment-prone industry - but it also means minority holders get the cyclical risk while the surplus capital compounds inside a closely-held group vehicle. The related-party rig and offshore-JV structure sharpen the question of whose interest the capital ultimately serves.</p></div>
+
+      <p><strong>Open items (not completed in this research pass, flagged):</strong> the detailed board/KMP roster and independence, any CFO/CS/auditor changes and reasons, promoter remuneration and any royalty/commission as % of PAT, the full related-party-transaction schedule (quantum and direction), and any promoter litigation or SEBI history. These should be read from the FY25 annual report and exchange disclosures before forming a final governance view.</p>
+    </section>
+
+    <!-- SECTION 8 -->
+    <section id="s8">
+      <div class="sectag">SECTION 08</div>
+      <h2>Management Guidance Scorecard</h2>
+      <p class="lead">Management guides in operational milestones, not financial targets - which makes it hard to hold to account, but also means there have been few explicit numeric misses. On the deliverable, physical commitments it tracks, the record is good.</p>
+
+      <div class="tw">
+        <table>
+          <thead><tr><th>Commitment / signal</th><th>Outcome</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Deploy Jindal Supreme with ONGC (re-contracted)</td><td>Deployed Oct-2024 at ~USD 88,859/day</td><td><span class="chip hit">Delivered</span></td></tr>
+            <tr><td>Secure Jindal Explorer ONGC charter</td><td>3-year charter from Nov-2025 (at a low USD 35,139/day)</td><td><span class="chip part">Delivered, low rate</span></td></tr>
+            <tr><td>Acquire Jindal Pioneer from the Singapore JV</td><td>Completed Mar-2025 (~USD 75 mn); deployed Mexico</td><td><span class="chip hit">Delivered</span></td></tr>
+            <tr><td>Reduce debt / strengthen balance sheet</td><td>Borrowings 294 -&gt; 164 -&gt; 93 Cr (FY24-26)</td><td><span class="chip hit">Delivered</span></td></tr>
+            <tr><td>"Expects to order new rigs" once contracts operationalise</td><td>Directional intent; no firm order placed</td><td><span class="chip part">Pending</span></td></tr>
+          </tbody>
+          <caption>A full eight-quarter concall-transcript scorecard (with credibility ratio and language-drift forensics) was not completed in this research pass - transcripts for Feb-2026, Nov-2025, Aug-2025, Jun-2025 and earlier are available and this table should be treated as indicative, not exhaustive.</caption>
+        </table>
+      </div>
+
+      <p><strong>Read.</strong> Credibility is moderate-and-honest rather than promotional: the team delivers the physical commitments (rig deployments, the Pioneer buy-in, deleveraging) and does not appear to over-promise financial numbers it then misses. The flip side is that the scarcity of quantitative guidance - on day-rate outlook, dividend policy, or what the investment book is for - means investors are left to model the two biggest swing factors (re-contracting rates and other income) with little management steer. On the hardest question, the whipsawing other income, management commentary is thin. Analyst coverage is light (no institutional sponsorship), consistent with the zero-DII ownership picture.</p>
+    </section>
+
+    <!-- SECTION 9 -->
+    <section id="s9">
+      <div class="sectag">SECTION 09</div>
+      <h2>Regulatory &amp; Company-Specific Risks</h2>
+      <p class="lead">Jindal's regulatory life is dominated by one counterparty - ONGC - which is simultaneously its only real customer, its de-facto price regulator, and now its adversary in a Supreme Court arbitration. The classic sector disputes (rig-import customs, service tax) sit underneath.</p>
+
+      <h3>The live matters</h3>
+      <ul>
+        <li><strong>ONGC arbitration at the Supreme Court.</strong> A ~USD 14.7 mn (~INR 100 Cr) arbitral award in Jindal's favour was recognised in Q2FY26 and reversed in Q3FY26 after ONGC appealed to the Supreme Court and the auditors advised de-recognition pending the outcome. A ruling either way is a discrete, binary P&amp;L event - upside if upheld, no further downside if struck (already reversed).</li>
+        <li><strong>ONGC's Apr-2026 tender cancellation.</strong> ONGC cancelled a four-jack-up tender citing a "~60% escalation" (quotes rising ~USD 35,600 to ~USD 56,200/day in nine months) and "legitimate concerns regarding potential collusive practices". This is not aimed at Jindal specifically, but it is a loud signal that the monopsony buyer will not simply pay up as the cycle tightens - a direct cap on the re-contracting upside.</li>
+        <li><strong>Rig-import customs / service-tax / GST disputes.</strong> Offshore drillers characteristically carry material contingent liabilities on customs duty and indirect tax on rig imports and charter-hire. The exact quantum and % of net worth for Jindal needs the annual-report contingent-liability schedule - flagged as an open item, not yet quantified in this note.</li>
+      </ul>
+
+      <h3>Procurement architecture (the rules of Jindal's only market)</h3>
+      <ul>
+        <li>ONGC hires rigs via open International Competitive Bidding, two-bid, e-procurement, on historically three-year (now sometimes five-year) firm charters, administered under the DGH / Ministry of Petroleum framework.</li>
+        <li>Since 01-Apr-2022, ONGC follows the DPIIT "Preference to Make in India" order: a Class-I local supplier (&ge;50% local content) can earn a purchase preference - a structural tailwind for a domestic operator versus pure foreign charterers, though the rig-specific local-content threshold under the current regime is not publicly confirmed.</li>
+      </ul>
+
+      <h3>Concentration &amp; rating</h3>
+      <div class="flag"><div class="ft">Concentration risk - the defining company-specific risk</div><p>One customer (ONGC), one basin (Indian Western Offshore), one product (jack-up rig-days), one currency (USD). Any adverse ONGC action - a tender cancellation, a rate reset, a payment delay, or the strategic decision to build its own rigs - hits the entire P&amp;L simultaneously with no offsetting leg. This is the highest-conviction risk in the whole file.</p></div>
+      <p><strong>Credit rating.</strong> The company is rated by CRISIL, with the latest rationale dated 15-May-2026 (prior actions 24-Sep-2025, 01-Jul-2024, 22-Aug-2023). The near-debt-free balance sheet and improved cash generation are supportive; the specific grade, outlook and the risks CRISIL flags in its rationale were not captured in this note's research pass and should be read directly from the CRISIL document (link in Sources) before relying on the rating - flagged as an open item.</p>
+
+      <h3>Regulatory tailwinds</h3>
+      <p>Not everything is a threat. ONGC's rising exploration capex (toward ~INR 12,000 Cr in FY27), the domestic-preference procurement regime, an energy-security mandate that keeps ONGC drilling through oil-price dips, and an ageing global rig fleet all support demand for an incumbent domestic operator. The tension in the whole thesis is that these tailwinds are real but the same buyer that provides them also controls the price.</p>
+    </section>
+
+    <!-- SECTION 10 -->
+    <section id="s10">
+      <div class="sectag">SECTION 10</div>
+      <h2>Scuttlebutt &amp; Unpublished Signals</h2>
+      <p class="lead">Lower-reliability, ground-level signals. The strongest reads here are from specialist offshore-drilling trade press (rig names, day-rates, mobilisations); the HR/employee signals are too thin to be informative. Treat this section as colour, not fact.</p>
+
+      <h3>Trade press and fleet chatter (medium-high reliability)</h3>
+      <p>Jindal's rigs are well covered by Rigzone, Splash247, Offshore Magazine and worldoil. Verified fleet references: Jindal Star (350' ILC), Jindal Pioneer (LeTourneau Super 116E), Discovery-I, Jindal Supreme, Jindal Explorer. Two ground-truths worth carrying: (1) <strong>Jindal Explorer is owned by sister-company Maharashtra Seamless</strong> and only "facilitated through" Jindal Drilling ("MSL's Jindal Explorer rig commences ONGC operations"), and its new charter rate (~USD 35,139/day) is low - a related-party economics flag; (2) Jindal Pioneer is deployed in Mexican waters on a bare-boat basis operated by Saipem (~USD 35-40k/day). Management commentary in the trade press has been directionally bullish - India's offshore programme "stays strong", and the company "expects to order new rigs" once fresh contracts turn operational - intent, not a firm order.</p>
+
+      <h3>Employee / hiring signals (low reliability - non-informative)</h3>
+      <p>Headcount data is not a usable signal here because rig crews are largely contracted, not on payroll (LinkedIn shows 201-500, the FY24 annual report ~182 direct employees, PitchBook ~649 - the dispersion is the point). The company's own careers page states it is "not currently recruiting". Glassdoor/AmbitionBox coverage is sparse and mildly positive (praise for HSE culture) but too thin to weigh. No verifiable senior hire/exit surfaced. Net: neutral, do not over-read.</p>
+
+      <h3>Retail / forum sentiment (medium for narrative, low for data)</h3>
+      <p>An active ValuePickr thread ("Beneficiary of a sustained offshore upcycle?") captures the two-way debate well. <strong>Bulls</strong> lean on the structural jack-up supply crunch, ONGC's energy-security-driven (price-insensitive) drilling, and the Jindal Supreme re-pricing from ~USD 40,700 to ~USD 88,859/day as proof of the operating leverage, against a single-digit forward P/E. <strong>Bears</strong> point to three rigs rolling off contracts in 2025-27 and re-pricing lower (Explorer's USD 35k vs the old USD 80k "operating" rate is the exhibit), ONGC cancelling tenders as a negotiating tactic, historically wild margins, and the ONGC-dependence and other-income distortion. The tone has cooled from euphoric toward bullish-with-caution as day-rate normalisation shows up - a useful sentiment marker in itself.</p>
+
+      <div class="uu"><div class="ut">What the scuttlebutt adds to the thesis</div><ul>
+        <li>The related-party ownership of Jindal Explorer, sourced from trade press and confirmable against group disclosures, is the single most useful "unpublished" signal - it materially colours how to read the fleet and the intra-group economics.</li>
+        <li>The absence of any smart-money footprint or hiring surge, and the cooling forum tone, are consistent with a stock that has already had its re-rating and is now debating the down-leg - not one in an early discovery phase.</li>
+      </ul></div>
+    </section>
+
+    <!-- SECTION 11 -->
+    <section id="s11">
+      <div class="sectag">SECTION 11</div>
+      <h2>External Headwinds &amp; Tailwinds</h2>
+      <p class="lead">The counter-intuitive point: Jindal has almost no direct crude sensitivity in the near term. Its rates are fixed in USD and contracted through FY27, so the real macro drivers are the re-contracting day-rate (a lagged function of crude and global supply) and the rupee.</p>
+
+      <h3>The macro drivers, honestly framed</h3>
+      <ul>
+        <li><strong>Crude (Brent) - indirect and lagged, not direct.</strong> There is no crude line in the P&amp;L. Crude bites only at two points: when contracts roll (re-contracting day-rates) and through ONGC's tender volume. ONGC's programme is relatively price-insensitive (national energy security), which dampens - but does not remove - the crude beta. Model a re-contracting/volume sensitivity, not a spot-crude one.</li>
+        <li><strong>USD/INR - a genuine tailwind.</strong> At ~95.5 (Jul-2026) the rupee is materially weaker than the ~83-86 of FY24-25, lifting INR-translated USD revenue. But both revenues and much of the cost base are USD-denominated - a partial natural hedge - so the benefit is real but smaller than a naive translation implies.</li>
+        <li><strong>Global jack-up cycle - the key headwind.</strong> Rates fell ~17% in 2025; Middle East averages went USD 108k (2023) -&gt; 92k (2024) -&gt; 90k (2025) -&gt; low-USD-80ks (2026 forecast). Saudi Aramco's suspension of ~36 jack-ups from Apr-2024 pushed ~40% of released units into the Far East / SE Asia, pressuring exactly the tier that competes for ONGC work. Offsetting: ~90% utilisation, an ageing fleet, a thin newbuild book, and Aramco now recalling a few rigs from early 2026.</li>
+      </ul>
+
+      <h3>Quantified sensitivity (order-of-magnitude)</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Sensitivity</th><th>Driver</th><th>Approx. earnings impact</th></tr></thead>
+          <tbody>
+            <tr><td>Day-rate, one rig</td><td>+USD 5,000/day (~350 days, 95.5 INR/USD)</td><td>~INR 16-17 Cr revenue, most drops to EBIT</td></tr>
+            <tr><td>Day-rate, whole fleet</td><td>+USD 5,000/day across ~5 rigs</td><td>~INR 84 Cr/year - huge vs ~INR 349 Cr EBITDA</td></tr>
+            <tr><td>Rupee</td><td>Re 1 move in USD/INR on ~USD 90-100 mn revenue</td><td>~INR 9-10 Cr revenue, partly offset by USD costs</td></tr>
+          </tbody>
+          <caption>Analyst estimates (order-of-magnitude). The takeaway: earnings are highly geared to the re-contracting day-rate in BOTH directions. Explorer's roll to USD 35k is the downside in action; a recovery of Star/Discovery-I toward the ~USD 80k "operating" tier is the upside optionality.</caption>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 12 -->
+    <section id="s12">
+      <div class="sectag">SECTION 12</div>
+      <h2>Triggers, Themes &amp; Government Schemes</h2>
+      <p class="lead">The order book is contracted through FY27, so the triggers are less about winning new work and more about the <em>price</em> of re-contracting existing rigs, a binary Supreme Court ruling, and ONGC's own strategic choices - including whether it starts to build its own rigs.</p>
+
+      <h3>Live order book and contract triggers</h3>
+      <ul>
+        <li><strong>Order book "solid through FY27", almost entirely ONGC.</strong> Near-term revenue is visible; the risk is at the re-pricing points, not the current run-rate.</li>
+        <li><strong>Jindal Explorer:</strong> new 3-year ONGC charter at ~USD 35,139/day, commenced Nov-2025 (related-party rig).</li>
+        <li><strong>Jindal Supreme:</strong> deployed Oct-2024, re-contracted materially higher (~USD 88,859/day) - the current margin engine.</li>
+        <li><strong>Jindal Star (~USD 42,750) and Discovery-I (~USD 46,907):</strong> older contracts moving into re-contracting windows in 2025-27 - the single biggest swing factor, up or down, against a softening global market.</li>
+        <li><strong>Jindal Pioneer:</strong> acquired from the Discovery Drilling (Singapore) JV for ~USD 75 mn (Mar-2025), deployed in Mexico - the FY26 capex/JV story.</li>
+        <li><strong>ONGC arbitration:</strong> a Supreme Court ruling on the ~USD 14.7 mn award is a discrete binary event.</li>
+      </ul>
+
+      <h3>Government / theme linkage - read carefully</h3>
+      <ul>
+        <li><strong>Tailwind:</strong> ONGC exploration capex guided from ~INR 10,000 Cr (FY26) toward ~INR 12,000 Cr (FY27, +20%), funding 100+ wells.</li>
+        <li><strong>Caveat 1:</strong> ONGC's headline USD 18-20 bn tender is for <em>deepwater</em> drillships/semis - NOT jack-ups - so it is largely outside Jindal's fleet.</li>
+        <li><strong>Caveat 2 (structural threat):</strong> ONGC plans to build 2 of its own jack-ups (~USD 500-550 mn) to replace ageing units. If extended, in-sourcing is a direct long-term threat to the third-party charter model.</li>
+        <li><strong>Atmanirbhar/indigenisation:</strong> a genuine narrative for a domestic private offshore driller, but it is a preference regime, not a cash subsidy.</li>
+      </ul>
+
+      <div class="flag amberbox"><div class="ft">Where the theme sits in its life-cycle</div><p>Maturing / fading, not early. The stock is a ~7-8 bagger since 2020 but has stalled over the last 12 months (price ~-2 to -12%, profit growth ~0%), the multiple has compressed to ~8x, and it trades around book. The market is emphatically NOT paying up for the offshore theme now - if anything it is de-rating on day-rate-normalisation fears. Crucially: the froth in this name is in the ownership structure (retail + prop churn), not in the valuation multiple.</p></div>
+
+      <h3>Trigger calendar - next four quarters</h3>
+      <div class="caltrack">
+        <div class="cal"><div class="cq">Q1FY27 (~Aug-26)</div><ul><li>Q1 print; first clean read on Explorer at USD 35k in the run-rate</li><li>Any new ONGC tender award / nomination</li></ul></div>
+        <div class="cal"><div class="cq">Q2FY27</div><ul><li>Re-contracting signals on Jindal Star / Discovery-I (rate = the swing factor)</li><li>ONGC Western Offshore TSC award flow</li></ul></div>
+        <div class="cal"><div class="cq">Q3FY27</div><ul><li>Possible Supreme Court movement on the ONGC arbitration (binary)</li><li>Progress on ONGC's own-jack-up build plan</li></ul></div>
+        <div class="cal"><div class="cq">Q4FY27 / FY27</div><ul><li>ONGC FY27 capex ramp (INR 12,000 Cr) tender volumes</li><li>FY26 annual report - RPT, contingent liabilities, other-income split</li></ul></div>
+      </div>
+    </section>
+
+    <!-- SECTION 13 -->
+    <section id="s13">
+      <div class="sectag">SECTION 13</div>
+      <h2>Shareholding, Positioning &amp; Flow</h2>
+      <p class="lead">The ownership picture is the tell that separates this from a cheap high-quality compounder: the promoter is buying, but there is no institutional anchor at all, and the "float" is churned by proprietary desks over a rapidly swelling retail base.</p>
+
+      <div class="tw">
+        <table>
+          <thead><tr><th>%</th><th>Jun-24</th><th>Sep-24</th><th>Dec-24</th><th>Mar-25</th><th>Jun-25</th><th>Sep-25</th><th>Dec-25</th><th>Mar-26</th></tr></thead>
+          <tbody>
+            <tr><td>Promoter</td><td>64.3</td><td>64.3</td><td>64.3</td><td>64.3</td><td>64.2</td><td>64.4</td><td style="color:var(--bull)">66.4</td><td style="color:var(--bull)">66.8</td></tr>
+            <tr><td>FII</td><td>0.3</td><td>0.5</td><td>0.6</td><td>2.1</td><td>2.1</td><td>2.0</td><td>0.9</td><td>0.6</td></tr>
+            <tr><td>DII</td><td>1.1</td><td>1.1</td><td>1.1</td><td>0.9</td><td>0.5</td><td>0.2</td><td style="color:var(--bear)">0.0</td><td style="color:var(--bear)">0.0</td></tr>
+            <tr><td>Public / retail</td><td>34.4</td><td>34.2</td><td>34.1</td><td>32.8</td><td>33.1</td><td>33.4</td><td>32.7</td><td>32.6</td></tr>
+            <tr><td class="rowlabel">Shareholders (000)</td><td>20.8</td><td>21.7</td><td>21.5</td><td>29.0</td><td>33.0</td><td>33.8</td><td>34.9</td><td>41.6</td></tr>
+          </tbody>
+          <caption>Source: screener.in / Trendlyne. Promoter +2.4 points in two quarters into weakness; FIIs round-tripped 0.3 -&gt; 2.1 -&gt; 0.6; DII and mutual funds now literally zero; retail holder count roughly doubled in eight quarters.</caption>
+        </table>
+      </div>
+
+      <h3>What the positioning says</h3>
+      <ul>
+        <li><strong>Promoter conviction (positive):</strong> promoter holding rose from 64.4% to 66.8%, roughly +2 points in a single quarter (Sep-&gt;Dec 2025), buying into price weakness - a genuine insider signal.</li>
+        <li><strong>Zero institutional anchor (negative):</strong> DII and mutual-fund ownership is literally 0.0%; FIIs bailed after a brief 2% spike; FII count fell 32 -&gt; 24. No professional money is willing to underwrite the day-rate cycle here.</li>
+        <li><strong>No smart-money footprint:</strong> no marquee investor (no Kacholia / Agrawal / Kedia); no single public shareholder above 1%. The largest holders after the promoter are group/associate bodies-corporate (e.g. Jindal Global Finance &amp; Investment ~17.4%, Babul Holdings ~3.45%) - i.e. still the promoter group.</li>
+        <li><strong>Retail froth in the base (caution):</strong> shareholders went ~18,000 (Mar-24) to 41,627 (Mar-26); the sub-INR 2 lakh retail slab alone is ~39,800 holders (~18% of equity). With institutions at zero, the register is overwhelmingly retail - a classic late-participation pattern in the shareholder base (distinct from the cheap multiple).</li>
+        <li><strong>Bulk deals are prop-desk churn, not conviction:</strong> the named counterparties over the last 12 months (Microcurves, Junomoneta Finsol, NK Securities, GRT Strategic, IRAGE, HRTI) are proprietary / algo / HFT desks trading intraday - do not read them as accumulation.</li>
+        <li><strong>Surveillance:</strong> not currently in ASM/GSM, but recurs - short-term ASM stints in Mar-2026 and long-term ASM Nov-2023 to Mar-2024. Periodic ASM = the exchanges repeatedly flag it for speculative volatility.</li>
+        <li><strong>Structure:</strong> not in F&amp;O; free float ~32.6% of ~INR 1,748 Cr (~INR 570 Cr); trading is bursty with intraday spikes to several times the 2-week average. Delivery % could not be confirmed (insufficient data), but the heavy prop presence implies it is plausibly low/volatile.</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 14 -->
+    <section id="s14">
+      <div class="sectag">SECTION 14</div>
+      <h2>Valuation</h2>
+      <p class="lead">The right lenses here are EV/EBITDA and P/B, not P/E. P/E is doubly misleading - it sits on cyclical-peak margins AND on profit that is ~30-50% non-operating. On the cleaner lenses, the stock is not "cheap" in the naive sense; it is priced roughly for a cycle that has already turned.</p>
+
+      <h3>Where it trades</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Multiple (FY26)</th><th>Value</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td>P/E (consolidated)</td><td>~8x</td><td>Flattered by other income; true operating P/E ~11-13x</td></tr>
+            <tr><td>EV/EBITDA</td><td>~4.5-5x</td><td>EV ~INR 1,620 Cr (mcap 1,748 less ~130 net cash) / EBITDA 349</td></tr>
+            <tr><td>P/B (consolidated)</td><td>~0.96x</td><td>CMP 603 vs BV 628 - below book</td></tr>
+            <tr><td>P/B (standalone)</td><td>~1.19x</td><td>vs standalone BV 507</td></tr>
+            <tr><td>Dividend yield</td><td>~0.17%</td><td>Token - no income support</td></tr>
+          </tbody>
+          <caption>An EV/EBITDA of ~4.5-5x on peak-cycle EBITDA is a trough-type multiple - the market is not extrapolating the 35% margin. Below-book with net cash + an investment portfolio is the genuine downside cushion.</caption>
+        </table>
+      </div>
+
+      <h3>Reverse DCF - what the price already assumes</h3>
+      <p>Work backwards from EV ~INR 1,620 Cr. To justify it at a mid-cycle EV/EBITDA of ~5-6x requires only <strong>~INR 270-320 Cr of sustainable EBITDA</strong> - well below the current INR 349 Cr and barely above FY25's INR 241 Cr. In other words, at 603 the market is <strong>already pricing day-rate normalisation</strong>: it implies mid-cycle EBITDA materially below today's peak, roughly zero long-term growth, and no credit for the lumpy other income. This is the crucial finding - the low multiple is not the market missing a growth story; it is the market rationally discounting the down-leg of a cycle. The debate is therefore not "why is it so cheap?" but "is the implied normalisation too harsh, about right, or not harsh enough?"</p>
+
+      <h3>Scenario valuation</h3>
+      <p>Anchored on normalised (mid-cycle) operating EBITDA and book value, with the investment book / net cash as downside support.</p>
+      <div class="scengrid">
+        <div class="scen bear"><div class="st"><span>Bear</span><span>30%</span></div><div class="sp">360</div><div class="su">~0.55x book / ~4x mid EBITDA</div><p>Day-rates normalise hard (Star &amp; Discovery-I re-price toward USD 35-40k), EBITDA falls to ~INR 250 Cr, ONGC in-sources / cancels, other income reverses, arbitration lost. Market de-rates a single-customer, no-institution cyclical to well below book. -40%.</p></div>
+        <div class="scen base"><div class="st"><span>Base</span><span>45%</span></div><div class="sp">620</div><div class="su">~1x book / ~8x normalised EPS</div><p>Rates plateau, blended fleet ~USD 50-55k, EBITDA holds ~INR 300-330 Cr, JV contributes ~INR 30-40 Cr. Market keeps ~book value and ~8x normalised earnings. Roughly the current price - fairly valued. +3%.</p></div>
+        <div class="scen bull"><div class="st"><span>Bull</span><span>25%</span></div><div class="sp">950</div><div class="su">~1.5x book / ~10x + book crystallises</div><p>Scarcity wins: Star/Discovery-I re-price up toward the USD 80k tier, EBITDA to ~INR 450 Cr, arbitration upheld, and the investment book value is recognised. Re-rate on a proven survivor. +58%.</p></div>
+      </div>
+      <p style="color:var(--muted);font-size:12.5px"><strong>Probability-weighted fair value ≈ INR 625</strong> (0.30 x 360 + 0.45 x 620 + 0.25 x 950) - essentially the current price. On the evidence, Jindal Drilling is close to fairly valued: the cheap headline multiple is offset by a cyclical peak and non-operating earnings, while the below-book, net-cash, promoter-buying features cushion the downside. The distribution is wide and skewed by a single variable - the next ONGC day-rate.</p>
+    </section>
+
+    <!-- SECTION 15 -->
+    <section id="s15">
+      <div class="sectag">SECTION 15</div>
+      <h2>Pre-Mortem &amp; Anti-Thesis</h2>
+      <p class="lead">Assume it is three years from now and the position has lost half its value. Here is the short-seller's post-mortem, argued sincerely.</p>
+
+      <h3>The short case</h3>
+      <ol>
+        <li><strong>You bought peak earnings at peak margins.</strong> 35% EBITDA margin and INR 349 Cr EBITDA were the top of a day-rate cycle that had already begun rolling over (global rates -17% in 2025). Normalised margins are closer to 25%, and you paid ~5x EV on the peak, which is ~7x on the normal.</li>
+        <li><strong>The multiple was a mirage.</strong> The "8x P/E" was flattered by ~30-50% non-operating income - a booked-then-reversed arbitration award and mark-to-market on a financial book. The real operating P/E was ~12x for a single-customer cyclical - not cheap at all.</li>
+        <li><strong>The monopsony crushed you.</strong> ONGC cancelled tenders over "60% escalation", negotiated Star and Discovery-I down at re-contracting, and started building its own jack-ups. One customer with the pricing whip is a structural, not a temporary, ceiling.</li>
+        <li><strong>A rig got impaired again.</strong> As day-rates fell, an ageing rig's carrying value was written down - exactly as in FY20 (-INR 591 Cr). The asset base is impairment-prone the moment the cycle turns.</li>
+        <li><strong>The capital was never yours.</strong> A token dividend, a big investment book with related-party exposure, one rig owned by a sister company, and a slice of profit in offshore JVs - surplus cash compounded inside a closely-held group, not returned to minorities.</li>
+        <li><strong>No one caught you.</strong> Zero DII/MF ownership, no marquee holder, a register that is 60%+ retail with prop desks churning the float - when sentiment turned there was no institutional bid to cushion the fall, and recurring ASM flags warned of exactly that.</li>
+      </ol>
+
+      <h3>Thesis-killers - specific, observable</h3>
+      <ul>
+        <li>Jindal Star or Discovery-I re-contracts below ~USD 45,000/day (confirms the down-leg).</li>
+        <li>ONGC firms up its own-jack-up build programme or repeatedly cancels/renegotiates third-party tenders (structural in-sourcing).</li>
+        <li>Any rig impairment or write-down appears in results (the FY20 pattern repeats).</li>
+        <li>Other income turns persistently negative (MTM losses) and/or the Supreme Court strikes the arbitration for good.</li>
+        <li>Promoter stops buying or starts selling; or cash is deployed into group entities rather than the core / shareholders.</li>
+      </ul>
+
+      <h3>Key monitorables - track every quarter</h3>
+      <div class="mongrid">
+        <div class="mon"><span class="dot a"></span><div><div class="mk">Next re-contract day-rate</div><div class="mv">Bad if &lt; USD 45k; good if &gt; USD 60k</div></div></div>
+        <div class="mon"><span class="dot a"></span><div><div class="mk">EBITDA margin</div><div class="mv">Watch below 28%; alarm below 25%</div></div></div>
+        <div class="mon"><span class="dot a"></span><div><div class="mk">Other income % of PBT</div><div class="mv">Quality flag if &gt; 40%</div></div></div>
+        <div class="mon"><span class="dot g"></span><div><div class="mk">Promoter holding</div><div class="mv">66.8% - falling would break the alignment signal</div></div></div>
+        <div class="mon"><span class="dot g"></span><div><div class="mk">Net debt</div><div class="mv">Near-zero - rising = re-leveraging risk</div></div></div>
+        <div class="mon"><span class="dot a"></span><div><div class="mk">Dividend payout</div><div class="mv">&lt;5% = capital still being hoarded</div></div></div>
+        <div class="mon"><span class="dot g"></span><div><div class="mk">ONGC receivable days</div><div class="mv">82 - watch above 100</div></div></div>
+        <div class="mon"><span class="dot r"></span><div><div class="mk">ASM/GSM &amp; arbitration</div><div class="mv">ASM re-entry / SC ruling = event risk</div></div></div>
+      </div>
+
+      <div class="flag amberbox"><div class="ft">Base-rate check</div><p>The base rate for "asset-heavy offshore driller at cyclical-peak margins on a low multiple" is unkind: it usually resolves as a value trap when day-rates roll (Aban Offshore, Shiv-Vani both blew up at the last top). The one structural reason Jindal need not follow them into the grave is that it has removed the cause of death - leverage. Borrowings of INR 93 Cr against INR 1,800 Cr of reserves is what converts "value trap" into "survivable deep-cyclical". That single fact is the hinge of the entire investment debate.</p></div>
+    </section>
+
+    <!-- SECTION 16 -->
+    <section id="s16">
+      <div class="sectag">SECTION 16</div>
+      <h2>Investment Pitch</h2>
+      <p class="lead">No rating. Two sincere cases, and the one line that frames the bet.</p>
+
+      <div class="two">
+        <div class="box buy">
+          <h4>The 90-second pitch to buy</h4>
+          <p>India's largest private offshore driller, riding a real jack-up upcycle from a fortress balance sheet - the one thing the last cycle's casualties (Aban, Shiv-Vani) lacked. FY26 revenue INR 997 Cr, EBITDA INR 349 Cr at 35%, borrowings down to INR 93 Cr, and it trades at ~5x EV/EBITDA and around book, with net cash plus a INR 220 Cr investment portfolio cushioning the downside. The promoter is buying (+2 points into weakness), there is no dilution, and a structurally scarce global jack-up fleet gives genuine re-pricing optionality - Jindal Supreme already jumped from USD 40k to USD 89k. With Star and Discovery-I due to re-contract and a Supreme Court arbitration that could restore ~INR 100 Cr, you are paid to own a survivor that the market has priced as if the cycle is already over.</p>
+        </div>
+        <div class="box sell">
+          <h4>The 90-second pitch to exit / avoid</h4>
+          <p>This is peak earnings at peak margins in a cycle that has turned - global day-rates fell 17% in 2025 and Jindal Explorer just re-contracted DOWN to USD 35k. The 8x P/E is a mirage: strip the ~INR 100 Cr booked-then-reversed arbitration and the mark-to-market on a financial book and the real operating multiple is ~12x for a company with one customer that is actively fighting rate escalation (Apr-2026 tender cancellation) and planning to build its own rigs. Profit sits partly in offshore JVs and on a related-party rig; capital is hoarded in investments rather than returned; and there is no institutional anchor - zero DII/MF, a retail base that doubled, and prop desks churning the float. The FY20 impairment (-INR 591 Cr) shows exactly how this ends when rates roll and a rig gets written down. If Star or Discovery-I re-prices low, the earnings and the multiple de-rate together.</p>
+        </div>
+      </div>
+
+      <p><strong>Time horizon.</strong> 2-3 years - one full turn of the day-rate cycle. The thesis resolves at the next two ONGC re-contracting events and the Supreme Court arbitration, not on any quarterly print.</p>
+
+      <p class="pull">This is a bet on <strong>the last leveraged-free Indian offshore driller surviving and compounding a jack-up upcycle</strong>, priced as if <strong>the cycle has already peaked and the non-operating income is worthless</strong>, and it breaks if <strong>ONGC re-prices the fleet down as global day-rates normalise and a rig is impaired the way one was in FY20</strong>.</p>
+    </section>
+
+    <footer>
+      <h3>Sources</h3>
+      <ul class="srclist">
+        <li><strong>Primary - financials:</strong> screener.in Jindal Drilling consolidated &amp; standalone (P&amp;L, balance sheet, cash flow, quarterly results, shareholding), data as of Q4FY26 (Mar-2026), accessed 13-Jul-2026.</li>
+        <li><strong>Primary - filings:</strong> BSE/NSE audited results and announcements; Annual Reports FY2022-FY2025 (BSE corpfiling); FY2026 audited results (announced ~23-May-2026). FY2026 annual report not yet published as of 13-Jul-2026. Auditor: M/s Kanodia Sanyal &amp; Associates.</li>
+        <li><strong>Primary - credit rating:</strong> CRISIL rating rationales dated 15-May-2026, 24-Sep-2025, 01-Jul-2024, 22-Aug-2023 (grade / flagged risks not captured in this pass - read directly).</li>
+        <li><strong>Primary - concalls:</strong> earnings-call transcripts &amp; presentations Feb-2026, Nov-2025, Aug-2025, Jun-2025 and earlier (available via screener/BSE; full scorecard not exhaustively parsed).</li>
+        <li><strong>Primary - regulatory:</strong> MoPNG (DGH mandate, Make-in-India / local-content); DPIIT PPP-MII Order 2017 (rev. 2020); sample ONGC rig NIT (ICB, two-bid, 3-yr charter).</li>
+        <li><strong>Secondary - contracts &amp; ONGC:</strong> Indianmasterminds, Informist (Explorer USD 35,139 charter; Pioneer USD 75 mn buy-in); Business Today (ONGC FY27 capex ~INR 12,000 Cr); Construction World (ONGC own-jack-up plan); PSUWatch, Maritime-Executive (Apr-2026 four-rig tender cancellation, "~60% escalation").</li>
+        <li><strong>Secondary - market/flow:</strong> Trendlyne (shareholding, bulk/block deals, ASM history); ValuePickr thread; specialist trade press (Rigzone, Splash247, Offshore Magazine, worldoil, Westwood) for fleet, day-rates and Saudi Aramco suspensions; exchangerates.org.uk (USD/INR ~95.5).</li>
+      </ul>
+      <div class="disc"><strong>Claims flagged as unverified / open in this note:</strong> the precise FY26 split of other income (arbitration vs mark-to-market vs base) pending the FY26 annual report; contingent-liability quantum as % of net worth; the CRISIL grade/outlook and its flagged risks; detailed board/KMP roster, promoter remuneration and the full related-party-transaction schedule; the ~88%/12% segment revenue mix (estimated - not cleanly disclosed); individual peer valuation multiples; delivery % / clean ADV. The FY24 consolidated operating cash flow of INR 864 Cr (per screener) looks anomalous vs ~INR 89 Cr PBT and should be reconciled against the annual report before use. This research pass was partially interrupted; several forensic items rest on primary-source starts that were not fully completed and are flagged as such throughout.<br><br><strong>Disclaimer.</strong> Buy-side-style research note for information and education only. NOT investment advice, NOT a recommendation, and NOT a solicitation to buy or sell. No Buy/Sell/Hold rating is expressed anywhere by design. The author may have no position. Figures are drawn from third-party sources believed reliable but not independently audited; verify against primary filings before acting. Markets are risky; do your own work.</div>
+      <div class="gen">Generated 13-Jul-2026 &middot; Data as of Q4/FY26 (Mar-2026) &middot; All amounts INR crore unless stated &middot; Buy-side deep dive, not a recommendation</div>
+    </footer>
+  </main>
+</div>
+<script>
+  var prog=document.getElementById('progress');
+  var secs=Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var links=Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  function onScroll(){
+    var st=window.scrollY||document.documentElement.scrollTop;
+    var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+    prog.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=null;
+    for(var i=0;i<secs.length;i++){
+      if(secs[i].getBoundingClientRect().top<=140) cur=secs[i].id;
+    }
+    links.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href')==='#'+cur);
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  (function(){
+    var t=document.getElementById('ratetog');
+    if(!t)return;
+    var KEY='jindrill_ratings_hidden';
+    function apply(hidden){
+      document.body.classList.toggle('badges-off',hidden);
+      t.classList.toggle('on',!hidden);
+      t.querySelector('.st').textContent=hidden?'Off':'On';
+    }
+    var hidden=false;
+    try{hidden=localStorage.getItem(KEY)==='1';}catch(e){}
+    apply(hidden);
+    t.addEventListener('click',function(){
+      hidden=!hidden;
+      try{localStorage.setItem(KEY,hidden?'1':'0');}catch(e){}
+      apply(hidden);
+    });
+  })();
+</script>
+</body>
+</html>
