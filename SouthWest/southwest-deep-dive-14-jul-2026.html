@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>South West Pinnacle Exploration - Deep Dive - 14 Jul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#ffb000;
+    --bg:#05070a;
+    --card:#0a0e13;
+    --card2:#0b1017;
+    --border:#182029;
+    --border2:#243244;
+    --text:#c3ceda;
+    --bright:#eef4fa;
+    --muted:#647689;
+    --dim:#3a4756;
+    --bull:#23d18b;
+    --bear:#ff5c57;
+    --amber:#ffb000;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background-color:var(--bg);
+    color:var(--text);
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    font-size:14px;
+    line-height:1.6;
+    font-variant-numeric:tabular-nums;
+    background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+    background-size:34px 34px;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.955;z-index:-1}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(1100px 520px at 78% -8%,rgba(255,176,0,.05),transparent 60%)}
+  ::selection{background:rgba(255,176,0,.25);color:#fff}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .mono{font-variant-numeric:tabular-nums}
+  h1,h2,h3,h4,.fr{font-family:inherit}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:#070a0e}
+  ::-webkit-scrollbar-thumb{background:#1c2733;border:2px solid #070a0e}
+  ::-webkit-scrollbar-thumb:hover{background:#2a3a4a}
+  #progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:1000;box-shadow:0 0 8px rgba(255,176,0,.6)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .layout{display:flex;gap:36px;max-width:1340px;margin:0 auto;padding:0 26px}
+  .toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:214px;padding:30px 0;flex-shrink:0;font-size:11.5px}
+  .toc ol{list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;margin:1px 0}
+  .toc a{display:block;color:var(--muted);padding:5px 10px;border-left:2px solid var(--border);line-height:1.3;text-transform:uppercase;letter-spacing:.03em}
+  .toc a::before{content:counter(t,decimal-leading-zero) " ";color:var(--accent);opacity:.6}
+  .toc a.active{color:var(--bright);border-left-color:var(--accent);background:linear-gradient(90deg,rgba(255,176,0,.07),transparent)}
+  .toc a:hover{color:var(--bright);text-decoration:none}
+  .toc .toctitle{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);padding:0 10px 11px;border-bottom:1px solid var(--border);margin-bottom:10px}
+  .toc .toctitle::before{content:"● "}
+  .content{flex:1;min-width:0;padding-bottom:100px}
+  @media(max-width:960px){.toc{display:none}.layout{padding:0 16px}}
+  .hero{padding:52px 0 34px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:inline-block;border:1px solid rgba(255,176,0,.4);padding:4px 10px}
+  .hero h1{font-size:52px;font-weight:800;line-height:1.0;letter-spacing:-.01em;margin-bottom:14px;text-transform:uppercase;color:var(--bright)}
+  .hero h1::after{content:"_";color:var(--accent);animation:blink 1.1s steps(1) infinite;font-weight:800}
+  @keyframes blink{50%{opacity:0}}
+  .hero .sub{font-size:12.5px;color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
+  .hero .desc{color:var(--text);max-width:680px;margin-top:14px;font-size:13.5px;line-height:1.65}
+  @media(max-width:640px){.hero h1{font-size:34px}}
+  .scenbar{margin:32px 0 4px}
+  .track{position:relative;height:12px;background:linear-gradient(90deg,var(--bear),var(--amber) 48%,var(--bull));margin:30px 0 8px}
+  .track .cmp{position:absolute;top:-8px;width:2px;height:28px;background:var(--bright)}
+  .track .cmp::after{content:attr(data-lbl);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--bright);white-space:nowrap}
+  .track .tick{position:absolute;top:18px;transform:translateX(-50%);font-size:10.5px;color:var(--muted);white-space:nowrap;text-align:center}
+  .scenrow{display:flex;justify-content:space-between;gap:16px;font-size:11.5px;color:var(--muted);margin-top:46px}
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:28px 0}
+  .stat{background:var(--card);border:1px solid var(--border);padding:13px 14px}
+  .stat .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .stat .v{font-size:21px;font-weight:700;margin-top:6px;color:var(--bright)}
+  .stat .n{font-size:11px;color:var(--muted);margin-top:3px}
+  .v.bull{color:var(--bull)}.v.bear{color:var(--bear)}.v.amber{color:var(--amber)}
+  section{padding:46px 0 6px;border-top:1px solid var(--border);position:relative}
+  section:first-of-type{border-top:none}
+  .ghost{display:none}
+  .sectag{position:relative;z-index:1;display:inline-block;font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;border:1px solid rgba(255,176,0,.35);padding:3px 9px}
+  .sectag::before{content:"// "}
+  section h2{position:relative;z-index:1;font-size:25px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px;line-height:1.18;text-transform:uppercase;color:var(--bright)}
+  section h3{font-size:14.5px;font-weight:700;margin:24px 0 9px;color:var(--bright);text-transform:uppercase;letter-spacing:.02em}
+  section h3::before{content:"> ";color:var(--accent)}
+  p{margin:11px 0;color:var(--text)}
+  strong{color:var(--bright);font-weight:700}
+  em{color:var(--text);font-style:italic}
+  ul,ol{margin:11px 0 11px 20px;color:var(--text)}
+  li{margin:6px 0}
+  li::marker{color:var(--accent)}
+  .lead{font-size:15px;color:var(--bright);line-height:1.6}
+  .tw{overflow-x:auto;margin:18px 0;border:1px solid var(--border)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px}
+  th,td{padding:7px 11px;text-align:right;border-bottom:1px solid var(--border);border-right:1px solid var(--border);white-space:nowrap}
+  th:last-child,td:last-child{border-right:none}
+  th:first-child,td:first-child{text-align:left}
+  thead th{background:var(--card2);color:var(--accent);font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;position:sticky;top:0}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover td{background:rgba(255,176,0,.04)}
+  td.mono,th.mono{font-variant-numeric:tabular-nums}
+  tbody td{color:var(--text);font-variant-numeric:tabular-nums}
+  tbody td:first-child{color:var(--bright)}
+  .rowlabel{color:var(--muted)}
+  caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:11px;padding:8px 11px;border-top:1px solid var(--border);background:var(--card2)}
+  .chip{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent}
+  .chip.hit{background:rgba(35,209,139,.1);color:var(--bull);border-color:rgba(35,209,139,.4)}
+  .chip.miss{background:rgba(255,92,87,.1);color:var(--bear);border-color:rgba(255,92,87,.4)}
+  .chip.over{background:rgba(255,176,0,.1);color:var(--accent);border-color:rgba(255,176,0,.4)}
+  .chip.part{background:rgba(255,176,0,.08);color:var(--amber);border-color:rgba(255,176,0,.3)}
+  .badge{display:inline-block;font-size:9.5px;font-weight:700;padding:3px 9px;letter-spacing:.06em;text-transform:uppercase;border:1px solid transparent}
+  .b-strong{background:rgba(35,209,139,.12);color:var(--bull);border-color:rgba(35,209,139,.4)}
+  .b-mod{background:rgba(255,176,0,.12);color:var(--amber);border-color:rgba(255,176,0,.4)}
+  .b-weak{background:rgba(255,92,87,.12);color:var(--bear);border-color:rgba(255,92,87,.4)}
+  .b-none{background:rgba(100,118,137,.12);color:var(--muted);border-color:rgba(100,118,137,.4)}
+  .flag{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--bear);padding:13px 17px;margin:16px 0}
+  .flag .ft{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bear);margin-bottom:5px}
+  .flag .ft::before{content:"! "}
+  .flag p{color:var(--text);font-size:12.5px;margin:0}
+  .green{border-left-color:var(--bull)}
+  .green .ft{color:var(--bull)}
+  .amberbox{border-left-color:var(--amber)}
+  .amberbox .ft{color:var(--amber)}
+  .moatgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .moat{background:var(--card);border:1px solid var(--border);padding:15px}
+  .moat .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
+  .moat .mh .mn{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright)}
+  .moat p{font-size:12px;margin:6px 0 0;color:var(--muted)}
+  .scengrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .scen{background:var(--card);border:1px solid var(--border);padding:16px;border-top:2px solid var(--muted)}
+  .scen.bull{border-top-color:var(--bull)}
+  .scen.base{border-top-color:var(--amber)}
+  .scen.bear{border-top-color:var(--bear)}
+  .scen .st{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+  .scen .sp{font-size:28px;font-weight:700;margin:7px 0 2px}
+  .scen.bull .sp{color:var(--bull)}.scen.base .sp{color:var(--amber)}.scen.bear .sp{color:var(--bear)}
+  .scen .su{font-size:11px;color:var(--muted)}
+  .scen p{font-size:12px;margin-top:9px}
+  .mongrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:18px 0}
+  .mon{background:var(--card);border:1px solid var(--border);padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
+  .dot{width:8px;height:8px;margin-top:6px;flex-shrink:0}
+  .dot.r{background:var(--bear);box-shadow:0 0 6px rgba(255,92,87,.6)}
+  .dot.a{background:var(--amber);box-shadow:0 0 6px rgba(255,176,0,.6)}
+  .dot.g{background:var(--bull);box-shadow:0 0 6px rgba(35,209,139,.6)}
+  .mon .mk{font-size:12px;color:var(--bright);font-weight:500}
+  .mon .mv{font-size:11px;color:var(--muted);margin-top:2px}
+  .eqbar{display:flex;gap:4px;margin:14px 0}
+  .eqseg{flex:1;height:24px;background:var(--border)}
+  .eqseg.on{background:var(--accent);box-shadow:0 0 10px rgba(255,176,0,.35)}
+  .caltrack{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+  .cal{background:var(--card);border:1px solid var(--border);padding:13px}
+  .cal .cq{font-size:11px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+  .cal ul{margin:8px 0 0 15px;font-size:12px}
+  .cal li{margin:5px 0;color:var(--muted)}
+  .pull{font-size:17px;font-weight:500;line-height:1.5;color:var(--bright);border-left:3px solid var(--accent);padding:4px 0 4px 20px;margin:26px 0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .box{background:var(--card);border:1px solid var(--border);padding:17px}
+  .box h4{font-size:13px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);font-weight:700}
+  .box.buy{border-top:2px solid var(--bull)}
+  .box.sell{border-top:2px solid var(--bear)}
+  .box p,.box li{font-size:12.5px}
+  footer{border-top:1px solid var(--border);padding:36px 0 60px;margin-top:56px;color:var(--muted);font-size:12.5px}
+  footer h3{color:var(--bright);margin-bottom:12px;text-transform:uppercase;letter-spacing:.03em;font-size:14px;font-weight:700}
+  footer h3::before{content:"> ";color:var(--accent)}
+  footer .gen{font-size:10.5px;margin-top:20px;color:var(--muted);letter-spacing:.02em}
+  .srclist{list-style:none;margin-left:0}
+  .srclist li{margin:6px 0;font-size:12px;padding-left:12px;border-left:1px solid var(--border)}
+  .disc{background:var(--card);border:1px solid var(--border);padding:13px 17px;font-size:11.5px;color:var(--muted);margin-top:22px}
+  .kv{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:6px 0;font-size:12.5px}
+  .kv:last-child{border-bottom:none}
+  .kv .kk{color:var(--muted)}
+  .kv .vv{color:var(--text)}
+  #ratetog{position:fixed;right:16px;bottom:16px;z-index:1001;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;cursor:pointer;user-select:none;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+  #ratetog:hover{border-color:var(--accent);color:var(--text)}
+  #ratetog .sw{position:relative;width:30px;height:15px;background:var(--border2);flex-shrink:0;transition:background .15s}
+  #ratetog .sw i{position:absolute;top:2px;left:2px;width:11px;height:11px;background:var(--muted);transition:.15s}
+  #ratetog.on .sw{background:rgba(255,176,0,.35)}
+  #ratetog.on .sw i{left:17px;background:var(--accent)}
+  #ratetog .st{min-width:22px;color:var(--muted)}
+  #ratetog.on .st{color:var(--accent)}
+  body.badges-off .badge{display:none}
+  @media(max-width:600px){#ratetog{right:10px;bottom:10px;font-size:10px;padding:7px 10px}}
+  @media print{#ratetog{display:none}}
+  .bm-intro{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:15px 20px;margin:18px 0;font-size:13.5px;color:var(--text);line-height:1.65}
+  .bm-intro .bl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .bm-intro p{margin:8px 0 0}
+  .vchain{display:grid;grid-template-columns:repeat(4,1fr);margin:16px 0;border:1px solid var(--border)}
+  .vstage{position:relative;background:var(--card);padding:13px 15px;border-right:1px solid var(--border)}
+  .vstage:last-child{border-right:none}
+  .vstage .vh{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+  .vstage .vh::before{content:"";width:7px;height:7px;background:var(--accent);flex-shrink:0}
+  .vstage ul{margin:0;list-style:none}
+  .vstage li{font-size:12px;color:var(--text);margin:4px 0;padding-left:12px;position:relative;line-height:1.45}
+  .vstage li::before{content:"-";position:absolute;left:0;color:var(--muted)}
+  .vstage li::marker{content:""}
+  .vstage:not(:last-child)::after{content:"\25B6";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:11px;z-index:2;background:var(--bg);line-height:1}
+  @media(max-width:760px){
+    .vchain{grid-template-columns:1fr}
+    .vstage{border-right:none;border-bottom:1px solid var(--border)}
+    .vstage:last-child{border-bottom:none}
+    .vstage:not(:last-child)::after{content:"\25BC";right:auto;left:50%;top:auto;bottom:-8px;transform:translateX(-50%)}
+  }
+  .seg{border:1px solid var(--border);margin:20px 0;background:linear-gradient(180deg,rgba(255,176,0,.025),transparent 42%)}
+  .seg .segh{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--border);background:var(--card2)}
+  .seg .segh .sn{font-size:14.5px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);min-width:0}
+  .seg .segh .sn .sx{color:var(--muted);font-weight:400;text-transform:none;font-size:11.5px;display:block;margin-top:3px;letter-spacing:0;line-height:1.4}
+  .seg .segh .mix{font-size:11px;color:var(--accent);border:1px solid rgba(255,176,0,.35);padding:3px 9px;white-space:nowrap;flex-shrink:0}
+  .seg .segbody{padding:15px 16px}
+  .seg .segbody>p{font-size:13px;margin:0 0 4px;color:var(--text)}
+  .seg .segbody>p.note{font-size:12px;color:var(--muted);margin-top:8px}
+  .iogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:14px 0 4px}
+  .io{background:var(--card);border:1px solid var(--border);padding:12px 13px}
+  .io .iok{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+  .io .iok::before{content:"";width:6px;height:6px;background:var(--accent);flex-shrink:0}
+  .io p{font-size:12px;margin:0;color:var(--text);line-height:1.5}
+  .mixbar{display:flex;height:36px;margin:16px 0 10px;border:1px solid var(--border);overflow:hidden;font-variant-numeric:tabular-nums}
+  .mixseg{display:flex;align-items:center;justify-content:center;font-size:10.5px;color:#05070a;font-weight:700;min-width:0;overflow:hidden;white-space:nowrap;border-right:1px solid rgba(5,7,10,.5)}
+  .mixseg:last-child{border-right:none}
+  .mixkey{display:flex;flex-wrap:wrap;gap:7px 16px;font-size:11px;color:var(--muted);margin-bottom:14px}
+  .mixkey span{display:flex;align-items:center;gap:6px}
+  .mixkey i{width:10px;height:10px;flex-shrink:0}
+  .uu{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--amber);padding:13px 17px;margin:16px 0}
+  .uu .ut{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:7px}
+  .uu .ut::before{content:"? "}
+  .uu ul{margin:6px 0 0 17px;font-size:12.5px;color:var(--text)}
+  .uu li{margin:6px 0;line-height:1.5}
+  .uu li::marker{color:var(--amber)}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<button id="ratetog" class="on" title="Show or hide the qualitative moat rating badges (Weak / Moderate / Strong / None)"><span class="tl">Ratings</span><span class="sw"><i></i></span><span class="st">On</span></button>
+<div class="layout">
+  <nav class="toc">
+    <div class="toctitle">South West Pinnacle</div>
+    <ol>
+      <li><a href="#s1">Industry &amp; Sector</a></li>
+      <li><a href="#s2">Business Model</a></li>
+      <li><a href="#s3">Competitive Landscape</a></li>
+      <li><a href="#s4">6 Cs Moat</a></li>
+      <li><a href="#s5">Financial Analysis</a></li>
+      <li><a href="#s6">Earnings Quality</a></li>
+      <li><a href="#s7">Promoter &amp; Governance</a></li>
+      <li><a href="#s8">Guidance Scorecard</a></li>
+      <li><a href="#s9">Regulatory &amp; Risk</a></li>
+      <li><a href="#s10">Scuttlebutt</a></li>
+      <li><a href="#s11">Headwinds/Tailwinds</a></li>
+      <li><a href="#s12">Triggers &amp; Schemes</a></li>
+      <li><a href="#s13">Shareholding &amp; Flows</a></li>
+      <li><a href="#s14">Valuation</a></li>
+      <li><a href="#s15">Pre-Mortem</a></li>
+      <li><a href="#s16">Investment Pitch</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="eyebrow">Buy-Side Deep Dive // Not a Recommendation</div>
+      <h1>South West Pinnacle Exploration</h1>
+      <div class="sub">NSE: SOUTHWEST&nbsp; &middot;&nbsp; BSE: 543986&nbsp; &middot;&nbsp; CMP INR 226&nbsp; &middot;&nbsp; 14-Jul-2026&nbsp; &middot;&nbsp; Data as of Q4/FY26 (Mar-2026), audited results filed 04-May-2026</div>
+      <p class="desc">India's largest organised private exploratory-drilling contractor - a 40-rig "picks-and-shovels" fleet drilling coal, minerals, coal-bed methane, groundwater and seismic for Reliance, Hindustan Zinc, Coal India and the state exploration agencies. FY26 profit roughly doubled on a genuine national exploration up-cycle and a resource-shortage pricing spike that management itself calls cyclical. The order book is over INR 760 Cr; the promoters just rotated market stock into cheap warrants; and the doubled profit converted to cash at only 0.37x. This note lays out the evidence and a two-way pitch - it issues no rating.</p>
+
+      <div class="scenbar">
+        <div class="track">
+          <div class="cmp" data-lbl="CMP 226" style="left:29%"></div>
+          <div class="tick" style="left:2%">Bear<br>155</div>
+          <div class="tick" style="left:33%">Base<br>235</div>
+          <div class="tick" style="left:98%">Bull<br>400</div>
+        </div>
+        <div class="scenrow"><span>12-24 month fair-value range, evidence-weighted (consolidated basis, fully diluted)</span><span>Downside -31% / Upside +77%</span></div>
+      </div>
+    </div>
+
+    <!-- EXEC SUMMARY -->
+    <div class="statgrid">
+      <div class="stat"><div class="k">FV Range (12-24m)</div><div class="v">155-400</div><div class="n">Bear / Base ~235 / Bull</div></div>
+      <div class="stat"><div class="k">Earnings Quality</div><div class="v amber">6.5 / 10</div><div class="n">Clean audit, weak cash conversion</div></div>
+      <div class="stat"><div class="k">Guidance Credibility</div><div class="v amber">Unproven</div><div class="n">First concall Oct-2025; 3 calls only</div></div>
+      <div class="stat"><div class="k">Moat Strength</div><div class="v amber">Narrow-Mod</div><div class="n">Prequal/accreditation, ~5-7yr</div></div>
+      <div class="stat"><div class="k">FY26 Revenue</div><div class="v">243 Cr</div><div class="n">+35% YoY; drilling +80% ex-coal-trade</div></div>
+      <div class="stat"><div class="k">FY26 PAT</div><div class="v">33 Cr</div><div class="n">+101% (consol); 31 s/a</div></div>
+      <div class="stat"><div class="k">P/E (FY26)</div><div class="v">~22x</div><div class="n">EV/EBITDA ~13x; ROCE ~19%</div></div>
+      <div class="stat"><div class="k">FY26 CFO / PAT</div><div class="v bear">0.37x</div><div class="n">Receivables ate the profit</div></div>
+    </div>
+
+    <div class="two">
+      <div class="box green" style="border-top:3px solid var(--bull)">
+        <h4>Top 3 Positives</h4>
+        <ul>
+          <li><strong>A real, multi-year exploration up-cycle and a fleet that is short of capacity.</strong> India explores &lt;10% of its geological potential and is now spending on it - a INR 34,300 Cr National Critical Mineral Mission, 1,200 GSI projects, commercial-coal MDO and Jal-Shakti aquifer work. SWPEL runs 40 of the country's ~145-150 exploration rigs at &gt;100% utilisation (it sub-contracts in 10+ more), which is why per-metre pricing and margins have jumped.</li>
+          <li><strong>A step-change order book with marquee, multi-year cover.</strong> Book is over INR 760 Cr (~3x revenue) after the INR 307 Cr Hindustan Zinc mineral-exploration award (4-year, largest ever) and a repeatedly-renewed Reliance CBM contract (latest extension INR 167 Cr). ROCE ~19% is best-in-class among listed oilfield/mining-services peers, and CRISIL upgraded the credit to BBB+/A2 on 10-Jul-2026.</li>
+          <li><strong>Free optionality the market is starting to notice.</strong> An 84-MT owned coal block (Jogeshwar, Jharkhand) with accredited-prospecting-agency status, targeting FY28 production at a claimed 40-45% IRR / ~46% EBITDA; plus an Oman copper-JV annuity and a critical-minerals theme the market is beginning to pay for.</li>
+        </ul>
+      </div>
+      <div class="box sell" style="border-top:3px solid var(--bear)">
+        <h4>Top 3 Risks</h4>
+        <ul>
+          <li><strong>The margin the price capitalises is admittedly cyclical.</strong> Management calls the current margins a "shortage of resources" condition and declines to lock a forward number. SWPEL itself is adding 4-8 rigs a year; as the industry fleet catches up, the resource-shortage pricing that drove OPM from ~19% to 24% can normalise - and ~22x earnings assumes it does not.</li>
+          <li><strong>Cash does not yet follow profit, and one client is a third of it.</strong> FY26 CFO was INR 12 Cr against INR 33 Cr PAT (0.37x) as receivables jumped INR 43 Cr and DSO went 152 to 175 days; FCF was ~ -INR 35 Cr in a heavy-capex year. Reliance is ~35% of revenue (guided 35-40%) and Hindustan Zinc is ~53% of the order book - concentration on both sides.</li>
+          <li><strong>Promoter self-dealing signals and no institutional validation.</strong> Promoters sold ~3.9% in the open market at ~INR 248 in Jun-2026, then converted 22.7 lakh self-allotted warrants at INR 132.20 in Jul-2026 - net buyers, but arbitraging their own cheap paper. Recurring related-party loan rotation (INR 9-15 Cr/yr), nil DII, token FII (0.76%), and a promoter who books gains into every rally.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pull">"This is a bet on India's exploration-drilling up-cycle - a 40-rig fleet at &gt;100% utilisation turning a &gt;INR 760 Cr order book and an owned coal block into durable earnings - priced at ~22x as if today's resource-shortage margins are permanent - and it breaks if rig supply catches up, Reliance or receivables disappoint, and profit keeps converting to cash at 0.37x."</p>
+
+    <!-- SECTION 1 -->
+    <section id="s1">
+      <div class="sectag">Section 01</div>
+      <h2>Industry &amp; Sector Analysis</h2>
+      <p class="lead">SWPEL sells "picks and shovels" into the drilling-intensive middle of India's sub-surface resource chain - a segment riding four simultaneous policy tailwinds (critical minerals, commercial coal, private-exploration reform and groundwater), against a structurally under-explored geology. The demand is real and early-cycle; the caveat is that the drilling layer captures a thin slice of the resource rent and the order flow is lumpy and receivable-heavy.</p>
+
+      <h3>The chain and where the money sits</h3>
+      <p>India's resource chain runs Reconnaissance (G4) -&gt; Prospecting (G3) -&gt; General exploration (G2) -&gt; Detailed exploration (G1) -&gt; Mine development -&gt; Extraction. SWPEL monetises the drilling-intensive G3-G1 middle (core drilling, CBM/groundwater test wells, seismic), which is skill- and rig-intensive but low in absolute capital versus mine ownership. The resource rent concentrates downstream at the owner (Coal India, lessees) and in large 20-30 year Mine-Developer-and-Operator (MDO) contracts; exploratory drilling is a low-ticket, high-skill service where <strong>rig fleet, geoscience talent and government pre-qualification are the moats</strong>. This is the structural reason a company that helps unlock crores of tonnes runs a modest INR 243 Cr revenue base.</p>
+
+      <h3>Structural under-exploration - the core thesis driver</h3>
+      <p>India is one of the least-explored large mineralised terrains on earth: it has explored only <strong>~10% of its Obvious Geological Potential and mined under 2%</strong>, and accounts for <strong>under 1% of the global mineral-exploration budget</strong> (National Mineral Exploration Policy 2016 framing; ~USD 12.8 bn world non-ferrous budget in 2023, S&amp;P Global - secondary). The formalisation of that gap is the multi-decade tailwind: every incremental rupee of exploration converts to drilling metreage. For field season 2025-26, GSI planned ~1,065 scientific programmes including ~402 mineral-development projects (Ministry of Mines - primary).</p>
+
+      <h3>Four policy engines firing at once</h3>
+      <div class="tw">
+      <table>
+        <caption>Policy tailwinds most aligned to SWPEL's drilling capabilities. Sources: PIB, Ministry of Mines / Coal / Jal Shakti, NMET AR 2023-24 (primary); ICRA, S&amp;P (secondary).</caption>
+        <thead><tr><th>Engine</th><th class="mono">Scale</th><th>What it funds</th><th>SWPEL relevance</th></tr></thead>
+        <tbody>
+          <tr><td>National Critical Mineral Mission (Cabinet 29-Jan-2025)</td><td class="mono">INR 34,300 Cr / 7 yr</td><td>1,200 GSI exploration projects to FY31; 30 critical minerals</td><td>Deep, precise core drilling on lithium/REE/copper - SWPEL's core skill</td></tr>
+          <tr><td>Commercial coal + Coal India MDO</td><td class="mono">1.05 BT FY25 -&gt; 1.5 BT FY30</td><td>~133 auctioned mines, ~INR 41,407 Cr committed capex; ~15+ CIL MDO projects</td><td>Coal exploration drilling for CMPDI; own coal block</td></tr>
+          <tr><td>MMDR Amendment 2023 - Exploration Licence</td><td class="mono">29 minerals</td><td>Private reconnaissance/prospecting; NPEA regime; 25% NMET incentive</td><td>New private explorers all need contract drillers</td></tr>
+          <tr><td>Jal Jeevan Mission / Atal Bhujal / NAQUIM</td><td class="mono">INR 3.6 lakh Cr + INR 6,000 Cr</td><td>Rural water, aquifer mapping, groundwater sustainability</td><td>Aquifer-mapping wells + hydrogeology (CGWB) - a new 15% of revenue</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Cycle position and value-capture caveat</h3>
+      <p><strong>Read: early-to-mid expansion, policy-driven.</strong> Formalisation (auction regime, NGDR transparency, rising GSI count), private entry (Exploration Licences 2023, 16 notified private agencies since 2022), a critical-minerals supercycle, and commercial-coal/MDO expansion are all inflecting together. The <strong>risk built into the industry structure</strong>: the drilling layer captures a thin slice of chain rent; order flow is tender-driven and lumpy; working capital is government-receivable-heavy; and the largest rent pools (royalty, MDO per-tonne fees) sit with parties SWPEL does not compete for. The bull case here is volume- and formalisation-led, not a pricing-power story - which makes the current margin spike (Section 5) the single most important thing to get right.</p>
+
+      <h3>Regulatory architecture</h3>
+      <p>Minerals sit under the Ministry of Mines (GSI, IBM, MECL, NMET, KABIL); coal under the Ministry of Coal (Coal India, CMPDI, Nominated Authority); CBM/oil-gas under MoPNG/DGH; groundwater under Jal Shakti (CGWB). The principal execution bottleneck between an auctioned block and drilling is <strong>environmental and forest clearance</strong> - a persistent lead-time and working-capital risk. The incumbent public driller, <strong>MECL</strong> (est. 1972, ~75 rigs), is capacity-constrained, which is precisely what pushes government exploration work toward organised private players such as SWPEL.</p>
+    </section>
+
+    <!-- SECTION 2 : BUSINESS MODEL -->
+    <section id="s2">
+      <div class="sectag">Section 02</div>
+      <h2>How South West Pinnacle Actually Makes Money</h2>
+
+      <div class="bm-intro">
+        <div class="bl">Briefing note - the company, end to end</div>
+        <p>Boss, here is what this company physically does. SWPEL is a <strong>fee-for-service exploratory-drilling contractor</strong> - it drills, logs, surveys and evaluates what lies underground for someone else who owns the resource. It runs a fleet of <strong>40 rigs</strong> (to 2,500 m depth), 3 seismic recording systems and geophysical logging units; 165+ projects and 32 lakh metres drilled over 19 years with zero lost-time injury. It does NOT (yet) own a producing mine. Revenue is per-metre (mineral) or day-rate (CBM / oil-and-gas); rigs are one-time capex, rods and bits are consumables, and skilled geoscientists are the scarce input.</p>
+        <p>Two audited segments - <strong>Drilling &amp; Exploration</strong> (effectively all of FY26 revenue) and <strong>Coal Mining &amp; Trading</strong> (the low-margin coal-trading line was exited in FY26; what remains is an owned coal block under development). Management describes the drilling business as several verticals - CBM, mineral, coal, aquifer, seismic, underground - plus an Oman international stream. The load-bearing fact for FY26: the core drilling business grew ~80% while a ~INR 45 Cr near-zero-margin coal-trading line was shed, so reported "+35%" understates a much sharper operating inflection.</p>
+      </div>
+
+      <h3>The value chain, one line</h3>
+      <div class="vchain">
+        <div class="vstage"><div class="vh">Inputs</div><ul>
+          <li>Drilling rigs (imported Schramm for CBM + domestic)</li>
+          <li>Drill rods, core bits, mud (consumables)</li>
+          <li>Diesel / fuel (the swing cost)</li>
+          <li>Geoscientists &amp; skilled crew (scarce)</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">What SWPEL does</div><ul>
+          <li>Mobilise rigs to remote sites</li>
+          <li>Core / RC / mud-rotary / CBM / seismic drilling</li>
+          <li>Geophysical logging, hydrogeology, reporting</li>
+          <li>Turnkey survey-to-geological-report</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">Customers</div><ul>
+          <li>Reliance (~35% of revenue), Oil India, ONGC - CBM/oil-gas</li>
+          <li>Hindustan Zinc, Vedanta, Hindustan Copper - minerals</li>
+          <li>CMPDI/Coal India, GSI, MECL - coal/mineral (govt)</li>
+          <li>CGWB / state water depts - aquifer</li>
+        </ul></div>
+        <div class="vstage"><div class="vh">End use</div><ul>
+          <li>Reserve definition for mines</li>
+          <li>CBM gas production wells</li>
+          <li>Drinking-water / aquifer sustainability</li>
+          <li>Feasibility for auctions &amp; MDO bids</li>
+        </ul></div>
+      </div>
+
+      <h3>Revenue mix - the shift is the story</h3>
+      <p>Segment reporting is two-line (Ind AS 108); the vertical split below is management-disclosed (investor PPT), not the audited note. The FY26 annual report was not yet published as of 14-Jul-2026, so vertical FY26 figures are directional. The clean, forward-looking proxy is the order-book mix at 31-Dec-2025 (INR 444.8 Cr book), shown in the bar.</p>
+      <div class="mixbar">
+        <div class="mixseg" style="width:30.6%;background:#ffb000">CBM 31%</div>
+        <div class="mixseg" style="width:30%;background:#e0951f">Mineral 30%</div>
+        <div class="mixseg" style="width:24.8%;background:#b98a3f">Aquifer 25%</div>
+        <div class="mixseg" style="width:10%;background:#7c6a45">Seismic 10%</div>
+        <div class="mixseg" style="width:4.6%;background:#4a4636">Coal 5%</div>
+      </div>
+      <div class="mixkey">
+        <span><i style="background:#ffb000"></i>CBM production drilling - INR 136 Cr</span>
+        <span><i style="background:#e0951f"></i>Mineral survey &amp; exploration - INR 134 Cr</span>
+        <span><i style="background:#b98a3f"></i>Aquifer mapping (CGWB) - INR 110 Cr</span>
+        <span><i style="background:#7c6a45"></i>Seismic / PST - INR 44 Cr</span>
+        <span><i style="background:#4a4636"></i>Seismic &amp; coal drilling - INR 20 Cr</span>
+      </div>
+      <p class="note" style="font-size:12px;color:var(--muted)">Note: before the INR 307 Cr Hindustan Zinc award is fully loaded - HZL pushes mineral to the dominant share by Mar-2026. Vertical revenue mix (FY25, PPT): CBM production ~30%, coal business ~25%, non-coal mineral ~15%, aquifer ~15%, coal exploration ~7%, seismic/PST ~6%, underground ~1%, 2D/3D seismic ~1%. By customer, <strong>Reliance is ~35% of FY26 revenue</strong> (guided 35-40%).</p>
+
+      <h3>Segment by segment</h3>
+
+      <div class="seg">
+        <div class="segh"><div class="sn">A - CBM (coal-bed methane) drilling<span class="sx">Exploration + production wells; the margin and cash engine, anchored by Reliance</span></div><div class="mix">~31% of book</div></div>
+        <div class="segbody">
+          <p>Two sub-lines: CBM exploration core wells (100+ completed, "highest in India") and CBM production drilling, where SWPEL drills and services the wells and the client produces the gas ("we are just service providers"). 200+ production wells to 1,200 m; two imported Schramm rigs, a third on order for Sep-Oct 2026.</p>
+          <div class="iogrid">
+            <div class="io"><div class="iok">Inputs</div><p>Imported Schramm CBM rigs, multi-lateral drilling tools, diesel, crew</p></div>
+            <div class="io"><div class="iok">Role</div><p>Day-rate production-hole drilling &amp; well servicing; claimed CBM-bidding market leader</p></div>
+            <div class="io"><div class="iok">Customers</div><p>Reliance (Sohagpur MP), Oil India, Dart Energy - RIL contract renewed repeatedly</p></div>
+            <div class="io"><div class="iok">End use</div><p>Unconventional gas production; adjacency to Underground Coal Gasification (talking to clients)</p></div>
+          </div>
+          <p class="note">07-Jul-2026: RIL extended the CBM production contract 15 months for INR 166.82 Cr, pushing the book past INR 760 Cr. This is the single-customer dependence: Reliance ~35% of revenue.</p>
+        </div>
+      </div>
+
+      <div class="seg">
+        <div class="segh"><div class="sn">B - Mineral (non-coal) core drilling<span class="sx">Wireline core, RC, DTH, large-diameter core to define metal reserves; the growth engine</span></div><div class="mix">~30% of book</div></div>
+        <div class="segbody">
+          <p>Turnkey survey-to-report on ferrous, non-ferrous, atomic and base-metal reserves, priced per metre. SWPEL is the principal contractor and even sub-contracts in 10+ third-party rigs to meet demand.</p>
+          <div class="iogrid">
+            <div class="io"><div class="iok">Inputs</div><p>Core/RC/mud-rotary rigs, bits, rods; geoscientists</p></div>
+            <div class="io"><div class="iok">Role</div><p>Per-metre core drilling; the price-spike beneficiary as rigs run &gt;100% utilised</p></div>
+            <div class="io"><div class="iok">Customers</div><p>Hindustan Zinc (INR 307 Cr, 4-yr), Vedanta, Hindustan Copper, Hindalco, Tata Steel; MECL/GSI-adjacent</p></div>
+            <div class="io"><div class="iok">End use</div><p>Reserve definition for mine plans, auctions, MDO bids</p></div>
+          </div>
+          <p class="note">Flagship: the INR 307 Cr HZL mineral-exploration contract (Rajasthan, ~INR 75 Cr/yr, revenue from FY27) is ~53% of the Mar-2026 book - a concentration in one new mega-contract whose pace is client-driven.</p>
+        </div>
+      </div>
+
+      <div class="seg">
+        <div class="segh"><div class="sn">C - Aquifer mapping / groundwater<span class="sx">Government-funded, higher-margin newcomer tied to CGWB / Jal Shakti</span></div><div class="mix">~25% of book</div></div>
+        <div class="segbody">
+          <p>Identify water-bearing formations; drill wells, install casing and digital water-level recorders; hydrogeology and groundwater modelling under the National Aquifer Mapping programme. Management calls it "a good margin"; &gt;INR 100 Cr of CGWB aquifer contracts secured.</p>
+          <div class="iogrid">
+            <div class="io"><div class="iok">Inputs</div><p>Water-well rigs, casing, DWLR sensors, hydrogeologists</p></div>
+            <div class="io"><div class="iok">Role</div><p>Drilling + aquifer characterisation + modelling (turnkey)</p></div>
+            <div class="io"><div class="iok">Customers</div><p>CGWB / state water-resource departments (government) - tender &amp; payment-cycle dependent</p></div>
+            <div class="io"><div class="iok">End use</div><p>Jal Jeevan / Atal Bhujal source sustainability, drinking water</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seg">
+        <div class="segh"><div class="sn">D - Seismic (2D/3D + Passive Seismic Tomography) &amp; underground<span class="sx">Sound-wave subsurface imaging + confined-site drilling; niche differentiators</span></div><div class="mix">~15% of book</div></div>
+        <div class="segbody">
+          <p>3 digital recording systems (~8,000+ channels, 1 Vibroseis); PST is a niche capability; first to win an integrated coal-exploration-plus-seismic project from CMPDI. Underground drilling scaled with 4 advanced rigs for a Hindustan Copper order.</p>
+          <div class="iogrid">
+            <div class="io"><div class="iok">Inputs</div><p>Seismic recorders, Vibroseis, underground rigs</p></div>
+            <div class="io"><div class="iok">Role</div><p>Subsurface imaging; confined-site boreholes</p></div>
+            <div class="io"><div class="iok">Customers</div><p>Coal &amp; oil-gas clients; Hindustan Copper - competes vs Alphageo, Asian Energy</p></div>
+            <div class="io"><div class="iok">End use</div><p>Coal/oil-gas mapping; deep-access mining, infra geotechnical</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seg">
+        <div class="segh"><div class="sn">E - Owned coal block + Oman JV<span class="sx">The optionality verticals - not in current numbers</span></div><div class="mix">FY28+</div></div>
+        <div class="segbody">
+          <p><strong>Coal block:</strong> Jogeshwar &amp; Khas Jogeshwar (Jharkhand), 2.66 sq km, <strong>84 MT geological reserves</strong>, W-IV grade; notified an accredited prospecting agency by the Ministry of Coal (Gazette 27-Nov-2025), removing the need for a separate prospecting licence. Target production FY28; management guides ~40-45% IRR and ~46% EBITDA at a coal-index price of ~INR 3,100/t; capex INR 400 Cr in two INR 200 Cr phases (CRISIL puts it at ~INR 240 Cr - a discrepancy worth watching), mostly non-fund-based (bank guarantees), no coal capex in FY27. <strong>Oman:</strong> an Alara Resources copper JV (USD 125 mn, 11-year, operating since Feb-2022, equity-accounted, drives the ~INR 2 Cr consol-vs-standalone PAT gap) plus a 17.5% AHML JV on a 1,400 sq km block, and a small AUD 0.5 mn strategic investment in ASX-listed Alara (Vikas Jain is a director there).</p>
+        </div>
+      </div>
+
+      <div class="uu">
+        <div class="ut">Unknown unknowns - what a first read misses</div>
+        <ul>
+          <li><strong>Single-customer gatekeeper:</strong> Reliance is ~35% of revenue and the whole CBM engine; loss or renegotiation of the RIL relationship would hit both revenue and the highest-margin vertical at once.</li>
+          <li><strong>Order-book concentration in two names:</strong> HZL (~53% of book) and RIL together dominate; execution pace is client-controlled, so revenue timing is not in SWPEL's hands.</li>
+          <li><strong>Rig single-purpose lock-in:</strong> "different rigs are for different purposes" - a CBM rig cannot do mineral or underground work. The INR 48 Cr FY26 capex is a bet on continued CBM/RIL and underground-mining demand specifically.</li>
+          <li><strong>Government payment cycles:</strong> aquifer and coal-exploration books depend on CGWB/CMPDI tender flow and slow public-sector payment - the engine of the 175-day receivable cycle.</li>
+          <li><strong>Coal-block capital leak risk:</strong> a INR 240-400 Cr coal-mine build against a INR 204 Cr net worth is a large, partly-unfunded overhang if drilling demand softens at the same time.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 3 : PEERS -->
+    <section id="s3">
+      <div class="sectag">Section 03</div>
+      <h2>Competitive Landscape &amp; Peer Benchmarking</h2>
+      <p class="lead">There is no listed pure-play exploration-drilling comparable in India, so the peer set is a spread of adjacent oilfield-services, offshore-drilling and E&amp;P names. Read across them, SWPEL is the smallest by scale but posts the best ROCE of the operating services peers, a mid-pack margin, and a valuation richer than the cheap offshore names yet cheaper than the high-margin pair. Its true functional twin is unlisted: the state PSU MECL.</p>
+
+      <div class="tw">
+      <table>
+        <caption>FY26 (year to Mar-2026) as reported on screener.in, pulled 13-14-Jul-2026. INR Cr. EV/EBITDA estimated (m-cap + net debt)/EBITDA, marked *e*. Adjacent analogues, not true peers.</caption>
+        <thead><tr><th>Company (sub-sector)</th><th class="mono">Rev</th><th class="mono">Gr%</th><th class="mono">EBITDA%</th><th class="mono">ROCE</th><th class="mono">Net debt</th><th class="mono">P/E</th><th class="mono">EV/EBITDA*e*</th><th class="mono">M-cap</th></tr></thead>
+        <tbody>
+          <tr><td>SWPEL (mineral/coal/CBM core drilling)</td><td class="mono">243</td><td class="mono">+35</td><td class="mono">24%</td><td class="mono">~19%</td><td class="mono">~67</td><td class="mono">~22x</td><td class="mono">~13x</td><td class="mono">~655</td></tr>
+          <tr><td>Deep Industries (gas compr./workover/drilling)</td><td class="mono">891</td><td class="mono">+55</td><td class="mono">40%</td><td class="mono">16.5%</td><td class="mono">~203</td><td class="mono">~13x</td><td class="mono">~9x</td><td class="mono">2,958</td></tr>
+          <tr><td>Jindal Drilling (offshore jack-up charter)</td><td class="mono">997</td><td class="mono">+20</td><td class="mono">35%</td><td class="mono">15.4%</td><td class="mono">~50</td><td class="mono">8.4x</td><td class="mono">~5x</td><td class="mono">1,809</td></tr>
+          <tr><td>Asian Energy Services (land seismic + O&amp;M)</td><td class="mono">791</td><td class="mono">+70</td><td class="mono">12%</td><td class="mono">17%</td><td class="mono">~134</td><td class="mono">29x</td><td class="mono">~19x</td><td class="mono">1,693</td></tr>
+          <tr><td>Antelopus (ex-Selan) - small oil &amp; gas E&amp;P</td><td class="mono">279</td><td class="mono">+8</td><td class="mono">57%</td><td class="mono">21%</td><td class="mono">net cash</td><td class="mono">34x</td><td class="mono">~19x</td><td class="mono">3,045</td></tr>
+          <tr><td>Alphageo - seismic survey (named rival)</td><td class="mono">112</td><td class="mono">-11</td><td class="mono">loss</td><td class="mono">-7%</td><td class="mono">~8</td><td class="mono">n/m</td><td class="mono">n/m</td><td class="mono">125</td></tr>
+          <tr><td>Oil Country Tubular - drill-pipe maker</td><td class="mono">70</td><td class="mono">-43</td><td class="mono">7%</td><td class="mono">loss</td><td class="mono">net cash</td><td class="mono">n/m</td><td class="mono">n/m</td><td class="mono">276</td></tr>
+          <tr><td>MECL (unlisted state PSU - true twin)</td><td class="mono">~406</td><td class="mono">n/a</td><td class="mono">n/a</td><td class="mono">n/a</td><td class="mono">n/a</td><td class="mono">n/a</td><td class="mono">n/a</td><td class="mono">unlisted</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Where SWPEL ranks</h3>
+      <p>On <strong>scale</strong> it is the smallest operating comp (INR 243 Cr vs INR 791-997 Cr for Deep / Asian / Jindal), though far larger than the two distressed names and larger than any private single-digit-rig driller. On <strong>margin</strong>, its 24% EBITDA sits mid-pack - below asset-heavy Deep (40%) and Jindal (35%) and production-economics Antelopus/Selan (57%), but well above services peer Asian Energy (12%) and both loss-makers. On <strong>ROCE</strong>, ~19% is best-in-class among operating services peers (Deep 16.5%, Asian 17%, Jindal 15.4%), bettered only by the E&amp;P producer. <strong>Leverage</strong> is moderate (D/E ~0.4x). On <strong>valuation</strong>, ~22x P/E and ~13x EV/EBITDA are richer than the cheap offshore/services names (Jindal 8x, Deep ~9x EV/EBITDA) but cheaper than the high-margin pair (Asian 29x, Selan 34x).</p>
+      <div class="flag amberbox">
+        <div class="ft">Share-gain room, but imperfect analogues</div>
+        <p>Two comps are contracting: <strong>Alphageo</strong> - a management-named seismic rival - is loss-making and shrinking (-11%, ~0.5x P/B), effectively ceding onshore seismic; Oil Country Tubular posted a INR 61 Cr FY26 loss. More structurally, <strong>Shiv-Vani Oil &amp; Gas</strong> - once India's largest onshore drilling and CBM-services company - collapsed under debt into insolvency last decade, vacating precisely the CBM / onshore-drilling niche SWPEL now claims leadership in; that exit is a direct reason the "CBM market leader" claim holds, and the cautionary lesson (echoed by Jindal's compressed ROIC) is that this sub-sector punishes over-leverage - which makes SWPEL's ~0.4x D/E the right posture. MECL's rig-capacity ceiling is the larger structural tailwind, pushing government exploration toward private drillers. But note: none of these is a true peer. Deep/Jindal are hydrocarbon services with heavy long-cycle rig assets (hence 35-40% margins); Selan earns oil-price economics; Asian is thin-margin seismic EPC. SWPEL's 24%-margin / ~19%-ROCE profile sits between them precisely because it is an asset-lighter contract driller - lower capital intensity than offshore rigs (so lower margin than Deep/Jindal) but higher asset turns and no reservoir risk (so better ROCE and steadier than E&amp;P).</p>
+      </div>
+    </section>
+
+    <!-- SECTION 4 : MOAT -->
+    <section id="s4">
+      <div class="sectag">Section 04</div>
+      <h2>Competitive Advantage - The 6 Cs Moat</h2>
+      <p class="lead">One genuine moat (compliance / prequalification), everything else moderate-to-weak. SWPEL earns above-average margins on reputation and accreditation, not on a structural cost or scale edge - and the underlying asset, a rig, is a commodity any funded competitor can buy.</p>
+
+      <div class="moatgrid">
+        <div class="moat"><div class="mh"><span class="mn">Cost</span><span class="badge b-mod">Moderate</span></div><p>In-house 40-rig fleet spans coal, mineral, CBM, oil-gas and aquifer without major incremental capex; ex-coal-trading gross margins are healthy (25%+). But diesel and consumables are largely pass-through and remote-site mobilisation is costly - no evidence of a structural unit-cost edge over other rig owners.</p></div>
+        <div class="moat"><div class="mh"><span class="mn">Capacity</span><span class="badge b-mod">Moderate</span></div><p>Strong within the niche: 40 rigs (~27% of India's ~145-150 exploration rigs), 12 concurrent operations plus 2 in Oman, running &gt;100% utilised. But absolute scale is tiny and rigs are commodity assets any funded competitor can buy. Real advantage inside a fragmented niche, not economy-wide.</p></div>
+        <div class="moat"><div class="mh"><span class="mn">Capital</span><span class="badge b-weak">Weak-lean</span></div><p>Demonstrated equity access (FY25 raised INR 34.8 Cr); CRISIL upgraded to BBB+/A2 (10-Jul-2026). But the model is working-capital-hungry, net debt re-levered to ~INR 67 Cr, and the coal block needs INR 240-400 Cr against a INR 204 Cr net worth - not a balance-sheet fortress.</p></div>
+        <div class="moat"><div class="mh"><span class="mn">Channel</span><span class="badge b-none">None</span></div><p>Pure tender / bid-based procurement direct to PSUs and corporates. No distribution, no installed-base lock-in, no channel economics. Every rupee is re-competed.</p></div>
+        <div class="moat"><div class="mh"><span class="mn">Customer captivity</span><span class="badge b-mod">Moderate</span></div><p>Long relationships and repeat awards (RIL CBM renewed repeatedly, marquee retention); retention money (12-18 month tail) and mid-contract switching costs create stickiness. But every contract is re-tendered on price/prequal; captivity is relationship-based, not contractual. Offset by RIL ~35% concentration.</p></div>
+        <div class="moat"><div class="mh"><span class="mn">Compliance / prequal</span><span class="badge b-strong">Strong</span></div><p>The genuine moat. 19-year record; empanelled with CMPDI, GSI, MECL, CGWB, Oil India, NMDC, SAIL. Decisively, notified an accredited prospecting agency for coal &amp; lignite (Gazette 27-Nov-2025) - very few private players hold this. A regulatory/relationship barrier new rig owners cannot instantly clear.</p></div>
+      </div>
+
+      <p><strong>Single most durable moat and its half-life.</strong> Compliance / prequalification - the accredited-prospecting-agency status, multi-PSU empanelment and 19-year execution record. It is a barrier, not a monopoly: it slows entrants but must be continuously re-earned on each tender, and the underlying rigs are commoditising. <strong>Estimated half-life ~5-7 years</strong> - the accreditation and PSU relationships persist and are being deepened by the coal-block allocation, but a well-capitalised competitor can, over that horizon, build a fleet and accumulate the credentials to compete. Every other C is moderate-to-weak.</p>
+    </section>
+
+    <!-- SECTION 5 : FINANCIALS -->
+    <section id="s5">
+      <div class="sectag">Section 05</div>
+      <h2>Financial Analysis - 8 Quarters + 5 Years</h2>
+      <p class="lead">FY26 was a genuine operating inflection, not a one-quarter spike: the core drilling business grew ~80% while a low-margin coal-trading line was shed, lifting EBITDA margin +510 bps and doubling PAT. The catch is cash - only 0.37x of the doubled profit converted, as a INR 43 Cr receivables build and a INR 42 Cr rig-capex year turned free cash flow deeply negative.</p>
+
+      <div class="tw">
+      <table>
+        <caption>Quarterly, standalone, INR Cr (screener.in). OPM = operating margin. Interest steady ~INR 2 Cr/qtr; other income small. Q1 (Jun) softness is monsoon/mobilisation seasonality.</caption>
+        <thead><tr><th>Quarter</th><th class="mono">Sales</th><th class="mono">Op Profit</th><th class="mono">OPM</th><th class="mono">Other Inc</th><th class="mono">PBT</th><th class="mono">PAT</th><th class="mono">EPS</th></tr></thead>
+        <tbody>
+          <tr><td>Sep-24</td><td class="mono">27</td><td class="mono">3</td><td class="mono">13%</td><td class="mono">2</td><td class="mono">0</td><td class="mono">0</td><td class="mono">0.11</td></tr>
+          <tr><td>Dec-24</td><td class="mono">48</td><td class="mono">9</td><td class="mono">19%</td><td class="mono">1</td><td class="mono">5</td><td class="mono">3</td><td class="mono">1.25</td></tr>
+          <tr><td>Mar-25</td><td class="mono">74</td><td class="mono">16</td><td class="mono">21%</td><td class="mono">1</td><td class="mono">12</td><td class="mono">9</td><td class="mono">3.06</td></tr>
+          <tr><td>Jun-25</td><td class="mono">40</td><td class="mono">6</td><td class="mono">14%</td><td class="mono">1</td><td class="mono">3</td><td class="mono">2</td><td class="mono">0.69</td></tr>
+          <tr><td>Sep-25</td><td class="mono">62</td><td class="mono">15</td><td class="mono">23%</td><td class="mono">1</td><td class="mono">10</td><td class="mono">8</td><td class="mono">2.55</td></tr>
+          <tr><td>Dec-25</td><td class="mono">63</td><td class="mono">18</td><td class="mono">28%</td><td class="mono">1</td><td class="mono">13</td><td class="mono">10</td><td class="mono">3.28</td></tr>
+          <tr><td>Mar-26</td><td class="mono">78</td><td class="mono">20</td><td class="mono">25%</td><td class="mono">1</td><td class="mono">15</td><td class="mono">11</td><td class="mono">3.80</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>What drove the FY26 step-up - and is it durable?</h3>
+      <p>Reported revenue +35% understates the operating story. The consolidated segment note shows <strong>Drilling &amp; Exploration grew INR 135 Cr -&gt; INR 243 Cr (+80%)</strong> while a INR 45 Cr near-zero-margin coal-<em>trading</em> line (0.9% segment margin) was discontinued. So SWPEL shed a revenue line that earned nothing and replaced it with high-margin drilling - a permanent mix upgrade. On top of that: (1) <strong>resource-scarcity pricing</strong> - the MD's words: "there is a huge shortage of resources... the margins are great right now" (cyclical, the least durable driver); (2) <strong>operating leverage</strong> on a fixed-cost service base (+35% revenue -&gt; +101% PAT); (3) commissioning of the CBM/underground rig capex. EBITDA margin moved 18.6% -&gt; 23.7% (+510 bps). Quarterly OPM confirms a step, not a spike (13% -&gt; 25-28%), and other income was only 8.7% of PBT (down from 23.7%) - the doubling was operating, not cosmetic.</p>
+      <div class="flag amberbox"><div class="ft">The durability caveat, in management's own words</div><p>Management explicitly declined to lock a forward margin - "we cannot give you quantification... the margins are great as I have told you" - and framed today's rates as a "shortage of resources" market condition, even as SWPEL itself adds 4-8 rigs a year. The mix upgrade and operating leverage are structural; the pricing spike is not. FY27 guidance: ~20% revenue growth with continued margin expansion - a deceleration from FY26.</p></div>
+
+      <h3>The FY26 capex - what commissioned</h3>
+      <p>Standalone fixed assets went INR 67 Cr -&gt; INR 115 Cr (+INR 48 Cr) with CWIP INR 15 Cr -&gt; INR 0. Per the concall, this was <strong>predominantly the imported Schramm CBM production rigs for the Reliance "second phase," plus 4 underground rigs for the Hindustan Copper order, plus general fleet additions (7-8 rigs, total 40) and a central-India stores warehouse</strong>. Capex/depreciation was 3.7x - a genuine capacity-expansion phase, not maintenance. Note: the "CWIP 15 -&gt; 0" on screener is partly a classification artifact - tangible CWIP was only ~INR 0.4-0.7 Cr; the INR ~15-19 Cr is intangibles-under-development (coal-block exploration), which actually grew.</p>
+
+      <h3>Returns, working capital, cash</h3>
+      <div class="tw">
+      <table>
+        <caption>Consolidated where marked; standalone otherwise. INR Cr. DuPont and cash-conversion. FY26 cash flow from the 04-May-2026 audited results (present in the filing; screener had not ingested it).</caption>
+        <thead><tr><th>Metric</th><th class="mono">FY24</th><th class="mono">FY25</th><th class="mono">FY26</th></tr></thead>
+        <tbody>
+          <tr><td>Revenue (consol)</td><td class="mono">133</td><td class="mono">180</td><td class="mono">243</td></tr>
+          <tr><td>EBITDA margin</td><td class="mono">19%</td><td class="mono">18.6%</td><td class="mono">23.7%</td></tr>
+          <tr><td>PAT (consol)</td><td class="mono">7</td><td class="mono">16</td><td class="mono">33</td></tr>
+          <tr><td>ROCE</td><td class="mono">~11%</td><td class="mono">~11%</td><td class="mono">~19%</td></tr>
+          <tr><td>ROE</td><td class="mono">~9%</td><td class="mono">~10%</td><td class="mono">~18%</td></tr>
+          <tr><td>Trade receivables (s/a)</td><td class="mono">56</td><td class="mono">74</td><td class="mono">116</td></tr>
+          <tr><td>DSO (days)</td><td class="mono">154</td><td class="mono">152</td><td class="mono">175</td></tr>
+          <tr><td>Net debt</td><td class="mono">~82</td><td class="mono">~23</td><td class="mono">~67</td></tr>
+          <tr><td>CFO</td><td class="mono">18</td><td class="mono">27</td><td class="mono">12</td></tr>
+          <tr><td>CFO / PAT</td><td class="mono">2.6x</td><td class="mono">1.7x</td><td class="mono">0.37x</td></tr>
+          <tr><td>FCF (post-capex)</td><td class="mono">-19</td><td class="mono">+21</td><td class="mono">-35</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p><strong>Returns.</strong> FY26 ROCE ~19% / ROE ~18% is a clear break higher, driven by the net-margin lever, not leverage; incremental ROCE over FY23-26 is ~28% - though much of the incremental capital went into receivables and the coal-block intangible rather than productive fixed assets, so the high figure is front-loaded by the mix shift. <strong>Working capital is the central drag.</strong> Receivables grew +57% in FY26 vs revenue +36%; DSO stretched to 175 days. But 39% of receivables are unbilled revenue / retention (percentage-of-completion and PSU slow-pay), and ageing is clean - zero disputed, zero doubtful, mostly not-due, PSU counterparties. So it is a timing/retention drag, not a bad-debt problem. <strong>Cash.</strong> FY26 CFO INR 12 Cr against PAT INR 33 Cr = 0.37x; a INR 43 Cr receivables build consumed the rest; FCF -INR 35 Cr in a heavy-capex year. This is directionally a "profit-into-receivables" pattern - but crucially, unlike a Markolines, SWPEL's CFO is positive and cumulative multi-year CFO is positive (FY23-26 CFO/EBITDA ~44%). Net debt re-levered to INR 67 Cr; CRISIL upgraded to BBB+/A2; bank-limit utilisation was tight (~92%, mid-2024); off-balance-sheet bank guarantees ~INR 22.5 Cr.</p>
+    </section>
+
+    <!-- SECTION 6 : FORENSICS -->
+    <section id="s6">
+      <div class="sectag">Section 06</div>
+      <h2>Earnings Quality &amp; Forensic Checks</h2>
+      <p class="lead">The audited numbers are clean and conservatively signed; the profit is genuine, not cosmetic. What caps the score is cash: the doubled FY26 profit converted at 0.37x, growth is debt-plus-capex funded, and there is a recurring promoter-entity loan rotation worth watching.</p>
+
+      <div class="eqbar" title="Earnings Quality 6.5 / 10">
+        <div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on" style="opacity:.5"></div><div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:0">Earnings Quality Score: <strong style="color:var(--amber)">6.5 / 10</strong> - genuine, conservatively audited earnings; capped by weak cash conversion and capital intensity.</p>
+
+      <div class="tw">
+      <table>
+        <caption>Forensic checklist. Sources: FY25 &amp; FY24 annual reports (auditor's report, CARO, Notes 12/42/45/49), FY26 audited results (04-May-2026), CRISIL 16-Oct-2024.</caption>
+        <thead><tr><th>Check</th><th>Finding</th><th>Read</th></tr></thead>
+        <tbody>
+          <tr><td>Receivables vs revenue (3-yr)</td><td>Receivables +107% (INR 56 -&gt; 116 Cr) vs revenue +83%; DSO 154 -&gt; 175. But ageing clean, 39% unbilled/retention, PSU counterparties, zero doubtful</td><td><span class="chip part">Amber</span></td></tr>
+          <tr><td>Cash-yield ("is cash real?")</td><td>Interest income INR 1.71 Cr on ~INR 26 Cr avg cash = ~6.7% yield - market rate</td><td><span class="chip hit">Clean</span></td></tr>
+          <tr><td>CWIP aging</td><td>Tangible CWIP immaterial (~INR 0.4 Cr); the "INR 15 Cr" is coal-block intangible-under-development, capitalised not expensed, grew to INR 19 Cr - watch if block stalls</td><td><span class="chip part">Watch</span></td></tr>
+          <tr><td>Other income % of PBT</td><td>8.7% (FY26) vs 23.7% (FY25) - profit doubling was operating</td><td><span class="chip hit">Clean</span></td></tr>
+          <tr><td>Effective tax vs statutory</td><td>FY24 27.2%, FY25 25.0%, FY26 ~25.4% - hugs 25.17% statutory; no tax-driven inflation</td><td><span class="chip hit">Clean</span></td></tr>
+          <tr><td>Contingent liabilities / net worth</td><td>BG INR 22.5 Cr + tax disputes INR 2.1 Cr = ~14% of net worth; plus new INR 25 Cr coal-block capital commitment. Contained</td><td><span class="chip hit">Clean</span></td></tr>
+          <tr><td>Related-party transactions</td><td>INR 9.5 Cr lent to and repaid by promoter-influenced enterprises within FY25 (INR 14.6 Cr FY24); promoters lend WC in the crunch. Repaid with interest, ~nil year-end balance</td><td><span class="chip miss">Flag</span></td></tr>
+          <tr><td>Auditor</td><td>Doogar &amp; Associates (FRN 000561N) - established mid-tier Delhi firm; unmodified opinion; CARO clean; no resignation. KAM = revenue recognition (unbilled INR 29.6 Cr)</td><td><span class="chip hit">Clean</span></td></tr>
+          <tr><td>Standalone vs consolidated</td><td>Consol PAT INR 33 Cr vs s/a INR 31 Cr - gap is Oman JV share of profit; no losses parked outside consolidation</td><td><span class="chip hit">Clean</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="flag"><div class="ft">The one genuine governance flag - related-party fund rotation</div><p>INR 9.5 Cr was lent to and repaid by promoter-influenced enterprises (including separately-listed Chandra Prabhu International Ltd, Thakurji Towers, Ravmo Imports LLP, the Jain HUFs) within FY25 (INR 14.6 Cr in FY24), with a near-nil year-end balance. Even though repaid with interest and auditor-confirmed arm's-length, cycling company cash through promoter entities while the company itself draws 10-11% bank working capital at 92% utilisation is a capital-discipline amber flag. The mitigant: nothing stuck at year-end, no net capital leakage, and the auditor signs a clean CARO.</p></div>
+      <p><strong>Why 6.5 and not higher or lower.</strong> Supporting a solid score: unmodified opinion from a credible mid-tier auditor, clean CARO, honest tax, clean receivable ageing against PSU counterparties, small-and-shrinking other income, transparent segment disclosure, and - critically - a positive, auditor-signed FY26 cash flow (no Markolines-style negative-CFO hole). Capping it below 7: cash conversion is weak (0.37x FY26), growth is debt-plus-cash-drawdown funded with receivables outrunning revenue, coal-block spend is capitalised, and the promoter-entity loan rotation recurs. Net: earnings are genuine and conservatively audited, but conviction on cash generation requires seeing FY27 CFO normalise once the FY26 capex and HZL order convert to collections.</p>
+    </section>
+
+    <!-- SECTION 7 : GOVERNANCE -->
+    <section id="s7">
+      <div class="sectag">Section 07</div>
+      <h2>Promoter, Governance &amp; Capital Allocation</h2>
+      <p class="lead">A founder-run Jain-family business with a clean pledge sheet and a real reinvestment record - but also a web of related listed and unlisted entities, no dividend, and a promoter that arbitrages its own cheap warrant paper. The June-July 2026 share moves look bearish at first glance and are actually net accumulation, executed in a way that itself deserves a flag.</p>
+
+      <h3>Promoters and the share moves that matter</h3>
+      <p>Led by <strong>Vikas Jain (Chairman &amp; MD)</strong> and <strong>Piyush Jain (Joint MD)</strong>. Listed via a 2018 NSE Emerge SME IPO at INR 78 (subscribed 29.42x, listed INR 88.30), later migrated to the main board; a 1:1 bonus doubled equity capital in FY22. The promoter stake trajectory is the governance centrepiece:</p>
+      <div class="tw">
+      <table>
+        <caption>Promoter holding trajectory. Sources: SAST/insider disclosures, shareholding filings, exchange announcements (Feb-2025 to Jul-2026).</caption>
+        <thead><tr><th>Event</th><th class="mono">Date</th><th class="mono">Promoter %</th><th>Mechanism</th></tr></thead>
+        <tbody>
+          <tr><td>Pre-dilution</td><td class="mono">Mar-2024</td><td class="mono">73.61%</td><td>-</td></tr>
+          <tr><td>Preferential allotment</td><td class="mono">Feb-2025</td><td class="mono">68.85%</td><td>Dilution (INR 34.8 Cr raise), not selling</td></tr>
+          <tr><td>Open-market sale</td><td class="mono">22-23 Jun-2026</td><td class="mono">64.94%</td><td>Sold ~11.7 lakh sh (~3.9%) at ~INR 248</td></tr>
+          <tr><td>Warrant conversion</td><td class="mono">10-Jul-2026</td><td class="mono">65.94%</td><td>Converted 22.7 lakh self-allotted warrants at INR 132.20</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag amberbox"><div class="ft">Not distribution - promoters are net buyers, via cheap paper</div><p>The instinctive read - "insiders dumped ~3.9% into the rally" - is incomplete. In Jul-2026 the promoters converted 22.7 lakh warrants (of a 28.2 lakh total; 5.5 lakh went to non-promoters) at <strong>INR 132.20</strong>, a Feb-2025 SEBI-floor price that became deep in-the-money after the stock doubled. Net of the June sale at ~INR 248, promoters <strong>added ~11 lakh shares</strong> and the stake <strong>rose to 65.94%</strong>. So this is accumulation, not exit. The flag is the structure: promoters awarded themselves warrants that turned into a ~INR 116/share paper gain, funded partly by selling market stock at ~2x the strike - legal and SEBI-compliant, but a related-party value capture worth naming. Pledge is nil throughout.</p></div>
+
+      <h3>Capital allocation &amp; dilution</h3>
+      <p><strong>Every incremental rupee</strong> over the last decade has gone into the rig fleet (INR 48 Cr in FY26 alone), the Jogeshwar coal block, and the Oman JVs - <strong>no dividend was paid in FY26</strong> (a token INR 0.37 Cr in FY25), consistent with a cash-hungry self-funding growth phase. Dilution history: the 2018 SME IPO, a FY22 1:1 bonus, and the Feb-2025 preferential (INR 25.48 Cr equity + INR 9.32 Cr warrants upfront), with the warrants now converted (10-Jul-2026) bringing in a further INR 27.97 Cr. KMP remuneration is modest (Vikas Jain INR 1.20 Cr, Piyush Jain INR 0.90 Cr in FY25). The related-party web - separately-listed <strong>Chandra Prabhu International</strong> (a Jain coal-trading entity), Thakurji Towers, Ravmo Imports LLP, Alara Resources and the Jain HUFs - is the standing governance watch-item (Section 6).</p>
+    </section>
+
+    <!-- SECTION 8 : GUIDANCE -->
+    <section id="s8">
+      <div class="sectag">Section 08</div>
+      <h2>Management Guidance Scorecard</h2>
+      <p class="lead">Insufficient history for a credibility ratio - and that is the honest finding. SWPEL held its first-ever earnings call only in Oct-2025, so there are just three concalls to score. This is a discovery-phase stock where the "guidance track record" has not yet been established.</p>
+
+      <div class="flag amberbox"><div class="ft">Only three data points exist</div><p>Joint MD Piyush Jain opened the Q2 FY26 call (30-Oct-2025) by calling it "our first ever earnings conference call." The full concall history is therefore Q2 FY26 (30-Oct-2025), Q3 FY26, and Q4/FY26 (06-May-2026). There is no multi-year guidance-vs-delivery record to compute a credibility ratio from. Rising analyst engagement (a company that just began holding calls, an investor-presentation cadence and a CRISIL upgrade) is a discovery signal, not abandonment - but the flip side is that management's forward statements are entirely unproven.</p></div>
+
+      <div class="tw">
+      <table>
+        <caption>What management has put on record (last 3 calls / PPTs). Outcome column reflects status as of Q4/FY26 results and Jul-2026 announcements.</caption>
+        <thead><tr><th>Claim</th><th>Made</th><th>Status</th><th>Read</th></tr></thead>
+        <tbody>
+          <tr><td>FY26 strong growth / margin step-up</td><td>H1 FY26 calls</td><td>Revenue +35%, PAT +101%, OPM 19-&gt;24%</td><td><span class="chip over">Delivered</span></td></tr>
+          <tr><td>Order-book build to marquee clients</td><td>FY26 calls</td><td>HZL INR 307 Cr, RIL CBM extension; book &gt;INR 760 Cr</td><td><span class="chip over">Delivered</span></td></tr>
+          <tr><td>FY27 ~20% revenue growth + margin expansion</td><td>Q4 FY26 (06-May-2026)</td><td>Open - too early</td><td><span class="chip part">Pending</span></td></tr>
+          <tr><td>Coal block production by FY28</td><td>FY26 PPTs</td><td>Prospecting-agency status secured; drilling on</td><td><span class="chip part">On track</span></td></tr>
+          <tr><td>Reliance to stay 35-40% of revenue</td><td>Q4 FY26</td><td>Open (concentration acknowledged)</td><td><span class="chip part">Pending</span></td></tr>
+          <tr><td>Forward margin quantification</td><td>Q4 FY26</td><td>Declined - "cannot give quantification"</td><td><span class="chip miss">Hedged</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p><strong>Concall forensics.</strong> Both promoter-directors answer hard questions directly (a positive), and the tone is confident on demand but deliberately hedged on forward margins - an honest reticence rather than evasion. The single most telling drift is the refusal to quantify a durable margin while calling the current one a "shortage" condition: management is signalling, correctly, that today's margin should not be extrapolated.</p>
+    </section>
+
+    <!-- SECTION 9 : REGULATORY -->
+    <section id="s9">
+      <div class="sectag">Section 09</div>
+      <h2>Regulatory &amp; Company-Specific Risks / Advantages</h2>
+      <p class="lead">On balance a regulatory beneficiary: the entire policy stack (critical minerals, commercial coal, private-exploration reform, groundwater) points demand toward organised private drillers, and SWPEL just cleared a rare accreditation. The company-specific risks are concentration and a tight working-capital line - both named by the rating agency, not the investor deck.</p>
+
+      <h3>Regulatory tailwinds and SWPEL's specific standing</h3>
+      <ul>
+        <li><strong>Accredited prospecting agency (coal &amp; lignite)</strong> - notified via Gazette of India dated 27-Nov-2025, valid 3 years. Very few private players hold this; it underpins the owned coal block and future CMPDI work.</li>
+        <li><strong>Multi-agency empanelment</strong> - GSI drilling agency (since 13-Sep-2019), MECL, CMPDI, CGWB, Oil India (2D/3D seismic). These are the entry tickets for government exploration tenders.</li>
+        <li><strong>Scheme demand</strong> - the INR 34,300 Cr NCMM (1,200 GSI projects), commercial coal (1.5 BT by FY30, CMPDI outsourcing), MMDR Exploration Licences, and CGWB aquifer work all convert to drilling metreage. Note the honest framing: SWPEL is a <strong>contractor beneficiary, not a direct scheme awardee</strong> - it is not an NPEA and holds no exploration licence in its own right (except the coal-block accreditation).</li>
+      </ul>
+
+      <h3>Credit rating - what the agency flags that the deck does not</h3>
+      <div class="flag green"><div class="ft">CRISIL upgraded to BBB+/Stable / A2 on 10-Jul-2026</div><p>Up from BBB/Stable / A3+ (16-Oct-2024) on the FY26 performance and order book - an independent, positive validation of the balance sheet and cash flows on ~INR 84 Cr of rated facilities. The rating rationale, however, flags exactly the risks absent from the investor presentation: a tight working-capital cycle (receivables ~154 days historically, inventory high), bank-limit utilisation around 92% (mid-2024), the INR 240 Cr coal-block capex overhang against a modest net worth, and customer concentration. These are the monitorables, straight from the lender's view.</p></div>
+
+      <h3>Live matters and concentration</h3>
+      <p>Contingent liabilities are modest and routine for a bidding contractor: bank guarantees ~INR 22.5 Cr, small income-tax disputes at CIT(A) level (~INR 0.9 Cr each for AY2014-15 and AY2016-17), and minor state entry-tax/VAT/GST items - no SEBI order, NCLT proceeding, or environmental show-cause surfaced. The material company-specific risks are structural, not legal: <strong>single-customer (Reliance ~35%), single-mega-order (HZL ~53% of book), single-block (Jogeshwar) and single-geography-cluster concentration</strong>, plus environmental/forest clearance as the execution bottleneck between a won order and drilled metreage.</p>
+    </section>
+
+    <!-- SECTION 10 : SCUTTLEBUTT -->
+    <section id="s10">
+      <div class="sectag">Section 10</div>
+      <h2>Scuttlebutt &amp; Unpublished Signals</h2>
+      <p class="lead">Lower-reliability, and genuinely thin - this is a INR 655 Cr microcap that only began investor outreach in late 2025, so ground-level signal is sparse. The strongest read-throughs come from the order-and-hiring cadence and the promoter's newfound visibility, not from employer-review chatter.</p>
+      <div class="flag amberbox"><div class="ft">Treat this section as directional signal, not verified fact</div><p>On a company this size, LinkedIn, Glassdoor and AmbitionBox samples are too small to be statistically meaningful; where data was thin, it is reported as thin rather than padded.</p></div>
+      <ul>
+        <li><strong>Hiring / capacity signal (positive).</strong> A steady drumbeat of rig additions (7-8 in FY26, a 3rd Schramm CBM rig ordered for Sep-Oct 2026) and 4 new underground rigs implies parallel hiring of drill crews and geoscientists - a leading indicator that management is provisioning for the order book, not just talking about it. SWPEL sub-contracting in 10+ third-party rigs corroborates real demand overflow.</li>
+        <li><strong>Promoter visibility (discovery signal).</strong> The move from zero investor calls to a regular cadence of concalls and presentations from Oct-2025, plus the CRISIL upgrade and a rising retail shareholder count, is a classic early-discovery footprint - the stock is being found, not abandoned.</li>
+        <li><strong>Employer-review signal (inconclusive).</strong> AmbitionBox/Glassdoor samples are small; no clear attrition or culture red flag surfaced, but the sample is too thin to draw a conclusion (insufficient data).</li>
+        <li><strong>Retail-forum chatter (froth watch).</strong> The stock features in retail small-cap discussion around the critical-minerals and coal-block themes; combined with a shareholder count that roughly tripled over FY24-26 and promoters selling into the rally, this reads as a theme getting known and crowded at the margin.</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 11 : HEADWINDS/TAILWINDS -->
+    <section id="s11">
+      <div class="sectag">Section 11</div>
+      <h2>External Headwinds &amp; Tailwinds</h2>
+      <p class="lead">The dominant swing factor is the industry rig-supply / demand balance that sets per-metre pricing - the same "resource shortage" that made FY26. Secondary sensitivities are diesel, interest rates, monsoon seasonality and the government exploration budget.</p>
+      <div class="two">
+        <div class="box green" style="border-top:2px solid var(--bull)">
+          <h4>Tailwinds</h4>
+          <ul>
+            <li><strong>Structural exploration up-cycle</strong> - NCMM INR 34,300 Cr, commercial coal to 1.5 BT, private Exploration Licences, aquifer mapping. A multi-year metreage tailwind.</li>
+            <li><strong>Rig-supply shortage</strong> - only ~145-150 exploration rigs nationally; SWPEL runs 40 at &gt;100% utilisation. As long as demand outruns fleet, pricing power holds.</li>
+            <li><strong>MECL capacity ceiling</strong> - the state incumbent's constraints push government work to private drillers.</li>
+            <li><strong>Coal-index economics</strong> - the owned block at ~INR 3,100/t index price is FY28 upside if commodity prices hold.</li>
+          </ul>
+        </div>
+        <div class="box sell" style="border-top:2px solid var(--bear)">
+          <h4>Headwinds</h4>
+          <ul>
+            <li><strong>Rig-supply normalisation</strong> - the industry (and SWPEL itself) is adding rigs; as the fleet catches up, the pricing spike fades. The core bear driver.</li>
+            <li><strong>Diesel / fuel</strong> - drilling is fuel-intensive; a spike compresses margin where contracts lack full pass-through.</li>
+            <li><strong>Interest rates</strong> - working-capital-heavy (INR 78.6 Cr debt at ~10-11%, 92% line utilisation); a WC blow-out plus rate rise squeezes the P&amp;L.</li>
+            <li><strong>Monsoon / mobilisation</strong> - Q1 (Jun) is structurally weak (OPM 13-14%); management flags mobilisation/demobilisation lumpiness quarter to quarter.</li>
+            <li><strong>Commodity/coal capex cycle</strong> - a downturn in mining/E&amp;P capex directly cuts exploration budgets and order flow.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12 : TRIGGERS -->
+    <section id="s12">
+      <div class="sectag">Section 12</div>
+      <h2>Triggers, Themes &amp; Government-Scheme Plays</h2>
+      <p class="lead">A busy 4-quarter trigger calendar: HZL execution ramp, the third CBM rig, the coal-block mining plan, and continued critical-minerals order flow. The market is beginning to pay for the exploration / critical-minerals / coal-MDO theme - the demand leg is early-to-mid, but the stock is no longer cheap and the trade is getting known.</p>
+
+      <h3>Order book &amp; book-to-bill</h3>
+      <p>The order book stepped up through FY26: ~INR 448 Cr (Dec-2025) to ~INR 581 Cr (post-HZL, Feb-2026) to <strong>over INR 760 Cr</strong> (post-RIL CBM, Jul-2026) - roughly 3x FY26 revenue. Crucially this is <strong>multi-year cover, not 3x next-year revenue</strong>: HZL INR 307 Cr runs 4 years (~INR 75 Cr/yr from FY27), the RIL CBM extension INR 167 Cr over ~15 months - so on an annualised basis the cover is closer to ~1.2-1.5x, which underwrites the ~20% FY27 growth guidance with visibility rather than promising a step-change.</p>
+
+      <div class="caltrack">
+        <div class="cal"><div class="cq">Q1 FY27 (Jun-26)</div><ul><li>HZL mineral-exploration ramp begins</li><li>RIL CBM extension revenue starts</li><li>Warrant conversion complete (10-Jul)</li><li>Seasonally soft quarter</li></ul></div>
+        <div class="cal"><div class="cq">Q2 FY27 (Sep-26)</div><ul><li>3rd Schramm CBM rig delivery</li><li>Fresh CMPDI / CGWB tender wins</li><li>Coal-block geological report progress</li></ul></div>
+        <div class="cal"><div class="cq">Q3 FY27 (Dec-26)</div><ul><li>Coal-block mining plan filing</li><li>Underground (Hindustan Copper) scale-up</li><li>Critical-mineral order flow (NCMM)</li></ul></div>
+        <div class="cal"><div class="cq">Q4 FY27 (Mar-27)</div><ul><li>Seasonally strongest quarter</li><li>FY27 delivery vs ~20% guidance</li><li>Oman JV (AHML Block 22-B) progress</li></ul></div>
+      </div>
+
+      <h3>Scheme linkage - contractor exposure, not entitlement</h3>
+      <p>The honest classification: SWPEL rides the schemes as a driller-for-hire, with named wins rather than direct allocations. Real, named linkages: CMPDI coal-exploration LOAs (e.g. INR 5.89 Cr, Jharkhand, Jul-2026; INR 14 Cr Chhattisgarh), CGWB aquifer letters of award (2024), the private RIL CBM contract (not a scheme, but rides the CBM theme), and its own accredited coal block. It is <strong>not</strong> an NPEA and holds <strong>no</strong> Exploration Licence - so "critical-minerals play" means contractor exposure to the drilling surge, which is the durable part, rather than a rights-holder windfall.</p>
+    </section>
+
+    <!-- SECTION 13 : SHAREHOLDING -->
+    <section id="s13">
+      <div class="sectag">Section 13</div>
+      <h2>Shareholding, Positioning &amp; Flow</h2>
+      <p class="lead">A promoter- and retail-owned microcap with no institutional validation: nil DII, token FII (0.76%), ~10-11k shareholders, not in F&amp;O, no surveillance flag. The single most important flow fact is the promoter net-accumulation-via-warrants (Section 7); the second is that the only recent institutional holder exited.</p>
+
+      <div class="tw">
+      <table>
+        <caption>Shareholding trend (%). Sources: exchange shareholding filings, Trendlyne, scanx. Promoter figure post 10-Jul-2026 warrant conversion.</caption>
+        <thead><tr><th>Quarter</th><th class="mono">Promoter</th><th class="mono">FII</th><th class="mono">DII</th><th class="mono">Public</th><th class="mono">Holders</th></tr></thead>
+        <tbody>
+          <tr><td>Mar-24</td><td class="mono">73.61%</td><td class="mono">0.01%</td><td class="mono">0%</td><td class="mono">26.38%</td><td class="mono">8,195</td></tr>
+          <tr><td>Mar-25</td><td class="mono">68.85%</td><td class="mono">0.01%</td><td class="mono">0%</td><td class="mono">31.13%</td><td class="mono">10,023</td></tr>
+          <tr><td>Dec-25</td><td class="mono">68.85%</td><td class="mono">0.28%</td><td class="mono">0%</td><td class="mono">30.87%</td><td class="mono">11,279</td></tr>
+          <tr><td>Mar-26</td><td class="mono">68.85%</td><td class="mono">0.76%</td><td class="mono">0%</td><td class="mono">30.39%</td><td class="mono">10,405</td></tr>
+          <tr><td>Jul-26 (post events)</td><td class="mono">65.94%</td><td class="mono">~0.8%</td><td class="mono">0%</td><td class="mono">~34%</td><td class="mono">~10-11k</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Bulk / block deals - last 12 months</h3>
+      <ul>
+        <li><strong>Promoters, 22-23 Jun-2026:</strong> Vikas Jain (5.20 lakh @ INR 248.95) and Piyush Jain (4.55 lakh @ INR 247.47) sold, total ~3.9% of capital, Reg 29(2) SAST, no reason stated - into a ~45% run-up. Net of the July warrant conversion, promoters are still buyers (Section 7).</li>
+        <li><strong>Rational Equity Flagship Fund I</strong> exited (1.54 lakh @ INR 222.45) on 24-Apr-2026 - the only institutional-type holder, gone.</li>
+        <li><strong>Same-day arbitrage churn</strong> (Vaibhav Doshi, Mathisys Quantcap) in Jun-2026 - noise, not conviction (both sides same day).</li>
+      </ul>
+      <div class="flag amberbox"><div class="ft">Positioning read</div><p>No ASM/GSM/ESM flag as of 14-Jul-2026 (though a suggestive coincidence of an NSE ST-ASM circular and a bulk deal on 30-Oct-2025 could not be confirmed - treat "never flagged" as unproven). Not in the F&amp;O segment (too small). No index membership at ~INR 655 Cr m-cap. The picture is a discovery-phase microcap owned by promoters and retail, with froth risk (tripling shareholder count) and zero institutional cushion if sentiment turns.</p></div>
+    </section>
+
+    <!-- SECTION 14 : VALUATION -->
+    <section id="s14">
+      <div class="sectag">Section 14</div>
+      <h2>Valuation</h2>
+      <p class="lead">At ~INR 226 the market already capitalises today's cyclical margin as if it were permanent and throws the coal block in for free. Reverse-DCF first: the price is not paying for current cash (free cash flow is negative in the growth phase) - it is paying for the resource-shortage margin proving structural and the enlarged fleet maturing into cash.</p>
+
+      <h3>Where the multiple sits</h3>
+      <div class="tw">
+      <table>
+        <caption>Fully diluted basis (3.265 Cr shares post 10-Jul-2026 warrant conversion; equity capital INR 32.65 Cr). Consolidated earnings. Standalone P/E footnoted for screener comparability.</caption>
+        <thead><tr><th>Multiple</th><th class="mono">SWPEL</th><th>Context</th></tr></thead>
+        <tbody>
+          <tr><td>P/E (FY26, consol)</td><td class="mono">~22x</td><td>Screener shows 21.7x (standalone-basic). Richer than Jindal 8x / Deep ~13x; cheaper than Asian 29x / Selan 34x</td></tr>
+          <tr><td>EV/EBITDA (FY26)</td><td class="mono">~13x</td><td>On INR 58 Cr EBITDA; ~15-16x on a normalised ~19% margin</td></tr>
+          <tr><td>P/B</td><td class="mono">~3.6x</td><td>Book value ~INR 68/sh; ROE ~18% supports a premium to book</td></tr>
+          <tr><td>Market cap</td><td class="mono">~INR 655-738 Cr</td><td>~INR 655 Cr aggregator basis; ~INR 738 Cr fully diluted at INR 226</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Reverse DCF - what the price already assumes</h3>
+      <div class="flag amberbox"><div class="ft">The embedded assumption is the bear case, stated in valuation terms</div><p>To justify an enterprise value of ~INR 720-780 Cr at a ~13% discount rate, the current price requires roughly <strong>18-20% revenue CAGR sustained for ~5-7 years with EBITDA margins held near 22-24% and ROCE staying high</strong>, then a fade. The order book (HZL, RIL) makes the next 2-3 years of ~20% growth visible - but the margin assumption is the load-bearing one, and management itself calls the current margin a cyclical "shortage" condition. Near-term free cash flow is <strong>negative</strong> (FY26 capex INR 42 Cr + working-capital build), so the price is explicitly not paying for present cash generation - it is paying for that admitted-cyclical margin to prove permanent and the enlarged fleet to convert to cash at maturity. If margins normalise to the ~18-19% of FY22-25, the same EV is ~15-16x normalised EBITDA - visibly rich.</p></div>
+
+      <h3>Scenarios</h3>
+      <div class="scengrid">
+        <div class="scen bear"><div class="st"><span>Bear</span><span>30%</span></div><div class="sp">INR 155</div><div class="su">-31% vs CMP</div><p>Rig supply catches up, per-metre pricing normalises, margins revert toward ~18-19%; RIL or HZL execution slips and receivables blow out. FY27 PAT ~INR 28-30 Cr; the market de-rates a microcap with weak cash conversion to ~15x.</p></div>
+        <div class="scen base"><div class="st"><span>Base</span><span>45%</span></div><div class="sp">INR 235</div><div class="su">~flat vs CMP</div><p>~20% growth delivers, margins hold in the low-20s, the order book executes on schedule, coal block stays on track for FY28. FY27 PAT ~INR 40-43 Cr at ~18-20x. Roughly fairly valued - which is why the promoters sold.</p></div>
+        <div class="scen bull"><div class="st"><span>Bull</span><span>25%</span></div><div class="sp">INR 400</div><div class="su">+77% vs CMP</div><p>Growth sustains 25-30%, the resource-shortage margin proves structural, and the coal block (FY28, 40-45% IRR) plus the critical-minerals theme get priced as a step-change. FY28 EPS ~INR 18-20 re-rates to ~22-25x.</p></div>
+      </div>
+      <p><strong>Primary multiple &amp; note.</strong> P/E is the right anchor for an asset-light contractor with real earnings; EV/EBITDA cross-checks it and exposes the leverage-plus-lease. The coal block is deliberately confined to the <strong>bull case only</strong> - it is FY28+, needs INR 240-400 Cr of financing against a INR 204 Cr net worth, and the two capex figures (management INR 400 Cr vs CRISIL INR 240 Cr) do not yet reconcile - so the base case does not capitalise it.</p>
+    </section>
+
+    <!-- SECTION 15 : PRE-MORTEM -->
+    <section id="s15">
+      <div class="sectag">Section 15</div>
+      <h2>Pre-Mortem &amp; Anti-Thesis</h2>
+      <p class="lead">The sincere short case: you are paying ~22x for a lumpy, receivable-heavy, single-customer-dependent contractor whose record margin is management-admitted-cyclical, whose promoters are arbitraging their own cheap paper, and which has zero institutional ownership to defend the price when the pricing cycle turns.</p>
+
+      <h3>The strongest bear case, argued sincerely</h3>
+      <ul>
+        <li><strong>The margin is rented, not owned.</strong> FY26's 24% OPM is a "shortage of resources" price spike; SWPEL and the industry are adding rigs, and management won't quantify a forward margin. Capitalising a cyclical peak at ~22x is the classic small-cap trap.</li>
+        <li><strong>Cash never arrived.</strong> The profit doubled but CFO was 0.37x PAT; FCF was -INR 35 Cr; DSO stretched to 175 days. Growth is funded by debt, warrant cash and a run-down of the cash pile - not by the business.</li>
+        <li><strong>Concentration on both sides.</strong> Reliance ~35% of revenue; Hindustan Zinc ~53% of the order book. Two phone calls can reset the thesis.</li>
+        <li><strong>Promoter signalling.</strong> Selling market stock at ~INR 248 while self-allotting warrants at INR 132; recurring related-party loan rotation; no dividend. The insiders are monetising the rally even as they net-accumulate cheaply.</li>
+        <li><strong>No institutional floor.</strong> Nil DII, 0.76% FII, the only fund holder just exited, retail count tripled into the highs - nobody to catch a falling knife.</li>
+        <li><strong>Coal-block overhang.</strong> A INR 240-400 Cr mine build against a INR 204 Cr net worth is a large, partly-unfunded, execution-and-clearance-risk bet dressed up as "optionality."</li>
+      </ul>
+
+      <h3>Thesis-killers &amp; monitorables</h3>
+      <div class="mongrid">
+        <div class="mon"><span class="dot r"></span><div><div class="mk">EBITDA margin &lt; 19%</div><div class="mv">Two consecutive quarters = pricing cycle has turned</div></div></div>
+        <div class="mon"><span class="dot r"></span><div><div class="mk">DSO &gt; 190 days</div><div class="mv">Working-capital blow-out; cash thesis broken</div></div></div>
+        <div class="mon"><span class="dot a"></span><div><div class="mk">CFO/PAT &lt; 0.5x in FY27</div><div class="mv">Cash conversion fails to normalise as promised</div></div></div>
+        <div class="mon"><span class="dot a"></span><div><div class="mk">Reliance &gt; 40% of revenue</div><div class="mv">Concentration worsens rather than diversifies</div></div></div>
+        <div class="mon"><span class="dot r"></span><div><div class="mk">Further promoter open-market selling</div><div class="mv">Beyond the warrant-rotation; genuine distribution</div></div></div>
+        <div class="mon"><span class="dot a"></span><div><div class="mk">Coal-block capex &gt; guided / debt spike</div><div class="mv">Balance-sheet stress from the mine build</div></div></div>
+        <div class="mon"><span class="dot g"></span><div><div class="mk">HZL / RIL execution on schedule</div><div class="mv">Confirms the order book converts to revenue</div></div></div>
+        <div class="mon"><span class="dot g"></span><div><div class="mk">Related-party loan balances at year-end</div><div class="mv">Should stay ~nil; a build = leakage</div></div></div>
+      </div>
+      <p><strong>Base-rate check.</strong> Small-cap contractors that re-rate to ~22x on a cyclical margin peak, with negative FCF and promoters selling into the rally, have a poor historical hit-rate on holding those multiples through the next down-leg of their pricing cycle. The offsetting base rate: companies riding a genuine multi-year government capex theme with a real prequalification barrier and a positive (if weak) cash flow tend to survive and compound at a more modest pace than the peak year suggests. SWPEL sits between these - better than the average promoter-owned microcap on audit quality and cash sign, worse than average on concentration and margin durability.</p>
+    </section>
+
+    <!-- SECTION 16 : PITCH -->
+    <section id="s16">
+      <div class="sectag">Section 16</div>
+      <h2>Investment Pitch - Both Sides</h2>
+      <div class="two">
+        <div class="box buy">
+          <h4>The 90-second pitch to buy</h4>
+          <p>SWPEL is the largest organised private exploratory driller in a country that has decided to finally explore itself - INR 34,300 Cr on critical minerals, commercial coal to 1.5 BT, private exploration reform and aquifer mapping all converting to drilling metreage. It owns 40 of India's ~150 rigs, runs them at &gt;100% utilisation, and holds a rare accredited-prospecting-agency status that new entrants cannot instantly clear. The order book is over INR 760 Cr with marquee, multi-year cover (Hindustan Zinc INR 307 Cr, Reliance CBM), ROCE is best-in-class at ~19%, the credit was just upgraded to BBB+/A2, and there is free optionality - an 84-MT coal block into FY28 at a claimed 40-45% IRR and an Oman copper annuity. Buy the picks-and-shovels of a structural, decade-long exploration up-cycle, before institutions have discovered it.</p>
+        </div>
+        <div class="box sell">
+          <h4>The 90-second pitch to exit / avoid</h4>
+          <p>You are paying ~22x for a lumpy contractor whose record margin is, by management's own admission, a temporary "shortage of resources" price spike that SWPEL is itself busy competing away by adding rigs. The doubled FY26 profit converted to cash at just 0.37x; free cash flow was -INR 35 Cr; receivables stretched to 175 days. One client (Reliance) is ~35% of revenue and one order (HZL) is ~53% of the book. The promoters sold ~INR 29 Cr of stock into the rally while converting cheap self-allotted warrants, there is a recurring related-party loan rotation, no dividend, and zero institutional ownership to defend the price. When the pricing cycle turns, a re-rating from ~22x on a normalised margin does the damage - and the coal-block build is a large, partly-unfunded bet, not a guarantee.</p>
+        </div>
+      </div>
+      <p><strong>Time horizon.</strong> The bull case plays out over 2-3 years as the order book converts and the coal block approaches FY28 production; the bear case can arrive faster, in any two quarters where margin and DSO turn together.</p>
+      <p class="pull">"This is a bet on India's exploration-drilling up-cycle - a 40-rig fleet at &gt;100% utilisation turning a &gt;INR 760 Cr order book and an owned coal block into durable earnings - priced at ~22x as if today's resource-shortage margins are permanent - and it breaks if rig supply catches up, Reliance (~35% of sales) or receivables (175 days) disappoint, and profit keeps converting to cash at 0.37x."</p>
+      <p style="font-size:12px;color:var(--muted)">No Buy / Sell / Hold rating is given. The two cases above are the conclusion; the reader weights them.</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <h3>Sources used</h3>
+      <ul class="srclist">
+        <li>South West Pinnacle Exploration - Audited Financial Results (standalone &amp; consolidated), year ended 31-Mar-2026, Reg-33 filing, board meeting 04-May-2026 (contains full FY26 cash-flow statement + segment note). Primary.</li>
+        <li>South West Pinnacle Exploration - Annual Reports FY2024-25 (auditor's report 22-May-2025) and FY2023-24; Notes 12 (receivables/unbilled/retention), 42 (contingent liabilities), 45 (tax reconciliation), 49 (related parties); CARO 2020. Primary.</li>
+        <li>Q2/Q3/Q4 FY26 earnings-call transcripts (first call 30-Oct-2025) and investor presentations (Jul-2025, Aug-2025, Feb-2026). Primary - management verbatim.</li>
+        <li>CRISIL Ratings rationale - BBB/Stable, A3+ (16-Oct-2024) and upgrade to BBB+/Stable, A2 (10-Jul-2026); ~INR 84 Cr facilities, 35-40 rigs, order book, working-capital cycle, coal-block capex. Primary / independent.</li>
+        <li>Exchange announcements: HZL INR 307 Cr order (28-Feb-2026); RIL CBM extension INR 166.82 Cr (07-Jul-2026); CMPDI / CGWB / gold-bauxite orders (2026); coal-block accredited-prospecting-agency notification (Gazette 27-Nov-2025); Feb-2025 preferential + 10-Jul-2026 warrant conversion (28,21,411 sh at INR 132.20; 22,69,288 to promoters); promoter SAST sale 22-23 Jun-2026. Primary.</li>
+        <li>screener.in (SOUTHWEST) - 5Y/10Y P&amp;L, balance sheet, shareholding (note: FY26 cash flow not ingested - primary results filing used instead); screener.in peer pages (DEEPINDS, JINDRILL, ASIANENE, ANTELOPUS, ALPHAGEO, OILCOUNTUB); Trendlyne, scanx (bulk/block deals, surveillance). Aggregator / secondary.</li>
+        <li>Government / policy: PIB &amp; Ministry of Mines/Coal/Jal Shakti (NCMM 29-Jan-2025, coal 1-BT milestone, MMDR 2023, NMET AR 2023-24, CGWB NAQUIM); MECL (mecl.gov.in). Primary. S&amp;P Global, ICRA, imarcgroup - secondary, labelled.</li>
+      </ul>
+      <div class="disc">
+        <strong>Disclaimer.</strong> This document is an independent buy-side-style research note prepared for analytical purposes only. It is NOT investment advice, NOT a recommendation, and NOT a solicitation to buy or sell any security. No Buy / Sell / Hold rating is expressed. Figures are drawn from the primary and secondary sources listed and may contain errors or omissions; several FY26 vertical-mix and order-book figures are management-disclosed or from secondary press and are flagged as such in-text; the FY26 annual report was not yet published as of the report date. The author holds no position. Do your own diligence and consult a SEBI-registered adviser before acting. Prepared by S Triyambaka Patro.
+      </div>
+      <div class="gen">Generated on 14-Jul-2026. Data as of Q4/FY26 (Mar-2026); audited results filed 04-May-2026; price and corporate actions to 13-Jul-2026. All amounts in INR crore/lakh unless stated. Hyphens only, no em dashes.</div>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  // scroll progress
+  var p=document.getElementById('progress');
+  function onScroll(){
+    var h=document.documentElement,b=document.body;
+    var st=(h.scrollTop||b.scrollTop),sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+    p.style.width=(sh>0?(st/sh*100):0)+'%';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // TOC active on scroll
+  var links=Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var id='#'+e.target.id;
+          links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')===id);});
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    secs.forEach(function(s){if(s)obs.observe(s);});
+  }
+
+  // ratings toggle
+  var tog=document.getElementById('ratetog');
+  var KEY='swpel_badges';
+  function apply(on){
+    document.body.classList.toggle('badges-off',!on);
+    tog.classList.toggle('on',on);
+    tog.querySelector('.st').textContent=on?'On':'Off';
+  }
+  var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}
+  apply(saved===null?true:saved==='1');
+  tog.addEventListener('click',function(){
+    var on=!tog.classList.contains('on');
+    apply(on);
+    try{localStorage.setItem(KEY,on?'1':'0');}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
