@@ -147,6 +147,46 @@ refresh is not optional, so the higher capex columns are the realistic ones.
   company's own stated ARPU in the Q1 FY27 investor presentation, since revenue
   includes hotel and non-park income and footfall is a park metric.
 
+## CORRECTIONS APPLIED AFTER REVIEW (17-Aug-2026)
+
+1. ARPU BASIS CAUTION. The company discloses FY25 ARPU two different ways:
+   Rs 1,462 in the Q4 FY26 historical summary (FY20-FY25 series) and Rs 1,267
+   in the same deck's FY26-vs-FY25 KPI slide. The two series are NOT directly
+   comparable, so a FY20 (1,392) to FY26 (1,259) comparison mixes bases and
+   must not be made. FY21 (1,367 on 0.8 lakh visitors) and FY22 (1,568 on
+   0.32 lakh visitors) are COVID artefacts and the FY22 "peak" must not be
+   used as an anchor.
+   The defensible, basis-safe claims are:
+   - FY26 Rs 1,259 vs FY25 Rs 1,267 on the company's own like-for-like basis, -0.6%
+   - FY24 Rs 1,510 to FY25 Rs 1,462 on the historical series
+   - Q1 FY27 blended ARPU growth 0% on 22% more footfall
+   - Q1 FY27 core Mumbai-Pune catchment ARPU -1% on an unchanged asset base
+   Conclusion is basis-invariant: nominal realisation has not risen for 3+ years.
+
+2. GUIDANCE RATIO. Correct count is 4 hits / 4 misses / 3 pending = 4 of 8
+   checkable claims = 50%, not 3 of 9 = 33%. Hits: combined revenue, combined
+   EBITDA, combined footfall, Indore commissioning. Misses: acquired-park
+   contribution, FY26 sustain, QIP, deleveraging.
+
+3. NET DEBT / EBITDA. 315.4 / 116.0 = 2.72x on FY26; 315.4 / 133.1 = 2.37x on
+   TTM. The monitorable card previously mislabelled 2.4x as the FY26 figure.
+
+## WARRANT DETAIL (verified, monitoring agency report for quarter ended 30-Jun-2026)
+- Preferential issue period 24-Mar-2025 to 26-Mar-2025. Total size Rs 345.19 cr.
+- Equity: 2,34,82,500 shares at Rs 73.50 = Rs 172.60 cr, fully received.
+- Warrants: 2,34,82,500 at Rs 73.50 = Rs 172.60 cr. Received Rs 18.375 each
+  (25%) = Rs 43.15 cr. Balance Rs 55.125 each (75%) = Rs 129.45 cr due on
+  exercise within an 18-month tenure, i.e. by about 26-Sep-2026.
+- AS AT 30-JUN-2026, NIL WARRANTS HAD BEEN CONVERTED. All 2,34,82,500 still
+  outstanding at the 25%-paid stage, 15 months into an 18-month window.
+
+## AUDITOR (verified, FY25 annual report)
+- Surana & Associates LLP, FRN 121750W/W-100010, engagement partner
+  Santosh Maller, Membership No. 143824. Appointed at the 15th AGM on
+  27-Sep-2024 to hold office to the 20th AGM (FY2028-29).
+- CARO clause 3(xviii): no resignation of the statutory auditor during the year.
+- No report under section 143(12) filed in Form ADT-4, i.e. no fraud reported.
+
 ## Open items to confirm from subagent findings
 1. Quantum of the Maharashtra government incentive that ended in Q1 FY26.
 2. The Rs 770cr related party acquisition: minority vote split, valuation basis.
