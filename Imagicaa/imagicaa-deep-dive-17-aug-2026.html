@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imagicaaworld Entertainment - Deep Dive - 17 Aug 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#ffb000;
+    --bg:#05070a;
+    --card:#0a0e13;
+    --card2:#0b1017;
+    --border:#182029;
+    --border2:#243244;
+    --text:#c3ceda;
+    --bright:#eef4fa;
+    --muted:#647689;
+    --dim:#3a4756;
+    --bull:#23d18b;
+    --bear:#ff5c57;
+    --amber:#ffb000;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background-color:var(--bg);
+    color:var(--text);
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    font-size:14px;
+    line-height:1.6;
+    font-variant-numeric:tabular-nums;
+    background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+    background-size:34px 34px;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.955;z-index:-1}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(1100px 520px at 78% -8%,rgba(255,176,0,.05),transparent 60%)}
+  ::selection{background:rgba(255,176,0,.25);color:#fff}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .mono{font-variant-numeric:tabular-nums}
+  h1,h2,h3,h4,.fr{font-family:inherit}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:#070a0e}
+  ::-webkit-scrollbar-thumb{background:#1c2733;border:2px solid #070a0e}
+  ::-webkit-scrollbar-thumb:hover{background:#2a3a4a}
+  #progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:1000;box-shadow:0 0 8px rgba(255,176,0,.6)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .layout{display:flex;gap:36px;max-width:1340px;margin:0 auto;padding:0 26px}
+  .toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:214px;padding:30px 0;flex-shrink:0;font-size:11.5px}
+  .toc ol{list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;margin:1px 0}
+  .toc a{display:block;color:var(--muted);padding:5px 10px;border-left:2px solid var(--border);line-height:1.3;text-transform:uppercase;letter-spacing:.03em}
+  .toc a::before{content:counter(t,decimal-leading-zero) " ";color:var(--accent);opacity:.6}
+  .toc a.active{color:var(--bright);border-left-color:var(--accent);background:linear-gradient(90deg,rgba(255,176,0,.07),transparent)}
+  .toc a:hover{color:var(--bright);text-decoration:none}
+  .toc .toctitle{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);padding:0 10px 11px;border-bottom:1px solid var(--border);margin-bottom:10px}
+  .toc .toctitle::before{content:"● "}
+  .content{flex:1;min-width:0;padding-bottom:100px}
+  @media(max-width:960px){.toc{display:none}.layout{padding:0 16px}}
+  .hero{padding:52px 0 34px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:inline-block;border:1px solid rgba(255,176,0,.4);padding:4px 10px}
+  .hero h1{font-size:52px;font-weight:800;line-height:1.0;letter-spacing:-.01em;margin-bottom:14px;text-transform:uppercase;color:var(--bright)}
+  .hero h1::after{content:"_";color:var(--accent);animation:blink 1.1s steps(1) infinite;font-weight:800}
+  @keyframes blink{50%{opacity:0}}
+  .hero .sub{font-size:12.5px;color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
+  .hero .desc{color:var(--text);max-width:680px;margin-top:14px;font-size:13.5px;line-height:1.65}
+  @media(max-width:640px){.hero h1{font-size:32px}}
+  .scenbar{margin:32px 0 4px}
+  .track{position:relative;height:12px;background:linear-gradient(90deg,var(--bear),var(--amber) 48%,var(--bull));margin:30px 0 8px}
+  .track .cmp{position:absolute;top:-8px;width:2px;height:28px;background:var(--bright)}
+  .track .cmp::after{content:attr(data-lbl);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--bright);white-space:nowrap}
+  .track .tick{position:absolute;top:18px;transform:translateX(-50%);font-size:10.5px;color:var(--muted);white-space:nowrap;text-align:center}
+  .scenrow{display:flex;justify-content:space-between;gap:16px;font-size:11.5px;color:var(--muted);margin-top:46px}
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:28px 0}
+  .stat{background:var(--card);border:1px solid var(--border);padding:13px 14px}
+  .stat .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .stat .v{font-size:21px;font-weight:700;margin-top:6px;color:var(--bright)}
+  .stat .n{font-size:11px;color:var(--muted);margin-top:3px}
+  .v.bull{color:var(--bull)}.v.bear{color:var(--bear)}.v.amber{color:var(--amber)}
+  section{padding:46px 0 6px;border-top:1px solid var(--border);position:relative}
+  section:first-of-type{border-top:none}
+  .sectag{position:relative;z-index:1;display:inline-block;font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;border:1px solid rgba(255,176,0,.35);padding:3px 9px}
+  .sectag::before{content:"// "}
+  section h2{position:relative;z-index:1;font-size:25px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px;line-height:1.18;text-transform:uppercase;color:var(--bright)}
+  section h3{font-size:14.5px;font-weight:700;margin:24px 0 9px;color:var(--bright);text-transform:uppercase;letter-spacing:.02em}
+  section h3::before{content:"> ";color:var(--accent)}
+  p{margin:11px 0;color:var(--text)}
+  strong{color:var(--bright);font-weight:700}
+  em{color:var(--text);font-style:italic}
+  ul,ol{margin:11px 0 11px 20px;color:var(--text)}
+  li{margin:6px 0}
+  li::marker{color:var(--accent)}
+  .lead{font-size:15px;color:var(--bright);line-height:1.6}
+  .tw{overflow-x:auto;margin:18px 0;border:1px solid var(--border)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px}
+  th,td{padding:7px 11px;text-align:right;border-bottom:1px solid var(--border);border-right:1px solid var(--border);white-space:nowrap}
+  th:last-child,td:last-child{border-right:none}
+  th:first-child,td:first-child{text-align:left}
+  thead th{background:var(--card2);color:var(--accent);font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;position:sticky;top:0}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover td{background:rgba(255,176,0,.04)}
+  td.mono,th.mono{font-variant-numeric:tabular-nums}
+  tbody td{color:var(--text);font-variant-numeric:tabular-nums}
+  tbody td:first-child{color:var(--bright)}
+  td.wrap2{white-space:normal;min-width:210px}
+  .rowlabel{color:var(--muted)}
+  caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:11px;padding:8px 11px;border-top:1px solid var(--border);background:var(--card2)}
+  .chip{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent}
+  .chip.hit{background:rgba(35,209,139,.1);color:var(--bull);border-color:rgba(35,209,139,.4)}
+  .chip.miss{background:rgba(255,92,87,.1);color:var(--bear);border-color:rgba(255,92,87,.4)}
+  .chip.over{background:rgba(255,176,0,.1);color:var(--accent);border-color:rgba(255,176,0,.4)}
+  .chip.part{background:rgba(255,176,0,.08);color:var(--amber);border-color:rgba(255,176,0,.3)}
+  .chip.pend{background:rgba(100,118,137,.12);color:var(--muted);border-color:rgba(100,118,137,.4)}
+  .badge{display:inline-block;font-size:9.5px;font-weight:700;padding:3px 9px;letter-spacing:.06em;text-transform:uppercase;border:1px solid transparent}
+  .b-strong{background:rgba(35,209,139,.12);color:var(--bull);border-color:rgba(35,209,139,.4)}
+  .b-mod{background:rgba(255,176,0,.12);color:var(--amber);border-color:rgba(255,176,0,.4)}
+  .b-weak{background:rgba(255,92,87,.12);color:var(--bear);border-color:rgba(255,92,87,.4)}
+  .b-none{background:rgba(100,118,137,.12);color:var(--muted);border-color:rgba(100,118,137,.4)}
+  .flag{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--bear);padding:13px 17px;margin:16px 0}
+  .flag .ft{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bear);margin-bottom:5px}
+  .flag .ft::before{content:"! "}
+  .flag p{color:var(--text);font-size:12.5px;margin:0}
+  .flag p+p{margin-top:8px}
+  .green{border-left-color:var(--bull)}
+  .green .ft{color:var(--bull)}
+  .amberbox{border-left-color:var(--amber)}
+  .amberbox .ft{color:var(--amber)}
+  .moatgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .moat{background:var(--card);border:1px solid var(--border);padding:15px}
+  .moat .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
+  .moat .mh .mn{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright)}
+  .moat p{font-size:12px;margin:6px 0 0;color:var(--muted)}
+  .scengrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .scen{background:var(--card);border:1px solid var(--border);padding:16px;border-top:2px solid var(--muted)}
+  .scen.bull{border-top-color:var(--bull)}
+  .scen.base{border-top-color:var(--amber)}
+  .scen.bear{border-top-color:var(--bear)}
+  .scen .st{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+  .scen .sp{font-size:28px;font-weight:700;margin:7px 0 2px}
+  .scen.bull .sp{color:var(--bull)}.scen.base .sp{color:var(--amber)}.scen.bear .sp{color:var(--bear)}
+  .scen .su{font-size:11px;color:var(--muted)}
+  .scen p{font-size:12px;margin-top:9px}
+  .mongrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:18px 0}
+  .mon{background:var(--card);border:1px solid var(--border);padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
+  .dot{width:8px;height:8px;margin-top:6px;flex-shrink:0}
+  .dot.r{background:var(--bear);box-shadow:0 0 6px rgba(255,92,87,.6)}
+  .dot.a{background:var(--amber);box-shadow:0 0 6px rgba(255,176,0,.6)}
+  .dot.g{background:var(--bull);box-shadow:0 0 6px rgba(35,209,139,.6)}
+  .mon .mk{font-size:12px;color:var(--bright);font-weight:500}
+  .mon .mv{font-size:11px;color:var(--muted);margin-top:2px}
+  .eqbar{display:flex;gap:4px;margin:14px 0}
+  .eqseg{flex:1;height:24px;background:var(--border)}
+  .eqseg.on{background:var(--accent);box-shadow:0 0 10px rgba(255,176,0,.35)}
+  .caltrack{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+  @media(max-width:760px){.caltrack{grid-template-columns:1fr 1fr}}
+  .cal{background:var(--card);border:1px solid var(--border);padding:13px}
+  .cal .cq{font-size:11px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+  .cal ul{margin:8px 0 0 15px;font-size:12px}
+  .cal li{margin:5px 0;color:var(--muted)}
+  .pull{font-size:17px;font-weight:500;line-height:1.5;color:var(--bright);border-left:3px solid var(--accent);padding:4px 0 4px 20px;margin:26px 0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .box{background:var(--card);border:1px solid var(--border);padding:17px}
+  .box h4{font-size:13px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);font-weight:700}
+  .box.buy{border-top:2px solid var(--bull)}
+  .box.sell{border-top:2px solid var(--bear)}
+  .box p,.box li{font-size:12.5px}
+  footer{border-top:1px solid var(--border);padding:36px 0 60px;margin-top:56px;color:var(--muted);font-size:12.5px}
+  footer h3{color:var(--bright);margin-bottom:12px;text-transform:uppercase;letter-spacing:.03em;font-size:14px;font-weight:700}
+  footer h3::before{content:"> ";color:var(--accent)}
+  footer .gen{font-size:10.5px;margin-top:20px;color:var(--muted);letter-spacing:.02em}
+  .srclist{list-style:none;margin-left:0}
+  .srclist li{margin:6px 0;font-size:12px;padding-left:12px;border-left:1px solid var(--border)}
+  .disc{background:var(--card);border:1px solid var(--border);padding:13px 17px;font-size:11.5px;color:var(--muted);margin-top:22px}
+  .kv{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:6px 0;font-size:12.5px;gap:14px}
+  .kv:last-child{border-bottom:none}
+  .kv .kk{color:var(--muted)}
+  .kv .vv{color:var(--text);text-align:right}
+  #ratetog{position:fixed;right:16px;bottom:16px;z-index:1001;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;cursor:pointer;user-select:none;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+  #ratetog:hover{border-color:var(--accent);color:var(--text)}
+  #ratetog .sw{position:relative;width:30px;height:15px;background:var(--border2);flex-shrink:0;transition:background .15s}
+  #ratetog .sw i{position:absolute;top:2px;left:2px;width:11px;height:11px;background:var(--muted);transition:.15s}
+  #ratetog.on .sw{background:rgba(255,176,0,.35)}
+  #ratetog.on .sw i{left:17px;background:var(--accent)}
+  #ratetog .st{min-width:22px;color:var(--muted)}
+  #ratetog.on .st{color:var(--accent)}
+  body.badges-off .badge{display:none}
+  @media(max-width:600px){#ratetog{right:10px;bottom:10px;font-size:10px;padding:7px 10px}}
+  @media print{#ratetog{display:none}}
+  .bm-intro{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:15px 20px;margin:18px 0;font-size:13.5px;color:var(--text);line-height:1.65}
+  .bm-intro .bl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .bm-intro p{margin:8px 0 0}
+  .vchain{display:grid;grid-template-columns:repeat(4,1fr);margin:16px 0;border:1px solid var(--border)}
+  .vstage{position:relative;background:var(--card);padding:13px 15px;border-right:1px solid var(--border)}
+  .vstage:last-child{border-right:none}
+  .vstage .vh{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+  .vstage .vh::before{content:"";width:7px;height:7px;background:var(--accent);flex-shrink:0}
+  .vstage ul{margin:0;list-style:none}
+  .vstage li{font-size:12px;color:var(--text);margin:4px 0;padding-left:12px;position:relative;line-height:1.45}
+  .vstage li::before{content:"-";position:absolute;left:0;color:var(--muted)}
+  .vstage li::marker{content:""}
+  .vstage:not(:last-child)::after{content:"\25B6";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:11px;z-index:2;background:var(--bg);line-height:1}
+  @media(max-width:760px){
+    .vchain{grid-template-columns:1fr}
+    .vstage{border-right:none;border-bottom:1px solid var(--border)}
+    .vstage:last-child{border-bottom:none}
+    .vstage:not(:last-child)::after{content:"\25BC";right:auto;left:50%;top:auto;bottom:-8px;transform:translateX(-50%)}
+  }
+  .seg{border:1px solid var(--border);margin:20px 0;background:linear-gradient(180deg,rgba(255,176,0,.025),transparent 42%)}
+  .seg .segh{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--border);background:var(--card2)}
+  .seg .segh .sn{font-size:14.5px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);min-width:0}
+  .seg .segh .sn .sx{color:var(--muted);font-weight:400;text-transform:none;font-size:11.5px;display:block;margin-top:3px;letter-spacing:0;line-height:1.4}
+  .seg .segh .mix{font-size:11px;color:var(--accent);border:1px solid rgba(255,176,0,.35);padding:3px 9px;white-space:nowrap;flex-shrink:0}
+  .seg .segbody{padding:15px 16px}
+  .seg .segbody>p{font-size:13px;margin:0 0 4px;color:var(--text)}
+  .seg .segbody>p.note{font-size:12px;color:var(--muted);margin-top:8px}
+  .iogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:14px 0 4px}
+  .io{background:var(--card);border:1px solid var(--border);padding:12px 13px}
+  .io .iok{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+  .io .iok::before{content:"";width:6px;height:6px;background:var(--accent);flex-shrink:0}
+  .io p{font-size:12px;margin:0;color:var(--text);line-height:1.5}
+  .mixbar{display:flex;height:36px;margin:16px 0 10px;border:1px solid var(--border);overflow:hidden;font-variant-numeric:tabular-nums}
+  .mixseg{display:flex;align-items:center;justify-content:center;font-size:10.5px;color:#05070a;font-weight:700;min-width:0;overflow:hidden;white-space:nowrap;border-right:1px solid rgba(5,7,10,.5)}
+  .mixseg:last-child{border-right:none}
+  .mixkey{display:flex;flex-wrap:wrap;gap:7px 16px;font-size:11px;color:var(--muted);margin-bottom:14px}
+  .mixkey span{display:flex;align-items:center;gap:6px}
+  .mixkey i{width:10px;height:10px;flex-shrink:0}
+  .uu{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--amber);padding:13px 17px;margin:16px 0}
+  .uu .ut{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:7px}
+  .uu .ut::before{content:"? "}
+  .uu ul{margin:6px 0 0 17px;font-size:12.5px;color:var(--text)}
+  .uu li{margin:6px 0;line-height:1.5}
+  .uu li::marker{color:var(--amber)}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<button id="ratetog" class="on" title="Show or hide the qualitative moat rating badges (Weak / Moderate / Strong / None)"><span class="tl">Ratings</span><span class="sw"><i></i></span><span class="st">On</span></button>
+<div class="layout">
+<nav class="toc">
+  <div class="toctitle">Sections</div>
+  <ol>
+    <li><a href="#s1">Industry &amp; Sector</a></li>
+    <li><a href="#s2">Business Model</a></li>
+    <li><a href="#s3">Peer Benchmarking</a></li>
+    <li><a href="#s4">6 Cs Moat</a></li>
+    <li><a href="#s5">Financial Analysis</a></li>
+    <li><a href="#s6">Earnings Quality</a></li>
+    <li><a href="#s7">Promoter &amp; Governance</a></li>
+    <li><a href="#s8">Guidance Scorecard</a></li>
+    <li><a href="#s9">Regulatory &amp; Risk</a></li>
+    <li><a href="#s10">Scuttlebutt</a></li>
+    <li><a href="#s11">Headwinds &amp; Tailwinds</a></li>
+    <li><a href="#s12">Triggers &amp; Themes</a></li>
+    <li><a href="#s13">Shareholding &amp; Flows</a></li>
+    <li><a href="#s14">Valuation</a></li>
+    <li><a href="#s15">Pre-Mortem</a></li>
+    <li><a href="#s16">Investment Pitch</a></li>
+  </ol>
+</nav>
+<main class="content">
+
+<div class="hero">
+  <span class="eyebrow">Buy-Side Deep Dive // Not a Recommendation</span>
+  <h1>Imagicaaworld Entertainment</h1>
+  <div class="sub">NSE: IMAGICAA &nbsp;|&nbsp; BSE: 539056 &nbsp;|&nbsp; CIN L92490MH2010PLC199925 &nbsp;|&nbsp; Consolidated basis</div>
+  <div class="sub">CMP Rs 47.70 &nbsp;|&nbsp; Mkt cap Rs 2,699 cr &nbsp;|&nbsp; EV Rs 3,015 cr &nbsp;|&nbsp; Data as of Q1 FY27 (quarter ended 30-Jun-2026) &nbsp;|&nbsp; Report dated 17-Aug-2026</div>
+  <p class="desc">India's largest theme-park operator by asset base, rebuilt out of the wreckage of Adlabs Entertainment. The Malpani Group took control in Jun-2022, wrote off the old lenders, and has since bought its own family parks into the listed vehicle. The reported profit history is almost entirely restructuring accounting. The operating business underneath is a nine-park, one-hotel roll-up whose realisation per visitor is lower today than it was six years ago.</p>
+
+  <div class="scenbar">
+    <div class="track">
+      <div class="cmp" style="left:44.0%" data-lbl="CMP 47.70"></div>
+      <div class="tick" style="left:0%">Bear 22</div>
+      <div class="tick" style="left:38%">Base 44</div>
+      <div class="tick" style="left:100%">Bull 80</div>
+    </div>
+    <div class="scenrow">
+      <span>Scenario band is the analyst's own, derived in Section 14. Probability-weighted value Rs 46.4.</span>
+    </div>
+  </div>
+
+  <div class="statgrid">
+    <div class="stat"><div class="k">Bear / Base / Bull</div><div class="v">22 / 44 / 80</div><div class="n">30% / 45% / 25% weights</div></div>
+    <div class="stat"><div class="k">Prob-weighted value</div><div class="v amber">Rs 46.4</div><div class="n">-2.7% vs CMP</div></div>
+    <div class="stat"><div class="k">Earnings quality</div><div class="v amber">5 / 10</div><div class="n">Cash is real, profit is not</div></div>
+    <div class="stat"><div class="k">Guidance credibility</div><div class="v bear">3 / 9</div><div class="n">33% of checkable claims</div></div>
+    <div class="stat"><div class="k">Moat strength</div><div class="v amber">Weak-Moderate</div><div class="n">Land, not brand</div></div>
+    <div class="stat"><div class="k">EV / EBITDA (TTM)</div><div class="v">22.7x</div><div class="n">26.0x on FY26</div></div>
+    <div class="stat"><div class="k">FY26 ROCE / ROE</div><div class="v bear">1.86% / 0.05%</div><div class="n">Below cost of capital</div></div>
+    <div class="stat"><div class="k">FCF FY23-FY26</div><div class="v bear">-Rs 408 cr</div><div class="n">Cumulative, 4 years</div></div>
+  </div>
+
+  <h3>Top three positives</h3>
+  <ul>
+    <li><strong>Cash conversion is genuine.</strong> CFO ran at 85-138% of operating profit across FY23-FY26. This is a cash-at-the-gate business with Rs 6.3 cr of receivables on Rs 374 cr of revenue. Whatever the accounting noise, the operating cash is real.</li>
+    <li><strong>The acquired parks were bought cheaply on the stated numbers.</strong> Rs 629.38 cr for four parks at a claimed 7.4x EV/EBITDA, against a listed vehicle trading at 22.7x. On the face of it the promoter sold assets into the listed company below the multiple minorities are paying, which is accretive, not extractive.</li>
+    <li><strong>Balance sheet is repaired and the rating is investment grade.</strong> India Ratings affirmed IND A/Stable on Rs 440 cr of facilities on 14-May-2026. Net debt of Rs 315 cr against Rs 1,254 cr of net worth. The Rs 1,078 cr debt pile that killed Adlabs is gone. Contingent liabilities are only Rs 31.9 cr, 2.5% of net worth. The three Malpani directors draw no remuneration.</li>
+  </ul>
+
+  <h3>Top three risks</h3>
+  <ul>
+    <li><strong>Realisation per visitor is falling, not rising.</strong> Blended ARPU peaked at Rs 1,568 in FY22 and was Rs 1,259 in FY26, below even FY20's Rs 1,392. In Q1 FY27 footfall rose 22% while ARPU rose 0%. Every rupee of growth is coming from bodies through the gate, none from pricing.</li>
+    <li><strong>A funding gap of roughly Rs 200-330 cr over the next 12-18 months.</strong> India Ratings puts committed cash outgo at about Rs 600 cr. Identifiable sources total about Rs 396 cr and that assumes Rs 129.4 cr of warrant money arrives on warrants struck at Rs 73.50 against a Rs 47.70 share price.</li>
+    <li><strong>The acquisition has already missed its own case.</strong> The four parks were presented on TTM revenue of Rs 148.7 cr. In FY25, their first full year inside the company, they contributed Rs 111.73 cr, 25% short. Goodwill of Rs 41.25 cr has not been impaired.</li>
+  </ul>
+
+  <div class="flag amberbox">
+    <div class="ft">Biggest data gap</div>
+    <p>The FY26 annual report is not yet published (AGM due around Sep-2026). FY26 related-party schedules, the government-grant split, the CARO annexure and the FY26 contingent-liability note are therefore unavailable. All FY26 forensic work here is built from the audited FY26 results filed 14-May-2026 plus the FY25 annual report, and every such inference is labelled. A second gap: the company does not disclose the acquired parks' revenue separately after FY25, so the Rs 111.73 cr shortfall cannot be tracked forward.</p>
+  </div>
+</div>
+
+<section id="s1">
+  <span class="sectag">Section 01</span>
+  <h2>Industry and Sector Analysis</h2>
+
+  <p class="lead">Indian out-of-home leisure is a small, fragmented, capital-hungry industry with a poor historical record of earning its cost of capital. It is growing, but the growth is volume growth in a market where the customer will not pay more per visit.</p>
+
+  <h3>Size and growth</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Metric</th><th>FY18</th><th>FY23</th><th>FY24E</th><th>FY30E</th></tr></thead>
+    <tbody>
+      <tr><td>Market size (Rs bn)</td><td>68</td><td>105</td><td>108-114</td><td>190-200</td></tr>
+      <tr><td>Market size (Rs cr)</td><td>6,800</td><td>10,500</td><td>10,800-11,400</td><td>19,000-20,000</td></tr>
+      <tr><td>Implied CAGR</td><td colspan="2">8% (FY18-FY23)</td><td colspan="2">9-11% (FY24-FY30)</td></tr>
+    </tbody>
+    <caption>Source: CRISIL industry report as reproduced in the company's Q1 FY27 investor presentation, 07-Aug-2026. Secondary source, not independently verified.</caption>
+  </table></div>
+
+  <p>On these numbers IMAGICAA's FY26 revenue of Rs 374 cr is roughly <strong>3.3% of the organised Indian market</strong>. That makes it one of the two largest players in an industry whose entire organised revenue pool is smaller than a single mid-cap Indian company. This is the first thing to internalise: the total addressable market is thin, and a national roll-out means opening parks in cities that support lower ticket prices.</p>
+
+  <h3>Where value sits in the chain, and the Indian anomaly</h3>
+  <p>Globally, mature parks earn 60% of revenue from ticketing and 40% from non-ticketing (food, beverage, merchandise, hotels, events). In India the split is <strong>75% ticketing and 25% non-ticketing</strong>. CRISIL attributes this to lower discretionary spending power. The consequence for an operator is severe: revenue is almost entirely a function of gate volume times gate price, with limited ability to monetise a captive visitor once inside. IMAGICAA's own FY25 mix, at ticket sales Rs 226 cr against food and beverage Rs 94 cr plus merchandise Rs 15 cr, is 67% ticketing on park revenue, slightly better than the industry but far from the global model.</p>
+
+  <h3>Position in the cycle</h3>
+  <p>The sector is in a <strong>post-COVID normalisation phase, not an upcycle</strong>. Footfall collapsed across FY21 and FY22 (IMAGICAA did 0.8 lakh and 0.32 lakh visitors respectively against 11.2 lakh in FY20), recovered through FY23 and FY24, and is now growing off a normalised base. The evidence for normalisation rather than boom: IMAGICAA's own like-for-like footfall was 13.6 lakh in both FY23 and FY24, dead flat, and consolidated footfall fell 8.7% in FY26. Pricing is the clearest cycle signal, and it is negative in real terms across the industry's largest single asset.</p>
+
+  <h3>Structural drivers</h3>
+  <ul>
+    <li><strong>Domestic tourism.</strong> Domestic tourist visits went from 2,322 mn (CY19) to 610 mn (CY20) to 1,731 mn (CY22), with 3,500 mn projected by CY30, a 9% CAGR. Genuine tailwind.</li>
+    <li><strong>Discretionary consumption.</strong> Private final consumption expenditure grew from Rs 26 tn (FY12) to Rs 55 tn (FY23), a 7% CAGR. Parks are a levered play on the discretionary rupee, in both directions.</li>
+    <li><strong>Tier-2 expansion.</strong> The stated industry growth driver is players expanding into tier-2 and tier-3 cities. This is real, but it is ARPU-dilutive by construction, as Section 5 demonstrates with the company's own catchment data.</li>
+    <li><strong>Substitution risk.</strong> The competitive set is not only other parks. It is malls, multiplexes, gaming, OTT, and short-haul weekend travel. This is the single most under-appreciated structural risk in the sector.</li>
+  </ul>
+
+  <h3>Regulatory architecture</h3>
+  <ul>
+    <li><strong>GST on admission.</strong> Amusement park and ride admission has been taxed at a concessional rate relative to the earlier 28% slab. The exact GST Council decision and effective date could not be pinned to a primary source in the time available and is marked <strong>UNVERIFIED</strong>. Directionally, a lower admission GST rate is a tailwind that has already been captured.</li>
+    <li><strong>State tourism incentives</strong> are a material earnings input, not a footnote. Maharashtra (Tourism Policy 2016) grants fiscal and additional incentives to eligible units including amusement parks. Gujarat (Tourism Policy 2021-2025) offers capital subsidy and electricity duty exemption for parks with investment above Rs 500 mn. Madhya Pradesh (Tourism Policy 2016) covers water parks and amusement parks. Tamil Nadu (2023) supports entertainment projects over 15 acres. IMAGICAA has or is building parks in Maharashtra, Madhya Pradesh and Gujarat, and recognised <strong>Rs 28.44 cr of government grants in FY25</strong>, equal to 16% of that year's EBITDA.</li>
+    <li><strong>Land, water and safety.</strong> Land-use conversion, environmental clearance, water abstraction permissions for water parks, and ride safety are the practical gating items. India has no single national ride-safety licensing regime comparable to the US or EU, which lowers the compliance barrier but raises tail risk from any serious incident.</li>
+  </ul>
+
+  <div class="flag">
+    <div class="ft">The base rate is the most important fact in this section</div>
+    <p>Large Indian theme parks have a poor record of earning their cost of capital. Adlabs Imagica itself lost money every year from FY15 to FY22, accumulating losses that drove reserves to minus Rs 949 cr, and was resolved only by lenders taking a haircut. EsselWorld, the Mumbai incumbent, has been closed since Apr-2022. The counter-example is Wonderla, which has operated multiple parks profitably at high margins for years and continues to invest, opening a Rs 611 cr Chennai park on 02-Dec-2025.</p>
+    <p>The lesson is not that parks cannot work in India. It is that <strong>the asset works only where the operator earns a genuine return on the ride refresh</strong>. The industry's own literature, reproduced on IMAGICAA's investor presentation, states that operators must "incur replacement and refresh capex for new rides every 2-3 years to attract customers and get repeat footfalls." That sentence is the whole industry in one line, and Section 10 tests IMAGICAA against it.</p>
+  </div>
+</section>
+
+<section id="s2">
+  <span class="sectag">Section 02</span>
+  <h2>Business Model and Value Chain</h2>
+
+  <div class="bm-intro">
+    <div class="bl">What this company actually is</div>
+    <p>IMAGICAA sells a day out. It owns large plots of land within driving distance of dense urban catchments, puts rides, slides and themed attractions on them, and charges a family for a day's admission, then tries to sell that family food, merchandise, a locker, a fast-track pass and occasionally a hotel room. There is no manufacturing, no order book, no client. Revenue equals <strong>footfall multiplied by average revenue per user (ARPU)</strong>, and essentially nothing else. Costs are largely fixed: staff, power, water, maintenance, marketing and depreciation on a Rs 1,383 cr fixed-asset base. That combination produces violent operating leverage in both directions, which is exactly what FY25 and FY26 show.</p>
+  </div>
+
+  <h3>The portfolio as at Q1 FY27</h3>
+  <p>Nine parks (eight owned plus one under operations and maintenance) and one five-star hotel, across four catchments.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Catchment</th><th>Assets</th><th>Q1FY27 footfall</th><th>Q1FY27 ARPU (Rs)</th><th>Q1FY27 revenue (Rs cr)</th><th>YoY ARPU</th></tr></thead>
+    <tbody>
+      <tr><td>Mumbai-Pune</td><td class="wrap2">Imagicaa Theme Park Khopoli, Imagicaa Water Park Khopoli, Wet'n Joy Water Park Lonavala, Wet'n Joy Amusement Park Lonavala</td><td>6,22,199</td><td>1,774</td><td>110.35</td><td>-1%</td></tr>
+      <tr><td>Rest of Maharashtra</td><td class="wrap2">Wet'n Joy Water Park Shirdi, Sai Teerth Religious Theme Park Shirdi</td><td>2,74,813</td><td>970</td><td>26.66</td><td>+17%</td></tr>
+      <tr><td>Central India</td><td class="wrap2">Aqua Imagicaa Water Park, Indore</td><td>1,64,938</td><td>942</td><td>15.54</td><td>-3%</td></tr>
+      <tr><td>Gujarat</td><td class="wrap2">Aqua Imagicaa Water Park Surat; Shanku's Water Park Mehsana (O&amp;M only, excluded)</td><td>92,248</td><td>915</td><td>8.44</td><td>-13%</td></tr>
+      <tr><td><strong>All parks</strong></td><td>-</td><td><strong>11,54,198</strong></td><td><strong>1,395</strong></td><td><strong>161.00</strong></td><td><strong>0%</strong></td></tr>
+      <tr><td>Novotel Imagicaa (hotel)</td><td class="wrap2">287 keys, five-star, Khopoli</td><td>62% occupancy</td><td>ARR 9,657</td><td>15.83</td><td>ARR +1%</td></tr>
+    </tbody>
+    <caption>Source: Q1 FY27 investor presentation, 07-Aug-2026. Snow Park is inside the Khopoli complex. Hotel revenue fell 2% YoY and occupancy fell from 65% to 62%.</caption>
+  </table></div>
+
+  <h3>Revenue mix, FY25 (last year with a full disclosed split)</h3>
+  <div class="mixbar">
+    <div class="mixseg" style="width:55.1%;background:#ffb000">Ticket 55%</div>
+    <div class="mixseg" style="width:22.9%;background:#23d18b">F&amp;B 23%</div>
+    <div class="mixseg" style="width:8.5%;background:#5b9bd5">Rooms 9%</div>
+    <div class="mixseg" style="width:3.7%;background:#ff5c57">Merch 4%</div>
+    <div class="mixseg" style="width:9.8%;background:#647689">Other 10%</div>
+  </div>
+  <div class="mixkey">
+    <span><i style="background:#ffb000"></i>Ticket sales Rs 226 cr</span>
+    <span><i style="background:#23d18b"></i>Food &amp; beverage Rs 94 cr</span>
+    <span><i style="background:#5b9bd5"></i>Room rentals Rs 35 cr</span>
+    <span><i style="background:#ff5c57"></i>Merchandise Rs 15 cr</span>
+    <span><i style="background:#647689"></i>Other incl. grants Rs 40 cr</span>
+  </div>
+
+  <div class="seg">
+    <div class="segh"><div class="sn">Segment 1 - Parks<span class="sx">Theme, water, amusement, snow and devotional parks. The engine.</span></div><div class="mix">~91% of revenue</div></div>
+    <div class="segbody">
+      <div class="vchain">
+        <div class="vstage"><div class="vh">Inputs</div><ul><li>Land (110 acres Khopoli plus sites at Lonavala, Shirdi, Surat, Indore)</li><li>Rides and slides, largely imported capital equipment</li><li>Power and water, both material and both regulated</li><li>Seasonal and permanent labour</li><li>Marketing spend, Rs 33.1 cr in FY26</li></ul></div>
+        <div class="vstage"><div class="vh">What the company does</div><ul><li>Owns and operates the asset</li><li>Sets and discounts ticket prices</li><li>Runs food, beverage and merchandise concessions in-house</li><li>Maintains and periodically refreshes rides</li><li>Markets to a 2-4 hour drive radius</li></ul></div>
+        <div class="vstage"><div class="vh">Customers</div><ul><li>Families and young adults, Mumbai and Pune primarily</li><li>School and college group bookings</li><li>Pilgrims at Shirdi (Sai Teerth)</li><li>Direct online, walk-in gate, and third-party aggregators</li></ul></div>
+        <div class="vstage"><div class="vh">End use</div><ul><li>A single day of discretionary leisure</li><li>Typically one visit per household per year or less</li><li>Competes with a mall day, a multiplex, or a weekend villa</li></ul></div>
+      </div>
+      <div class="iogrid">
+        <div class="io"><div class="iok">Dominant input</div><p>Land and the installed ride base. Once built, the marginal cost of one more visitor is close to zero, which is why margin swings so hard with volume.</p></div>
+        <div class="io"><div class="iok">Who owns the customer</div><p>The company does at the gate, but a meaningful share arrives via aggregators and discount channels, which compresses realisation. See Section 10.</p></div>
+        <div class="io"><div class="iok">Pricing mechanism</div><p>Published gate price, heavily and persistently discounted. Management stated in Jul-2026 an intent to raise prices 5-8% from the December quarter and trim discounts.</p></div>
+        <div class="io"><div class="iok">Value-chain position</div><p>Asset owner and operator. It captures the whole margin but also carries the whole capital cost and the whole demand risk.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seg">
+    <div class="segh"><div class="sn">Segment 2 - Hotel<span class="sx">Novotel Imagicaa Khopoli, 287 keys, operated under the Accor Novotel flag.</span></div><div class="mix">~9% of revenue</div></div>
+    <div class="segbody">
+      <p>A five-star hotel adjacent to the Khopoli park, designed to convert a day trip into an overnight stay and to capture weddings, banquets and corporate offsites. FY25 room rentals were Rs 35 cr. It is <strong>not participating in the recovery</strong>: Q1 FY27 occupancy fell to 62% from 65%, revenue fell 2% YoY, and ARR rose only 1% to Rs 9,657.</p>
+      <p class="note">The hotel received a Maharashtra Department of Tourism Eligibility Certificate dated 08-Oct-2024 granting incentives for ten years from 01-Nov-2024 to 31-Oct-2034, against which a deferred government grant liability of Rs 8.97 cr was created. This is a real, long-dated, disclosed benefit and is a genuine positive for the hotel's economics.</p>
+    </div>
+  </div>
+
+  <div class="seg">
+    <div class="segh"><div class="sn">Segment 3 - Hello Parks (announced, pre-revenue)<span class="sx">Indoor family entertainment centres in malls and high-footfall urban locations.</span></div><div class="mix">Nil today</div></div>
+    <div class="segbody">
+      <p>A stated pivot into indoor FECs, with two letters of intent signed as at Q1 FY27 and a first site indicated for Hyderabad, plus Surat. The strategic logic is sound and explicitly stated: it reduces dependence on seasonal outdoor footfall and on weather. The financial logic is unproven, the format is competitive (Timezone, Smaaash, mall-operated FECs), and it consumes capital the company is already short of.</p>
+    </div>
+  </div>
+
+  <div class="uu">
+    <div class="ut">Unknown unknowns - the dependencies a first read misses</div>
+    <ul>
+      <li><strong>Water is a licence to operate, not a utility line.</strong> The Khopoli water park was ordered shut on 19-Jun-2026 over low dam levels and reopened only on 26-Jun-2026 after rainfall. For a group whose expansion is overwhelmingly into <em>water</em> parks, in western India, a state that periodically rations reservoir water, this is a structural exposure dressed up as a one-off.</li>
+      <li><strong>Weather is the real P&amp;L driver.</strong> Q2 (monsoon) is loss-making by design: operating profit was minus Rs 3 cr in Sep-2024 and minus Rs 9 cr in Sep-2025. The credit rating attributes the whole 9MFY26 miss to early monsoon onset. Two bad seasons in a row would be an earnings event, not a weather event.</li>
+      <li><strong>Deferred consideration owed to the promoter is a senior claim ranking ahead of minorities.</strong> Rs 200 cr was still owed to Giriraj Enterprises at 9MFY26. It functions as debt but does not appear in the borrowings line, and it competes with growth capex for the same cash.</li>
+      <li><strong>Geographic expansion mechanically dilutes ARPU.</strong> The core Mumbai-Pune catchment earns Rs 1,774 per visitor. Indore earns Rs 942, Surat Rs 915, Shirdi Rs 970. Every new tier-2 park lowers blended realisation even when it is a perfectly good asset. Growth in footfall will consistently overstate growth in economics.</li>
+      <li><strong>Cannibalisation inside the portfolio.</strong> Wet'n Joy Lonavala sits roughly half an hour from Imagicaa Khopoli and, on public sentiment, is preferred for water. The group now competes with itself for the same Mumbai-Pune weekend wallet.</li>
+      <li><strong>The ride base ages invisibly.</strong> Under-maintenance shows up in visitor experience and repeat rates years before it shows up in the accounts, because deferred refresh capex flatters near-term cash flow and EBITDA. This is the single most important thing to monitor and the hardest to see in a filing.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="s3">
+  <span class="sectag">Section 03</span>
+  <h2>Competitive Landscape and Peer Benchmarking</h2>
+
+  <p class="lead">There is exactly one listed comparable that matters, and IMAGICAA loses to it on every return metric while trading at a premium multiple on trailing EBITDA.</p>
+
+  <div class="flag amberbox">
+    <div class="ft">Disclosure on this section</div>
+    <p>A dedicated peer-data workstream was still running when this report was finalised. The Wonderla and Nicco figures below are drawn from public sources of secondary reliability and from the qualitative competitive record established in Section 10. <strong>Treat the peer financial figures as indicative and verify before acting.</strong> The IMAGICAA column is fully verified from audited filings. The structural conclusions do not depend on the second decimal place of the peer numbers.</p>
+  </div>
+
+  <div class="tw"><table>
+    <thead><tr><th>Metric (FY26 unless noted)</th><th>IMAGICAA</th><th>Wonderla Holidays</th><th>Nicco Parks</th></tr></thead>
+    <tbody>
+      <tr><td>Revenue (Rs cr)</td><td>374</td><td>~500-600 (UNVERIFIED)</td><td>~100-130 (UNVERIFIED)</td></tr>
+      <tr><td>EBITDA margin</td><td>31.0%</td><td>~40%+ historically (UNVERIFIED)</td><td>~30% (UNVERIFIED)</td></tr>
+      <tr><td>PAT (Rs cr)</td><td>0.64</td><td>Positive, materially higher (UNVERIFIED)</td><td>Positive (UNVERIFIED)</td></tr>
+      <tr><td>ROCE</td><td>1.86%</td><td>Historically low-to-mid teens (UNVERIFIED)</td><td>Mid teens (UNVERIFIED)</td></tr>
+      <tr><td>Net debt (Rs cr)</td><td>315.4</td><td>Historically net cash (UNVERIFIED)</td><td>Net cash (UNVERIFIED)</td></tr>
+      <tr><td>No. of parks</td><td>9 parks + 1 hotel</td><td>5 (Kochi, Bengaluru, Hyderabad, Bhubaneswar, Chennai)</td><td>1 (Kolkata)</td></tr>
+      <tr><td>Annual footfall</td><td>24.7 lakh (FY26)</td><td>Multi-park, comparable scale (UNVERIFIED)</td><td>Single park (UNVERIFIED)</td></tr>
+      <tr><td>ARPU (Rs)</td><td>1,259 (FY26)</td><td>Historically higher (UNVERIFIED)</td><td>Lower (UNVERIFIED)</td></tr>
+    </tbody>
+    <caption>IMAGICAA figures: audited consolidated FY26 results filed 14-May-2026 and Q4 FY26 investor presentation. Peer figures indicative only.</caption>
+  </table></div>
+
+  <h3>The comparison that is fully verifiable and decisive</h3>
+  <p>Set aside the peer financials. Two facts about competitor behaviour are hard, dated and independently sourced, and they matter more than any ratio:</p>
+  <ul>
+    <li><strong>Wonderla opened a Rs 611 cr, 64.3-acre, 43-ride park in Chennai on 02-Dec-2025</strong>, its fifth, after opening Bhubaneswar in May-2024. It then launched a new inverted roller coaster, "Garuda Glide", at Bengaluru on <strong>10-Apr-2026</strong>.</li>
+    <li>Over the same window, <strong>no new ride or attraction could be identified at IMAGICAA's flagship Khopoli theme park since the Malpani takeover in Jun-2022</strong>. The ride database RCDB records four operating coasters at Khopoli and no removals. Growth at IMAGICAA has come from buying parks (Surat 2023, the four Giriraj parks 2024, Indore 2025, Mehsana 2026), not from building attractions.</li>
+  </ul>
+  <p>One competitor is compounding by adding product to existing catchments. The other is compounding by adding catchments to an ageing product. Both raise revenue. Only the first raises repeat visitation, and repeat visitation is what ARPU is made of. Note the fair qualification: Wonderla's new coaster is a relocated second-hand Vekoma unit, so this is a difference of degree, not of virtue.</p>
+
+  <h3>Competitors in distress or exiting</h3>
+  <p><strong>EsselWorld, Mumbai's incumbent, has been closed since Apr-2022.</strong> Press coverage explicitly frames it as having lost to Imagica. That is a real, banked share gain for IMAGICAA in its home catchment and partly explains why Khopoli footfall held at 13.6 lakh through FY23 and FY24 despite no new product. The adjacent Water Kingdom at the same Gorai site appears to still operate, though sources conflict (UNVERIFIED).</p>
+
+  <h3>The real competitive set</h3>
+  <p>Public discussion of a Khopoli visit repeatedly resolves into a comparison not with another theme park but with <strong>renting a villa with a pool in Lonavala</strong>, or a mall day. The nearest genuine rivals are Della Adventure Park (Lonavala, adventure-activity format), Suraj Water Park (Thane, budget, much closer to the city), and the group's own Wet'n Joy Lonavala. In a market where 75% of revenue is the gate, the competitor is anything else a family can do with Rs 4,000 and a Sunday.</p>
+</section>
+
+<section id="s4">
+  <span class="sectag">Section 04</span>
+  <h2>Competitive Advantage: The 6 Cs</h2>
+
+  <div class="moatgrid">
+    <div class="moat"><div class="mh"><span class="mn">Cost</span><span class="badge b-weak">Weak</span></div>
+      <p>No structural input advantage. Costs are fixed and rising faster than revenue: in FY26 employee cost rose 12.8% and other expenses 13.5% while revenue fell 8.9%. The one genuine cost initiative is the 6.65 MW Mandrup solar plant bought for Rs 16 cr with a claimed four-year payback, which is sensible but small against a Rs 376 cr cost base.</p></div>
+    <div class="moat"><div class="mh"><span class="mn">Capacity</span><span class="badge b-mod">Moderate</span></div>
+      <p>The genuine asset. 110 contiguous acres at Khopoli on the Mumbai-Pune corridor cannot be recreated at today's land prices or clearance timelines, and the nine-park footprint has real scale. But utilisation is low and violently seasonal, and capacity without fresh product does not convert into pricing.</p></div>
+    <div class="moat"><div class="mh"><span class="mn">Capital</span><span class="badge b-weak">Weak</span></div>
+      <p>Access to capital is the binding constraint, not a weapon. A QIP was contemplated and abandoned, with Rs 1.39 cr of costs written off in Q1 FY26. Net debt is Rs 315 cr against Rs 130 cr of annual operating cash, and about Rs 600 cr of committed outgo sits ahead. The company depends on promoter warrant money that is 35% out of the money.</p></div>
+    <div class="moat"><div class="mh"><span class="mn">Channel</span><span class="badge b-weak">Weak</span></div>
+      <p>No channel control. Tickets move through aggregators, group-booking agents, student discounts, "value cards" sold by roadside touts, and resale. Advertising and marketing ran at 8.9% of revenue in FY26, up from 7.4%, while revenue fell. A business with channel power spends less to sell more, not more to sell less.</p></div>
+    <div class="moat"><div class="mh"><span class="mn">Customer captivity</span><span class="badge b-none">None</span></div>
+      <p>Zero switching costs, no contract, no subscription, no loyalty economics. The purchase is roughly annual and entirely discretionary. The hard evidence: ARPU is Rs 1,259 against Rs 1,568 in FY22, and Q1 FY27 ARPU growth was 0% on 22% more visitors. A captive customer pays more over time. This one pays less.</p></div>
+    <div class="moat"><div class="mh"><span class="mn">Compliance</span><span class="badge b-mod">Moderate</span></div>
+      <p>The most under-rated moat here. Land-use approvals, environmental and water clearances, fire and ride safety, and state tourism Eligibility Certificates are slow, local and genuinely hard for a new entrant. The Rs 28.44 cr of FY25 government grants and the ten-year hotel EC to Oct-2034 are the monetised form of it.</p></div>
+  </div>
+
+  <div class="pull">The moat is the dirt, not the brand. Land and clearances on the Mumbai-Pune corridor are close to irreplaceable; the entertainment product standing on that land depreciates on a 2-3 year cycle and, on the available evidence, has not been refreshed at the flagship since 2022.</div>
+
+  <p><strong>Most important moat source and its half-life.</strong> Capacity, specifically the assembled and cleared land bank in high-density catchments. Its half-life as a <em>land</em> asset is very long, arguably decades. Its half-life as an <em>earnings</em> moat is short, on the order of <strong>three to five years</strong>, because the industry's own stated requirement is a ride refresh every two to three years, and the returns accrue only to the operator who funds it. IMAGICAA currently lacks the free cash flow to fund refresh and expansion simultaneously, and has chosen expansion.</p>
+</section>
+
+<section id="s5">
+  <span class="sectag">Section 05</span>
+  <h2>Financial Analysis: 8 Quarters and 5 Years</h2>
+
+  <h3>Quarterly trend, consolidated (Rs cr)</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Quarter</th><th>Jun-24</th><th>Sep-24</th><th>Dec-24</th><th>Mar-25</th><th>Jun-25</th><th>Sep-25</th><th>Dec-25</th><th>Mar-26</th><th>Jun-26</th></tr></thead>
+    <tbody>
+      <tr><td>Revenue</td><td>184</td><td>40</td><td>92</td><td>94</td><td>148</td><td>42</td><td>92</td><td>92</td><td>178</td></tr>
+      <tr><td>Operating profit</td><td>110</td><td>-3</td><td>30</td><td>40</td><td>73</td><td>-9</td><td>22</td><td>30</td><td>90</td></tr>
+      <tr><td>OPM %</td><td>60%</td><td>-9%</td><td>32%</td><td>43%</td><td>49%</td><td>-22%</td><td>24%</td><td>33%</td><td>51%</td></tr>
+      <tr><td>Interest</td><td>0</td><td>2</td><td>4</td><td>4</td><td>4</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+      <tr><td>Depreciation</td><td>21</td><td>22</td><td>23</td><td>23</td><td>26</td><td>26</td><td>23</td><td>24</td><td>25</td></tr>
+      <tr><td>PBT</td><td>88</td><td>-24</td><td>4</td><td>16</td><td>45</td><td>-35</td><td>-4</td><td>3</td><td>61</td></tr>
+      <tr><td>Net profit</td><td>66</td><td>-6</td><td>3</td><td>16</td><td>44</td><td>-39</td><td>-5</td><td>0.4</td><td>58</td></tr>
+    </tbody>
+    <caption>Source: quarterly results filed with BSE and NSE. Q2 of every year is structurally loss-making (monsoon). Q1 carries the year.</caption>
+  </table></div>
+
+  <p>The shape is unmistakable: <strong>Q1 and Q3 carry the business, Q2 loses money every year, and Q4 is thin.</strong> Q1 FY27 revenue of Rs 178 cr is 48% of the whole of FY26. Any analysis anchored on a single quarter, in either direction, is close to meaningless. The Jun-2024 quarter at 60% operating margin remains the outlier and, in the absence of a disclosed one-off, is best read as the peak of the post-acquisition operating-leverage effect before costs normalised.</p>
+
+  <h3>The operating engine: footfall and ARPU, the only two numbers that matter</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Year</th><th>FY20</th><th>FY21</th><th>FY22</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26</th></tr></thead>
+    <tbody>
+      <tr><td>Footfall (lakh)</td><td>11.2</td><td>0.8</td><td>0.32</td><td>13.6</td><td>13.6</td><td>27.0</td><td>24.7</td></tr>
+      <tr><td>ARPU (Rs)</td><td>1,392</td><td>1,367</td><td>1,568</td><td>1,459</td><td>1,510</td><td>1,462</td><td>1,259</td></tr>
+      <tr><td>Revenue (Rs cr)</td><td>200</td><td>22</td><td>72</td><td>251</td><td>269</td><td>410</td><td>374</td></tr>
+    </tbody>
+    <caption>Source: company Q4 FY26 investor presentation historical summary, 14-May-2026. FY25 and FY26 include the acquired Giriraj parks; FY26 includes Indore.</caption>
+  </table></div>
+
+  <div class="flag">
+    <div class="ft">The central finding of this report</div>
+    <p><strong>Nominal ARPU today is below where it stood six years ago.</strong> Rs 1,259 in FY26 against Rs 1,392 in FY20 and a peak of Rs 1,568 in FY22. Against cumulative CPI over that period, real realisation per visitor has fallen on the order of 35-40%.</p>
+    <p>Part of this is honest mix: the acquired tier-2 parks earn Rs 915-970 per head against Rs 1,774 in the Mumbai-Pune core, so blending them in mechanically drags the average down. But mix is not the whole story, and the company's own Q1 FY27 disclosure proves it: <strong>in the core Mumbai-Pune catchment, ARPU fell 1% year on year</strong>, and consolidated ARPU growth was exactly 0% on a 22% footfall increase. A business with pricing power does not add a fifth more customers and collect the same amount from each.</p>
+  </div>
+
+  <h3>Five-year profit and loss, consolidated (Rs cr)</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Line</th><th>FY22</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26</th></tr></thead>
+    <tbody>
+      <tr><td>Revenue</td><td>72</td><td>251</td><td>269</td><td>410</td><td>374</td></tr>
+      <tr><td>Operating profit (EBITDA)</td><td>32</td><td>85</td><td>106</td><td>175</td><td>116</td></tr>
+      <tr><td>EBITDA margin</td><td>44%</td><td>34%</td><td>39%</td><td>42.8%</td><td>31.0%</td></tr>
+      <tr><td>Other income</td><td>3</td><td>78</td><td>519</td><td>7</td><td>10</td></tr>
+      <tr><td>Interest</td><td>188</td><td>53</td><td>2</td><td>11</td><td>20</td></tr>
+      <tr><td>Depreciation</td><td>91</td><td>-51</td><td>79</td><td>89</td><td>98</td></tr>
+      <tr><td>PBT</td><td>-244</td><td>161</td><td>543</td><td>83</td><td>9</td></tr>
+      <tr><td>Reported PAT</td><td>-244</td><td>357</td><td>541</td><td>77</td><td>0.64</td></tr>
+      <tr><td>Core EBIT (EBITDA less depn, excl other income)</td><td>-59</td><td>136</td><td>27</td><td>86</td><td>18</td></tr>
+      <tr><td>Core pre-tax ROCE</td><td>n.m.</td><td>13.1%</td><td>2.5%</td><td>6.1%</td><td>1.1%</td></tr>
+    </tbody>
+    <caption>Screener consolidated data cross-checked to the audited FY26 results filed 14-May-2026. FY23 depreciation is negative because of a write-back; see Section 6. Core ROCE = (EBITDA - depreciation) / (net worth + borrowings), excluding other income so write-backs do not flatter it.</caption>
+  </table></div>
+
+  <h3>Margin bridge, FY25 to FY26</h3>
+  <p>EBITDA fell from Rs 175.5 cr to Rs 116.0 cr, a decline of Rs 59.5 cr, and margin compressed 1,180 basis points. From the audited expense lines:</p>
+  <ul>
+    <li>Revenue fell Rs 36.4 cr (-8.9%) on 8.7% lower footfall. On a roughly 70% incremental margin, that alone explains about Rs 25 cr of the EBITDA decline.</li>
+    <li>Employee cost rose Rs 5.9 cr (+12.8%) despite lower volume.</li>
+    <li>Other expenses rose Rs 15.8 cr (+13.5%).</li>
+    <li>Advertising and marketing rose Rs 3.0 cr (+9.9%) to 8.9% of revenue.</li>
+  </ul>
+  <p>In other words, roughly 40% of the margin damage was volume and 60% was <strong>cost growth against a shrinking revenue base</strong>. That is the more worrying half, because it did not reverse: the cost base now embeds nine parks.</p>
+
+  <h3>Cash flow: the part that is honest, and the part that is not</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Rs cr</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26</th><th>4-yr total</th></tr></thead>
+    <tbody>
+      <tr><td>Cash from operations</td><td>117</td><td>105</td><td>147</td><td>110</td><td><strong>479</strong></td></tr>
+      <tr><td>Cash used in investing</td><td>-9</td><td>-130</td><td>-461</td><td>-287</td><td><strong>-887</strong></td></tr>
+      <tr><td>Free cash flow</td><td>108</td><td>-25</td><td>-314</td><td>-177</td><td><strong>-408</strong></td></tr>
+      <tr><td>Cash from financing</td><td>-53</td><td>66</td><td>251</td><td>156</td><td><strong>420</strong></td></tr>
+      <tr><td>CFO as % of operating profit</td><td>138%</td><td>99%</td><td>84%</td><td>95%</td><td>-</td></tr>
+    </tbody>
+    <caption>Source: consolidated cash flow statements. FY26 figures cross-checked to the audited results filed 14-May-2026.</caption>
+  </table></div>
+
+  <p><strong>Read this table twice.</strong> The conversion column is excellent: 84-138% of operating profit turns into operating cash, exactly as it should for a business that collects at a turnstile. There is no working-capital game here, and receivable days are 6. The earnings are cash-backed at the EBITDA line.</p>
+  <p>But the free cash flow line is <strong>minus Rs 408 cr across four years</strong>, funded by Rs 420 cr of external financing. Every rupee of operating cash, and Rs 408 cr more, has gone into buying and building parks. That is a legitimate strategic choice for a growth company. It is only a problem if the returns do not appear, and so far the returns are a core pre-tax ROCE of <strong>1.1%</strong>.</p>
+
+  <h3>Balance sheet</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Rs cr</th><th>31-Mar-25</th><th>31-Mar-26</th><th>Change</th></tr></thead>
+    <tbody>
+      <tr><td>Property, plant and equipment</td><td>1,402.56</td><td>1,382.74</td><td>-19.8</td></tr>
+      <tr><td>Capital work-in-progress</td><td>31.54</td><td>3.95</td><td>-27.6</td></tr>
+      <tr><td>Goodwill</td><td>41.25</td><td>41.25</td><td>0.0</td></tr>
+      <tr><td>Deferred tax asset</td><td>187.93</td><td>180.01</td><td>-7.9</td></tr>
+      <tr><td>Cash and equivalents</td><td>37.60</td><td>16.12</td><td>-21.5</td></tr>
+      <tr><td>Other bank balances</td><td>4.23</td><td>11.00</td><td>+6.8</td></tr>
+      <tr><td>Current investments</td><td>54.24</td><td>0.00</td><td>-54.2</td></tr>
+      <tr><td>Total equity</td><td>1,252.79</td><td>1,254.04</td><td>+1.3</td></tr>
+      <tr><td>Total borrowings</td><td>167.07</td><td>342.52</td><td><strong>+175.5</strong></td></tr>
+      <tr><td>Other financial liabilities (deferred consideration)</td><td>406.48</td><td>107.71</td><td><strong>-298.8</strong></td></tr>
+      <tr><td>Net debt</td><td>125.2</td><td>315.4</td><td>+190.2</td></tr>
+    </tbody>
+    <caption>Source: audited consolidated balance sheet, results filed 14-May-2026.</caption>
+  </table></div>
+
+  <p>The FY26 balance sheet movement tells a single clean story: <strong>the company paid down Rs 298.8 cr of deferred acquisition consideration owed to the promoter's firm, and funded it by raising borrowings Rs 175.5 cr, spending Rs 54.2 cr of investments and Rs 21.5 cr of cash.</strong> Net worth was flat because the year earned nothing. Liquidity is now thin: current assets of Rs 107.3 cr against current liabilities of Rs 209.3 cr, a current ratio of 0.51. That is normal for a cash-gate business, but it leaves no buffer.</p>
+</section>
+
+<section id="s6">
+  <span class="sectag">Section 06</span>
+  <h2>Earnings Quality and Forensic Checks</h2>
+
+  <p class="lead">The cash is real. The reported profit history is not. Almost the entire cumulative profit of the last five years is restructuring accounting, and the current year's tax charge is non-cash.</p>
+
+  <div class="flag">
+    <div class="ft">Check 1 - the profit that never existed</div>
+    <p>Reported PAT for FY23 and FY24 together was <strong>Rs 898 cr</strong>. Of that, other income was Rs 78 cr in FY23 and <strong>Rs 519 cr in FY24</strong>, essentially the gain on extinguishment of the old Adlabs borrowings when the lenders were settled. Borrowings fell from Rs 1,046 cr (Mar-2023) to Rs 340 cr (Mar-2024). A further roughly Rs 140 cr of apparent profit came from FY23 depreciation being <strong>negative Rs 51 cr</strong> against a normal run rate near Rs 90 cr, i.e. a write-back of previously recognised impairment.</p>
+    <p>Strip both out and the operating business earned close to nothing across those two years. Any screening tool showing "5-year profit CAGR" or a 212x P/E for this company is describing an accounting event, not a business.</p>
+  </div>
+
+  <div class="flag">
+    <div class="ft">Check 2 - the FY26 tax charge is 100% deferred</div>
+    <p>FY26 PBT after exceptional items was Rs 8.56 cr and the tax charge was Rs 7.92 cr, an effective rate of 93%, leaving PAT of Rs 0.64 cr. <strong>The entire Rs 7.92 cr was deferred tax; current tax was nil.</strong> It is a drawdown of the deferred tax asset, not a payment. Cash taxes remain nil because of carried-forward unabsorbed depreciation.</p>
+    <p>The corollary matters more: a Rs 180.01 cr deferred tax asset sits on the balance sheet, 14.4% of net worth. It arises almost entirely from <strong>unabsorbed depreciation</strong>, which under section 32(2) of the Income-tax Act carries forward indefinitely, so it does not expire. That makes it far more robust than a business-loss DTA. But recognition still requires convincing evidence of future taxable profit, and Rs 180 cr implies roughly Rs 715 cr of future taxable income at 25.17%. Against FY26 PBT of Rs 8.4 cr, that is a long runway of faith. If it is ever written down, it hits book value directly with no cash effect and no warning.</p>
+  </div>
+
+  <div class="flag green">
+    <div class="ft">Check 3 - receivables, cash yield and working capital: clean</div>
+    <p>Trade receivables are Rs 6.33 cr on revenue of Rs 373.85 cr, about 6 days, and they <em>fell</em> while the business grew in Q1 FY27. There is no receivables-versus-revenue divergence to find, because customers pay at the gate. Inventory is Rs 19.68 cr, appropriate for food and merchandise. Working capital is structurally negative, which is a feature. On the cash-yield test, cash balances are too small (Rs 16.1 cr) for the question to be meaningful. <strong>This is the cleanest part of the accounts and it should be said plainly.</strong></p>
+  </div>
+
+  <div class="flag amberbox">
+    <div class="ft">Check 4 - CWIP aging: clean, and slightly too clean</div>
+    <p>CWIP fell from Rs 119 cr (FY24) to Rs 31.5 cr (FY25) to Rs 3.95 cr (FY26), converting into gross block as the Indore park was commissioned. There is no stranded CWIP. The mild concern runs the other way: CWIP of Rs 3.95 cr and capital commitments of Rs 12.19 cr are <em>very</em> low for a company describing roughly Rs 600 cr of imminent capex. Either the capex has not started, or it will arrive as a step change.</p>
+  </div>
+
+  <div class="flag">
+    <div class="ft">Check 5 - other income dependence and the goodwill that has not been tested against reality</div>
+    <p>Excluding the restructuring years, other income is modest: Rs 10.14 cr in FY26 on PBT of Rs 8.56 cr. That ratio looks alarming (other income exceeds PBT) but reflects a collapsed PBT rather than aggressive income recognition.</p>
+    <p>The live item is <strong>goodwill of Rs 41.25 cr</strong> from the Giriraj acquisition, unchanged and not impaired, with an annual impairment test performed in March 2025. The acquisition case presented TTM revenue of Rs 148.7 cr for the four parks. Note 55 of the FY25 annual report discloses that from acquisition they contributed <strong>Rs 111.73 cr</strong>, a 25% shortfall. The company has not disclosed their FY26 contribution. Goodwill is small enough that impairment would not be fatal, but the test's key assumption has already been missed once.</p>
+  </div>
+
+  <div class="flag amberbox">
+    <div class="ft">Check 6 - government grants are a material, under-discussed earnings component</div>
+    <p>FY25 recognised <strong>Rs 28.44 cr of government grants</strong>: an SGST refund grant of Rs 14.95 cr (against Rs 6.65 cr in FY24) and a capital incentive of Rs 13.49 cr (nil in FY24). That is 6.9% of FY25 revenue and <strong>16.2% of FY25 EBITDA</strong>, and it more than quadrupled year on year. Separately, the Novotel hotel received a Maharashtra tourism Eligibility Certificate dated 08-Oct-2024 running 01-Nov-2024 to 31-Oct-2034.</p>
+    <p>Press reporting attributes part of the FY26 revenue decline to a Khopoli incentive ending in Q1 FY26. The FY26 grant quantum is <strong>not separately disclosed</strong> in the audited results, and the FY26 annual report is not yet out, so this cannot be quantified. Given that grants were 16% of FY25 EBITDA, this is the single largest unquantified swing factor in the FY25-to-FY26 margin bridge and a reader should treat FY25's 42.8% margin as flattered by an amount that has not been disclosed.</p>
+  </div>
+
+  <div class="flag amberbox">
+    <div class="ft">Check 7 - auditor and the abandoned QIP</div>
+    <p>Statutory auditor is <strong>Surana &amp; Associates LLP</strong> (FRN 121750W/W-100010), appointed at the 15th AGM on 27-Sep-2024 for a term to the 20th AGM (FY29). There has been <strong>no auditor resignation</strong>, and no CARO qualification or going-concern emphasis was identified in the FY25 report. That is a clean bill. The observation, stated neutrally, is that this is a smaller firm relative to a Rs 1,754 cr balance sheet carrying a Rs 180 cr deferred tax asset, purchase-price allocation on a Rs 629 cr related-party slump sale, and Rs 41 cr of goodwill. Those are judgment-heavy areas.</p>
+    <p>Separately, Rs 1.39 cr of costs for an intended <strong>Qualified Institutional Placement were expensed in Q1 FY26</strong> for a raise "previously contemplated" that did not proceed, despite an enabling resolution for up to Rs 600 cr passed on 31-Jul-2024. A company that could not place equity with institutions in mid-2025 is a company whose funding plan now rests on the promoter.</p>
+  </div>
+
+  <h3>Earnings quality score</h3>
+  <div class="eqbar">
+    <div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div>
+    <div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div>
+  </div>
+  <p><strong>5 out of 10.</strong> Marked up for genuinely clean working capital, real cash conversion, no receivables games, low contingent liabilities, no auditor turnover and honest disclosure of the acquired parks' first-year contribution even though it embarrassed the acquisition case. Marked down for a reported profit history dominated by write-backs, a negative-depreciation year, a Rs 180 cr deferred tax asset propping up book value, a 100% non-cash tax charge, Rs 28 cr of grants inside EBITDA whose FY26 quantum is undisclosed, and goodwill carried against an already-missed case. <em>The accounts are not being manipulated; they are being flattered by structure. The distinction matters, and it is why this scores a 5 rather than a 3.</em></p>
+</section>
+
+<section id="s7">
+  <span class="sectag">Section 07</span>
+  <h2>Promoter, Governance and Capital Allocation</h2>
+
+  <h3>Who controls this company</h3>
+  <p>The promoter is <strong>Malpani Parks Private Limited</strong>, part of the Malpani Group of Sangamner, Maharashtra, a diversified family business spanning FMCG, renewable energy, real estate, hospitality, education and entertainment. Malpani Parks became the promoter <strong>effective June 2022</strong>, consolidating the group's entire parks business under the listed entity. Promoter holding is 74.02%.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Person</th><th>Role</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Jai Malpani</td><td>Managing Director</td><td class="wrap2">Economics graduate. Drew no remuneration in FY25.</td></tr>
+      <tr><td>Rajesh Malpani</td><td>Director</td><td class="wrap2">Also a partner of Giriraj Enterprises, the counterparty to the Rs 629 cr park sale and the Rs 16 cr solar sale. No remuneration.</td></tr>
+      <tr><td>Manish Malpani</td><td>Director</td><td class="wrap2">Also a partner of Giriraj Enterprises. No remuneration.</td></tr>
+      <tr><td>Dhimant Bakshi</td><td>CEO &amp; Chief Marketing Officer</td><td class="wrap2">Professional management hire.</td></tr>
+      <tr><td>Mayuresh Kore</td><td>CFO &amp; Head Legal</td><td class="wrap2">Also the BRSR contact.</td></tr>
+      <tr><td>Suresh Bharathwaj</td><td>Independent Director</td><td class="wrap2">Re-appointed for a second term from 18-Oct-2024.</td></tr>
+    </tbody>
+    <caption>Source: FY25 annual report. No CFO or Company Secretary resignation was identified over FY24-FY26.</caption>
+  </table></div>
+
+  <div class="flag green">
+    <div class="ft">Genuine governance positives, stated first</div>
+    <p>The three Malpani directors <strong>drew no remuneration</strong> in FY25. No royalty or brand fee is charged to the listed company. On the two related-party resolutions at the Mar-2025 EGM the promoter correctly polled <strong>zero votes</strong>, as required. The Rs 629 cr acquisition was supported by a fair-valuation report from a registered valuer for tangible assets, with other assets and liabilities taken at book value certified by an independent firm of chartered accountants. The Rs 16 cr solar plant was bought <em>below</em> the Rs 16.5 cr independent valuation by Sapient Services. None of this is the behaviour of a promoter looting a listed vehicle.</p>
+  </div>
+
+  <h3>The recapitalisation and the dilution it caused</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Event</th><th>When</th><th>Price (Rs)</th><th>Shares issued</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Conversion of debt to equity</td><td>FY23</td><td>15.29</td><td>-</td><td class="wrap2">Malpani entry alongside the lender settlement</td></tr>
+      <tr><td>OCRPS conversion</td><td>FY24</td><td>36.81</td><td>7,00,00,000</td><td class="wrap2">2,57,67,000 OCRPS of Rs 100 face converted</td></tr>
+      <tr><td>OCRPS conversion</td><td>11-Apr-2024</td><td>36.81</td><td>6,03,99,348</td><td class="wrap2">2,22,33,000 OCRPS of Rs 100 face converted (Rs 222.3 cr)</td></tr>
+      <tr><td>Preferential equity</td><td>Mar-2025</td><td>73.50</td><td>2,34,82,500</td><td class="wrap2">Rs 172.60 cr. Promoter took 1,70,06,800 (Rs 125 cr)</td></tr>
+      <tr><td>Convertible warrants</td><td>Mar-2025</td><td>73.50</td><td>2,34,82,500 (potential)</td><td class="wrap2">Rs 172.60 cr, 25% paid upfront, 75% (Rs 129.4 cr) on exercise within 18 months</td></tr>
+    </tbody>
+    <caption>Source: FY25 annual report and EGM notice dated 13-Mar-2025. Relevant date for warrant pricing was 11-Feb-2025.</caption>
+  </table></div>
+
+  <p>Share count went from <strong>8.8 crore (Mar-2022) to 56.59 crore (Mar-2025)</strong>, a 6.4-fold dilution. Pre-existing minority holders saw their collective stake fall from about 69% to about 26%.</p>
+  <p><strong>The fair reading.</strong> This was a rescue, not an expropriation. At Mar-2022 the company had negative reserves of Rs 949 cr, borrowings of Rs 1,078 cr, and had lost money for eight consecutive years. Equity was worthless in any going-concern sense. Someone had to recapitalise it and the Malpani group did, at prices that in hindsight look cheap because the asset was distressed when they were struck. Complaining about dilution at Rs 15.29 in a company with minus Rs 949 cr of reserves is complaining that the fire brigade got the house cheap.</p>
+  <p><strong>The uncomfortable reading.</strong> The promoter's blended entry cost is far below the Rs 73.50 they paid in Mar-2025 and far below what any minority buying today pays. And the group has used the listed vehicle to buy its own privately held assets twice in two years.</p>
+
+  <div class="flag">
+    <div class="ft">The minority mandate for the related-party deals is close to non-existent</div>
+    <p>At the EGM of 13-Mar-2025, on the two resolutions approving material related-party transactions with Malpani Parks Private Limited, Malpani Retails Private Limited and Giriraj Enterprises, the promoter's 40.18 crore shares were correctly excluded. Of the 14.05 crore eligible non-promoter shares, only <strong>1.82 crore voted, a turnout of 12.9%</strong>. The resolutions passed with 97.8% of votes cast.</p>
+    <p>The detail inside that number is the finding. <strong>Of the public institutional votes cast, 40.4% were AGAINST</strong> (398,920 against, 589,028 in favour), on both the related-party resolutions and the Rs 73.50 preferential issue. Retail, voting 99.998% in favour, swamped them. In the earlier postal ballot of 31-Jul-2024, institutions had voted 100% in favour of the same counterparty's transaction. <strong>Institutional sentiment on these deals turned decisively negative between Aug-2024 and Mar-2025.</strong> Approval was obtained; a mandate was not.</p>
+  </div>
+
+  <h3>Capital allocation, FY23 to FY26</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Use of capital</th><th>Amount (Rs cr)</th><th>Outcome so far</th></tr></thead>
+    <tbody>
+      <tr><td>Settle old Adlabs lenders</td><td>~700 debt extinguished</td><td class="wrap2">Unambiguously value-creating. Removed Rs 188 cr of annual interest.</td></tr>
+      <tr><td>Acquire Aqua Imagicaa Surat</td><td>Not separately disclosed</td><td class="wrap2">Operating. Q1 FY27 ARPU Rs 915, down 13% YoY.</td></tr>
+      <tr><td>Acquire 4 Giriraj parks (related party)</td><td>629.38</td><td class="wrap2"><span class="chip miss">Miss</span> FY25 revenue contribution Rs 111.73 cr vs Rs 148.7 cr TTM presented at the deal.</td></tr>
+      <tr><td>Malpani Parks Indore (related party)</td><td>55 equity + 153 ICD</td><td class="wrap2">Aqua Imagicaa Indore opened 24-Mar-2025, broadly on schedule. Q1 FY27 footfall +48%, ARPU Rs 942.</td></tr>
+      <tr><td>Mandrup solar plant (related party)</td><td>16.00</td><td class="wrap2">Bought below the Rs 16.5 cr independent valuation. Claimed 4-year payback.</td></tr>
+      <tr><td>Shanku's Water Park, Mehsana (Gujarat SPV)</td><td>50 for 50.002%</td><td class="wrap2"><span class="chip pend">Pending</span> Expected to close by 30-Sep-2026.</td></tr>
+      <tr><td>Dividends / buybacks</td><td>Nil</td><td class="wrap2">None, ever. Appropriate given accumulated losses.</td></tr>
+      <tr><td>Ride refresh at flagship Khopoli</td><td>Not disclosed</td><td class="wrap2"><span class="chip miss">Concern</span> No new ride identified since Jun-2022. See Section 10.</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>The pattern is clear and it is the central capital-allocation question in this name: <strong>management is buying catchments rather than refreshing product.</strong> Acquisitions are visible, announceable and immediately revenue-accretive. Ride refresh is invisible, expensive and only shows up in repeat visitation two years later. The falling ARPU line is what that trade-off looks like in the accounts.</p>
+</section>
+
+<section id="s8">
+  <span class="sectag">Section 08</span>
+  <h2>Management Guidance Scorecard</h2>
+
+  <p>The company does hold earnings calls, including one for Q1 FY27 on <strong>10-Aug-2026</strong>. Formal numeric guidance is sparse; most checkable claims come from the March-2024 acquisition presentation, quarterly investor presentations, exchange filings and management media interviews. The acquisition presentation is the richest source because it made explicit pro-forma projections.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Claim</th><th>Made</th><th>Source</th><th>Outcome</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td class="wrap2">Combined entity revenue of Rs 406 cr</td><td>Mar-2024</td><td>Acquisition presentation</td><td class="wrap2">FY25 actual Rs 410.2 cr</td><td><span class="chip hit">Hit</span></td></tr>
+      <tr><td class="wrap2">Combined entity EBITDA of Rs 178.2 cr at 44% margin</td><td>Mar-2024</td><td>Acquisition presentation</td><td class="wrap2">FY25 actual Rs 175.5 cr at 42.8%</td><td><span class="chip hit">Hit</span></td></tr>
+      <tr><td class="wrap2">Combined footfall of 27.8 lakh, roughly double</td><td>Mar-2024</td><td>Acquisition presentation</td><td class="wrap2">FY25 actual 27.0 lakh</td><td><span class="chip hit">Hit</span></td></tr>
+      <tr><td class="wrap2">Acquired parks bring TTM revenue of Rs 148.7 cr and EBITDA of Rs 84.6 cr</td><td>Mar-2024</td><td>Acquisition presentation</td><td class="wrap2"><strong>FY25 contribution Rs 111.73 cr, 25% short</strong> (FY25 AR Note 55)</td><td><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Sustaining the combined base into FY26</td><td>Mar-2024</td><td>Acquisition presentation</td><td class="wrap2">FY26 revenue Rs 374 cr (-8.9%), EBITDA Rs 116 cr (-34%)</td><td><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Indore water park commissioning</td><td>FY24-FY25</td><td>Filings</td><td class="wrap2">Aqua Imagicaa Indore opened 24-Mar-2025</td><td><span class="chip hit">Hit</span></td></tr>
+      <tr><td class="wrap2">QIP of up to Rs 600 cr</td><td>31-Jul-2024</td><td>Postal ballot resolution</td><td class="wrap2">Abandoned. Rs 1.39 cr of costs written off in Q1 FY26</td><td><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Deleveraged balance sheet post restructuring</td><td>FY24-FY25</td><td>Filings, rating</td><td class="wrap2">Borrowings rose from Rs 167 cr (Mar-25) to Rs 342.5 cr (Mar-26)</td><td><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Ahmedabad parks largely operational from FY27</td><td>May-2026</td><td>India Ratings rationale</td><td class="wrap2">Under construction</td><td><span class="chip pend">Pending</span></td></tr>
+      <tr><td class="wrap2">Expand from 9 to 13 parks, up to Rs 1,000 cr over 5-6 years</td><td>Jul-2026</td><td>Media interview (secondary, UNVERIFIED)</td><td class="wrap2">Too early</td><td><span class="chip pend">Pending</span></td></tr>
+      <tr><td class="wrap2">Ticket prices up 5-8% from the December quarter, discounts trimmed</td><td>Jul-2026</td><td>Media interview (secondary, UNVERIFIED)</td><td class="wrap2">Too early. Runs against 0% ARPU growth in Q1 FY27</td><td><span class="chip pend">Pending</span></td></tr>
+    </tbody>
+    <caption>Verdicts on checkable, dated, quantified claims only. Pending items excluded from the ratio.</caption>
+  </table></div>
+
+  <p><strong>Guidance credibility ratio: 3 hits out of 9 checkable claims, roughly 33%.</strong> The distribution is more informative than the ratio. Everything promised <em>for the acquisition year itself</em> was delivered almost to the rupee. Everything about what came <em>after</em> the acquisition year was missed. That is the signature of a management team that models a transaction well and an operating business poorly, and it is why the FY27 recovery narrative deserves scepticism until two consecutive quarters confirm it.</p>
+
+  <h3>Communication forensics</h3>
+  <ul>
+    <li><strong>Disclosure quality is genuinely good.</strong> The company publishes catchment-level footfall, ARPU and revenue every quarter, plus hotel occupancy and ARR. Very few Indian small caps disclose unit economics this granularly. It also disclosed the acquired parks' Rs 111.73 cr contribution, a number that undermines its own acquisition case. That is a point in management's favour.</li>
+    <li><strong>The framing is consistently volume-first.</strong> Headline metrics lead with footfall growth; ARPU, which was 0%, appears alongside without comment. The Q1 FY27 press framing of "30% PAT growth, 24% EBITDA growth" is accurate but rests on the strongest quarter of a seasonal year against a monsoon-damaged base.</li>
+    <li><strong>Strategy language has drifted from consolidation to expansion.</strong> FY24-FY25 messaging was about consolidating the group's parks into the listed entity. FY26-FY27 messaging is about 13 parks, tier-1 cities, Hello Parks and Rs 1,000 cr of capex, announced while free cash flow is negative and a QIP has already failed.</li>
+    <li><strong>Analyst coverage appears minimal.</strong> No formal broker coverage was identified. Combined with 1.88% DII ownership and a 12.9% turnout at the EGM, this is a stock institutions have largely stopped engaging with.</li>
+  </ul>
+</section>
+
+<section id="s9">
+  <span class="sectag">Section 09</span>
+  <h2>Regulatory and Company-Specific Risks</h2>
+
+  <h3>Credit rating: what the agency says that the presentations do not</h3>
+  <p>India Ratings and Research affirmed and assigned <strong>IND A / Stable / IND A1</strong> on 14-May-2026, covering Rs 650 mn newly assigned plus Rs 3,750 mn affirmed, a total of <strong>Rs 440 cr</strong> of bank facilities. Investment grade, stable outlook. That is a meaningful endorsement and should not be brushed aside.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Rating agency disclosure</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td class="wrap2">Acquisition cost and funding</td><td class="wrap2">Four parks bought from Giriraj Enterprises for nearly Rs 630 cr, using Rs 275 cr of debt; the rest from equity and internal accruals.</td></tr>
+      <tr><td class="wrap2">Amount still owed to the promoter's firm</td><td class="wrap2"><strong>Rs 200 cr unpaid as at end-9MFY26</strong>, to be funded by Rs 109 cr of already-sanctioned debt drawn in FY27.</td></tr>
+      <tr><td class="wrap2">Total cash outgo, next 12-18 months</td><td class="wrap2"><strong>About Rs 600 cr</strong>: remaining Giriraj consideration Rs 200 cr, Ahmedabad park development, Ahmedabad park investment, Hello Parks stores, maintenance.</td></tr>
+      <tr><td class="wrap2">Reliance on warrant money</td><td class="wrap2">Part funding expected from the "unpaid portion of share warrants, to the tune of Rs 130 cr".</td></tr>
+      <tr><td class="wrap2">Geographic concentration</td><td class="wrap2">Until 9MFY26, <strong>70-80% of revenue and EBITDA came from Lonavala and Khopoli alone</strong>.</td></tr>
+      <tr><td class="wrap2">9MFY26 operating deterioration</td><td class="wrap2">Revenue Rs 282 cr (vs Rs 315.8 cr), footfall 1.72 mn (vs 2.11 mn), EBITDA Rs 85.7 cr (vs Rs 136.3 cr). Interest cover fell to 6.1x from 16.4x.</td></tr>
+      <tr><td class="wrap2">Scheduled repayments</td><td class="wrap2">Rs 40-50 cr each in FY27 and FY28.</td></tr>
+      <tr><td class="wrap2">Negative rating trigger</td><td class="wrap2">Net leverage sustained above 3.5x, or lower-than-expected footfall and ARPU growth.</td></tr>
+    </tbody>
+    <caption>Source: India Ratings press release dated 14-May-2026, filed under Regulation 30.</caption>
+  </table></div>
+
+  <div class="flag">
+    <div class="ft">The funding arithmetic does not close</div>
+    <p>Against India Ratings' own estimate of roughly <strong>Rs 600 cr</strong> of cash outgo over 12-18 months, identifiable sources are: operating cash flow of about Rs 130 cr, cash and bank of Rs 27 cr, sanctioned undrawn debt of Rs 109 cr, and warrant money of Rs 129.4 cr. That totals about <strong>Rs 396 cr, leaving a gap near Rs 204 cr</strong>.</p>
+    <p>And the warrant money is the fragile piece. The 2,34,82,500 warrants were struck at <strong>Rs 73.50</strong> with 25% paid upfront and the remaining 75% due on exercise <strong>within 18 months of allotment</strong>, failing which they lapse and the money already paid is forfeited. Allotment followed the EGM of 13-Mar-2025, so the window closes around <strong>September 2026, within weeks of this report</strong>. At Rs 47.70 the conversion price is <strong>35% out of the money</strong>. On pure economics a rational holder lets them lapse and forfeits roughly Rs 43 cr rather than paying Rs 129.4 cr for shares worth Rs 84 cr. If they lapse, the gap widens to about <strong>Rs 334 cr</strong> and must be met by fresh debt or an equity raise the company already failed to place once.</p>
+    <p>The counter-case: the promoter holds 74% and has repeatedly funded this company. Honouring the warrants would be a strong signal of commitment, and forfeiting Rs 43 cr is itself painful. <strong>This is the single most informative event on the calendar.</strong></p>
+  </div>
+
+  <h3>Litigation, statutory and environmental</h3>
+  <ul>
+    <li><strong>Contingent liabilities (FY25, standalone): Rs 31.94 cr total</strong> - Customs Act Rs 14.61 cr, Service Tax Rs 16.60 cr, GST Rs 0.73 cr. That is <strong>2.5% of net worth</strong> and broadly flat year on year. By Indian small-cap standards this is a clean litigation book. Capital commitments were Rs 12.19 cr.</li>
+    <li>Exchange filings indicate a <strong>provident fund order (Apr-2024)</strong>, an <strong>ESIC order (Nov-2024)</strong> and a <strong>writ petition (Dec-2024)</strong>. Amounts and outcomes were not established within the scope of this report and are marked <strong>UNVERIFIED</strong>; none appear large enough to have entered the contingent liability schedule materially.</li>
+    <li><strong>No safety incident, accident or regulatory notice was identified at any Imagicaa or Wet'n Joy property in 2024, 2025 or 2026</strong> after targeted searching. The only material historical incident is a Feb-2014 coaster malfunction at "Bandits of Robin Hood" (pre-takeover) which injured two people; that ride stood inactive for about five years and returned in 2018 as Chhota Bheem The Ride. For a nine-park operator, a clean recent safety record is a genuine positive.</li>
+    <li><strong>New Labour Codes</strong> effective 21-Nov-2025: estimated incremental impact of Rs 0.54 cr. Immaterial.</li>
+    <li><strong>No SEBI order or investigation against the company or promoters was identified.</strong></li>
+  </ul>
+
+  <div class="flag amberbox">
+    <div class="ft">Water: the risk that is being mispriced as weather</div>
+    <p>On <strong>19-Jun-2026</strong> the Imagicaa Water Park at Khopoli suspended commercial operations on a government directive relating to low dam levels, resuming only on <strong>26-Jun-2026</strong> after sufficient rainfall. A week of the highest-margin quarter, lost to a reservoir order.</p>
+    <p>This is being reported as an isolated event. It should be read structurally. Of the nine parks in the portfolio, <strong>five are water parks</strong>, and the announced pipeline (Ahmedabad, Mehsana, Surat) is water-park weighted. Water parks in western India depend on a regulated, rationed, monsoon-dependent input over which the operator has no contractual security and which the state can withdraw by administrative order in a drought year, in the exact quarter that generates half of annual revenue.</p>
+  </div>
+
+  <h3>Concentration risks</h3>
+  <ul>
+    <li><strong>Geographic:</strong> 70-80% of revenue and EBITDA from Lonavala and Khopoli, two sites about 30 minutes apart, serving one metro corridor.</li>
+    <li><strong>Seasonal:</strong> Q1 is roughly half the year's revenue. One bad summer or an early monsoon, precisely what happened in Q1 FY26, breaks the year.</li>
+    <li><strong>Counterparty:</strong> the single largest financial obligation is Rs 200 cr owed to the promoter's own firm.</li>
+    <li><strong>Customer:</strong> none. Millions of individual walk-ins. This is a real diversification benefit.</li>
+  </ul>
+</section>
+
+<section id="s10">
+  <span class="sectag">Section 10</span>
+  <h2>Scuttlebutt and Unpublished Signals</h2>
+
+  <div class="flag amberbox">
+    <div class="ft">Reliability warning</div>
+    <p>This section is lower-reliability signal, not verified fact. It is assembled from customer review platforms, community forums, the company's own live ride-status page and the roller coaster database RCDB. It is included because for a consumer business, customer sentiment <em>is</em> the fundamental, and it leads the reported numbers by a year or more.</p>
+  </div>
+
+  <h3>Finding 1: the flagship appears to be running on 2013-2016 hardware</h3>
+  <p><strong>No new ride or attraction could be identified at Imagicaa Khopoli since the Malpani Group took control in Jun-2022.</strong> This is absence of evidence rather than proof of absence, and is stated as such, but it survived checks across the company's own rides catalogue, its news page, press coverage and RCDB. Specifically ruled out as "new": Chhota Bheem The Ride (opened 2013), the Hot Wheels rebrand (a Mattel licensing exercise in Oct-2018), and the Snow Park (2016).</p>
+  <p>RCDB records <strong>exactly four operating roller coasters</strong> at the park: Hot Wheels Nitro, Deep Space, Gold Rush Express and Chhota Bheem The Ride, with no defunct or removed coasters listed. Set that against the industry's own stated requirement, reproduced on the company's investor presentation, of "replacement and refresh capex for new rides every 2-3 years."</p>
+  <p><strong>The fair counterweight:</strong> the March-2024 acquisition presentation states that Imagicaa had "completed more than Rs 30 cr" of capex on new rides at the <em>Water</em> Park, and roughly Rs 25 cr at Wet'n Joy Lonavala and Shirdi. So capital has gone into rides, just not visibly into the flagship theme park. Growth since 2022 has come from buying parks: Surat (Feb-2023, an existing park bought from Rajgreen Group), the four Giriraj parks (Apr-2024), Indore (opened 24-Mar-2025) and Mehsana (2026).</p>
+
+  <h3>Finding 2: official ride status conflicts with what visitors report</h3>
+  <p>The company publishes a live ride-status page. As at 16-Aug-2026 it showed 5 items under maintenance out of 46 listed (1 of 12 theme-park indoor rides, 4 of 22 water-park rides, none of 12 theme-park outdoor rides). Against that, independent visitor reports:</p>
+  <div class="tw"><table>
+    <thead><tr><th>When</th><th>Source</th><th>What was reported</th></tr></thead>
+    <tbody>
+      <tr><td>Jul-2026</td><td>TripAdvisor</td><td class="wrap2">"half the rides are not functional... they didn't inform at the time of booking"</td></tr>
+      <tr><td>~May-2026</td><td>Reddit r/mumbai</td><td class="wrap2">"Many of the rides are randomly shut or under maintenance these days"</td></tr>
+      <tr><td>~Apr-2026</td><td>Reddit r/pune</td><td class="wrap2">Scream Machine reported closed for maintenance</td></tr>
+      <tr><td>Nov-2024</td><td>TripAdvisor</td><td class="wrap2">"Dare Drop closed for maintenance - a baffling decision for a weekend"</td></tr>
+    </tbody>
+    <caption>Lower-reliability signal. Company booking terms state no refund is given for non-operational rides.</caption>
+  </table></div>
+
+  <h3>Finding 3: pervasive discounting, which is what falling ARPU looks like on the ground</h3>
+  <p>Community discussion is dominated by how to pay less: "value cards" sold around Rs 1,500 by roadside touts giving buy-one-get-one on three tickets, 50% student discounts including express passes, "buy 3 get 2 free" hunts on the website, ticket resale between users, and shareholder free tickets. YouTube content from 2025-2026 is price-anchored utility review ("Only 999/-Rs", "Is it worth it"), not excitement about anything new.</p>
+  <p>This matters because management stated in Jul-2026 an intent to <strong>raise ticket prices 5-8% from the December quarter and trim discounts</strong>. That plan runs directly against both observed consumer behaviour and the company's own reported 0% ARPU growth. It is the most testable management claim outstanding and it will be visible in the Q3 FY27 ARPU print.</p>
+
+  <h3>Finding 4: consistent complaints cluster on crowding, heat and food</h3>
+  <p>The rides themselves are liked; the experience around them is not. Recurring themes across 2026 threads: 1-2 hour queues on peak days with express-pass holders also queuing, unbearable April-June heat, and food priced "30 to 50% higher" with advice to eat outside the park. The recurring consensus advice is "go on a weekday, go in winter, buy express, don't eat there." Repeat visitors do still rate the theming highly and one described it as having "that disney feel", so the product has genuine equity.</p>
+
+  <h3>Finding 5: low national mindshare</h3>
+  <p>Discussion is essentially confined to r/mumbai and r/pune. r/india's only Imagica threads are 12-13 years old; r/IndiaTravel and r/Maharashtra return nothing relevant. For a company whose stated plan is 13 parks across tier-1 cities including Bengaluru, Hyderabad and Delhi NCR, the brand currently reads as a <strong>regional day-trip asset, not a national destination brand</strong>.</p>
+
+  <h3>Finding 6: internal cannibalisation is visible in customer preference</h3>
+  <p>Community consensus is that for water parks "nothing can beat Wet'n Joy" while "for amusement park - imagica". Both are now owned by the same company and sit about 30 minutes apart. Customers are choosing between two assets on the same balance sheet.</p>
+
+  <div class="flag amberbox">
+    <div class="ft">Gaps in this section</div>
+    <p>YouTube view counts and comment sentiment could not be verified (pages would not render). X/Twitter and Instagram complaint volume could not be assessed; no viral negative post was found, but absence is not provable. Employee-side signals (AmbitionBox, Glassdoor, LinkedIn hiring and senior exits) were not completed before the research workstream was interrupted and are a genuine hole in this section.</p>
+  </div>
+</section>
+
+<section id="s11">
+  <span class="sectag">Section 11</span>
+  <h2>External Headwinds and Tailwinds</h2>
+
+  <div class="two">
+    <div class="box" style="border-top:2px solid var(--bull)">
+      <h4>Tailwinds</h4>
+      <ul>
+        <li><strong>Domestic tourism growth.</strong> Domestic tourist visits projected to reach 3,500 mn by CY30 from 1,731 mn in CY22, a 9% CAGR.</li>
+        <li><strong>Discretionary consumption.</strong> PFCE grew 7% CAGR to Rs 55 tn by FY23. Parks are geared to this.</li>
+        <li><strong>EsselWorld's closure</strong> since Apr-2022 removed the principal Mumbai competitor, permanently.</li>
+        <li><strong>State tourism incentives</strong> across Maharashtra, MP and Gujarat, worth Rs 28.44 cr in FY25 and a ten-year hotel Eligibility Certificate to Oct-2034.</li>
+        <li><strong>Road infrastructure.</strong> Continued improvement on the Mumbai-Pune corridor shortens drive time to Khopoli, directly expanding the catchment.</li>
+        <li><strong>Industry growth of 9-11% CAGR</strong> to FY30 per CRISIL.</li>
+      </ul>
+    </div>
+    <div class="box" style="border-top:2px solid var(--bear)">
+      <h4>Headwinds</h4>
+      <ul>
+        <li><strong>No pricing power.</strong> The dominant headwind, and it is internal as much as external. 0% ARPU growth on 22% more visitors.</li>
+        <li><strong>Weather and water.</strong> Early monsoon onset was blamed by the rating agency for the entire 9MFY26 miss; a dam-level order shut the water park for a week in Jun-2026.</li>
+        <li><strong>Heat.</strong> Rising April-June temperatures directly suppress demand in the single most important quarter, and this is a worsening secular trend.</li>
+        <li><strong>Substitution.</strong> Malls, multiplexes, gaming, OTT and short-haul travel compete for the identical rupee.</li>
+        <li><strong>Interest rates.</strong> With borrowings doubled to Rs 342.5 cr and rising, finance cost rose 84.5% in FY26 and is now a real drag on a thin PBT.</li>
+        <li><strong>Competitor capex.</strong> Wonderla is adding parks and rides while the flagship stands still.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Quantified sensitivities</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Driver</th><th>Move</th><th>Approximate FY27E EBITDA impact</th><th>Basis</th></tr></thead>
+    <tbody>
+      <tr><td>Footfall</td><td>+/- 5%</td><td>+/- Rs 26 cr</td><td class="wrap2">On ~Rs 415 cr revenue at ~70% incremental margin, since marginal cost per visitor is near zero</td></tr>
+      <tr><td>ARPU</td><td>+/- 5%</td><td>+/- Rs 21 cr</td><td class="wrap2">Almost fully drops through to EBITDA</td></tr>
+      <tr><td>One week of Q1 closure</td><td>1 week</td><td>-Rs 7 to 9 cr</td><td class="wrap2">Q1 FY27 EBITDA of Rs 90.1 cr over 13 weeks, weighted to peak days</td></tr>
+      <tr><td>Government grants</td><td>Rs 28 cr steps down to nil</td><td>-Rs 28 cr</td><td class="wrap2">FY25 recognised grant quantum; FY26 quantum undisclosed</td></tr>
+      <tr><td>Interest rate</td><td>+100 bps on Rs 342.5 cr</td><td>-Rs 3.4 cr on PBT</td><td class="wrap2">Below EBITDA, but material against FY26 PBT of Rs 8.6 cr</td></tr>
+    </tbody>
+    <caption>Analyst estimates. The footfall and ARPU sensitivities are the ones that matter; everything else is second order.</caption>
+  </table></div>
+
+  <p><strong>The macro exposures normally listed for Indian companies barely apply here.</strong> No crude sensitivity, no INR/USD translation exposure, no export dependence, no China supply linkage, no tariff risk. This is a pure domestic discretionary-consumption asset with a weather overlay. That is unusually clean, and in a portfolio context it is a genuine diversifier. It also means there is nowhere to hide if the Indian consumer stops paying up.</p>
+</section>
+
+<section id="s12">
+  <span class="sectag">Section 12</span>
+  <h2>Triggers, Themes and Scheme Plays</h2>
+
+  <h3>Live pipeline</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Project</th><th>Detail</th><th>Status / timing</th></tr></thead>
+    <tbody>
+      <tr><td class="wrap2">Shanku's Water Park, Mehsana, Gujarat</td><td class="wrap2">50.002% of Mehsana Next Parks Pvt Ltd (SPV) for Rs 50 cr; currently run under O&amp;M</td><td class="wrap2">Expected to close by <strong>30-Sep-2026</strong></td></tr>
+      <tr><td class="wrap2">Ahmedabad water park</td><td class="wrap2">Reported as India's largest water park, associated Rs 75 cr acquisition</td><td class="wrap2">Largely operational from FY27 per India Ratings</td></tr>
+      <tr><td class="wrap2">Sabarmati Riverfront, Ahmedabad</td><td class="wrap2">Multi-attraction entertainment hub</td><td class="wrap2">Under development</td></tr>
+      <tr><td class="wrap2">Hello Parks (indoor FECs)</td><td class="wrap2">2 LOIs signed; first site indicated Hyderabad, also Surat</td><td class="wrap2">Pre-revenue</td></tr>
+      <tr><td class="wrap2">Broader expansion</td><td class="wrap2">9 to 13 parks, up to Rs 1,000 cr over 5-6 years, targeting Bengaluru, Hyderabad, Delhi NCR</td><td class="wrap2">Announced Jul-2026, secondary source, <strong>UNVERIFIED</strong></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Trigger calendar, next four quarters</h3>
+  <div class="caltrack">
+    <div class="cal"><div class="cq">Q2 FY27 (Jul-Sep 26)</div><ul>
+      <li><strong>Warrant exercise deadline, around Sep-2026.</strong> The defining event.</li>
+      <li>Mehsana SPV close by 30-Sep-2026</li>
+      <li>FY26 annual report and AGM: first sight of FY26 RPT schedule, grants and CARO</li>
+      <li>Seasonally loss-making quarter; expect a reported loss</li>
+    </ul></div>
+    <div class="cal"><div class="cq">Q3 FY27 (Oct-Dec 26)</div><ul>
+      <li><strong>The 5-8% price increase, if taken.</strong> ARPU print is the test</li>
+      <li>Festive-quarter footfall</li>
+      <li>Ahmedabad park commissioning progress</li>
+      <li>Drawdown of the Rs 109 cr sanctioned facility</li>
+    </ul></div>
+    <div class="cal"><div class="cq">Q4 FY27 (Jan-Mar 27)</div><ul>
+      <li>Ahmedabad parks targeted operational</li>
+      <li>First Hello Park opening</li>
+      <li>Remaining Giriraj consideration schedule ends (30 months from 15-Apr-2024 is Oct-2026)</li>
+      <li>Any renewed QIP attempt</li>
+    </ul></div>
+    <div class="cal"><div class="cq">Q1 FY28 (Apr-Jun 27)</div><ul>
+      <li>The year-defining quarter. Summer footfall plus monsoon timing</li>
+      <li>Reservoir levels and any repeat water-park directive</li>
+      <li>First clean read on whether Ahmedabad adds or dilutes ARPU</li>
+    </ul></div>
+  </div>
+
+  <h3>Government scheme linkage</h3>
+  <p>The company is a direct beneficiary of state tourism policy rather than of any central PLI-type scheme. Maharashtra Tourism Policy 2016 (fiscal incentives for amusement parks), Gujarat Tourism Policy 2021-2025 (capital subsidy and electricity duty exemption for parks investing above Rs 500 mn, directly relevant to Ahmedabad and Mehsana), and Madhya Pradesh Tourism Policy 2016 (Indore). The realised value so far is the Rs 28.44 cr of FY25 grants and the ten-year hotel Eligibility Certificate. <strong>The Gujarat build-out is, in part, an incentive play</strong>, and the quantum of any Gujarat capital subsidy is an unquantified upside not currently in any published number.</p>
+
+  <h3>Thematic classification</h3>
+  <p>The market is <em>not</em> currently paying up for this theme. The stock is down about 18% over one year and roughly 8% CAGR over three years, DII holding has fallen from 6.99% to 1.88%, a QIP failed to place, and no formal broker coverage was identified. This is the opposite of a crowded theme. Whether that is opportunity or accurate pricing is the entire question, and Section 14 argues it is closer to accurate than to opportunity.</p>
+</section>
+
+<section id="s13">
+  <span class="sectag">Section 13</span>
+  <h2>Shareholding, Positioning and Flows</h2>
+
+  <div class="flag amberbox">
+    <div class="ft">Disclosure on this section</div>
+    <p>A dedicated ownership-flows workstream (identifying the specific selling DIIs, bulk and block deals, ASM/GSM surveillance history, pledge status and delivery percentages) was still running when this report was finalised. The shareholding-pattern data below is as filed and fully reliable. <strong>Bulk-deal counterparties, surveillance status and pledge data are NOT verified here and should be checked before acting.</strong></p>
+  </div>
+
+  <div class="tw"><table>
+    <thead><tr><th>Category (%)</th><th>Sep-23</th><th>Mar-24</th><th>Jun-24</th><th>Mar-25</th><th>Sep-25</th><th>Mar-26</th><th>Jun-26</th></tr></thead>
+    <tbody>
+      <tr><td>Promoters</td><td>70.85</td><td>70.85</td><td>74.09</td><td>74.02</td><td>74.02</td><td>74.02</td><td>74.02</td></tr>
+      <tr><td>FIIs</td><td>0.05</td><td>0.57</td><td>0.56</td><td>0.55</td><td>0.40</td><td>0.59</td><td>0.36</td></tr>
+      <tr><td>DIIs</td><td>6.99</td><td>2.86</td><td>2.49</td><td>2.40</td><td>2.42</td><td>1.98</td><td><strong>1.88</strong></td></tr>
+      <tr><td>Public</td><td>22.12</td><td>25.71</td><td>22.84</td><td>23.02</td><td>23.17</td><td>23.42</td><td>23.74</td></tr>
+      <tr><td>No. of shareholders</td><td>52,838</td><td>73,546</td><td>75,712</td><td>85,700</td><td>84,605</td><td>81,213</td><td>79,993</td></tr>
+    </tbody>
+    <caption>Source: quarterly shareholding patterns filed with the exchanges.</caption>
+  </table></div>
+
+  <h3>What the flows say</h3>
+  <ul>
+    <li><strong>Institutions have left.</strong> DII holding fell from 6.99% to 1.88% over eleven quarters, a decline of over five percentage points or roughly 2.9 crore shares. FIIs never arrived, peaking at 0.86%. Combined institutional ownership is now <strong>2.24%</strong>. The specific sellers are not identified here (see disclosure above), and the distinction matters: legacy lenders exiting a restructuring stake is a very different signal from active managers giving up.</li>
+    <li><strong>Retail arrived at the top and is now leaving.</strong> Shareholder count rose from 52,838 (Sep-2023) to a peak of 86,640 (Dec-2024), then fell to 79,993 (Jun-2026). Roughly 6,600 shareholders have exited since the peak, while public holding <em>rose</em> from 22.84% to 23.74%. Fewer holders owning a larger share means consolidation into stronger hands, or averaging down.</li>
+    <li><strong>The promoter is the only marginal buyer.</strong> Promoter holding rose from 70.85% to 74.09% in the Jun-2024 quarter via the OCRPS conversion of 6,03,99,348 shares at Rs 36.81 on 11-Apr-2024, and the Malpani entity subscribed Rs 125 cr of the Mar-2025 preferential equity at Rs 73.50 plus Rs 125 cr of warrants. At 74.02% the promoter is <strong>close to the 75% SEBI ceiling</strong>, which structurally limits further promoter buying and means any warrant conversion must be managed against that cap.</li>
+    <li><strong>Notable non-promoter names.</strong> The Mar-2025 preferential allotment included Cybage Software Private Limited (Rs 15.0 cr) and Mr Gopikishan S. Damani (Rs 12.5 cr), alongside several partnership firms and individuals. These are recognisable, money-motivated participants who chose to invest at Rs 73.50. They are now roughly 35% under water.</li>
+  </ul>
+
+  <div class="flag">
+    <div class="ft">Everyone who bought the last primary issue is deeply under water</div>
+    <p>The Mar-2025 preferential issue was struck at <strong>Rs 73.50</strong> against a relevant date of 11-Feb-2025. At Rs 47.70 that cohort, which includes the promoter for Rs 125 cr, is down about 35% in roughly eighteen months. The same price governs the warrant exercise now falling due. This single fact conditions the promoter's incentives, the funding plan, and any near-term equity raise: <strong>fresh equity cannot realistically be issued near Rs 73.50, and issuing well below it would be openly dilutive to the promoter's own recent purchase.</strong></p>
+  </div>
+
+  <h3>Market structure</h3>
+  <ul>
+    <li><strong>Free float</strong> is 25.98% of 56.59 crore shares, about 14.7 crore shares, worth roughly <strong>Rs 700 cr</strong> at Rs 47.70. Institutionally that is investable only in small size, which partly explains the absent coverage and thin DII participation.</li>
+    <li><strong>Not in the F&amp;O segment</strong> (to be confirmed), so there is no derivative positioning to read and no hedging route.</li>
+    <li><strong>Price action:</strong> 52-week range Rs 36.80 to Rs 61.90, currently Rs 47.70. One-year return about -18%, three-year CAGR about -8%. The five-year CAGR of +43% is an artefact of measuring from a distressed, near-bankrupt base and should be disregarded entirely.</li>
+    <li><strong>Surveillance status (ASM/GSM), pledge data, bulk and block deals and delivery percentages: UNVERIFIED.</strong></li>
+  </ul>
+</section>
+
+<section id="s14">
+  <span class="sectag">Section 14</span>
+  <h2>Valuation</h2>
+
+  <h3>Current multiples</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Measure</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Market cap</td><td>Rs 2,699 cr</td><td>56.59 cr shares at Rs 47.70</td></tr>
+      <tr><td>Net debt</td><td>Rs 315.4 cr</td><td>Borrowings 342.5 less cash 16.1 and bank 11.0</td></tr>
+      <tr><td>Enterprise value</td><td><strong>Rs 3,015 cr</strong></td><td>Rs 3,123 cr if the Rs 107.7 cr of deferred consideration is treated as debt</td></tr>
+      <tr><td>EV / EBITDA (FY26)</td><td>26.0x</td><td>On Rs 116.0 cr</td></tr>
+      <tr><td>EV / EBITDA (TTM incl. Q1 FY27)</td><td><strong>22.7x</strong></td><td>On Rs 133.1 cr. The fairest current multiple</td></tr>
+      <tr><td>EV / EBITDA (FY25)</td><td>17.2x</td><td>On Rs 175.5 cr, the peak year</td></tr>
+      <tr><td>EV / Sales (FY26)</td><td>8.06x</td><td>Very high for a business earning 1.9% ROCE</td></tr>
+      <tr><td>P / B</td><td>2.15x</td><td>Book Rs 22.2, of which Rs 3.18 per share is deferred tax asset</td></tr>
+      <tr><td>P / E</td><td>212x</td><td>Meaningless. Ignore it</td></tr>
+      <tr><td>EV per annual visitor</td><td>Rs 12,205</td><td>On FY26 footfall of 24.7 lakh</td></tr>
+      <tr><td>EBITDA per visitor</td><td>Rs 470</td><td>Against ARPU of Rs 1,259, a 37% flow-through</td></tr>
+      <tr><td>EV per acre (Khopoli 110 acres only)</td><td>Rs 27.4 cr</td><td>Ignores the eight other parks, so this overstates land value per acre</td></tr>
+    </tbody>
+  </table></div>
+
+  <p><strong>Choice of primary multiple.</strong> EV/EBITDA is the right lens. P/E is destroyed by the deferred tax charge and the write-back history. P/B is distorted by a Rs 180 cr deferred tax asset and by assets revalued through a related-party purchase price allocation. EV/EBITDA on trailing twelve months, at <strong>22.7x</strong>, is the honest number. A five and ten-year own-history percentile is <strong>not computable</strong>: EBITDA was negative in FY20 and FY21, net worth was negative from FY19 to FY22, and the share count has changed 6.4-fold. Any historical valuation band for this company is meaningless and should not be quoted.</p>
+
+  <h3>Reverse DCF: what is already in the price</h3>
+  <p>Working backwards from EV of Rs 3,015 cr. Assumptions: FY26 revenue base of Rs 374 cr, capex at 12% of sales, tax 25%, depreciation 26% of sales, WACC 13%, terminal growth 5%, ten-year explicit forecast.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Revenue CAGR for 10 years</th><th>at 31% EBITDA margin</th><th>at 38%</th><th>at 43%</th></tr></thead>
+    <tbody>
+      <tr><td>10%</td><td>1,240</td><td>1,607</td><td>1,869</td></tr>
+      <tr><td>15%</td><td>1,770</td><td>2,294</td><td>2,668</td></tr>
+      <tr><td>20%</td><td>2,527</td><td><strong>3,274</strong></td><td>3,808</td></tr>
+      <tr><td>25%</td><td>3,596</td><td>4,660</td><td>5,420</td></tr>
+    </tbody>
+    <caption>Implied enterprise value in Rs cr. Analyst model. Bold cell is closest to the market's current EV of Rs 3,015 cr.</caption>
+  </table></div>
+
+  <div class="pull">To justify today's price the market must believe IMAGICAA compounds revenue at roughly 19-20% a year for a decade while sustaining a 38% EBITDA margin. FY26 delivered a revenue decline of 8.9% at a 31% margin, and ARPU has gone backwards for four years.</div>
+
+  <p>At the FY26 realised margin of 31%, the required growth rate rises to roughly <strong>23% CAGR for ten years</strong>. The assumption set is also generous to the company in two places: capex at 12% of sales is light for an operator that must refresh rides every two to three years <em>and</em> build four new parks (at 16% of sales the implied EV falls to Rs 2,705 cr, at 20% to Rs 2,136 cr), and a 13% WACC is arguably too low for a company with 1.1% core ROCE and an unresolved funding gap (at 15% WACC the implied EV is Rs 2,478 cr).</p>
+
+  <h3>Scenarios</h3>
+  <div class="scengrid">
+    <div class="scen bear"><div class="st"><span>Bear</span><span>30%</span></div><div class="sp">Rs 22</div><div class="su">-54% &nbsp;|&nbsp; 13x FY28E EBITDA of Rs 130 cr, net debt Rs 440 cr</div>
+      <p>Warrants lapse leaving a Rs 129 cr hole. Footfall growth stalls near the FY25 peak, ARPU keeps eroding as tier-2 mix rises, one poor summer or another water directive. Capex funded entirely by debt, interest cover falls toward the rating trigger. Rs 22 is about 1.0x book, appropriate for a business earning nothing on equity.</p></div>
+    <div class="scen base"><div class="st"><span>Base</span><span>45%</span></div><div class="sp">Rs 44</div><div class="su">-8% &nbsp;|&nbsp; 15x FY28E EBITDA of Rs 190 cr, net debt Rs 380 cr</div>
+      <p>Footfall compounds around 10%, ARPU flat in nominal terms, Ahmedabad and Indore ramp broadly on schedule, warrants partly exercised. EBITDA recovers past the FY25 peak by FY28. The multiple de-rates from 22.7x to a still-full 15x as the market accepts this is a volume story, not a pricing story.</p></div>
+    <div class="scen bull"><div class="st"><span>Bull</span><span>25%</span></div><div class="sp">Rs 80</div><div class="su">+68% &nbsp;|&nbsp; 19x FY28E EBITDA of Rs 255 cr, net debt Rs 300 cr</div>
+      <p>The Dec-2026 price increase sticks with no volume loss, proving pricing power exists. Non-ticket revenue moves toward the global 40% mix. All four new parks open on time, warrants fully exercised, Gujarat capital subsidy lands. Footfall compounds near 18% with ARPU up 5% a year.</p></div>
+  </div>
+
+  <p><strong>Probability-weighted value: Rs 46.4, against a market price of Rs 47.70.</strong> On these assumptions the stock is priced almost exactly at fair value. That is the honest conclusion, and it is neither a bull nor a bear case: there is no margin of safety here, and the distribution is wide in both directions. Note the asymmetry inside that average, though. The bear case is a 54% loss and the bull case a 68% gain, but the bear case requires only that current trends continue, while the bull case requires a reversal in the one metric that has moved consistently against the company for four years.</p>
+
+  <h3>Asset-value cross-check</h3>
+  <p>Property, plant and equipment is carried at Rs 1,382.74 cr and net worth at Rs 1,254 cr (Rs 22.2 per share), of which Rs 180 cr, or Rs 3.18 per share, is a deferred tax asset rather than a hard asset. Tangible book is therefore about Rs 19 per share. At Rs 47.70 the market is paying roughly 2.5x tangible book for a business earning a 1.1% core return on capital employed. The land itself is genuinely valuable and probably worth more than book, particularly the 110 contiguous Khopoli acres, but <strong>no announced monetisation, land sale or real-estate development plan was identified</strong>, so that value is not currently being surfaced for shareholders.</p>
+</section>
+
+<section id="s15">
+  <span class="sectag">Section 15</span>
+  <h2>Pre-Mortem and Anti-Thesis</h2>
+
+  <h3>The short-seller's case, argued sincerely</h3>
+  <ol>
+    <li><strong>This company has never earned its cost of capital and still does not.</strong> Core pre-tax ROCE is 1.1%. It lost money every year from FY15 to FY22. The only profitable years, FY23 and FY24, were profitable because lenders forgave debt. Investors are being asked to pay 22.7x EBITDA for an asset with no demonstrated ability to earn a return.</li>
+    <li><strong>Pricing power is absent and deteriorating.</strong> Nominal ARPU of Rs 1,259 is below FY20's Rs 1,392. In Q1 FY27, 22% more visitors paid 0% more each. In real terms realisation has fallen 35-40% in six years. A leisure asset that cannot raise prices is a depreciating asset with a marketing budget.</li>
+    <li><strong>The growth is bought, not built.</strong> Every increment since 2022 came from acquiring parks: Surat, four Giriraj parks, Indore, Mehsana. No new ride has been identified at the flagship since Jun-2022, in an industry that its own presentation says requires a refresh every 2-3 years. Buying catchments while the product ages is a treadmill, not a compounding machine.</li>
+    <li><strong>The acquisition case has already been missed by 25%</strong> and the company has stopped disclosing the number. Goodwill of Rs 41.25 cr sits untested against that miss.</li>
+    <li><strong>There is a funding hole of Rs 200-330 cr.</strong> Rs 600 cr of committed outgo against Rs 130 cr of operating cash and Rs 27 cr of cash, with the plan depending on warrants that are 35% out of the money and expiring within weeks. A QIP was already attempted and abandoned.</li>
+    <li><strong>Reported earnings are structurally flattered.</strong> Rs 28.44 cr of government grants sat inside FY25 EBITDA (16% of it) with the FY26 quantum undisclosed; the tax charge is entirely non-cash; and Rs 180 cr of the book value is a deferred tax asset that requires roughly Rs 715 cr of future taxable profit to be real.</li>
+    <li><strong>Institutions have voted with their feet and their ballots.</strong> DII holding fell from 6.99% to 1.88%. Of institutional votes cast at the Mar-2025 EGM, 40.4% opposed the promoter's related-party transactions. No broker covers the stock.</li>
+    <li><strong>The weather risk is structural, not incidental.</strong> Five of nine parks are water parks, in a drought-prone state, with half the year's revenue in one quarter, and the state has already demonstrated it will order closures.</li>
+  </ol>
+
+  <h3>Thesis-killers: specific, observable events that would invalidate the bull case</h3>
+  <ul>
+    <li><strong>The warrants lapse around Sep-2026.</strong> That is a Rs 129 cr funding hole and a statement by the promoter about its own valuation view.</li>
+    <li><strong>ARPU fails to rise in Q3 FY27</strong> after the announced 5-8% price increase, or rises only by losing footfall. That would confirm no pricing power and break the base case directly.</li>
+    <li><strong>A second consecutive year of falling footfall in FY27.</strong> FY26 was down 8.7%; a repeat converts a weather story into a demand story.</li>
+    <li><strong>An equity raise priced materially below Rs 47.70</strong>, which would confirm the funding gap and dilute at a distressed price.</li>
+    <li><strong>Goodwill impairment or a deferred tax asset write-down</strong> in the FY26 or FY27 accounts, either of which signals management no longer believes its own forecasts.</li>
+  </ul>
+
+  <h3>Key monitorables dashboard</h3>
+  <div class="mongrid">
+    <div class="mon"><div class="dot r"></div><div><div class="mk">Consolidated ARPU</div><div class="mv">Currently Rs 1,259 (FY26). Red below Rs 1,300, green above Rs 1,400</div></div></div>
+    <div class="mon"><div class="dot a"></div><div><div class="mk">Annual footfall</div><div class="mv">24.7 lakh FY26. Red below 25 lakh in FY27, green above 30 lakh</div></div></div>
+    <div class="mon"><div class="dot r"></div><div><div class="mk">Warrant exercise</div><div class="mv">Rs 129.4 cr due by around Sep-2026. Binary</div></div></div>
+    <div class="mon"><div class="dot a"></div><div><div class="mk">Net debt / EBITDA</div><div class="mv">2.4x on FY26 EBITDA. Rating trigger at 3.5x sustained</div></div></div>
+    <div class="mon"><div class="dot a"></div><div><div class="mk">EBITDA margin</div><div class="mv">31.0% FY26 vs 42.8% FY25. Red below 30%, green above 38%</div></div></div>
+    <div class="mon"><div class="dot r"></div><div><div class="mk">Core pre-tax ROCE</div><div class="mv">1.1%. Needs to exceed 12% to justify the capex programme</div></div></div>
+    <div class="mon"><div class="dot a"></div><div><div class="mk">Free cash flow</div><div class="mv">Minus Rs 408 cr cumulative FY23-FY26. Watch for first positive year</div></div></div>
+    <div class="mon"><div class="dot g"></div><div><div class="mk">Hotel occupancy</div><div class="mv">62% in Q1 FY27, down from 65%. Green above 70%</div></div></div>
+    <div class="mon"><div class="dot a"></div><div><div class="mk">Deferred consideration to promoter</div><div class="mv">Rs 107.7 cr outstanding at Mar-2026. Should reach nil by Oct-2026</div></div></div>
+  </div>
+
+  <h3>Base rate check</h3>
+  <p>The relevant historical setup is: a capital-intensive Indian leisure asset, recently recapitalised out of distress, trading above 20x EBITDA on a promise of national expansion, with negative free cash flow and falling realisation. That setup has resolved badly far more often than well in Indian markets. The specific sector base rate is worse than the general one: Adlabs Imagica itself destroyed roughly Rs 1,743 cr of shareholder capital between FY15 and FY22, and EsselWorld, the country's other landmark park, closed permanently in Apr-2022.</p>
+  <p><strong>The honest counter-example is Wonderla</strong>, which has demonstrated that an Indian park chain can earn high margins and good returns sustainably across a full cycle. So the sector is not uninvestable. The distinguishing variable between the two histories appears to be whether the operator consistently reinvests in product at existing parks rather than chasing new geographies, and on that specific variable IMAGICAA currently sits on the wrong side.</p>
+</section>
+
+<section id="s16">
+  <span class="sectag">Section 16</span>
+  <h2>The Investment Pitch, Both Ways</h2>
+
+  <div class="two">
+    <div class="box buy">
+      <h4>The 90-second pitch to buy</h4>
+      <p>You are buying India's largest theme-park estate at 22.7x trailing EBITDA, one year after a weather-damaged trough, from a promoter who has put in real cash at higher prices than you are paying.</p>
+      <p>The distress is over: Rs 1,078 cr of Adlabs debt is gone, the rating is investment grade IND A/Stable, contingent liabilities are 2.5% of net worth, and the three promoter directors take no salary. Cash conversion is 85-138% of operating profit because customers pay at a turnstile.</p>
+      <p>FY26 was a genuine one-off: an early monsoon, an administrative water-park closure, and the loss of an incentive, all landing in the one quarter that carries the year. Q1 FY27 already shows the recovery, with footfall up 22%, EBITDA up 24% and margin back to 50.7%.</p>
+      <p>The scale is now real: nine parks, four catchments, 24.7 lakh visitors, with Ahmedabad, Mehsana and indoor Hello Parks arriving over the next 18 months. The four Giriraj parks were bought at 7.4x EBITDA into a vehicle trading at 22.7x, which is accretive to minorities, not extractive. And the biggest lever has not been pulled: India earns 25% of park revenue from non-ticket sources against 40% globally. Closing half that gap on the existing footfall is worth more than two new parks, requires no land and almost no capital. Meanwhile the land under the business, 110 contiguous acres on the Mumbai-Pune corridor, is carried at cost and worth considerably more.</p>
+    </div>
+    <div class="box sell">
+      <h4>The 90-second pitch to exit or avoid</h4>
+      <p>You are paying 22.7x EBITDA and 2.5x tangible book for a business that earns 1.1% on capital employed and has produced minus Rs 408 cr of free cash flow over four years.</p>
+      <p>The one number that decides a leisure asset's fate has gone backwards for four straight years. ARPU is Rs 1,259 against Rs 1,568 in FY22 and Rs 1,392 in FY20. In the most recent quarter, 22% more visitors paid exactly 0% more each. That is not a weather problem; weather does not set prices. Real realisation is down 35-40% in six years, and every new tier-2 park makes the blend worse, not better.</p>
+      <p>The cause is visible on the ground: no new ride identified at the flagship since Jun-2022, in an industry whose own literature says a refresh is needed every two to three years, while Wonderla opened a Rs 611 cr park and a new coaster in the same window. Growth is being bought, not built, and the last thing bought has already missed its case by 25%.</p>
+      <p>Now the bill arrives. Roughly Rs 600 cr of committed outgo over 12-18 months against Rs 130 cr of operating cash, with the plan resting on Rs 129 cr of warrant money struck at Rs 73.50 against a Rs 47.70 share price and expiring within weeks. A QIP was already attempted and abandoned. Institutions have gone from 7% to 2.2% and 40% of those who voted opposed the promoter's related-party deals. The reverse DCF requires 19-20% compound growth for a decade at a 38% margin from a company that just shrank 8.9% at a 31% margin.</p>
+    </div>
+  </div>
+
+  <h3>Time horizon</h3>
+  <p>If the bull case is right it needs <strong>three to four years</strong> to play out, because it depends on four parks opening and ramping and on a pricing reset that can only be proven over several seasons. The first genuine evidence arrives much sooner: the warrant decision around Sep-2026 and the Q3 FY27 ARPU print after the announced December price increase. An investor unwilling to hold through two monsoons should not start.</p>
+
+  <div class="pull">This is a bet on <strong>a land-and-catchment estate finally learning to charge more per visitor</strong>, priced as if <strong>it will compound revenue at 19-20% a year for a decade at a 38% margin</strong>, and it breaks if <strong>ARPU stays flat while roughly Rs 600 cr of committed capex has to be funded from Rs 130 cr of operating cash and a set of warrants that are 35% under water.</strong></div>
+
+  <p style="color:var(--muted);font-size:12.5px">No rating, recommendation or conviction level is offered. Both cases above are argued as strongly as the evidence permits. The probability-weighted value of Rs 46.4 against a market price of Rs 47.70 says the market has this roughly right, and that the interesting question is not whether it is cheap but which of the two distributions you think you are underwriting.</p>
+</section>
+
+</main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <h3>Sources actually used</h3>
+    <ul class="srclist">
+      <li>Audited consolidated and standalone financial results for the year ended 31-Mar-2026, filed with BSE and NSE, 14-May-2026 (P&amp;L, balance sheet, cash flow, Note 5 exceptional items)</li>
+      <li>Annual Report FY2024-25, Imagicaaworld Entertainment Limited (Note 34 contingent liabilities, Note 35 capital commitments, Note 55 business combination, Note 58 government grant Eligibility Certificate, auditor's report, corporate governance report, related party disclosures)</li>
+      <li>India Ratings &amp; Research press release, 14-May-2026, IND A/Stable/IND A1 (Regulation 30 disclosure filed same date)</li>
+      <li>Notice of Extraordinary General Meeting dated 13-Mar-2025 (preferential issue of equity shares and convertible warrants at Rs 73.50; Item 4 solar power undertaking from Giriraj Enterprises)</li>
+      <li>Scrutinizer's report and voting results, EGM 01/2024-25 held 13-Mar-2025 (category-wise voting on Resolutions 1 to 4)</li>
+      <li>Postal ballot notice dated Jul-2024 and results dated 31-Jul-2024 / Aug-2024 (Rs 630 cr Giriraj park purchase, Malpani Parks Indore, QIP enabling resolution up to Rs 600 cr, authorised capital reclassification)</li>
+      <li>Investor presentation, Acquisition of Parks in Maharashtra and Indore, Mar-2024 (Rs 630 cr consideration, 7.4x EV/EBITDA, acquired-business TTM Jan-Dec 2023 revenue Rs 148.7 cr and EBITDA Rs 84.6 cr, pro-forma combined figures)</li>
+      <li>Investor presentation and press release, Q1 FY27, 07-Aug-2026 (catchment-level footfall, ARPU and revenue; hotel occupancy and ARR; CRISIL industry data; Hello Parks)</li>
+      <li>Investor presentation and press release, Q4 and FY26, 14-May-2026 (FY26 footfall 24.7 lakh, ARPU Rs 1,259; FY20-FY25 historical operational and revenue-stream summary)</li>
+      <li>Quarterly results filings, Jun-2024 through Jun-2026</li>
+      <li>Quarterly shareholding pattern filings, Sep-2023 through Jun-2026</li>
+      <li>Exchange intimations: Mehsana Next Parks / Shanku's Water Park investment agreement (May and Aug-2026); Khopoli water park suspension 19-Jun-2026 and resumption 26-Jun-2026; earnings call intimation for 10-Aug-2026; monitoring agency reports on preferential issue proceeds</li>
+      <li>Screener.in consolidated data for Imagicaaworld Entertainment (long-run P&amp;L, balance sheet, cash flow and ratio series), accessed 16-Aug-2026</li>
+      <li>Scuttlebutt sources (lower reliability): company live ride-maintenance page; RCDB park and coaster records; TripAdvisor reviews; Reddit r/mumbai and r/pune threads 2026; Wonderla Chennai and Garuda Glide press coverage Dec-2025 and Apr-2026; EsselWorld closure coverage</li>
+    </ul>
+
+    <h3>Claims that could not be verified from a primary source</h3>
+    <ul class="srclist">
+      <li>Peer financials for Wonderla Holidays and Nicco Parks (Section 3) - indicative only, workstream incomplete</li>
+      <li>Ownership-flow detail: identity of selling DIIs, bulk and block deals, ASM/GSM surveillance history, promoter pledge status, delivery percentages, F&amp;O eligibility (Section 13)</li>
+      <li>Exact GST Council decision and effective date for the amusement park admission rate (Section 1)</li>
+      <li>The quantum of the Khopoli government incentive said to have ended in Q1 FY26, and the FY26 government grant total - not separately disclosed in the audited FY26 results; FY26 annual report not yet published</li>
+      <li>The Jul-2026 management statements on expanding to 13 parks, Rs 1,000 cr of capex and a 5-8% ticket price increase - single secondary source</li>
+      <li>Amounts and outcomes of the provident fund order (Apr-2024), ESIC order (Nov-2024) and writ petition (Dec-2024) noted in exchange filings</li>
+      <li>Employee-side scuttlebutt (AmbitionBox, Glassdoor, LinkedIn senior hires and exits, hiring volumes) - not completed</li>
+      <li>Whether the Rs 107.71 cr of current other financial liabilities at 31-Mar-2026 is entirely deferred consideration owed to Giriraj Enterprises - inferred from the balance-sheet movement and the India Ratings disclosure, not confirmed in a note</li>
+      <li>The valuation methodology and any fairness opinion underlying the Rs 630 cr park purchase price - the Feb-2024 EGM notice was not obtained; the FY25 annual report confirms a registered valuer's fair valuation of tangible assets and independent CA certification of other balances</li>
+    </ul>
+
+    <div class="disc">
+      <strong>Disclaimer.</strong> This document is independent research prepared for private use. It is not investment advice, not a recommendation, and not an offer to buy or sell any security. No Buy, Sell or Hold rating is expressed or implied anywhere in this report. All figures are drawn from public filings and the sources listed above and may contain errors of transcription or interpretation. Forward-looking statements, scenarios and probability weights are the analyst's own judgement and will be wrong in detail. The author may or may not hold a position. Readers must form their own view and conduct their own verification before acting.
+    </div>
+    <div class="gen">Generated 17-Aug-2026 &nbsp;|&nbsp; Data as of Q1 FY27, quarter ended 30-Jun-2026 &nbsp;|&nbsp; Consolidated basis throughout &nbsp;|&nbsp; Prices as at 16-Aug-2026 close, Rs 47.70</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var p=document.getElementById('progress');
+  function onScroll(){
+    var h=document.documentElement,b=document.body;
+    var st=(h.scrollTop||b.scrollTop),sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+    p.style.width=(sh>0?(st/sh*100):0)+'%';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var links=Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var id='#'+e.target.id;
+          links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')===id);});
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    secs.forEach(function(s){if(s)obs.observe(s);});
+  }
+
+  var tog=document.getElementById('ratetog');
+  var KEY='imagicaa_badges';
+  function apply(on){
+    document.body.classList.toggle('badges-off',!on);
+    tog.classList.toggle('on',on);
+    tog.querySelector('.st').textContent=on?'On':'Off';
+  }
+  var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}
+  apply(saved===null?true:saved==='1');
+  tog.addEventListener('click',function(){
+    var on=!tog.classList.contains('on');
+    apply(on);
+    try{localStorage.setItem(KEY,on?'1':'0');}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
