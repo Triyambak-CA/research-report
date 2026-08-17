@@ -187,6 +187,123 @@ refresh is not optional, so the higher capex columns are the realistic ones.
 - CARO clause 3(xviii): no resignation of the statutory auditor during the year.
 - No report under section 143(12) filed in Form ADT-4, i.e. no fraud reported.
 
+## SECOND WAVE: findings from resumed subagents (17-Aug-2026 evening)
+
+Agents that had been marked "failed" on session limits were resumed via SendMessage and
+returned verified data. Material additions and corrections:
+
+### New governance findings (Section 7)
+- TITLE DEEDS NOT IN COMPANY NAME, Rs 258.50 cr at 31-Mar-2025, all "since April 2024":
+  Sai Teerth Shirdi land Rs 30.29 cr held by Giriraj Enterprises; Wet'n Joy Shirdi
+  Rs 43.99 cr and Wet'n Joy Lonavala Rs 184.22 cr held by Ashish, Rajesh, Sanjay,
+  Manish and Girish Malpani PERSONALLY. 41% of the Rs 629.38 cr consideration.
+  Single largest unresolved governance item. FY26 AR not published so cure unconfirmed.
+- Valuation basis for Rs 630 cr: "Enterprise Value arrived at by Category I Merchant
+  Bankers", VALUER NOT NAMED, report only "for inspection", NO fairness opinion
+  disclosed. Contrast: the Rs 16 cr solar plant named Sapient Services and the
+  Ahmedabad land deal named Pensar Valuation.
+- INSTITUTIONAL DISSENT ESCALATED across four votes: 18-Mar-2024 EGM nil against
+  (turnout 14.36%, 321 members of 72,675); 31-Jul-2024 postal ballot negligible
+  (4.09% turnout); 13-Mar-2025 EGM 40.4% of institutional votes against; Sep-2025 AGM
+  50.09% AGAINST, an outright majority (500,524 vs 498,786), turnout 2.50%.
+- USE OF PREFERENTIAL PROCEEDS: of Rs 215.75 cr raised, Rs 139.17 cr lent to MPIPL to
+  repay its loans, Rs 55.00 cr to repay a Malpani Retails loan taken to buy MPIPL
+  equity, Rs 21.55 cr to Giriraj under the BTA. Essentially the entire raise settled
+  related-party obligations, not growth capex.
+- Payment schedule: Rs 30 cr at closing then Rs 100 cr at 3/6/12/18/24/30 months.
+  Rs 50 cr prepayment discount if settled within 12 months, NOT taken; 14% p.a. on delay.
+- Resolution plan (outside NCLT, RBI Prudential Framework, Swiss Challenge, board
+  11-May-2022): Malpani 27,14,19,228 shares at Rs 15.29 = Rs 415 cr for 66.25%; lenders
+  4,90,51,667 shares = Rs 75 cr for 11.97%; Aditya Birla ARC 4,80,00,000 RNCPS of Rs 100
+  face = Rs 480 cr, 20-yr, 0.01%. Lender realisation ~Rs 575 cr on ~Rs 1,417 cr debt =
+  ~41% recovery, ~59% haircut. Debt write-off Rs 571.76 cr. CARE D since 21-May-2020.
+- IPO Mar-2015: band cut from Rs 221-230 to Rs 180-215, issued Rs 180, listed
+  06-Apr-2015. Park capex ~Rs 1,650 cr, opened 18-Apr-2013. IPO subscriber down ~73%.
+- KMP remuneration FY25 Rs 2.41 cr = 31% of consolidated PAT. No brand/royalty/management
+  fee anywhere in the RPT schedule. Promoter directors gave PERSONAL GUARANTEES for
+  HDFC Bank Rs 275 cr acquisition facility and Rs 31 cr WC.
+
+### New forensic findings (Section 6)
+- Goodwill impairment test assumed 10% revenue growth for 5 years, 3% terminal,
+  WACC 10.90%. FY26 revenue FELL 8.9%, missing year one by ~19pp. No impairment taken.
+- Management concluded on external legal opinion that this was NOT a common-control
+  combination, permitting Ind AS 103 acquisition accounting with fair-value step-up and
+  goodwill. Common control would have required book values.
+- FY25 standalone cash flow "Payment towards acquisition" Rs 174.38 cr vs Note 55's
+  Rs 229.38 cr. Unreconciled difference exactly Rs 55.00 cr.
+- FY25 "Proceeds from Issue of Shares Rs 393.16 cr" includes Rs 220.27 cr of NON-CASH
+  OCRPS conversion, offset in "Decrease in Borrowings". Net financing unaffected but both
+  lines overstated by Rs 220.27 cr.
+- Earnings quality score revised 5/10 -> 4/10 on the above.
+
+### CORRECTION: land monetisation (Section 14)
+The report previously said no land monetisation was identified. WRONG. Surplus Khopoli
+land was sold to JBCG Advisory Services Pvt Ltd for Rs 43.81 cr, consideration received
+05-Jan-2024, possession handed over in FY25. The LOSS on sale plus an NCRPS fair-value
+loss was an exceptional item of Rs 36.11 cr in FY24. Receivables from Walkwater
+Properties (amalgamated into JBCG) of Rs 7.16 cr loan and Rs 4.20 cr advance were FULLY
+PROVIDED at 31-Mar-2025. The one completed monetisation produced a loss and a bad debt.
+
+### CORRECTION: the Wonderla framing (Section 15)
+Wonderla is NOT the high-return counter-example I originally drafted. Screener series:
+FY26 revenue 519, OP 166 (32%), PAT 82, ROCE 6.20%, ROE 4.60%, borrowings Rs 6 cr,
+market cap Rs 2,972 cr, P/E 28.1, footfall 32.19 lakh (+5.58%).
+ROCE by year: FY15 28, FY16 21, FY17 9, FY18 8, FY19 10, FY20 8, FY21 -8, FY22 -2,
+FY23 22, FY24 20, FY25 8, FY26 6. Above 20% in only 2 of 12 years.
+Wonderla FCF also NEGATIVE: FY24 -45, FY25 -205, FY26 -162. So negative FCF is what park
+expansion looks like industry-wide, and criticising IMAGICAA for it alone is unfair.
+PATTERN: Wonderla ROCE fell 21%->single digits after Hyderabad (2016) and 20%->6% after
+Bhubaneswar/Chennai. Peak-return years FY23/FY24 were years it opened NOTHING.
+Nicco Parks says the same from the other end: ROCE 55/43/30% FY23-FY25 from one old
+debt-free Kolkata park, then 12.85% in FY26 on -17.6% footfall.
+IAAPI president, ET 06-Feb-2018: "In the last three years, 75-80% of parks were
+operating at loss levels."
+KEY VALUATION LINE: IMAGICAA 22.7x TTM EV/EBITDA vs Wonderla ~15.5x (adjusting for
+Rs 402 cr investments) or 17.9x on market cap alone. IMAGICAA trades at a 45-70%
+PREMIUM to the better operator.
+
+### Section 13 now verified
+- BSE bulk and block deals NIL over 24 months to 17-Aug-2026, false-negative controlled.
+- Only encumbrance record ever: 19-Nov-2019, Thrill Park Ltd (previous promoter),
+  2,73,70,127 shares = 31.08% of capital, 61.38% encumbered. No Malpani record.
+- NOT in F&O (absent from NSE market lots). Absent from Nifty Smallcap 250, Nifty Total
+  Market and Nifty Microcap 250. No passive bid.
+- Free float Rs 692.75 cr of Rs 2,668.60 cr full mcap = 25.96%.
+- Delivery % 46.5-62.5% monthly; avg daily traded value Rs 2.43-7.11 cr.
+- DII IDENTITY STILL UNVERIFIED. BSE shareholding endpoint returned no populated rows.
+- ASM/GSM status STILL UNVERIFIED.
+
+### Other verified
+- GST on amusement park admission cut 28% -> 18% at the GST Council meeting of
+  18-Jan-2018, notifications 25-Jan-2018, PIB PRID 1519453. Still 18% at 29-Aug-2025.
+  IAAPI lobbying for 5%. Sept-2025 rationalisation impact UNVERIFIED.
+- Industry structure (CRISIL): ~240-250 amusement parks, 1,800-2,000 indoor centres in
+  FY2024. Large parks (>Rs 400 cr capex, >40 acres, ticket Rs 1,000-1,400, 0.6-1 mn
+  visitors) number only ~14-16 nationally.
+- Gate prices: Imagicaa theme park Rs 1,999 rack / Rs 2,999 express / Happy Tuesday
+  Rs 999; water park Rs 1,299 / Rs 1,999 express / Wednesday Rs 799; snow park Rs 422.
+  Blended ARPU of Rs 1,259 is ~63% of theme-park rack, quantifying the discounting.
+- Water Kingdom Gorai OPEN and transacting 17-Aug-2026, adult Rs 1,600 rack / Rs 1,180
+  offer. esselworld.in 301-redirects to waterkingdom.in. EsselWorld closure rests on a
+  secondary encyclopaedia entry; no 2025/26 dated news confirms permanent closure.
+- MISSING LINK, Mumbai-Pune Expressway: Rs 6,695 cr, 13.3 km, OPENED 01-May-2026, cuts
+  ~6 km and ~30 minutes, STARTS AT KHOPOLI. Material catchment tailwind.
+- Wonderla evaluating its next park across Maharashtra, Gujarat, Goa and NCR, decision
+  expected before end-2026, zero debt. Direct threat to IMAGICAA's home geographies.
+- Sabarmati Riverfront: 11 acres, PPP won Mar-2024, environment clearance received,
+  NOT YET STARTED as at Aug-2026. India Ratings' "largely operational from FY27" looks
+  optimistic.
+- Malpani Parks Ahmedabad Pvt Ltd (RELATED PARTY): ~34 acres at Chandrala, up to Rs 50 cr
+  equity + Rs 30 cr infusion, capped Rs 75 cr, valuation by Pensar Valuation. Approved
+  Sep-2025 AGM. Completion status UNVERIFIED.
+- Shanku's/Mehsana is a THIRD PARTY deal (Keshav Holiday Resort), not related. Rs 50 cr
+  for 50.002% of Mehsana Next Parks, completed 06-Aug-2026, plus O&M fee of 6-10%.
+- Acreage per FY25 AR: Khopoli 130 acres (vs 110 in the credit rating), Lonavala 47,
+  Shirdi 8.5, Surat 4, Indore 18. Indore land grew 18 -> 26.4 acres; JLL valued the
+  land parcels at upwards of Rs 90 cr.
+- Warrants allotted 27-Mar-2025; FY25 AR states exercisable till September 2026 with
+  ~Rs 130 cr still to be infused. 1,70,06,800 of 2,34,82,500 are promoter-held.
+
 ## Open items to confirm from subagent findings
 1. Quantum of the Maharashtra government incentive that ended in Q1 FY26.
 2. The Rs 770cr related party acquisition: minority vote split, valuation basis.
