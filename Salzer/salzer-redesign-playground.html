@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salzer Report - Redesign Playground</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --ui-bg:#0c0d10;
@@ -313,6 +317,115 @@
   .dir-luxe .sc.bear{border-top-color:var(--pv-bear)}
   .dir-luxe .sc .sp{font-family:'Iowan Old Style',Palatino,serif}
   .dir-luxe .toc-rail div{font-family:var(--sys)}
+
+  /* =================================================================
+     DIRECTION 5  -  TRIYAMBAK GLASS   (triyambak.in design system)
+     ================================================================= */
+  .dir-glass{
+    --pv-bg:#070707;--pv-text:rgba(224,224,224,0.52);--pv-muted:rgba(224,224,224,0.28);
+    --pv-card:rgba(16,16,16,0.72);--pv-border:rgba(255,255,255,0.07);
+    --pv-bull:#8cd28c;--pv-amber:#d6c48c;--pv-bear:#d28c8c;
+    --g-t1:#e0e0e0;--g-bh:rgba(255,255,255,0.13);
+    --g-d:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    --g-b:'Inter',system-ui,-apple-system,'Segoe UI',Helvetica,sans-serif;
+    --g-m:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --g-ease:cubic-bezier(0.25,0.46,0.45,0.94);
+    background:var(--pv-bg);color:var(--pv-text);
+    font-family:var(--g-b);
+    background-image:
+      linear-gradient(rgba(255,255,255,0.016) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,0.016) 1px,transparent 1px);
+    background-size:calc(64px*var(--sc)) calc(64px*var(--sc));
+    overflow:hidden;
+  }
+  /* drifting blur orbs (scoped to the preview, not the page) */
+  .dir-glass::before,.dir-glass::after{
+    content:"";position:absolute;border-radius:50%;
+    filter:blur(110px);pointer-events:none;z-index:0;
+  }
+  .dir-glass::before{
+    width:75%;padding-bottom:75%;top:-22%;left:-18%;
+    background:radial-gradient(circle at center,rgba(130,130,130,0.13) 0%,transparent 70%);
+    animation:gdrift1 38s ease-in-out infinite alternate;
+  }
+  .dir-glass::after{
+    width:55%;padding-bottom:55%;bottom:-14%;right:-14%;
+    background:radial-gradient(circle at center,rgba(100,100,100,0.09) 0%,transparent 70%);
+    animation:gdrift2 48s ease-in-out infinite alternate;
+  }
+  @keyframes gdrift1{from{transform:translate(0,0) scale(1)}to{transform:translate(7%,5%) scale(1.1)}}
+  @keyframes gdrift2{from{transform:translate(0,0) scale(1)}to{transform:translate(-5%,-7%) scale(1.08)}}
+  .dir-glass .wrap{position:relative;z-index:1}
+
+  .dir-glass .eyebrow{
+    font-family:var(--g-m);font-size:calc(10.5px*var(--sc));letter-spacing:.22em;
+    color:var(--pv-muted);display:flex;align-items:center;gap:calc(12px*var(--sc));
+  }
+  .dir-glass .eyebrow::before{content:"";display:block;width:calc(28px*var(--sc));height:1px;background:var(--accent);opacity:.6}
+  .dir-glass .h1{font-family:var(--g-d);font-weight:400;color:var(--g-t1);letter-spacing:-.005em;line-height:1.08}
+  .dir-glass .h2{font-family:var(--g-d);font-weight:400;color:var(--g-t1);font-size:calc(32px*var(--sc));letter-spacing:0}
+  .dir-glass .sub{font-family:var(--g-m);letter-spacing:.02em;color:var(--pv-muted)}
+  .dir-glass .lead{font-size:calc(16.5px*var(--sc));line-height:1.75;color:var(--pv-text)}
+  .dir-glass .p{line-height:1.85;color:var(--pv-text)}
+
+  .dir-glass .stat{
+    position:relative;overflow:hidden;
+    background:var(--pv-card);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);
+    border:1px solid var(--pv-border);border-radius:calc(18px*var(--sc));
+    padding:calc(16px*var(--sc));
+    box-shadow:0 8px 44px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07);
+    transition:.35s var(--g-ease);
+  }
+  .dir-glass .stat::before{content:"";position:absolute;top:0;left:calc(16px*var(--sc));right:calc(16px*var(--sc));height:1px;background:var(--accent);opacity:.42}
+  .dir-glass .stat:hover{
+    background:rgba(24,24,24,.85);border-color:var(--g-bh);
+    box-shadow:0 14px 56px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1);
+    transform:translateY(-3px);
+  }
+  .dir-glass .stat .k{font-family:var(--g-m);letter-spacing:.1em}
+  .dir-glass .stat .v{font-family:var(--g-d);font-weight:500;font-size:calc(28px*var(--sc));color:var(--g-t1)}
+
+  .dir-glass .track{background:linear-gradient(90deg,var(--pv-bear),var(--pv-amber) 48%,var(--pv-bull));border-radius:100px;height:calc(6px*var(--sc));opacity:.78}
+  .dir-glass .track .cmp{background:var(--g-t1)}
+
+  .dir-glass .sec{border-top:1px solid var(--pv-border)}
+  .dir-glass .num{font-family:var(--g-m);letter-spacing:.22em;color:var(--accent);opacity:.85}
+  .dir-glass .ghost{font-family:var(--g-d);font-weight:400;color:var(--g-t1);opacity:.05}
+
+  .dir-glass thead th{font-family:var(--g-m);color:var(--pv-muted);border-bottom:1px solid var(--pv-border)}
+  .dir-glass tbody td{font-family:var(--g-m);border-bottom:1px solid rgba(255,255,255,0.045)}
+  .dir-glass tbody td:first-child{font-family:var(--g-b);color:var(--pv-text)}
+  .dir-glass tbody tr:hover td{background:rgba(255,255,255,0.022)}
+
+  .dir-glass .pull{
+    font-family:var(--g-d);font-style:italic;font-size:calc(26px*var(--sc));line-height:1.35;
+    color:var(--g-t1);border-left:1px solid var(--accent);padding-left:calc(22px*var(--sc));
+  }
+
+  .dir-glass .flag{
+    background:var(--pv-card);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);
+    border:1px solid var(--pv-border);border-left:2px solid var(--pv-bear);
+    border-radius:calc(10px*var(--sc));
+    box-shadow:0 8px 44px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07);
+  }
+  .dir-glass .flag .ft{font-family:var(--g-m)}
+
+  .dir-glass .sc{
+    background:var(--pv-card);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);
+    border:1px solid var(--pv-border);border-radius:calc(18px*var(--sc));
+    box-shadow:0 8px 44px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07);
+    transition:.35s var(--g-ease);
+  }
+  .dir-glass .sc:hover{background:rgba(24,24,24,.85);border-color:var(--g-bh);transform:translateY(-3px)}
+  .dir-glass .sc .st{font-family:var(--g-m)}
+  .dir-glass .sc .sp{font-family:var(--g-d);font-weight:500}
+  .dir-glass .sc.bull{border-top:1px solid var(--pv-bull)}
+  .dir-glass .sc.base{border-top:1px solid var(--pv-amber)}
+  .dir-glass .sc.bear{border-top:1px solid var(--pv-bear)}
+
+  .dir-glass .toc-rail{font-family:var(--g-m)}
+  .dir-glass .toc-rail div{color:var(--pv-muted);letter-spacing:.04em}
+  .dir-glass .toc-rail div.a{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -321,7 +434,7 @@
   <aside class="panel">
     <div class="brand">
       <div class="t">Salzer Report - Redesign Studio</div>
-      <div class="s">4 directions // pick one to build out</div>
+      <div class="s">5 directions // pick one to build out</div>
     </div>
 
     <div class="grp">
@@ -491,9 +604,17 @@
       accents:[['Gold','#b08a3e'],['Bronze','#8c6a3f'],['Deep Teal','#1f5c5a'],['Burgundy','#6e1e2c']],
       def:'#b08a3e',
       brief:'a boutique institutional research note: ivory paper (#f7f4ec), deep-navy ink (#1c2536), a restrained gold accent, an elegant Palatino/Iowan serif display for headlines with a system-sans for kickers, generous whitespace, 2px gold-topped stat cards, thin gold rules, and centred serif pull-quotes framed top-and-bottom. Premium, calm, sell-side-desk refined.'
+    },
+    glass:{
+      name:'Triyambak Glass',
+      desc:'Deep black, frosted glass, Cormorant',
+      sw:['#070707','#c8c8c8','#e0e0e0','#8cd28c'],
+      accents:[['Silver','#c8c8c8'],['Sage','#8cd28c'],['Violet','#a0a0d2'],['Sand','#d6c48c']],
+      def:'#c8c8c8',
+      brief:'the triyambak.in dark-glassmorphism system: a deep black #070707 canvas carrying a faint 64px white grid at 1.6% opacity and two slow-drifting blurred grey orbs behind the content, with frosted-glass panels (rgba(16,16,16,0.72) at 22px backdrop blur, 1px rgba(255,255,255,0.07) borders, 18px radius, an inset 0 1px 0 rgba(255,255,255,0.07) top highlight and a 0 8px 44px rgba(0,0,0,0.55) shadow) that lift 3px on hover. Typography is Cormorant Garamond at weight 400 for every display heading, with the emphasis word set in italic grey rgba(224,224,224,0.52); Inter for body copy at line-height 1.85 on that same grey; and JetBrains Mono at 0.22em letter-spacing for eyebrows, section numerals, stat keys and table headers. Every eyebrow is preceded by a 28px hairline dash in the accent colour. Load the three faces from Google Fonts with Georgia, system-ui and ui-monospace fallbacks. Keep the palette strictly neutral: no bright accents, no coloured shadows, no decorative gradients, no flat-material surfaces, and mute the signal colours to sage green, sand and dusty red. Generous whitespace, every section breathing. Premium, calm, understated.'
     }
   };
-  var ORDER = ['terminal','editorial','swiss','luxe'];
+  var ORDER = ['terminal','editorial','swiss','luxe','glass'];
 
   var state = { direction:'terminal', accent:DIRS.terminal.def, density:'default', numstyle:'ghost', toc:true, width:'full' };
   var DEFAULTS = { density:'default', numstyle:'ghost', toc:true, width:'full' };
