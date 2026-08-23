@@ -119,6 +119,27 @@
   .pv.toc .toc-rail{display:block}
   .pv .toc-rail div{padding:2px 0;color:var(--pv-muted)}
   .pv .toc-rail div.a{color:var(--accent)}
+
+  /* reader-facing contents toggle (shared by every direction) */
+  .pv.toc.rail-off .wrap{grid-template-columns:1fr;gap:0}
+  .pv.toc.rail-off .toc-rail{display:none}
+  .toc-btn{
+    position:absolute;top:calc(16px*var(--sc));right:calc(16px*var(--sc));z-index:2;
+    display:flex;align-items:center;gap:calc(7px*var(--sc));cursor:pointer;
+    background:var(--pv-card);border:1px solid var(--pv-border);color:var(--pv-muted);
+    font-family:var(--mono);font-size:calc(9.5px*var(--sc));letter-spacing:.14em;
+    text-transform:uppercase;padding:calc(6px*var(--sc)) calc(12px*var(--sc));
+    border-radius:100px;transition:.2s;
+  }
+  .toc-btn:hover{color:var(--accent);border-color:var(--accent)}
+  .toc-btn i{
+    display:block;flex-shrink:0;position:relative;
+    width:calc(11px*var(--sc));height:calc(7px*var(--sc));
+    border-top:1px solid currentColor;border-bottom:1px solid currentColor;
+  }
+  .toc-btn i::after{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:currentColor;transform:translateY(-50%)}
+  .pv:not(.toc) .toc-btn{display:none}
+  .pv.rail-off .toc-btn{color:var(--accent)}
   .pv .col{min-width:0}
 
   .pv .eyebrow{font-family:var(--mono);font-size:calc(11px*var(--sc));letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:calc(14px*var(--sc))}
@@ -423,9 +444,117 @@
   .dir-glass .sc.base{border-top:1px solid var(--pv-amber)}
   .dir-glass .sc.bear{border-top:1px solid var(--pv-bear)}
 
+  .dir-glass .toc-btn{font-family:var(--g-m)}
   .dir-glass .toc-rail{font-family:var(--g-m)}
   .dir-glass .toc-rail div{color:var(--pv-muted);letter-spacing:.04em}
   .dir-glass .toc-rail div.a{color:var(--accent)}
+
+  /* =================================================================
+     DIRECTION 6  -  TRIYAMBAK LIGHT   (light counterpart of the system)
+     ================================================================= */
+  .dir-glasslight{
+    --pv-bg:#f6f5f2;--pv-text:rgba(20,22,26,0.62);--pv-muted:rgba(20,22,26,0.38);
+    --pv-card:rgba(255,255,255,0.72);--pv-border:rgba(20,22,26,0.09);
+    --pv-bull:#4f7d55;--pv-amber:#8a7333;--pv-bear:#a33f3f;
+    --g-t1:#14161a;--g-bh:rgba(20,22,26,0.18);
+    --g-d:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    --g-b:'Inter',system-ui,-apple-system,'Segoe UI',Helvetica,sans-serif;
+    --g-m:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --g-ease:cubic-bezier(0.25,0.46,0.45,0.94);
+    --g-sh:0 8px 30px rgba(20,22,26,0.06);
+    --g-sh-h:0 14px 40px rgba(20,22,26,0.10);
+    --g-in:inset 0 1px 0 rgba(255,255,255,0.9);
+    background:var(--pv-bg);color:var(--pv-text);
+    font-family:var(--g-b);
+    background-image:
+      linear-gradient(rgba(20,22,26,0.03) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(20,22,26,0.03) 1px,transparent 1px);
+    background-size:calc(64px*var(--sc)) calc(64px*var(--sc));
+    overflow:hidden;
+  }
+  .dir-glasslight::before,.dir-glasslight::after{
+    content:"";position:absolute;border-radius:50%;
+    filter:blur(110px);pointer-events:none;z-index:0;
+  }
+  .dir-glasslight::before{
+    width:75%;padding-bottom:75%;top:-22%;left:-18%;
+    background:radial-gradient(circle at center,rgba(186,178,164,0.55) 0%,transparent 70%);
+    animation:gdrift1 38s ease-in-out infinite alternate;
+  }
+  .dir-glasslight::after{
+    width:55%;padding-bottom:55%;bottom:-14%;right:-14%;
+    background:radial-gradient(circle at center,rgba(172,184,200,0.45) 0%,transparent 70%);
+    animation:gdrift2 48s ease-in-out infinite alternate;
+  }
+  .dir-glasslight .wrap{position:relative;z-index:1}
+
+  .dir-glasslight .toc-btn{font-family:var(--g-m)}
+  .dir-glasslight .eyebrow{
+    font-family:var(--g-m);font-size:calc(10.5px*var(--sc));letter-spacing:.22em;
+    color:var(--pv-muted);display:flex;align-items:center;gap:calc(12px*var(--sc));
+  }
+  .dir-glasslight .eyebrow::before{content:"";display:block;width:calc(28px*var(--sc));height:1px;background:var(--accent);opacity:.7}
+  .dir-glasslight .h1{font-family:var(--g-d);font-weight:400;color:var(--g-t1);letter-spacing:-.005em;line-height:1.08}
+  .dir-glasslight .h2{font-family:var(--g-d);font-weight:400;color:var(--g-t1);font-size:calc(32px*var(--sc));letter-spacing:0}
+  .dir-glasslight .sub{font-family:var(--g-m);letter-spacing:.02em;color:var(--pv-muted)}
+  .dir-glasslight .lead{font-size:calc(16.5px*var(--sc));line-height:1.75;color:var(--pv-text)}
+  .dir-glasslight .p{line-height:1.85;color:var(--pv-text)}
+
+  .dir-glasslight .stat{
+    position:relative;overflow:hidden;
+    background:var(--pv-card);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);
+    border:1px solid var(--pv-border);border-radius:calc(18px*var(--sc));
+    padding:calc(16px*var(--sc));
+    box-shadow:var(--g-sh),var(--g-in);
+    transition:.35s var(--g-ease);
+  }
+  .dir-glasslight .stat::before{content:"";position:absolute;top:0;left:calc(16px*var(--sc));right:calc(16px*var(--sc));height:1px;background:var(--accent);opacity:.5}
+  .dir-glasslight .stat:hover{
+    background:rgba(255,255,255,0.92);border-color:var(--g-bh);
+    box-shadow:var(--g-sh-h),var(--g-in);transform:translateY(-3px);
+  }
+  .dir-glasslight .stat .k{font-family:var(--g-m);letter-spacing:.1em}
+  .dir-glasslight .stat .v{font-family:var(--g-d);font-weight:500;font-size:calc(28px*var(--sc));color:var(--g-t1)}
+
+  .dir-glasslight .track{background:linear-gradient(90deg,var(--pv-bear),var(--pv-amber) 48%,var(--pv-bull));border-radius:100px;height:calc(6px*var(--sc));opacity:.72}
+  .dir-glasslight .track .cmp{background:var(--g-t1)}
+
+  .dir-glasslight .sec{border-top:1px solid var(--pv-border)}
+  .dir-glasslight .num{font-family:var(--g-m);letter-spacing:.22em;color:var(--accent);opacity:.9}
+  .dir-glasslight .ghost{font-family:var(--g-d);font-weight:400;color:var(--g-t1);opacity:.06}
+
+  .dir-glasslight thead th{font-family:var(--g-m);color:var(--pv-muted);border-bottom:1px solid var(--pv-border)}
+  .dir-glasslight tbody td{font-family:var(--g-m);border-bottom:1px solid rgba(20,22,26,0.055)}
+  .dir-glasslight tbody td:first-child{font-family:var(--g-b);color:var(--pv-text)}
+  .dir-glasslight tbody tr:hover td{background:rgba(20,22,26,0.025)}
+
+  .dir-glasslight .pull{
+    font-family:var(--g-d);font-style:italic;font-size:calc(26px*var(--sc));line-height:1.35;
+    color:var(--g-t1);border-left:1px solid var(--accent);padding-left:calc(22px*var(--sc));
+  }
+
+  .dir-glasslight .flag{
+    background:var(--pv-card);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);
+    border:1px solid var(--pv-border);border-left:2px solid var(--pv-bear);
+    border-radius:calc(10px*var(--sc));box-shadow:var(--g-sh),var(--g-in);
+  }
+  .dir-glasslight .flag .ft{font-family:var(--g-m)}
+
+  .dir-glasslight .sc{
+    background:var(--pv-card);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);
+    border:1px solid var(--pv-border);border-radius:calc(18px*var(--sc));
+    box-shadow:var(--g-sh),var(--g-in);transition:.35s var(--g-ease);
+  }
+  .dir-glasslight .sc:hover{background:rgba(255,255,255,0.92);border-color:var(--g-bh);transform:translateY(-3px)}
+  .dir-glasslight .sc .st{font-family:var(--g-m)}
+  .dir-glasslight .sc .sp{font-family:var(--g-d);font-weight:500}
+  .dir-glasslight .sc.bull{border-top:1px solid var(--pv-bull)}
+  .dir-glasslight .sc.base{border-top:1px solid var(--pv-amber)}
+  .dir-glasslight .sc.bear{border-top:1px solid var(--pv-bear)}
+
+  .dir-glasslight .toc-rail{font-family:var(--g-m)}
+  .dir-glasslight .toc-rail div{color:var(--pv-muted);letter-spacing:.04em}
+  .dir-glasslight .toc-rail div.a{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -434,7 +563,7 @@
   <aside class="panel">
     <div class="brand">
       <div class="t">Salzer Report - Redesign Studio</div>
-      <div class="s">5 directions // pick one to build out</div>
+      <div class="s">6 directions // pick one to build out</div>
     </div>
 
     <div class="grp">
@@ -495,6 +624,7 @@
     <div class="scroll">
       <div class="frame w-full" id="frame">
         <div class="pv dir-terminal toc" id="pv" data-density="default" data-num="ghost" style="--accent:#ffb000">
+          <button class="toc-btn" id="tocBtn" type="button"><i></i><span>Hide contents</span></button>
           <div class="wrap">
             <div class="toc-rail">
               <div class="a">01 Industry</div><div>02 Peers</div><div>03 Moat</div>
@@ -612,14 +742,24 @@
       accents:[['Silver','#c8c8c8'],['Sage','#8cd28c'],['Violet','#a0a0d2'],['Sand','#d6c48c']],
       def:'#c8c8c8',
       brief:'the triyambak.in dark-glassmorphism system: a deep black #070707 canvas carrying a faint 64px white grid at 1.6% opacity and two slow-drifting blurred grey orbs behind the content, with frosted-glass panels (rgba(16,16,16,0.72) at 22px backdrop blur, 1px rgba(255,255,255,0.07) borders, 18px radius, an inset 0 1px 0 rgba(255,255,255,0.07) top highlight and a 0 8px 44px rgba(0,0,0,0.55) shadow) that lift 3px on hover. Typography is Cormorant Garamond at weight 400 for every display heading, with the emphasis word set in italic grey rgba(224,224,224,0.52); Inter for body copy at line-height 1.85 on that same grey; and JetBrains Mono at 0.22em letter-spacing for eyebrows, section numerals, stat keys and table headers. Every eyebrow is preceded by a 28px hairline dash in the accent colour. Load the three faces from Google Fonts with Georgia, system-ui and ui-monospace fallbacks. Keep the palette strictly neutral: no bright accents, no coloured shadows, no decorative gradients, no flat-material surfaces, and mute the signal colours to sage green, sand and dusty red. Generous whitespace, every section breathing. Premium, calm, understated.'
+    },
+    glasslight:{
+      name:'Triyambak Light',
+      desc:'Warm paper, frosted white, Cormorant',
+      sw:['#f6f5f2','#4a4a4a','#14161a','#4f7d55'],
+      accents:[['Graphite','#4a4a4a'],['Sage','#4f7d55'],['Violet','#5a5a8f'],['Sand','#8a7333']],
+      def:'#4a4a4a',
+      brief:'the light counterpart of the triyambak.in design system: a warm paper canvas (#f6f5f2) carrying a faint 64px grid at 3% black and two soft blurred warm-grey orbs drifting behind the content, with frosted white panels (rgba(255,255,255,0.72) at 22px backdrop blur, 1px rgba(20,22,26,0.09) borders, 18px radius, an inset 0 1px 0 rgba(255,255,255,0.9) top highlight and a 0 8px 30px rgba(20,22,26,0.06) shadow) that lift 3px on hover. Typography is identical to the dark version: Cormorant Garamond at weight 400 for every display heading in near-black #14161a, with the emphasis word set in italic mid-grey; Inter for body copy at line-height 1.85 on rgba(20,22,26,0.62); and JetBrains Mono at 0.22em letter-spacing for eyebrows, section numerals, stat keys and table headers. Every eyebrow is preceded by a 28px hairline dash in the accent colour. Load the three faces from Google Fonts with Georgia, system-ui and ui-monospace fallbacks. Keep the palette restrained: a single graphite, sage, violet or sand accent, no coloured shadows, no decorative gradients, no flat-material surfaces, and mute the signal colours to forest green, bronze and brick red. Generous whitespace, every section breathing. Premium, calm, print-adjacent.'
     }
   };
-  var ORDER = ['terminal','editorial','swiss','luxe','glass'];
+  var ORDER = ['terminal','editorial','swiss','luxe','glass','glasslight'];
 
-  var state = { direction:'terminal', accent:DIRS.terminal.def, density:'default', numstyle:'ghost', toc:true, width:'full' };
+  var state = { direction:'terminal', accent:DIRS.terminal.def, density:'default', numstyle:'ghost', toc:true, railOff:false, width:'full' };
   var DEFAULTS = { density:'default', numstyle:'ghost', toc:true, width:'full' };
 
   var pv = document.getElementById('pv');
+  var tocBtn = document.getElementById('tocBtn');
+  tocBtn.onclick = function(){ state.railOff = !state.railOff; updateAll(); };
   var frame = document.getElementById('frame');
 
   // build direction cards
@@ -671,7 +811,7 @@
     updateAll();
   });
   document.getElementById('tocTog').onclick=function(){
-    state.toc=!state.toc; this.classList.toggle('on',state.toc); updateAll();
+    state.toc=!state.toc; state.railOff=false; this.classList.toggle('on',state.toc); updateAll();
   };
   document.getElementById('vp').addEventListener('click',function(e){
     var b=e.target.closest('button'); if(!b)return;
@@ -681,7 +821,8 @@
   });
 
   function renderPreview(){
-    pv.className = 'pv dir-'+state.direction + (state.toc?' toc':'');
+    pv.className = 'pv dir-'+state.direction + (state.toc?' toc':'') + (state.railOff?' rail-off':'');
+    tocBtn.querySelector('span').textContent = state.railOff ? 'Show contents' : 'Hide contents';
     pv.setAttribute('data-density', state.density);
     pv.setAttribute('data-num', state.numstyle);
     pv.style.setProperty('--accent', state.accent);
@@ -710,7 +851,7 @@
               'no section numbering at all';
     parts.push('Section numbering: '+num+'.');
 
-    parts.push(state.toc ? 'Keep a sticky left-hand contents rail that tracks the active section.' :
+    parts.push(state.toc ? 'Keep a sticky left-hand contents rail that tracks the active section, and give the reader a small pill-shaped toggle at the top right of the report that collapses it: when collapsed the rail is hidden and the body falls back to a single full-width column with no leftover gap, and the toggle label switches between Hide contents and Show contents.' :
                            'Drop the sidebar contents rail; use a single centred column.');
 
     parts.push('Preserve ALL existing content, section order, figures and the two-way (bull/bear) framing exactly - this is a visual reskin only, not a rewrite. Keep it a single self-contained HTML file, fully responsive, and do not issue any Buy/Sell/Hold rating.');
