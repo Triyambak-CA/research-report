@@ -196,6 +196,32 @@
   .pv .sc.base .sp{color:var(--pv-amber)}
   .pv .sc.bear .sp{color:var(--pv-bear)}
 
+  /* bullet list */
+  .pv .blist{margin:calc(12px*var(--sc)) 0;padding:0;list-style:none;max-width:64ch}
+  .pv .blist li{position:relative;padding-left:calc(20px*var(--sc));margin:calc(8px*var(--sc)) 0;font-size:calc(13.5px*var(--sc));line-height:1.6;color:var(--pv-text)}
+  .pv .blist li::before{content:"";position:absolute;left:0;top:calc(9px*var(--sc));width:calc(9px*var(--sc));height:1px;background:var(--accent)}
+  .pv .blist li b{color:var(--pv-text);font-weight:700}
+
+  /* value-chain flow (nodes reuse .stat so every direction skins them) */
+  .pv .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:calc(6px*var(--sc));margin:calc(22px*var(--sc)) 0}
+  .pv .fn{flex:1 1 calc(130px*var(--sc));min-width:0}
+  .pv .fn .fv{font-size:calc(12px*var(--sc));color:var(--pv-text);margin-top:calc(5px*var(--sc));line-height:1.45}
+  .pv .fa{flex:0 0 auto;align-self:center;width:calc(20px*var(--sc));height:1px;background:var(--pv-border);position:relative}
+  .pv .fa::after{content:"";position:absolute;right:0;top:50%;width:calc(5px*var(--sc));height:calc(5px*var(--sc));border-top:1px solid var(--accent);border-right:1px solid var(--accent);transform:translate(0,-50%) rotate(45deg)}
+
+  /* revenue-mix stacked bar (tints of the live accent) */
+  .pv .mixbar{display:flex;height:calc(10px*var(--sc));overflow:hidden;margin:calc(16px*var(--sc)) 0 calc(11px*var(--sc))}
+  .pv .mixbar span{display:block;background:var(--accent)}
+  .pv .mixbar span:nth-child(2){opacity:.7}
+  .pv .mixbar span:nth-child(3){opacity:.45}
+  .pv .mixbar span:nth-child(4){opacity:.25}
+  .pv .mixleg{display:flex;flex-wrap:wrap;gap:calc(7px*var(--sc)) calc(20px*var(--sc));font-family:var(--mono);font-size:calc(10px*var(--sc));letter-spacing:.05em;color:var(--pv-muted)}
+  .pv .mixleg div{display:flex;align-items:center;gap:calc(7px*var(--sc))}
+  .pv .mixleg i{display:block;flex-shrink:0;width:calc(8px*var(--sc));height:calc(8px*var(--sc));background:var(--accent)}
+  .pv .mixleg div:nth-child(2) i{opacity:.7}
+  .pv .mixleg div:nth-child(3) i{opacity:.45}
+  .pv .mixleg div:nth-child(4) i{opacity:.25}
+
   /* =================================================================
      DIRECTION 1  -  TRADING TERMINAL
      ================================================================= */
@@ -555,6 +581,22 @@
   .dir-glasslight .toc-rail{font-family:var(--g-m)}
   .dir-glasslight .toc-rail div{color:var(--pv-muted);letter-spacing:.04em}
   .dir-glasslight .toc-rail div.a{color:var(--accent)}
+
+  /* =================================================================
+     PER-DIRECTION TWEAKS  -  flow diagram, revenue mix, bullet list
+     ================================================================= */
+  .dir-terminal .mixbar,.dir-swiss .mixbar{border-radius:0}
+  .dir-editorial .mixbar,.dir-luxe .mixbar,.dir-glass .mixbar,.dir-glasslight .mixbar{border-radius:100px}
+  .dir-terminal .mixleg{text-transform:uppercase}
+  .dir-terminal .blist li,.dir-terminal .fn .fv{font-family:var(--mono);font-size:calc(12.5px*var(--sc))}
+  .dir-editorial .mixleg,.dir-swiss .mixleg,.dir-luxe .mixleg{font-family:var(--sys)}
+  .dir-swiss .mixleg{font-weight:600}
+  .dir-swiss .mixleg i,.dir-swiss .fa{border-radius:0}
+  .dir-luxe .mixleg i{border-radius:50%}
+  .dir-glass .mixleg,.dir-glasslight .mixleg{font-family:var(--g-m)}
+  .dir-glass .mixleg i,.dir-glasslight .mixleg i{border-radius:50%}
+  .dir-glass .blist li,.dir-glasslight .blist li{font-family:var(--g-b);line-height:1.8}
+  .dir-glass .fn .fv,.dir-glasslight .fn .fv{font-family:var(--g-b)}
 </style>
 </head>
 <body>
@@ -580,8 +622,8 @@
       <div class="lbl">Density</div>
       <div class="seg" id="density">
         <button data-v="airy">Airy</button>
-        <button data-v="default" class="on">Balanced</button>
-        <button data-v="compact">Compact</button>
+        <button data-v="default">Balanced</button>
+        <button data-v="compact" class="on">Compact</button>
       </div>
     </div>
 
@@ -623,7 +665,7 @@
 
     <div class="scroll">
       <div class="frame w-full" id="frame">
-        <div class="pv dir-terminal toc" id="pv" data-density="default" data-num="ghost" style="--accent:#ffb000">
+        <div class="pv dir-terminal toc" id="pv" data-density="compact" data-num="ghost" style="--accent:#ffb000">
           <button class="toc-btn" id="tocBtn" type="button"><i></i><span>Hide contents</span></button>
           <div class="wrap">
             <div class="toc-rail">
@@ -651,6 +693,45 @@
                 <div class="stat"><div class="k">FY26 PAT</div><div class="v" style="color:var(--pv-bear)">53.8 Cr</div><div class="n">+2.5% YoY</div></div>
                 <div class="stat"><div class="k">ROCE / ROE</div><div class="v" style="color:var(--pv-amber)">13% / 10%</div><div class="n">Below 15% a decade</div></div>
                 <div class="stat"><div class="k">P/E FY26</div><div class="v">~21x</div><div class="n">vs peers ~31x</div></div>
+              </div>
+
+              <div class="sec" data-n="03">
+                <div class="ghost">03</div>
+                <div class="num">SECTION 03</div>
+                <div class="h2">Moat and Business Model</div>
+                <p class="p drop">Salzer is not one business but four, sharing a Coimbatore plant list, a copper procurement desk and a 4,000-dealer distribution arm. That shared spine is the whole argument for the group staying together: each vertical is sub-scale on its own, and none of them would command shelf space at a dealer counter alone.</p>
+                <p class="p">The moat, such as it is, sits in distribution and in approvals rather than in technology. Switchgear and wires are commodity-adjacent products where the buyer is an electrician or a small contractor, and the brand on the box matters more than the specification sheet. Winning that counter takes decades; losing it takes one stock-out.</p>
+
+                <div class="flow">
+                  <div class="fn stat"><div class="k">01 Inputs</div><div class="fv">Copper, CRGO steel, polymers</div><div class="n">~62% of COGS</div></div>
+                  <div class="fa"></div>
+                  <div class="fn stat"><div class="k">02 Manufacture</div><div class="fv">Nine plants, Coimbatore cluster</div><div class="n">~71% utilisation</div></div>
+                  <div class="fa"></div>
+                  <div class="fn stat"><div class="k">03 Channel</div><div class="fv">4,000 dealers, 22 states</div><div class="n">~78% of sales</div></div>
+                  <div class="fa"></div>
+                  <div class="fn stat"><div class="k">04 End market</div><div class="fv">Contractors, OEMs, utilities</div><div class="n">Replacement-led</div></div>
+                </div>
+
+                <p class="p">Where the story strains is the fourth leg. Smart meters were sold to the market as the operating-leverage engine, but the segment still turns over less than a tenth of revenue and consumes a disproportionate share of working capital.</p>
+
+                <ul class="blist">
+                  <li><b>Distribution depth.</b> Dealer counter presence built over three decades; genuinely hard to replicate, genuinely hard to monetise faster.</li>
+                  <li><b>Approvals and certifications.</b> Utility and OEM empanelment gates new entrants, but does not stop existing peers.</li>
+                  <li><b>No pricing power.</b> Copper pass-through is contractual and lagged, which is why gross margin moves inversely to input prices.</li>
+                  <li><b>Customer concentration is low</b>, which cuts both ways: no single account can sink a year, and none can transform one either.</li>
+                </ul>
+
+                <div class="mix">
+                  <div class="mixbar">
+                    <span style="width:46%"></span><span style="width:30%"></span><span style="width:14%"></span><span style="width:10%"></span>
+                  </div>
+                  <div class="mixleg">
+                    <div><i></i>Wires and cables 46%</div>
+                    <div><i></i>Industrial switchgear 30%</div>
+                    <div><i></i>Building products 14%</div>
+                    <div><i></i>Smart meters 10%</div>
+                  </div>
+                </div>
               </div>
 
               <div class="sec" data-n="04">
@@ -754,8 +835,8 @@
   };
   var ORDER = ['terminal','editorial','swiss','luxe','glass','glasslight'];
 
-  var state = { direction:'terminal', accent:DIRS.terminal.def, density:'default', numstyle:'ghost', toc:true, railOff:false, width:'full' };
-  var DEFAULTS = { density:'default', numstyle:'ghost', toc:true, width:'full' };
+  var state = { direction:'terminal', accent:DIRS.terminal.def, density:'compact', numstyle:'ghost', toc:true, railOff:false, width:'full' };
+  var DEFAULTS = { density:'compact', numstyle:'ghost', toc:true, width:'full' };
 
   var pv = document.getElementById('pv');
   var tocBtn = document.getElementById('tocBtn');
