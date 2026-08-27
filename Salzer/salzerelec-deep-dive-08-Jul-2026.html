@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="glass" data-toc="off">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -493,13 +493,15 @@
 </style>
 <script>
   (function(){
-    var h=document.documentElement, t='terminal';
+    var h=document.documentElement, t='glass', tocOff=true;
     try{
       var v=localStorage.getItem('salzer_theme');
       if(v==='glass'||v==='terminal') t=v;
-      if(localStorage.getItem('salzer_toc_hidden')==='1') h.setAttribute('data-toc','off');
+      if(localStorage.getItem('salzer_toc_hidden')==='0') tocOff=false;
     }catch(e){}
     h.setAttribute('data-theme',t);
+    if(tocOff) h.setAttribute('data-toc','off');
+    else h.removeAttribute('data-toc');
   })();
 </script>
 </head>
