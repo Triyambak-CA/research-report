@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPO Mode - Change Plan for india-equity-deep-dive</title>
+<style>
+:root{
+  --bg:#153E6F; --card:#12365F; --ink:#E8F1FF; --dim:#A9C2E4;
+  --mint:#7FE3C4; --rule:rgba(232,241,255,.18); --rule2:rgba(232,241,255,.38);
+  --warn:#FFD79A;
+}
+*{box-sizing:border-box}
+html{font-size:15px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Avenir Next","Avenir","Segoe UI",system-ui,sans-serif;
+  font-size:.9rem;line-height:1.55;padding:0 0 5rem}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.6rem}
+h1,h2,h3,.kick{font-family:"Futura","Trebuchet MS",system-ui,sans-serif;
+  text-transform:uppercase;letter-spacing:.14em;font-weight:600}
+h1{font-size:1.5rem;margin:.2rem 0 .3rem;letter-spacing:.18em}
+h2{font-size:.98rem;margin:2.8rem 0 .9rem;color:var(--mint);letter-spacing:.16em;
+  border-bottom:1px solid var(--rule);padding-bottom:.45rem}
+h3{font-size:.82rem;margin:1.6rem 0 .5rem;color:var(--ink);letter-spacing:.13em}
+.kick{font-size:.66rem;color:var(--mint);letter-spacing:.24em}
+p{margin:.55rem 0}
+a{color:var(--mint)}
+code,.mono,td.num{font-family:"SF Mono","Menlo","Consolas",monospace;font-size:.82em}
+
+.titleblock{border-top:3px double var(--rule2);border-bottom:3px double var(--rule2);
+  margin:2.4rem 0 .6rem;padding:1.2rem 0}
+.meta{display:flex;flex-wrap:wrap;gap:1.6rem;margin-top:.7rem;font-size:.72rem;color:var(--dim)}
+.meta span b{color:var(--ink);font-weight:600}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin:1.3rem 0}
+.stat{border:1px dashed var(--rule2);padding:.75rem .85rem}
+.stat .n{font-family:"SF Mono","Menlo",monospace;font-size:1.5rem;color:var(--mint);line-height:1.1}
+.stat .l{font-size:.66rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin-top:.25rem}
+
+.callout{border:1px dashed var(--mint);padding:.85rem 1rem;margin:1.2rem 0;background:rgba(127,227,196,.06)}
+.callout.warn{border-color:var(--warn);background:rgba(255,215,154,.07)}
+.callout .kick{color:inherit;opacity:.85}
+
+table{width:100%;border-collapse:collapse;margin:.9rem 0;font-size:.82rem}
+th{text-align:left;font-family:"Futura","Trebuchet MS",sans-serif;text-transform:uppercase;
+  letter-spacing:.1em;font-size:.66rem;color:var(--dim);font-weight:600;
+  border-bottom:1px solid var(--rule2);padding:.5rem .6rem;vertical-align:bottom}
+td{border-bottom:1px solid var(--rule);padding:.5rem .6rem;vertical-align:top}
+tbody tr:hover{background:rgba(232,241,255,.04)}
+.tw{overflow-x:auto}
+
+.v{font-family:"SF Mono","Menlo",monospace;font-size:.7rem;letter-spacing:.04em;
+  padding:.1rem .4rem;border:1px solid var(--rule2);white-space:nowrap;display:inline-block}
+.v-keep{color:var(--dim)}
+.v-exp{color:var(--mint);border-color:var(--mint)}
+.v-deg{color:var(--warn);border-color:rgba(255,215,154,.5)}
+.v-rep{color:#FFB3A7;border-color:rgba(255,179,167,.5)}
+.v-drop{color:#FF9E8F;border-color:rgba(255,158,143,.6)}
+
+.controls{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1rem 0 .3rem;
+  font-size:.72rem}
+button{font-family:"Futura","Trebuchet MS",sans-serif;text-transform:uppercase;letter-spacing:.1em;
+  font-size:.66rem;background:transparent;color:var(--dim);border:1px solid var(--rule2);
+  padding:.4rem .8rem;cursor:pointer}
+button:hover{color:var(--ink)}
+button.on{background:var(--mint);color:#0E2B4D;border-color:var(--mint);font-weight:700}
+label.chk{display:inline-flex;align-items:center;gap:.4rem;color:var(--dim);cursor:pointer;
+  margin-left:.4rem}
+.hide{display:none}
+
+ol,ul{padding-left:1.15rem;margin:.5rem 0}
+li{margin:.32rem 0}
+.spec{border-left:2px solid var(--rule2);padding:.15rem 0 .15rem .9rem;margin:.9rem 0}
+.spec .t{font-family:"Futura","Trebuchet MS",sans-serif;text-transform:uppercase;
+  letter-spacing:.11em;font-size:.76rem;color:var(--mint)}
+.spec .d{font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;
+  margin-top:.4rem}
+.reg{color:var(--dim);font-size:.74rem}
+.ref{font-family:"SF Mono","Menlo",monospace;font-size:.72rem;color:var(--mint)}
+footer{margin-top:3rem;border-top:3px double var(--rule2);padding-top:1rem;
+  font-size:.72rem;color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="titleblock">
+  <div class="kick">Skill Extension Plan / Blueprint</div>
+  <h1>IPO Mode for india-equity-deep-dive</h1>
+  <div class="reg">What has to change so the 20-section deep-dive runs on a pre-listing company, mainboard or SME.</div>
+  <div class="meta">
+    <span>Prepared <b>01-Sep-2026</b></span>
+    <span>Basis <b>SEBI ICDR 2018, consolidated to 21-Mar-2026</b></span>
+    <span>Also <b>LODR to 22-Jan-2026, NSE/BSE SME norms</b></span>
+    <span>Status <b>Proposal - nothing written to the skill yet</b></span>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="n">3</div><div class="l">Files to change</div></div>
+  <div class="stat"><div class="n">0</div><div class="l">Validator changes</div></div>
+  <div class="stat"><div class="n">8+3</div><div class="l">New sections (shared + SME only)</div></div>
+  <div class="stat"><div class="n">21</div><div class="l">New known traps</div></div>
+  <div class="stat"><div class="n">~90</div><div class="l">Verified hard numbers</div></div>
+</div>
+
+<h2>1. The change list</h2>
+<p>The surface is smaller than expected, because the design system and the validator are both section-count agnostic. I confirmed this by reading <code>validate.py</code>: it derives the section count from the chips in the document and only enforces contiguous numbering plus table-of-contents sync. A 28-section IPO report validates cleanly with no code change.</p>
+
+<div class="tw"><table>
+<thead><tr><th style="width:26%">File</th><th style="width:16%">Action</th><th>What goes in</th></tr></thead>
+<tbody>
+<tr><td><code>references/ipo-mode.md</code></td><td><span class="v v-exp">NEW</span></td>
+<td>The whole IPO overlay: how the 20 sections change, the 8 shared new sections, the 3 SME-only additions, the mainboard-versus-SME delta table, and the copy-ready ledger of verified thresholds with regulation references.</td></tr>
+<tr><td><code>SKILL.md</code></td><td><span class="v v-exp">EDIT</span></td>
+<td>One routing paragraph in Step 1, plus a pre-listing branch in Step 0. Three paths: listed, mainboard IPO, SME IPO. Also a note in Step 2 on source priority, since the offer document replaces annual reports and concalls entirely.</td></tr>
+<tr><td><code>references/known-traps.md</code></td><td><span class="v v-exp">APPEND</span></td>
+<td>21 IPO-specific traps in the existing format. Provenance lines cite the regulation or the SEBI study rather than a past report, since none of these have burned us yet.</td></tr>
+<tr><td><code>references/html-design-system.md</code></td><td><span class="v v-keep">NO CHANGE</span></td><td>Section-count agnostic. Reused as-is.</td></tr>
+<tr><td><code>scripts/validate.py</code></td><td><span class="v v-keep">NO CHANGE</span></td><td>Verified: derives section count, does not hardcode 20.</td></tr>
+</tbody></table></div>
+
+<div class="callout">
+<div class="kick">Recommendation</div>
+<p style="margin-bottom:0">One overlay file, not a sibling skill. A separate <code>india-ipo-deep-dive</code> would mean duplicating or symlinking roughly 30 KB of design system and validator for no benefit, and it would let the two drift apart. The persona, the hard rules, the no-rating discipline and the delivery flow all carry over unchanged.</p>
+</div>
+
+<h2>2. Step 0 gets a new question</h2>
+<p>The skill currently resolves a company name to a listed ticker. It needs to branch first, because the answer changes which spec file applies:</p>
+<div class="tw"><table>
+<thead><tr><th style="width:30%">State</th><th style="width:26%">Primary source</th><th>Path</th></tr></thead>
+<tbody>
+<tr><td>Listed</td><td>Annual reports, concalls, exchange filings</td><td>Existing 20 sections, unchanged</td></tr>
+<tr><td>Mainboard IPO, draft or final document filed</td><td>Offer document plus price band advertisement</td><td>IPO mode, mainboard variant</td></tr>
+<tr><td>SME IPO, draft document filed</td><td>Offer document plus exchange filings</td><td>IPO mode, SME variant, higher scepticism prior</td></tr>
+<tr><td>Announced but nothing filed</td><td>None</td><td><span class="v v-drop">STOP</span> No primary source exists. Say so rather than assembling a report from media coverage.</td></tr>
+</tbody></table></div>
+<p class="reg">Listing status and platform are both on the cover page of the offer document, so this costs one lookup.</p>
+
+<h2>3. What happens to the existing 20 sections</h2>
+<div class="controls">
+  <button class="on" data-col="both">Both</button>
+  <button data-col="mb">Mainboard only</button>
+  <button data-col="sme">SME only</button>
+  <label class="chk"><input type="checkbox" id="onlyChanged"> Show only sections that change</label>
+</div>
+<div class="tw"><table id="secmap">
+<thead><tr>
+  <th style="width:3%">#</th><th style="width:19%">Section</th>
+  <th class="c-mb" style="width:9%">Mainboard</th><th class="c-mb" style="width:26%">Note</th>
+  <th class="c-sme" style="width:9%">SME</th><th class="c-sme">Note</th>
+</tr></thead>
+<tbody>
+<tr data-ch="0"><td class="mono">1</td><td>Industry and sector</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">Treat the offer document's industry chapter as an issuer claim, not research.</td>
+<td class="c-sme"><span class="v v-keep">KEEP</span></td><td class="c-sme">A commissioned industry report is often absent entirely. Build the industry view yourself.</td></tr>
+
+<tr data-ch="0"><td class="mono">2</td><td>Business model and value chain</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">The business overview chapter is usually deeper than a listed company's annual report.</td>
+<td class="c-sme"><span class="v v-keep">KEEP</span></td><td class="c-sme">Add EPF and ESIC headcount triangulation and the lead manager's site-visit report, both mandatory since 08-Mar-2025.</td></tr>
+
+<tr data-ch="1"><td class="mono">3</td><td>Competitive landscape and peers</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">Bonus: the issuer must name its own peer set. Audit that choice for cherry-picking, then build your own.</td>
+<td class="c-sme"><span class="v v-deg">DEGRADE</span></td><td class="c-sme">Peer tables carry nought to two names. "No listed peers" is a common pricing dodge - test it, do not accept it.</td></tr>
+
+<tr data-ch="0"><td class="mono">4</td><td>Moat, 6 Cs framework</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">-</td>
+<td class="c-sme"><span class="v v-keep">KEEP</span></td><td class="c-sme">Scepticism up: single-customer dependence and promoter dependence dominate.</td></tr>
+
+<tr data-ch="1"><td class="mono">5</td><td>Financials, 8 quarters + 5 years</td>
+<td class="c-mb"><span class="v v-deg">DEGRADE</span></td><td class="c-mb">Only 3 restated years plus a stub exist. No quarterly series. Recover extra periods from the draft-to-final overlap.</td>
+<td class="c-sme"><span class="v v-rep">REPLACE</span></td><td class="c-sme">Same 3 years plus stub, but usually Indian GAAP not Ind AS, so not line-comparable with mainboard peers. Half-yearly only after listing.</td></tr>
+
+<tr data-ch="1"><td class="mono">6</td><td>Earnings quality and forensics</td>
+<td class="c-mb"><span class="v v-exp">EXPAND</span></td><td class="c-mb">New IPO-only table: audited versus restated equity and profit for each year, with every material adjustment explained.</td>
+<td class="c-sme"><span class="v v-exp">EXPAND</span></td><td class="c-sme">Becomes the core section. Add the operating-profit bright-line test and a restated-versus-registry reconciliation.</td></tr>
+
+<tr data-ch="1"><td class="mono">7</td><td>Promoter, governance, capital allocation</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">Inputs move to the promoters chapter, related-party note and capital structure history.</td>
+<td class="c-sme"><span class="v v-exp">EXTEND</span></td><td class="c-sme">Governance at filing is all you ever get. Most corporate-governance obligations are disapplied after listing.</td></tr>
+
+<tr data-ch="1"><td class="mono">8</td><td>Management guidance scorecard</td>
+<td class="c-mb"><span class="v v-rep">REPLACE</span></td><td class="c-mb">No concalls exist. Rebuild from mandatory disclosure: the objects of the issue, the KPI continuation duty, and performance against the objects of past issues.</td>
+<td class="c-sme"><span class="v v-rep">REPLACE</span></td><td class="c-sme">Promise ledger scored against half-yearly results, monitoring reports or auditor utilisation certificates, and half-yearly deviation statements.</td></tr>
+
+<tr data-ch="0"><td class="mono">9</td><td>Regulatory risks</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">Add the government approvals chapter and pending-approval risk factors.</td>
+<td class="c-sme"><span class="v v-keep">KEEP</span></td><td class="c-sme">Add platform-specific risks: surveillance, lot size, migration gates.</td></tr>
+
+<tr data-ch="1"><td class="mono">10</td><td>Scuttlebutt</td>
+<td class="c-mb"><span class="v v-exp">WEIGHT UP</span></td><td class="c-mb">No filing history exists, so primary channel checks carry more of the load.</td>
+<td class="c-sme"><span class="v v-exp">WEIGHT UP</span></td><td class="c-sme">Often the only independent evidence. The 21-day public comment window is a live scuttlebutt trigger.</td></tr>
+
+<tr data-ch="0"><td class="mono">11</td><td>External headwinds and tailwinds</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">-</td>
+<td class="c-sme"><span class="v v-keep">KEEP</span></td><td class="c-sme">-</td></tr>
+
+<tr data-ch="1"><td class="mono">12</td><td>Triggers and scheme plays</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">-</td>
+<td class="c-sme"><span class="v v-exp">EXTEND</span></td><td class="c-sme">Migration to the mainboard is a real structural trigger, and a hard-gated one. Most issuers will never qualify.</td></tr>
+
+<tr data-ch="1"><td class="mono">13</td><td>Shareholding, positioning, flows</td>
+<td class="c-mb"><span class="v v-rep">REPLACE</span></td><td class="c-mb">No history exists. Rebuild as capital-structure archaeology, anchor-book quality, supply calendar and subscription read.</td>
+<td class="c-sme"><span class="v v-deg">DEGRADE</span></td><td class="c-sme">Shareholding pattern is half-yearly. Keep pledge, lock-in expiries and market-maker inventory. Anything more is fabrication.</td></tr>
+
+<tr data-ch="1"><td class="mono">14</td><td>Valuation</td>
+<td class="c-mb"><span class="v v-exp">EXPAND</span></td><td class="c-mb">Reverse DCF stays first, run at the cap price. Add the cost-of-acquisition layer and audit the issuer's own peer multiple table.</td>
+<td class="c-sme"><span class="v v-exp">EXPAND</span></td><td class="c-sme">Same, plus an explicit illiquidity discount and a priced view on whether the position can be exited at all.</td></tr>
+
+<tr data-ch="1"><td class="mono">15</td><td>Pre-mortem and anti-thesis</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">Feed it the supply calendar and the "why is smart money selling" question.</td>
+<td class="c-sme"><span class="v v-exp">WEIGHT UP</span></td><td class="c-sme">Seed with documented failure modes: proceeds diversion, circular revenue, adviser-driven fraud.</td></tr>
+
+<tr data-ch="0"><td class="mono">16</td><td>Two-way pitch, no rating</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">Becomes apply-or-avoid at the band, plus what price would make it interesting after listing. Still no rating.</td>
+<td class="c-sme"><span class="v v-keep">KEEP</span></td><td class="c-sme">Same.</td></tr>
+
+<tr data-ch="1"><td class="mono">17</td><td>Capex and return on capex</td>
+<td class="c-mb"><span class="v v-exp">REORIENT</span></td><td class="c-mb">History from 3 years of restated cash flows. Forward capex from the objects chapter, which gives more detail than any listed company publishes.</td>
+<td class="c-sme"><span class="v v-deg">REDIRECT</span></td><td class="c-sme">Track through utilisation certificates. Verify the capex vendors and quotation-givers exist, with real filings.</td></tr>
+
+<tr data-ch="1"><td class="mono">18</td><td>Order book and execution</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">Where applicable. Offer documents disclose order books with customer concentration.</td>
+<td class="c-sme"><span class="v v-deg">DEGRADE</span></td><td class="c-sme">No post-listing disclosure duty. Demand contract-level evidence or mark it unverifiable.</td></tr>
+
+<tr data-ch="1"><td class="mono">19</td><td>Data-aggregator cross-check</td>
+<td class="c-mb"><span class="v v-drop">DROP</span></td><td class="c-mb">No listed data exists. Its function is served by the KPI certificate inspection instead. Resumes 2 to 3 quarters after listing.</td>
+<td class="c-sme"><span class="v v-deg">DEGRADE</span></td><td class="c-sme">Aggregator coverage is sparse and late. Substitute official external series such as GST and EPFO data.</td></tr>
+
+<tr data-ch="0"><td class="mono">20</td><td>Official industry and macro data</td>
+<td class="c-mb"><span class="v v-keep">KEEP</span></td><td class="c-mb">Doubles as the counterweight to the issuer-commissioned industry report.</td>
+<td class="c-sme"><span class="v v-keep">KEEP</span></td><td class="c-sme">Same, and more important given the industry chapter is often absent.</td></tr>
+</tbody></table></div>
+
+<h2>4. New sections</h2>
+<p>Eight shared additions, then three that exist only for SME. Each is written to slot into the spec in the same imperative style as the existing sections.</p>
+
+<div class="spec"><div class="t">N1 - Offer structure and eligibility route</div>
+<p>State the fresh-issue versus offer-for-sale split in rupees and percent, and the eligibility route the issuer used. A mainboard issuer filing under the alternative route has <b>failed</b> the profitability test, and that single fact also forces three-quarters of the book to institutions and caps retail at a tenth. Verify the route in both the draft and final documents - it can change between them.</p>
+<div class="d">SME delta: recompute every eligibility metric yourself. Flag any that clears its threshold by less than a quarter, or clears only in the qualifying years. State whether the issuer would have failed the other exchange's test.</div></div>
+
+<div class="spec"><div class="t">N2 - Use-of-proceeds forensics</div>
+<p>Recompute each object against its statutory cap. A number sitting exactly at a cap is a design choice, so say so. For loan-repayment objects, list the lenders and match them to the borrowings note, flagging promoter-linked debt and guarantee releases. For working-capital objects, audit the holding-norm assumptions against actual history. Name the monitoring artefact that will exist after listing and diarise it.</p>
+<div class="d">SME delta: repaying promoter or related-party loans from proceeds is prohibited outright, directly or indirectly, so trace for indirect routes. Verify that capex vendors and quotation-givers are real companies with real filings.</div></div>
+
+<div class="spec"><div class="t">N3 - Basis for issue price audit</div>
+<p>Extract every key performance indicator, its definition and its certifier, and confirm the three-year lookback covering metrics shown to pre-IPO investors was honoured. Tabulate the weighted average cost of acquisition across each mandated window, and state the floor and cap as multiples of it. Then stress-test the issuer's own written justification for that gap against actual KPI growth. Pull the price band advertisement, which arrives two working days before bidding opens.</p>
+<div class="d">SME delta: this regime applies to SME issues too. If the chapter is absent or perfunctory, that is a compliance red flag, not a regime difference.</div></div>
+
+<div class="spec"><div class="t">N4 - Post-listing supply calendar</div>
+<p>Build the unlock table from the capital structure chapter. For each tranche give the share count, the percentage of post-issue capital, the holder's identity, that holder's cost multiple at the offer price, and how many days of expected traded value the tranche represents. Flag any issue where a large block unlocks early on a high multiple over cost.</p>
+<div class="d">Mainboard and SME ladders differ materially, and SME lock-ins are the longer of the two. Both ladders go into the spec as tables.</div></div>
+
+<div class="spec"><div class="t">N5 - Anchor book and subscription quality</div>
+<p>From the exchange's anchor allocation disclosure, compute the domestic mutual fund share and the insurer and pension share against their reserved floors, count how many genuinely distinct decision-makers are present, and flag books dominated by sundry alternative funds or serial flippers. Read the final-day subscription split across institutional, non-institutional and retail. After listing, check bulk and block data for anchor exits by name.</p>
+<div class="d">SME delta: anchors appear only in book-built issues and the minimum ticket is far smaller, so anchor names are a weaker signal. Check the issue type before applying book-building mechanics at all.</div></div>
+
+<div class="spec"><div class="t">N6 - Draft-to-final document diff</div>
+<p>Diff the two filings: eligibility route, issue size, fresh and offer-for-sale mix, the roll of financial periods, changes to restated numbers in overlapping years, risk factors added, changes to the KPI set or peer set, capital structure events, and any change of auditor or banker. Report the deltas as what the review surfaced and what the issuer re-engineered. Roughly an hour of work, and almost nobody does it.</p>
+<div class="d">SME delta: there is no regulator observation letter, so diff the draft against the final prospectus filed with the registrar, and use the 21-day public comment window as an additional input.</div></div>
+
+<div class="spec"><div class="t">N7 - Intermediary track record</div>
+<p>The offer document must carry the lead manager's price performance on their recent issues, benchmark-adjusted at 30, 90 and 180 days. Compute the median and the share of their issues trading below offer at six months, and put that base rate next to your own valuation conclusion. Check the auditor's peer-review status and any change of auditor before filing.</p>
+<div class="d">SME delta: the lead manager underwrites the issue and takes a minimum stake on its own account, and arranges the market making. Treat it as a principal with its own incentives, not an agent, and say so in the report.</div></div>
+
+<div class="spec"><div class="t">N8 - Restatement and litigation sweep</div>
+<p>Table the audited-versus-restated reconciliation for each year and explain every material adjustment. Recompute the litigation materiality floor yourself and compare it with the policy threshold the board chose. Sum litigation against the company, promoters, directors and subsidiaries as a share of net worth. Note the group-company blind spot and pull registry data to fill it.</p>
+<div class="d">The obligation to disclose loss-making and negative-net-worth group companies was removed in Aug-2021. Silence about the promoter group is not evidence of health.</div></div>
+
+<h3>SME only</h3>
+<div class="spec"><div class="t">N9 - Liquidity and exit-ability note</div>
+<p>Trailing six-month average daily value, the share of days actually traded, and the position size exitable at a tenth of daily volume. Surveillance status and history. What happens to the position if the counter enters a restricted-trading framework. State the lot-size floor, since a holding cannot be sold below one lot except to the market maker.</p></div>
+
+<div class="spec"><div class="t">N10 - Migration scorecard</div>
+<p>Compute the distance to every mainboard migration gate on both exchanges. Classify as realistic within three years, plausible, or never. If never, the terminal state is an illiquid half-yearly-reporting counter, and the valuation must say so.</p></div>
+
+<div class="spec"><div class="t">N11 - Governance cliff box</div>
+<p>A mandatory plain-words paragraph in every SME report: after listing this company publishes results and a shareholding pattern only twice a year, most corporate-governance obligations do not apply to it, and earnings calls are voluntary and unlikely. Conviction must be discounted for a six-month information vacuum.</p></div>
+
+<div class="callout warn">
+<div class="kick">Open design decision</div>
+<p style="margin-bottom:0">This takes a mainboard report to about 27 sections and an SME report to about 31. That may be too long. Before writing the spec, decide whether to fold some additions into existing sections - the supply calendar could live inside Section 13, the restatement table inside Section 6 - or accept the longer report. My inclination is to fold N4 into 13 and N8 into 6, keeping six genuinely new sections. Worth your call.</p>
+</div>
+
+<h2>5. Mainboard versus SME, where the analysis actually diverges</h2>
+<div class="tw"><table>
+<thead><tr><th style="width:17%">Dimension</th><th style="width:26%">Mainboard</th><th style="width:26%">SME</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td>Who vets the document</td><td>SEBI issues observations</td><td>Exchange only. The regulation says the Board shall issue no observation.</td><td>No regulator letter to read. Diligence quality equals exchange plus banker quality.</td></tr>
+<tr><td>Profitability gate</td><td>An alternative route exists for companies that fail it</td><td>Hard gate: operating profit above a set floor in two of the last three years</td><td>Creates earnings-management incentives exactly at the bright line. Test it.</td></tr>
+<tr><td>Offer for sale</td><td>Uncapped</td><td>Capped both as a share of the issue and per selling shareholder</td><td>Promoter exit shifts to lock-in expiry, so the supply calendar matters more, not less.</td></tr>
+<tr><td>General corporate purposes</td><td>Percentage cap only</td><td>Percentage cap and an absolute rupee ceiling, whichever bites first</td><td>Less slush, but watch for objects engineered to sit at the cap.</td></tr>
+<tr><td>Promoter loan repayment</td><td>Permitted with disclosure</td><td>Prohibited, directly or indirectly</td><td>Test for indirect routes. This is where several enforcement cases began.</td></tr>
+<tr><td>Promoter lock-in</td><td>Shorter</td><td>Longer, with a staggered release</td><td>Longer runway, but a defined supply cliff at each anniversary.</td></tr>
+<tr><td>Underwriting</td><td>Not mandatory</td><td>Fully underwritten, banker takes a minimum stake itself</td><td>The banker is a principal with money at risk, not a neutral adviser.</td></tr>
+<tr><td>Market making</td><td>None</td><td>Compulsory for three years</td><td>A quote is not depth, and the obligation lapses on a known date.</td></tr>
+<tr><td>Results cadence</td><td>Quarterly</td><td>Half-yearly, no year-to-date</td><td>Half the data points forever. The 8-quarter framing is impossible.</td></tr>
+<tr><td>Governance regime</td><td>Full</td><td>Most of it disapplied, with a related-party carve-back above a size threshold</td><td>No independent-director enforcement and no governance report to read.</td></tr>
+<tr><td>Accounting basis</td><td>Ind AS</td><td>Usually Indian GAAP</td><td>Not line-comparable with mainboard peers. Leases, financial instruments and expected credit loss all differ.</td></tr>
+<tr><td>Retail participation</td><td>Small minimum application</td><td>Minimum application above Rs 2 lakh</td><td>Small retail is excluded by design, and allottee counts are small enough to be concentrated.</td></tr>
+<tr><td>Migration</td><td>Not applicable</td><td>A defined and hard-gated upside trigger</td><td>A checkable catalyst that most issuers will never reach.</td></tr>
+</tbody></table></div>
+
+<h2>6. Traps to append</h2>
+<p>Twenty-one new entries drafted in the existing file's format. The ones that most change how a report reads:</p>
+<ol>
+<li><b>Oversubscription is not conviction.</b> SEBI's own study of 144 issues found 54 percent of allotted shares outside the anchor book were sold within a week, and non-institutional investors sold 63 percent. On the SME side the applicant-to-allottee ratio inflated roughly sixty-fold in two years.</li>
+<li><b>The industry chapter is paid for by the issuer.</b> Total addressable market definitions are drawn to flatter. Cross-check against the official macro sources in Section 20, which is exactly what that section is for.</li>
+<li><b>The price band is not in the prospectus.</b> It arrives by advertisement two working days before bidding, together with the cost-multiple disclosures. Schedule the valuation work around that date.</li>
+<li><b>Offer-for-sale money is not the company's money.</b> A headline issue size tells you nothing about what the business actually receives. Only the fresh slice is governed by the objects narrative.</li>
+<li><b>Silence about the promoter group is not good news.</b> The duty to disclose loss-making and negative-net-worth group companies was deleted in Aug-2021.</li>
+<li><b>The pre-IPO margin inflection is suspect by default.</b> It often coincides exactly with clearing an eligibility threshold. Check the restatement reconciliation before believing it.</li>
+<li><b>Grey market premium is not evidence.</b> Unregulated, unverifiable and manipulable. A sentiment footnote at most, never an input to valuation.</li>
+<li><b>Do not read the draft when the final exists</b> - and do not assume nothing changed between them. In the worked example the eligibility route itself flipped.</li>
+<li><b>SME rules from before Mar-2025 are stale.</b> Application size, allottee minimum, the general-corporate-purposes cap, lock-in periods and the monitoring threshold all changed.</li>
+<li><b>A listing-day price cap is not price discovery.</b> On SME the opening price is capped, so a cap-hit listing tells you demand exceeded that cap and nothing more.</li>
+</ol>
+
+<h2>7. What we could not verify</h2>
+<p>Both agents were instructed to flag rather than guess. These carry into the spec as explicit gaps, and should be re-checked before anyone relies on them:</p>
+<ul>
+<li>No SEBI document addresses grey market premium directly. The position rests on inference from the securities law framework plus consultation language, not a citable rule.</li>
+<li>The applicability date of the KPI industry standards is from secondary summaries; the circular number and date are primary.</li>
+<li>No requirement exists to disclose the fee paid for the commissioned industry report. The "commissioned and paid for" language is market practice, evidenced from an actual filing.</li>
+<li>The SME secondary-market lot-size floor after the 2025 application-size change: nothing verified. The 2012 circular still appears to govern.</li>
+<li>A conflict in the SME rules between auditor certificates said to accompany quarterly results and a half-yearly results obligation. SEBI has not clarified it.</li>
+<li>SME earnings-call prevalence is a practice observation. No official count exists.</li>
+<li>No official long-horizon SME return study. The available regulator data is a single cycle-top snapshot.</li>
+<li>SME practice findings rest on three prospectuses only. Do not over-generalise them.</li>
+</ul>
+
+<div class="callout">
+<div class="kick">One citation corrected</div>
+<p style="margin-bottom:0">The two agents cited the same litigation-materiality rule differently. I checked the actual regulation text: it sits at Schedule VI Part A, item <span class="ref">(12)(A)(1)(v)</span>, substituted with effect from 08-Mar-2025. The SME agent's reference to item (14) was wrong and is corrected here. The banker price-information table at item <span class="ref">(14)(R)</span> checks out.</p>
+</div>
+
+<h2>8. Corrections to my first read</h2>
+<div class="tw"><table>
+<thead><tr><th style="width:32%">What I said earlier</th><th>What the regulation actually says</th></tr></thead>
+<tbody>
+<tr><td>A third of the anchor book is reserved for domestic mutual funds</td><td>Changed on 01-Dec-2025. Forty percent of the anchor portion is now reserved, split between mutual funds and life insurers and pension funds.</td></tr>
+<tr><td>A capex-heavy issue may shorten promoter lock-in</td><td>Inverted. A capex-majority fresh issue <b>lengthens</b> promoter lock-in substantially, on both the minimum contribution and the excess.</td></tr>
+<tr><td>The offer document gives a full picture of loss-making group companies</td><td>Removed from the regulation in Aug-2021. Names and top-five financials only, the latter hosted on the group companies' own websites.</td></tr>
+<tr><td>Whether the KPI and cost-of-acquisition regime applies to SME was the open question</td><td>It applies. Its absence from an SME prospectus is a compliance red flag, not a regime difference. This was the single biggest open item and it resolves in favour of keeping the valuation work intact.</td></tr>
+<tr><td>Section 19 dies for an IPO</td><td>It drops only until roughly two to three quarters of listed results print, then resumes normally.</td></tr>
+</tbody></table></div>
+
+<footer>
+<p>Research notes, 26 files with regulation references throughout, are committed alongside this page at <code>_IPO-mode/research-notes/</code>. Source PDFs totalling 65 MB were left out of the repository; every one re-downloads from sebi.gov.in, which serves them to a plain command-line fetch.</p>
+<p>Nothing in the skill has been changed yet. This is the proposal.</p>
+</footer>
+
+</div>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.controls button');
+  var chk=document.getElementById('onlyChanged');
+  var tbl=document.getElementById('secmap');
+  function setCols(mode){
+    tbl.querySelectorAll('.c-mb').forEach(function(el){
+      el.classList.toggle('hide', mode==='sme');
+    });
+    tbl.querySelectorAll('.c-sme').forEach(function(el){
+      el.classList.toggle('hide', mode==='mb');
+    });
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      setCols(b.dataset.col);
+    });
+  });
+  chk.addEventListener('change',function(){
+    tbl.querySelectorAll('tbody tr').forEach(function(tr){
+      tr.classList.toggle('hide', chk.checked && tr.dataset.ch==='0');
+    });
+  });
+})();
+</script>
+</body>
+</html>
