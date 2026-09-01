@@ -100,7 +100,7 @@ footer{margin-top:3rem;border-top:3px double var(--rule2);padding-top:1rem;
   <div class="stat"><div class="n">3</div><div class="l">Files to change</div></div>
   <div class="stat"><div class="n">0</div><div class="l">Validator changes</div></div>
   <div class="stat"><div class="n">8+3</div><div class="l">New sections (shared + SME only)</div></div>
-  <div class="stat"><div class="n">21</div><div class="l">New known traps</div></div>
+  <div class="stat"><div class="n">27</div><div class="l">Trap candidates (dedupe to ~20)</div></div>
   <div class="stat"><div class="n">~90</div><div class="l">Verified hard numbers</div></div>
 </div>
 
@@ -115,7 +115,7 @@ footer{margin-top:3rem;border-top:3px double var(--rule2);padding-top:1rem;
 <tr><td><code>SKILL.md</code></td><td><span class="v v-exp">EDIT</span></td>
 <td>One routing paragraph in Step 1, plus a pre-listing branch in Step 0. Three paths: listed, mainboard IPO, SME IPO. Also a note in Step 2 on source priority, since the offer document replaces annual reports and concalls entirely.</td></tr>
 <tr><td><code>references/known-traps.md</code></td><td><span class="v v-exp">APPEND</span></td>
-<td>21 IPO-specific traps in the existing format. Provenance lines cite the regulation or the SEBI study rather than a past report, since none of these have burned us yet.</td></tr>
+<td>The two research tracks produced 27 trap candidates, which should dedupe to roughly 20 written entries in the existing format. Provenance lines cite the regulation or the SEBI study rather than a past report, since none of these have burned us yet.</td></tr>
 <tr><td><code>references/html-design-system.md</code></td><td><span class="v v-keep">NO CHANGE</span></td><td>Section-count agnostic. Reused as-is.</td></tr>
 <tr><td><code>scripts/validate.py</code></td><td><span class="v v-keep">NO CHANGE</span></td><td>Verified: derives section count, does not hardcode 20.</td></tr>
 </tbody></table></div>
@@ -302,7 +302,7 @@ footer{margin-top:3rem;border-top:3px double var(--rule2);padding-top:1rem;
 </tbody></table></div>
 
 <h2>6. Traps to append</h2>
-<p>Twenty-one new entries drafted in the existing file's format. The ones that most change how a report reads:</p>
+<p>The two research tracks threw up 27 candidates between them. After removing the overlaps, expect roughly 20 written entries. None are drafted yet. The ten below are the ones that most change how a report reads:</p>
 <ol>
 <li><b>Oversubscription is not conviction.</b> SEBI's own study of 144 issues found 54 percent of allotted shares outside the anchor book were sold within a week, and non-institutional investors sold 63 percent. On the SME side the applicant-to-allottee ratio inflated roughly sixty-fold in two years.</li>
 <li><b>The industry chapter is paid for by the issuer.</b> Total addressable market definitions are drawn to flatter. Cross-check against the official macro sources in Section 20, which is exactly what that section is for.</li>
