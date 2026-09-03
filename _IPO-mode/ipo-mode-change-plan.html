@@ -92,15 +92,15 @@ footer{margin-top:3rem;border-top:3px double var(--rule2);padding-top:1rem;
     <span>Prepared <b>01-Sep-2026</b></span>
     <span>Basis <b>SEBI ICDR 2018, consolidated to 21-Mar-2026</b></span>
     <span>Also <b>LODR to 22-Jan-2026, NSE/BSE SME norms</b></span>
-    <span>Status <b>Proposal - nothing written to the skill yet</b></span>
+    <span>Status <b>BUILT 03-Sep-2026, committed in ~/.dotfiles (1ba9e28)</b></span>
   </div>
 </div>
 
 <div class="stats">
-  <div class="stat"><div class="n">3</div><div class="l">Files to change</div></div>
+  <div class="stat"><div class="n">4</div><div class="l">Files changed</div></div>
   <div class="stat"><div class="n">0</div><div class="l">Validator changes</div></div>
-  <div class="stat"><div class="n">8+3</div><div class="l">New sections (shared + SME only)</div></div>
-  <div class="stat"><div class="n">27</div><div class="l">Trap candidates (dedupe to ~20)</div></div>
+  <div class="stat"><div class="n">25 / 28</div><div class="l">Sections, mainboard / SME</div></div>
+  <div class="stat"><div class="n">14</div><div class="l">IPO traps written (9-22)</div></div>
   <div class="stat"><div class="n">~90</div><div class="l">Verified hard numbers</div></div>
 </div>
 
@@ -114,8 +114,10 @@ footer{margin-top:3rem;border-top:3px double var(--rule2);padding-top:1rem;
 <td>The whole IPO overlay: how the 20 sections change, the 8 shared new sections, the 3 SME-only additions, the mainboard-versus-SME delta table, and the copy-ready ledger of verified thresholds with regulation references.</td></tr>
 <tr><td><code>SKILL.md</code></td><td><span class="v v-exp">EDIT</span></td>
 <td>One routing paragraph in Step 1, plus a pre-listing branch in Step 0. Three paths: listed, mainboard IPO, SME IPO. Also a note in Step 2 on source priority, since the offer document replaces annual reports and concalls entirely.</td></tr>
+<tr><td><code>references/ipo-signal-tracker.md</code></td><td><span class="v v-exp">NEW</span></td>
+<td>Cross-report log of grey market premium and subscription splits against actual listing and 30, 90 and 180-day outcomes. Turns an unverifiable signal into an accumulating base rate for our own coverage instead of trusting or ignoring it. See section 4b.</td></tr>
 <tr><td><code>references/known-traps.md</code></td><td><span class="v v-exp">APPEND</span></td>
-<td>The two research tracks produced 27 trap candidates, which should dedupe to roughly 20 written entries in the existing format. Provenance lines cite the regulation or the SEBI study rather than a past report, since none of these have burned us yet.</td></tr>
+<td>14 IPO traps written as entries 9 to 22, in the existing format. Provenance lines cite the regulation or the SEBI study rather than a past report, since none of these have burned us yet. They move up into the main list the first time one actually catches something.</td></tr>
 <tr><td><code>references/html-design-system.md</code></td><td><span class="v v-keep">NO CHANGE</span></td><td>Section-count agnostic. Reused as-is.</td></tr>
 <tr><td><code>scripts/validate.py</code></td><td><span class="v v-keep">NO CHANGE</span></td><td>Verified: derives section count, does not hardcode 20.</td></tr>
 </tbody></table></div>
@@ -277,9 +279,34 @@ footer{margin-top:3rem;border-top:3px double var(--rule2);padding-top:1rem;
 <div class="spec"><div class="t">N11 - Governance cliff box</div>
 <p>A mandatory plain-words paragraph in every SME report: after listing this company publishes results and a shareholding pattern only twice a year, most corporate-governance obligations do not apply to it, and earnings calls are voluntary and unlikely. Conviction must be discounted for a six-month information vacuum.</p></div>
 
-<div class="callout warn">
-<div class="kick">Open design decision</div>
-<p style="margin-bottom:0">This takes a mainboard report to about 27 sections and an SME report to about 31. That may be too long. Before writing the spec, decide whether to fold some additions into existing sections - the supply calendar could live inside Section 13, the restatement table inside Section 6 - or accept the longer report. My inclination is to fold N4 into 13 and N8 into 6, keeping six genuinely new sections. Worth your call.</p>
+<div class="callout">
+<div class="kick">Design decision - resolved 03-Sep-2026</div>
+<p>Approved as proposed, so the fold was applied. The supply calendar went into the capital structure section and the restatement reconciliation into earnings quality, leaving six genuinely new shared sections rather than eight.</p>
+<p style="margin-bottom:0">One thing changed during the build: the IPO report could not reuse the listed report's numbering. Dropping the aggregator cross-check mid-sequence would leave a gap at 19, and <code>validate.py</code> fails a report whose section numbers are not contiguous. So the IPO report is numbered 1 to 25 in its own right, with SME adding 26 to 28. The spec maps each one back to its listed equivalent.</p>
+</div>
+
+<h2>4b. Subscription and grey market premium</h2>
+<p>Both now live in Section 21, "Anchor book, subscription and market signals". This is the part of an IPO report most likely to drift into bad research, so the spec is deliberately strict about it.</p>
+
+<div class="spec"><div class="t">Subscription - composition, never level</div>
+<p>The headline "82 times" is arithmetic dominated by whichever category has the smallest reserved portion, and it carries no information about quality. The spec requires the category-wise split and the day-by-day build instead. Institutional demand excluding anchors is the only multiple with diligence behind it. Non-institutional demand is largely lottery money, since allotment there moved to a draw of lots for the minimum application size, which rewards making many small applications. Retail is sentiment.</p>
+<div class="d">The diagnostic is the gap between categories. Weak institutional demand under a very large non-institutional book is the premium-chasing setup. Strong institutional demand with a thin retail book is an under-marketed issue with institutional validation - a different animal.</div></div>
+
+<div class="spec"><div class="t">The base rate every reading is anchored to</div>
+<p>SEBI's study of 144 issues from Apr-2021 to Dec-2023: 54 percent of shares allotted outside the anchor book were sold within one week. Non-institutional investors sold 63.3 percent, retail 42.7 percent, rising to 67.6 percent where listing gains exceeded 20 percent. Subscription therefore measures flip demand, not conviction. On SME the applicant-to-allottee ratio moved from 4 times to 245 times across three years, which makes the multiple a coordination artefact.</p>
+<div class="d">Hard rule in the spec: never convert a subscription multiple into an expected listing gain or a price target. Not in text, not in a table, not by implication.</div></div>
+
+<div class="spec"><div class="t">Grey market premium - recorded, never relied on</div>
+<p>It is recorded once, with a source and a timestamp, in Section 21 only, and it is fenced out of the valuation section entirely. The reason is professional rather than squeamish: the grey market has no statutory basis, it is quoted by dealers who profit from the trades they quote, and SEBI's own consultation language groups it with unverified social media posts. A report carrying your name can be read as research, and research needs a reasonable basis. A recorded observation is defensible; an expected listing gain derived from it is not.</p>
+<div class="d">Its analytical use is divergence, not level - a high premium sitting next to weak institutional demand, a heavy offer-for-sale and a large multiple over recent insider cost is a coherent, statable pattern. The direction of travel is also usable: a premium collapsing between anchor day and listing is a reportable warning even where the level is not trustworthy.</div></div>
+
+<div class="spec"><div class="t">The tracker - measuring it instead of arguing about it</div>
+<p>A new file, <code>references/ipo-signal-tracker.md</code>, is maintained across reports rather than inside any one of them. Each IPO report logs the premium at time of writing as a percentage of the cap price, the category multiples at close, the offer-for-sale share and the price-to-insider-cost multiple, then updates the row at listing and at 30, 90 and 180 days.</p>
+<div class="d">After about a dozen issues we can state whether either signal predicted anything in our own coverage, rather than repeating what the market assumes. Same discipline as the traps file: grow it by observation and let the record settle it. The spec forbids drawing conclusions from fewer than ten rows.</div></div>
+
+<div class="callout">
+<div class="kick">Consequence worth knowing</div>
+<p style="margin-bottom:0">Both signals are invisible before bidding opens and only complete at close. So every IPO report now carries a timing stamp in the masthead saying which day of the window it was written on, and the market signals box reads "not yet observable" rather than silently disappearing. The report's useful life is the bidding window, which is three to ten working days.</p>
 </div>
 
 <h2>5. Mainboard versus SME, where the analysis actually diverges</h2>
