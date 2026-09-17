@@ -153,14 +153,6 @@ if grep -qiE 'update_key|ht-ml\.app|/Users/' "$SRC"; then
   die "refusing to publish: $SRC contains a publish key, an ht-ml.app URL or a local path"
 fi
 
-# The note has to sit on ONE line in both themes at the same page width.
-# Terminal sets it in JetBrains Mono, which measured 1.27x wider than glass's
-# Inter, and 65 characters is what fits there. Longer notes wrap and the two
-# themes stop matching, so refuse rather than silently break the register.
-if [ "${#NOTE}" -gt 66 ]; then
-  die "note is ${#NOTE} characters; keep it to 66 or fewer so it stays on one line in both themes"
-fi
-
 SLUG="$(slugify "$COMPANY")"
 DEST_NAME="$SLUG-$DATE.html"
 cp "$SRC" "$SITE/$DEST_NAME"
