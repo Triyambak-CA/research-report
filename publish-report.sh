@@ -62,20 +62,22 @@ for i, r in enumerate(rows):
     folio = total - i
     trs.append(
         '        <tr>'
-        f'<td class="c-folio folio">{folio:02d}</td>'
+        f'<td class="n">{folio:02d}</td>'
         f'<td class="co"><a href="{esc(r["file"])}">{esc(r["company"])}</a></td>'
         f'<td class="note">{esc(r.get("note",""))}</td>'
-        f'<td class="c-date date">{esc(pretty(r["date"]))}</td>'
+        f'<td class="d">{esc(pretty(r["date"]))}</td>'
         '</tr>'
     )
 
 opened = pretty(rows[-1]["date"]) if rows else "not yet"
+latest = pretty(rows[0]["date"]) if rows else "not yet"
 
 doc = open(template).read()
 for token, value in {
     "{{ROWS}}":   "\n".join(trs),
     "{{COUNT}}":  str(total),
     "{{OPENED}}": opened,
+    "{{LATEST}}": latest,
     "{{BUILT}}":  pretty(date.today().isoformat()),
 }.items():
     doc = doc.replace(token, value)

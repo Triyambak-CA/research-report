@@ -54,6 +54,8 @@ personally, not under his firm.
 - Each row has: company name, a one-line note, an as-of date, a link.
 - Must carry a standing disclosure: not investment advice, no rating, no price
   target, author is not a SEBI-registered research analyst or investment adviser.
-- No external fonts, scripts, stylesheets or analytics. Self-contained, offline-safe.
+- The index loads the same three Google Fonts the reports load (Cormorant
+  Garamond, Inter, JetBrains Mono). Matching the reports outranks being
+  offline-safe here. No analytics, no trackers, no other third-party requests.
 - Must not use em dashes or en dashes anywhere (house rule).
 - Page must work at phone width with no horizontal scroll.

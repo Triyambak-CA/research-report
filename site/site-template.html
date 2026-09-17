@@ -1,241 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="glass">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Equity Deep Dives</title>
 <meta name="description" content="A running account of Indian listed companies examined. Dated entries, full workings, no buy or sell rating.">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  /* Bahi khata: a chartered accountant's running account of companies examined.
-     Vermilion cloth binding board against unbleached ledger paper. Column rules
-     bound the columns and are never crossed by text. Rank is carried by weight,
-     case, reversal and rule, never by size: the whole register is one size. */
-  :root{
-    --cloth:#A32A1C;
-    --cloth-deep:#7E1F14;
-    --cloth-ink:#FBF4E9;
-    --paper:#F6F1E6;
-    --paper-edge:#EDE5D4;
-    --ink:#211F1A;
-    --ink-soft:#6B6354;
-    --rule:#D8C3B3;
-    --rule-strong:#211F1A;
-    --serif:"Iowan Old Style","Charter","Georgia","Times New Roman",serif;
-    --size:15px;
-    --gutter:clamp(18px, 4vw, 34px);
+  /* The index inherits the reports' own visual world rather than introducing a
+     third one: identical tokens, identical faces, the same glass/terminal pair
+     and the same floating control, so opening an entry is a continuation. */
+  :root,html[data-theme="terminal"]{
+    --accent:#ffb000;
+    --bg:#05070a;
+    --card:#0a0e13;
+    --card2:#0b1017;
+    --border:#182029;
+    --border2:#243244;
+    --text:#c3ceda;
+    --bright:#eef4fa;
+    --muted:#647689;
+    --dim:#3a4756;
+    --accent-r:255,176,0;
+    --muted-r:100,118,137;
+    --bg-r:5,7,10;
+    --sb-track:#070a0e;
+    --sb-thumb:#1c2733;
+    --sb-thumb-h:#2a3a4a;
+    --g-d:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --g-b:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --g-m:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --g-sh:0 6px 22px rgba(0,0,0,.5);
+    --grid:34px;
+    --d-size:clamp(30px,5vw,50px);
+    --d-weight:500;
+    --d-space:-.01em;
   }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  html[data-theme="glass"]{
+    --accent:#a0a0d2;
+    --bg:#070707;
+    --card:rgba(16,16,16,0.72);
+    --card2:rgba(18,18,18,0.92);
+    --border:rgba(255,255,255,0.07);
+    --border2:rgba(255,255,255,0.13);
+    --text:rgba(224,224,224,0.52);
+    --bright:#e0e0e0;
+    --muted:rgba(224,224,224,0.34);
+    --dim:rgba(224,224,224,0.2);
+    --accent-r:160,160,210;
+    --muted-r:224,224,224;
+    --bg-r:7,7,7;
+    --sb-track:#0a0a0a;
+    --sb-thumb:#1e1e1e;
+    --sb-thumb-h:#2c2c2c;
+    --g-d:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    --g-b:'Inter',system-ui,-apple-system,'Segoe UI',Helvetica,sans-serif;
+    --g-m:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --g-sh:0 8px 44px rgba(0,0,0,.55);
+    --grid:64px;
+    --d-size:clamp(40px,7vw,78px);
+    --d-weight:300;
+    --d-space:-.02em;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
   body{
-    margin:0; background:var(--paper-edge); color:var(--ink);
-    font-family:var(--serif); font-size:var(--size); line-height:1.55;
-    -webkit-font-smoothing:antialiased; font-variant-numeric:tabular-nums;
-  }
-  ::selection{background:var(--cloth); color:var(--cloth-ink)}
-  a{color:inherit}
-  a:focus-visible, [tabindex]:focus-visible{
-    outline:2px solid var(--cloth); outline-offset:3px;
-  }
-
-  .book{
-    max-width:1220px; margin:0 auto; min-height:100vh;
-    display:grid; grid-template-columns:minmax(250px,26%) 1fr;
-    align-items:start;
-    background:var(--paper);
-    box-shadow:0 1px 3px rgba(33,31,26,.10), 0 12px 40px rgba(33,31,26,.10);
-  }
-
-  /* ---- binding board ---- */
-  .board{
-    background:var(--cloth);
-    /* book cloth: a fine woven tooth, the material's own weave */
+    background-color:var(--bg); color:var(--text);
+    font-family:var(--g-b); font-size:14px; line-height:1.6;
+    font-variant-numeric:tabular-nums; -webkit-font-smoothing:antialiased;
     background-image:
-      repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 3px),
-      repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px);
-    color:var(--cloth-ink);
-    padding:var(--gutter) var(--gutter) calc(var(--gutter) + 6px);
-    display:flex; flex-direction:column;
-    /* the gutter: where the board meets the sewn paper */
-    box-shadow:inset -10px 0 14px -10px rgba(0,0,0,.42);
-    /* the board is the binding: it stays put while the pages move under it */
-    position:sticky; top:0; min-height:100vh;
+      linear-gradient(var(--border) 1px,transparent 1px),
+      linear-gradient(90deg,var(--border) 1px,transparent 1px);
+    background-size:var(--grid) var(--grid);
+    padding:0 20px 120px;
   }
-  .mark{
-    font-family:"Kohinoor Devanagari","Devanagari Sangam MN",var(--serif);
-    font-size:19px; line-height:1; opacity:.66; margin-bottom:20px;
-  }
-  .board h1{
-    font-size:clamp(30px, 4.4vw, 44px); line-height:1.02;
-    margin:0; font-weight:600; letter-spacing:-.02em;
-  }
-  .board h1 span{display:block}
-  .standfirst{
-    margin:16px 0 0; max-width:30ch; color:rgba(251,244,233,.78);
-    font-size:var(--size); line-height:1.5;
-  }
-  .plate{
-    margin-top:24px; border-top:1px solid rgba(251,244,233,.30);
-    padding-top:12px; display:flex; flex-wrap:wrap; gap:8px 28px;
-  }
-  .plate div{min-width:0}
-  .pl{
-    display:block; font-size:var(--size); letter-spacing:.10em;
-    /* .62 measured 3.44:1 on the cloth, under the 4.5 floor */
-    text-transform:uppercase; color:rgba(251,244,233,.86); font-weight:600;
-  }
-  .pv{display:block; font-size:var(--size); color:var(--cloth-ink)}
+  body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.955;z-index:-1}
+  ::selection{background:rgba(var(--accent-r),.25);color:#fff}
+  ::-webkit-scrollbar{width:11px}
+  ::-webkit-scrollbar-track{background:var(--sb-track)}
+  ::-webkit-scrollbar-thumb{background:var(--sb-thumb)}
+  ::-webkit-scrollbar-thumb:hover{background:var(--sb-thumb-h)}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
 
-  /* ---- the page ---- */
-  .page{padding:var(--gutter); min-width:0; position:relative}
-  .page h2{
-    margin:0 0 2px; font-size:var(--size); font-weight:600;
-    letter-spacing:.10em; text-transform:uppercase;
-  }
-  .opened{margin:0 0 18px; color:var(--ink-soft)}
+  .wrap{max-width:1080px;margin:0 auto}
 
-  /* auto layout, not fixed: under fixed, Chrome leaves the slack unassigned and
-     the notes column collapses to half the space it should have */
-  .register{width:100%; border-collapse:collapse; table-layout:auto}
-  .register caption{
-    caption-side:top; text-align:left; color:var(--ink-soft);
-    padding:0 0 8px; font-size:var(--size);
+  /* ===== masthead ===== */
+  .mast{padding:74px 0 34px;border-bottom:1px solid var(--border2)}
+  h1{
+    font-family:var(--g-d); font-size:var(--d-size); font-weight:var(--d-weight);
+    letter-spacing:var(--d-space); line-height:1.02; color:var(--bright);
   }
-  .register th{
-    text-align:left; font-weight:600; font-size:var(--size);
-    letter-spacing:.10em; text-transform:uppercase; color:var(--ink-soft);
-    padding:0 10px 7px; border-bottom:2px solid var(--rule-strong);
+  .lede{margin-top:16px;max-width:62ch;color:var(--text);font-size:15px;line-height:1.66}
+  .meta{
+    margin-top:22px; font-family:var(--g-m); font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--muted);
+    display:flex; flex-wrap:wrap; gap:6px 10px;
   }
-  .register td{
-    padding:11px 10px; border-bottom:1px solid var(--rule);
-    vertical-align:baseline;
-  }
-  /* column rules bound the columns; text sits inside them */
-  .register th + th, .register td + td{border-left:1px solid var(--rule)}
-  .c-folio{width:3.2rem}
-  .c-co{width:27%}
-  .c-date{width:7.6rem; text-align:right}
-  th.c-date{text-align:right}
+  .meta b{color:var(--accent);font-weight:400}
+  .meta span[aria-hidden]{color:var(--dim)}
 
-  .folio{color:var(--ink-soft)}
+  /* ===== register ===== */
+  .reg{margin-top:40px}
+  .reg h2{
+    font-family:var(--g-m); font-size:11px; font-weight:500; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:14px;
+  }
+  table{width:100%;border-collapse:collapse;table-layout:auto}
+  thead th{
+    font-family:var(--g-m); font-size:11px; font-weight:500; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--dim); text-align:left;
+    padding:0 14px 10px; border-bottom:1px solid var(--border2);
+  }
+  th.n{width:3.4rem}
+  th.d,td.d{text-align:right;width:8.2rem}
+  tbody td{padding:15px 14px;border-bottom:1px solid var(--border);vertical-align:baseline}
+  tbody tr{transition:background .18s var(--g-ease,ease)}
+  tbody tr:hover,tbody tr:focus-within{background:rgba(var(--muted-r),.035)}
+  .n{font-family:var(--g-m);font-size:12px;color:var(--dim)}
   .co a{
-    font-weight:600; text-decoration:none;
-    text-decoration-color:var(--rule); text-underline-offset:3px;
+    font-family:var(--g-b); font-size:16px; font-weight:500; color:var(--bright);
+    border-bottom:1px solid transparent; transition:border-color .18s ease,color .18s ease;
   }
-  .co a:hover{text-decoration:underline}
-  .note{color:var(--ink-soft)}
-  .date{white-space:nowrap}
+  .co a:hover{color:var(--accent);border-bottom-color:rgba(var(--accent-r),.5);text-decoration:none}
+  .note{color:var(--text);font-size:14px}
+  .d{font-family:var(--g-m);font-size:12px;color:var(--muted);white-space:nowrap}
 
-  /* the pen stroke: one authored moment, a rule drawn under the entry read */
-  .register tbody tr{position:relative}
-  .register tbody tr::after{
-    content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
-    background:var(--cloth); transform:scaleX(0); transform-origin:left;
-    transition:transform .42s cubic-bezier(.16,1,.3,1);
+  /* ===== disclosure ===== */
+  .disc{
+    margin-top:34px; padding:18px 20px; background:var(--card);
+    border:1px solid var(--border); box-shadow:var(--g-sh);
+    color:var(--muted); font-size:13px; line-height:1.7; max-width:92ch;
   }
-  .register tbody tr:hover::after,
-  .register tbody tr:focus-within::after{transform:scaleX(1)}
-
-  /* a closed account is ruled off twice */
-  .ruled-off{
-    margin-top:0; border-top:1px solid var(--rule-strong);
-    border-bottom:1px solid var(--rule-strong); height:3px;
+  .disc b{color:var(--text);font-weight:600}
+  .colo{
+    margin-top:20px; font-family:var(--g-m); font-size:11px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--dim);
+    display:flex; flex-wrap:wrap; gap:8px 26px; justify-content:space-between;
   }
 
-  .foot{margin-top:22px; color:var(--ink-soft); max-width:74ch}
-  .foot b{color:var(--ink); font-weight:600}
-  .colophon{
-    margin-top:18px; padding-top:12px; border-top:1px solid var(--rule);
-    display:flex; flex-wrap:wrap; gap:6px 24px; justify-content:space-between;
-    color:var(--ink-soft);
+  /* ===== floating control, same shape as the reports' ===== */
+  .ctl{
+    position:fixed; right:16px; bottom:16px; z-index:1001;
+    display:flex; align-items:center; gap:9px;
+    background:var(--card); border:1px solid var(--border2); color:var(--muted);
+    font-family:var(--g-m); font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; padding:8px 12px; cursor:pointer; user-select:none;
+    box-shadow:0 6px 22px rgba(0,0,0,.5); backdrop-filter:blur(8px);
   }
+  .ctl:hover{border-color:var(--accent);color:var(--text)}
+  .ctl .tv{color:var(--accent);min-width:62px;text-align:left}
 
-  @media (prefers-reduced-motion:reduce){
-    .register tbody tr::after{transition:none}
-  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
-  /* ---- narrow: the board becomes the cover, entries stack ---- */
-  @media (max-width:760px){
-    .book{grid-template-columns:1fr; min-height:0; box-shadow:none}
-    /* the board is a cover band here, not a full-height binding: left sticky and
-       100vh it would fill the whole phone screen and push every entry below the fold */
-    .board{
-      position:static; min-height:0;
-      box-shadow:inset 0 -10px 14px -10px rgba(0,0,0,.42);
-    }
-    .board h1{font-size:clamp(28px,8vw,38px)}
-    .standfirst{max-width:44ch}
-    .register, .register tbody, .register tr, .register td{display:block; width:auto}
-    .register thead{display:none}
-    /* a table-caption inside a display:block table shrink-wraps to one word per
-       line, so it has to become a block of its own here */
-    .register caption{display:block; width:auto; padding-bottom:12px}
-    .register tbody tr{
-      padding:12px 0; border-bottom:1px solid var(--rule); position:relative;
-    }
-    .register td{border:0; border-left:0; padding:0}
-    .register td + td{border-left:0}
-    .register .c-folio{
-      position:absolute; left:0; top:12px; width:2.6rem; color:var(--ink-soft);
-    }
-    .register .co, .register .note, .register .c-date{margin-left:2.6rem}
-    .register .co{margin-bottom:2px}
-    .register .c-date{text-align:left; color:var(--ink-soft); margin-top:3px}
-    .register tbody tr::after{bottom:-1px}
+  @media(max-width:720px){
+    body{padding:0 16px 120px}
+    .mast{padding:44px 0 26px}
+    table,thead,tbody,tr,td{display:block;width:auto}
+    thead{display:none}
+    tbody tr{padding:16px 0;border-bottom:1px solid var(--border);position:relative}
+    tbody td{border:0;padding:0}
+    td.n{position:absolute;left:0;top:16px}
+    td.co,td.note,td.d{margin-left:3.2rem}
+    td.co{margin-bottom:4px}
+    td.d{text-align:left;margin-top:6px}
   }
 </style>
 </head>
 <body>
-<main class="book">
+<div class="wrap">
 
-  <aside class="board">
-    <div>
-      <div class="mark" aria-hidden="true">श्री</div>
-      <h1><span>Equity</span><span>Deep Dives</span></h1>
-      <p class="standfirst">A running account of Indian listed companies examined.
-      Every entry is dated and stands on the disclosures available that day.</p>
+  <header class="mast">
+    <h1>Equity Deep Dives</h1>
+    <p class="lede">A running account of Indian listed companies examined. Forensic
+    accounting checks, promoter and governance analysis, a guidance scorecard,
+    reverse DCF and a two way pitch. Every entry is dated and stands on the
+    disclosures available that day.</p>
+    <div class="meta">
+      <span><b>{{COUNT}}</b> entries</span><span aria-hidden="true">//</span>
+      <span>{{OPENED}} to {{LATEST}}</span><span aria-hidden="true">//</span>
+      <span>NSE / BSE</span><span aria-hidden="true">//</span>
+      <span><b>No rating issued</b></span>
     </div>
-    <div class="plate">
-      <div><span class="pl">Entries</span><span class="pv">{{COUNT}}</span></div>
-      <div><span class="pl">Opened</span><span class="pv">{{OPENED}}</span></div>
-      <div><span class="pl">Rating</span><span class="pv">None issued</span></div>
-    </div>
-  </aside>
+  </header>
 
-  <section class="page">
+  <section class="reg">
     <h2>Register of companies examined</h2>
-    <p class="opened">Forensic accounting checks, promoter and governance analysis,
-    a guidance scorecard, reverse DCF and a two way pitch. No recommendation is made.</p>
-
-    <table class="register">
-      <caption>Latest first. The folio is the order each entry was written.</caption>
+    <table>
       <thead>
         <tr>
-          <th class="c-folio" scope="col">Fo.</th>
-          <th class="c-co" scope="col">Company</th>
+          <th class="n" scope="col">No.</th>
+          <th scope="col">Company</th>
           <th scope="col">What the entry covers</th>
-          <th class="c-date" scope="col">As at</th>
+          <th class="d" scope="col">As at</th>
         </tr>
       </thead>
       <tbody>
 {{ROWS}}
       </tbody>
     </table>
-    <div class="ruled-off" aria-hidden="true"></div>
-
-    <p class="foot"><b>Not investment advice.</b> These are personal research notes
-    kept on the record. Nothing here is a recommendation to buy, sell or hold any
-    security, no entry carries a rating or a price target, and the author is not a
-    SEBI registered research analyst or investment adviser. Figures are drawn from
-    public filings and may contain errors. Do your own work before acting on
-    anything you read here.</p>
-
-    <div class="colophon">
-      <span>Written up {{BUILT}}</span>
-      <span>Sources: company filings, exchange disclosures, concall transcripts</span>
-    </div>
   </section>
 
-</main>
+  <div class="disc"><b>Not investment advice.</b> These are personal research notes
+  kept on the record. Nothing here is a recommendation to buy, sell or hold any
+  security, no entry carries a rating or a price target, and the author is not a
+  SEBI registered research analyst or investment adviser. Figures are drawn from
+  public filings and may contain errors. Do your own work before acting on
+  anything you read here.</div>
+
+  <div class="colo">
+    <span>Updated {{BUILT}}</span>
+    <span>Company filings // exchange disclosures // concall transcripts</span>
+  </div>
+
+</div>
+
+<button class="ctl" id="themetog" type="button" aria-label="Switch theme">
+  Theme <span class="tv">Glass</span>
+</button>
+
+<script>
+(function(){
+  var KEY='eqdd_theme', root=document.documentElement,
+      btn=document.getElementById('themetog'), val=btn.querySelector('.tv');
+  function apply(t){
+    root.setAttribute('data-theme',t);
+    val.textContent = t==='glass' ? 'Glass' : 'Terminal';
+  }
+  var saved;
+  try{ saved=localStorage.getItem(KEY); }catch(e){}
+  apply(saved==='terminal'||saved==='glass' ? saved : 'glass');
+  btn.addEventListener('click',function(){
+    var next = root.getAttribute('data-theme')==='glass' ? 'terminal' : 'glass';
+    apply(next);
+    try{ localStorage.setItem(KEY,next); }catch(e){}
+  });
+})();
+</script>
 </body>
 </html>

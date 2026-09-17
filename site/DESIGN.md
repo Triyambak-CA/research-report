@@ -1,76 +1,79 @@
 # Design
 
-The visual world of the published site (`equity-deep-dives`), written from the
-built page. The page is generated, so every rule below lives in
-`site-template.html`, never in `index.html`.
+The visual world of the published site (`equity-deep-dives`). The page is
+generated, so every rule below lives in `site-template.html`, never in the
+`index.html` it produces.
 
-## The world
+## The world: inherited, not invented
 
-A bahi khata: the Indian trader's cloth-bound running account book. A chartered
-accountant keeps a running account of companies examined, and each company is a
-dated entry in an open account rather than a verdict. This is what makes the
-product's own positioning legible before a word is read, because a khata records
-and never advises.
+The index does not have a look of its own. It inherits the reports' world
+verbatim, because the index exists to hand a visitor to a report and a change of
+skin at that boundary reads as two different sites.
 
-It is deliberately the opposite of the dark brokerage terminal this site shipped
-first and failed with: neon tickers, a graticule crossing the text, glowing
-figures. That look is the anti-reference, not a fallback.
+Concretely, the index copies the reports' token blocks, faces, canvas treatment
+and floating control. A bahi khata direction was built here first and dropped for
+exactly this reason: it was a good page that did not belong to the reports.
 
-## Palette
+Anything that changes in a report's theme should be mirrored here by hand. There
+is no shared stylesheet, because each report is a standalone self-contained file.
 
-| Token | Value | Role |
+## Themes
+
+Two, same names and same tokens as the reports, with **glass as the default**,
+matching `<html data-theme="glass">` in the reports themselves.
+
+| Token | Glass (default) | Terminal |
 |---|---|---|
-| `--cloth` | `#A32A1C` | Binding board. Owns a whole region, about a quarter of the desktop surface and the top band on a phone. Never an accent. |
-| `--cloth-ink` | `#FBF4E9` | Everything reversed out of the cloth. |
-| `--paper` | `#F6F1E6` | Unbleached ledger page, the reading field. |
-| `--paper-edge` | `#EDE5D4` | The desk the book sits on. |
-| `--ink` | `#211F1A` | Primary text. 14.6:1 on paper. |
-| `--ink-soft` | `#6B6354` | Secondary text, tinted from the paper hue and never gray. 5.3:1. |
-| `--rule` | `#D8C3B3` | Column and row rules. |
-| `--rule-strong` | `#211F1A` | The heavy rule under the column heads, and the double rule closing the account. |
+| `--accent` | `#a0a0d2` | `#ffb000` |
+| `--bg` | `#070707` | `#05070a` |
+| `--card` | `rgba(16,16,16,.72)` | `#0a0e13` |
+| `--border` | `rgba(255,255,255,.07)` | `#182029` |
+| `--border2` | `rgba(255,255,255,.13)` | `#243244` |
+| `--bright` | `#e0e0e0` | `#eef4fa` |
+| `--text` | `rgba(224,224,224,.52)` | `#c3ceda` |
+| `--muted` | `rgba(224,224,224,.34)` | `#647689` |
+| `--dim` | `rgba(224,224,224,.2)` | `#3a4756` |
+| grid pitch | 64px | 34px |
 
-Light, not dark, because the use scene is a phone opened from a chat message in
-daylight as often as a desk at night. Text on cloth holds at least 4.5:1; the
-plate labels were raised from 62% to 86% opacity after measuring 3.44:1.
+Three tokens are local to the index and carry the display voice per theme, since
+the two worlds want different scale: `--d-size`, `--d-weight`, `--d-space`.
 
 ## Type
 
-One face, a serif stack of Iowan Old Style, Charter and Georgia. No external
-fonts load, so the world's voice comes from material (cloth, rules, folio,
-reversal), not from a display typeface.
+From Google Fonts, the same three families the reports load: Cormorant Garamond
+for display, Inter for body, JetBrains Mono for meta, figures and labels. Terminal
+sets all three to JetBrains Mono, as the reports do.
 
-**One size for the whole page: 15px.** Rank is carried by weight, case, reversal
-and rule, never by size. This is the discipline the failed page lacked, where
-five competing sizes fought each other. The only exception is the title on the
-binding board, which is a different plane from the page.
+This page therefore makes external font requests. That is deliberate: matching the
+reports matters more here than being offline-safe, and the reports already do it.
 
-`font-variant-numeric: tabular-nums` is set on `body`, so folios and dates align
-in their columns.
+## Canvas
+
+Black ground carrying a faint one-pixel grid at the theme's pitch, with a
+`body::before` layer at 95.5% opacity knocking it back so it reads as texture
+rather than as a graticule. Lifted from the reports unchanged.
 
 ## Structure
 
-- Column rules **bound** the columns; text sits inside them with 10px padding and
-  is never crossed. The old page drew a graticule straight through its own text.
-- The folio is the order each entry was written, so the oldest is 01 and numbers
-  never shift when a newer entry goes in above. Unpublishing one does close the
-  gap and renumber, which is the intended reading: a struck entry leaves no hole
-  in the register.
-- A closed account is ruled off twice, which is what `.ruled-off` draws under the
-  last entry.
-- The binding board is `position: sticky` on desktop, so it stays put while the
-  pages move under it. On a phone it becomes a compact cover band; left sticky and
-  full height it filled the whole screen and pushed every entry below the fold.
-- The register table uses `table-layout: auto`. Under `fixed`, Chrome leaves the
-  slack unassigned and the notes column collapses to half its space.
+- Masthead: display title, a lede at 62ch, then a mono meta rail using `//` as
+  the separator, which is the reports' own punctuation.
+- Register: a plain table. Entry number, company, one-line note, as-at date.
+  Rules are `--border` between rows and `--border2` under the head.
+- The number is the order each entry was written, so the oldest is 01. Adding a
+  newer entry never shifts them; unpublishing one closes the gap and renumbers,
+  which is intended, since a struck entry leaves no hole in the register.
+- `table-layout: auto`, not `fixed`. Under `fixed` Chrome leaves the slack
+  unassigned and the notes column collapses to half its width.
+- Under 720px the table stacks: head hidden, rows become blocks, the entry number
+  sits absolutely at the left. Verified with no horizontal scroll.
 
-## Motion
+## Control
 
-One authored moment: hovering or focusing an entry draws a vermilion rule under
-it from the gutter outward, like a pen underlining a line already read.
-Exponential ease-out over 420ms, and it does not run under
-`prefers-reduced-motion`.
+One floating button, bottom right, using the reports' own `.ctl` shape: card
+background, `--border2` hairline, 11px letterspaced uppercase mono, the value in
+the accent colour, accent border on hover.
 
-## Browser surfaces
-
-Selection is cloth on paper-white. Focus rings are cloth at 2px with a 3px
-offset. Link underlines use the rule colour at a 3px offset.
+The choice persists in `localStorage` under `eqdd_theme`, wrapped in try/catch.
+**Known limitation:** each report stores its own theme under its own key
+(`southwest_theme` and so on), so a theme chosen on the index does not follow the
+visitor into a report. Unifying that means editing every report file.
