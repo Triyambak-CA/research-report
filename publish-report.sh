@@ -16,6 +16,8 @@ SITE="${SITE:-$HOME/Documents/1_Claude_AI/GitHub-Repos/equity-deep-dives}"
 set -euo pipefail
 
 MANIFEST="$SITE/reports.json"
+# The page markup, kept beside this script rather than inside it.
+TEMPLATE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/site/site-template.html"
 
 die() { echo "error: $*" >&2; exit 1; }
 
@@ -25,185 +27,67 @@ slugify() {
     | sed 's/&/and/g; s/[^a-z0-9]\{1,\}/-/g; s/^-//; s/-$//'
 }
 
-# ---------- index.html, generated from reports.json ----------
-# Phosphor theme (~/.claude/context/design.md): CRT screen on an instrument
-# bench, phosphor green + amber only, no red, square corners, no shadows,
-# flourishes off, 11px functional floor, system fonts, self-contained.
+# ---------- index.html, generated from reports.json + site-template.html ----------
+# The look is the bahi khata direction recorded in the site repo's surface brief:
+# a vermilion cloth binding board against unbleached ledger paper, column rules
+# that bound the columns rather than crossing the text, and one type size across
+# the whole register so rank is carried by weight, case, reversal and rule.
+# The markup lives in site-template.html beside this script. Token replacement
+# only, so the template's CSS braces need no escaping.
 rebuild_index() {
   [ -f "$MANIFEST" ] || die "no manifest at $MANIFEST"
-  python3 - "$MANIFEST" "$SITE/index.html" <<'PY'
+  [ -f "$TEMPLATE" ] || die "no template at $TEMPLATE"
+  python3 - "$MANIFEST" "$TEMPLATE" "$SITE/index.html" <<'PY'
 import json, sys, html
 from datetime import date
 
-manifest, out = sys.argv[1], sys.argv[2]
+manifest, template, out = sys.argv[1], sys.argv[2], sys.argv[3]
 rows = json.load(open(manifest))
 rows.sort(key=lambda r: r["date"], reverse=True)
 
 MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+
 def pretty(d):
     y, m, dd = d.split("-")
-    return f"{dd}-{MONTHS[int(m)-1]}-{y}"
+    return f"{dd} {MONTHS[int(m)-1]} {y}"
 
 def esc(s):
     return html.escape(str(s), quote=True)
 
+# The folio is the order each entry was written, so the oldest is folio 1 and it
+# never renumbers when a newer entry goes in above it.
+total = len(rows)
 trs = []
-for r in rows:
+for i, r in enumerate(rows):
+    folio = total - i
     trs.append(
-        '<tr>'
+        '        <tr>'
+        f'<td class="c-folio folio">{folio:02d}</td>'
         f'<td class="co"><a href="{esc(r["file"])}">{esc(r["company"])}</a></td>'
-        f'<td class="nt">{esc(r.get("note",""))}</td>'
-        f'<td class="dt">{esc(pretty(r["date"]))}</td>'
+        f'<td class="note">{esc(r.get("note",""))}</td>'
+        f'<td class="c-date date">{esc(pretty(r["date"]))}</td>'
         '</tr>'
     )
 
-span = ""
-if rows:
-    span = f'{pretty(rows[-1]["date"])} to {pretty(rows[0]["date"])}'
+opened = pretty(rows[-1]["date"]) if rows else "not yet"
 
-doc = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Equity Deep Dives</title>
-<meta name="description" content="Independent fundamental research on Indian listed companies. No buy or sell ratings.">
-<style>
-  :root{{
-    --bench:#141A18; --bezel:#1F2624; --screen:#070B09;
-    --grat:rgba(61,255,154,0.10); --grat-maj:rgba(61,255,154,0.19);
-    --ch1:#3DFF9A; --ch2:#FFB347;
-    --ink:#C8D6D0; --dim:#849490; --edge:rgba(200,214,208,0.14);
-    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
-    --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  }}
-  *{{box-sizing:border-box}}
-  body{{
-    margin:0; background:var(--bench); color:var(--ink);
-    font-family:var(--sans); font-size:13px; line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-  }}
-  .wrap{{max-width:940px; margin:0 auto; padding:28px 20px 56px}}
+doc = open(template).read()
+for token, value in {
+    "{{ROWS}}":   "\n".join(trs),
+    "{{COUNT}}":  str(total),
+    "{{OPENED}}": opened,
+    "{{BUILT}}":  pretty(date.today().isoformat()),
+}.items():
+    doc = doc.replace(token, value)
 
-  /* knob rail */
-  .rail{{
-    display:flex; flex-wrap:wrap; gap:0; border:1px solid var(--bezel);
-    background:var(--bench); margin-bottom:0;
-  }}
-  .knob{{padding:10px 16px; border-right:1px solid var(--bezel); min-width:132px}}
-  .knob:last-child{{border-right:none}}
-  .kl{{font-family:var(--mono); font-size:11px; letter-spacing:.06em;
-      text-transform:uppercase; color:var(--dim); display:block}}
-  .kv{{font-family:var(--mono); font-size:15px; color:var(--ch1); margin-top:3px;
-      font-variant-numeric:tabular-nums}}
-  .kv.amber{{color:var(--ch2)}}
+if "{{" in doc:
+    sys.exit("error: template still has an unreplaced token")
 
-  /* screen */
-  .screen{{
-    background:var(--screen); border:1px solid var(--bezel); border-top:none;
-    background-image:
-      linear-gradient(var(--grat) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grat) 1px, transparent 1px),
-      linear-gradient(var(--grat-maj) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grat-maj) 1px, transparent 1px);
-    background-size:24px 24px, 24px 24px, 96px 96px, 96px 96px;
-    padding:22px 20px 24px;
-  }}
-  h1{{
-    font-family:var(--mono); font-size:19px; font-weight:600; letter-spacing:.02em;
-    margin:0 0 4px; color:var(--ink);
-  }}
-  .sub{{font-size:12px; color:var(--dim); margin:0 0 20px; max-width:60ch}}
-
-  table{{width:100%; border-collapse:collapse; font-size:13px}}
-  caption{{
-    text-align:left; background:#0D120F; border:1px solid var(--edge);
-    border-bottom:none; color:var(--dim); font-family:var(--mono);
-    font-size:11px; letter-spacing:.06em; text-transform:uppercase;
-    padding:7px 10px;
-  }}
-  th{{
-    text-align:left; font-family:var(--mono); font-size:11px; font-weight:500;
-    letter-spacing:.06em; text-transform:uppercase; color:var(--dim);
-    padding:8px 10px; border-bottom:1px solid var(--edge);
-    background:rgba(255,255,255,0.02);
-  }}
-  th.r{{text-align:right}}
-  td{{padding:9px 10px; border-bottom:1px solid var(--edge); vertical-align:top}}
-  tbody tr:last-child td{{border-bottom:none}}
-  table{{border:1px solid var(--edge)}}
-  .co a{{color:var(--ch1); text-decoration:none; font-weight:500}}
-  .co a:hover{{text-decoration:underline}}
-  .nt{{color:var(--dim); font-size:12px}}
-  .dt{{
-    font-family:var(--mono); font-size:12px; color:var(--ch2);
-    font-variant-numeric:tabular-nums; white-space:nowrap; text-align:right;
-  }}
-
-  .note{{
-    margin-top:18px; padding:11px 13px; border:1px solid var(--edge);
-    background:rgba(255,255,255,0.02); color:var(--dim); font-size:11px;
-    line-height:1.6;
-  }}
-  .note b{{color:var(--ink); font-weight:600}}
-  footer{{
-    margin-top:14px; font-family:var(--mono); font-size:11px; color:var(--dim);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
-  }}
-  @media (max-width:620px){{
-    .knob{{min-width:50%; border-right:none; border-bottom:1px solid var(--bezel)}}
-    .nt{{display:none}}
-  }}
-</style>
-</head>
-<body>
-<div class="wrap">
-
-  <div class="rail">
-    <div class="knob"><span class="kl">Reports</span><span class="kv">{len(rows)}</span></div>
-    <div class="knob"><span class="kl">Coverage</span><span class="kv amber">{esc(span)}</span></div>
-    <div class="knob"><span class="kl">Market</span><span class="kv">NSE / BSE</span></div>
-    <div class="knob"><span class="kl">Rating</span><span class="kv amber">None issued</span></div>
-  </div>
-
-  <div class="screen">
-    <h1>Equity Deep Dives</h1>
-    <p class="sub">Independent fundamental research on Indian listed companies. Forensic
-    accounting checks, promoter and governance analysis, reverse DCF and a two-way pitch.
-    Each report states its own as-of date and stands on the disclosures available then.</p>
-
-    <table>
-      <caption>Published reports, newest first</caption>
-      <thead>
-        <tr><th>Company</th><th>What it covers</th><th class="r">As of</th></tr>
-      </thead>
-      <tbody>
-        {chr(10).join("        " + t for t in trs).strip()}
-      </tbody>
-    </table>
-
-    <div class="note">
-      <b>Not investment advice.</b> These are personal research notes published for the
-      record. Nothing here is a recommendation to buy, sell or hold any security, no
-      report carries a rating or a price target, and the author is not a SEBI-registered
-      research analyst or investment adviser. Figures are drawn from public filings and
-      may contain errors. Do your own work before acting on anything you read here.
-    </div>
-
-    <footer>
-      <span>Site rebuilt {date.today().isoformat()}</span>
-      <span>Sources: company filings, exchange disclosures, concall transcripts</span>
-    </footer>
-  </div>
-
-</div>
-</body>
-</html>
-"""
 open(out, "w").write(doc)
-print(f"index.html rebuilt: {len(rows)} report(s)")
+print(f"index.html rebuilt: {total} entr{'y' if total == 1 else 'ies'}")
 PY
 }
+
 
 # ---------- modes ----------
 [ -d "$SITE" ] || die "site repo not found at: $SITE (set SITE=... to override)"

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Equity Deep Dives</title>
+<meta name="description" content="A running account of Indian listed companies examined. Dated entries, full workings, no buy or sell rating.">
+<meta name="color-scheme" content="light">
+<style>
+  /* Bahi khata: a chartered accountant's running account of companies examined.
+     Vermilion cloth binding board against unbleached ledger paper. Column rules
+     bound the columns and are never crossed by text. Rank is carried by weight,
+     case, reversal and rule, never by size: the whole register is one size. */
+  :root{
+    --cloth:#A32A1C;
+    --cloth-deep:#7E1F14;
+    --cloth-ink:#FBF4E9;
+    --paper:#F6F1E6;
+    --paper-edge:#EDE5D4;
+    --ink:#211F1A;
+    --ink-soft:#6B6354;
+    --rule:#D8C3B3;
+    --rule-strong:#211F1A;
+    --serif:"Iowan Old Style","Charter","Georgia","Times New Roman",serif;
+    --size:15px;
+    --gutter:clamp(18px, 4vw, 34px);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper-edge); color:var(--ink);
+    font-family:var(--serif); font-size:var(--size); line-height:1.55;
+    -webkit-font-smoothing:antialiased; font-variant-numeric:tabular-nums;
+  }
+  ::selection{background:var(--cloth); color:var(--cloth-ink)}
+  a{color:inherit}
+  a:focus-visible, [tabindex]:focus-visible{
+    outline:2px solid var(--cloth); outline-offset:3px;
+  }
+
+  .book{
+    max-width:1220px; margin:0 auto; min-height:100vh;
+    display:grid; grid-template-columns:minmax(250px,26%) 1fr;
+    align-items:start;
+    background:var(--paper);
+    box-shadow:0 1px 3px rgba(33,31,26,.10), 0 12px 40px rgba(33,31,26,.10);
+  }
+
+  /* ---- binding board ---- */
+  .board{
+    background:var(--cloth);
+    /* book cloth: a fine woven tooth, the material's own weave */
+    background-image:
+      repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px);
+    color:var(--cloth-ink);
+    padding:var(--gutter) var(--gutter) calc(var(--gutter) + 6px);
+    display:flex; flex-direction:column;
+    /* the gutter: where the board meets the sewn paper */
+    box-shadow:inset -10px 0 14px -10px rgba(0,0,0,.42);
+    /* the board is the binding: it stays put while the pages move under it */
+    position:sticky; top:0; min-height:100vh;
+  }
+  .mark{
+    font-family:"Kohinoor Devanagari","Devanagari Sangam MN",var(--serif);
+    font-size:19px; line-height:1; opacity:.66; margin-bottom:20px;
+  }
+  .board h1{
+    font-size:clamp(30px, 4.4vw, 44px); line-height:1.02;
+    margin:0; font-weight:600; letter-spacing:-.02em;
+  }
+  .board h1 span{display:block}
+  .standfirst{
+    margin:16px 0 0; max-width:30ch; color:rgba(251,244,233,.78);
+    font-size:var(--size); line-height:1.5;
+  }
+  .plate{
+    margin-top:24px; border-top:1px solid rgba(251,244,233,.30);
+    padding-top:12px; display:flex; flex-wrap:wrap; gap:8px 28px;
+  }
+  .plate div{min-width:0}
+  .pl{
+    display:block; font-size:var(--size); letter-spacing:.10em;
+    /* .62 measured 3.44:1 on the cloth, under the 4.5 floor */
+    text-transform:uppercase; color:rgba(251,244,233,.86); font-weight:600;
+  }
+  .pv{display:block; font-size:var(--size); color:var(--cloth-ink)}
+
+  /* ---- the page ---- */
+  .page{padding:var(--gutter); min-width:0; position:relative}
+  .page h2{
+    margin:0 0 2px; font-size:var(--size); font-weight:600;
+    letter-spacing:.10em; text-transform:uppercase;
+  }
+  .opened{margin:0 0 18px; color:var(--ink-soft)}
+
+  /* auto layout, not fixed: under fixed, Chrome leaves the slack unassigned and
+     the notes column collapses to half the space it should have */
+  .register{width:100%; border-collapse:collapse; table-layout:auto}
+  .register caption{
+    caption-side:top; text-align:left; color:var(--ink-soft);
+    padding:0 0 8px; font-size:var(--size);
+  }
+  .register th{
+    text-align:left; font-weight:600; font-size:var(--size);
+    letter-spacing:.10em; text-transform:uppercase; color:var(--ink-soft);
+    padding:0 10px 7px; border-bottom:2px solid var(--rule-strong);
+  }
+  .register td{
+    padding:11px 10px; border-bottom:1px solid var(--rule);
+    vertical-align:baseline;
+  }
+  /* column rules bound the columns; text sits inside them */
+  .register th + th, .register td + td{border-left:1px solid var(--rule)}
+  .c-folio{width:3.2rem}
+  .c-co{width:27%}
+  .c-date{width:7.6rem; text-align:right}
+  th.c-date{text-align:right}
+
+  .folio{color:var(--ink-soft)}
+  .co a{
+    font-weight:600; text-decoration:none;
+    text-decoration-color:var(--rule); text-underline-offset:3px;
+  }
+  .co a:hover{text-decoration:underline}
+  .note{color:var(--ink-soft)}
+  .date{white-space:nowrap}
+
+  /* the pen stroke: one authored moment, a rule drawn under the entry read */
+  .register tbody tr{position:relative}
+  .register tbody tr::after{
+    content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
+    background:var(--cloth); transform:scaleX(0); transform-origin:left;
+    transition:transform .42s cubic-bezier(.16,1,.3,1);
+  }
+  .register tbody tr:hover::after,
+  .register tbody tr:focus-within::after{transform:scaleX(1)}
+
+  /* a closed account is ruled off twice */
+  .ruled-off{
+    margin-top:0; border-top:1px solid var(--rule-strong);
+    border-bottom:1px solid var(--rule-strong); height:3px;
+  }
+
+  .foot{margin-top:22px; color:var(--ink-soft); max-width:74ch}
+  .foot b{color:var(--ink); font-weight:600}
+  .colophon{
+    margin-top:18px; padding-top:12px; border-top:1px solid var(--rule);
+    display:flex; flex-wrap:wrap; gap:6px 24px; justify-content:space-between;
+    color:var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .register tbody tr::after{transition:none}
+  }
+
+  /* ---- narrow: the board becomes the cover, entries stack ---- */
+  @media (max-width:760px){
+    .book{grid-template-columns:1fr; min-height:0; box-shadow:none}
+    /* the board is a cover band here, not a full-height binding: left sticky and
+       100vh it would fill the whole phone screen and push every entry below the fold */
+    .board{
+      position:static; min-height:0;
+      box-shadow:inset 0 -10px 14px -10px rgba(0,0,0,.42);
+    }
+    .board h1{font-size:clamp(28px,8vw,38px)}
+    .standfirst{max-width:44ch}
+    .register, .register tbody, .register tr, .register td{display:block; width:auto}
+    .register thead{display:none}
+    /* a table-caption inside a display:block table shrink-wraps to one word per
+       line, so it has to become a block of its own here */
+    .register caption{display:block; width:auto; padding-bottom:12px}
+    .register tbody tr{
+      padding:12px 0; border-bottom:1px solid var(--rule); position:relative;
+    }
+    .register td{border:0; border-left:0; padding:0}
+    .register td + td{border-left:0}
+    .register .c-folio{
+      position:absolute; left:0; top:12px; width:2.6rem; color:var(--ink-soft);
+    }
+    .register .co, .register .note, .register .c-date{margin-left:2.6rem}
+    .register .co{margin-bottom:2px}
+    .register .c-date{text-align:left; color:var(--ink-soft); margin-top:3px}
+    .register tbody tr::after{bottom:-1px}
+  }
+</style>
+</head>
+<body>
+<main class="book">
+
+  <aside class="board">
+    <div>
+      <div class="mark" aria-hidden="true">श्री</div>
+      <h1><span>Equity</span><span>Deep Dives</span></h1>
+      <p class="standfirst">A running account of Indian listed companies examined.
+      Every entry is dated and stands on the disclosures available that day.</p>
+    </div>
+    <div class="plate">
+      <div><span class="pl">Entries</span><span class="pv">{{COUNT}}</span></div>
+      <div><span class="pl">Opened</span><span class="pv">{{OPENED}}</span></div>
+      <div><span class="pl">Rating</span><span class="pv">None issued</span></div>
+    </div>
+  </aside>
+
+  <section class="page">
+    <h2>Register of companies examined</h2>
+    <p class="opened">Forensic accounting checks, promoter and governance analysis,
+    a guidance scorecard, reverse DCF and a two way pitch. No recommendation is made.</p>
+
+    <table class="register">
+      <caption>Latest first. The folio is the order each entry was written.</caption>
+      <thead>
+        <tr>
+          <th class="c-folio" scope="col">Fo.</th>
+          <th class="c-co" scope="col">Company</th>
+          <th scope="col">What the entry covers</th>
+          <th class="c-date" scope="col">As at</th>
+        </tr>
+      </thead>
+      <tbody>
+{{ROWS}}
+      </tbody>
+    </table>
+    <div class="ruled-off" aria-hidden="true"></div>
+
+    <p class="foot"><b>Not investment advice.</b> These are personal research notes
+    kept on the record. Nothing here is a recommendation to buy, sell or hold any
+    security, no entry carries a rating or a price target, and the author is not a
+    SEBI registered research analyst or investment adviser. Figures are drawn from
+    public filings and may contain errors. Do your own work before acting on
+    anything you read here.</p>
+
+    <div class="colophon">
+      <span>Written up {{BUILT}}</span>
+      <span>Sources: company filings, exchange disclosures, concall transcripts</span>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
