@@ -13,7 +13,7 @@
 *~
 
 # Research source documents (annual reports, DRHP, transcripts) - kept in-folder, not versioned
-source-docs/
+source-docs
 
 # ht-ml.app publish sidecars - contain secret update_key, must stay local
 *.ht-ml.json
