@@ -52,7 +52,9 @@ in their columns.
 - Column rules **bound** the columns; text sits inside them with 10px padding and
   is never crossed. The old page drew a graticule straight through its own text.
 - The folio is the order each entry was written, so the oldest is 01 and numbers
-  never shift when a newer entry goes in above.
+  never shift when a newer entry goes in above. Unpublishing one does close the
+  gap and renumber, which is the intended reading: a struck entry leaves no hole
+  in the register.
 - A closed account is ruled off twice, which is what `.ruled-off` draws under the
   last entry.
 - The binding board is `position: sticky` on desktop, so it stays put while the

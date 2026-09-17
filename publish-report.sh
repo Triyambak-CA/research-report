@@ -104,7 +104,35 @@ for r in rows:
 print(f'{len(rows)} report(s)')
 PY
     exit 0 ;;
-  "") die "usage: $0 <report.html> \"<Company>\" <YYYY-MM-DD> \"<note>\"  |  --rebuild-index  |  --list" ;;
+  --remove)
+    # Unpublish an entry: drop its manifest rows, delete its files, rebuild.
+    # Matches on company name or on a published filename, case-insensitively.
+    WHAT="${2:?usage: $0 --remove \"<Company>\" | <file.html>}"
+    [ -f "$MANIFEST" ] || die "no manifest yet"
+    gone=$(python3 - "$MANIFEST" "$WHAT" <<'PY'
+import json, sys
+manifest, what = sys.argv[1], sys.argv[2]
+rows = json.load(open(manifest))
+key = what.strip().lower()
+hit = [r for r in rows if r["company"].strip().lower() == key or r["file"].lower() == key]
+if not hit:
+    sys.exit(f'error: nothing published under "{what}"')
+keep = [r for r in rows if r not in hit]
+json.dump(keep, open(manifest, "w"), indent=2, ensure_ascii=False)
+open(manifest, "a").write("\n")
+print("\n".join(r["file"] for r in hit))
+PY
+    ) || exit 1
+    printf '%s\n' "$gone" | while IFS= read -r f; do
+      [ -n "$f" ] || continue
+      rm -f -- "$SITE/$f" && echo "unpublished: $f"
+    done
+    rebuild_index
+    echo "next: commit and push in $SITE"
+    exit 0 ;;
+  "") die "usage: $0 <report.html> \"<Company>\" <YYYY-MM-DD> \"<note>\"
+       $0 --remove \"<Company>\" | <file.html>
+       $0 --list | --rebuild-index" ;;
 esac
 
 SRC="$1"
