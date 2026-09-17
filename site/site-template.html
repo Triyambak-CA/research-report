@@ -39,12 +39,11 @@
     --d-weight:500;
     --d-space:-.01em;
     /* Terminal sets everything in JetBrains Mono, which measured 1.27x wider
-       than Inter for the same text, so the register wrapped to two lines here
-       while glass sat on one. Measured fix: a wider column plus a size step
-       down. Zero wrapping from 1240px of available width upward. */
-    --wrap:1200px;
-    --co-size:15px;
-    --note-size:13px;
+       than Inter for the same text. Both themes hold the SAME page width, so
+       switching never moves the layout; the fit comes from keeping notes short
+       (see the cap in publish-report.sh) plus half a pixel off the note size. */
+    --note-size:13.5px;
+    --co-size:16px;
   }
   html[data-theme="glass"]{
     --accent:#a0a0d2;
@@ -71,7 +70,6 @@
     --d-size:clamp(40px,7vw,78px);
     --d-weight:300;
     --d-space:-.02em;
-    --wrap:1080px;
     --co-size:16px;
     --note-size:14px;
   }
@@ -96,7 +94,7 @@
   a:hover{text-decoration:underline}
   a:focus-visible,button:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
 
-  .wrap{max-width:var(--wrap);margin:0 auto}
+  .wrap{max-width:1080px;margin:0 auto}
 
   /* ===== masthead ===== */
   .mast{padding:74px 0 34px;border-bottom:1px solid var(--border2)}
@@ -125,8 +123,11 @@
     text-transform:uppercase; color:var(--dim); text-align:left;
     padding:0 14px 10px; border-bottom:1px solid var(--border2);
   }
-  th.n{width:3.4rem}
-  th.d,td.d{text-align:right;width:8.2rem}
+  th.n{width:2.8rem}
+  /* pinned, so columns sit in the same place in both themes: mono company
+     names are wider and auto layout would otherwise shift the notes column */
+  th.c{width:21rem}
+  th.d,td.d{text-align:right;width:6.2rem}
 
   /* sortable heads: the head IS the control, so it carries the whole cell */
   th.s{padding:0 0 10px}
@@ -201,7 +202,7 @@
     thead tr{display:flex;gap:18px;padding:0}
     /* thead th, not th: the base rule's border-bottom out-specifies a bare th */
     thead th{display:block;padding:0;border:0}
-    th.n,th.d{width:auto;text-align:left}
+    thead th{width:auto;text-align:left}
     th:not(.s){display:none}
     th.d .sort{justify-content:flex-start}
     .sort{padding:0;width:auto}
@@ -237,7 +238,7 @@
       <thead>
         <tr>
           <th class="n s" scope="col" aria-sort="none"><button type="button" class="sort" data-col="0">No.<i aria-hidden="true"></i></button></th>
-          <th class="s" scope="col" aria-sort="none"><button type="button" class="sort" data-col="1">Company<i aria-hidden="true"></i></button></th>
+          <th class="c s" scope="col" aria-sort="none"><button type="button" class="sort" data-col="1">Company<i aria-hidden="true"></i></button></th>
           <th scope="col">What the entry covers</th>
           <th class="d s" scope="col" aria-sort="descending"><button type="button" class="sort" data-col="3">As at<i aria-hidden="true"></i></button></th>
         </tr>
