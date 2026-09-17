@@ -67,6 +67,34 @@ rather than as a graticule. Lifted from the reports unchanged.
 - Under 720px the table stacks: head hidden, rows become blocks, the entry number
   sits absolutely at the left. Verified with no horizontal scroll.
 
+## Sorting
+
+Three of the four heads are clickable: No., Company and As at. The notes column
+is deliberately inert, because sorting one-line prose alphabetically is a control
+that looks real and does nothing.
+
+Each clickable head is a real `<button>` inside its `<th>`, so it is reachable by
+keyboard and announces itself. The `<th>` carries `aria-sort`, and only one column
+holds a value other than `none` at a time.
+
+Sort keys never come from displayed text. The generator writes `data-k` on each
+cell: a zero-padded number, a casefolded company name, an ISO date. So "28 Aug
+2026" is sorted as `2026-08-28` and MSTC correctly follows Markolines.
+
+A first click on a date head opens newest first; on a name or number head it opens
+ascending. Clicking the head that is already sorted reverses it. Sorting never
+renumbers the entries, because the number is the entry's identity and not its
+position in the current view.
+
+The caret is drawn from CSS borders, sits at 28% opacity at rest so a visitor can
+see which heads are clickable before hovering, and goes to full opacity in the
+accent colour on the sorted column, rotating 180 degrees for ascending.
+
+Under 720px the head stops being a table header and becomes a horizontal strip of
+those same three controls, so a phone is not left with no way to reorder. The
+reset there must be written `thead th`, since the base rule's border out-specifies
+a bare `th`.
+
 ## Control
 
 One floating button, bottom right, using the reports' own `.ctl` shape: card

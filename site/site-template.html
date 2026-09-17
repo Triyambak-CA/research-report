@@ -117,6 +117,30 @@
   }
   th.n{width:3.4rem}
   th.d,td.d{text-align:right;width:8.2rem}
+
+  /* sortable heads: the head IS the control, so it carries the whole cell */
+  th.s{padding:0 0 10px}
+  .sort{
+    font:inherit; color:inherit; background:none; border:0; cursor:pointer;
+    padding:0 14px 0; display:inline-flex; align-items:center; gap:7px;
+    letter-spacing:inherit; text-transform:inherit; width:100%;
+    transition:color .18s ease;
+  }
+  th.d .sort{justify-content:flex-end}
+  .sort:hover{color:var(--muted)}
+  /* the caret is drawn, and it is faintly present at rest so a visitor can see
+     which heads are clickable before hovering one */
+  .sort i{
+    width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent;
+    border-top:5px solid currentColor; opacity:.28;
+    transition:opacity .18s ease,transform .18s ease;
+  }
+  .sort:hover i{opacity:.7}
+  th[aria-sort="ascending"] .sort,
+  th[aria-sort="descending"] .sort{color:var(--accent)}
+  th[aria-sort="ascending"] .sort i,
+  th[aria-sort="descending"] .sort i{opacity:1}
+  th[aria-sort="ascending"] .sort i{transform:rotate(180deg)}
   tbody td{padding:15px 14px;border-bottom:1px solid var(--border);vertical-align:baseline}
   tbody tr{transition:background .18s var(--g-ease,ease)}
   tbody tr:hover,tbody tr:focus-within{background:rgba(var(--muted-r),.035)}
@@ -159,8 +183,18 @@
   @media(max-width:720px){
     body{padding:0 16px 120px}
     .mast{padding:44px 0 26px}
-    table,thead,tbody,tr,td{display:block;width:auto}
-    thead{display:none}
+    table,tbody,tr,td{display:block;width:auto}
+    table{display:block}
+    /* the head stops being a header here and becomes a strip of sort controls,
+       so a phone is not left without a way to reorder the register */
+    thead{display:block;border-bottom:1px solid var(--border2);padding-bottom:10px}
+    thead tr{display:flex;gap:18px;padding:0}
+    /* thead th, not th: the base rule's border-bottom out-specifies a bare th */
+    thead th{display:block;padding:0;border:0}
+    th.n,th.d{width:auto;text-align:left}
+    th:not(.s){display:none}
+    th.d .sort{justify-content:flex-start}
+    .sort{padding:0;width:auto}
     tbody tr{padding:16px 0;border-bottom:1px solid var(--border);position:relative}
     tbody td{border:0;padding:0}
     td.n{position:absolute;left:0;top:16px}
@@ -192,10 +226,10 @@
     <table>
       <thead>
         <tr>
-          <th class="n" scope="col">No.</th>
-          <th scope="col">Company</th>
+          <th class="n s" scope="col" aria-sort="none"><button type="button" class="sort" data-col="0">No.<i aria-hidden="true"></i></button></th>
+          <th class="s" scope="col" aria-sort="none"><button type="button" class="sort" data-col="1">Company<i aria-hidden="true"></i></button></th>
           <th scope="col">What the entry covers</th>
-          <th class="d" scope="col">As at</th>
+          <th class="d s" scope="col" aria-sort="descending"><button type="button" class="sort" data-col="3">As at<i aria-hidden="true"></i></button></th>
         </tr>
       </thead>
       <tbody>
@@ -223,6 +257,38 @@
 </button>
 
 <script>
+/* Sortable register. Keys come from each cell's data-k, so nothing here has to
+   parse a displayed value. Clicking the head that is already sorted reverses it. */
+(function(){
+  var table=document.querySelector('.reg table');
+  if(!table) return;
+  var body=table.tBodies[0];
+  var heads=[].slice.call(table.querySelectorAll('th.s'));
+
+  function sortBy(th, dir){
+    var col=+th.querySelector('.sort').dataset.col;
+    var rows=[].slice.call(body.rows);
+    rows.sort(function(a,b){
+      var x=a.cells[col].dataset.k||'', y=b.cells[col].dataset.k||'';
+      return dir * (x<y ? -1 : x>y ? 1 : 0);
+    });
+    rows.forEach(function(r){ body.appendChild(r); });
+    heads.forEach(function(h){ h.setAttribute('aria-sort','none'); });
+    th.setAttribute('aria-sort', dir===1 ? 'ascending' : 'descending');
+  }
+
+  heads.forEach(function(th){
+    th.querySelector('.sort').addEventListener('click', function(){
+      /* already sorted: flip. otherwise dates open newest first, names A to Z. */
+      var cur=th.getAttribute('aria-sort');
+      var dir = cur==='ascending' ? -1
+              : cur==='descending' ? 1
+              : (th.classList.contains('d') ? -1 : 1);
+      sortBy(th, dir);
+    });
+  });
+})();
+
 (function(){
   var KEY='eqdd_theme', root=document.documentElement,
       btn=document.getElementById('themetog'), val=btn.querySelector('.tv');

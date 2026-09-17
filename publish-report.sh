@@ -61,11 +61,14 @@ trs = []
 for i, r in enumerate(rows):
     folio = total - i
     trs.append(
+        # data-k carries the sort key, so the client never has to parse a
+        # displayed value: a padded number, a casefolded name, an ISO date.
         '        <tr>'
-        f'<td class="n">{folio:02d}</td>'
-        f'<td class="co"><a href="{esc(r["file"])}">{esc(r["company"])}</a></td>'
+        f'<td class="n" data-k="{folio:03d}">{folio:02d}</td>'
+        f'<td class="co" data-k="{esc(r["company"].casefold())}">'
+        f'<a href="{esc(r["file"])}">{esc(r["company"])}</a></td>'
         f'<td class="note">{esc(r.get("note",""))}</td>'
-        f'<td class="d">{esc(pretty(r["date"]))}</td>'
+        f'<td class="d" data-k="{esc(r["date"])}">{esc(pretty(r["date"]))}</td>'
         '</tr>'
     )
 
