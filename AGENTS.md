@@ -33,23 +33,24 @@ Never `git add` anything under `source-docs/`.
 
 ## Getting crew work back from firstmate
 
-Firstmate is read-only outside its own project clones, and its fleet sync skips
-local-only projects, so nothing it does reaches this folder. That is deliberate:
-a crew can run all night without touching files the captain is editing. The cost
-is that finished reports and notes land in firstmate's copy, not here.
-
-From the master copy:
+This project is registered with firstmate as **direct-PR**. Crew work is pushed
+as a branch and arrives as a pull request on the private remote. The captain
+reviews and merges it there, then brings it into the master copy with a plain:
 
 ```sh
-./pull-from-fleet.sh            # show what is waiting, then bring it across
-./pull-from-fleet.sh --check    # show what is waiting and stop
+git pull
 ```
 
-It fast-forwards only, and refuses outright if the incoming commits touch a file
-with uncommitted local edits, so it cannot land on work in progress.
+That is the normal route. Use it.
 
-Filings are the exception and need none of this: they write straight into this
-folder through the `source-docs` shortcuts.
+`./pull-from-fleet.sh` is the fallback, for taking work straight from firstmate's
+own clone when it has not been raised as a pull request yet. It fast-forwards
+only and refuses if the incoming commits touch a file with uncommitted local
+edits, so it cannot land on work in progress. `--check` previews without changing
+anything.
+
+Filings need neither route: they write straight into the master copy through the
+`source-docs` shortcuts, the moment a crewmate downloads them.
 
 ## What IS versioned
 
@@ -85,4 +86,8 @@ a local machine path, so a publish sidecar cannot reach a public repo by acciden
 - No em dashes or en dashes anywhere. Hyphens only.
 - Reports carry no buy, sell or hold rating and no price target. That refusal is
   the point of them, not an omission.
-- This repo has no git remote and is not meant to get one.
+- This repo has a PRIVATE remote at github.com/Triyambak-CA/research-report. It
+  holds the notes, the internal material and the filing shortcuts, so it stays
+  private. The public site repo is a separate one, `equity-deep-dives`, and the
+  two share no history: reports are copied across by `publish-report.sh`, never
+  merged.
