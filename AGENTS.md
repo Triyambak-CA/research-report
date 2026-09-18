@@ -31,6 +31,26 @@ it automatically on every new worktree, so this is usually already done for you.
 
 Never `git add` anything under `source-docs/`.
 
+## Getting crew work back from firstmate
+
+Firstmate is read-only outside its own project clones, and its fleet sync skips
+local-only projects, so nothing it does reaches this folder. That is deliberate:
+a crew can run all night without touching files the captain is editing. The cost
+is that finished reports and notes land in firstmate's copy, not here.
+
+From the master copy:
+
+```sh
+./pull-from-fleet.sh            # show what is waiting, then bring it across
+./pull-from-fleet.sh --check    # show what is waiting and stop
+```
+
+It fast-forwards only, and refuses outright if the incoming commits touch a file
+with uncommitted local edits, so it cannot land on work in progress.
+
+Filings are the exception and need none of this: they write straight into this
+folder through the `source-docs` shortcuts.
+
 ## What IS versioned
 
 - `<Company>/notes-0X-<topic>.md` research notes, and `working-notes.md`
