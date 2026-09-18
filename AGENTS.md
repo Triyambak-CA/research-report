@@ -89,6 +89,14 @@ a local machine path, so a publish sidecar cannot reach a public repo by acciden
 `index.html` on that site is GENERATED from `reports.json` by
 `site/site-template.html`. Never hand-edit it; it is overwritten on every rebuild.
 
+Every published report carries an "All reports" link, fixed bottom left, back to
+the index. Without it a reader sent one report has no way to discover the rest,
+since almost nobody arrives at the index first. `publish-report.sh` injects it on
+the way across, so new reports get it automatically; `--relink` re-applies it to
+everything already published. It is idempotent and styles itself from the
+report's own CSS variables, so it follows whichever theme the reader picked. See
+`site/home-link.py`.
+
 ## House rules
 
 - No em dashes or en dashes anywhere. Hyphens only.

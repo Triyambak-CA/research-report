@@ -18,6 +18,9 @@ set -euo pipefail
 MANIFEST="$SITE/reports.json"
 # The page markup, kept beside this script rather than inside it.
 TEMPLATE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/site/site-template.html"
+# Injects the "All reports" link into a copied report, so a reader sent one
+# report can find the rest. See site/home-link.py.
+HOMELINK="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/site/home-link.py"
 
 die() { echo "error: $*" >&2; exit 1; }
 
@@ -99,6 +102,17 @@ PY
 
 case "${1:-}" in
   --rebuild-index) rebuild_index; exit 0 ;;
+  --relink)
+    # Re-apply the index link to every published report. Idempotent.
+    shopt -s nullglob
+    files=()
+    for f in "$SITE"/*.html; do
+      [ "$(basename "$f")" = "index.html" ] && continue
+      files+=("$f")
+    done
+    [ ${#files[@]} -gt 0 ] || die "no published reports found in $SITE"
+    python3 "$HOMELINK" "${files[@]}"
+    exit 0 ;;
   --list)
     [ -f "$MANIFEST" ] || die "no manifest yet"
     python3 - "$MANIFEST" <<'PY'
@@ -137,7 +151,7 @@ PY
     exit 0 ;;
   "") die "usage: $0 <report.html> \"<Company>\" <YYYY-MM-DD> \"<note>\"
        $0 --remove \"<Company>\" | <file.html>
-       $0 --list | --rebuild-index" ;;
+       $0 --list | --rebuild-index | --relink" ;;
 esac
 
 SRC="$1"
@@ -156,6 +170,8 @@ fi
 SLUG="$(slugify "$COMPANY")"
 DEST_NAME="$SLUG-$DATE.html"
 cp "$SRC" "$SITE/$DEST_NAME"
+# A report with no way back to the index is a dead end for anyone sent it.
+python3 "$HOMELINK" "$SITE/$DEST_NAME" >/dev/null || die "could not add the index link to $DEST_NAME"
 
 # Upsert the manifest row (one row per company+date).
 python3 - "$MANIFEST" "$DEST_NAME" "$COMPANY" "$DATE" "$NOTE" <<'PY'
