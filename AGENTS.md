@@ -11,23 +11,31 @@ are roughly 931 MB of them across 794 files, and this repo tracks only 66 files.
 
 If you are working in a clone or a treehouse worktree, that folder is a shortcut
 pointing at the master copy on this machine. Anything you download writes through
-it into the master and is kept. **But a company that does not exist in the master
-yet has no shortcut**, so filings you download for it would sit in a throwaway
+it into the master and is kept. **A company with no filings folder in the master
+has no shortcut**, so filings you download for it would sit in a throwaway
 worktree and be deleted with it.
 
-So, before downloading a single filing for a company not already in this repo:
+Having a folder in this repo does NOT mean it has a filings folder. Several
+companies here have notes and a finished report but no `source-docs` at all.
+
+So, before downloading a single filing, for EVERY company, with no exception:
 
 ```sh
 ./link-source-docs.sh --new "<Company Name>"
 ```
 
-That creates the folder in the master first and points this checkout at it. Then
-download as usual. Verified: a file written through the shortcut survives the
-worktree being destroyed.
+It creates the folder in the master if it is missing, says so and carries on if
+it is already there, and points this checkout at it either way. Running it when
+it was not needed costs nothing; skipping it when it was needed loses the
+filings. Verified: a file written through the shortcut survives the worktree
+being destroyed, and running it on a company that already has filings leaves
+them untouched.
 
-For companies that already exist, `./link-source-docs.sh` with no arguments links
-them all. A treehouse `post_create` hook in `~/.config/treehouse/config.toml` runs
-it automatically on every new worktree, so this is usually already done for you.
+`./link-source-docs.sh` with no arguments links every company the master already
+covers, and a treehouse `post_create` hook in `~/.config/treehouse/config.toml`
+runs it on each new worktree. That handles the companies already covered; it
+cannot help with one the master has never held, which is why the line above is
+unconditional.
 
 Never `git add` anything under `source-docs/`.
 
