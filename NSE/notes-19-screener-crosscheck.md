@@ -3,31 +3,39 @@
 Accessed 21-Sep-2026 via the browser against
 https://www.screener.in/company/id/1274230/consolidated/
 
-## FIRST, THE HONEST LIMITATION ON THE PREMIUM PANEL
+## FIRST, WHY THE INSIGHTS PANEL WAS NOT USED
 
-The captain holds a Screener premium subscription and is logged in to Chrome. **The premium
-Insights panel could not be reached from either automatable browser in this session, and both
-reported a logged-out state.**
+**Corrected 21-Sep-2026.** An earlier version of this file said the panel was unreachable
+because the browser sessions were logged out. **That was wrong.** Firstmate verified directly
+in the captain's Chrome: loading the company page shows the account menu for the subscriber, so
+the session IS authenticated and the browser tools do reach it.
 
-- The scripted browser (`chrome-devtools-axi`) launches its own profile and showed LOGIN and
-  GET FREE ACCOUNT in the navigation.
-- Attaching to the running Chrome with `CHROME_DEVTOOLS_AXI_AUTO_CONNECT=1` failed:
-  "Could not find DevToolsActivePort", so that Chrome is not running with a debug port.
-- The Chrome extension session (claude-in-chrome) did attach to a live local Chrome, but its
-  navigation bar also reads "HOME SCREENS TOOLS **LOGIN GET FREE ACCOUNT**", so that profile
-  is not carrying the paid session either.
-- Separately, **no Insights panel renders on this page at all.** The rendered section headings
-  are: Peer comparison, Quarterly Results, Profit and Loss, Balance Sheet, Cash Flows, Ratios,
-  Shareholding Pattern, Documents, Annual reports. There is no Insights heading and no
-  Insights element in the DOM.
+**The verified reason is different and more useful.** Screener AI, which serves the Insights
+panel at https://www.screener.in/ai/company/1274230/, is **NOT included in the premium
+subscription**. It is a separately metered add-on running on **prepaid AI Credits**, priced at
+roughly Rs 500 for ten to fifteen chat sessions, and the account's credit balance is empty. The
+page renders only a "Recharge AI Balance" wallet prompt and no insights.
 
-**So the premium Insights panel was NOT used, and the report must not imply otherwise.** What
-follows is from the public company page. Likely cause to pass back: the Chrome profile the
-extension drives is not the profile the captain is logged in to.
+So: the panel was unavailable **for want of credits, not for want of a login**. A future
+session should top up AI Credits rather than re-checking the login, which was never the problem.
 
-Note also that for an unlisted company several premium surfaces would be empty anyway: Screener
-itself states "Shareholding pattern is currently not available for this company", the quarterly
-results table is blank, and Annual reports shows "No data available".
+## AND IT COSTS THIS PARTICULAR ANALYSIS VERY LITTLE
+
+Also verified, and worth stating as a finding rather than an excuse. Screener's coverage of NSE
+is thin precisely **because NSE is unlisted**:
+
+- the page states the shareholding pattern is not available for this company
+- it lists no annual reports
+- the quarterly results table is blank
+
+The Insights panel exists to machine-extract multi-year operating series from a listed
+company's filing history. **NSE has no such history.** For a pre-IPO issuer the offer document
+genuinely is the better source, and the 668-page RHP, the 10-Aug-2026 addendum and NSE's own
+FY26 annual report carry far more than the panel could have. This is a real observation about
+source availability for a pre-IPO issuer.
+
+What follows is from the public company page, which is where the two extra financial years came
+from.
 
 ## WHAT SCREENER GENUINELY ADDS: two extra years
 
