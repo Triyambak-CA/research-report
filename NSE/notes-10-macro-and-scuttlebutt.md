@@ -25,8 +25,8 @@ and should be escalated to whoever owns the report draft, not just filed here.
 **SEPARATE CORRECTION TO WORKING-NOTES.MD, FOUND WHILE VERIFYING SCUTTLEBUTT ON THE
 COLOCATION SETTLEMENT (see Part 2.1):** working-notes.md's open item says "SEBI
 settlement said to be approved around 20-Jun-2026." Having now read the DRHP itself
-(source-docs/NSE-DRHP-18-Jun-2026.pdf, page ~26 of the risk factors and page 397
-litigation chapter), the primary document says NSE filed settlement APPLICATIONS with
+(source-docs/NSE-DRHP-18-Jun-2026.pdf, Risk Factors chapter and the litigation chapter
+at page 397), the primary document says NSE filed settlement APPLICATIONS with
 SEBI on the Colocation and Dark Fibre matter on 20-JUN-2025 (not 2026), then filed
 REVISED settlement terms on 13-Mar-2026 for a cumulative amount of Rs 14,912.07 million
 (~Rs 1,491 crore), which were STILL PENDING as at the DRHP date (17-Jun-2026) - not
@@ -96,8 +96,9 @@ therefore SECONDARY throughout.
 | FY 2021-22 | 23,191 | Actuals (as reported) | Trade media reporting on Budget documents - SECONDARY |
 | FY 2022-23 | 20,000 (BE) | Budget Estimate | Business Standard, Budget 2022, 01-Feb-2022 |
 | FY 2023-24 | 33,778 | Actuals (as reported) | Trade media citing Budget documents - SECONDARY |
-| FY 2024-25 | Rs 16,634 cr collected 01-Apr to 11-Jul-2024 (+128% YoY vs Rs 7,285 cr same period FY24); by 02-Feb-2025 (Business Standard, "STT collection estimates...") cumulative FY25 collection to date was reported near Rs 42,000 cr; RE for FY25 was revised upward, reported in the same window, to Rs 55,000 cr (from an earlier Rs 37,000 cr RE) at the time of Budget 2025-26 (01-Feb-2025) | Part-year actual + Revised Estimate for the same fiscal year, reported at similar dates. These two figures are consistent with each other (a part-year actual of ~Rs 42,000 cr by early Feb tracking toward a Rs 55,000 cr full-year RE), not contradictory. An earlier draft of this note mis-dated the "Rs 42,000 cr" report as Feb-2026 rather than 02-Feb-2025 (misread of the article URL date), which had wrongly manufactured an apparent discrepancy; that has been corrected here. | Upstox news, Jul-2024; Business Standard, 02-Feb-2025, "STT collection estimates: building castles in the air on shifting sands" - SECONDARY throughout |
-| FY 2025-26 | Not established | - | Not found within scope of this search |
+| FY 2024-25 | Rs 16,634 cr collected 01-Apr to 11-Jul-2024 (+128% YoY vs Rs 7,285 cr same period FY24, Upstox, Jul-2024); by 02-Feb-2025 cumulative FY25 collection to date was reported near Rs 42,000 cr, tracking toward a Revised Estimate that moved from BE Rs 37,000 cr (set at Budget 2024-25, Jul-2024) to RE Rs 55,000 cr (set at Budget 2025-26, 01-Feb-2025) (Business Standard, 02-Feb-2025, "STT collection estimates: building castles in the air on shifting sands"); **full-year FY25 actual, CBDT-sourced: Rs 53,296 crore as on 31-Mar-2025** (TaxGuru, 30-Apr-2025, citing CBDT Pr.CCA direct tax collection data) | Part-year actual, RE, and full-year actual for the same fiscal year, mutually consistent (part-year Rs 42,000 cr by early Feb tracking to a Rs 53,296 cr outturn against a Rs 55,000 cr RE). An earlier draft of this note mis-dated the "Rs 42,000 cr" report as Feb-2026 rather than 02-Feb-2025 (misread of the article URL date), manufacturing a false discrepancy; corrected here. The Rs 53,296 cr full-year figure is the closest to a primary number obtained: CBDT is the primary source named, though I read it via TaxGuru's transcription, not the CBDT release itself. | See cell |
+| FY 2025-26 | Full year actual not established in this session. Comparative point: as of 17-Sep-2025 (i.e. partway through FY26), cumulative STT collection was Rs 26,305.72 crore (see FY 2026-27 row for the source, which gives this as its prior-year comparator) | Partial-year comparator only | CACLubIndia, 19-Sep-2026, citing Income Tax Department / TIN data - one step removed from CBDT/PIB itself |
+| FY 2026-27 (in progress) | Rs 40,214.36 crore collected as of 17-Sep-2026 (four days before this note), a 52.9% YoY rise on the Rs 26,305.72 crore collected in the same window of FY26. No STT refunds reported in either period, so gross = net. This is the first STT data point that falls inside the window of the 01-Apr-2026 rate hike (futures 0.02%->0.05%, options premium 0.10%->0.15%, Part 1.2 below) and a 52.9% YoY jump is consistent with, though not proof of, that hike driving collections even against a backdrop of falling YoY derivatives volumes (Part 1.3) - both a higher rate and a smaller taxed base can coexist; this note does not decompose the 52.9% into a rate effect and a volume effect. | CACLubIndia, 19-Sep-2026, "India's STT Collections Rise 52.9% to Rs 40,214 Crore by 17th Sept 2026," citing Income Tax Department data compiled from the Tax Information Network (TIN) - SECONDARY, one step removed from a CBDT/PIB release, but very close to real time |
 
 ### STT rate changes with effective dates
 | Change | Old rate | New rate | Effective date | Source |
@@ -149,6 +150,19 @@ at circular level" gap flagged in the first draft of this note.
 |---|---|---|---|---|---|---|---|
 | Overall EDS | 25,359 | 36,045 | 35,250 | 40,735 | 48,860 | 61,534 | 19% |
 | Index options | 1,256 | 3,326 | 7,954 | 15,423 | 20,796 | 25,324 | 82% |
+
+**DERIVED - individual investors' share of overall EDS turnover, from the SEBI study's
+own Tables 2 and 4 (premium-terms average daily turnover, not independently stated as a
+ratio anywhere in the study itself):**
+- FY25: individual EDS turnover Rs 61,534 cr / overall EDS turnover Rs 2,63,832 cr = 23.3%
+- FY20: individual EDS turnover Rs 25,359 cr / overall EDS turnover Rs 92,724 cr = 27.3%
+Both figures are calculated here from the study's own Table 2 and Table 4, which the
+study's Note 2 confirms use the same monthly-average methodology, so the two tables are
+comparable. This is a DERIVED figure, not a number SEBI itself states, and it should be
+labelled as such if used downstream. On this reading, individuals' share of overall EDS
+turnover was slightly LOWER in FY25 than in FY20, even though individuals' own turnover
+grew in absolute terms (Table 4, 19% CAGR) - non-individual (proprietary/FII/DII) turnover
+grew faster over the same five years.
 
 **Tables 5-10 of the SEBI study - short-window comparison, Dec-May periods, the window
 the study built around the Nov-2024/2025 measures (Rs crore unless stated):**
@@ -304,13 +318,19 @@ verified fact in the SEBI/RBI/Budget/DRHP sense of Part 1. Labelled accordingly.
     Securities (a broker - a market participant, not a regulator) projected BSE's
     derivative ADTV could reach Rs 114 lakh crore in FY26 with market share potentially
     crossing 30% - **explicitly a broker's forward projection/claim, not an outcome.**
-  - SEBI approved NSE's index derivatives expiry day moving to Tuesday for contracts
-    expiring after 01-Sep-2025 (consistent with Table 1 of the SEBI study in Part 1.3,
-    which independently confirms NSE Thursday / BSE Tuesday / MSE Friday as the
-    rationalised single-expiry-day structure from Jan-2025 - note the study's own text
-    names NSE as Thursday and BSE as Tuesday, the reverse pairing from some trade-media
-    reports; this note defers to the SEBI primary document's own table over secondary
-    reporting on which exchange got which day).
+  - Two dated, sequential states, not a conflict: SEBI's own study (Part 1.3, Table 1)
+    describes the Jan-2025 rationalisation as one expiry day per exchange per week -
+    BSE Tuesday, NSE Thursday, MSE Friday - and its analysis window (Dec-2024 to
+    May-2025) cannot speak to anything later. Separately, per Samco's knowledge-centre
+    article, SEBI approved a SWAP effective for contracts expiring after 01-Sep-2025:
+    NSE moved to Tuesday, BSE to Thursday (BSE's own move being described as a
+    product-differentiation shift from "last Thursday of month" to "second Thursday").
+    So the correct reading is NSE Thursday/BSE Tuesday from Jan-2025, then NSE
+    Tuesday/BSE Thursday from Sep-2025 - a reversal in fact, not a sourcing dispute.
+    The Samco item was not independently verified against the underlying SEBI circular.
+  - **Nothing verified on NSE/BSE derivatives market share for any period after
+    01-Sep-2025** - the only market-share figure obtained (BSE ~20.6%, 01-May-2024) is a
+    pre-curbs, pre-swap baseline, not a post-change reading, and is labelled as such.
   - No BSE management public statement specifically framing NSE's IPO or competitive
     threat was located in this session. **Nothing verified on direct BSE commentary
     about the NSE IPO itself.**
