@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="glass" data-toc="off">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>National Stock Exchange of India - IPO Deep Dive - 21 Sep 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root,html[data-theme="terminal"]{
+    --accent:#ffb000;
+    --bg:#05070a;
+    --card:#0a0e13;
+    --card2:#0b1017;
+    --border:#182029;
+    --border2:#243244;
+    --text:#c3ceda;
+    --bright:#eef4fa;
+    --muted:#647689;
+    --dim:#3a4756;
+    --bull:#23d18b;
+    --bear:#ff5c57;
+    --amber:#ffb000;
+    /* rgb triplets so tinted rgba() follows the theme */
+    --accent-r:255,176,0;
+    --amber-r:255,176,0;
+    --bull-r:35,209,139;
+    --bear-r:255,92,87;
+    --muted-r:100,118,137;
+    --bg-r:5,7,10;
+    /* revenue-mix segment colours */
+    --mix1:#ffb000;
+    --mix2:#36c5d6;
+    --mix3:#23d18b;
+    /* scrollbar */
+    --sb-track:#070a0e;
+    --sb-thumb:#1c2733;
+    --sb-thumb-h:#2a3a4a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background-color:var(--bg);
+    color:var(--text);
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    font-size:14px;
+    line-height:1.6;
+    font-variant-numeric:tabular-nums;
+    background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+    background-size:34px 34px;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.955;z-index:-1}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(1100px 520px at 78% -8%,rgba(var(--accent-r),.05),transparent 60%)}
+  ::selection{background:rgba(var(--accent-r),.25);color:#fff}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .mono{font-variant-numeric:tabular-nums}
+  h1,h2,h3,h4,.fr{font-family:inherit}
+  /* scrollbars */
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:var(--sb-track)}
+  ::-webkit-scrollbar-thumb{background:var(--sb-thumb);border:2px solid var(--sb-track)}
+  ::-webkit-scrollbar-thumb:hover{background:var(--sb-thumb-h)}
+  /* scroll progress */
+  #progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:1000;box-shadow:0 0 8px rgba(var(--accent-r),.6)}
+  /* layout */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .layout{display:flex;gap:36px;max-width:1340px;margin:0 auto;padding:0 26px}
+  .toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:214px;padding:30px 0;flex-shrink:0;font-size:11.5px}
+  .toc ol{list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;margin:1px 0}
+  .toc a{display:block;color:var(--muted);padding:5px 10px;border-left:2px solid var(--border);line-height:1.3;text-transform:uppercase;letter-spacing:.03em}
+  .toc a::before{content:counter(t,decimal-leading-zero) " ";color:var(--accent);opacity:.6}
+  .toc a.active{color:var(--bright);border-left-color:var(--accent);background:linear-gradient(90deg,rgba(var(--accent-r),.07),transparent)}
+  .toc a:hover{color:var(--bright);text-decoration:none}
+  .toc .toctitle{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);padding:0 10px 11px;border-bottom:1px solid var(--border);margin-bottom:10px}
+  .toc .toctitle::before{content:"● "}
+  .content{flex:1;min-width:0;padding-bottom:100px}
+  @media(max-width:960px){.toc{display:none}.layout{padding:0 16px}}
+  /* hero */
+  .hero{padding:52px 0 34px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:inline-block;border:1px solid rgba(var(--accent-r),.4);padding:4px 10px}
+  .hero h1{font-size:52px;font-weight:800;line-height:1.0;letter-spacing:-.01em;margin-bottom:14px;text-transform:uppercase;color:var(--bright)}
+  .hero h1::after{content:"_";color:var(--accent);animation:blink 1.1s steps(1) infinite;font-weight:800}
+  @keyframes blink{50%{opacity:0}}
+  .hero .sub{font-size:12.5px;color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
+  .hero .desc{color:var(--text);max-width:680px;margin-top:14px;font-size:13.5px;line-height:1.65}
+  @media(max-width:640px){.hero h1{font-size:34px}}
+  /* price scenario bar */
+  .scenbar{margin:32px 0 4px}
+  .track{position:relative;height:12px;background:linear-gradient(90deg,var(--bear),var(--amber) 48%,var(--bull));margin:30px 0 8px}
+  .track .cmp{position:absolute;top:-8px;width:2px;height:28px;background:var(--bright)}
+  .track .cmp::after{content:attr(data-lbl);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--bright);white-space:nowrap}
+  .track .tick{position:absolute;top:18px;transform:translateX(-50%);font-size:10.5px;color:var(--muted);white-space:nowrap;text-align:center}
+  .scenrow{display:flex;justify-content:space-between;gap:16px;font-size:11.5px;color:var(--muted);margin-top:46px}
+  /* stat grid */
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:28px 0}
+  .stat{background:var(--card);border:1px solid var(--border);padding:13px 14px}
+  .stat .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .stat .v{font-size:21px;font-weight:700;margin-top:6px;color:var(--bright)}
+  .stat .n{font-size:11px;color:var(--muted);margin-top:3px}
+  .v.bull{color:var(--bull)}.v.bear{color:var(--bear)}.v.amber{color:var(--amber)}
+  /* sections */
+  section{padding:46px 0 6px;border-top:1px solid var(--border);position:relative}
+  section:first-of-type{border-top:none}
+  .ghost{display:none}
+  .sectag{position:relative;z-index:1;display:inline-block;font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;border:1px solid rgba(var(--accent-r),.35);padding:3px 9px}
+  .sectag::before{content:"// "}
+  section h2{position:relative;z-index:1;font-size:25px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px;line-height:1.18;text-transform:uppercase;color:var(--bright)}
+  section h3{font-size:14.5px;font-weight:700;margin:24px 0 9px;color:var(--bright);text-transform:uppercase;letter-spacing:.02em}
+  section h3::before{content:"> ";color:var(--accent)}
+  p{margin:11px 0;color:var(--text)}
+  strong{color:var(--bright);font-weight:700}
+  em{color:var(--text);font-style:italic}
+  ul,ol{margin:11px 0 11px 20px;color:var(--text)}
+  li{margin:6px 0}
+  li::marker{color:var(--accent)}
+  .lead{font-size:15px;color:var(--bright);line-height:1.6}
+  /* tables */
+  .tw{overflow-x:auto;margin:18px 0;border:1px solid var(--border)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px}
+  th,td{padding:7px 11px;text-align:right;border-bottom:1px solid var(--border);border-right:1px solid var(--border);white-space:nowrap}
+  th:last-child,td:last-child{border-right:none}
+  th:first-child,td:first-child{text-align:left}
+  thead th{background:var(--card2);color:var(--accent);font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;position:sticky;top:0}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover td{background:rgba(var(--accent-r),.04)}
+  td.mono,th.mono{font-variant-numeric:tabular-nums}
+  tbody td{color:var(--text);font-variant-numeric:tabular-nums}
+  tbody td:first-child{color:var(--bright)}
+  .rowlabel{color:var(--muted)}
+  caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:11px;padding:8px 11px;border-top:1px solid var(--border);background:var(--card2)}
+  /* chips */
+  .chip{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent}
+  .chip.hit{background:rgba(var(--bull-r),.1);color:var(--bull);border-color:rgba(var(--bull-r),.4)}
+  .chip.miss{background:rgba(var(--bear-r),.1);color:var(--bear);border-color:rgba(var(--bear-r),.4)}
+  .chip.over{background:rgba(var(--accent-r),.1);color:var(--accent);border-color:rgba(var(--accent-r),.4)}
+  .chip.part{background:rgba(var(--amber-r),.08);color:var(--amber);border-color:rgba(var(--amber-r),.3)}
+  .badge{display:inline-block;font-size:9.5px;font-weight:700;padding:3px 9px;letter-spacing:.06em;text-transform:uppercase;border:1px solid transparent}
+  .b-strong{background:rgba(var(--bull-r),.12);color:var(--bull);border-color:rgba(var(--bull-r),.4)}
+  .b-mod{background:rgba(var(--amber-r),.12);color:var(--amber);border-color:rgba(var(--amber-r),.4)}
+  .b-weak{background:rgba(var(--bear-r),.12);color:var(--bear);border-color:rgba(var(--bear-r),.4)}
+  .b-none{background:rgba(var(--muted-r),.12);color:var(--muted);border-color:rgba(var(--muted-r),.4)}
+  /* red flag box */
+  .flag{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--bear);padding:13px 17px;margin:16px 0}
+  .flag .ft{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bear);margin-bottom:5px}
+  .flag .ft::before{content:"! "}
+  .flag p{color:var(--text);font-size:12.5px;margin:0}
+  .green{border-left-color:var(--bull)}
+  .green .ft{color:var(--bull)}
+  .amberbox{border-left-color:var(--amber)}
+  .amberbox .ft{color:var(--amber)}
+  /* moat grid */
+  .moatgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .moat{background:var(--card);border:1px solid var(--border);padding:15px}
+  .moat .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
+  .moat .mh .mn{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright)}
+  .moat p{font-size:12px;margin:6px 0 0;color:var(--muted)}
+  /* scenario cards */
+  .scengrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+  .scen{background:var(--card);border:1px solid var(--border);padding:16px;border-top:2px solid var(--muted)}
+  .scen.bull{border-top-color:var(--bull)}
+  .scen.base{border-top-color:var(--amber)}
+  .scen.bear{border-top-color:var(--bear)}
+  .scen .st{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+  .scen .sp{font-size:28px;font-weight:700;margin:7px 0 2px}
+  .scen.bull .sp{color:var(--bull)}.scen.base .sp{color:var(--amber)}.scen.bear .sp{color:var(--bear)}
+  .scen .su{font-size:11px;color:var(--muted)}
+  .scen p{font-size:12px;margin-top:9px}
+  /* monitorables */
+  .mongrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:18px 0}
+  .mon{background:var(--card);border:1px solid var(--border);padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
+  .dot{width:8px;height:8px;margin-top:6px;flex-shrink:0}
+  .dot.r{background:var(--bear);box-shadow:0 0 6px rgba(var(--bear-r),.6)}
+  .dot.a{background:var(--amber);box-shadow:0 0 6px rgba(var(--amber-r),.6)}
+  .dot.g{background:var(--bull);box-shadow:0 0 6px rgba(var(--bull-r),.6)}
+  .mon .mk{font-size:12px;color:var(--bright);font-weight:500}
+  .mon .mv{font-size:11px;color:var(--muted);margin-top:2px}
+  /* eq score bar */
+  .eqbar{display:flex;gap:4px;margin:14px 0}
+  .eqseg{flex:1;height:24px;background:var(--border)}
+  .eqseg.on{background:var(--accent);box-shadow:0 0 10px rgba(var(--accent-r),.35)}
+  /* trigger calendar */
+  .caltrack{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+  .cal{background:var(--card);border:1px solid var(--border);padding:13px}
+  .cal .cq{font-size:11px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+  .cal ul{margin:8px 0 0 15px;font-size:12px}
+  .cal li{margin:5px 0;color:var(--muted)}
+  /* pullquote */
+  .pull{font-size:17px;font-weight:500;line-height:1.5;color:var(--bright);border-left:3px solid var(--accent);padding:4px 0 4px 20px;margin:26px 0}
+  /* two col */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .box{background:var(--card);border:1px solid var(--border);padding:17px}
+  .box h4{font-size:13px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);font-weight:700}
+  .box.buy{border-top:2px solid var(--bull)}
+  .box.sell{border-top:2px solid var(--bear)}
+  .box p,.box li{font-size:12.5px}
+  /* footer */
+  footer{border-top:1px solid var(--border);padding:36px 0 60px;margin-top:56px;color:var(--muted);font-size:12.5px}
+  footer h3{color:var(--bright);margin-bottom:12px;text-transform:uppercase;letter-spacing:.03em;font-size:14px;font-weight:700}
+  footer h3::before{content:"> ";color:var(--accent)}
+  footer .gen{font-size:10.5px;margin-top:20px;color:var(--muted);letter-spacing:.02em}
+  .srclist{list-style:none;margin-left:0}
+  .srclist li{margin:6px 0;font-size:12px;padding-left:12px;border-left:1px solid var(--border)}
+  .disc{background:var(--card);border:1px solid var(--border);padding:13px 17px;font-size:11.5px;color:var(--muted);margin-top:22px}
+  .kv{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:6px 0;font-size:12.5px}
+  .kv:last-child{border-bottom:none}
+  .kv .kk{color:var(--muted)}
+  .kv .vv{color:var(--text)}
+  /* ratings toggle */
+  #ratetog{position:fixed;right:16px;bottom:16px;z-index:1001;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;cursor:pointer;user-select:none;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+  #ratetog:hover{border-color:var(--accent);color:var(--text)}
+  #ratetog .sw{position:relative;width:30px;height:15px;background:var(--border2);flex-shrink:0;transition:background .15s}
+  #ratetog .sw i{position:absolute;top:2px;left:2px;width:11px;height:11px;background:var(--muted);transition:.15s}
+  #ratetog.on .sw{background:rgba(var(--accent-r),.35)}
+  #ratetog.on .sw i{left:17px;background:var(--accent)}
+  #ratetog .st{min-width:22px;color:var(--muted)}
+  #ratetog.on .st{color:var(--accent)}
+  body.badges-off .badge{display:none}
+  @media(max-width:600px){#ratetog{right:10px;bottom:10px;font-size:10px;padding:7px 10px}}
+  @media print{#ratetog{display:none}}
+  /* toc primer link */
+  .toc .tocprimer{display:block;color:var(--muted);padding:5px 10px;border-left:2px solid var(--border);line-height:1.3;text-transform:uppercase;letter-spacing:.03em;margin:0 0 4px}
+  .toc .tocprimer::before{content:"\25C6  ";color:var(--accent);opacity:.6}
+  .toc .tocprimer.active{color:var(--bright);border-left-color:var(--accent);background:linear-gradient(90deg,rgba(var(--accent-r),.07),transparent)}
+  .toc .tocprimer:hover{color:var(--bright);text-decoration:none}
+  .toc li.primerli{counter-increment:none;margin:0}
+  /* ===== business model / value chain ===== */
+  .bm-intro{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:15px 20px;margin:18px 0;font-size:13.5px;color:var(--text);line-height:1.65}
+  .bm-intro .bl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .bm-intro p{margin:8px 0 0}
+  /* value chain flow: INPUT -> PROCESS -> CUSTOMER -> END USE */
+  .vchain{display:grid;grid-template-columns:repeat(4,1fr);margin:16px 0;border:1px solid var(--border)}
+  .vstage{position:relative;background:var(--card);padding:13px 15px;border-right:1px solid var(--border)}
+  .vstage:last-child{border-right:none}
+  .vstage .vh{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+  .vstage .vh::before{content:"";width:7px;height:7px;background:var(--accent);flex-shrink:0}
+  .vstage ul{margin:0;list-style:none}
+  .vstage li{font-size:12px;color:var(--text);margin:4px 0;padding-left:12px;position:relative;line-height:1.45}
+  .vstage li::before{content:"-";position:absolute;left:0;color:var(--muted)}
+  .vstage li::marker{content:""}
+  .vstage:not(:last-child)::after{content:"\25B6";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:11px;z-index:2;background:var(--bg);line-height:1}
+  @media(max-width:760px){
+    .vchain{grid-template-columns:1fr}
+    .vstage{border-right:none;border-bottom:1px solid var(--border)}
+    .vstage:last-child{border-bottom:none}
+    .vstage:not(:last-child)::after{content:"\25BC";right:auto;left:50%;top:auto;bottom:-8px;transform:translateX(-50%)}
+  }
+  /* segment block */
+  .seg{border:1px solid var(--border);margin:20px 0;background:linear-gradient(180deg,rgba(var(--accent-r),.025),transparent 42%)}
+  .seg .segh{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--border);background:var(--card2)}
+  .seg .segh .sn{font-size:14.5px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--bright);min-width:0}
+  .seg .segh .sn .sx{color:var(--muted);font-weight:400;text-transform:none;font-size:11.5px;display:block;margin-top:3px;letter-spacing:0;line-height:1.4}
+  .seg .segh .mix{font-size:11px;color:var(--accent);border:1px solid rgba(var(--accent-r),.35);padding:3px 9px;white-space:nowrap;flex-shrink:0}
+  .seg .segbody{padding:15px 16px}
+  .seg .segbody>p{font-size:13px;margin:0 0 4px;color:var(--text)}
+  .seg .segbody>p.note{font-size:12px;color:var(--muted);margin-top:8px}
+  /* io detail grid (supplier/role/customer/enduse) */
+  .iogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:14px 0 4px}
+  .io{background:var(--card);border:1px solid var(--border);padding:12px 13px}
+  .io .iok{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+  .io .iok::before{content:"";width:6px;height:6px;background:var(--accent);flex-shrink:0}
+  .io p{font-size:12px;margin:0;color:var(--text);line-height:1.5}
+  /* revenue mix stacked bar */
+  .mixbar{display:flex;height:36px;margin:16px 0 10px;border:1px solid var(--border);overflow:hidden;font-variant-numeric:tabular-nums}
+  .mixseg{display:flex;align-items:center;justify-content:center;font-size:10.5px;color:var(--bg);font-weight:700;min-width:0;overflow:hidden;white-space:nowrap;border-right:1px solid rgba(var(--bg-r),.5)}
+  .mixseg:last-child{border-right:none}
+  .mixkey{display:flex;flex-wrap:wrap;gap:7px 16px;font-size:11px;color:var(--muted);margin-bottom:14px}
+  .mixkey span{display:flex;align-items:center;gap:6px}
+  .mixkey i{width:10px;height:10px;flex-shrink:0}
+  /* unknown-unknowns callout */
+  .uu{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--amber);padding:13px 17px;margin:16px 0}
+  .uu .ut{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:7px}
+  .uu .ut::before{content:"? "}
+  .uu ul{margin:6px 0 0 17px;font-size:12.5px;color:var(--text)}
+  .uu li{margin:6px 0;line-height:1.5}
+  .uu li::marker{color:var(--amber)}
+
+  /* ===== floating controls (stacked bottom-right with #ratetog) ===== */
+  .ctl{position:fixed;right:16px;z-index:1001;display:flex;align-items:center;gap:9px;
+    background:var(--card);border:1px solid var(--border2);color:var(--muted);
+    font-family:inherit;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    padding:8px 12px;cursor:pointer;user-select:none;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+  .ctl:hover{border-color:var(--accent);color:var(--text)}
+  #themetog{bottom:60px}
+  #toctog{bottom:104px}
+  #themetog .tv{color:var(--accent);min-width:62px;text-align:left}
+  #toctog i{display:block;flex-shrink:0;position:relative;width:12px;height:8px;
+    border-top:1px solid currentColor;border-bottom:1px solid currentColor}
+  #toctog i::after{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:currentColor;transform:translateY(-50%)}
+  /* contents rail collapsed: single full-width column, no leftover gap */
+  html[data-toc="off"] .toc{display:none}
+  html[data-toc="off"] .layout{max-width:1080px}
+  @media(max-width:960px){#toctog{display:none}}
+  @media(max-width:600px){.ctl{right:10px;font-size:10px;padding:7px 10px}#themetog{bottom:54px}#toctog{bottom:92px}}
+  @media print{.ctl{display:none}}
+
+  /* =================================================================
+     THEME 2  -  TRIYAMBAK GLASS  (triyambak.in dark-glassmorphism)
+     ================================================================= */
+  html[data-theme="glass"]{
+    --accent:#a0a0d2;
+    --bg:#070707;
+    --card:rgba(16,16,16,0.72);
+    --card2:rgba(18,18,18,0.92);
+    --border:rgba(255,255,255,0.07);
+    --border2:rgba(255,255,255,0.13);
+    --text:rgba(224,224,224,0.52);
+    --bright:#e0e0e0;
+    --muted:rgba(224,224,224,0.34);
+    --dim:rgba(224,224,224,0.2);
+    --bull:#8cd28c;
+    --bear:#d28c8c;
+    --amber:#d6c48c;
+    --accent-r:160,160,210;
+    --amber-r:214,196,140;
+    --bull-r:140,210,140;
+    --bear-r:210,140,140;
+    --muted-r:224,224,224;
+    --bg-r:7,7,7;
+    --mix1:#a0a0d2;
+    --mix2:#8a8ab4;
+    --mix3:#6a6a8e;
+    --sb-track:#0a0a0a;
+    --sb-thumb:#1e1e1e;
+    --sb-thumb-h:#2c2c2c;
+    --g-d:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    --g-b:'Inter',system-ui,-apple-system,'Segoe UI',Helvetica,sans-serif;
+    --g-m:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --g-sh:0 8px 44px rgba(0,0,0,.55);
+    --g-in:inset 0 1px 0 rgba(255,255,255,.07);
+    --g-ease:cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  /* canvas: black, faint 64px grid, no coloured glow */
+  html[data-theme="glass"] body{
+    font-family:var(--g-b);line-height:1.85;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.016) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,0.016) 1px,transparent 1px);
+    background-size:64px 64px;
+  }
+  html[data-theme="glass"] body::before{background:none}
+  html[data-theme="glass"] body::after{background:none}
+  html[data-theme="terminal"] .bglayer{display:none}
+  .bglayer{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .bglayer .orb{position:absolute;border-radius:50%;filter:blur(110px)}
+  .bglayer .orb1{width:75vw;height:75vw;top:-25vw;left:-20vw;
+    background:radial-gradient(circle at center,rgba(130,130,130,0.13) 0%,transparent 70%);
+    animation:drift1 38s ease-in-out infinite alternate}
+  .bglayer .orb2{width:55vw;height:55vw;bottom:-15vw;right:-15vw;
+    background:radial-gradient(circle at center,rgba(100,100,100,0.09) 0%,transparent 70%);
+    animation:drift2 48s ease-in-out infinite alternate}
+  @keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(7vw,5vw) scale(1.1)}}
+  @keyframes drift2{from{transform:translate(0,0) scale(1)}to{transform:translate(-5vw,-7vw) scale(1.08)}}
+
+  /* typography: Cormorant display, Inter body, mono labels */
+  html[data-theme="glass"] .hero h1{font-family:var(--g-d);font-weight:400;text-transform:none;
+    font-size:58px;line-height:1.05;letter-spacing:-.005em}
+  html[data-theme="glass"] .hero h1::after{content:none}
+  html[data-theme="glass"] section h2{font-family:var(--g-d);font-weight:400;text-transform:none;
+    font-size:34px;line-height:1.16;letter-spacing:0}
+  html[data-theme="glass"] section h3{font-family:var(--g-d);font-weight:500;text-transform:none;
+    font-size:20px;letter-spacing:0;margin:26px 0 8px}
+  html[data-theme="glass"] section h3::before{content:none}
+  html[data-theme="glass"] footer h3{font-family:var(--g-d);font-weight:500;text-transform:none;font-size:20px}
+  html[data-theme="glass"] footer h3::before{content:none}
+  html[data-theme="glass"] .toctitle::before{content:none}
+  html[data-theme="glass"] .box h4,
+  html[data-theme="glass"] .moat .mh .mn,
+  html[data-theme="glass"] .seg .segh .sn{font-family:var(--g-d);font-weight:500;text-transform:none;font-size:17px;letter-spacing:0}
+  html[data-theme="glass"] .lead{font-size:16px;line-height:1.75}
+  html[data-theme="glass"] strong{color:var(--bright);font-weight:600}
+  html[data-theme="glass"] .stat .v,
+  html[data-theme="glass"] .scen .sp{font-family:var(--g-d);font-weight:500}
+  html[data-theme="glass"] .stat .v{font-size:26px}
+  html[data-theme="glass"] tbody td{font-family:var(--g-m);font-size:12px}
+  html[data-theme="glass"] tbody td:first-child{font-family:var(--g-b)}
+  html[data-theme="glass"] .toc a,
+  html[data-theme="glass"] .toc .tocprimer{font-family:var(--g-m);text-transform:none;letter-spacing:.04em}
+  html[data-theme="glass"] .stat .k,
+  html[data-theme="glass"] thead th,
+  html[data-theme="glass"] .chip,
+  html[data-theme="glass"] .badge,
+  html[data-theme="glass"] .scen .st,
+  html[data-theme="glass"] .io .iok,
+  html[data-theme="glass"] .vstage .vh,
+  html[data-theme="glass"] .mixkey,
+  html[data-theme="glass"] .cal .cq,
+  html[data-theme="glass"] .flag .ft,
+  html[data-theme="glass"] .uu .ut,
+  html[data-theme="glass"] .bm-intro .bl,
+  html[data-theme="glass"] .seg .segh .mix,
+  html[data-theme="glass"] .track .tick,
+  html[data-theme="glass"] .scenrow,
+  html[data-theme="glass"] .toctitle,
+  html[data-theme="glass"] .ctl,
+  html[data-theme="glass"] #ratetog{font-family:var(--g-m);letter-spacing:.12em}
+
+  /* eyebrow and section tag: hairline dash, no boxes, no "//" */
+  html[data-theme="glass"] .eyebrow{font-family:var(--g-m);border:none;padding:0;color:var(--muted);
+    letter-spacing:.22em;font-size:10.5px;display:flex;align-items:center;gap:12px}
+  html[data-theme="glass"] .eyebrow::before{content:"";display:block;width:28px;height:1px;background:var(--accent);flex-shrink:0}
+  html[data-theme="glass"] .sectag{font-family:var(--g-m);border:none;padding:0;
+    letter-spacing:.22em;font-size:10.5px;color:var(--accent)}
+  html[data-theme="glass"] .sectag::before{content:none}
+
+  /* ghost numerals behind each section heading */
+  html[data-theme="glass"] .ghost{display:block;position:absolute;top:30px;right:0;
+    font-family:var(--g-d);font-size:150px;font-weight:400;line-height:1;
+    color:var(--bright);opacity:.05;pointer-events:none;user-select:none;z-index:0}
+  @media(max-width:640px){html[data-theme="glass"] .ghost{font-size:92px}}
+
+  /* frosted panels */
+  html[data-theme="glass"] .stat,
+  html[data-theme="glass"] .moat,
+  html[data-theme="glass"] .scen,
+  html[data-theme="glass"] .mon,
+  html[data-theme="glass"] .cal,
+  html[data-theme="glass"] .box,
+  html[data-theme="glass"] .io,
+  html[data-theme="glass"] .flag,
+  html[data-theme="glass"] .uu,
+  html[data-theme="glass"] .disc,
+  html[data-theme="glass"] .bm-intro,
+  html[data-theme="glass"] .tw,
+  html[data-theme="glass"] .vchain,
+  html[data-theme="glass"] .seg{-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);
+    border-radius:18px;box-shadow:var(--g-sh),var(--g-in);overflow:hidden}
+  html[data-theme="glass"] .stat,
+  html[data-theme="glass"] .moat,
+  html[data-theme="glass"] .scen,
+  html[data-theme="glass"] .mon,
+  html[data-theme="glass"] .cal,
+  html[data-theme="glass"] .box,
+  html[data-theme="glass"] .io{transition:transform .35s var(--g-ease),border-color .35s var(--g-ease),box-shadow .35s var(--g-ease)}
+  html[data-theme="glass"] .stat:hover,
+  html[data-theme="glass"] .moat:hover,
+  html[data-theme="glass"] .scen:hover,
+  html[data-theme="glass"] .mon:hover,
+  html[data-theme="glass"] .cal:hover,
+  html[data-theme="glass"] .box:hover,
+  html[data-theme="glass"] .io:hover{transform:translateY(-3px);border-color:var(--border2);
+    box-shadow:0 14px 56px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1)}
+  html[data-theme="glass"] .flag,
+  html[data-theme="glass"] .uu,
+  html[data-theme="glass"] .bm-intro{border-left-width:2px}
+  html[data-theme="glass"] .chip,
+  html[data-theme="glass"] .badge,
+  html[data-theme="glass"] .ctl,
+  html[data-theme="glass"] #ratetog{border-radius:100px;-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px)}
+  html[data-theme="glass"] #ratetog .sw,
+  html[data-theme="glass"] #ratetog .sw i{border-radius:100px}
+
+  /* no coloured shadows anywhere */
+  html[data-theme="glass"] #progress{box-shadow:none}
+  html[data-theme="glass"] .dot.r,
+  html[data-theme="glass"] .dot.a,
+  html[data-theme="glass"] .dot.g{box-shadow:none;border-radius:50%}
+  html[data-theme="glass"] .eqseg{border-radius:3px}
+  html[data-theme="glass"] .eqseg.on{box-shadow:none}
+  html[data-theme="glass"] .track{border-radius:100px;height:8px;opacity:.8}
+  html[data-theme="glass"] .mixbar{border-radius:100px}
+  html[data-theme="glass"] .mixkey i{border-radius:50%}
+
+  /* breathing room and quieter rules */
+  html[data-theme="glass"] section{padding:64px 0 10px}
+  html[data-theme="glass"] .hero{padding:64px 0 40px}
+  html[data-theme="glass"] th,
+  html[data-theme="glass"] td{border-right:none}
+  html[data-theme="glass"] .pull{font-family:var(--g-d);font-style:italic;font-size:26px;
+    font-weight:400;line-height:1.4;border-left:1px solid var(--accent);color:var(--bright)}
+  html[data-theme="glass"] .seg{background:none}
+  html[data-theme="glass"] .vstage:not(:last-child)::after{background:none;color:var(--accent)}
+
+  /* fixes: theme-scoped rules outrank the shared mobile media query, so
+     glass needs its own responsive step-downs; segment sub-line stays Inter */
+  /* the frosted-panel group sets overflow:hidden for the 18px radius, which
+     would trap wide tables; they must still scroll sideways on small screens */
+  html[data-theme="glass"] .tw{overflow-x:auto}
+  html[data-theme="glass"] .seg .segh .sn .sx{font-family:var(--g-b);font-size:11.5px;line-height:1.5}
+  @media(max-width:640px){
+    html[data-theme="glass"] .hero h1{font-size:36px}
+    html[data-theme="glass"] section h2{font-size:26px}
+    html[data-theme="glass"] .pull{font-size:20px}
+    html[data-theme="glass"] .stat .v{font-size:22px}
+  }
+  @media(max-width:760px){
+    html[data-theme="glass"] .vstage:not(:last-child)::after{background:none}
+  }
+</style>
+<script>
+  (function(){
+    var h=document.documentElement, t='glass', tocOff=true;
+    try{
+      var v=localStorage.getItem('nseindia_theme');
+      if(v==='glass'||v==='terminal') t=v;
+      if(localStorage.getItem('nseindia_toc_hidden')==='0') tocOff=false;
+    }catch(e){}
+    h.setAttribute('data-theme',t);
+    if(tocOff) h.setAttribute('data-toc','off');
+    else h.removeAttribute('data-toc');
+  })();
+</script>
+</head>
+<body>
+<div id="progress"></div>
+<div class="bglayer" aria-hidden="true"><div class="orb orb1"></div><div class="orb orb2"></div></div>
+<button id="toctog" class="ctl" type="button" title="Hide or show the contents rail"><i></i><span class="tv2">Hide contents</span></button>
+<button id="themetog" class="ctl" type="button" title="Switch between the Trading Terminal and Triyambak Glass designs"><span class="tl">Theme</span><span class="tv">Terminal</span></button>
+<button id="ratetog" class="on" title="Show or hide the qualitative moat rating badges (Weak / Moderate / Strong / None)"><span class="tl">Ratings</span><span class="sw"><i></i></span><span class="st">On</span></button>
+<div class="layout">
+  <nav class="toc">
+    <div class="toctitle">NSE IPO Deep Dive</div>
+    <ol>
+      <li><a href="#exec">Executive Summary</a></li>
+      <li><a href="#s1">1. Industry &amp; Sector</a></li>
+      <li><a href="#s2">2. Business Model</a></li>
+      <li><a href="#s3">3. Competitive Landscape</a></li>
+      <li><a href="#s4">4. 6 Cs Moat</a></li>
+      <li><a href="#s5">5. Financial Analysis</a></li>
+      <li><a href="#s6">6. Earnings Quality</a></li>
+      <li><a href="#s7">7. Governance</a></li>
+      <li><a href="#s8">8. Offer Structure</a></li>
+      <li><a href="#s9">9. Use of Proceeds</a></li>
+      <li><a href="#s10">10. Stated-Intent Scorecard</a></li>
+      <li><a href="#s11">11. Regulatory Risks</a></li>
+      <li><a href="#s12">12. Scuttlebutt</a></li>
+      <li><a href="#s13">13. Headwinds &amp; Tailwinds</a></li>
+      <li><a href="#s14">14. Triggers &amp; Themes</a></li>
+      <li><a href="#s15">15. Capex &amp; Returns</a></li>
+      <li><a href="#s16">16. Execution Record</a></li>
+      <li><a href="#s17">17. Official Macro Data</a></li>
+      <li><a href="#s18">18. Basis for Offer Price</a></li>
+      <li><a href="#s19">19. Valuation</a></li>
+      <li><a href="#s20">20. Supply Calendar</a></li>
+      <li><a href="#s21">21. Anchor &amp; Subscription</a></li>
+      <li><a href="#s22">22. Draft-to-Final Diff</a></li>
+      <li><a href="#s23">23. Intermediary Record</a></li>
+      <li><a href="#s24">24. Pre-Mortem</a></li>
+      <li><a href="#s25">25. Two-Way Pitch</a></li>
+      <li><a href="#sources">Sources &amp; Filings</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+    <div class="hero">
+      <div class="eyebrow">Buy-Side IPO Deep Dive // Not a Recommendation</div>
+      <h1>National Stock Exchange of India</h1>
+      <div class="sub">UNLISTED&nbsp; &middot;&nbsp; RHP 10-Sep-2026&nbsp; &middot;&nbsp; Listing on BSE&nbsp; &middot;&nbsp; Band Rs 1,700 to Rs 1,785&nbsp; &middot;&nbsp; 21-Sep-2026&nbsp; &middot;&nbsp; Restated data to Q1 FY27 (30-Jun-2026)</div>
+      <p class="desc">India's dominant exchange is selling 5.11% of itself in a pure offer for sale. Not one rupee reaches the company. The headline that derivatives volumes collapsed is true of notional turnover and false of the base NSE actually charges on, where premium turnover has just hit a record. The co-location money has been paid, but the SEBI settlement order still has not been passed. This note presents the evidence and a two-way pitch. It issues no rating.</p>
+
+      <div class="scenbar">
+        <div class="track">
+          <div class="cmp" data-lbl="Cap 1,785" style="left:81%"></div>
+          <div class="tick" style="left:4%">Bear<br>606</div>
+          <div class="tick" style="left:38%">Base<br>1,200</div>
+          <div class="tick" style="left:96%">Bull<br>2,155</div>
+        </div>
+        <div class="scenrow"><span>Evidence-weighted value per share, discounted-cash-flow derived on normalised trailing-twelve-month earnings to 30-Jun-2026</span><span>The cap price sits 76% of the way to the bull case</span></div>
+      </div>
+    </div>
+
+    <div class="flag amberbox">
+      <div class="ft">Timing Stamp - Read This First</div>
+      <p><strong>Written at: bidding day 3, the BID/OFFER CLOSING DATE.</strong> Bidding window: <strong>17-Sep-2026 to 21-Sep-2026</strong>, with anchor bidding on 16-Sep-2026. <strong>Price band: Rs 1,700 to Rs 1,785 per equity share of face value Re 1.</strong> Allotment and listing on BSE follow within three working days of close. The governing document is the <strong>Red Herring Prospectus dated 10-Sep-2026</strong>, filed after SEBI's observation letter HO/49/11/11(323)2026-CFD-RAC-DIL4 dated 04-Sep-2026. Subscription data in Section 21 is a point-in-time reading on the final day and is still moving as this is written. This report has a shelf life of days.</p>
+    </div>
+
+    <div class="flag">
+      <div class="ft">Data Limits - What This Report Cannot See</div>
+      <p>Named plainly, so nothing is quietly omitted. <strong>Section 5</strong> runs on three restated years plus a single three-month stub, so full-year FY27 seasonality cannot be assessed and one quarter is not a trend. <strong>Section 10</strong> has no guidance history to score, because an unlisted company holds no earnings calls; it is built from mandatory disclosure instead. <strong>Section 19</strong> has no five-year multiple history and no percentile rank, because the shares have never traded on an exchange; peer multiples are not substituted for a history that does not exist. <strong>Section 20</strong> has no shareholding trend, no institutional flow data, no delivery percentages and no bulk-deal record. <strong>Section 21</strong> reports subscription as at the final day, and the anchor book is the only completed market signal available. The data-aggregator operating-series cross-check that a listed report carries does not exist at all; Section 19's aggregator line is used only as a cross-check on arithmetic. Where the evidence does not support a view, this report says <em>insufficient data for conviction</em> rather than estimating.</p>
+    </div>
+
+    <h2 id="exec" style="margin-top:38px">Executive Summary</h2>
+    <div class="statgrid">
+      <div class="stat"><div class="k">Price band</div><div class="v">1,700 to 1,785</div><div class="n">Face value Re 1</div></div>
+      <div class="stat"><div class="k">Value range per share</div><div class="v">606 to 2,155</div><div class="n">Bear / Base 1,200 / Bull</div></div>
+      <div class="stat"><div class="k">Growth the cap price assumes</div><div class="v bear">~19% for 10 yrs</div><div class="n">Reverse DCF, normalised TTM</div></div>
+      <div class="stat"><div class="k">P/E at cap</div><div class="v amber">42.1x</div><div class="n">38.3x on normalised TTM</div></div>
+      <div class="stat"><div class="k">Price to book at cap</div><div class="v bear">12.5x</div><div class="n">NAV Rs 142.40 at 30-Jun-2026</div></div>
+      <div class="stat"><div class="k">Earnings quality</div><div class="v amber">7 / 10</div><div class="n">Clean books, flattering normalisation</div></div>
+      <div class="stat"><div class="k">Guidance credibility</div><div class="v">No record</div><div class="n">Unlisted - no calls, no history</div></div>
+      <div class="stat"><div class="k">Moat strength</div><div class="v bull">Very wide</div><div class="n">Regulated near-monopoly, capped</div></div>
+      <div class="stat"><div class="k">Q1 FY27 revenue</div><div class="v bull">+13.1%</div><div class="n">FY26 was the trough</div></div>
+      <div class="stat"><div class="k">Options premium ADTV</div><div class="v bull">Record high</div><div class="n">Rs 6,43,518 mn, above FY24</div></div>
+      <div class="stat"><div class="k">Revenue concentration</div><div class="v bear">60.2%</div><div class="n">Equity options alone, FY26</div></div>
+      <div class="stat"><div class="k">Offer</div><div class="v amber">5.11% pure OFS</div><div class="n">Nil proceeds to the company</div></div>
+    </div>
+
+    <div class="two">
+      <div class="box green" style="border-top:3px solid var(--bull)">
+        <h4>Top 3 Positives</h4>
+        <ul>
+          <li><strong>The collapse everyone is pricing happened to the wrong number.</strong> Options notional average daily turnover is still 23% below FY24, and that is the figure in every headline. But NSE levies transaction charges on <em>premium</em> turnover, and premium average daily turnover in the June-2026 quarter was Rs 6,43,518 million, an all-time high, above FY24, FY25 and FY26. Revenue grew 13.1% and transaction charges grew 14.9% in that quarter. The regulatory reset compressed contract counts, not the fee base.</li>
+          <li><strong>A near-monopoly that regulation makes almost impossible to attack.</strong> 92.99% of cash equity turnover, 99.79% of equity futures, and the largest derivatives exchange in the world by contracts traded for seven consecutive years. A new entrant needs SEBI recognition, Rs 100 crore of net worth and, decisively, liquidity, which cannot be licensed. The last serious challenger now litigates against NSE rather than competing with it.</li>
+          <li><strong>Extraordinary economics with no capital behind them.</strong> Nil borrowings, a 78.81% operating EBITDA margin in the June quarter, return on capital employed of 42.8% even in a bad year, and 84% of profit paid out as dividend. The structurally growing lines, listing fees, data, indices and colocation, all grew 12% to 33% in the year transaction charges fell.</li>
+        </ul>
+      </div>
+      <div class="box sell" style="border-top:3px solid var(--bear)">
+        <h4>Top 3 Risks</h4>
+        <ul>
+          <li><strong>Sixty per cent of revenue sits in the one product the regulator is deliberately restraining, and the restraint is not finished.</strong> Equity options are 60.2% of revenue from operations. SEBI has tightened four times since Oct-2024 and the Union Budget raised securities transaction tax on options premium again with effect from 01-Apr-2026. The regulator that shrinks this revenue line also approves NSE's fees, its board and its listing.</li>
+          <li><strong>The settlement is paid but not final, and that is not how it is being reported.</strong> NSE paid Rs 1,491.21 crore on 31-Jul-2026, and the Supreme Court closed its appeals on 03-Sep-2026. But NSE's own RHP says SEBI's acceptance is <em>in principle</em> only and that "the settlement order by SEBI in this regard is yet to be passed", and the Court expressly kept the questions of law open as against other respondents. No SEBI settlement order has been published as at 21-Sep-2026.</li>
+          <li><strong>The cap price already assumes the recovery continues uninterrupted for a decade.</strong> Roughly 19% compound earnings growth for ten years, from a base where the most recent full year fell 15.5% and the recovery is one quarter old. At 12.5x book for a business whose regulator caps what it may charge, there is no margin for the reset resuming.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pull">"This is a bet on the tollbooth of Indian capital markets compounding with a financialising economy, priced as if one quarter of recovery has settled the question of whether the regulator's restraint was an interruption or a reset, and it breaks if SEBI tightens again before the annuity lines grow large enough to matter."</p>
+
+    <section id="s1">
+      <div class="ghost">01</div>
+      <div class="sectag">SECTION 01</div>
+      <h2>Industry and Sector Analysis</h2>
+      <p class="lead">NSE does not compete in an industry so much as operate a piece of national infrastructure. The question is not market size but who controls the tollbooth's pricing, and the answer is SEBI, not NSE.</p>
+
+      <div class="flag amberbox">
+        <div class="ft">Source Warning - The Industry Chapter Is Paid For</div>
+        <p>The industry chapter rests on a report titled <em>"Industry report on Capital Markets and Market Infrastructure Institutions in India"</em> dated 16-Jun-2026, prepared by <strong>Redseer Strategy Consultants Private Limited</strong> and <strong>commissioned by NSE exclusively for this Offer</strong>. The offer document records that neither the company nor the book running lead managers have independently verified it. Addressable-market definitions in a commissioned chapter are drawn to flatter. It is treated here as an issuer claim to be tested, and Section 17 builds the independent counterweight.</p>
+      </div>
+
+      <h3>What the industry actually is</h3>
+      <p>India has two stock exchanges of consequence, NSE and BSE, two depositories, NSDL and CDSL, and a handful of specialised venues, MCX in commodities and IEX in power. Every one is a Market Infrastructure Institution under the SEBI (Stock Exchanges and Clearing Corporations) Regulations 2018, a category carrying obligations no ordinary company faces: a public-interest board, SEBI approval for senior appointments, ownership caps on shareholders, and regulatory control over what may be charged.</p>
+
+      <p>That last point is the one most often missed. This is <strong>not a free-pricing business</strong>. Transaction charges are subject to regulatory oversight, and SEBI has intervened directly, most consequentially in requiring a uniform, non-slab fee structure from Oct-2024, which compressed the effective yield exchanges earned from high-volume members. A monopolist who cannot set his own price is a very particular kind of monopolist, and every valuation multiple in this report has to carry that fact.</p>
+
+      <h3>Where the cycle sits</h3>
+      <p>The Indian capital market is in a structural expansion and a simultaneous regulatory contraction. Through FY26 the two pulled in opposite directions on NSE's revenue. In the June-2026 quarter they stopped doing so.</p>
+
+      <div class="tw">
+        <table>
+          <caption>The two forces, side by side. Source: RHP dated 10-Sep-2026, key performance indicator table, and the Abridged Prospectus. Stub period is the three months ended 30-Jun-2026 against 30-Jun-2025.</caption>
+          <thead><tr><th>Measure</th><th>FY24</th><th>FY25</th><th>FY26</th><th>Q1 FY26</th><th>Q1 FY27</th><th>Stub YoY</th></tr></thead>
+          <tbody>
+            <tr><td>Unique registered investors (million)</td><td>91.75</td><td>112.81</td><td>129.09</td><td>116.23</td><td>132.37</td><td>+13.9%</td></tr>
+            <tr><td>Listed entities</td><td>2,438</td><td>2,719</td><td>2,978</td><td>2,757</td><td>3,005</td><td>+9.0%</td></tr>
+            <tr><td>Colocation racks (full-rack equivalent)</td><td>934</td><td>1,300</td><td>1,680</td><td>1,300</td><td>1,868</td><td>+43.7%</td></tr>
+            <tr><td>Nifty-linked passive AUM (Rs trillion)</td><td>6.30</td><td>7.63</td><td>8.14</td><td>8.35</td><td>8.95</td><td>+7.2%</td></tr>
+            <tr><td>Cash market ADTV (Rs million)</td><td>817,213</td><td>1,129,632</td><td>1,055,167</td><td>1,085,422</td><td>1,359,487</td><td>+25.2%</td></tr>
+            <tr><td>Equity futures ADTV (Rs million)</td><td>1,340,003</td><td>1,859,014</td><td>1,594,432</td><td>1,684,296</td><td>1,530,789</td><td>-9.1%</td></tr>
+            <tr><td><strong>Equity options PREMIUM ADTV (Rs million)</strong></td><td>617,788</td><td>624,487</td><td>576,618</td><td>555,136</td><td><strong>643,518</strong></td><td><strong>+15.9%</strong></td></tr>
+            <tr><td>Equity options NOTIONAL ADTV (Rs million)</td><td>323,569,230</td><td>312,838,244</td><td>258,284,697</td><td>220,887,874</td><td>249,212,893</td><td>+12.8%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flag" style="border-left-color:var(--bull)">
+        <div class="ft">! The Most Important Distinction In This Report</div>
+        <p><strong>Options notional turnover and options premium turnover are not the same number, and NSE earns on the second one.</strong> Notional average daily turnover is still 23% below FY24 and that is the figure behind every "derivatives collapsed" headline. Premium average daily turnover in the June-2026 quarter was <strong>Rs 6,43,518 million, the highest of any period disclosed</strong>, above FY24's Rs 6,17,788 million. SEBI's curbs worked by raising contract sizes and cutting weekly expiries, which mechanically shrinks notional while leaving the premium pool intact. Anyone modelling NSE's revenue off notional turnover is modelling the wrong base. This is the recurring trap of one metric disclosed on two bases, and here it is the difference between a broken thesis and an intact one.</p>
+      </div>
+
+      <h3>The regulatory timeline that did the damage</h3>
+      <p>SEBI's index-derivatives framework, circular SEBI/HO/MRD/TPD-1/P/CIR/2024/132 dated 01-Oct-2024, phased in from 20-Nov-2024: minimum contract value raised from roughly Rs 5 lakh to Rs 15 lakh, weekly expiries cut to one per exchange per index, an additional 2% extreme loss margin on expiry days, and calendar-spread benefit removed on expiry. Intraday position-limit monitoring followed on 01-Apr-2025 and end-of-day limits on 01-Jul-2025. A single weekly index-expiry day was then fixed, Tuesday for NSE and Thursday for BSE, for contracts expiring on or after 01-Sep-2025. NSE discontinued Bank Nifty, Nifty Financial Services, Nifty Midcap and Nifty Next 50 weeklies as a direct consequence.</p>
+
+      <p>On top of that, securities transaction tax on options premium rose from 0.0625% to 0.1% with effect from 01-Oct-2024, and again to 0.15% from 01-Apr-2026, with futures moving from 0.02% to 0.05%. The tax increases are a second, independent squeeze on the same activity, and the second one only began in the current financial year.</p>
+
+      <h3>Who captures value across the chain</h3>
+      <p>The chain runs issuer, exchange, clearing corporation, depository, broker, investor. NSE owns three of those links: the exchange, NSE Clearing outright, and the Nifty index franchise. Value capture is being redistributed by regulation rather than competition. NSE was <strong>compelled</strong> to cut its NSDL stake from 24.00% to 15.00% under Regulation 21 of the SEBI (Depositories and Participants) Regulations 2018, and did so by selling into NSDL's own IPO, with NSDL listing on 06-Aug-2025. NSE Clearing must maintain a Core Settlement Guarantee Fund of roughly Rs 130.8 billion out of profits that would otherwise be shareholders'.</p>
+
+      <h3>Barriers to entry, and the price of them</h3>
+      <p>The barriers here are close to absolute and they are legal rather than economic. A new exchange needs SEBI recognition, Rs 100 crore of net worth, a public-interest board and, decisively, liquidity, which cannot be licensed. The last serious attempt, MSEI, failed and now litigates against NSE rather than competing with it. But the same regulation that keeps competitors out caps what the incumbent may earn, who may own it and who may sit on its board. That trade is the defining feature of the sector and it runs through every section that follows.</p>
+    </section>
+
+    <section id="s2">
+      <div class="ghost">02</div>
+      <div class="sectag">SECTION 02</div>
+      <h2>Business Model and Value Chain</h2>
+      <p class="lead">A vertically integrated, multi-asset exchange owning trading, clearing, data and indices. Three reporting segments, but in practice one revenue engine with several small annuity businesses attached.</p>
+
+      <h3>How the money actually arrives</h3>
+      <p>A trading member executes a trade on the NSE platform and NSE levies a transaction charge on the value of that trade. For options the charge is levied on <strong>premium</strong> turnover. That single mechanical fact explains why FY26 options revenue fell only 1.9% while notional volumes fell 17.4%, and why June-quarter options revenue rose 15.6%.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Revenue from operations by stream, Rs million. Source: RHP key performance indicator table. FY26 share computed on revenue from operations of Rs 166,013.09 million.</caption>
+          <thead><tr><th>Stream</th><th>FY24</th><th>FY25</th><th>FY26</th><th>FY26 share</th><th>Q1 FY26</th><th>Q1 FY27</th><th>Stub YoY</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Transaction charges, total</strong></td><td><strong>121,296.37</strong></td><td><strong>136,357.64</strong></td><td><strong>130,570.12</strong></td><td><strong>78.65%</strong></td><td>31,536.00</td><td>36,226.64</td><td><strong>+14.9%</strong></td></tr>
+            <tr><td>&nbsp;&nbsp;Options</td><td>95,501.89</td><td>101,940.30</td><td>99,975.68</td><td>60.22%</td><td>23,726.85</td><td>27,439.47</td><td>+15.6%</td></tr>
+            <tr><td>&nbsp;&nbsp;Cash market</td><td>12,359.10</td><td>16,885.49</td><td>15,546.43</td><td>9.36%</td><td>3,936.80</td><td>5,023.20</td><td>+27.6%</td></tr>
+            <tr><td>&nbsp;&nbsp;Futures</td><td>12,489.75</td><td>17,272.58</td><td>14,800.97</td><td>8.92%</td><td>3,820.46</td><td>3,674.81</td><td>-3.8%</td></tr>
+            <tr><td>&nbsp;&nbsp;Mutual fund</td><td>96.91</td><td>131.41</td><td>180.40</td><td>0.11%</td><td>36.41</td><td>63.82</td><td>+75.3%</td></tr>
+            <tr><td>&nbsp;&nbsp;Others</td><td>848.72</td><td>127.86</td><td>66.64</td><td>0.04%</td><td>15.48</td><td>25.34</td><td>+63.7%</td></tr>
+            <tr><td>Data connectivity charges</td><td>8,246.97</td><td>11,044.81</td><td>11,287.91</td><td>6.80%</td><td>2,881.31</td><td>2,582.94</td><td>-10.4%</td></tr>
+            <tr><td>Other operating revenue: income on investments</td><td>8,120.62</td><td>9,572.37</td><td>8,416.91</td><td>5.07%</td><td>2,408.70</td><td>2,339.21</td><td>-2.9%</td></tr>
+            <tr><td>Data feed and terminal services</td><td>3,392.64</td><td>4,071.32</td><td>4,700.74</td><td>2.83%</td><td>1,063.80</td><td>1,495.57</td><td>+40.6%</td></tr>
+            <tr><td>Listing services</td><td>2,226.18</td><td>3,138.21</td><td>3,524.36</td><td>2.12%</td><td>776.42</td><td>783.59</td><td>+0.9%</td></tr>
+            <tr><td>Clearing and settlement services</td><td>1,348.12</td><td>3,213.42</td><td>2,514.51</td><td>1.51%</td><td>492.87</td><td>823.58</td><td>+67.1%</td></tr>
+            <tr><td>Data centre rack charges (colocation)</td><td>1,338.14</td><td>1,544.02</td><td>2,051.75</td><td>1.24%</td><td>458.17</td><td>593.88</td><td>+29.6%</td></tr>
+            <tr><td>Licensing services (indices)</td><td>975.36</td><td>1,204.98</td><td>1,518.45</td><td>0.91%</td><td>378.01</td><td>441.29</td><td>+16.7%</td></tr>
+            <tr><td>Others</td><td>855.71</td><td>1,260.01</td><td>1,428.34</td><td>0.86%</td><td>327.10</td><td>317.40</td><td>-3.0%</td></tr>
+            <tr><td><strong>Revenue from operations</strong></td><td><strong>147,800.11</strong></td><td><strong>171,406.78</strong></td><td><strong>166,013.09</strong></td><td><strong>100%</strong></td><td><strong>40,322.38</strong></td><td><strong>45,604.10</strong></td><td><strong>+13.1%</strong></td></tr>
+            <tr><td>Other income: investment income</td><td>15,546.96</td><td>19,321.61</td><td>19,290.79</td><td>below the line</td><td>6,163.78</td><td>6,821.51</td><td>+10.7%</td></tr>
+            <tr><td>Other income: others</td><td>173.55</td><td>1,039.92</td><td>1,829.82</td><td>below the line</td><td>1,498.34</td><td>96.13</td><td>-93.6%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Two readings, and both matter. Across FY26, <strong>every non-transaction line grew while every transaction line except mutual funds fell</strong>. In the June-2026 quarter that reversed: transaction charges grew 14.9% and led the recovery. The annuity businesses, data, listing, indices and colocation, are the structurally attractive part of this company and they grew 12% to 33% through the downturn. They are also only about 14% of revenue. NSE is a derivatives business with a promising annuity business bolted on, and the annuity business is not yet large enough to change the risk profile.</p>
+
+      <h3>The three reporting segments</h3>
+      <div class="tw">
+        <table>
+          <caption>Segment revenue, Rs million. Source: RHP segment disclosure.</caption>
+          <thead><tr><th>Segment</th><th>FY24</th><th>FY25</th><th>FY26</th><th>FY26 vs FY25</th></tr></thead>
+          <tbody>
+            <tr><td>Trading services</td><td>135,866.32</td><td>155,594.64</td><td>150,436.65</td><td>-3.3%</td></tr>
+            <tr><td>Clearing services</td><td>20,181.98</td><td>25,253.09</td><td>17,623.70</td><td>-30.2%</td></tr>
+            <tr><td>Others</td><td>6,431.70</td><td>5,664.09</td><td>6,444.91</td><td>+13.8%</td></tr>
+            <tr><td>Gross segment revenue</td><td>162,480.00</td><td>186,511.82</td><td>174,505.26</td><td>-6.4%</td></tr>
+            <tr><td>Less inter-segment revenue</td><td>14,679.89</td><td>15,105.04</td><td>8,492.17</td><td>-43.8%</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>147,800.11</strong></td><td><strong>171,406.78</strong></td><td><strong>166,013.09</strong></td><td><strong>-3.1%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Clearing revenue fell 30.2% while inter-segment revenue fell 43.8%. Those moves are large and are probably related: a reduction in what NSE Clearing bills the exchange would cut both gross clearing revenue and the elimination, with a far smaller effect on the consolidated total. <em>The offer document does not explain the change.</em> Flagged as unresolved rather than asserted either way, because a reader comparing segment lines across documents would otherwise read it as an operating collapse. Consolidated clearing and settlement revenue, the externally billed line, actually rose 67.1% in the June quarter.</p>
+
+      <h3>The value chain, stage by stage</h3>
+      <div class="vchain">
+        <div class="vstage"><div class="vh">Inputs</div><ul><li>Matching-engine and surveillance technology, largely built in house</li><li>Data centre capacity and the BKC campus</li><li>SEBI licences under the SECC Regulations</li><li>Clearing capital and the Core Settlement Guarantee Fund</li></ul></div>
+        <div class="vstage"><div class="vh">What NSE does</div><ul><li>Matches trades across cash, futures, options, currency, commodities and debt</li><li>Clears and settles through NSE Clearing as central counterparty</li><li>Constructs and licenses the Nifty index family, 435 indices</li><li>Sells colocation racks, connectivity and market data</li></ul></div>
+        <div class="vstage"><div class="vh">Customers</div><ul><li>Trading members, who are the direct billing counterparty</li><li>Listed companies paying listing fees, 3,005 of them</li><li>Asset managers licensing Nifty indices</li><li>Data vendors, terminals and algorithmic firms</li></ul></div>
+        <div class="vstage"><div class="vh">End use</div><ul><li>Retail and institutional investors executing through brokers</li><li>Passive funds tracking Nifty indices, Rs 8.95 trillion of assets</li><li>Corporates raising equity and debt capital</li><li>Hedgers and speculators in index options</li></ul></div>
+      </div>
+
+      <p><strong>The gatekeeper problem.</strong> NSE bills trading members, not investors. The top five trading members contributed <strong>31.92%</strong> of revenue from operations in FY26, and the top ten <strong>46.78%</strong>. Nearly half of revenue arrives through ten counterparties. This has never been a practical risk, because members cannot route order flow to a venue with no liquidity, but it is the channel through which any future competitive threat would arrive.</p>
+
+      <div class="uu">
+        <div class="ut">? Unknown Unknowns - the dependencies a first read misses</div>
+        <ul>
+          <li><strong>The treasury is mostly not the shareholders' money.</strong> Treasury investments were Rs 647,712.81 million at 31-Mar-2026 against net worth of Rs 318,697.20 million. The Rs 329,015.61 million excess is clearing member collateral, settlement float and the Core Settlement Guarantee Fund. Anyone adding "net cash of Rs 64,771 crore" to a valuation is counting other people's margin money as equity value. This report deliberately makes no net-cash adjustment, and says so again in Section 19.</li>
+          <li><strong>Investment income is a fifth of pre-tax profit and it is rate-sensitive, not volume-sensitive.</strong> Income on investments inside revenue (Rs 8,416.91 million) plus investment income below the line (Rs 19,290.79 million) is Rs 27,707.70 million, or <strong>19.9% of FY26 profit before tax</strong>. A falling rate cycle takes that down regardless of what markets do.</li>
+          <li><strong>Colocation is a growth business built on the thing that was investigated.</strong> Rack count doubled in two years, from 934 to 1,868, and rack revenue grew 29.6% in the June quarter, while the co-location matter of 2015 to 2019 was being settled for Rs 1,491 crore. The commercial franchise and the legal liability are the same asset.</li>
+          <li><strong>NSE cannot list on itself.</strong> Listing is on BSE, its only competitor. Price discovery, surveillance and any future trading halt in NSE's own shares will be administered by a rival exchange. There is no Indian precedent for how that relationship behaves under stress.</li>
+          <li><strong>The registered office sits on leasehold land expiring 10-Dec-2078</strong>, and the group runs 69 properties. Not a near-term risk, but the exchange's home is not freehold.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="s3">
+      <div class="ghost">03</div>
+      <div class="sectag">SECTION 03</div>
+      <h2>Competitive Landscape and Peer Benchmarking</h2>
+      <p class="lead">The issuer names exactly one listed peer. That choice is defensible and also convenient, because the one peer it names trades on a higher multiple than the one it is asking for.</p>
+
+      <h3>Auditing the issuer's peer set</h3>
+      <p>In Basis for Offer Price the company compares itself with <strong>BSE Limited and nothing else</strong>. The justification offered is that BSE is the only other multi-asset Indian exchange spanning cash, derivatives, mutual funds and debt with a comparable revenue mix. On the merits that is fair: CDSL is a depository, MCX is a single-commodity venue, CAMS is a registrar. None is a stock exchange.</p>
+      <p>But a single-peer table with a peer on a <strong>trailing price to earnings of roughly 47x</strong> sets a comfortable ceiling. NSE is asking for about 42x at the cap on trailing-twelve-month earnings. Against that single comparator the issue looks cheap. Against the global exchange set it does not. Both views belong in the report, so both are given.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Domestic comparables. NSE at the cap price of Rs 1,785 on trailing-twelve-month earnings to 30-Jun-2026. Peer market data from screener.in as at 18-Sep-2026, labelled aggregator; peer revenue and profit from company releases. BSE figures as reproduced in the offer document's own peer table.</caption>
+          <thead><tr><th>Company</th><th>Revenue (Rs cr)</th><th>Net profit (Rs cr)</th><th>Market cap (Rs cr)</th><th>P/E</th><th>Comment</th></tr></thead>
+          <tbody>
+            <tr><td><strong>NSE (at cap Rs 1,785)</strong></td><td><strong>16,601</strong></td><td><strong>10,498 TTM</strong></td><td><strong>4,41,788</strong></td><td><strong>42.1</strong></td><td>The subject</td></tr>
+            <tr><td>BSE Limited</td><td>4,834</td><td>2,487</td><td>1,33,231</td><td>47.0</td><td>The issuer's only named peer</td></tr>
+            <tr><td>Multi Commodity Exchange</td><td>2,429</td><td>1,332</td><td>83,127</td><td>53.9</td><td>Commodities only, not comparable in mix</td></tr>
+            <tr><td>Central Depository Services</td><td>1,239</td><td>455</td><td>29,051</td><td>61.6</td><td>Depository, different regulatory economics</td></tr>
+            <tr><td>Computer Age Management Services</td><td>1,516</td><td>~474</td><td>17,589</td><td>38.8</td><td>Registrar, a services business</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>NSE is <strong>3.4x BSE's revenue and 4.2x its profit</strong>, and is being offered at a lower multiple than any of the four. On the domestic set the pricing is not aggressive. That is the strongest single argument in the bull case and it should be stated as plainly as the risks.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Global exchange comparables, most recent reported full year. Converted at approximately Rs 95.72 to the US dollar. Market capitalisations are aggregator-sourced and dated between Jul-2026 and Sep-2026, so they are indicative only and are labelled as such. Revenue mix is the analytically important column.</caption>
+          <thead><tr><th>Exchange</th><th>Period</th><th>Revenue</th><th>Net margin</th><th>Revenue mix, in one line</th></tr></thead>
+          <tbody>
+            <tr><td>CME Group</td><td>CY2025</td><td>USD 6.5 bn</td><td>~63%</td><td>Overwhelmingly derivatives transaction and clearing fees. The closest pure-derivatives analogue</td></tr>
+            <tr><td>Deutsche Boerse</td><td>FY2025</td><td>EUR 6,026 mn</td><td>~33%</td><td>63% recurring. Vertically integrated across Eurex and Clearstream. Structurally closest European name</td></tr>
+            <tr><td>Hong Kong Exchanges</td><td>CY2025</td><td>HKD 29.2 bn</td><td>~61%</td><td>Trading and clearing across cash, derivatives and LME. Single-market-gateway model, close to NSE's</td></tr>
+            <tr><td>Japan Exchange Group</td><td>FY to Mar-2025</td><td>JPY 162,230 mn</td><td>~38%</td><td>Cash equities plus Osaka derivatives. Vertically integrated, one dominant home market</td></tr>
+            <tr><td>Nasdaq Inc</td><td>CY2025</td><td>USD 5.2 bn</td><td>not isolated</td><td>Now majority index, data and software. A data company with an exchange attached</td></tr>
+            <tr><td>London Stock Exchange Group</td><td>CY2025</td><td>GBP 8,986 mn</td><td>not isolated</td><td>Predominantly data and analytics plus FTSE Russell. NOT a structural analogue despite the name</td></tr>
+            <tr><td>Singapore Exchange</td><td>FY to Jun-2026</td><td>SGD 1.48 bn</td><td>~51% adjusted</td><td>FICC and index derivatives on foreign underlyings. A genuine COMPETITOR for India-linked flow, not just a comparable</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Three observations the issuer's single-peer table cannot show. First, <strong>NSE's ~61% net margin is at the very top of the global set</strong>, matched only by CME and HKEX, and that is before the normalisation the company applies. Second, the exchanges that have <em>re-rated</em> over the past decade are the ones that converted transaction revenue into recurring data and index revenue, Nasdaq, LSEG and Deutsche Boerse. NSE's recurring lines are roughly 14% of revenue against Deutsche Boerse's 63%. Third, <strong>SGX is a competitor, not merely a peer</strong>, because its India-linked derivatives franchise contests exactly the flow NSE wants to keep onshore through GIFT City.</p>
+
+      <h3>Where the competitive threat actually is</h3>
+      <p>Not from a new entrant. From BSE, in one specific product, enabled by a regulator. NSE's own disclosure shows options premium market share of <strong>74.71%</strong>, meaning BSE holds roughly a quarter of the premium pool. NSE Clearing's settlement share fell from 94.24% to 88.42% in cash and from 95.67% to 91.04% in futures and options between FY25 and FY26.</p>
+      <p>The cause is disclosed in NSE's own risk factor: clearing-corporation interoperability, and the fixing of a single weekly index-expiry day per exchange, Tuesday for NSE and Thursday for BSE, for contracts expiring on or after 01-Sep-2025. <strong>NSE itself flags further share erosion as a live risk, not a historical event.</strong> That is the honest framing: BSE did not out-compete NSE, it was handed a protected expiry day. Whether that share is durable depends on whether SEBI keeps the arrangement, which no analyst can forecast.</p>
+      <p><em>Insufficient data for conviction</em> on where options share settles. Two quarters of post-01-Sep-2025 data exist and the June-2026 quarter shows NSE's premium turnover at a record, which suggests the pool grew rather than NSE recovering share. Both can be true at once.</p>
+    </section>
+
+    <section id="s4">
+      <div class="ghost">04</div>
+      <div class="sectag">SECTION 04</div>
+      <h2>Competitive Advantage: the 6 Cs Moat Framework</h2>
+      <p class="lead">One of the widest moats available in Indian equities, and one of the few where the moat's owner does not control the toll. Rate the moat strong and the pricing power weak, and both are true.</p>
+
+      <div class="moatgrid">
+        <div class="moat">
+          <div class="mh"><span class="mn">Cost</span><span class="badge b-strong">Strong</span></div>
+          <p>The marginal cost of matching one more trade is effectively zero, and fixed costs are spread over the largest order flow in the country. Operating EBITDA margin of 78.81% in the June quarter, on a cost base where total expenses excluding the Core Settlement Guarantee Fund contribution were Rs 59,999.03 million against Rs 187,133.70 million of income in FY26. No competitor at a quarter of the scale can match the unit economics.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Capacity</span><span class="badge b-strong">Strong</span></div>
+          <p>Capacity is technological, not physical, and NSE has demonstrated it at the highest contract volumes in the world for seven consecutive years. Colocation racks nearly doubled in two years, from 934 to 1,868, which is capacity being filled by paying customers rather than built on hope. The constraint is resilience, not throughput, and the 24-Feb-2021 outage is the reminder.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Capital</span><span class="badge b-strong">Strong</span></div>
+          <p>Nil borrowings across all three restated years and the stub. Return on capital employed of 42.8% in a bad year. The business funds a Rs 130.8 billion Core Settlement Guarantee Fund, an 84% dividend payout and its entire capital expenditure out of operating cash. It has never needed external equity, which is precisely why this offer raises none.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Channel</span><span class="badge b-mod">Moderate</span></div>
+          <p>Distribution runs through roughly 1,400 trading members, and the top ten are 46.78% of revenue. NSE does not own the investor relationship. In practice members cannot move flow to an illiquid venue, so the concentration has never bitten. But the channel is the one place a regulator-created alternative, such as a protected expiry day on a rival exchange, can redirect volume without NSE doing anything wrong.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Customer captivity</span><span class="badge b-strong">Strong</span></div>
+          <p>The deepest moat here, and it is liquidity. An order book attracts orders because it already has orders. Nifty is the benchmark 435-index family with Rs 8.95 trillion of passive assets tracking it, which locks in index licensing and the derivatives that settle against those indices. Switching costs for an algorithmic firm with racks in the NSE data centre are physical as well as commercial.</p>
+        </div>
+        <div class="moat">
+          <div class="mh"><span class="mn">Compliance moat</span><span class="badge b-strong">Strong</span></div>
+          <p>SEBI recognition under the SECC Regulations, a Rs 100 crore net-worth floor, public-interest directors and fit-and-proper tests on shareholders. Entry is not merely expensive, it is discretionary in the regulator's hands. The identical regulation is also the principal risk, which is the paradox of this asset.</p>
+        </div>
+      </div>
+
+      <h3>The single most important moat source, and its half-life</h3>
+      <p><strong>Liquidity network effect, and it has no natural expiry.</strong> No incumbent exchange anywhere has lost a deep liquidity pool to a competitor on price. The half-life is therefore not set by competition but by regulation, and there the record is explicit: SEBI has already redirected options flow to BSE through the expiry-day allocation, forced NSE's NSDL stake down from 24% to 15%, mandated a uniform fee structure, and restrained the derivatives product that is 60% of revenue.</p>
+      <p>The honest statement of the moat is this: <em>the franchise is close to unassailable commercially and entirely assailable administratively.</em> An investor here is not underwriting competitive risk. They are underwriting Indian regulatory policy for a decade, and buying at a multiple that assumes it stays broadly benign.</p>
+    </section>
+
+    <section id="s5">
+      <div class="ghost">05</div>
+      <div class="sectag">SECTION 05</div>
+      <h2>Financial Analysis: Three Restated Years and a Stub</h2>
+      <p class="lead">Three restated years plus one quarter. FY26 was a genuine down year. The June-2026 quarter says it was the trough. One quarter is not a trend, and the report does not pretend otherwise.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Restated consolidated financial information, Rs million. Source: RHP dated 10-Sep-2026, Restated Consolidated Financial Information and the Abridged Prospectus. Stub figures are for the three months ended 30-Jun and are not annualised.</caption>
+          <thead><tr><th>Particulars</th><th>FY24</th><th>FY25</th><th>FY26</th><th>Q1 FY26</th><th>Q1 FY27</th></tr></thead>
+          <tbody>
+            <tr><td>Equity share capital</td><td>495.00</td><td>2,475.00</td><td>2,475.00</td><td>2,475.00</td><td>2,475.00</td></tr>
+            <tr><td>Net worth</td><td>238,330.98</td><td>301,650.48</td><td>318,697.20</td><td>330,818.20</td><td>349,837.43</td></tr>
+            <tr><td>Revenue from operations</td><td>147,800.11</td><td>171,406.78</td><td>166,013.09</td><td>40,322.38</td><td>45,604.10</td></tr>
+            <tr><td>Total income</td><td>163,520.62</td><td>191,768.31</td><td>187,133.70</td><td>47,984.50</td><td>52,521.74</td></tr>
+            <tr><td>EBITDA</td><td>116,238.31</td><td>160,213.64</td><td>145,190.93</td><td>39,261.32</td><td>43,320.35</td></tr>
+            <tr><td>Profit before tax, continuing</td><td>111,842.80</td><td>154,747.78</td><td>138,955.79</td><td>37,759.94</td><td>41,694.84</td></tr>
+            <tr><td><strong>Profit for the period</strong></td><td><strong>83,057.41</strong></td><td><strong>121,876.89</strong></td><td><strong>103,020.61</strong></td><td><strong>29,238.53</strong></td><td><strong>31,200.84</strong></td></tr>
+            <tr><td>Earnings per share, basic and diluted (Rs)</td><td>33.56</td><td>49.24</td><td>41.62</td><td>11.81</td><td>12.61</td></tr>
+            <tr><td>Net asset value per share (Rs)</td><td>96.86</td><td>122.64</td><td>129.75</td><td>134.67</td><td>142.40</td></tr>
+            <tr><td>Return on net worth (%)</td><td>37.60</td><td>45.14</td><td>33.21</td><td>9.25</td><td>9.33</td></tr>
+            <tr><td>Return on capital employed (%)</td><td>45.50</td><td>52.11</td><td>42.80</td><td>not disclosed</td><td>not disclosed</td></tr>
+            <tr><td><strong>Total borrowings</strong></td><td><strong>Nil</strong></td><td><strong>Nil</strong></td><td><strong>Nil</strong></td><td><strong>Nil</strong></td><td><strong>Nil</strong></td></tr>
+            <tr><td>Treasury investments</td><td>480,164.07</td><td>486,307.12</td><td>647,712.81</td><td>not disclosed</td><td>not disclosed</td></tr>
+            <tr><td>Net cash from operating activities</td><td>297,442.79</td><td>40,914.87</td><td>238,361.75</td><td>70,402.83</td><td>30,078.89</td></tr>
+            <tr><td>Net cash used in investing</td><td>(84,629.98)</td><td>(54,309.76)</td><td>(458.68)</td><td>(37,088.74)</td><td>(66,860.64)</td></tr>
+            <tr><td>Net cash used in financing</td><td>(39,936.90)</td><td>(45,997.48)</td><td>(88,088.51)</td><td>(368.39)</td><td>(408.79)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Revenue: what fell, and what came back</h3>
+      <p>FY26 revenue from operations fell <strong>3.1%</strong> and profit fell <strong>15.5%</strong>. Profit fell five times faster than revenue, and almost all of that gap is the Rs 14,315.57 million of SEBI settlement fees charged in the year, which Section 6 takes apart. Strip the settlement and FY26 profit before tax would have been roughly Rs 153,271 million against FY25's Rs 154,748 million, which is approximately flat rather than down a sixth.</p>
+      <p>In the June-2026 quarter revenue rose 13.1%, transaction charges rose 14.9% and options revenue rose 15.6%. The recovery is in the fee base, not in one-offs.</p>
+
+      <h3>Margins</h3>
+      <div class="tw">
+        <table>
+          <caption>Margin structure, as disclosed. Operating EBITDA excludes other income by the company's definition. Rs million and per cent.</caption>
+          <thead><tr><th>Measure</th><th>FY24</th><th>FY25</th><th>FY26</th><th>Q1 FY26</th><th>Q1 FY27</th></tr></thead>
+          <tbody>
+            <tr><td>Operating EBITDA</td><td>98,698.05</td><td>126,468.83</td><td>110,979.03</td><td>31,297.40</td><td>35,942.48</td></tr>
+            <tr><td>Operating EBITDA margin (%)</td><td>66.78</td><td>73.78</td><td>66.85</td><td>77.62</td><td><strong>78.81</strong></td></tr>
+            <tr><td>Normalised operating EBITDA</td><td>114,424.53</td><td>133,170.67</td><td>126,559.01</td><td>31,700.90</td><td>35,459.27</td></tr>
+            <tr><td>Normalised operating EBITDA margin (%)</td><td>77.42</td><td>77.69</td><td>76.23</td><td>78.62</td><td>77.75</td></tr>
+            <tr><td>Profit before tax margin, continuing (%)</td><td>67.64</td><td>75.43</td><td>69.40</td><td>78.20</td><td>78.70</td></tr>
+            <tr><td>Profit after tax margin (%)</td><td>47.13</td><td>55.30</td><td>50.98</td><td>not disclosed</td><td>not disclosed</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Note what happens in the stub: <strong>reported operating EBITDA margin of 78.81% is ABOVE the normalised margin of 77.75%.</strong> In every prior year the normalised figure was the higher one, because settlement fees and Core Settlement Guarantee Fund contributions were being added back. In the June-2026 quarter there is essentially nothing to add back. That is quiet corroboration that the settlement charge was a FY26 event rather than a permanent feature, and it is the strongest evidence available for the company's own normalisation case.</p>
+
+      <h3>Working capital and cash conversion, and why the usual ratio is meaningless here</h3>
+      <p>Operating cash flow was Rs 297,443 million in FY24, Rs 40,915 million in FY25 and Rs 238,362 million in FY26, against profits of Rs 83,057 million, Rs 121,877 million and Rs 103,021 million. A cash conversion ratio computed from those pairs would read 358%, 34% and 231%, and would be analytically worthless.</p>
+      <p>The reason is that NSE Clearing's settlement balances, member margin and Core Settlement Guarantee Fund flows run through consolidated operating cash flow. These are custodial balances that move with market volatility and expiry timing, not with earnings quality. <strong>The report therefore does not compute a cash conversion ratio for NSE and explicitly warns against one.</strong> The meaningful cash test for this business is simpler: nil debt, an 84% dividend payout funded entirely from operations, and capital expenditure covered several times over by profit.</p>
+
+      <h3>Balance sheet</h3>
+      <p>Net worth grew from Rs 238,331 million to Rs 349,837 million across the period, entirely from retained earnings after paying out most of the profit. Total borrowings are nil throughout. Treasury investments of Rs 647,713 million at 31-Mar-2026 exceed net worth by Rs 329,016 million, and that excess is not shareholders' money, as Section 2 sets out.</p>
+
+      <div class="flag amberbox">
+        <div class="ft">What Cannot Be Assessed</div>
+        <p><strong>Quarterly seasonality cannot be assessed.</strong> One stub quarter with one comparative is not a series. Exchange revenue is driven by volatility and expiry activity, both of which cluster unevenly through a year, and there is no way from this document to know whether the June quarter is seasonally strong. The first genuine read arrives with the September-2026 quarter, which as a newly listed company NSE will have to file. <em>Insufficient data for conviction</em> on the FY27 full-year path, and any model annualising the June quarter is guessing.</p>
+      </div>
+    </section>
+
+    <section id="s6">
+      <div class="ghost">06</div>
+      <div class="sectag">SECTION 06</div>
+      <h2>Earnings Quality, Forensics and the Restatement Reconciliation</h2>
+      <p class="lead">The accounting is clean. The presentation is not neutral. Those are different findings and both belong here.</p>
+
+      <h3>The restatement reconciliation, which is the highest-yield artefact in any offer document</h3>
+      <p><strong>There are no restatement adjustments.</strong> Audited and restated profit and equity are identical for all three years. No prior-period items, no accounting-policy changes requiring adjustment, no audit qualifications. The restatement is a regrouping into SEBI's disclosure format and nothing more.</p>
+      <p>That is a genuinely good result and it should be said plainly. In most offer documents this table is where the bodies are. Here it is empty.</p>
+
+      <h3>Emphasis of matter, and what it says</h3>
+      <p>The statutory auditors' examination report dated 04-Sep-2026 carries emphasis of matter paragraphs for FY24, FY25, FY26 and the June-2025 quarter. The FY26 paragraph reads, verbatim:</p>
+      <p class="pull">"We draw attention to Note 36(b) ... relating to the orders passed by the Securities and Exchange Board of India in relation to preferential access to tick-by-tick data at the Holding Company's Colocation facility, Dark Fiber point to-point connectivity and governance and conflict of interest matters ... The Holding Company has recognised a provision of Rs 13,912.07 million during the year ended 31 March 2026, in addition to an amount of Rs 1,000.00 million provided for earlier ... The future outcome of the above matters is uncertain at this stage. Our opinion is not modified in respect of this matter."</p>
+      <p>An emphasis of matter is not a qualification. The opinion is clean. But it is the auditor pointing at the one number a reader must understand, and it is carried in four consecutive periods.</p>
+
+      <div class="flag">
+        <div class="ft">! Red Flag - The Normalisation Removes a Cost That Has Recurred Every Year</div>
+        <p>The company presents a <strong>Normalised Operating EBITDA Margin of 76.23%</strong> for FY26 against a reported 66.85%. Its own definition adds back, among other items, <strong>"Additional Contribution to Core SGF"</strong> and <strong>"SEBI Settlement Fees"</strong>.</p>
+        <p>SEBI settlement fees charged to profit: <strong>Rs 726.48 million in FY24, Rs 6,701.84 million in FY25, Rs 14,315.57 million in FY26.</strong> That is Rs 21,743.89 million, or <strong>Rs 2,174 crore over three years, rising every year</strong>, across six separate matters: the Feb-2021 technical glitch, the Trading Access Point matter, inter-CCP collateral at NSE Clearing, a general inspection covering Feb-2021 to Mar-2022, co-location and dark fibre. Settlement fees were 4.2% of other expenses in FY24 and 37.8% in FY26.</p>
+        <p>A cost incurred in every year of the disclosed record, on six distinct matters, is not self-evidently non-recurring. Nor is the Core Settlement Guarantee Fund contribution, which is a standing regulatory obligation on a clearing corporation. <strong>Use the reported margin as the base case and treat the normalised margin as the company's advocacy.</strong></p>
+        <p><em>The counter-argument, stated fairly:</em> in the June-2026 quarter reported operating EBITDA margin of 78.81% was ABOVE the normalised 77.75%, meaning there was nothing material to add back. If that persists, the company's characterisation will have been right and the FY24 to FY26 settlements will look like the clearing of a legacy book. One quarter does not settle it.</p>
+      </div>
+
+      <h3>Other income dependence</h3>
+      <p>Investment income inside revenue (Rs 8,416.91 million) plus investment income below the line (Rs 19,290.79 million) totals Rs 27,707.70 million, which is <strong>19.9% of FY26 profit before tax</strong>. Decomposed rather than left as a single ratio: this is treasury yield on a large corpus, not arbitration awards or mark-to-market windfalls, so it is high quality but rate-sensitive. A 200 basis point fall in short rates would take roughly Rs 5,500 million off pre-tax profit with no change in market activity at all. Separately, "other income: others" swung from Rs 1,498.34 million in the June-2025 quarter to Rs 96.13 million in June-2026, a 93.6% fall, which flatters the stub's year-on-year revenue comparison and slightly depresses its profit comparison. That is why stub profit grew 6.7% while revenue grew 13.1%.</p>
+
+      <h3>Auditor</h3>
+      <p>Current statutory auditor: <strong>Walker Chandiok &amp; Co LLP</strong>. Previous: <strong>Price Waterhouse &amp; Co Chartered Accountants LLP</strong>, which held office from the 29th to the 34th annual general meeting and ceased on 24-Aug-2026 on <em>"Completion of term of appointment"</em>. That is statutory rotation under the Companies Act, not a resignation, and it is not a red flag. It is recorded because an auditor change one month before an offer document always has to be checked, and here it checks out.</p>
+      <p>Note also that one subsidiary with total assets of Rs 512,168.80 million, which is NSE Clearing, is audited by a different auditor and the group auditor relies on that report. For a clearing corporation holding member collateral, the reliance is worth naming.</p>
+
+      <h3>Contingent liabilities and tax</h3>
+      <p>Claims against the group not acknowledged as debts stood at Rs 324.90 million at 31-Mar-2026, apart from the specific matters. Tax litigation runs to <strong>81 cases and Rs 8,671.60 million</strong>, of which the largest single item is an NSE Clearing appeal against disallowance of the Core Settlement Guarantee Fund contribution, an addition of Rs 14,410.00 million producing a demand of Rs 3,945.50 million, partly stayed at Rs 3,156.40 million. A competition claim by MSEI of Rs 8,569.90 million sits before the NCLAT and is stayed. NSE Clearing has given an inter-CCP collateral guarantee to ICCL of Rs 85,000.00 million.</p>
+
+      <h3>Related party transactions</h3>
+      <p>Small relative to scale and unremarkable in direction. The largest flows in FY26 are a dividend of Rs 78.00 million received from NSDL, managing director remuneration of Rs 158.88 million, a dividend of Rs 24.80 million from Power Exchange India, and modest service charges with NSDL. There is no pattern of value leaving the listed entity. With no identifiable promoter there is no promoter-related-party channel at all, which removes the single most common Indian governance risk.</p>
+
+      <h3>Earnings quality score</h3>
+      <div class="eqbar">
+        <div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg on"></div>
+        <div class="eqseg on"></div><div class="eqseg on"></div><div class="eqseg"></div><div class="eqseg"></div><div class="eqseg"></div>
+      </div>
+      <p><strong>7 / 10.</strong> Pushing it up: zero restatement adjustments, an unmodified audit opinion, nil debt, no promoter-related-party channel, small contingent claims relative to net worth, and treasury income that is genuine yield rather than accounting. Holding it down: a headline "normalised" margin that removes a cost incurred in all three years across six matters; an operating cash flow line so contaminated by custodial clearing balances that the standard conversion test cannot be run; a fifth of pre-tax profit from the treasury rather than the exchange; and a non-operating write-off of Rs 399.99 million on the Open Network for Digital Commerce investment in FY24, which was written down to Re 1 because a section 8 company cannot distribute profit, a fact knowable before the investment was made. Not a 9, because the presentation is advocacy. Not a 5, because the books themselves are clean.</p>
+    </section>
+
+    <section id="s7">
+      <div class="ghost">07</div>
+      <div class="sectag">SECTION 07</div>
+      <h2>Governance and Capital Allocation Track Record</h2>
+      <p class="lead">There is no promoter. That removes the dominant Indian governance risk and replaces it with a different one: a board the regulator effectively appoints, at a company the same regulator has repeatedly penalised.</p>
+
+      <div class="flag amberbox">
+        <div class="ft">The Structural Fact That Reframes This Section</div>
+        <p><strong>"OUR COMPANY DOES NOT HAVE AN IDENTIFIABLE PROMOTER"</strong> appears on the cover of the offer document. There is no promoter shareholding, no pledge, no promoter remuneration beyond executive pay, no royalty, no promoter group, and no minimum promoters' contribution under ICDR Regulation 14. Every standard promoter-governance test in this framework returns nil. That is genuinely unusual and, on balance, a strength.</p>
+      </div>
+
+      <h3>The board</h3>
+      <p>Twelve directors: <strong>seven Public Interest Directors and five non-independent directors</strong>. The Public Interest Directors include the Chairperson Shri Srinivas Injeti, a retired Indian Administrative Service officer; Rajesh Gopinathan, former managing director of Tata Consultancy Services; Retd Justice Abhilasha Kumari; Prof Mamata Biswal; Prof G. Sivakumar of IIT; P.R. Ramesh, former chairman of Deloitte India; and Rajeev Vasudeva, former chief executive of Egon Zehnder. The executive side is Ashishkumar Chauhan as Managing Director and Chief Executive Officer, with Executive Directors Viral Mody and Sanjay Shorey appointed in May-2026.</p>
+      <p>That is, on its face, a strong board. But the appointment mechanism is the point: <strong>directors are appointed under the SECC Regulations with SEBI's prior approval</strong>, and Public Interest Directors are effectively regulator-nominated. LIC, holding 10.72%, proposed Shri Dinesh Pant to the board by representation letter dated 05-Mar-2026 under section 6A of the Life Insurance Corporation Act, and that appointment too required SEBI's prior approval under Regulation 24 of the SECC Regulations.</p>
+      <p>The governance question for a minority buyer is therefore not "will the promoter expropriate me" but <strong>"whose interests does a regulator-approved board serve when the regulator's policy objective and the shareholders' revenue conflict"</strong>. That conflict is not hypothetical here. It is the derivatives curbs.</p>
+
+      <h3>Remuneration</h3>
+      <p>Managing director and chief executive remuneration of Rs 137.6 million is disclosed in the management chapter for FY26, while the related-party note shows Rs 158.88 million. The two figures are on different bases, most likely basic against total including variable pay and perquisites. <em>The difference is flagged rather than resolved</em>, because the document does not reconcile them and the report will not guess. Either figure is roughly 0.15% of profit, which is not a governance concern on scale.</p>
+
+      <h3>Capital allocation, which is the real story here</h3>
+      <div class="tw">
+        <table>
+          <caption>Dividend history, Rs million and Rs per share. FY24 per-share figures are restated for the 4:1 bonus with record date 02-Nov-2024. Payout computed against profit for the year.</caption>
+          <thead><tr><th>Measure</th><th>FY24</th><th>FY25</th><th>FY26</th></tr></thead>
+          <tbody>
+            <tr><td>Final dividend (Rs million)</td><td>44,550.00</td><td>86,625.00</td><td>86,625.00</td></tr>
+            <tr><td>Dividend per share (Rs)</td><td>18.00</td><td>35.00</td><td>35.00</td></tr>
+            <tr><td>Profit for the year (Rs million)</td><td>83,057.41</td><td>121,876.89</td><td>103,020.61</td></tr>
+            <tr><td><strong>Payout ratio</strong></td><td><strong>53.6%</strong></td><td><strong>71.1%</strong></td><td><strong>84.1%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A note on a figure that is routinely misread: the offer document records a "dividend rate" of <strong>3,500%</strong> for FY25 and FY26. That is the dividend expressed as a percentage of the Re 1 face value, being Rs 35 per share. <strong>It is not a payout ratio.</strong> The payout ratio is 84.1% in FY26.</p>
+      <p>The dividend distribution policy, approved 25-Aug-2025, states an intention to <em>return the free cash flow generated in the financial year to shareholders</em>. For a business with no reinvestment need and a regulator that has already objected to it investing in unrelated entities, that is the correct policy and it is being followed.</p>
+
+      <h3>The capital allocation record, judged on outcomes</h3>
+      <ul>
+        <li><strong>Forced divestments, executed well.</strong> NSE reduced its NSDL holding from 24.00% to 15.00% by selling into NSDL's IPO, realising Rs 13,846.74 million from sale of associates in FY26 and Rs 14,484.41 million in FY25.</li>
+        <li><strong>Voluntary exits from non-core businesses.</strong> The education business (NAL Academy, TalentSprint) and the technology business (NSEIT, Aujas Cybersecurity, Nusummit) were classified as discontinued from FY23. NSEIT's technology business was sold by slump sale and the equity stake disposed in FY25, producing a gain of <strong>Rs 6,540.28 million net of tax</strong>. That is a clean, profitable exit from businesses the company should never have been in.</li>
+        <li><strong>One clear failure.</strong> The Open Network for Digital Commerce investment was written down to Re 1 in FY24, writing off Rs 399.99 million, because ONDC is a section 8 company that cannot distribute profit. That constraint existed before the cheque was written.</li>
+        <li><strong>A regulatory rebuke on allocation.</strong> SEBI issued a show cause notice on 31-Jul-2020 alleging NSE and a subsidiary invested in entities engaged in activities unrelated and non-incidental to a stock exchange, and levied a Rs 60 million penalty. SAT set it aside on 04-Jan-2022 and SEBI's appeal remains before the Supreme Court with no stay. Whatever the legal outcome, the regulator's view of NSE's diversification is a matter of record.</li>
+      </ul>
+      <p><strong>Verdict.</strong> The company has no reinvestment outlet at its incremental return and it is correctly distributing instead. The historic capital-allocation errors were diversifications away from the core, they were modest in size, they have been unwound at a profit, and the regulator has made clear it will not permit a repeat. This is a good capital-allocation record arrived at partly by external discipline.</p>
+    </section>
+
+    <section id="s8">
+      <div class="ghost">08</div>
+      <div class="sectag">SECTION 08</div>
+      <h2>Offer Structure and Eligibility Route</h2>
+      <p class="lead">The fastest quality read in any offer document. Here it says: the company gets nothing, the sellers are taking money off the table, and the issue was cut by 15% between draft and final.</p>
+
+      <div class="tw">
+        <table>
+          <caption>Offer structure, DRHP dated 17-Jun-2026 against RHP dated 10-Sep-2026.</caption>
+          <thead><tr><th>Item</th><th>DRHP</th><th>RHP (governing)</th></tr></thead>
+          <tbody>
+            <tr><td>Fresh issue</td><td>Not applicable</td><td>Not applicable</td></tr>
+            <tr><td>Offer for sale</td><td>148,905,525 shares</td><td><strong>126,436,650 shares</strong></td></tr>
+            <tr><td>Change</td><td></td><td><strong>cut by 22,468,875 shares, down 15.1%</strong></td></tr>
+            <tr><td>Capital, pre and post offer</td><td>2,475,000,000</td><td>2,475,000,000, unchanged</td></tr>
+            <tr><td>Offer as % of post-offer capital</td><td>6.016%</td><td><strong>5.109%</strong></td></tr>
+            <tr><td>Price band</td><td>not announced</td><td><strong>Rs 1,700 to Rs 1,785</strong></td></tr>
+            <tr><td>Bid lot</td><td>not announced</td><td>8 shares</td></tr>
+            <tr><td>Issue size at cap</td><td>not determinable</td><td><strong>about Rs 22,562 crore</strong></td></tr>
+            <tr><td>Eligibility route</td><td>Regulation 6(1)</td><td>Regulation 6(1)</td></tr>
+            <tr><td>Promoter</td><td>None identifiable</td><td>None identifiable</td></tr>
+            <tr><td>Listing venue</td><td>BSE only</td><td>BSE only</td></tr>
+            <tr><td>Employee reservation</td><td>up to 5% of post-offer capital</td><td>433,437 shares, about Rs 70 crore, at a Rs 170 discount</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Offer for sale, in full, and what that means</h3>
+      <p><strong>One hundred per cent of this offer is a secondary sale.</strong> The company receives nothing. At the cap price roughly <strong>Rs 22,562 crore leaves the buyers' pockets and goes to selling shareholders</strong>, and the balance sheet of National Stock Exchange of India Limited is precisely the same the day after listing as the day before. Net asset value per share is Rs 142.40 before and Rs 142.40 after. There is no dilution, and there is no capital raised.</p>
+      <p>ipo-mode flags any offer for sale above 60% of issue size as a monetisation event requiring the sellers to be named. This is 100%, so Section 20 names them all.</p>
+
+      <h3>The eligibility route, which is a one-line quality gate</h3>
+      <p>The offer is made under <strong>Regulation 6(1)</strong>, not the Regulation 6(2) fallback. That means NSE satisfied the profitability test: net tangible assets of at least Rs 3 crore in each of the preceding three years, average operating profit of at least Rs 15 crore over three years with each year positive, and net worth of at least Rs 1 crore in each year. For a company earning Rs 10,302 crore of annual profit those bars are trivial, but the route still matters: a Reg 6(2) issuer has <em>failed</em> the profit test, and that would have forced 75% of the net offer to institutions and capped retail at 10%.</p>
+      <p>Because this is a Reg 6(1) issue, the allocation is the standard one: <strong>retail at least 35%, non-institutional at least 15%, qualified institutional buyers not more than 50%</strong>, with up to 60% of the institutional portion available to anchors. Retail therefore sets a meaningful part of the price here, which Section 21 shows mattered.</p>
+
+      <h3>Why the offer was cut, and what the cut tells you</h3>
+      <p>The document does not give a reason. The pattern of the cut does. The two sellers who did <em>not</em> reduce their tranches are the two most recent institutional entrants, Canada Pension Plan Investment Board at a cost of Rs 324.13 a share and Aranda Investments at Rs 62.38. The sellers who cut hardest are state-owned insurers and banks sitting on costs between Rs 0.32 and Rs 5.26: Stock Holding Corporation cut 4,702,500 shares, General Insurance Corporation 4,470,500, Bank of Baroda 3,295,875 and MS Strategic 5,000,000.</p>
+      <p>Read plainly, an issue sized down by 15% between draft and final, with the lowest-cost sellers cutting most, is an offer being <strong>sized to demand</strong>. That reading is consistent with what the book did, and Section 21 takes it up.</p>
+
+      <p>No pre-IPO placement was undertaken. Minimum public offer requirements under Rule 19(2)(b) of the Securities Contracts (Regulation) Rules are met on the applicable slab for an issuer of this size, which permits a public offer below 25% with a commitment to reach minimum public shareholding within the prescribed period.</p>
+    </section>
+
+    <section id="s9">
+      <div class="ghost">09</div>
+      <div class="sectag">SECTION 09</div>
+      <h2>Use-of-Proceeds Forensics</h2>
+      <p class="lead">There are no proceeds. This section is not skipped, because the absence is the finding.</p>
+
+      <div class="flag">
+        <div class="ft">! The Company Receives Nothing</div>
+        <p>The offer document states it directly: <strong>"Our Company will not receive any proceeds from the Offer."</strong> There is no fresh issue, no objects of the issue, no schedule of deployment, and no monitoring agency, because ICDR Regulation 41 requires one only where the fresh issue exceeds Rs 100 crore and here the fresh issue is nil.</p>
+      </div>
+
+      <h3>What normally goes in this section, and what replaces it</h3>
+      <p>In a normal report this is where management's only enforceable forward commitments are audited: objects against statutory caps, general corporate purposes against the 25% ceiling, loan repayment against the indebtedness note, working-capital holding norms against history, capex against orders placed. <strong>None of it exists here.</strong> There is nothing to audit because nothing was promised, and nothing was promised because no money is being raised.</p>
+      <p>Three consequences a reader should carry forward:</p>
+      <ul>
+        <li><strong>There will be no monitoring agency reports.</strong> The quarterly monitoring-agency report, public within 45 days of each quarter end, is the artefact that normally proves or disproves an issuer's stated objects in later years. For NSE it will never exist. The scoreboard that Section 10 would ordinarily be built to track is simply absent.</li>
+        <li><strong>The usual diversion risk is nil.</strong> The most common Indian enforcement failure mode, proceeds diverted away from stated objects, is structurally impossible in a pure offer for sale. That is a real, if negative, comfort.</li>
+        <li><strong>The capital structure is unchanged.</strong> No dilution, no change in net worth, no change in net asset value per share, no change in the share count. A buyer is purchasing an existing share from an existing holder at a negotiated price, with the exchange taking no part in the economics.</li>
+      </ul>
+
+      <h3>Offer expenses, which are the only cash flows the offer actually creates</h3>
+      <p>The selling shareholders bear the offer expenses in proportion to the shares each sells. The company bears only the listing fees, the audit fees attributable to non-offer work, and expenses relating to product advertising consistent with past practice. That allocation is the correct one for a pure offer for sale and it is worth confirming, because a company bearing the cost of its shareholders' exit would be a transfer of value away from the buyer.</p>
+
+      <h3>So who is actually being paid</h3>
+      <p>At the cap price of Rs 1,785, approximately <strong>Rs 22,562 crore</strong> is transferred from new public shareholders to twenty-three existing selling shareholders. The weighted average cost of acquisition for the largest of them is between Rs 0.32 and Rs 324.13 a share. Section 18 computes what multiple of insider cost the public is paying, and Section 20 names every seller and what each realises. That, and not a use-of-proceeds table, is the substance of this offer.</p>
+    </section>
+
+    <section id="s10">
+      <div class="ghost">10</div>
+      <div class="sectag">SECTION 10</div>
+      <h2>Stated-Intent Scorecard</h2>
+      <p class="lead">There are no earnings calls, no guidance history and no analyst record to score. Rather than fabricate one, this section builds the scoreboard from mandatory disclosure, so the next report has something to mark against.</p>
+
+      <div class="flag amberbox">
+        <div class="ft">Proven, Not Assumed</div>
+        <p>NSE is unlisted and has no obligation to host earnings calls, and it does not. It publishes an annual report on nseindia.com but no quarterly or half-yearly investor commentary, because an unlisted company has no continuous interim disclosure obligation. <strong>There is therefore no guidance-versus-delivery record in existence.</strong> A guidance credibility ratio cannot be computed, and any report presenting one for NSE has invented it. The first scoreable management commitments will arrive with the first post-listing results.</p>
+      </div>
+
+      <h3>Part 1: the objects ledger</h3>
+      <p><strong>Empty, by construction.</strong> A pure offer for sale has no objects and no deployment schedule. There is nothing to score in future reports on this axis. See Section 9.</p>
+
+      <h3>Part 2: performance against the objects of past issues</h3>
+      <p>No past public issue by the company. The 2016 draft offer document never reached the market, so no objects were ever stated to public shareholders and no shortfall record exists. Among listed group companies, NSDL completed its own IPO and listed on 06-Aug-2025, and NSE participated in it as a selling shareholder under regulatory compulsion rather than as issuer. <em>No promise-versus-delivery record exists to be scored.</em></p>
+
+      <h3>Part 3: the key performance indicators that become scoreable from listing</h3>
+      <p>The issuer must continue reporting its disclosed key performance indicators annually until the later of one year after listing or full utilisation of proceeds. Since there are no proceeds, the obligation runs for <strong>one year from listing</strong>. The audit committee approved the KPI set on 15-Jun-2026, the managing director certified it, and Manian &amp; Rao, Chartered Accountants (FRN 001983S) verified and certified it, most recently by certificate dated 10-Sep-2026. The issuer confirms these are the KPIs disclosed to investors in the three years preceding filing.</p>
+      <p>These are the numbers the next report will mark management against:</p>
+      <div class="tw">
+        <table>
+          <caption>The scoreable KPI set, with the base from which future performance will be measured. Source: RHP key performance indicator table, certified 10-Sep-2026.</caption>
+          <thead><tr><th>KPI</th><th>FY26 base</th><th>Q1 FY27 latest</th><th>What it tests</th></tr></thead>
+          <tbody>
+            <tr><td>Unique registered investors</td><td>129.09 mn</td><td>132.37 mn</td><td>Whether the financialisation engine keeps running</td></tr>
+            <tr><td>Listed entities</td><td>2,978</td><td>3,005</td><td>Listing-fee annuity growth</td></tr>
+            <tr><td>Colocation member racks</td><td>1,680</td><td>1,868</td><td>The highest-growth annuity line</td></tr>
+            <tr><td>Nifty-linked passive AUM</td><td>Rs 8.14 trn</td><td>Rs 8.95 trn</td><td>Index licensing durability</td></tr>
+            <tr><td><strong>Equity options premium ADTV</strong></td><td>Rs 576,618 mn</td><td><strong>Rs 643,518 mn</strong></td><td><strong>The single most important line in the model</strong></td></tr>
+            <tr><td>Cash market ADTV</td><td>Rs 1,055,167 mn</td><td>Rs 1,359,487 mn</td><td>Breadth of participation</td></tr>
+            <tr><td>Operating EBITDA margin, reported</td><td>66.85%</td><td>78.81%</td><td>Whether settlement costs really were one-off</td></tr>
+            <tr><td>Normalised operating EBITDA margin</td><td>76.23%</td><td>77.75%</td><td>Whether the gap to reported closes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Part 4: story drift between the draft and the final document</h3>
+      <p>Section 22 sets this out in full. In summary, the issue was cut 15.1%, the largest single unresolved risk in the draft (the pending settlement) was substantially resolved before the final document, a stub period was added that reversed the direction of the headline financials, and SBI Capital Markets was added as a selling shareholder while also acting as a book running lead manager. The narrative moved from "dominant exchange with an unresolved regulatory overhang and a declining year" to "dominant exchange, overhang paid, growth resumed". Both descriptions are supportable from the documents. The second one is the one being sold.</p>
+
+      <h3>The one commitment that can be scored today</h3>
+      <p>The dividend distribution policy approved on 25-Aug-2025 commits to endeavour to return the free cash flow generated in the year to shareholders. Payout was 53.6% in FY24, 71.1% in FY25 and 84.1% in FY26. <strong>Rising, and consistent with the stated policy.</strong> That is the only stated intent with a track record attached, and it has been met.</p>
+    </section>
+
