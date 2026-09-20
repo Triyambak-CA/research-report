@@ -102,7 +102,10 @@
   .stat .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
   .stat .v{font-size:21px;font-weight:700;margin-top:6px;color:var(--bright)}
   .stat .n{font-size:11px;color:var(--muted);margin-top:3px}
-  .v.bull{color:var(--bull)}.v.bear{color:var(--bear)}.v.amber{color:var(--amber)}
+  .v.bull{color:var(--bull)}.v.bear{color:var(--bear)}
+  td.bear{color:var(--bear)}
+  td.bull{color:var(--bull)}
+  td.amber{color:var(--amber)}.v.amber{color:var(--amber)}
   /* sections */
   section{padding:46px 0 6px;border-top:1px solid var(--border);position:relative}
   section:first-of-type{border-top:none}
@@ -583,9 +586,9 @@
       <div class="stat"><div class="k">Price to book at cap</div><div class="v bear">12.5x</div><div class="n">NAV Rs 142.40 at 30-Jun-2026</div></div>
       <div class="stat"><div class="k">Earnings quality</div><div class="v amber">7 / 10</div><div class="n">Clean books, flattering normalisation</div></div>
       <div class="stat"><div class="k">Guidance credibility</div><div class="v">No record</div><div class="n">Unlisted - no calls, no history</div></div>
-      <div class="stat"><div class="k">Moat strength</div><div class="v bull">Very wide</div><div class="n">Regulated near-monopoly, capped</div></div>
+      <div class="stat"><div class="k">Moat strength</div><div class="v amber">Wide, eroding</div><div class="n">93% cash, but options share falling</div></div>
       <div class="stat"><div class="k">Q1 FY27 revenue</div><div class="v bull">+13.1%</div><div class="n">FY26 was the trough</div></div>
-      <div class="stat"><div class="k">Options premium ADTV</div><div class="v bull">Record high</div><div class="n">Rs 6,43,518 mn, above FY24</div></div>
+      <div class="stat"><div class="k">Options premium ADTV</div><div class="v amber">Record, share down</div><div class="n">Rs 6,43,518 mn, but share 68.5% from 96.7%</div></div>
       <div class="stat"><div class="k">Revenue concentration</div><div class="v bear">60.2%</div><div class="n">Equity options alone, FY26</div></div>
       <div class="stat"><div class="k">Offer</div><div class="v amber">5.11% pure OFS</div><div class="n">Nil proceeds to the company</div></div>
     </div>
@@ -619,13 +622,72 @@
 
       <div class="flag amberbox">
         <div class="ft">Source Warning - The Industry Chapter Is Paid For</div>
-        <p>The industry chapter rests on a report titled <em>"Industry report on Capital Markets and Market Infrastructure Institutions in India"</em> dated 16-Jun-2026, prepared by <strong>Redseer Strategy Consultants Private Limited</strong> and <strong>commissioned by NSE exclusively for this Offer</strong>. The offer document records that neither the company nor the book running lead managers have independently verified it. Addressable-market definitions in a commissioned chapter are drawn to flatter. It is treated here as an issuer claim to be tested, and Section 17 builds the independent counterweight.</p>
+        <p>The industry chapter rests on a report titled <em>"Industry report on Capital Markets and Market Infrastructure Institutions in India"</em> dated <strong>08-Sep-2026</strong>, prepared by <strong>Redseer Strategy Consultants Private Limited</strong> and, in the offer document's own words at page 155, "commissioned by and paid for by our Company exclusively in connection with the Offer". The same passage records that "Neither we, nor the BRLMs, nor any other person connected with the Offer has independently verified any third-party statistical, financial and other industry information in the Redseer Report", and that excerpts "may have been re-ordered by us for the purposes of presentation". The DRHP carried an earlier version of the same report dated 16-Jun-2026.</p>
+        <p><strong>This does not mean the chapter is ignored.</strong> For an unlisted issuer it is the single richest source of industry data available, much of it drawn from SEBI, the Reserve Bank and the IMF, and this report uses it extensively and attributes it throughout. What it does mean is that its framing, its base years and any addressable-market definition are treated as issuer claims to be tested rather than as findings. Section 17 builds the independent counterweight from official sources, and where the two disagree both are shown.</p>
       </div>
 
       <h3>What the industry actually is</h3>
       <p>India has two stock exchanges of consequence, NSE and BSE, two depositories, NSDL and CDSL, and a handful of specialised venues, MCX in commodities and IEX in power. Every one is a Market Infrastructure Institution under the SEBI (Stock Exchanges and Clearing Corporations) Regulations 2018, a category carrying obligations no ordinary company faces: a public-interest board, SEBI approval for senior appointments, ownership caps on shareholders, and regulatory control over what may be charged.</p>
 
       <p>That last point is the one most often missed. This is <strong>not a free-pricing business</strong>. Transaction charges are subject to regulatory oversight, and SEBI has intervened directly, most consequentially in requiring a uniform, non-slab fee structure from Oct-2024, which compressed the effective yield exchanges earned from high-volume members. A monopolist who cannot set his own price is a very particular kind of monopolist, and every valuation multiple in this report has to carry that fact.</p>
+
+      <h3>The size of the pool, from the issuer's chapter, tested</h3>
+      <p>The bull case for every Indian exchange rests on financialisation, and the chapter marshals the evidence for it properly. The figures below are Redseer's, attributed as such, with this report's assessment attached to each.</p>
+      <div class="tw">
+        <table>
+          <caption>Structural drivers as presented in the RHP industry chapter, pages 155 to 179. Source: Redseer Report dated 08-Sep-2026, commissioned by the issuer. Projections are marked and are directional only.</caption>
+          <thead><tr><th>Measure</th><th>Figure</th><th>This report's assessment</th></tr></thead>
+          <tbody>
+            <tr><td>Nominal GDP, FY2001 to FY2026</td><td>US$0.47 trn to US$3.92 trn</td><td>Measured. Uncontroversial</td></tr>
+            <tr><td>Nominal GDP, FY2032 <span class="chip part">projection</span></td><td>US$6.79 trn, 9.61% a year</td><td>IMF-sourced projection, not a fact. Directional only</td></tr>
+            <tr><td>Gross national income per capita, FY2021 to FY2026</td><td>Rs 1,44,512 to Rs 2,40,147</td><td>Measured, but the two figures use different base years (2011-12 and 2022-23), so the growth is overstated by the rebasing</td></tr>
+            <tr><td>Households earning above Rs 0.80 mn a year</td><td>34.38% FY2026 to 42.74% FY2031 <span class="chip part">projection</span></td><td>The core financialisation claim. A projection, and the one most worth doubting</td></tr>
+            <tr><td>Gross household savings</td><td>21.70% of GDP, FY2025</td><td>Measured. The pool the industry competes for</td></tr>
+            <tr><td>Mutual fund assets under management</td><td>Rs 73.73 trn, 18.60% compound growth</td><td>Measured. Strong and directly relevant to index licensing</td></tr>
+            <tr><td>Index funds and exchange traded funds</td><td>15.22% of that, to Rs 23-27 trn by FY2030 <span class="chip part">projection</span></td><td>Matters most to NSE: this is the Nifty licensing base, currently Rs 8.95 trn</td></tr>
+            <tr><td>Foreign portfolio assets under custody</td><td>US$735 bn, Mar-2026</td><td>Measured</td></tr>
+            <tr><td>Unified payments interface transactions</td><td>241.62 bn, FY2026</td><td>Measured. Evidence of the digital rails, not of equity participation</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Testing the headroom argument.</strong> The chapter's implicit claim is that India is under-penetrated and that participation compounds from here. The supporting evidence is real: 132.37 million unique registered investors against a population where smartphone penetration is only about half, and household savings at 21.70% of GDP still weighted toward physical assets. <strong>The report accepts the direction and discounts the magnitude</strong>, because the projections that carry the argument, the FY2031 income mix and the FY2030 index-fund pool, are forecasts by a firm the issuer paid, with no stated methodology in the document.</p>
+      <p><strong>What is conspicuously absent.</strong> The chapter gives <em>no standalone total addressable market figure</em> and no recovery timeline for derivatives after the regulatory reset. For a commissioned industry chapter that is unusual, and it is unusual in the issuer's favour: the most common abuse of this chapter is a flattering addressable-market number drawn wide, and NSE's chapter does not do it.</p>
+
+      <h3>The chapter's own derivatives numbers are a contraction, and that is worth crediting</h3>
+      <p>The single most important framing choice in any commissioned chapter is the base year. Section 17 shows how the same SEBI data reads as growth or decline depending on the base chosen. So the striking thing here is which base the issuer's own paid chapter used.</p>
+      <div class="tw">
+        <table>
+          <caption>Compound growth over FY2024 to FY2026 as presented in the RHP industry chapter. These are the issuer's own commissioned figures.</caption>
+          <thead><tr><th>Segment</th><th>FY2024 to FY2026 compound growth</th></tr></thead>
+          <tbody>
+            <tr><td>Equity index options</td><td class="bear"><strong>-39.14%</strong></td></tr>
+            <tr><td>Equity index futures</td><td class="bear">-30.84%</td></tr>
+            <tr><td><strong>Total equity derivatives</strong></td><td class="bear"><strong>-37.69%</strong></td></tr>
+            <tr><td>Single stock options</td><td class="bull">+24.17%</td></tr>
+            <tr><td>Single stock futures</td><td class="bull">+21.77%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>The issuer's paid chapter leads with a 37.69% contraction in its own largest market.</strong> It chose FY2024 as the base, which is the least flattering available: a five-year base would have shown strong compound growth, and Section 17 shows a two-year base turns every one of these positive. A commissioned chapter that picks the base making its client look worst is not behaving the way the standard warning about commissioned chapters predicts, and the report says so.</p>
+      <p>The composition matters too. <strong>Index derivatives contracted while single-stock derivatives grew over 20%.</strong> SEBI's measures were aimed at index options specifically, and the data shows activity partly migrating rather than disappearing. Single-stock contracts are a much smaller pool, so this is a partial offset, not a replacement.</p>
+
+      <h3>NSE's position, and the one line where it is not dominant</h3>
+      <div class="tw">
+        <table>
+          <caption>Market share by segment, from the RHP industry chapter, latest disclosed period. Turnover basis.</caption>
+          <thead><tr><th>Segment</th><th>NSE turnover</th><th>Industry</th><th>NSE share</th></tr></thead>
+          <tbody>
+            <tr><td>Cash market</td><td>Rs 81.57 trn</td><td>Rs 87.66 trn</td><td><strong>93.05%</strong></td></tr>
+            <tr><td>Equity futures</td><td>Rs 91.85 trn</td><td>Rs 92.10 trn</td><td><strong>99.72%</strong></td></tr>
+            <tr><td><strong>Equity options (premium)</strong></td><td>Rs 38.61 trn</td><td>Rs 56.38 trn</td><td class="bear"><strong>68.48%</strong></td></tr>
+            <tr><td>Corporate bonds</td><td>Rs 4.35 trn</td><td>Rs 5.36 trn</td><td>81.15%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two independent parts of the same document agree on the number that matters: the industry chapter puts NSE's options premium share at <strong>68.48%</strong>, and the peer comparison table in Basis for Offer Price implies 68.5% for the same period. Section 3 traces the series back and it is a fall from 96.7% in FY24.</p>
+      <p>Two further facts from the chapter that a reader should hold together. <strong>NSE is first in the world in equity derivatives contracts with a 50.22% global share</strong>, handling about half of all equity derivatives traded anywhere. And <strong>BSE has 5,713 listed entities against NSE's 3,005</strong>, while the market capitalisation of listed companies is essentially identical at Rs 474.10 trillion and Rs 474.08 trillion, because the large companies list on both. NSE dominates trading, not listing.</p>
+      <p>The chapter also claims NSE's FY2022 to FY2026 revenue compound growth was <strong>20.51%</strong>, among the top three exchanges globally, with an adjusted EBITDA margin of 75.48% and a profit after tax margin of 55.05%. That growth figure is a useful independent check on the five-year series in Section 5, which is drawn from an aggregator because no filing covers FY22 and FY23: a 20.51% four-year compound rate implies an FY22 base close to what the aggregator shows, so the two corroborate each other.</p>
+      <p>Redseer's forward projections for NSE's own revenue lines, FY2026 to FY2030, all marked <span class="chip part">projection</span> and directional only: index fund assets 20% to 25% a year, data centre full-rack equivalents 20% to 25%, listing services 15% to 20%, clearing and settlement 15% to 17%. <strong>Every projected line is an annuity line.</strong> The chapter offers no projection at all for transaction charges, which are 78.65% of revenue. That silence is the most informative thing in it.</p>
 
       <h3>Where the cycle sits</h3>
       <p>The Indian capital market is in a structural expansion and a simultaneous regulatory contraction. Through FY26 the two pulled in opposite directions on NSE's revenue. In the June-2026 quarter they stopped doing so.</p>
@@ -649,7 +711,8 @@
 
       <div class="flag" style="border-left-color:var(--bull)">
         <div class="ft">! The Most Important Distinction In This Report</div>
-        <p><strong>Options notional turnover and options premium turnover are not the same number, and NSE earns on the second one.</strong> Notional average daily turnover is still 23% below FY24 and that is the figure behind every "derivatives collapsed" headline. Premium average daily turnover in the June-2026 quarter was <strong>Rs 6,43,518 million, the highest of any period disclosed</strong>, above FY24's Rs 6,17,788 million. SEBI's curbs worked by raising contract sizes and cutting weekly expiries, which mechanically shrinks notional while leaving the premium pool intact. Anyone modelling NSE's revenue off notional turnover is modelling the wrong base. This is the recurring trap of one metric disclosed on two bases, and here it is the difference between a broken thesis and an intact one.</p>
+        <p><strong>Options notional turnover and options premium turnover are not the same number, and NSE earns on the second one.</strong> Notional average daily turnover is still 23% below FY24 and that is the figure behind every "derivatives collapsed" headline. Premium average daily turnover in the June-2026 quarter was <strong>Rs 6,43,518 million, the highest of any period disclosed</strong>, above FY24's Rs 6,17,788 million. SEBI's curbs worked by raising contract sizes and cutting weekly expiries, which mechanically shrinks notional while leaving the premium pool intact. Anyone modelling NSE's revenue off notional turnover is modelling the wrong base.</p>
+        <p><strong>But the record is not a share win, and the report will not let it read as one.</strong> The offer document's own peer table shows BSE's options premium turnover grew 96.3% year on year in the June quarter against NSE's 15.9%. The premium pool grew 33.1%. NSE reached a record because the pool expanded, while its share of that pool fell from 78.6% to 68.5% in twelve months. Section 3 sets out the full series. Both things are true: the fee base recovered, and NSE is losing share of it quickly.</p>
       </div>
 
       <h3>The regulatory timeline that did the damage</h3>
@@ -785,10 +848,32 @@
 
       <p>Three observations the issuer's single-peer table cannot show. First, <strong>NSE's ~61% net margin is at the very top of the global set</strong>, matched only by CME and HKEX, and that is before the normalisation the company applies. Second, the exchanges that have <em>re-rated</em> over the past decade are the ones that converted transaction revenue into recurring data and index revenue, Nasdaq, LSEG and Deutsche Boerse. NSE's recurring lines are roughly 14% of revenue against Deutsche Boerse's 63%. Third, <strong>SGX is a competitor, not merely a peer</strong>, because its India-linked derivatives franchise contests exactly the flow NSE wants to keep onshore through GIFT City.</p>
 
+      <h3>The share shift, from the issuer's own peer table</h3>
+      <p>The offer document discloses BSE's figures alongside its own in the Basis for Offer Price comparison. Laid out as a share of the combined pool it is the most important competitive series in this report, and the offer document does not present it this way.</p>
+      <div class="tw">
+        <table>
+          <caption>Equity options PREMIUM turnover, NSE against BSE, Rs million, from the RHP peer comparison table. Pool and share computed. Premium turnover is the base transaction charges are levied on.</caption>
+          <thead><tr><th>Period</th><th>NSE premium</th><th>BSE premium</th><th>Combined pool</th><th>NSE share</th><th>BSE share</th></tr></thead>
+          <tbody>
+            <tr><td>FY24</td><td>617,788</td><td>21,327</td><td>639,116</td><td><strong>96.7%</strong></td><td>3.3%</td></tr>
+            <tr><td>FY25</td><td>624,487</td><td>89,777</td><td>714,263</td><td>87.4%</td><td>12.6%</td></tr>
+            <tr><td>FY26</td><td>576,618</td><td>195,227</td><td>771,844</td><td>74.7%</td><td>25.3%</td></tr>
+            <tr><td>Q1 FY26</td><td>555,136</td><td>150,838</td><td>705,974</td><td>78.6%</td><td>21.4%</td></tr>
+            <tr><td><strong>Q1 FY27</strong></td><td><strong>643,518</strong></td><td><strong>296,154</strong></td><td><strong>939,671</strong></td><td><strong>68.5%</strong></td><td><strong>31.5%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flag">
+        <div class="ft">! Red Flag - NSE Has Lost Nearly Thirty Points Of Options Share In Two Years</div>
+        <p>NSE's share of the equity options premium pool has gone <strong>96.7% to 87.4% to 74.7%, and to 68.5% in the June-2026 quarter</strong>. BSE's has gone 3.3% to 31.5% over the same span. In the June quarter BSE's premium turnover grew <strong>96.3%</strong> year on year against NSE's 15.9%, and BSE's revenue from operations grew <strong>63.5%</strong> against NSE's 13.1%.</p>
+        <p>This is the necessary qualifier on the recovery in Section 1. NSE's premium turnover hit a record because <strong>the pool grew 33.1%</strong>, not because NSE won anything. If the pool stops growing while the share trend continues, NSE's options revenue falls even in a healthy market. <strong>The share loss is currently being masked by pool growth, and that is not a durable arrangement.</strong></p>
+        <p>The mechanism is administrative, not competitive: SEBI allocated a single weekly index-expiry day per exchange, Tuesday for NSE and Thursday for BSE, for contracts expiring on or after 01-Sep-2025. BSE did not out-execute NSE on liquidity. It was given a day of the week. That cuts both ways for a forecaster, because what a regulator allocated it can reallocate, in either direction.</p>
+      </div>
+
       <h3>Where the competitive threat actually is</h3>
       <p>Not from a new entrant. From BSE, in one specific product, enabled by a regulator. NSE's own disclosure shows options premium market share of <strong>74.71%</strong>, meaning BSE holds roughly a quarter of the premium pool. NSE Clearing's settlement share fell from 94.24% to 88.42% in cash and from 95.67% to 91.04% in futures and options between FY25 and FY26.</p>
       <p>The cause is disclosed in NSE's own risk factor: clearing-corporation interoperability, and the fixing of a single weekly index-expiry day per exchange, Tuesday for NSE and Thursday for BSE, for contracts expiring on or after 01-Sep-2025. <strong>NSE itself flags further share erosion as a live risk, not a historical event.</strong> That is the honest framing: BSE did not out-compete NSE, it was handed a protected expiry day. Whether that share is durable depends on whether SEBI keeps the arrangement, which no analyst can forecast.</p>
-      <p><em>Insufficient data for conviction</em> on where options share settles. Two quarters of post-01-Sep-2025 data exist and the June-2026 quarter shows NSE's premium turnover at a record, which suggests the pool grew rather than NSE recovering share. Both can be true at once.</p>
+      <p><em>Insufficient data for conviction</em> on where options share settles, but the direction is no longer in doubt. Four observations now exist and every one of them is down for NSE. What cannot be judged from them is the floor: whether BSE stabilises near a third of the pool, which its single allocated expiry day would roughly imply, or keeps taking share. That distinction is worth several rupees a share and it cannot be resolved from this document.</p>
     </section>
 
     <section id="s4">
@@ -815,8 +900,8 @@
           <p>Distribution runs through roughly 1,400 trading members, and the top ten are 46.78% of revenue. NSE does not own the investor relationship. In practice members cannot move flow to an illiquid venue, so the concentration has never bitten. But the channel is the one place a regulator-created alternative, such as a protected expiry day on a rival exchange, can redirect volume without NSE doing anything wrong.</p>
         </div>
         <div class="moat">
-          <div class="mh"><span class="mn">Customer captivity</span><span class="badge b-strong">Strong</span></div>
-          <p>The deepest moat here, and it is liquidity. An order book attracts orders because it already has orders. Nifty is the benchmark 435-index family with Rs 8.95 trillion of passive assets tracking it, which locks in index licensing and the derivatives that settle against those indices. Switching costs for an algorithmic firm with racks in the NSE data centre are physical as well as commercial.</p>
+          <div class="mh"><span class="mn">Customer captivity</span><span class="badge b-mod">Moderate</span></div>
+          <p>The deepest moat here is liquidity: an order book attracts orders because it already has orders. Nifty is the benchmark 435-index family with Rs 8.95 trillion of passive assets tracking it, and switching costs for an algorithmic firm with racks in the NSE data centre are physical as well as commercial. <strong>Downgraded from strong on the evidence.</strong> NSE's share of the options premium pool fell from 96.7% in FY24 to 68.5% in the June-2026 quarter once SEBI allocated BSE a separate weekly expiry day. Captivity that survives competition but not a regulator's calendar is not captivity in the sense this framework means, and it is 60% of revenue that proved movable.</p>
         </div>
         <div class="moat">
           <div class="mh"><span class="mn">Compliance moat</span><span class="badge b-strong">Strong</span></div>
@@ -826,7 +911,7 @@
 
       <h3>The single most important moat source, and its half-life</h3>
       <p><strong>Liquidity network effect, and it has no natural expiry.</strong> No incumbent exchange anywhere has lost a deep liquidity pool to a competitor on price. The half-life is therefore not set by competition but by regulation, and there the record is explicit: SEBI has already redirected options flow to BSE through the expiry-day allocation, forced NSE's NSDL stake down from 24% to 15%, mandated a uniform fee structure, and restrained the derivatives product that is 60% of revenue.</p>
-      <p>The honest statement of the moat is this: <em>the franchise is close to unassailable commercially and entirely assailable administratively.</em> An investor here is not underwriting competitive risk. They are underwriting Indian regulatory policy for a decade, and buying at a multiple that assumes it stays broadly benign.</p>
+      <p>The honest statement of the moat is this: <em>the franchise is close to unassailable commercially and entirely assailable administratively.</em> The options share series is the proof rather than the theory: nearly thirty points moved in two years without a single competitive act by BSE. An investor here is not underwriting competitive risk. They are underwriting Indian regulatory policy for a decade, and buying at a multiple that assumes it stays broadly benign.</p>
     </section>
 
     <section id="s5">
@@ -1851,6 +1936,7 @@
       <ol>
         <li><strong>You bought a regulated utility at a growth multiple.</strong> 42x earnings and 12.5x book for a business whose fees are set under regulatory oversight, whose board requires regulatory approval, whose products need regulatory clearance, and whose largest revenue line the regulator has spent two years deliberately shrinking. Utilities do not get 42x.</li>
         <li><strong>The recovery you underwrote was one quarter long.</strong> The June-2026 quarter was the entire evidential basis for believing FY26 was a trough. It was a single stub with one comparative, no seasonality could be assessed, and the comparative quarter was itself weak. If it was a volatility-driven exception, the base case never existed.</li>
+        <li><strong>The franchise was already being taken apart while you were reading the recovery.</strong> NSE's share of the options premium pool went 96.7%, 87.4%, 74.7% and 68.5% across FY24 to the June-2026 quarter. The record premium turnover you underwrote was pool growth of 33.1%, not a share win. BSE grew its premium turnover 96.3% year on year against your 15.9%, and its revenue 63.5% against your 13.1%. When the pool stopped growing, the share loss showed up in the revenue line immediately.</li>
         <li><strong>Sixty per cent of revenue depends on people who lose money.</strong> SEBI's own data: 96 lakh individual traders, 91% of them losing, aggregate losses of Rs 1,05,603 crore in FY25, up 41% year on year. That is not a customer base, it is a policy problem with a countdown on it. The regulator has already acted four times and raised securities transaction tax twice. It will act again.</li>
         <li><strong>The float cliff is 18.6 times the offer.</strong> With no promoter, ICDR Regulation 16 does not apply and there is no long-dated lock. Roughly 94.9% of the company comes free on one day around 22-Mar-2027, against a float of 5.11%. Any holder who wants out faces a market that cannot absorb even a fraction of it.</li>
         <li><strong>Nobody can rescue the price.</strong> The SECC Regulations cap individual holdings at 5%, institutions at 15%, and non-residents at 5% individually and 49% in aggregate. There will never be a takeover, a control premium or an activist block. The usual floor under a falling share price does not exist here by law.</li>
@@ -1863,7 +1949,7 @@
       <ul>
         <li><strong>Options premium average daily turnover falls below Rs 5,50,000 million in any quarter.</strong> That is below the FY26 average and would mean the June-2026 recovery did not hold. This is the single most important number to watch.</li>
         <li><strong>Any further SEBI measure restricting index derivatives, or a third securities transaction tax increase</strong> in the Union Budget of Feb-2027.</li>
-        <li><strong>NSE's options premium market share falls below 70%</strong>, from 74.71%, indicating BSE's expiry-day advantage is compounding rather than stabilising.</li>
+        <li><strong>NSE's options premium share keeps falling from the 68.5% recorded in the June-2026 quarter.</strong> This thesis-killer has in effect already triggered on the latest disclosed data, the share having gone 96.7%, 87.4%, 74.7% and 68.5%. What remains to be seen is whether BSE stabilises near a third of the pool or keeps taking share. A reading below 60% would be decisive.</li>
         <li><strong>The SEBI settlement order is not passed, or is passed on different terms</strong>, or any of the appeals kept alive at the Supreme Court produces an adverse finding of law.</li>
         <li><strong>Disorderly selling around the six-month lock-in expiry</strong> in March 2027.</li>
         <li><strong>Departure of the Managing Director and Chief Executive Officer</strong> within a year of listing, given the Tata Sons speculation of Sep-2026 and the absence of a promoter anchor.</li>
@@ -1872,7 +1958,7 @@
       <h3>Monitorables dashboard</h3>
       <div class="mongrid">
         <div class="mon"><div class="dot a"></div><div><div class="mk">Options premium ADTV</div><div class="mv">Trigger: below Rs 5,50,000 mn (Q1 FY27 was 6,43,518)</div></div></div>
-        <div class="mon"><div class="dot a"></div><div><div class="mk">Options premium market share</div><div class="mv">Trigger: below 70% (now 74.71%)</div></div></div>
+        <div class="mon"><div class="dot r"></div><div><div class="mk">Options premium market share</div><div class="mv">ALREADY BREACHED: 68.5% in Q1 FY27, from 96.7% in FY24</div></div></div>
         <div class="mon"><div class="dot r"></div><div><div class="mk">Revenue from options</div><div class="mv">Trigger: above 62% of revenue (now 60.2%)</div></div></div>
         <div class="mon"><div class="dot g"></div><div><div class="mk">Unique registered investors</div><div class="mv">Watch: below 5% annual growth (now +13.9%)</div></div></div>
         <div class="mon"><div class="dot a"></div><div><div class="mk">Reported operating EBITDA margin</div><div class="mv">Trigger: below 70% (Q1 FY27 was 78.81%)</div></div></div>
@@ -1896,7 +1982,7 @@
           <h4>The 90-second case for applying at the band</h4>
           <p><strong>You are buying the tollbooth of the world's fastest-financialising large economy, at a discount to what private money paid for it last year, and at a discount to its own listed peers.</strong></p>
           <p>The cap price of Rs 1,785 is <strong>0.91x the certified one-year weighted average cost of acquisition</strong> of Rs 1,954.51, and below the entire disclosed one-year transaction range of Rs 1,860 to Rs 2,015. Three unlisted dealers quoted Rs 1,984 to Rs 2,059 during the bidding week. In almost every Indian IPO the public pays a large multiple of recent insider cost; here the public is paying less. At 42.1x trailing earnings NSE is also cheaper than BSE at 47.0x, MCX at 53.9x and CDSL at 61.6x, while being 3.4x BSE's revenue and 4.2x its profit.</p>
-          <p><strong>The feared collapse happened to the wrong number.</strong> Options notional turnover is down 23% from FY24 and that is what every headline reports, but NSE charges on premium turnover, and premium average daily turnover in the June-2026 quarter was Rs 6,43,518 million, the highest of any period in the document. Revenue grew 13.1%, transaction charges 14.9%, and the reported operating margin of 78.81% came in above the normalised figure, meaning the settlement drag has gone.</p>
+          <p><strong>The feared collapse happened to the wrong number.</strong> Options notional turnover is down 23% from FY24 and that is what every headline reports, but NSE charges on premium turnover, and premium average daily turnover in the June-2026 quarter was Rs 6,43,518 million, the highest of any period in the document. Revenue grew 13.1%, transaction charges 14.9%, and the reported operating margin of 78.81% came in above the normalised figure, meaning the settlement drag has gone. The honest qualifier, which Section 3 makes in full: NSE reached that record while losing options share, because the pool grew 33.1%. A buyer is betting the pool keeps growing faster than the share loss.</p>
           <p><strong>The overhang that stopped this listing for a decade has been paid.</strong> Rs 1,491.21 crore settled on 31-Jul-2026 and the Supreme Court closed NSE's appeals on 03-Sep-2026. The 2016 attempt died of this; the 2026 attempt did not.</p>
           <p><strong>The moat is as close to absolute as Indian equities offer:</strong> 92.99% of cash turnover, 99.79% of equity futures, largest derivatives exchange in the world for seven years, nil debt, 42.8% return on capital employed, an 84% payout, and a structural engine, 132.37 million unique investors growing 13.9% a year, that has nothing to do with derivatives. And the anchor book agreed: 29 mutual fund houses across 98 schemes and 27 insurers and pension funds took both reserved categories well above their floors.</p>
         </div>
@@ -1906,6 +1992,7 @@
           <p>The reverse discounted cash flow is unambiguous: at Rs 1,785 the price embeds roughly <strong>19% compound earnings growth for ten years</strong>, then 5% forever, which requires normalised profit to reach about Rs 68,000 crore, six times today. The cap sits <strong>76% of the way from the bear case to the bull case</strong>. A probability-weighted value of about Rs 1,290 is 28% below the cap. There is no margin of safety at this price for the reset resuming.</p>
           <p><strong>And it might resume.</strong> Sixty per cent of revenue is equity options. SEBI's own data shows 96 lakh individual derivative traders, 91% losing money, Rs 1,05,603 crore of aggregate losses in FY25 and rising 41% a year. Securities transaction tax on options premium has gone from 0.0625% to 0.15% in eighteen months. Four rounds of curbs are in force. Nothing about that trajectory looks finished, and one quarter of recovery is a thin basis for assuming it is.</p>
           <p><strong>The market told you during the bidding.</strong> Retail was undersubscribed at 0.72x. The whole book covered only 1.16x, after the issue had already been cut 15.1%. The grey market premium fell roughly 81% in the fortnight to the close. Those are four independent, dated signals of price resistance.</p>
+          <p><strong>The moat is visibly eroding in the one product that matters.</strong> NSE's share of the options premium pool fell from 96.7% in FY24 to 68.5% in the June-2026 quarter, and BSE grew its premium turnover 96.3% year on year against NSE's 15.9%. A regulator handed BSE a weekly expiry day and took nearly thirty points of share off the incumbent in two years. That is what the moat is worth when the threat is administrative.</p>
           <p><strong>And the exit is structurally hard.</strong> About 94.9% of the capital unlocks on a single day around 22-Mar-2027, roughly 18.6 times the entire IPO float, while the SECC ownership caps ensure no strategic buyer, no control premium and no activist can ever provide a floor. You are buying a permanent minority position in a company nobody is allowed to control, ahead of the largest single-day supply event the stock will ever face.</p>
         </div>
       </div>
@@ -1942,7 +2029,8 @@
         <li><strong>SEBI comparative study of growth in the equity derivatives segment</strong> and SEBI's studies of individual trader profit and loss, read directly. Used for Section 17's official counterweight and the trader loss series.</li>
         <li><strong>SEBI press release dated 02-Sep-2024</strong> on the flipping study of 144 initial public offers, Apr-2021 to Dec-2023. Used for the base rates in Section 21.</li>
         <li><strong>Union Budget documents</strong> for securities transaction tax rates and the changes effective 01-Oct-2024 and 01-Apr-2026, and securities transaction tax collection data to 17-Sep-2026.</li>
-        <li><strong>Redseer Strategy Consultants Private Limited</strong>, "Industry report on Capital Markets and Market Infrastructure Institutions in India", dated 16-Jun-2026, commissioned and paid for by NSE. Treated throughout as an issuer claim, not independent research.</li>
+        <li><strong>Redseer Strategy Consultants Private Limited</strong>, "Industry report on Capital Markets and Market Infrastructure Institutions in India", dated <strong>08-Sep-2026</strong> in the RHP (an earlier version dated 16-Jun-2026 accompanied the DRHP), commissioned and paid for by NSE exclusively for the Offer. Used extensively in Sections 1 and 3 and attributed at every point. Treated as an issuer claim to be tested, not as independent research.</li>
+        <li><strong>Screener.in public company page</strong> for National Stock Exchange of India Ltd, accessed 21-Sep-2026. Used in Sections 5 and 19 for the FY22 and FY23 years that appear in no filing, and to test the filing's arithmetic. <strong>Aggregator data, labelled as such wherever used. The paid Insights panel could not be reached and was not used</strong>, as Section 19 records in full.</li>
         <li><strong>BSE Limited announcements</strong> for the price band advertisement, the anchor allocation filing of 16-Sep-2026 and the day-wise subscription data to 21-Sep-2026.</li>
         <li>Peer financial data from company results releases; peer market capitalisations and multiples from screener.in as at 18-Sep-2026 and from companiesmarketcap.com and stockanalysis.com for global names, all <strong>labelled aggregator and secondary</strong>.</li>
         <li>Unlisted-market share quotations from three dealer platforms (WWIPL, Planify and Stockify), dated 17 to 21-Sep-2026. <strong>Secondary, unregulated and unverifiable.</strong></li>
@@ -1958,6 +2046,8 @@
         <li>The capex decomposition in Section 15 is <strong>inferred</strong> from operating metrics, because the offer document gives no purpose-by-purpose split. It is labelled as inference.</li>
         <li>No median benchmark-adjusted return per lead manager was recomputed from the per-issue price-information tables. Section 23 states this as insufficient data rather than asserting a figure.</li>
         <li>Managing director remuneration is disclosed as Rs 137.6 million in the management chapter and Rs 158.88 million in the related-party note. The two bases are not reconciled in the document and are not reconciled here.</li>
+        <li><strong>FY22 and FY23 figures in Section 5 are aggregator data and are not primary-source verified</strong>, because no filing available for this company covers those years: the RHP, the addendum and NSE's own FY26 annual report all begin at FY24. They are corroborated indirectly by the industry chapter's statement that NSE's FY2022 to FY2026 revenue compound growth was 20.51%, which implies a similar base, but that is corroboration and not verification. The inference in Section 5 about the FY24 margin reset rests on them.</li>
+        <li>The attribution of the FY24 expense increase to the Core Settlement Guarantee Fund contribution is <strong>inferred</strong> from the company's normalisation disclosure and the fund balances in the annual report. The offer document does not give a line-item expense bridge for FY24, and no such bridge could be built from a document that begins at FY24.</li>
         <li>No independent channel checks on trading members, employees or culture met the evidential standard of this report. Section 12 states this rather than substituting weaker material.</li>
       </ul>
 
