@@ -50,7 +50,7 @@ print()
 anchors = [
     ("Floor price", 1700.00),
     ("Cap price",   1785.00),
-    ("18-month weighted avg cost of acquisition", 1747.54),
+    ("18-month weighted avg cost of acquisition", 1795.70),   # RHP-disclosed, bonus-excluded basis
 ]
 print(f"{'Anchor':<44}{'Rs/sh':>9}{'Mkt cap Rs cr':>15}{'P/E TTM':>10}{'P/E norm':>10}{'P/B':>7}")
 print("-" * 95)
