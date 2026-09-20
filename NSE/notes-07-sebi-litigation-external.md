@@ -1,3 +1,31 @@
+> **CORRECTION APPLIED ON ADVERSARIAL VERIFICATION - read this before anything below.**
+>
+> This file was written from media reports and states that the Supreme Court approved the
+> NSE settlement on **18-Sep-2026** and "disposed of all pending appeals". Both claims are
+> WRONG. The verified position, taken from the signed Supreme Court order and corroborated by
+> NSE's own Red Herring Prospectus dated 10-Sep-2026, is:
+>
+> - The Supreme Court order is dated **03-Sep-2026**, not 18-Sep-2026. The Record of
+>   Proceedings reads "Date : 03-09-2026". A prospectus filed on 10-Sep-2026 could not have
+>   described an 18-Sep order, and the RHP states: "The Supreme Court of India through an
+>   order dated September 3, 2026, disposed of the SC Appeals."
+> - **Only two appeals were disposed**: C.A. No. 6471/2023 (co-location) and C.A. No.
+>   4273/2024 (dark fibre). The order records a joint note that "Insofar as Civil Appeal
+>   Nos.6472-6478 of 2023 and Civil Appeal Nos. 4274-4286 of 2024 qua all other respondents
+>   are concerned, the same will remain alive and all the questions of law qua such
+>   respondents are kept open." The remaining appeals were directed to be listed on 09-Sep-2026.
+> - The disposal was **"in terms of the settlement arrived at"** under the SEBI (Settlement
+>   Proceedings) Regulations 2018. The Court RECORDED a settlement; it did not approve terms
+>   or adjudicate the questions of law, which are expressly kept open.
+> - The court record does NOT contain the figure of Rs 1,491.21 crore. The order says only
+>   that "the entire payment as demanded by SEBI" was made on **31-Jul-2026**. The rupee
+>   figure traces to the RHP and to SEBI, not to the Court.
+> - The dark fibre appeal number is C.A. No. 4273/2024, which the original text omitted.
+> - Bench: Justice J.B. Pardiwala and Justice K. Vinod Chandran. That part was correct.
+>
+> Every statement below asserting 18-Sep-2026, or that all appeals were disposed, is
+> superseded by this note. Use the RHP and the signed order, not this file, for these facts.
+
 # NSE: SEBI Litigation and Regulatory Orders
 
 **Source research date: 21-Sep-2026. All dates in DD-MMM-YYYY format. Hyphens only.**
