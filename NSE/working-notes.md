@@ -1,3 +1,13 @@
+> **SUPERSEDED IN PART - read notes-16 first.** This file was written at DRHP stage early in the
+> run. The Red Herring Prospectus dated 10-Sep-2026 was found later the same day and is the
+> governing document. The offer was cut to 126,436,650 shares, the price band is Rs 1,700 to
+> Rs 1,785, bidding ran 17-Sep to 21-Sep-2026, and the RHP adds a Q1 FY27 stub. The settlement
+> was paid on 31-Jul-2026 and the Supreme Court disposed two appeals on 03-Sep-2026.
+> See `notes-16-rhp-stage-position.md` for the current position and
+> `notes-15-drhp-to-rhp-diff.md` for the full draft-to-final comparison.
+>
+> Final report: `nseindia-deep-dive-21-sep-2026.html`, validates 0 FAIL 0 WARN.
+
 # NSE IPO deep dive - working notes
 
 Run started 21-Sep-2026. Skill: india-equity-deep-dive, IPO mode (mainboard, 25 sections).
