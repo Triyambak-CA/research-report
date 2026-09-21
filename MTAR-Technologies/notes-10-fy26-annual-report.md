@@ -93,8 +93,10 @@ report". The Ind AS 24 note is small and clean. Standalone, Rs million:
 | Trade advances receivable from subsidiary (balance) | 58.59 | 4.66 |
 
 In crore: KMP remuneration **Rs 8.03 cr**, down from Rs 9.52 cr, in a year when profit after tax
-rose 78%. Total related-party flows are under **1% of revenue**. There is no evidence of value
-leaking out of the listed entity to promoter-controlled parties.
+rose 78%. Total related-party flows are **Rs 12.49 cr, or 1.4% of revenue** (FY25: Rs 14.46 cr),
+and **Rs 9.43 cr of that is management and board pay**. The subsidiary lines eliminate on
+consolidation, leaving Rs 9.43 cr, or 1.08%. There is no evidence of value leaking out of the
+listed entity to promoter-controlled parties.
 
 **The finding is that there is no finding.** The report should say so as plainly as it stated
 the gap, because the gap was presented as its biggest.
