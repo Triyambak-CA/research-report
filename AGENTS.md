@@ -107,3 +107,39 @@ report's own CSS variables, so it follows whichever theme the reader picked. See
   private. The public site repo is a separate one, `equity-deep-dives`, and the
   two share no history: reports are copied across by `publish-report.sh`, never
   merged.
+
+## Fetching offer documents from SEBI
+
+For an IPO run, everything comes from sebi.gov.in and the listing pages are
+JavaScript-driven, so the PDFs are not linkable from the visible HTML.
+
+**Send a browser user-agent or you get HTTP 530.** A plain `curl` with no
+`-A` is refused. The skill's `ipo-mode.md` says SEBI serves these to a plain
+command-line fetch; that was not true as at Sep-2026.
+
+The listing endpoints, searched by POST with a `search` term:
+
+```sh
+UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+curl -s -L --retry 3 --retry-all-errors -A "$UA" \
+  -X POST "https://www.sebi.gov.in/sebiweb/home/HomeAction.do" \
+  --data-urlencode "doListing=yes" --data-urlencode "sid=3" \
+  --data-urlencode "ssid=15" --data-urlencode "smid=10" \
+  --data-urlencode "search=<Company Name>" --data-urlencode "nextValue=1"
+```
+
+`smid=10` is drafts filed with SEBI, `smid=11` red herring prospectuses filed
+with the RoC, `smid=12` final offer documents, `smid=78` other documents.
+**Check 11 and 12, not just 10** - a draft found in the morning can have a red
+herring prospectus behind it by the afternoon, and the latest filed document
+governs.
+
+The actual PDF sits in an `<iframe src='../../../web/?file=...'>` on the
+landing page, and sibling documents (abridged prospectus, addenda) are only in
+the `<h1>` and `<title>` as `commondocs` links. Grep the page for
+`sebi_data/(attachdocs|commondocs)/[^'"]+\.pdf` to get all of them.
+
+Extract with `pdftotext -layout`. Newspaper-advertisement addenda are usually
+image-only and need `pdftoppm -r 170 -png` plus a visual read. Offer documents
+run 550 to 700 pages; build a printed-page index once (printed page N is
+usually form-feed page N+5) and address the document by its own page numbers.
