@@ -133,34 +133,80 @@ stock went parabolic, traded 13.4x its entire share count in a month, and was pu
 trade-to-trade surveillance. Public holding fell over the same quarter, 24.59% to 23.51%. More
 holders owning less, entering at the top.
 
-## 5. Working capital - four day counts for the same year, on four bases
+## 5. Working capital - four measures, and the company and the panel AGREE
 
-This is known-trap 2 in its purest form. For FY26 the following are all published:
+**A verifier refuted my first write-up of this and it was right.** Recorded in full because the
+error is instructive.
 
-| Figure | Basis | Source |
-|---|---|---|
-| **419 days** | cash conversion cycle: debtor + inventory - payable days | screener ratio table |
-| **172 days** | net working capital days | screener premium Insights |
-| **146 days** | net working capital days | the company's own FY26 presentation |
-| **69 days** | working capital days | screener ratio table |
+I first presented six measures for FY26, including a company figure of "266 falling to 146", and
+said the single reconciler was customer advances. Both parts were wrong.
 
-They are not in conflict. They measure different things, and the gap between them IS the story.
+**The 266-to-146 pair does not exist.** The Q1 FY27 deck's working capital chart is a STACKED
+bar: each quarter splits into "other than WIP" plus "WIP", topped by a total.
 
-Screener's own component days for FY26: debtor 140, inventory 399, payable 119. That gives
-140 + 399 - 119 = 420, against the stated 419. The cycle **worsened** from 369 in FY25 to 419
-in FY26, and debtor days worsened 113 to 140.
+| | Other than WIP | WIP | Total |
+|---|---|---|---|
+| Sep-25 | 146 | 128 | 274 |
+| Dec-25 | 161 | 105 | 266 |
+| Mar-26 | 84 | 88 | **172** |
+| Jun-26 | 56 | 3 | **59** |
 
-Yet screener's "working capital days" **improved** from 168 to 69 across the same year. The
-reconciler is on the liabilities side of the balance sheet: **Other Liabilities went from
-Rs 224 cr to Rs 544 cr, up Rs 320 cr in one year.** Net working capital is current assets less
-current liabilities, so a Rs 320 cr swelling of current liabilities collapses it. The cash
-conversion cycle ignores that line entirely.
+So 146 is the Sep-25 non-WIP component and 266 is the Dec-25 total. The 21-Sep edition read them
+as a March-2026 pair and built a "denominator switch" finding on it. Management's own words on
+the Q1 FY27 call: *"When it comes to the working capital days, we have achieved 59 days compared
+to the 172 days."* **146 and 266 appear nowhere in that transcript.**
 
-The report's finding that FY26's entire operating cash flow arrived in Q4 at 354% of that
-quarter's EBITDA, and that Q1 FY27 repeated it at 291%, is the same fact seen from the cash flow
-statement. Customer advances. **The working capital "improvement", the Q4 cash flow surge and
-the record order book are one event, not three.** Confirm the advances line against the FY26
-balance sheet before relying on this.
+**The company and the premium panel therefore AGREE exactly at 172 days for FY26.**
+
+### The four real measures
+
+| Measure | FY25 | FY26 | Source |
+|---|---|---|---|
+| Net working capital days | n/d | **172** | The company, chart and call |
+| Net working capital days | 267 | **172** | Screener Insights. Identical |
+| NWC / operating income | 62% | 44% (~161 days) | ICRA. Rebuilt from the balance sheet: 60.2% and 44.2% |
+| Working capital days | 168 | 69 | Screener ratio table, deducting total current liabilities including short-term debt |
+| Cash conversion cycle | 369 | **419** | Screener ratio table |
+
+### The bridge from 172 to 419, which closes exactly
+
+| | Days |
+|---|---|
+| Company's net working capital days | 172 |
+| Inventory restated from a sales denominator to a cost denominator | **+191** |
+| Liability deduction narrowed from all current liabilities to trade payables | +57 |
+| **Cash conversion cycle** | **420**, against 419 published |
+
+Rs 500.52 cr of inventory is 208 days of sales and 399 days of cost of materials (Rs 458.41 cr).
+**Three quarters of the gap is the inventory denominator, not advances.** My first version said
+advances explained it. They explain 57 of 248 days.
+
+### What advances DO explain
+
+Contract liabilities rose Rs 43.34 cr to Rs 252.65 cr, up Rs 209.3 cr or 483%. Net working
+capital from the balance sheet: **FY25 Rs 407.3 cr = 220 days; FY26 Rs 387.0 cr = 161 days.**
+Hold advances at the FY25 level and FY26 NWC would be **Rs 596.3 cr = 248 days, 28 days WORSE
+than FY25.** The advances reverse the sign of the ratio. That survives and is strong.
+
+### What advances do NOT explain
+
+CFO rose Rs 95.65 cr. The whole working capital block contributed about **Rs 40.6 cr**:
+
+| Movement | Rs cr |
+|---|---|
+| Advances from customers | +209.3 |
+| Inventory build | -154.5 |
+| Receivable build | -116.7 |
+| Other financial liabilities | +61.7 |
+| Trade payables | +42.1 |
+| Others, net | -1.3 |
+| **Net** | **+40.6** |
+
+The rest is roughly Rs 56 cr of operating profit growth less about Rs 11 cr more tax paid. **More
+than half the increase in operating cash flow is earnings growth, not advances.** My "one event,
+not three" framing was too strong and has been narrowed in the report.
+
+The word "advance" does not appear once in the Q1 FY27 transcript.
 
 ## 6. Cross-checks against the report's own Section 19 that came out differently
 

@@ -86,9 +86,12 @@ through an intermediary, or derived with the arithmetic shown. Nothing was estim
 4. Guidance credibility 31% overall, 10% on margin, 6% on capex and commissioning dates, from 83
    scored claims across nine quarters of verbatim transcripts. Management stopped saying "Bloom"
    entirely on the last two calls and withdrew the hot box capacity roadmap under an NDA.
-5. The "working capital days halved from 266 to 146" headline is substantially a denominator switch
-   from trailing actual revenue to forward-annualised quarterly revenue. Absolute NWC is roughly
-   unchanged at about Rs 577 cr.
+5. [SUPERSEDED 22-Sep-2026] The "working capital days halved from 266 to 146" headline was a
+   misread stacked bar chart: 146 is the Sep-25 non-WIP component, 266 the Dec-25 total. The
+   company and the premium panel both say 172 days for FY26, and management said "59 days
+   compared to the 172 days" on the Q1 FY27 call. The real finding is that the 172 and the
+   aggregator's 419-day cash conversion cycle differ by 248 days, of which 191 is the inventory
+   denominator (sales vs cost of materials). See notes-08 section 5.
 
 ## Open items that would change the assessment
 - The related party transactions note and guarantees to related parties (existence confirmed, quantum unknown)
