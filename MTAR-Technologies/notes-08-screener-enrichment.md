@@ -76,9 +76,11 @@ Left-anchoring puts 876.90 against FY25 and fails by 200 cr. So:
 A third, independent confirmation: under this alignment the export row gives FY24 = 71%, and
 stream-A recorded the company itself stating FY24 exports at 71%.
 
-Earlier years do not tie exactly (FY22 short by 8.1, FY23 by 15.4, FY24 by 20.6) which is
-consistent with unallocated other operating revenue, not with a dating error, because FY21,
-FY25 and FY26 all tie.
+Earlier years do not tie exactly (FY22 short by 8.1, FY23 by 14.7, FY24 by 19.6). **My first
+reading of that gap as unallocated other operating revenue was wrong.** The FY26 annual report's
+Sectorial Revenue break up shows the whole of it is a restatement of the Aerospace and Defence
+line: FY22 48.3 -> 56.4, FY23 49.4 -> 64.5, FY24 39.0 -> 58.7 in crore. The aggregator carries the
+superseded basis. See notes-10 section 13.
 
 ## 4. Shareholding - the full twelve-quarter history the report could not obtain
 

@@ -245,8 +245,29 @@ supports.
 
 ## 13. Segment revenue - the labels, settled from the company's own chart
 
-The Ind AS 115 disaggregation note in the annual report gives **only a geographic split**, not a
-product split:
+**The annual report DOES print a product split**, as a "Sectorial Revenue break up" table in the
+management discussion covering FY22 to FY26. This is the primary record and it is what the report
+now uses. Rs million:
+
+| Sector | FY22 | FY23 | FY24 | FY25 | FY26 |
+|---|---|---|---|---|---|
+| Clean Energy - Civil Nuclear | 457 | 438 | 619 | 184 | 236 |
+| Clean Energy - Fuel Cells, Hydro Power & others | 2,016 | 4,417 | 3,511 | 4,169 | 6,146 |
+| Aerospace & Defence | 564 | 645 | 587 | 932 | 1,038 |
+| Products & Others | 183 | 233 | 1,083 | 1,475 | 1,341 |
+| **Total revenue from operations** | **3,220** | **5,733** | **5,800** | **6,760** | **8,761** |
+
+**The aerospace line has been silently restated upward.** The aggregator carries FY22 48.3,
+FY23 49.4, FY24 39.0 in crore; the annual report says 56.4, 64.5, 58.7. Those three differences
+of 8.1, 15.1 and 19.7 account for the entire gap between the aggregator's column sums and reported
+revenue in those years. FY25 and FY26 agree exactly on all four lines. The company's own Q1 FY27
+deck plots the restated bars against the OLD percentages on the same page. No restatement was
+announced.
+
+Customer concentration, from note 40(c): one customer contributed **Rs 6,334.19 million
+(Rs 633.42 cr, 72.3% of revenue)** in FY26 and Rs 4,836.99 million (Rs 483.70 cr, 71.6%) in FY25.
+
+The Ind AS 115 disaggregation note separately gives the geographic split:
 
 | | FY2026 | FY2025 |
 |---|---|---|
