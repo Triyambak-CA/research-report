@@ -136,3 +136,19 @@ The company's debt-raising pattern shows an initial IPO-driven deleveraging foll
 ## Summary
 
 This document traces Rs 949.45 crore of IPO proceeds from Jyoti CNC's Jan-2024 listing through Sep-2024. All three objects were substantially executed: Rs 475 crore debt repayment was fully utilised by Mar-31-2024; working capital funding reached Rs 349.47 crore (97% of Rs 360 crore plan); general corporate purposes reached Rs 104.71 crore (92% of Rs 114.45 crore plan). By Sep-30-2024, Rs 929.18 crore (98%) had been deployed, with Rs 20.27 crore parked in fixed deposits. CARE Ratings reported no deviations across three consecutive quarterly monitoring reports. The company subsequently re-leveraged significantly post-IPO, growing total debt from Rs 303.78 crore (31-Mar-2024) to Rs 849.71 crore (31-Mar-2026) to fund working capital and aggressive international expansion via Huron acquisitions.
+
+## Addendum by the lead, 29-Sep-2026 - the closing report exists
+
+CORRECTION to section 4 above. A fourth CARE Ratings monitoring report, for the quarter ended
+31-Dec-2024, was filed on NSE on 10-Feb-2025 (source-docs/nse/mar-2024-12.pdf, not on the
+company site). It states all three objects "Fully utilized till December" 2024: debt repayment
+Rs 475.00 cr (by 31-Mar-2024), long-term working capital Rs 360.00 cr, general corporate purposes
+Rs 115.91 cr against Rs 114.45 cr planned ("Change in cost"), the extra Rs 1.46 cr being savings
+on issue expenses redirected to general corporate purposes. Total Rs 950.51 cr against Rs 949.05 cr.
+No deviation. So the IPO money was fully deployed within about eleven months of listing.
+
+CAUTION on the "pre-IPO debt" row: Rs 507.48 cr is the list of STANDALONE borrowings named as
+eligible for repayment at 30-Sep-2023, not total group debt. Restated consolidated borrowings were
+Rs 821.40 cr at 30-Sep-2023 and Rs 834.97 cr at 31-Mar-2023 (prospectus summary, Rs 8,214.04 mn and
+Rs 8,349.74 mn). The correct comparison: consolidated borrowings Rs 835 cr (FY23) -> Rs 303.78 cr
+(FY24) -> Rs 496.88 cr (FY25) -> Rs 849.71 cr (FY26). FY26 debt is back above the pre-IPO level.
