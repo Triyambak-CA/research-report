@@ -49,3 +49,21 @@ Section spec: listed-company report-sections.md (20 sections), NOT ipo-mode.
 ## Agents (29-Sep-2026 wave) and their notes files
 notes-02..06 extractors (done), 07 cash forensics, 08 ratings+governance, 09 guidance+order book,
 10 peers, 11 industry+macro, 12 scuttlebutt+positioning (incl. Huron press coverage).
+
+## Q1 FY27 (quarter to 30-Jun-2026), from the 07-Aug-2026 investor presentation (primary)
+| Rs cr | Standalone Q1 FY27 | Standalone Q1 FY26 | Consolidated Q1 FY27 | Consolidated Q1 FY26 |
+|---|---|---|---|---|
+| Revenue | 509.1 | 372.3 | 508.5 | 410.2 |
+| Gross margin | 52.8% | 50.5% | 58.2% | 56.0% |
+| Reported EBITDA | 138.7 | 98.6 | 108.8 | 100.2 |
+| Unrealised forex loss in EBITDA | 6.0 | - | 10.0 | - |
+| Other income | 3.8 | 14.5 | 4.0 | 20.5 |
+| Finance cost | 20.0 | 6.9 | 24.3 | 12.2 |
+| PBT | 110.5 | 95.4 | 73.4 | 96.3 |
+| PAT | 87.5 | 72.1 | 57.1 | 71.4 |
+Implied subsidiaries net of eliminations, Q1 FY27: revenue -0.6 (standalone exceeds
+consolidated), EBITDA -29.9, PAT -30.4. Q1 FY26: revenue +37.9, EBITDA +1.6, PAT -0.7.
+So the whole Q1 FY27 profit fall is the subsidiaries (Huron under French investigation from
+Apr-2026); standalone PAT rose 21%. Order book 30-Jun-2026 Rs 4,848 cr (opening 4,732 + intake 601
+- executed 485). Deck now claims "1,40,000+ machines installed across the globe" (prospectus:
+"30,000+ CNC machines supplied since April 2004") - basis differs, test in notes-09.
