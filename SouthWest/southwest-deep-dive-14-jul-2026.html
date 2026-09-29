@@ -232,6 +232,9 @@
   .uu ul{margin:6px 0 0 17px;font-size:12.5px;color:var(--text)}
   .uu li{margin:6px 0;line-height:1.5}
   .uu li::marker{color:var(--amber)}
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -328,12 +331,12 @@
       <div class="tw">
       <table>
         <caption>Policy tailwinds most aligned to SWPEL's drilling capabilities. Sources: PIB, Ministry of Mines / Coal / Jal Shakti, NMET AR 2023-24 (primary); ICRA, S&amp;P (secondary).</caption>
-        <thead><tr><th>Engine</th><th class="mono">Scale</th><th>What it funds</th><th>SWPEL relevance</th></tr></thead>
+        <thead><tr><th>Engine</th><th class="mono tx">Scale</th><th class="tx">What it funds</th><th class="tx">SWPEL relevance</th></tr></thead>
         <tbody>
-          <tr><td>National Critical Mineral Mission (Cabinet 29-Jan-2025)</td><td class="mono">INR 34,300 Cr / 7 yr</td><td>1,200 GSI exploration projects to FY31; 30 critical minerals</td><td>Deep, precise core drilling on lithium/REE/copper - SWPEL's core skill</td></tr>
-          <tr><td>Commercial coal + Coal India MDO</td><td class="mono">1.05 BT FY25 -&gt; 1.5 BT FY30</td><td>~133 auctioned mines, ~INR 41,407 Cr committed capex; ~15+ CIL MDO projects</td><td>Coal exploration drilling for CMPDI; own coal block</td></tr>
-          <tr><td>MMDR Amendment 2023 - Exploration Licence</td><td class="mono">29 minerals</td><td>Private reconnaissance/prospecting; NPEA regime; 25% NMET incentive</td><td>New private explorers all need contract drillers</td></tr>
-          <tr><td>Jal Jeevan Mission / Atal Bhujal / NAQUIM</td><td class="mono">INR 3.6 lakh Cr + INR 6,000 Cr</td><td>Rural water, aquifer mapping, groundwater sustainability</td><td>Aquifer-mapping wells + hydrogeology (CGWB) - a new 15% of revenue</td></tr>
+          <tr><td>National Critical Mineral Mission (Cabinet 29-Jan-2025)</td><td class="mono tx">INR 34,300 Cr / 7 yr</td><td class="tx">1,200 GSI exploration projects to FY31; 30 critical minerals</td><td class="tx">Deep, precise core drilling on lithium/REE/copper - SWPEL's core skill</td></tr>
+          <tr><td>Commercial coal + Coal India MDO</td><td class="mono tx">1.05 BT FY25 -&gt; 1.5 BT FY30</td><td class="tx">~133 auctioned mines, ~INR 41,407 Cr committed capex; ~15+ CIL MDO projects</td><td class="tx">Coal exploration drilling for CMPDI; own coal block</td></tr>
+          <tr><td>MMDR Amendment 2023 - Exploration Licence</td><td class="mono tx tn">29 minerals</td><td class="tx">Private reconnaissance/prospecting; NPEA regime; 25% NMET incentive</td><td class="tx">New private explorers all need contract drillers</td></tr>
+          <tr><td>Jal Jeevan Mission / Atal Bhujal / NAQUIM</td><td class="mono tx">INR 3.6 lakh Cr + INR 6,000 Cr</td><td class="tx">Rural water, aquifer mapping, groundwater sustainability</td><td class="tx">Aquifer-mapping wells + hydrogeology (CGWB) - a new 15% of revenue</td></tr>
         </tbody>
       </table>
       </div>
@@ -592,17 +595,17 @@
       <div class="tw">
       <table>
         <caption>Forensic checklist. Sources: FY25 &amp; FY24 annual reports (auditor's report, CARO, Notes 12/42/45/49), FY26 audited results (04-May-2026), CRISIL 16-Oct-2024.</caption>
-        <thead><tr><th>Check</th><th>Finding</th><th>Read</th></tr></thead>
+        <thead><tr><th>Check</th><th class="tx">Finding</th><th class="tx">Read</th></tr></thead>
         <tbody>
-          <tr><td>Receivables vs revenue (3-yr)</td><td>Receivables +107% (INR 56 -&gt; 116 Cr) vs revenue +83%; DSO 154 -&gt; 175. But ageing clean, 39% unbilled/retention, PSU counterparties, zero doubtful</td><td><span class="chip part">Amber</span></td></tr>
-          <tr><td>Cash-yield ("is cash real?")</td><td>Interest income INR 1.71 Cr on ~INR 26 Cr avg cash = ~6.7% yield - market rate</td><td><span class="chip hit">Clean</span></td></tr>
-          <tr><td>CWIP aging</td><td>Tangible CWIP immaterial (~INR 0.4 Cr); the "INR 15 Cr" is coal-block intangible-under-development, capitalised not expensed, grew to INR 19 Cr - watch if block stalls</td><td><span class="chip part">Watch</span></td></tr>
-          <tr><td>Other income % of PBT</td><td>8.7% (FY26) vs 23.7% (FY25) - profit doubling was operating</td><td><span class="chip hit">Clean</span></td></tr>
-          <tr><td>Effective tax vs statutory</td><td>FY24 27.2%, FY25 25.0%, FY26 ~25.4% - hugs 25.17% statutory; no tax-driven inflation</td><td><span class="chip hit">Clean</span></td></tr>
-          <tr><td>Contingent liabilities / net worth</td><td>BG INR 22.5 Cr + tax disputes INR 2.1 Cr = ~14% of net worth; plus new INR 25 Cr coal-block capital commitment. Contained</td><td><span class="chip hit">Clean</span></td></tr>
-          <tr><td>Related-party transactions</td><td>INR 9.5 Cr lent to and repaid by promoter-influenced enterprises within FY25 (INR 14.6 Cr FY24); promoters lend WC in the crunch. Repaid with interest, ~nil year-end balance</td><td><span class="chip miss">Flag</span></td></tr>
-          <tr><td>Auditor</td><td>Doogar &amp; Associates (FRN 000561N) - established mid-tier Delhi firm; unmodified opinion; CARO clean; no resignation. KAM = revenue recognition (unbilled INR 29.6 Cr)</td><td><span class="chip hit">Clean</span></td></tr>
-          <tr><td>Standalone vs consolidated</td><td>Consol PAT INR 33 Cr vs s/a INR 31 Cr - gap is Oman JV share of profit; no losses parked outside consolidation</td><td><span class="chip hit">Clean</span></td></tr>
+          <tr><td>Receivables vs revenue (3-yr)</td><td class="tx">Receivables +107% (INR 56 -&gt; 116 Cr) vs revenue +83%; DSO 154 -&gt; 175. But ageing clean, 39% unbilled/retention, PSU counterparties, zero doubtful</td><td class="tx tn"><span class="chip part">Amber</span></td></tr>
+          <tr><td>Cash-yield ("is cash real?")</td><td class="tx">Interest income INR 1.71 Cr on ~INR 26 Cr avg cash = ~6.7% yield - market rate</td><td class="tx tn"><span class="chip hit">Clean</span></td></tr>
+          <tr><td>CWIP aging</td><td class="tx">Tangible CWIP immaterial (~INR 0.4 Cr); the "INR 15 Cr" is coal-block intangible-under-development, capitalised not expensed, grew to INR 19 Cr - watch if block stalls</td><td class="tx tn"><span class="chip part">Watch</span></td></tr>
+          <tr><td>Other income % of PBT</td><td class="tx">8.7% (FY26) vs 23.7% (FY25) - profit doubling was operating</td><td class="tx tn"><span class="chip hit">Clean</span></td></tr>
+          <tr><td>Effective tax vs statutory</td><td class="tx">FY24 27.2%, FY25 25.0%, FY26 ~25.4% - hugs 25.17% statutory; no tax-driven inflation</td><td class="tx tn"><span class="chip hit">Clean</span></td></tr>
+          <tr><td>Contingent liabilities / net worth</td><td class="tx">BG INR 22.5 Cr + tax disputes INR 2.1 Cr = ~14% of net worth; plus new INR 25 Cr coal-block capital commitment. Contained</td><td class="tx tn"><span class="chip hit">Clean</span></td></tr>
+          <tr><td>Related-party transactions</td><td class="tx">INR 9.5 Cr lent to and repaid by promoter-influenced enterprises within FY25 (INR 14.6 Cr FY24); promoters lend WC in the crunch. Repaid with interest, ~nil year-end balance</td><td class="tx tn"><span class="chip miss">Flag</span></td></tr>
+          <tr><td>Auditor</td><td class="tx">Doogar &amp; Associates (FRN 000561N) - established mid-tier Delhi firm; unmodified opinion; CARO clean; no resignation. KAM = revenue recognition (unbilled INR 29.6 Cr)</td><td class="tx tn"><span class="chip hit">Clean</span></td></tr>
+          <tr><td>Standalone vs consolidated</td><td class="tx">Consol PAT INR 33 Cr vs s/a INR 31 Cr - gap is Oman JV share of profit; no losses parked outside consolidation</td><td class="tx tn"><span class="chip hit">Clean</span></td></tr>
         </tbody>
       </table>
       </div>
@@ -622,12 +625,12 @@
       <div class="tw">
       <table>
         <caption>Promoter holding trajectory. Sources: SAST/insider disclosures, shareholding filings, exchange announcements (Feb-2025 to Jul-2026).</caption>
-        <thead><tr><th>Event</th><th class="mono">Date</th><th class="mono">Promoter %</th><th>Mechanism</th></tr></thead>
+        <thead><tr><th>Event</th><th class="mono tx">Date</th><th class="mono">Promoter %</th><th class="tx">Mechanism</th></tr></thead>
         <tbody>
-          <tr><td>Pre-dilution</td><td class="mono">Mar-2024</td><td class="mono">73.61%</td><td>-</td></tr>
-          <tr><td>Preferential allotment</td><td class="mono">Feb-2025</td><td class="mono">68.85%</td><td>Dilution (INR 34.8 Cr raise), not selling</td></tr>
-          <tr><td>Open-market sale</td><td class="mono">22-23 Jun-2026</td><td class="mono">64.94%</td><td>Sold ~11.7 lakh sh (~3.9%) at ~INR 248</td></tr>
-          <tr><td>Warrant conversion</td><td class="mono">10-Jul-2026</td><td class="mono">65.94%</td><td>Converted 22.7 lakh self-allotted warrants at INR 132.20</td></tr>
+          <tr><td>Pre-dilution</td><td class="mono tx tn">Mar-2024</td><td class="mono">73.61%</td><td class="tx tn">-</td></tr>
+          <tr><td>Preferential allotment</td><td class="mono tx tn">Feb-2025</td><td class="mono">68.85%</td><td class="tx">Dilution (INR 34.8 Cr raise), not selling</td></tr>
+          <tr><td>Open-market sale</td><td class="mono tx tn">22-23 Jun-2026</td><td class="mono">64.94%</td><td class="tx">Sold ~11.7 lakh sh (~3.9%) at ~INR 248</td></tr>
+          <tr><td>Warrant conversion</td><td class="mono tx tn">10-Jul-2026</td><td class="mono">65.94%</td><td class="tx">Converted 22.7 lakh self-allotted warrants at INR 132.20</td></tr>
         </tbody>
       </table>
       </div>
@@ -648,14 +651,14 @@
       <div class="tw">
       <table>
         <caption>What management has put on record (last 3 calls / PPTs). Outcome column reflects status as of Q4/FY26 results and Jul-2026 announcements.</caption>
-        <thead><tr><th>Claim</th><th>Made</th><th>Status</th><th>Read</th></tr></thead>
+        <thead><tr><th>Claim</th><th class="tx">Made</th><th class="tx">Status</th><th class="tx">Read</th></tr></thead>
         <tbody>
-          <tr><td>FY26 strong growth / margin step-up</td><td>H1 FY26 calls</td><td>Revenue +35%, PAT +101%, OPM 19-&gt;24%</td><td><span class="chip over">Delivered</span></td></tr>
-          <tr><td>Order-book build to marquee clients</td><td>FY26 calls</td><td>HZL INR 307 Cr, RIL CBM extension; book &gt;INR 760 Cr</td><td><span class="chip over">Delivered</span></td></tr>
-          <tr><td>FY27 ~20% revenue growth + margin expansion</td><td>Q4 FY26 (06-May-2026)</td><td>Open - too early</td><td><span class="chip part">Pending</span></td></tr>
-          <tr><td>Coal block production by FY28</td><td>FY26 PPTs</td><td>Prospecting-agency status secured; drilling on</td><td><span class="chip part">On track</span></td></tr>
-          <tr><td>Reliance to stay 35-40% of revenue</td><td>Q4 FY26</td><td>Open (concentration acknowledged)</td><td><span class="chip part">Pending</span></td></tr>
-          <tr><td>Forward margin quantification</td><td>Q4 FY26</td><td>Declined - "cannot give quantification"</td><td><span class="chip miss">Hedged</span></td></tr>
+          <tr><td>FY26 strong growth / margin step-up</td><td class="tx tn">H1 FY26 calls</td><td class="tx">Revenue +35%, PAT +101%, OPM 19-&gt;24%</td><td class="tx tn"><span class="chip over">Delivered</span></td></tr>
+          <tr><td>Order-book build to marquee clients</td><td class="tx tn">FY26 calls</td><td class="tx">HZL INR 307 Cr, RIL CBM extension; book &gt;INR 760 Cr</td><td class="tx tn"><span class="chip over">Delivered</span></td></tr>
+          <tr><td>FY27 ~20% revenue growth + margin expansion</td><td class="tx">Q4 FY26 (06-May-2026)</td><td class="tx tn">Open - too early</td><td class="tx tn"><span class="chip part">Pending</span></td></tr>
+          <tr><td>Coal block production by FY28</td><td class="tx tn">FY26 PPTs</td><td class="tx">Prospecting-agency status secured; drilling on</td><td class="tx tn"><span class="chip part">On track</span></td></tr>
+          <tr><td>Reliance to stay 35-40% of revenue</td><td class="tx tn">Q4 FY26</td><td class="tx">Open (concentration acknowledged)</td><td class="tx tn"><span class="chip part">Pending</span></td></tr>
+          <tr><td>Forward margin quantification</td><td class="tx tn">Q4 FY26</td><td class="tx">Declined - "cannot give quantification"</td><td class="tx tn"><span class="chip miss">Hedged</span></td></tr>
         </tbody>
       </table>
       </div>
@@ -783,12 +786,12 @@
       <div class="tw">
       <table>
         <caption>Fully diluted basis (3.265 Cr shares post 10-Jul-2026 warrant conversion; equity capital INR 32.65 Cr). Consolidated earnings. Standalone P/E footnoted for screener comparability.</caption>
-        <thead><tr><th>Multiple</th><th class="mono">SWPEL</th><th>Context</th></tr></thead>
+        <thead><tr><th>Multiple</th><th class="mono">SWPEL</th><th class="tx">Context</th></tr></thead>
         <tbody>
-          <tr><td>P/E (FY26, consol)</td><td class="mono">~22x</td><td>Screener shows 21.7x (standalone-basic). Richer than Jindal 8x / Deep ~13x; cheaper than Asian 29x / Selan 34x</td></tr>
-          <tr><td>EV/EBITDA (FY26)</td><td class="mono">~13x</td><td>On INR 58 Cr EBITDA; ~15-16x on a normalised ~19% margin</td></tr>
-          <tr><td>P/B</td><td class="mono">~3.6x</td><td>Book value ~INR 68/sh; ROE ~18% supports a premium to book</td></tr>
-          <tr><td>Market cap</td><td class="mono">~INR 655-738 Cr</td><td>~INR 655 Cr aggregator basis; ~INR 738 Cr fully diluted at INR 226</td></tr>
+          <tr><td>P/E (FY26, consol)</td><td class="mono">~22x</td><td class="tx">Screener shows 21.7x (standalone-basic). Richer than Jindal 8x / Deep ~13x; cheaper than Asian 29x / Selan 34x</td></tr>
+          <tr><td>EV/EBITDA (FY26)</td><td class="mono">~13x</td><td class="tx">On INR 58 Cr EBITDA; ~15-16x on a normalised ~19% margin</td></tr>
+          <tr><td>P/B</td><td class="mono">~3.6x</td><td class="tx">Book value ~INR 68/sh; ROE ~18% supports a premium to book</td></tr>
+          <tr><td>Market cap</td><td class="mono">~INR 655-738 Cr</td><td class="tx">~INR 655 Cr aggregator basis; ~INR 738 Cr fully diluted at INR 226</td></tr>
         </tbody>
       </table>
       </div>

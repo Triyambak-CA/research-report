@@ -304,6 +304,9 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   .trk-ticks{font-size:8.5px}
 }
 
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}
 </style>
 <script>
 (function(){
@@ -429,18 +432,18 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Bloom Energy is not an industry statistic. It is the industry, for MTAR's purposes.</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Bloom Energy, Q2 CY2026 reported 28-Jul-2026</th><th>Value</th><th>Year on year</th></tr></thead>
+    <thead><tr><th>Bloom Energy, Q2 CY2026 reported 28-Jul-2026</th><th class="tx">Value</th><th class="tx">Year on year</th></tr></thead>
     <tbody>
-      <tr class="hl"><td>Revenue</td><td>USD 1,065.4 mn, the first billion-dollar quarter</td><td class="pos">+165.5%</td></tr>
-      <tr><td>Product revenue</td><td>USD 935 mn, about 88% of total</td><td class="pos">+215.4%</td></tr>
-      <tr><td>Gross margin</td><td>34.3%</td><td class="pos">+604 bps</td></tr>
-      <tr class="hl"><td>Operating margin</td><td>22.5%</td><td class="pos">+1,536 bps</td></tr>
-      <tr><td>Operating income</td><td>USD 240 mn</td><td class="pos">+737%</td></tr>
-      <tr><td>Free cash flow</td><td>USD 175 mn</td><td>Positive</td></tr>
-      <tr><td>Cash at quarter end</td><td>USD 2.7 bn</td><td>Self-funding</td></tr>
-      <tr class="hl"><td>Total backlog</td><td>USD 20 bn, of which USD 6 bn product</td><td class="pos">Product backlog +140%</td></tr>
-      <tr><td>CY2026 revenue guidance</td><td>USD 3.9-4.2 bn, raised 28-Jul-2026</td><td>~100% growth</td></tr>
-      <tr><td>Capacity</td><td>1 GW to 2 GW at Fremont by end-2026, about USD 100 mn committed</td><td>On track</td></tr>
+      <tr class="hl"><td>Revenue</td><td class="tx">USD 1,065.4 mn, the first billion-dollar quarter</td><td class="pos tx tn">+165.5%</td></tr>
+      <tr><td>Product revenue</td><td class="tx">USD 935 mn, about 88% of total</td><td class="pos tx tn">+215.4%</td></tr>
+      <tr><td>Gross margin</td><td class="tx tn">34.3%</td><td class="pos tx tn">+604 bps</td></tr>
+      <tr class="hl"><td>Operating margin</td><td class="tx tn">22.5%</td><td class="pos tx tn">+1,536 bps</td></tr>
+      <tr><td>Operating income</td><td class="tx tn">USD 240 mn</td><td class="pos tx tn">+737%</td></tr>
+      <tr><td>Free cash flow</td><td class="tx tn">USD 175 mn</td><td class="tx tn">Positive</td></tr>
+      <tr><td>Cash at quarter end</td><td class="tx tn">USD 2.7 bn</td><td class="tx tn">Self-funding</td></tr>
+      <tr class="hl"><td>Total backlog</td><td class="tx">USD 20 bn, of which USD 6 bn product</td><td class="pos tx">Product backlog +140%</td></tr>
+      <tr><td>CY2026 revenue guidance</td><td class="tx">USD 3.9-4.2 bn, raised 28-Jul-2026</td><td class="tx tn">~100% growth</td></tr>
+      <tr><td>Capacity</td><td class="tx">1 GW to 2 GW at Fremont by end-2026, about USD 100 mn committed</td><td class="tx tn">On track</td></tr>
     </tbody>
   </table></div></div>
   <p>Since then Bloom has been confirmed for S&amp;P 500 inclusion, expanded its Brookfield partnership from USD 5 bn to USD 25 bn in nine months, launched an 800-volt direct-current data-centre power architecture, and won US Army power leases. The demand is real and it is arriving as revenue, not promises.</p>
@@ -480,13 +483,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
     <p><b>No private party can have been licensed. Everything private-nuclear is still pre-revenue.</b></p>
   </div>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Bharat Small Reactors: the flagship private nuclear tender</th><th>Date</th></tr></thead>
+    <thead><tr><th>Bharat Small Reactors: the flagship private nuclear tender</th><th class="tx">Date</th></tr></thead>
     <tbody>
-      <tr><td>NPCIL issues request for proposal, twin 220 MWe reactors for captive use</td><td>Dec-2024</td></tr>
-      <tr><td>Original deadline</td><td>30-Sep-2025</td></tr>
-      <tr><td>Extended at bidders' request</td><td>31-Mar-2026</td></tr>
-      <tr><td>NPCIL states it will rewrite the tender to align with the new Act</td><td>~15-Jan-2026</td></tr>
-      <tr class="hl"><td><b>No award. No revised request for proposal identified.</b></td><td><b>21-Sep-2026</b></td></tr>
+      <tr><td>NPCIL issues request for proposal, twin 220 MWe reactors for captive use</td><td class="tx tn">Dec-2024</td></tr>
+      <tr><td>Original deadline</td><td class="tx tn">30-Sep-2025</td></tr>
+      <tr><td>Extended at bidders' request</td><td class="tx tn">31-Mar-2026</td></tr>
+      <tr><td>NPCIL states it will rewrite the tender to align with the new Act</td><td class="tx tn">~15-Jan-2026</td></tr>
+      <tr class="hl"><td><b>No award. No revised request for proposal identified.</b></td><td class="tx tn"><b>21-Sep-2026</b></td></tr>
     </tbody>
     <tfoot><tr><td colspan="2">At least eighteen months of slippage, with the tender itself being rewritten. Interested parties include Reliance, Adani Power, Tata Power, Hindalco, JSPL and JSW Energy; sixteen probable sites have been identified across six states.</td></tr></tfoot>
   </table></div></div>
@@ -498,13 +501,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Indian aerospace and defence: funded, and top of funnel</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Budget FY2026-27</th><th>Amount</th><th>Change</th></tr></thead>
+    <thead><tr><th>Budget FY2026-27</th><th>Amount</th><th class="tx">Change</th></tr></thead>
     <tbody>
-      <tr><td>Total Ministry of Defence budget</td><td>&#8377;7.85 lakh crore</td><td>+15% and above</td></tr>
-      <tr><td>Capital outlay, defence services</td><td>&#8377;2,19,306 crore</td><td>+17.6% over FY26 revised</td></tr>
-      <tr><td>Capital acquisition</td><td>&#8377;1.85 lakh crore</td><td>~+24%</td></tr>
-      <tr class="hl"><td><b>Earmarked for domestic industry including private sector</b></td><td><b>&#8377;1.39 lakh crore, about 75%</b></td><td>The closest official proxy to MTAR's domestic addressable base</td></tr>
-      <tr><td>Defence Acquisition Council clearances, ~07-Jul-2026</td><td>&#8377;52,000 crore</td><td>Approvals, not orders</td></tr>
+      <tr><td>Total Ministry of Defence budget</td><td>&#8377;7.85 lakh crore</td><td class="tx tn">+15% and above</td></tr>
+      <tr><td>Capital outlay, defence services</td><td>&#8377;2,19,306 crore</td><td class="tx">+17.6% over FY26 revised</td></tr>
+      <tr><td>Capital acquisition</td><td>&#8377;1.85 lakh crore</td><td class="tx tn">~+24%</td></tr>
+      <tr class="hl"><td><b>Earmarked for domestic industry including private sector</b></td><td class="tx"><b>&#8377;1.39 lakh crore, about 75%</b></td><td class="tx">The closest official proxy to MTAR's domestic addressable base</td></tr>
+      <tr><td>Defence Acquisition Council clearances, ~07-Jul-2026</td><td>&#8377;52,000 crore</td><td class="tx">Approvals, not orders</td></tr>
     </tbody>
   </table></div></div>
   <p>Against that funnel MTAR earned &#8377;103.8 cr of aerospace and defence revenue in FY26 - 11.8% of its own revenue and a rounding error against the budget. The company names &#8377;140-150 cr of content on the LCA Tejas Mk1A actuator programme and a domestic pipeline "exceeding &#8377;250 crore". Neither is booked.</p>
@@ -556,12 +559,12 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
         <div class="st"><div class="h">End use</div><ul><li>On-site power for AI and conventional data centres</li><li>Commercial and industrial behind-the-meter power</li><li>Ultimately: the hyperscalers' compute build-out</li></ul></div>
       </div>
       <div class="tw"><div class="ts"><table>
-        <thead><tr><th>Dimension</th><th>Detail</th></tr></thead>
+        <thead><tr><th>Dimension</th><th class="tx">Detail</th></tr></thead>
         <tbody>
-          <tr><td>Capacity</td><td>~8,000 hot boxes a year through FY25; 12,000 commissioned by Mar-2026; 20,000 commissioning Oct-2026; "multifold" by Mar-2027, with the unit number withdrawn under a confidentiality agreement</td></tr>
-          <tr><td>Product scope</td><td>Broadened from machined parts to hot boxes, sheet metal assemblies, enclosures, air separation assemblies and cable harnesses</td></tr>
-          <tr><td>Revenue capture</td><td>FY26 clean energy revenue of about USD 64 mn against the customer's CY2025 revenue of roughly USD 2 bn - <b>about 3%</b>. On FY27 guidance the ratio is essentially unchanged at ~2.8%</td></tr>
-          <tr class="hl"><td>Margin direction</td><td>Company-defined gross margin 49.4% in FY25, 47.7% in FY26, 45.61% in Q1 FY27. <b>Down about 380 bps in two years while revenue grew 53%</b></td></tr>
+          <tr><td>Capacity</td><td class="tx">~8,000 hot boxes a year through FY25; 12,000 commissioned by Mar-2026; 20,000 commissioning Oct-2026; "multifold" by Mar-2027, with the unit number withdrawn under a confidentiality agreement</td></tr>
+          <tr><td>Product scope</td><td class="tx">Broadened from machined parts to hot boxes, sheet metal assemblies, enclosures, air separation assemblies and cable harnesses</td></tr>
+          <tr><td>Revenue capture</td><td class="tx">FY26 clean energy revenue of about USD 64 mn against the customer's CY2025 revenue of roughly USD 2 bn - <b>about 3%</b>. On FY27 guidance the ratio is essentially unchanged at ~2.8%</td></tr>
+          <tr class="hl"><td>Margin direction</td><td class="tx">Company-defined gross margin 49.4% in FY25, 47.7% in FY26, 45.61% in Q1 FY27. <b>Down about 380 bps in two years while revenue grew 53%</b></td></tr>
         </tbody>
       </table></div></div>
       <div class="flag f-unk">
@@ -641,13 +644,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Where MTAR sits in the value chain, and who takes the margin</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Layer</th><th>Representative</th><th>Margin</th></tr></thead>
+    <thead><tr><th>Layer</th><th class="tx">Representative</th><th class="tx">Margin</th></tr></thead>
     <tbody>
-      <tr><td>Precision component maker</td><td>Azad Engineering</td><td>37.7% EBITDA, 59.2% gross</td></tr>
-      <tr><td>Defence electronics and intellectual property</td><td>Data Patterns</td><td>39.7% EBITDA, 43.9% gross</td></tr>
-      <tr class="hl"><td><b>Sub-system assembler - MTAR's position</b></td><td><b>MTAR</b></td><td><b>21.1% EBITDA, 27.6% gross</b></td></tr>
-      <tr class="hl"><td><b>Original equipment maker and brand owner</b></td><td><b>Bloom Energy</b></td><td><b>22.5% operating, 34.3% gross</b></td></tr>
-      <tr><td>Large engineering and construction integrator</td><td>L&amp;T, BHEL</td><td>10.0% and 9.4% EBITDA</td></tr>
+      <tr><td>Precision component maker</td><td class="tx tn">Azad Engineering</td><td class="tx">37.7% EBITDA, 59.2% gross</td></tr>
+      <tr><td>Defence electronics and intellectual property</td><td class="tx tn">Data Patterns</td><td class="tx">39.7% EBITDA, 43.9% gross</td></tr>
+      <tr class="hl"><td><b>Sub-system assembler - MTAR's position</b></td><td class="tx tn"><b>MTAR</b></td><td class="tx"><b>21.1% EBITDA, 27.6% gross</b></td></tr>
+      <tr class="hl"><td><b>Original equipment maker and brand owner</b></td><td class="tx tn"><b>Bloom Energy</b></td><td class="tx"><b>22.5% operating, 34.3% gross</b></td></tr>
+      <tr><td>Large engineering and construction integrator</td><td class="tx tn">L&amp;T, BHEL</td><td class="tx">10.0% and 9.4% EBITDA</td></tr>
     </tbody>
     <tfoot><tr><td colspan="3">Gross margins on a standardised comparative basis. MTAR's own company-defined gross margin is 45.6%; never mix the two definitions in one table.</td></tr></tfoot>
   </table></div></div>
@@ -708,20 +711,20 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Where MTAR ranks, and which way each gap is moving</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Dimension</th><th>Rank of 8</th><th>MTAR</th><th>Leader</th><th>Gap direction</th></tr></thead>
+    <thead><tr><th>Dimension</th><th class="tx">Rank of 8</th><th>MTAR</th><th class="tx">Leader</th><th class="tx">Gap direction</th></tr></thead>
     <tbody>
-      <tr class="hl"><td>Revenue growth, trailing twelve months</td><td class="pos">1st</td><td>+53.4%</td><td>MTAR</td><td class="pos">Leading</td></tr>
-      <tr class="hl"><td>Earnings growth, trailing twelve months</td><td class="pos">1st</td><td>+125.1%</td><td>MTAR</td><td class="pos">Leading by a distance</td></tr>
-      <tr class="hl"><td>Order book cover</td><td class="pos">1st</td><td>6.8x revenue</td><td>MTAR</td><td class="pos">More than double the next best</td></tr>
-      <tr><td>Revenue scale FY26</td><td>3rd</td><td>&#8377;876.2 cr</td><td>Triveni &#8377;2,160 cr</td><td class="pos">Narrowing fast</td></tr>
-      <tr><td>Return on capital, approximated</td><td>3rd</td><td>~15.7%</td><td>Triveni ~25.9%</td><td class="pos">Narrowing</td></tr>
-      <tr><td>Revenue growth FY26</td><td>4th</td><td>+29.6%</td><td>Azad +32.2%</td><td>Four-way tie</td></tr>
-      <tr class="hl"><td><b>Three-year compound growth</b></td><td class="neg"><b>6th</b></td><td class="neg"><b>+15.2%</b></td><td>Unimech +36.7%</td><td><b>MTAR's worst ranking</b></td></tr>
-      <tr><td>EBITDA margin</td><td class="neg">6th</td><td>21.09%</td><td>Data Patterns 39.65%</td><td>~18.6 points behind</td></tr>
-      <tr class="hl"><td><b>Gross margin, standardised</b></td><td class="neg"><b>6th</b></td><td class="neg"><b>27.55%</b></td><td>Azad 59.23%</td><td class="neg"><b>Widening</b></td></tr>
-      <tr><td>Gross debt to equity</td><td class="neg">7th</td><td>0.45x</td><td>Data Patterns ~0.00x</td><td>But net debt-free on the CFO's June figures</td></tr>
-      <tr class="hl"><td><b>Customer concentration</b></td><td class="neg"><b>Worst</b></td><td class="neg">One customer at 55-65%</td><td>Data Patterns, Paras diversified</td><td class="neg"><b>Widening - guidance takes it higher</b></td></tr>
-      <tr><td>EV/EBITDA and price to book</td><td class="neg">Most expensive</td><td>97.2x, 26.19x</td><td>Triveni 42.2x, Walchand 3.81x</td><td class="neg">Widening sharply</td></tr>
+      <tr class="hl"><td>Revenue growth, trailing twelve months</td><td class="pos tx tn">1st</td><td>+53.4%</td><td class="tx tn">MTAR</td><td class="pos tx tn">Leading</td></tr>
+      <tr class="hl"><td>Earnings growth, trailing twelve months</td><td class="pos tx tn">1st</td><td>+125.1%</td><td class="tx tn">MTAR</td><td class="pos tx">Leading by a distance</td></tr>
+      <tr class="hl"><td>Order book cover</td><td class="pos tx tn">1st</td><td>6.8x revenue</td><td class="tx tn">MTAR</td><td class="pos tx">More than double the next best</td></tr>
+      <tr><td>Revenue scale FY26</td><td class="tx tn">3rd</td><td>&#8377;876.2 cr</td><td class="tx tn">Triveni &#8377;2,160 cr</td><td class="pos tx tn">Narrowing fast</td></tr>
+      <tr><td>Return on capital, approximated</td><td class="tx tn">3rd</td><td>~15.7%</td><td class="tx tn">Triveni ~25.9%</td><td class="pos tx tn">Narrowing</td></tr>
+      <tr><td>Revenue growth FY26</td><td class="tx tn">4th</td><td>+29.6%</td><td class="tx tn">Azad +32.2%</td><td class="tx tn">Four-way tie</td></tr>
+      <tr class="hl"><td><b>Three-year compound growth</b></td><td class="neg tx tn"><b>6th</b></td><td class="neg"><b>+15.2%</b></td><td class="tx tn">Unimech +36.7%</td><td class="tx"><b>MTAR's worst ranking</b></td></tr>
+      <tr><td>EBITDA margin</td><td class="neg tx tn">6th</td><td>21.09%</td><td class="tx">Data Patterns 39.65%</td><td class="tx">~18.6 points behind</td></tr>
+      <tr class="hl"><td><b>Gross margin, standardised</b></td><td class="neg tx tn"><b>6th</b></td><td class="neg"><b>27.55%</b></td><td class="tx tn">Azad 59.23%</td><td class="neg tx tn"><b>Widening</b></td></tr>
+      <tr><td>Gross debt to equity</td><td class="neg tx tn">7th</td><td>0.45x</td><td class="tx">Data Patterns ~0.00x</td><td class="tx">But net debt-free on the CFO's June figures</td></tr>
+      <tr class="hl"><td><b>Customer concentration</b></td><td class="neg tx tn"><b>Worst</b></td><td class="neg tx">One customer at 55-65%</td><td class="tx">Data Patterns, Paras diversified</td><td class="neg tx"><b>Widening - guidance takes it higher</b></td></tr>
+      <tr><td>EV/EBITDA and price to book</td><td class="neg tx tn">Most expensive</td><td>97.2x, 26.19x</td><td class="tx">Triveni 42.2x, Walchand 3.81x</td><td class="neg tx tn">Widening sharply</td></tr>
     </tbody>
   </table></div></div>
 
@@ -732,16 +735,16 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>What each competitor is actually trying to do</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Company</th><th>Stated milestones</th></tr></thead>
+    <thead><tr><th>Company</th><th class="tx">Stated milestones</th></tr></thead>
     <tbody>
-      <tr><td><b>Azad Engineering</b></td><td class="wr">The closest comparable business model - qualification-led precision components for energy turbines and aerospace, export-led, concentrated multinational relationships with GE Vernova, Siemens Energy, Mitsubishi Heavy, Rolls-Royce and Baker Hughes. Cut raw material cost to sales from 12% to 5%, the mirror image of MTAR's gross margin decline. Same business physics, better margins, broader customer base, slower growth.</td></tr>
-      <tr><td><b>Data Patterns</b></td><td class="wr">The quality leader on every return metric: 41.2% EBITDA margin, net cash with about &#8377;530 cr of cash and investments, approximately 20% return on capital. Intellectual-property-led defence electronics. Order cover of 2.9x revenue against MTAR's 6.8x, but converting it.</td></tr>
-      <tr><td><b>Triveni Turbine</b></td><td class="wr">The cheapest and highest-returning name in the set: 52.5x earnings, approximately 26% return on capital, near debt-free. Growth has slowed to 8.3%, which is precisely why it is cheap.</td></tr>
-      <tr><td><b>Paras Defence</b></td><td class="wr">Diversified across defence programmes, essentially debt-free at 0.04x, 26.3% margin, and the second-best price performance in the set at +90%.</td></tr>
-      <tr><td><b>Unimech Aerospace</b></td><td class="wr">Same export-led qualification model at a smaller scale, but FY26 revenue <b>fell</b> 1.0% - a reminder of how lumpy this business physics is.</td></tr>
-      <tr><td><b>Dynamatic Technologies</b></td><td class="wr">The cautionary case: 1,620 cr of revenue at an 11.4% EBITDA margin and a 2.53% net margin, the most levered in the set at 0.81x, and carrying a rare sell-side Reduce rating. Scale without margin.</td></tr>
-      <tr class="hl"><td><b>Walchandnagar Industries</b></td><td class="wr"><b>In distress.</b> Three-year revenue compound rate of <b>minus 5.1%</b>, a loss in FY26, 5.5% EBITDA margin. A qualified nuclear supplier that has not been able to convert the same policy tailwind MTAR is being valued on. That is the single most useful counterexample in this table.</td></tr>
-      <tr class="hl"><td><b>Zen Technologies</b></td><td class="wr"><b>A live de-rating.</b> FY26 revenue <b>fell 29.4%</b> and trailing revenue is down 23.5%, from a business that compounded at 46.5% over three years. The stock is up 2.7% in a year. This is what happens to an Indian defence name when the order conversion stops, and it happened this year, in this sector.</td></tr>
+      <tr><td><b>Azad Engineering</b></td><td class="wr tx">The closest comparable business model - qualification-led precision components for energy turbines and aerospace, export-led, concentrated multinational relationships with GE Vernova, Siemens Energy, Mitsubishi Heavy, Rolls-Royce and Baker Hughes. Cut raw material cost to sales from 12% to 5%, the mirror image of MTAR's gross margin decline. Same business physics, better margins, broader customer base, slower growth.</td></tr>
+      <tr><td><b>Data Patterns</b></td><td class="wr tx">The quality leader on every return metric: 41.2% EBITDA margin, net cash with about &#8377;530 cr of cash and investments, approximately 20% return on capital. Intellectual-property-led defence electronics. Order cover of 2.9x revenue against MTAR's 6.8x, but converting it.</td></tr>
+      <tr><td><b>Triveni Turbine</b></td><td class="wr tx">The cheapest and highest-returning name in the set: 52.5x earnings, approximately 26% return on capital, near debt-free. Growth has slowed to 8.3%, which is precisely why it is cheap.</td></tr>
+      <tr><td><b>Paras Defence</b></td><td class="wr tx">Diversified across defence programmes, essentially debt-free at 0.04x, 26.3% margin, and the second-best price performance in the set at +90%.</td></tr>
+      <tr><td><b>Unimech Aerospace</b></td><td class="wr tx">Same export-led qualification model at a smaller scale, but FY26 revenue <b>fell</b> 1.0% - a reminder of how lumpy this business physics is.</td></tr>
+      <tr><td><b>Dynamatic Technologies</b></td><td class="wr tx">The cautionary case: 1,620 cr of revenue at an 11.4% EBITDA margin and a 2.53% net margin, the most levered in the set at 0.81x, and carrying a rare sell-side Reduce rating. Scale without margin.</td></tr>
+      <tr class="hl"><td><b>Walchandnagar Industries</b></td><td class="wr tx"><b>In distress.</b> Three-year revenue compound rate of <b>minus 5.1%</b>, a loss in FY26, 5.5% EBITDA margin. A qualified nuclear supplier that has not been able to convert the same policy tailwind MTAR is being valued on. That is the single most useful counterexample in this table.</td></tr>
+      <tr class="hl"><td><b>Zen Technologies</b></td><td class="wr tx"><b>A live de-rating.</b> FY26 revenue <b>fell 29.4%</b> and trailing revenue is down 23.5%, from a business that compounded at 46.5% over three years. The stock is up 2.7% in a year. This is what happens to an Indian defence name when the order conversion stops, and it happened this year, in this sector.</td></tr>
     </tbody>
   </table></div></div>
 
@@ -886,7 +889,7 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
       <tr class="hl"><td><b>Inventory as a share of annual revenue</b></td><td>41.6%</td><td class="neg">63.5%</td><td>51.1%</td><td>48.0%</td></tr>
       <tr><td>Receivable turnover</td><td>n/d</td><td>n/d</td><td>3.80</td><td>3.21</td></tr>
       <tr class="hl"><td><b>Receivable days</b></td><td>n/d</td><td>n/d</td><td><b>96</b></td><td class="neg"><b>114</b></td></tr>
-      <tr><td>Payable days</td><td colspan="4">Not disclosed in any accessible source, so the cash conversion cycle cannot be computed</td></tr>
+      <tr><td>Payable days</td><td colspan="4" class="tx">Not disclosed in any accessible source, so the cash conversion cycle cannot be computed</td></tr>
       <tr><td>Current ratio</td><td>2.04</td><td>2.75</td><td>2.15</td><td class="neg">1.56</td></tr>
     </tbody>
   </table></div></div>
@@ -935,16 +938,16 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Tests that pass cleanly</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Test</th><th>Result</th></tr></thead>
+    <thead><tr><th>Test</th><th class="tx">Result</th></tr></thead>
     <tbody>
-      <tr><td>Effective tax rate against statutory</td><td class="pos"><b>Clean.</b> 24.75% to 28.65% across eleven consecutive quarters against a 25.168% statutory rate. The small positive spread matches ordinary permanent disallowances such as corporate social responsibility spend. No aggressive positions, no unexplained credits, no deferred-tax management.</td></tr>
-      <tr><td>Does the cash look real?</td><td class="pos"><b>The fraud signature is not present, and structurally cannot be.</b> The classic pattern is a large permanent low-yielding cash pile beside expensive debt. MTAR had the opposite: consolidated cash of <b>&#8377;0.42 cr</b> at 30-Sep-2024 against &#8377;183.69 cr of debt, and &#8377;1.87 cr at March-2025. There was no cash to falsify. That is a liquidity-stress signature, not a fabrication one.</td></tr>
-      <tr><td>Equity dilution</td><td class="pos"><b>None.</b> Share capital constant at &#8377;30.759 cr - 3,07,59,600 shares - verified at seven separate balance sheet dates from March-2022 to June-2026. The net worth roll-forward reconciles to within &#8377;0.36 cr each year. No placement, preferential issue, warrants, rights or material option dilution.</td></tr>
-      <tr><td>Exceptional credits and write-backs</td><td class="pos"><b>None found in five years.</b> The only exceptional item is a <b>charge</b> of &#8377;3.767 cr in Q3 FY26 for increased gratuity obligation under India's new labour codes - externally imposed, correctly disclosed three separate times, and taken in a quarter the company could ill afford it. The opposite of an earnings-management item.</td></tr>
-      <tr><td>Accounting policy changes</td><td class="pos"><b>None reported</b> in FY24, FY25 or FY26.</td></tr>
-      <tr><td>Audit opinions</td><td class="pos"><b>Unmodified on standalone and consolidated statements for FY24, FY25 and FY26.</b> No emphasis of matter reported, no auditor resignation reported, no material misstatement in any quarterly review.</td></tr>
-      <tr><td>Capital work in progress stagnation</td><td class="pos"><b>Not evident</b> on the one datapoint available: &#8377;80 cr was capitalised out of work in progress in Q1 FY27 against only &#8377;30-35 cr of fresh cash spend, so the balance is converting to gross block rather than sitting. The full ageing schedule could not be obtained.</td></tr>
-      <tr><td>Subsidiary capital leakage</td><td class="pos"><b>Immaterial.</b> The two wholly-owned subsidiaries carry about &#8377;0.1-2.7 cr of revenue and have been loss-making in all eight observed quarters, with a cumulative drag of &#8377;2.26 cr across FY25 and FY26. Both are being merged into the parent. There is no overseas subsidiary in any filing.</td></tr>
+      <tr><td>Effective tax rate against statutory</td><td class="pos tx"><b>Clean.</b> 24.75% to 28.65% across eleven consecutive quarters against a 25.168% statutory rate. The small positive spread matches ordinary permanent disallowances such as corporate social responsibility spend. No aggressive positions, no unexplained credits, no deferred-tax management.</td></tr>
+      <tr><td>Does the cash look real?</td><td class="pos tx"><b>The fraud signature is not present, and structurally cannot be.</b> The classic pattern is a large permanent low-yielding cash pile beside expensive debt. MTAR had the opposite: consolidated cash of <b>&#8377;0.42 cr</b> at 30-Sep-2024 against &#8377;183.69 cr of debt, and &#8377;1.87 cr at March-2025. There was no cash to falsify. That is a liquidity-stress signature, not a fabrication one.</td></tr>
+      <tr><td>Equity dilution</td><td class="pos tx"><b>None.</b> Share capital constant at &#8377;30.759 cr - 3,07,59,600 shares - verified at seven separate balance sheet dates from March-2022 to June-2026. The net worth roll-forward reconciles to within &#8377;0.36 cr each year. No placement, preferential issue, warrants, rights or material option dilution.</td></tr>
+      <tr><td>Exceptional credits and write-backs</td><td class="pos tx"><b>None found in five years.</b> The only exceptional item is a <b>charge</b> of &#8377;3.767 cr in Q3 FY26 for increased gratuity obligation under India's new labour codes - externally imposed, correctly disclosed three separate times, and taken in a quarter the company could ill afford it. The opposite of an earnings-management item.</td></tr>
+      <tr><td>Accounting policy changes</td><td class="pos tx"><b>None reported</b> in FY24, FY25 or FY26.</td></tr>
+      <tr><td>Audit opinions</td><td class="pos tx"><b>Unmodified on standalone and consolidated statements for FY24, FY25 and FY26.</b> No emphasis of matter reported, no auditor resignation reported, no material misstatement in any quarterly review.</td></tr>
+      <tr><td>Capital work in progress stagnation</td><td class="pos tx"><b>Not evident</b> on the one datapoint available: &#8377;80 cr was capitalised out of work in progress in Q1 FY27 against only &#8377;30-35 cr of fresh cash spend, so the balance is converting to gross block rather than sitting. The full ageing schedule could not be obtained.</td></tr>
+      <tr><td>Subsidiary capital leakage</td><td class="pos tx"><b>Immaterial.</b> The two wholly-owned subsidiaries carry about &#8377;0.1-2.7 cr of revenue and have been loss-making in all eight observed quarters, with a cumulative drag of &#8377;2.26 cr across FY25 and FY26. Both are being merged into the parent. There is no overseas subsidiary in any filing.</td></tr>
     </tbody>
   </table></div></div>
 
@@ -988,11 +991,11 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   <h3>Test four: the working capital improvement is substantially a denominator switch</h3>
   <p>March-2026 net working capital is reported as <b>146 days, 172 days and 266 days</b> depending on which of three documents you read - and two of those three were published on the same day. The reconciliation is arithmetic:</p>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Absolute net working capital of about &#8377;577 cr, divided by</th><th>Gives</th><th>Which matches</th></tr></thead>
+    <thead><tr><th>Absolute net working capital of about &#8377;577 cr, divided by</th><th>Gives</th><th class="tx">Which matches</th></tr></thead>
     <tbody>
-      <tr><td>Q4 FY26 revenue annualised, &#8377;1,224 cr</td><td>172 days</td><td>The Q4 FY26 call</td></tr>
-      <tr><td>Q1 FY27 revenue annualised, &#8377;1,443 cr</td><td>146 days</td><td>The Q1 FY27 deck</td></tr>
-      <tr><td>FY26 actual revenue, &#8377;876.2 cr</td><td>240 days</td><td>Close to the 266 quoted</td></tr>
+      <tr><td>Q4 FY26 revenue annualised, &#8377;1,224 cr</td><td>172 days</td><td class="tx tn">The Q4 FY26 call</td></tr>
+      <tr><td>Q1 FY27 revenue annualised, &#8377;1,443 cr</td><td>146 days</td><td class="tx tn">The Q1 FY27 deck</td></tr>
+      <tr><td>FY26 actual revenue, &#8377;876.2 cr</td><td>240 days</td><td class="tx">Close to the 266 quoted</td></tr>
     </tbody>
   </table></div></div>
   <div class="flag f-bear">
@@ -1036,16 +1039,16 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   <h3>The disclosure-integrity ledger</h3>
   <p>None of the following is an accounting irregularity. Each is the same figure published more than one way by the same company, often on the same day.</p>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Item</th><th>The contradiction</th></tr></thead>
+    <thead><tr><th>Item</th><th class="tx">The contradiction</th></tr></thead>
     <tbody>
-      <tr class="hl"><td><b>Segment data is not audited at all</b></td><td class="wr">Every filing declares a <b>single operating segment</b>. The four-way split exists only in presentations and management discussion, with no auditor assurance and no consistency obligation. Management additionally runs a second, incompatible internal taxonomy - "hot boxes", "electronics", "sheet metal" - that appears nowhere in the published split.</td></tr>
-      <tr><td>FY25 aerospace and defence revenue</td><td class="wr"><b>&#8377;93.2 cr</b> in the annual report, <b>&#8377;101.4 cr</b> in the deck, <b>&#8377;48 cr</b> on the call. The deck and call were published the same day and differ by more than two times. The FY24 figure is &#8377;58.7 cr in the annual report against "&#8377;9-10 crore" on the call.</td></tr>
-      <tr><td>Civil nuclear, FY25</td><td class="wr">Fell 70.3% from &#8377;619 mn to &#8377;184 mn, with no narrative - and was <b>reclassified to sit underneath the clean energy heading in exactly that year</b>, having been a standalone vertical before and after. The effect is that the decline is presented inside the segment that grew.</td></tr>
-      <tr><td>Q1 FY26 gross margin</td><td class="wr"><b>54.2%</b> in the Q1 FY26 presentation, <b>47.65%</b> quoted for the same quarter on the Q1 FY27 call. A 6.55 point gap worth &#8377;10.3 cr, with no restatement announced.</td></tr>
-      <tr><td>Return on capital</td><td class="wr">FY26 published at 12.1%, 12.39%, 17.2% and 18.1%; FY25 at 9.65%, 11.4%, 11.5%, 11.7% and 18.2%. The Q4 FY26 deck says returns <b>fell</b>; the call and annual report the same day say they nearly <b>doubled</b>. FY24 was also silently restated from 10.60% to 10.36%. The independently reconcilable figures say returns rose and the deck is wrong.</td></tr>
-      <tr><td>Export share</td><td class="wr">Annual reports say <b>71%, 79%, 83%</b> for FY24 to FY26. Investor decks say <b>18% to 36%</b>. Off by a factor of four. Most probably a presentation defect with the chart labelled backwards, but it is precisely the chart a reader would build a currency sensitivity model on.</td></tr>
-      <tr><td>FY25 order inflow</td><td class="wr">Reported as <b>&#8377;817 cr</b> on the February call and <b>&#8377;720.11 cr</b> in the May deck. Order inflow cannot decrease. Either &#8377;97 cr of orders was cancelled without disclosure or the earlier figure included non-firm orders.</td></tr>
-      <tr><td>Products and others</td><td class="wr">Shrank 9.1% in FY26 to &#8377;134.1 cr, then delivered <b>&#8377;100.4 cr in Q1 FY27 alone</b> - 75% of the entire prior year in one quarter, in a residual bucket whose contents are not described.</td></tr>
+      <tr class="hl"><td><b>Segment data is not audited at all</b></td><td class="wr tx">Every filing declares a <b>single operating segment</b>. The four-way split exists only in presentations and management discussion, with no auditor assurance and no consistency obligation. Management additionally runs a second, incompatible internal taxonomy - "hot boxes", "electronics", "sheet metal" - that appears nowhere in the published split.</td></tr>
+      <tr><td>FY25 aerospace and defence revenue</td><td class="wr tx"><b>&#8377;93.2 cr</b> in the annual report, <b>&#8377;101.4 cr</b> in the deck, <b>&#8377;48 cr</b> on the call. The deck and call were published the same day and differ by more than two times. The FY24 figure is &#8377;58.7 cr in the annual report against "&#8377;9-10 crore" on the call.</td></tr>
+      <tr><td>Civil nuclear, FY25</td><td class="wr tx">Fell 70.3% from &#8377;619 mn to &#8377;184 mn, with no narrative - and was <b>reclassified to sit underneath the clean energy heading in exactly that year</b>, having been a standalone vertical before and after. The effect is that the decline is presented inside the segment that grew.</td></tr>
+      <tr><td>Q1 FY26 gross margin</td><td class="wr tx"><b>54.2%</b> in the Q1 FY26 presentation, <b>47.65%</b> quoted for the same quarter on the Q1 FY27 call. A 6.55 point gap worth &#8377;10.3 cr, with no restatement announced.</td></tr>
+      <tr><td>Return on capital</td><td class="wr tx">FY26 published at 12.1%, 12.39%, 17.2% and 18.1%; FY25 at 9.65%, 11.4%, 11.5%, 11.7% and 18.2%. The Q4 FY26 deck says returns <b>fell</b>; the call and annual report the same day say they nearly <b>doubled</b>. FY24 was also silently restated from 10.60% to 10.36%. The independently reconcilable figures say returns rose and the deck is wrong.</td></tr>
+      <tr><td>Export share</td><td class="wr tx">Annual reports say <b>71%, 79%, 83%</b> for FY24 to FY26. Investor decks say <b>18% to 36%</b>. Off by a factor of four. Most probably a presentation defect with the chart labelled backwards, but it is precisely the chart a reader would build a currency sensitivity model on.</td></tr>
+      <tr><td>FY25 order inflow</td><td class="wr tx">Reported as <b>&#8377;817 cr</b> on the February call and <b>&#8377;720.11 cr</b> in the May deck. Order inflow cannot decrease. Either &#8377;97 cr of orders was cancelled without disclosure or the earlier figure included non-firm orders.</td></tr>
+      <tr><td>Products and others</td><td class="wr tx">Shrank 9.1% in FY26 to &#8377;134.1 cr, then delivered <b>&#8377;100.4 cr in Q1 FY27 alone</b> - 75% of the entire prior year in one quarter, in a residual bucket whose contents are not described.</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1065,15 +1068,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   <p>MTAR was incorporated in 1970 by P. Ravindra Reddy, K. Satyanarayana Reddy and P. Jayaprakash Reddy, independent technocrats who built a private supplier to the Department of Atomic Energy, ISRO and DRDO. Its first project was coolant channel assemblies for reactor cores, taken on after the state-owned HMT Ltd declined the work as too complex. That heritage is genuine and it is the foundation of the nuclear and space qualifications the company still trades on.</p>
   <p>The promoter group today is not a single family but a dispersed extended Reddy-family bloc, and the distribution of ownership inside it is unusual.</p>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Promoter</th><th>Latest disclosed holding</th><th>As at</th><th>Role</th></tr></thead>
+    <thead><tr><th>Promoter</th><th>Latest disclosed holding</th><th class="tx">As at</th><th class="tx">Role</th></tr></thead>
     <tbody>
-      <tr><td>K. Vamshidhar Reddy</td><td>5.70%</td><td>21-May-2026</td><td>Promoter group, largest single holder</td></tr>
-      <tr><td>Madhavi Mitta</td><td>4.50%</td><td>~24-Feb-2026</td><td>Promoter</td></tr>
-      <tr><td>Leelavathi Parvatha Reddy</td><td>4.22%</td><td>16-Sep-2026</td><td>Promoter, mother of the MD</td></tr>
-      <tr class="hl"><td>Parvat Srinivas Reddy</td><td><b>3.88%</b></td><td>23-Feb-2026</td><td><b>Managing Director</b></td></tr>
-      <tr><td>Saranya Loka Reddy</td><td>1.63%</td><td>23-Feb-2026</td><td>Promoter</td></tr>
-      <tr><td>K. Shalini</td><td>1.27%</td><td>04-Sep-2026</td><td>Promoter</td></tr>
-      <tr><td>Kavitha Reddy Gangapatnam</td><td>0.65%</td><td>16-Jun-2026</td><td>Promoter</td></tr>
+      <tr><td>K. Vamshidhar Reddy</td><td>5.70%</td><td class="tx tn">21-May-2026</td><td class="tx">Promoter group, largest single holder</td></tr>
+      <tr><td>Madhavi Mitta</td><td>4.50%</td><td class="tx tn">~24-Feb-2026</td><td class="tx tn">Promoter</td></tr>
+      <tr><td>Leelavathi Parvatha Reddy</td><td>4.22%</td><td class="tx tn">16-Sep-2026</td><td class="tx">Promoter, mother of the MD</td></tr>
+      <tr class="hl"><td>Parvat Srinivas Reddy</td><td><b>3.88%</b></td><td class="tx tn">23-Feb-2026</td><td class="tx tn"><b>Managing Director</b></td></tr>
+      <tr><td>Saranya Loka Reddy</td><td>1.63%</td><td class="tx tn">23-Feb-2026</td><td class="tx tn">Promoter</td></tr>
+      <tr><td>K. Shalini</td><td>1.27%</td><td class="tx tn">04-Sep-2026</td><td class="tx tn">Promoter</td></tr>
+      <tr><td>Kavitha Reddy Gangapatnam</td><td>0.65%</td><td class="tx tn">16-Jun-2026</td><td class="tx tn">Promoter</td></tr>
     </tbody>
     <tfoot><tr><td colspan="4">Named holdings sum to about 21.85% against a reported aggregate of 29.36%; the balance sits with unnamed promoter-group members. Sourced from secondary reporting of exchange disclosures, not read from the filings themselves.</td></tr></tfoot>
   </table></div></div>
@@ -1084,17 +1087,17 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The stake has roughly halved</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Date</th><th>Promoter holding</th><th>Note</th></tr></thead>
+    <thead><tr><th>Date</th><th>Promoter holding</th><th class="tx">Note</th></tr></thead>
     <tbody>
-      <tr><td>Post-IPO, Mar-2021</td><td>"Over 50%"</td><td>No precise figure obtainable</td></tr>
+      <tr><td>Post-IPO, Mar-2021</td><td>"Over 50%"</td><td class="tx">No precise figure obtainable</td></tr>
       <tr><td>Sep-2023</td><td>~39.1%</td><td></td></tr>
       <tr><td>Dec-2023</td><td>37.3%</td><td></td></tr>
       <tr><td>Sep-2024</td><td>36.42%</td><td></td></tr>
-      <tr class="hl"><td>Dec-2024</td><td>31.42%</td><td><b>A 5.00 percentage point fall in a single quarter, unexplained</b></td></tr>
+      <tr class="hl"><td>Dec-2024</td><td>31.42%</td><td class="tx"><b>A 5.00 percentage point fall in a single quarter, unexplained</b></td></tr>
       <tr><td>Sep-2025</td><td>31.40%</td><td></td></tr>
       <tr><td>Dec-2025</td><td>~30.6%</td><td></td></tr>
-      <tr class="hl"><td>Jun-2026</td><td><b>29.36%</b></td><td>Latest filed</td></tr>
-      <tr><td>Sep-2026</td><td>Not yet filed</td><td>Will be lower, given the 04-Sep and 16-Sep sales</td></tr>
+      <tr class="hl"><td>Jun-2026</td><td><b>29.36%</b></td><td class="tx tn">Latest filed</td></tr>
+      <tr><td>Sep-2026</td><td>Not yet filed</td><td class="tx">Will be lower, given the 04-Sep and 16-Sep sales</td></tr>
     </tbody>
   </table></div></div>
   <div class="flag f-bear">
@@ -1105,17 +1108,17 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   <h3>Netting the promoter dealing, properly</h3>
   <p>Headlines catch one leg. The full 24-month picture, netted:</p>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Date</th><th>Promoter</th><th>Shares sold</th><th>Holding after</th><th>Price context</th></tr></thead>
+    <thead><tr><th>Date</th><th class="tx">Promoter</th><th>Shares sold</th><th>Holding after</th><th class="tx">Price context</th></tr></thead>
     <tbody>
-      <tr><td>20-24 Feb 2026</td><td>Madhavi Mitta</td><td>18,000</td><td>4.50%</td><td>Feb-26 range 2,757-3,908</td></tr>
-      <tr><td>Feb-2026</td><td>A. Manogna</td><td>30,000</td><td>Not obtained</td><td>Feb-26 range 2,757-3,908</td></tr>
-      <tr><td>19-20 May 2026</td><td>Akepati Pranay Reddy</td><td>60,000</td><td>-0.20%</td><td>May-26 range 6,031-8,450</td></tr>
-      <tr><td>21-May-2026</td><td>K. Vamshidhar Reddy</td><td>1,00,000</td><td>5.70%</td><td>May-26 range 6,031-8,450</td></tr>
-      <tr><td>21-May-2026</td><td>Kavitha Reddy Gangapatnam</td><td>22,741</td><td>0.72%</td><td>May-26 range 6,031-8,450</td></tr>
-      <tr><td>16-Jun-2026</td><td>Kavitha Reddy Gangapatnam</td><td>20,000</td><td>0.65%</td><td>Jun-26 range 6,180-8,714</td></tr>
-      <tr><td>04-Sep-2026</td><td>K. Shalini</td><td>18,000</td><td>1.27%</td><td>Sep-26 range 6,600-7,945</td></tr>
-      <tr class="hl"><td>16-Sep-2026</td><td>Leelavathi Parvatha Reddy</td><td>20,000</td><td>4.22%</td><td>Five days before this report</td></tr>
-      <tr class="hl"><td colspan="2"><b>Total: eight sales, seven different sellers</b></td><td><b>2,88,741</b></td><td><b>~0.94% of equity</b></td><td>Indicatively &#8377;190-210 cr</td></tr>
+      <tr><td>20-24 Feb 2026</td><td class="tx tn">Madhavi Mitta</td><td>18,000</td><td>4.50%</td><td class="tx">Feb-26 range 2,757-3,908</td></tr>
+      <tr><td>Feb-2026</td><td class="tx tn">A. Manogna</td><td>30,000</td><td>Not obtained</td><td class="tx">Feb-26 range 2,757-3,908</td></tr>
+      <tr><td>19-20 May 2026</td><td class="tx">Akepati Pranay Reddy</td><td>60,000</td><td>-0.20%</td><td class="tx">May-26 range 6,031-8,450</td></tr>
+      <tr><td>21-May-2026</td><td class="tx">K. Vamshidhar Reddy</td><td>1,00,000</td><td>5.70%</td><td class="tx">May-26 range 6,031-8,450</td></tr>
+      <tr><td>21-May-2026</td><td class="tx">Kavitha Reddy Gangapatnam</td><td>22,741</td><td>0.72%</td><td class="tx">May-26 range 6,031-8,450</td></tr>
+      <tr><td>16-Jun-2026</td><td class="tx">Kavitha Reddy Gangapatnam</td><td>20,000</td><td>0.65%</td><td class="tx">Jun-26 range 6,180-8,714</td></tr>
+      <tr><td>04-Sep-2026</td><td class="tx tn">K. Shalini</td><td>18,000</td><td>1.27%</td><td class="tx">Sep-26 range 6,600-7,945</td></tr>
+      <tr class="hl"><td>16-Sep-2026</td><td class="tx">Leelavathi Parvatha Reddy</td><td>20,000</td><td>4.22%</td><td class="tx">Five days before this report</td></tr>
+      <tr class="hl"><td colspan="2"><b>Total: eight sales, seven different sellers</b></td><td><b>2,88,741</b></td><td><b>~0.94% of equity</b></td><td class="tx">Indicatively &#8377;190-210 cr</td></tr>
     </tbody>
     <tfoot><tr><td colspan="5">Consideration was not disclosed in any accessible source; the &#8377;190-210 cr is our own arithmetic applying each month's traded range to the quantity and should be treated as indicative only.</td></tr></tfoot>
   </table></div></div>
@@ -1128,12 +1131,12 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The smart money left at a fifth of today's price</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Investor</th><th>Entry</th><th>Exit</th><th>Outcome</th></tr></thead>
+    <thead><tr><th>Investor</th><th class="tx">Entry</th><th class="tx">Exit</th><th class="tx">Outcome</th></tr></thead>
     <tbody>
-      <tr><td>Blackstone</td><td>Pre-2017</td><td>Sold ~33.1% to Florintree in 2017</td><td>Fully out</td></tr>
-      <tr class="hl"><td>Florintree Advisors (Mathew Cyriac, former Blackstone India co-head), via Fabmohur Advisors LLP and Solidus Advisors</td><td>2017 at an average of <b>&#8377;38.44</b></td><td>Partial in the Mar-2021 IPO; <b>full exit 25-Mar-2024</b> at &#8377;1,793.44 and &#8377;1,796.41 in BSE blocks, 24,31,912 shares or 7.91%, about &#8377;500 cr</td><td class="pos">A 47x return. Nominee director resigned after.</td></tr>
-      <tr><td>Plutus Wealth Management</td><td>~05-Jun-2023, about &#8377;247 cr at roughly &#8377;1,900</td><td>Current status not obtained</td><td>-</td></tr>
-      <tr><td>BofA Securities Europe SA</td><td>08-09 Jan 2026, 0.66% at <b>&#8377;2,665.45</b>, a 6% premium to the prior close</td><td>Held</td><td class="pos">Up roughly 160%</td></tr>
+      <tr><td>Blackstone</td><td class="tx tn">Pre-2017</td><td class="tx">Sold ~33.1% to Florintree in 2017</td><td class="tx tn">Fully out</td></tr>
+      <tr class="hl"><td>Florintree Advisors (Mathew Cyriac, former Blackstone India co-head), via Fabmohur Advisors LLP and Solidus Advisors</td><td class="tx">2017 at an average of <b>&#8377;38.44</b></td><td class="tx">Partial in the Mar-2021 IPO; <b>full exit 25-Mar-2024</b> at &#8377;1,793.44 and &#8377;1,796.41 in BSE blocks, 24,31,912 shares or 7.91%, about &#8377;500 cr</td><td class="pos tx">A 47x return. Nominee director resigned after.</td></tr>
+      <tr><td>Plutus Wealth Management</td><td class="tx">~05-Jun-2023, about &#8377;247 cr at roughly &#8377;1,900</td><td class="tx">Current status not obtained</td><td class="tx tn">-</td></tr>
+      <tr><td>BofA Securities Europe SA</td><td class="tx">08-09 Jan 2026, 0.66% at <b>&#8377;2,665.45</b>, a 6% premium to the prior close</td><td class="tx tn">Held</td><td class="pos tx tn">Up roughly 160%</td></tr>
     </tbody>
   </table></div></div>
   <p>The two holders with the longest and deepest knowledge of this business - Blackstone and the Blackstone alumnus who bought them out - are both entirely out. Florintree exited at &#8377;1,793 in March 2024. That is not a prediction about the price; a 47x return is reason enough to sell anything. But it is worth knowing who is no longer in the register.</p>
@@ -1176,14 +1179,14 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   </table></div></div>
 
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Use of capital</th><th>What happened</th></tr></thead>
+    <thead><tr><th>Use of capital</th><th class="tx">What happened</th></tr></thead>
     <tbody>
-      <tr><td>Acquisitions</td><td>Gee Pee Aerospace and Defence, 100% for <b>&#8377;8.82 cr</b>, board approved 10-May-2022. Magnatar Aero Systems, 100%, <b>price never disclosed</b>, described by one source as non-operational. Both are now being amalgamated back into the parent under a scheme before the National Company Law Tribunal. Folding two small acquisitions back in within about four years, one of them non-operational, does not read as a successful acquisition programme. Against a &#8377;22,000 cr market value, neither was material.</td></tr>
-      <tr><td>Dividends</td><td>&#8377;3.00 per share declared 10-Feb-2022, about &#8377;9.23 cr, roughly 15% of that year's profit. <b>Nothing since.</b> A stated policy of "payout up to 35%" sits unreconciled against an apparent nil payout for four years.</td></tr>
-      <tr><td>Buybacks</td><td>None.</td></tr>
-      <tr class="hl"><td><b>Dilution</b></td><td class="pos"><b>Zero net equity dilution FY22 to FY26.</b> Share count has been fixed at 3,07,59,600 for five consecutive years. No qualified placement, no preferential allotment, no rights issue, no warrants. This is derived from profit divided by earnings per share each year, so it rests on arithmetic rather than a secondary source, and it is the highest-confidence finding in this section.</td></tr>
-      <tr><td>Employee stock options</td><td>A scheme exists - the MD's package is described as cash plus employee stock option perquisite value - but the scheme size, grants outstanding and the charge to the profit and loss account could not be obtained for any year. Measured net dilution is nonetheless 0.00% a year. A company can run a material option charge without dilution, and on a &#8377;53 cr profit base even a &#8377;3-5 cr charge would matter. This is an open item.</td></tr>
-      <tr><td>Cash</td><td>No hoarding. The opposite: free cash flow was negative every year from FY21 to FY25, cumulatively about negative &#8377;335 cr, turning positive only in FY26. The &#8377;123.52 cr of IPO money was consumed roughly 2.7 times over, and the gap was funded with debt.</td></tr>
+      <tr><td>Acquisitions</td><td class="tx">Gee Pee Aerospace and Defence, 100% for <b>&#8377;8.82 cr</b>, board approved 10-May-2022. Magnatar Aero Systems, 100%, <b>price never disclosed</b>, described by one source as non-operational. Both are now being amalgamated back into the parent under a scheme before the National Company Law Tribunal. Folding two small acquisitions back in within about four years, one of them non-operational, does not read as a successful acquisition programme. Against a &#8377;22,000 cr market value, neither was material.</td></tr>
+      <tr><td>Dividends</td><td class="tx">&#8377;3.00 per share declared 10-Feb-2022, about &#8377;9.23 cr, roughly 15% of that year's profit. <b>Nothing since.</b> A stated policy of "payout up to 35%" sits unreconciled against an apparent nil payout for four years.</td></tr>
+      <tr><td>Buybacks</td><td class="tx tn">None.</td></tr>
+      <tr class="hl"><td><b>Dilution</b></td><td class="pos tx"><b>Zero net equity dilution FY22 to FY26.</b> Share count has been fixed at 3,07,59,600 for five consecutive years. No qualified placement, no preferential allotment, no rights issue, no warrants. This is derived from profit divided by earnings per share each year, so it rests on arithmetic rather than a secondary source, and it is the highest-confidence finding in this section.</td></tr>
+      <tr><td>Employee stock options</td><td class="tx">A scheme exists - the MD's package is described as cash plus employee stock option perquisite value - but the scheme size, grants outstanding and the charge to the profit and loss account could not be obtained for any year. Measured net dilution is nonetheless 0.00% a year. A company can run a material option charge without dilution, and on a &#8377;53 cr profit base even a &#8377;3-5 cr charge would matter. This is an open item.</td></tr>
+      <tr><td>Cash</td><td class="tx">No hoarding. The opposite: free cash flow was negative every year from FY21 to FY25, cumulatively about negative &#8377;335 cr, turning positive only in FY26. The &#8377;123.52 cr of IPO money was consumed roughly 2.7 times over, and the gap was funded with debt.</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1230,21 +1233,21 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The margin ladder, in full</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Guided for</th><th>Given on</th><th>Guidance</th><th>Actual</th><th>Gap</th></tr></thead>
+    <thead><tr><th>Guided for</th><th class="tx">Given on</th><th class="tx">Guidance</th><th>Actual</th><th>Gap</th></tr></thead>
     <tbody>
-      <tr><td>FY23</td><td>before the review period</td><td>~26-28%</td><td>27.1%</td><td class="pos">Met</td></tr>
-      <tr><td>FY24</td><td>before the review period</td><td>High 20s</td><td>19.8%</td><td class="neg">-700 to -800 bps</td></tr>
-      <tr><td>FY25</td><td>14-Aug-2025</td><td>22% plus or minus 100 bps</td><td>17.9%</td><td class="neg">-310 bps</td></tr>
-      <tr><td>FY25</td><td>30-Oct-2024</td><td>~21%, a quiet cut</td><td>17.9%</td><td class="neg">-310 bps</td></tr>
-      <tr><td>FY25</td><td>11-Feb-2025</td><td>21% plus or minus 100 bps</td><td>17.9%</td><td class="neg">-210 bps</td></tr>
-      <tr class="hl"><td>Q4 FY25</td><td>11-Feb-2025</td><td>24% plus or minus 100 bps</td><td>18.7%</td><td class="neg">-430 bps</td></tr>
-      <tr class="hl"><td>FY26</td><td>11-Feb-2025</td><td>24%</td><td>19.5%</td><td class="neg">-450 bps</td></tr>
-      <tr><td>FY26</td><td>23-May-2025</td><td>21% plus or minus 100 bps, cut by 300 bps</td><td>19.5%</td><td class="neg">-50 bps</td></tr>
-      <tr><td>FY26</td><td>06-Aug-2025, 06-Nov-2025, 30-Jan-2026</td><td>21% reiterated three times</td><td>19.5%</td><td class="neg">-50 bps</td></tr>
-      <tr class="hl"><td>FY27</td><td>11-Feb-2025</td><td>26%</td><td>Guided down to 24%</td><td class="neg">Abandoned</td></tr>
-      <tr><td>FY27</td><td>13-May-2026</td><td>24%</td><td>Q1 at 23.6%</td><td class="pos">On track</td></tr>
-      <tr class="hl"><td>FY27</td><td>30-Jul-2026</td><td>MD said 22%, CFO and the deck said 24%</td><td>-</td><td class="neg">Contradiction</td></tr>
-      <tr class="hl"><td>FY28</td><td>11-Feb-2025</td><td>28%</td><td>-</td><td class="neg">Never withdrawn, never mentioned again</td></tr>
+      <tr><td>FY23</td><td class="tx">before the review period</td><td class="tx tn">~26-28%</td><td>27.1%</td><td class="pos">Met</td></tr>
+      <tr><td>FY24</td><td class="tx">before the review period</td><td class="tx tn">High 20s</td><td>19.8%</td><td class="neg">-700 to -800 bps</td></tr>
+      <tr><td>FY25</td><td class="tx tn">14-Aug-2025</td><td class="tx">22% plus or minus 100 bps</td><td>17.9%</td><td class="neg">-310 bps</td></tr>
+      <tr><td>FY25</td><td class="tx tn">30-Oct-2024</td><td class="tx tn">~21%, a quiet cut</td><td>17.9%</td><td class="neg">-310 bps</td></tr>
+      <tr><td>FY25</td><td class="tx tn">11-Feb-2025</td><td class="tx">21% plus or minus 100 bps</td><td>17.9%</td><td class="neg">-210 bps</td></tr>
+      <tr class="hl"><td>Q4 FY25</td><td class="tx tn">11-Feb-2025</td><td class="tx">24% plus or minus 100 bps</td><td>18.7%</td><td class="neg">-430 bps</td></tr>
+      <tr class="hl"><td>FY26</td><td class="tx tn">11-Feb-2025</td><td class="tx tn">24%</td><td>19.5%</td><td class="neg">-450 bps</td></tr>
+      <tr><td>FY26</td><td class="tx tn">23-May-2025</td><td class="tx">21% plus or minus 100 bps, cut by 300 bps</td><td>19.5%</td><td class="neg">-50 bps</td></tr>
+      <tr><td>FY26</td><td class="tx">06-Aug-2025, 06-Nov-2025, 30-Jan-2026</td><td class="tx">21% reiterated three times</td><td>19.5%</td><td class="neg">-50 bps</td></tr>
+      <tr class="hl"><td>FY27</td><td class="tx tn">11-Feb-2025</td><td class="tx tn">26%</td><td class="tx tn">Guided down to 24%</td><td class="neg">Abandoned</td></tr>
+      <tr><td>FY27</td><td class="tx tn">13-May-2026</td><td class="tx tn">24%</td><td>Q1 at 23.6%</td><td class="pos">On track</td></tr>
+      <tr class="hl"><td>FY27</td><td class="tx tn">30-Jul-2026</td><td class="tx">MD said 22%, CFO and the deck said 24%</td><td>-</td><td class="neg">Contradiction</td></tr>
+      <tr class="hl"><td>FY28</td><td class="tx tn">11-Feb-2025</td><td class="tx tn">28%</td><td>-</td><td class="neg tx">Never withdrawn, never mentioned again</td></tr>
     </tbody>
   </table></div></div>
   <p>The pattern is legible. A high multi-year ladder is set when the story is being sold - in February 2025 the MD volunteered 24% for FY26, 26% for FY27 and 28% for FY28, unprompted. Three months later, once the year had actually started, the FY26 number was cut 300 basis points to 21%. Then even the cut number was missed. <b>Every full-year EBITDA margin commitment made in the last three years has been missed.</b> The structural break happened in FY24, when margin fell from 27.1% to 19.8%, and it has been guided away every year since without ever being repaired.</p>
@@ -1258,11 +1261,11 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Capex forecasting: a 6% hit rate is not noise</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>FY27 capex, as guided over time</th><th>Date</th><th>Number</th></tr></thead>
+    <thead><tr><th>FY27 capex, as guided over time</th><th class="tx">Date</th><th>Number</th></tr></thead>
     <tbody>
-      <tr><td>CFO: "only around &#8377;25 to &#8377;30 crores is there as per the sustenance capex"</td><td>06-Aug-2025</td><td>&#8377;25-30 cr</td></tr>
-      <tr><td>MD: "around &#8377;250-300 crores of capex... spread over two years"</td><td>13-May-2026</td><td>&#8377;250-300 cr</td></tr>
-      <tr class="hl"><td>CFO: "almost &#8377;500 crores of capex for this year and also next year put together"</td><td>30-Jul-2026</td><td>&#8377;500 cr</td></tr>
+      <tr><td>CFO: "only around &#8377;25 to &#8377;30 crores is there as per the sustenance capex"</td><td class="tx tn">06-Aug-2025</td><td>&#8377;25-30 cr</td></tr>
+      <tr><td>MD: "around &#8377;250-300 crores of capex... spread over two years"</td><td class="tx tn">13-May-2026</td><td>&#8377;250-300 cr</td></tr>
+      <tr class="hl"><td>CFO: "almost &#8377;500 crores of capex for this year and also next year put together"</td><td class="tx tn">30-Jul-2026</td><td>&#8377;500 cr</td></tr>
     </tbody>
     <tfoot><tr><td colspan="3">Roughly a seventeen-fold escalation in under twelve months, with only &#8377;35 cr actually spent in Q1 FY27, which makes the programme heavily back-loaded.</td></tr></tfoot>
   </table></div></div>
@@ -1355,16 +1358,16 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Live regulatory matters: what was and was not found</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Matter</th><th>Finding</th></tr></thead>
+    <thead><tr><th>Matter</th><th class="tx">Finding</th></tr></thead>
     <tbody>
-      <tr><td>Securities regulator orders or investigations</td><td class="pos">None found</td></tr>
-      <tr><td>Tribunal proceedings against the company</td><td class="pos">None found. The only tribunal matter is MTAR's own scheme to merge its two subsidiaries into itself</td></tr>
-      <tr><td>Environmental show-cause notices</td><td class="pos">None found</td></tr>
-      <tr><td>Auditor qualification, adverse opinion or emphasis of matter</td><td class="pos">None in FY24, FY25 or FY26</td></tr>
-      <tr><td>Short report, accounting allegation or governance allegation against MTAR</td><td class="pos">None found</td></tr>
-      <tr><td>Tax and indirect tax disputes</td><td class="amb">Cannot be assessed. The contingent liabilities note was not retrievable for any year. One source puts FY25 contingent liabilities at &#8377;2.27 cr, 0.3% of net worth</td></tr>
-      <tr class="hl"><td><b>Exchange surveillance on MTAR's own shares</b></td><td class="neg"><b>Active. Long-term Additional Surveillance Measure Stage IV on the National Stock Exchange, series BE, with a 5% price band, trade-for-trade settlement and 100% margin. On the Bombay Stock Exchange, 'T' group since 25-Jun-2026</b></td></tr>
-      <tr><td>Governance hygiene</td><td class="amb">The FY26 annual report itself admits <em>"minor delays in regulatory filings"</em>, unquantified, in the same year the compliance officer seat turned over for the second time in eighteen months</td></tr>
+      <tr><td>Securities regulator orders or investigations</td><td class="pos tx tn">None found</td></tr>
+      <tr><td>Tribunal proceedings against the company</td><td class="pos tx">None found. The only tribunal matter is MTAR's own scheme to merge its two subsidiaries into itself</td></tr>
+      <tr><td>Environmental show-cause notices</td><td class="pos tx tn">None found</td></tr>
+      <tr><td>Auditor qualification, adverse opinion or emphasis of matter</td><td class="pos tx">None in FY24, FY25 or FY26</td></tr>
+      <tr><td>Short report, accounting allegation or governance allegation against MTAR</td><td class="pos tx tn">None found</td></tr>
+      <tr><td>Tax and indirect tax disputes</td><td class="amb tx">Cannot be assessed. The contingent liabilities note was not retrievable for any year. One source puts FY25 contingent liabilities at &#8377;2.27 cr, 0.3% of net worth</td></tr>
+      <tr class="hl"><td><b>Exchange surveillance on MTAR's own shares</b></td><td class="neg tx"><b>Active. Long-term Additional Surveillance Measure Stage IV on the National Stock Exchange, series BE, with a 5% price band, trade-for-trade settlement and 100% margin. On the Bombay Stock Exchange, 'T' group since 25-Jun-2026</b></td></tr>
+      <tr><td>Governance hygiene</td><td class="amb tx">The FY26 annual report itself admits <em>"minor delays in regulatory filings"</em>, unquantified, in the same year the compliance officer seat turned over for the second time in eighteen months</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1390,12 +1393,12 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Credit rating</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Item</th><th>Finding</th></tr></thead>
+    <thead><tr><th>Item</th><th class="tx">Finding</th></tr></thead>
     <tbody>
-      <tr><td>Agency</td><td>ICRA, and no other agency appears in any accessible filing</td></tr>
-      <tr><td>FY25 and FY26</td><td>Reaffirmed at [ICRA]A (Stable) long-term and A1 short-term. No migration over that period</td></tr>
-      <tr class="hl"><td><b>07-Jul-2026</b></td><td class="pos"><b>Upgraded to [ICRA]A+ (Stable) from A (Stable)</b>, short-term reaffirmed</td></tr>
-      <tr><td>The rationale document</td><td class="neg"><b>Could not be retrieved.</b> No risk flagged by the agency is quoted in this report, because quoting one without the document would be fabrication</td></tr>
+      <tr><td>Agency</td><td class="tx">ICRA, and no other agency appears in any accessible filing</td></tr>
+      <tr><td>FY25 and FY26</td><td class="tx">Reaffirmed at [ICRA]A (Stable) long-term and A1 short-term. No migration over that period</td></tr>
+      <tr class="hl"><td><b>07-Jul-2026</b></td><td class="pos tx"><b>Upgraded to [ICRA]A+ (Stable) from A (Stable)</b>, short-term reaffirmed</td></tr>
+      <tr><td>The rationale document</td><td class="neg tx"><b>Could not be retrieved.</b> No risk flagged by the agency is quoted in this report, because quoting one without the document would be fabrication</td></tr>
     </tbody>
   </table></div></div>
   <p>The upgrade is a genuine positive and it arrived one day before a short report hit MTAR's largest customer. What the rationale says cannot be reported. What can be said is what any credit analyst would reasonably flag on the evidence assembled here: a stretched working capital cycle at 335 to 445 inventory days, majority-single-customer concentration, negative free cash flow in four of five years, debt more than doubling in FY26 with a further &#8377;500 cr programme to be debt-funded, execution risk on a backlog covering 6.8 times revenue, currency exposure at more than 70% export, and named collection delays.</p>
@@ -1421,15 +1424,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   <p><span class="chip c-part">Reported</span> MTAR ran a <b>120-position machinist recruitment drive</b> with walk-in interviews on 22 and 23 March 2026 at its Balanagar unit, pay banded &#8377;18,000 to &#8377;50,000 a month, and repeated the exercise on 30 August 2026. The posting offered <b>travel reimbursement for candidates from outside Hyderabad</b> and stated the company operates <b>600-plus computer-controlled machine tools</b>, against older company material describing seven divisions and 300-plus machines.</p>
   <p>Two inferences. First, a 120-operator drive repeated five months later with outstation travel paid is volume manufacturing capacity ramp, not office growth - and it corroborates the clean energy expansion management says is commissioned. Second, travel reimbursement means the local machinist pool is not deep enough, which is a labour-cost and quality-consistency risk that appears in no filing.</p>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>What MTAR is hiring for</th><th>What it signals</th></tr></thead>
+    <thead><tr><th>What MTAR is hiring for</th><th class="tx">What it signals</th></tr></thead>
     <tbody>
-      <tr><td>Manager, welding engineering, 10-18 years, titanium and stainless precision welding</td><td>Nuclear and aerospace grade capability, a senior technical authority role</td></tr>
-      <tr><td>Store assistant at the Adibatla facility, immediate joiners preferred</td><td>A small but high-confidence tell that the oil and gas plant was genuinely being stood up in 2026. Stores staff are hired when a plant is about to receive material</td></tr>
-      <tr><td>Senior industrial engineer, lean specialist</td><td>Posted when throughput, not order book, is the binding constraint - matching management's own words that execution depends on ramp-up speed</td></tr>
-      <tr><td>Software quality assurance for computer-based avionics</td><td>Genuinely off-thesis electronics content the market does not associate with MTAR</td></tr>
-      <tr><td>Small satellite launch vehicle design and development</td><td>Posted despite the programme having been paused</td></tr>
-      <tr class="hl"><td class="neg"><b>Nothing for data centre disciplines</b></td><td class="neg"><b>No power distribution, busway, liquid cooling, coolant distribution or thermal engineering role surfaced on any portal.</b> The data centre vertical is, in hiring terms, not yet real</td></tr>
-      <tr class="hl"><td class="neg"><b>Nothing for nuclear quality assurance or code stamps</b></td><td class="neg">No dedicated nuclear code or quality requisitions surfaced, despite the &#8377;504 cr award being the largest in the company's history and a dedicated facility being "prepared"</td></tr>
+      <tr><td>Manager, welding engineering, 10-18 years, titanium and stainless precision welding</td><td class="tx">Nuclear and aerospace grade capability, a senior technical authority role</td></tr>
+      <tr><td>Store assistant at the Adibatla facility, immediate joiners preferred</td><td class="tx">A small but high-confidence tell that the oil and gas plant was genuinely being stood up in 2026. Stores staff are hired when a plant is about to receive material</td></tr>
+      <tr><td>Senior industrial engineer, lean specialist</td><td class="tx">Posted when throughput, not order book, is the binding constraint - matching management's own words that execution depends on ramp-up speed</td></tr>
+      <tr><td>Software quality assurance for computer-based avionics</td><td class="tx">Genuinely off-thesis electronics content the market does not associate with MTAR</td></tr>
+      <tr><td>Small satellite launch vehicle design and development</td><td class="tx">Posted despite the programme having been paused</td></tr>
+      <tr class="hl"><td class="neg"><b>Nothing for data centre disciplines</b></td><td class="neg tx"><b>No power distribution, busway, liquid cooling, coolant distribution or thermal engineering role surfaced on any portal.</b> The data centre vertical is, in hiring terms, not yet real</td></tr>
+      <tr class="hl"><td class="neg"><b>Nothing for nuclear quality assurance or code stamps</b></td><td class="neg tx">No dedicated nuclear code or quality requisitions surfaced, despite the &#8377;504 cr award being the largest in the company's history and a dedicated facility being "prepared"</td></tr>
     </tbody>
   </table></div></div>
   <p>The white-collar requisition book runs at only 10 to 18 open roles across portals - small for a company guiding to 80% growth. <b>The hiring data supports management's own cautious framing of the data centre vertical, not the market's treatment of MTAR as an artificial-intelligence infrastructure play.</b></p>
@@ -1490,30 +1493,30 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The 2026 event timeline</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Date</th><th>Event</th><th>Tag</th></tr></thead>
+    <thead><tr><th>Date</th><th class="tx">Event</th><th class="tx">Tag</th></tr></thead>
     <tbody>
-      <tr><td>01-Apr-2026</td><td>First data centre order, USD 3,783,456 = &#8377;35.56 cr, from a new unnamed energy-sector customer, products not described, deliveries to 04-Dec-2026</td><td><span class="chip c-hit">Verified</span></td></tr>
-      <tr class="hl"><td>14-May-2026</td><td>Blanket purchase orders of USD 238.76 mn = &#8377;2,278.96 cr at &#8377;95.50 to the dollar, unnamed international entity, existing customer, execution timeline undecided</td><td><span class="chip c-hit">Verified</span></td></tr>
-      <tr><td>10-Jun-2026</td><td>Crusoe pauses a 1.8 GW Wyoming data centre "at the request of our customer". The site was to be powered by 900 MW of behind-the-meter Bloom fuel cells. Satellite imagery showed only land clearing had begun</td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr><td>11-Jun-2026</td><td>MTAR falls 11-13%, opening at &#8377;7,100 and touching &#8377;6,330. No order cancelled, no customer communication, no filing</td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr><td>12-15 Jun 2026</td><td>The Managing Director states on a news channel that no communication of cancellation, reduction, deferment or pause had been received. Stock rebounds 10-12%</td><td><span class="chip c-hit">Verified</span></td></tr>
-      <tr class="hl"><td>19-Jun-2026</td><td><b>Record high &#8377;8,714.95</b></td><td><span class="chip c-hit">Verified</span></td></tr>
-      <tr><td>25-Jun-2026</td><td>Moved to the Bombay exchange's 'T' group</td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr class="hl"><td>07-Jul-2026</td><td class="pos"><b>ICRA upgrades the long-term rating to A+ (Stable) from A (Stable)</b></td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr class="hl"><td>08-Jul-2026</td><td class="neg"><b>Hunterbrook Media publishes a short report on Bloom Energy. Bloom falls 6-12%</b></td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr><td>09-Jul-2026</td><td>Bloom files a rebuttal calling the allegations "false and misleading"</td><td><span class="chip c-hit">Verified</span></td></tr>
-      <tr><td>17-21 Jul 2026</td><td>MTAR falls 19% in four sessions, six lower circuits in seven, down 34-35% from the high. Bloom itself sits about 39% below its June peak</td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr><td>28-Jul-2026</td><td>Bloom reports record Q2 revenue, beats, shares jump after hours</td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr><td>30-Jul-2026</td><td>MTAR Q1 FY27 results; a further roughly &#8377;800 cr of orders stated on the call day itself, with no exchange filing located</td><td><span class="chip c-hit">Verified</span></td></tr>
-      <tr><td>Aug-2026</td><td>First Bloom Energy securities class action filings</td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr><td>21-Aug-2026</td><td>MTAR analyst meet and plant visit. Post-visit broker notes could not be retrieved - a known gap in this report</td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr><td>26-Aug-2026</td><td>&#8377;126.74 cr from NPCIL for coolant channel assemblies, refurbishment of two reactors</td><td><span class="chip c-hit">Verified</span></td></tr>
-      <tr><td>04-Sep-2026</td><td>Promoter K. Shalini sells 18,000 shares</td><td><span class="chip c-hit">Verified</span></td></tr>
-      <tr><td>08-Sep-2026</td><td>Stock at &#8377;7,820, up 226.77% year to date. JM Financial initiates Buy with a &#8377;9,375 target</td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr><td>16-Sep-2026</td><td>Promoter Leelavathi Parvatha Reddy sells 20,000 shares</td><td><span class="chip c-hit">Verified</span></td></tr>
-      <tr class="hl"><td>17-Sep-2026</td><td>Promoter Kavitha Reddy Gangapatnam pledges 32,000 shares to a wealth distributor</td><td><span class="chip c-hit">Verified</span></td></tr>
-      <tr class="hl"><td><b>28-Sep-2026</b></td><td class="neg"><b>Lead plaintiff deadline in the Bloom Energy securities class action</b></td><td><span class="chip c-part">Reported</span></td></tr>
-      <tr class="hl"><td><b>30-Sep-2026</b></td><td class="pos"><b>MTAR enters the Nifty Midcap 150</b></td><td><span class="chip c-part">Reported</span></td></tr>
+      <tr><td>01-Apr-2026</td><td class="tx">First data centre order, USD 3,783,456 = &#8377;35.56 cr, from a new unnamed energy-sector customer, products not described, deliveries to 04-Dec-2026</td><td class="tx tn"><span class="chip c-hit">Verified</span></td></tr>
+      <tr class="hl"><td>14-May-2026</td><td class="tx">Blanket purchase orders of USD 238.76 mn = &#8377;2,278.96 cr at &#8377;95.50 to the dollar, unnamed international entity, existing customer, execution timeline undecided</td><td class="tx tn"><span class="chip c-hit">Verified</span></td></tr>
+      <tr><td>10-Jun-2026</td><td class="tx">Crusoe pauses a 1.8 GW Wyoming data centre "at the request of our customer". The site was to be powered by 900 MW of behind-the-meter Bloom fuel cells. Satellite imagery showed only land clearing had begun</td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr><td>11-Jun-2026</td><td class="tx">MTAR falls 11-13%, opening at &#8377;7,100 and touching &#8377;6,330. No order cancelled, no customer communication, no filing</td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr><td>12-15 Jun 2026</td><td class="tx">The Managing Director states on a news channel that no communication of cancellation, reduction, deferment or pause had been received. Stock rebounds 10-12%</td><td class="tx tn"><span class="chip c-hit">Verified</span></td></tr>
+      <tr class="hl"><td>19-Jun-2026</td><td class="tx"><b>Record high &#8377;8,714.95</b></td><td class="tx tn"><span class="chip c-hit">Verified</span></td></tr>
+      <tr><td>25-Jun-2026</td><td class="tx">Moved to the Bombay exchange's 'T' group</td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr class="hl"><td>07-Jul-2026</td><td class="pos tx"><b>ICRA upgrades the long-term rating to A+ (Stable) from A (Stable)</b></td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr class="hl"><td>08-Jul-2026</td><td class="neg tx"><b>Hunterbrook Media publishes a short report on Bloom Energy. Bloom falls 6-12%</b></td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr><td>09-Jul-2026</td><td class="tx">Bloom files a rebuttal calling the allegations "false and misleading"</td><td class="tx tn"><span class="chip c-hit">Verified</span></td></tr>
+      <tr><td>17-21 Jul 2026</td><td class="tx">MTAR falls 19% in four sessions, six lower circuits in seven, down 34-35% from the high. Bloom itself sits about 39% below its June peak</td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr><td>28-Jul-2026</td><td class="tx">Bloom reports record Q2 revenue, beats, shares jump after hours</td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr><td>30-Jul-2026</td><td class="tx">MTAR Q1 FY27 results; a further roughly &#8377;800 cr of orders stated on the call day itself, with no exchange filing located</td><td class="tx tn"><span class="chip c-hit">Verified</span></td></tr>
+      <tr><td>Aug-2026</td><td class="tx">First Bloom Energy securities class action filings</td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr><td>21-Aug-2026</td><td class="tx">MTAR analyst meet and plant visit. Post-visit broker notes could not be retrieved - a known gap in this report</td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr><td>26-Aug-2026</td><td class="tx">&#8377;126.74 cr from NPCIL for coolant channel assemblies, refurbishment of two reactors</td><td class="tx tn"><span class="chip c-hit">Verified</span></td></tr>
+      <tr><td>04-Sep-2026</td><td class="tx">Promoter K. Shalini sells 18,000 shares</td><td class="tx tn"><span class="chip c-hit">Verified</span></td></tr>
+      <tr><td>08-Sep-2026</td><td class="tx">Stock at &#8377;7,820, up 226.77% year to date. JM Financial initiates Buy with a &#8377;9,375 target</td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr><td>16-Sep-2026</td><td class="tx">Promoter Leelavathi Parvatha Reddy sells 20,000 shares</td><td class="tx tn"><span class="chip c-hit">Verified</span></td></tr>
+      <tr class="hl"><td>17-Sep-2026</td><td class="tx">Promoter Kavitha Reddy Gangapatnam pledges 32,000 shares to a wealth distributor</td><td class="tx tn"><span class="chip c-hit">Verified</span></td></tr>
+      <tr class="hl"><td><b>28-Sep-2026</b></td><td class="neg tx"><b>Lead plaintiff deadline in the Bloom Energy securities class action</b></td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
+      <tr class="hl"><td><b>30-Sep-2026</b></td><td class="pos tx"><b>MTAR enters the Nifty Midcap 150</b></td><td class="tx tn"><span class="chip c-part">Reported</span></td></tr>
     </tbody>
   </table></div></div>
 
@@ -1535,15 +1538,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The sensitivities that actually move earnings</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Driver</th><th>Exposure</th><th>Quantification</th><th>Direction now</th></tr></thead>
+    <thead><tr><th>Driver</th><th class="tx">Exposure</th><th class="tx">Quantification</th><th class="tx">Direction now</th></tr></thead>
     <tbody>
-      <tr class="hl"><td><b>Rupee against the dollar</b></td><td>More than 70% of revenue is export on the annual report basis, overwhelmingly to the United States, against a cost base that is overwhelmingly Indian</td><td class="wr"><b>Directly quantified by management: a &#8377;25 cr currency gain in FY26</b>, equal to 26.6% of profit and <b>60.8% of the entire year-on-year profit increase</b>. The rupee weakened 8.66% over the year to 21-Sep-2026, closing at 95.805</td><td class="pos">Tailwind, and it has already been banked</td></tr>
-      <tr class="hl"><td><b>The customer's capital expenditure schedule</b></td><td>55-65% of revenue directly, plausibly 70-80% including customer-linked content in the products line</td><td class="wr">Not a macro variable at all, but the single largest external determinant of MTAR's revenue. Demonstrated twice: a customer deferral cut FY24 revenue 32% below original guidance, and a single headline about a paused data-centre project moved MTAR 13% in a day in June 2026</td><td class="amb">Strongly positive now; entirely outside MTAR's control</td></tr>
-      <tr><td>Input metal prices</td><td>Stainless steel, superalloys, nickel and titanium</td><td class="wr">Management attributed part of the FY26 gross margin decline to "higher input and freight costs". <b>The relevant indices could not be obtained.</b> Copper rose 48% over the year but is the wrong proxy for this basket and must not be read as confirming the commentary. Note the company gave a different explanation - "revenue mix" - for the same directional decline one quarter later</td><td class="amb">Unquantified</td></tr>
-      <tr><td>Interest rates</td><td>&#8377;423.6 cr of gross debt at an effective 10.60%</td><td class="wr">Every 100 basis points on that stack is about &#8377;4.2 cr a year, roughly 4.5% of FY26 profit. Q4 FY26 finance cost alone rose 62.7% year on year to &#8377;9.6 cr, before the &#8377;500 cr capital programme is drawn</td><td class="neg">Headwind as debt grows</td></tr>
-      <tr><td>US tariffs</td><td>Applied to Indian exports into the United States</td><td class="wr">Not theoretical. A three-and-a-half week standoff with the largest customer over who absorbs tariffs cost MTAR a quarter of earnings in Q2 FY26 - EBITDA margin fell to 12.53%. Management's position: "if we absorb the tariffs, then we don't stand a chance... that is something that the American companies have to figure it out"</td><td class="neg">Live and recurring</td></tr>
-      <tr><td>Wage inflation</td><td>2,562 employees, a 120-position machinist drive run twice, outstation travel reimbursed</td><td class="wr">Unquantified and unmodelled by any analyst. Employee pay ratings of 2.6 out of 5 in a Hyderabad market competing with aerospace and semiconductor employers is a live tension against a 22-24% margin guide built entirely on fixed-cost leverage</td><td class="neg">Headwind, unpriced</td></tr>
-      <tr><td>Crude, monsoon, rural and urban demand</td><td>Essentially none</td><td class="wr">MTAR sells critical components to industrial and government customers. The classic Indian macro sensitivities do not apply here in any material way</td><td>Not applicable</td></tr>
+      <tr class="hl"><td><b>Rupee against the dollar</b></td><td class="tx">More than 70% of revenue is export on the annual report basis, overwhelmingly to the United States, against a cost base that is overwhelmingly Indian</td><td class="wr tx"><b>Directly quantified by management: a &#8377;25 cr currency gain in FY26</b>, equal to 26.6% of profit and <b>60.8% of the entire year-on-year profit increase</b>. The rupee weakened 8.66% over the year to 21-Sep-2026, closing at 95.805</td><td class="pos tx">Tailwind, and it has already been banked</td></tr>
+      <tr class="hl"><td><b>The customer's capital expenditure schedule</b></td><td class="tx">55-65% of revenue directly, plausibly 70-80% including customer-linked content in the products line</td><td class="wr tx">Not a macro variable at all, but the single largest external determinant of MTAR's revenue. Demonstrated twice: a customer deferral cut FY24 revenue 32% below original guidance, and a single headline about a paused data-centre project moved MTAR 13% in a day in June 2026</td><td class="amb tx">Strongly positive now; entirely outside MTAR's control</td></tr>
+      <tr><td>Input metal prices</td><td class="tx">Stainless steel, superalloys, nickel and titanium</td><td class="wr tx">Management attributed part of the FY26 gross margin decline to "higher input and freight costs". <b>The relevant indices could not be obtained.</b> Copper rose 48% over the year but is the wrong proxy for this basket and must not be read as confirming the commentary. Note the company gave a different explanation - "revenue mix" - for the same directional decline one quarter later</td><td class="amb tx tn">Unquantified</td></tr>
+      <tr><td>Interest rates</td><td class="tx">&#8377;423.6 cr of gross debt at an effective 10.60%</td><td class="wr tx">Every 100 basis points on that stack is about &#8377;4.2 cr a year, roughly 4.5% of FY26 profit. Q4 FY26 finance cost alone rose 62.7% year on year to &#8377;9.6 cr, before the &#8377;500 cr capital programme is drawn</td><td class="neg tx">Headwind as debt grows</td></tr>
+      <tr><td>US tariffs</td><td class="tx">Applied to Indian exports into the United States</td><td class="wr tx">Not theoretical. A three-and-a-half week standoff with the largest customer over who absorbs tariffs cost MTAR a quarter of earnings in Q2 FY26 - EBITDA margin fell to 12.53%. Management's position: "if we absorb the tariffs, then we don't stand a chance... that is something that the American companies have to figure it out"</td><td class="neg tx tn">Live and recurring</td></tr>
+      <tr><td>Wage inflation</td><td class="tx">2,562 employees, a 120-position machinist drive run twice, outstation travel reimbursed</td><td class="wr tx">Unquantified and unmodelled by any analyst. Employee pay ratings of 2.6 out of 5 in a Hyderabad market competing with aerospace and semiconductor employers is a live tension against a 22-24% margin guide built entirely on fixed-cost leverage</td><td class="neg tx tn">Headwind, unpriced</td></tr>
+      <tr><td>Crude, monsoon, rural and urban demand</td><td class="tx tn">Essentially none</td><td class="wr tx">MTAR sells critical components to industrial and government customers. The classic Indian macro sensitivities do not apply here in any material way</td><td class="tx tn">Not applicable</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1573,15 +1576,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Where the order book stands</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Item</th><th>Value</th><th>Note</th></tr></thead>
+    <thead><tr><th>Item</th><th>Value</th><th class="tx">Note</th></tr></thead>
     <tbody>
-      <tr><td>Order book at 30-Jun-2026</td><td>&#8377;5,143.3 cr</td><td>Already above the &#8377;5,000 cr target management had set for the <b>end</b> of FY27, in the first quarter</td></tr>
-      <tr><td>Including orders announced on the results call of 30-Jul-2026</td><td>~&#8377;5,943 cr</td><td>The further ~&#8377;800 cr has no traceable exchange filing, counterparty or execution period</td></tr>
-      <tr class="hl"><td><b>Book to revenue cover</b></td><td class="pos"><b>6.8x FY26 revenue</b></td><td>More than double the next best in the peer set</td></tr>
-      <tr><td>Q1 FY27 book to bill</td><td>8.03x</td><td>But see the caveat below</td></tr>
-      <tr class="hl"><td><b>Of which has no execution schedule</b></td><td class="neg"><b>&#8377;2,278.96 cr, about 44% of the June book</b></td><td>"Execution timelines will be decided at a later stage"</td></tr>
-      <tr><td>Of which is stated as FY28</td><td>~&#8377;3,100-3,200 cr</td><td>Management on 30-Jul-2026 about the orders announced that morning: "the execution timeline is for next year"</td></tr>
-      <tr><td>Of which is nuclear, executing over three years</td><td>~&#8377;815 cr</td><td>Including &#8377;130-140 cr expected in Q2 FY27</td></tr>
+      <tr><td>Order book at 30-Jun-2026</td><td>&#8377;5,143.3 cr</td><td class="tx">Already above the &#8377;5,000 cr target management had set for the <b>end</b> of FY27, in the first quarter</td></tr>
+      <tr><td>Including orders announced on the results call of 30-Jul-2026</td><td>~&#8377;5,943 cr</td><td class="tx">The further ~&#8377;800 cr has no traceable exchange filing, counterparty or execution period</td></tr>
+      <tr class="hl"><td><b>Book to revenue cover</b></td><td class="pos"><b>6.8x FY26 revenue</b></td><td class="tx">More than double the next best in the peer set</td></tr>
+      <tr><td>Q1 FY27 book to bill</td><td>8.03x</td><td class="tx">But see the caveat below</td></tr>
+      <tr class="hl"><td><b>Of which has no execution schedule</b></td><td class="neg tx"><b>&#8377;2,278.96 cr, about 44% of the June book</b></td><td class="tx">"Execution timelines will be decided at a later stage"</td></tr>
+      <tr><td>Of which is stated as FY28</td><td>~&#8377;3,100-3,200 cr</td><td class="tx">Management on 30-Jul-2026 about the orders announced that morning: "the execution timeline is for next year"</td></tr>
+      <tr><td>Of which is nuclear, executing over three years</td><td>~&#8377;815 cr</td><td class="tx">Including &#8377;130-140 cr expected in Q2 FY27</td></tr>
     </tbody>
   </table></div></div>
   <div class="flag f-amb">
@@ -1621,13 +1624,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Government scheme linkage, honestly sized</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Scheme</th><th>Headline</th><th>MTAR's actual entitlement</th></tr></thead>
+    <thead><tr><th>Scheme</th><th class="tx">Headline</th><th class="tx">MTAR's actual entitlement</th></tr></thead>
     <tbody>
-      <tr><td>Nuclear Energy Mission</td><td>&#8377;20,000 cr allocated in the 2025-26 Budget; 100 GW by 2047</td><td class="wr">The allocation is a measured Budget line. The 100 GW target is a ministerial projection, directional only. <b>MTAR has no scheme entitlement and no small modular reactor order.</b> Its nuclear revenue is conventional heavy-water reactor supply and refurbishment</td></tr>
-      <tr><td>Bharat Small Reactors</td><td>Twin 220 MWe units for captive use; sixteen sites across six states</td><td class="wr"><b>No award. No MTAR order.</b> The tender has slipped at least eighteen months and is being rewritten under the new statute</td></tr>
-      <tr><td>Defence indigenisation</td><td>&#8377;1.39 lakh cr, about 75% of FY27 capital acquisition, earmarked for domestic industry</td><td class="wr">Top of funnel. MTAR's FY26 aerospace and defence revenue was &#8377;103.8 cr. A named &#8377;140-150 cr actuator programme and a "&#8377;250 crore plus" domestic pipeline, neither booked</td></tr>
-      <tr class="hl"><td>Nuclear production-linked incentive</td><td class="wr">Management flagged a scheme "valued at &#8377;18,000-20,000 crore in the upcoming Union Budget" on the call of 30-Jan-2026</td><td class="neg"><b>Never mentioned again on either subsequent call. Not delivered.</b></td></tr>
-      <tr><td>Indian data-centre build-out</td><td>1,789 MW operational, about 6 GW projected by 2029, USD 110 bn of investment</td><td class="neg"><b>Not applicable.</b> Management confirmed the data centre business is "all for export". Indian data-centre statistics do not describe MTAR's opportunity</td></tr>
+      <tr><td>Nuclear Energy Mission</td><td class="tx">&#8377;20,000 cr allocated in the 2025-26 Budget; 100 GW by 2047</td><td class="wr tx">The allocation is a measured Budget line. The 100 GW target is a ministerial projection, directional only. <b>MTAR has no scheme entitlement and no small modular reactor order.</b> Its nuclear revenue is conventional heavy-water reactor supply and refurbishment</td></tr>
+      <tr><td>Bharat Small Reactors</td><td class="tx">Twin 220 MWe units for captive use; sixteen sites across six states</td><td class="wr tx"><b>No award. No MTAR order.</b> The tender has slipped at least eighteen months and is being rewritten under the new statute</td></tr>
+      <tr><td>Defence indigenisation</td><td class="tx">&#8377;1.39 lakh cr, about 75% of FY27 capital acquisition, earmarked for domestic industry</td><td class="wr tx">Top of funnel. MTAR's FY26 aerospace and defence revenue was &#8377;103.8 cr. A named &#8377;140-150 cr actuator programme and a "&#8377;250 crore plus" domestic pipeline, neither booked</td></tr>
+      <tr class="hl"><td>Nuclear production-linked incentive</td><td class="wr tx">Management flagged a scheme "valued at &#8377;18,000-20,000 crore in the upcoming Union Budget" on the call of 30-Jan-2026</td><td class="neg tx"><b>Never mentioned again on either subsequent call. Not delivered.</b></td></tr>
+      <tr><td>Indian data-centre build-out</td><td class="tx">1,789 MW operational, about 6 GW projected by 2029, USD 110 bn of investment</td><td class="neg tx"><b>Not applicable.</b> Management confirmed the data centre business is "all for export". Indian data-centre statistics do not describe MTAR's opportunity</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1653,16 +1656,16 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The surveillance status, which governs everything else here</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Element</th><th>Status</th></tr></thead>
+    <thead><tr><th>Element</th><th class="tx">Status</th></tr></thead>
     <tbody>
-      <tr class="hl"><td>National Stock Exchange framework</td><td class="neg"><b>Long-term Additional Surveillance Measure, Stage IV</b> - the most severe stage</td></tr>
-      <tr><td>Series</td><td><b>BE</b>, which is what the trade-to-trade segment trades as</td></tr>
-      <tr><td>Price band</td><td class="neg"><b>5%</b>, down from the normal 20%</td></tr>
-      <tr><td>Settlement</td><td class="neg"><b>Trade-for-trade.</b> 100% delivery, no intraday, no netting</td></tr>
-      <tr><td>Margin</td><td>100%</td></tr>
-      <tr><td>Bombay Stock Exchange</td><td>'T' group since <b>25-Jun-2026</b></td></tr>
-      <tr><td>Minimum tenure before exit is considered</td><td>90 days</td></tr>
-      <tr><td>Derivatives segment</td><td>Almost certainly not eligible - a trade-to-trade scrip with a 5% band cannot normally be in futures and options. Not definitively confirmed; broker pages showing an option chain are most likely auto-generated templates</td></tr>
+      <tr class="hl"><td>National Stock Exchange framework</td><td class="neg tx"><b>Long-term Additional Surveillance Measure, Stage IV</b> - the most severe stage</td></tr>
+      <tr><td>Series</td><td class="tx"><b>BE</b>, which is what the trade-to-trade segment trades as</td></tr>
+      <tr><td>Price band</td><td class="neg tx"><b>5%</b>, down from the normal 20%</td></tr>
+      <tr><td>Settlement</td><td class="neg tx"><b>Trade-for-trade.</b> 100% delivery, no intraday, no netting</td></tr>
+      <tr><td>Margin</td><td class="tx tn">100%</td></tr>
+      <tr><td>Bombay Stock Exchange</td><td class="tx">'T' group since <b>25-Jun-2026</b></td></tr>
+      <tr><td>Minimum tenure before exit is considered</td><td class="tx tn">90 days</td></tr>
+      <tr><td>Derivatives segment</td><td class="tx">Almost certainly not eligible - a trade-to-trade scrip with a 5% band cannot normally be in futures and options. Not definitively confirmed; broker pages showing an option chain are most likely auto-generated templates</td></tr>
     </tbody>
   </table></div></div>
   <p>The measure is triggered by trading-pattern abnormality - price spikes, volume anomalies, client concentration, low delivery - not by anything about the business. It arrived after the stock ran 566% from listing and 190% in calendar 2026 alone.</p>
@@ -1670,12 +1673,12 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   <div class="flag f-bear">
     <span class="fl">It is observably biting, and the numbers are stark</span>
     <div class="tw" style="margin-top:8px"><div class="ts"><table>
-      <thead><tr><th>Month</th><th>Shares traded</th><th>Against the share count of 3.076 cr</th></tr></thead>
+      <thead><tr><th>Month</th><th>Shares traded</th><th class="tx">Against the share count of 3.076 cr</th></tr></thead>
       <tbody>
-        <tr><td>Jun-2026</td><td class="pos">4,13,61,442</td><td><b>13.4 times the entire share count in one month</b></td></tr>
-        <tr><td>Jul-2026</td><td>49,12,631</td><td>-88% on the month</td></tr>
+        <tr><td>Jun-2026</td><td class="pos">4,13,61,442</td><td class="tx"><b>13.4 times the entire share count in one month</b></td></tr>
+        <tr><td>Jul-2026</td><td>49,12,631</td><td class="tx tn">-88% on the month</td></tr>
         <tr><td>Aug-2026</td><td>25,98,766</td><td></td></tr>
-        <tr class="hl"><td>Sep-2026 to the 21st</td><td class="neg">16,08,858</td><td class="neg"><b>Roughly 96% below the June peak</b></td></tr>
+        <tr class="hl"><td>Sep-2026 to the 21st</td><td class="neg">16,08,858</td><td class="neg tx"><b>Roughly 96% below the June peak</b></td></tr>
       </tbody>
       <tfoot><tr><td colspan="3">Ten-day average volume is 114,732 shares against a ninety-day average of 873,885 - the ten-day figure is 13% of the longer window. A mechanical liquidity screen using the ninety-day number will not see this.</td></tr></tfoot>
     </table></div></div>
@@ -1692,8 +1695,8 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
       <tr class="hl"><td>Dec-2024</td><td class="neg">31.42%</td><td>n/d</td><td>n/d</td><td>n/d</td></tr>
       <tr><td>Sep-2025</td><td>31.40%</td><td>9.21%</td><td>24.81%</td><td>n/d</td></tr>
       <tr class="hl"><td>Dec-2025</td><td>~30.6%</td><td class="pos"><b>12.24%</b></td><td class="pos"><b>29.96%</b></td><td>27.2%</td></tr>
-      <tr class="hl"><td><b>Jun-2026</b></td><td class="neg"><b>29.36%</b></td><td colspan="3">Aggregator composition for this quarter fails the 100% sum test and is not reproduced here</td></tr>
-      <tr><td>Sep-2026</td><td>Not yet filed; will be lower</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="hl"><td><b>Jun-2026</b></td><td class="neg"><b>29.36%</b></td><td colspan="3" class="tx">Aggregator composition for this quarter fails the 100% sum test and is not reproduced here</td></tr>
+      <tr><td>Sep-2026</td><td class="tx">Not yet filed; will be lower</td><td>-</td><td>-</td><td>-</td></tr>
     </tbody>
     <tfoot><tr><td colspan="5">Figures are from secondary aggregation of exchange filings, not read from the filings themselves, and they disagree with each other at the decimal level. The December 2025 row is internally consistent and sums to 100%; it is the one to trust. The retail shareholder <b>count</b>, which is the actual froth test, could not be obtained.</td></tr></tfoot>
   </table></div></div>
@@ -1705,13 +1708,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Who owns it, and who used to</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Holder</th><th>Entry</th><th>Status</th></tr></thead>
+    <thead><tr><th>Holder</th><th class="tx">Entry</th><th class="tx">Status</th></tr></thead>
     <tbody>
-      <tr><td>Blackstone</td><td>Pre-2017</td><td class="neg">Out. Sold ~33.1% to Florintree in 2017</td></tr>
-      <tr class="hl"><td><b>Florintree Advisors</b>, run by a former Blackstone India co-head</td><td>2017 at an average of <b>&#8377;38.44</b></td><td class="neg"><b>Fully out on 25-Mar-2024</b> at &#8377;1,793.44 and &#8377;1,796.41, 7.91% of equity, about &#8377;500 cr. <b>A 47x return</b></td></tr>
-      <tr><td>Plutus Wealth Management</td><td>~05-Jun-2023, about &#8377;247 cr at roughly &#8377;1,900</td><td>Current status not obtained</td></tr>
-      <tr class="hl"><td><b>BofA Securities Europe</b></td><td>08-09 Jan 2026, 0.66% at <b>&#8377;2,665.45</b>, a 6% premium to the prior close</td><td class="pos">Held. Up roughly 160%</td></tr>
-      <tr><td>Unidentified bulk buyer</td><td>30-Jan-2026, 1,77,311 shares at &#8377;2,944.98, about &#8377;52.2 cr</td><td>Counterparty not identified</td></tr>
+      <tr><td>Blackstone</td><td class="tx tn">Pre-2017</td><td class="neg tx">Out. Sold ~33.1% to Florintree in 2017</td></tr>
+      <tr class="hl"><td><b>Florintree Advisors</b>, run by a former Blackstone India co-head</td><td class="tx">2017 at an average of <b>&#8377;38.44</b></td><td class="neg tx"><b>Fully out on 25-Mar-2024</b> at &#8377;1,793.44 and &#8377;1,796.41, 7.91% of equity, about &#8377;500 cr. <b>A 47x return</b></td></tr>
+      <tr><td>Plutus Wealth Management</td><td class="tx">~05-Jun-2023, about &#8377;247 cr at roughly &#8377;1,900</td><td class="tx">Current status not obtained</td></tr>
+      <tr class="hl"><td><b>BofA Securities Europe</b></td><td class="tx">08-09 Jan 2026, 0.66% at <b>&#8377;2,665.45</b>, a 6% premium to the prior close</td><td class="pos tx">Held. Up roughly 160%</td></tr>
+      <tr><td>Unidentified bulk buyer</td><td class="tx">30-Jan-2026, 1,77,311 shares at &#8377;2,944.98, about &#8377;52.2 cr</td><td class="tx">Counterparty not identified</td></tr>
     </tbody>
     <tfoot><tr><td colspan="3">Given monthly volumes of over 4 crore shares in May and June 2026, this bulk and block record is certainly incomplete - the exchange archives could not be reached. Treat it as a floor.</td></tr></tfoot>
   </table></div></div>
@@ -1745,16 +1748,16 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Where the multiple sits today</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Measure</th><th>Value at &#8377;7,040</th><th>Basis</th></tr></thead>
+    <thead><tr><th>Measure</th><th>Value at &#8377;7,040</th><th class="tx">Basis</th></tr></thead>
     <tbody>
-      <tr class="hl"><td>P/E trailing twelve months</td><td>162.3x</td><td>TTM EPS &#8377;43.38 (to Jun-2026)</td></tr>
-      <tr><td>P/E on FY27 guided earnings</td><td>108x</td><td>FY27E EPS &#8377;65.4 at 80% revenue growth, 23% EBITDA margin</td></tr>
-      <tr><td>P/B</td><td>26.2x</td><td>Latest reported book</td></tr>
-      <tr><td>EV / sales, TTM</td><td>20.1x</td><td>EV &#8377;21,699 cr</td></tr>
-      <tr><td>EV / sales, FY27E</td><td>13.8x</td><td>FY27E revenue &#8377;1,577 cr</td></tr>
-      <tr><td>EV / EBITDA, FY27E</td><td>59.8x</td><td>FY27E EBITDA &#8377;363 cr</td></tr>
-      <tr><td>EV / EBITDA, FY28E base</td><td>50.9x</td><td>FY28E EBITDA &#8377;426 cr</td></tr>
-      <tr><td>Dividend yield</td><td>Nil</td><td>No dividend paid; payout ratio zero</td></tr>
+      <tr class="hl"><td>P/E trailing twelve months</td><td>162.3x</td><td class="tx">TTM EPS &#8377;43.38 (to Jun-2026)</td></tr>
+      <tr><td>P/E on FY27 guided earnings</td><td>108x</td><td class="tx">FY27E EPS &#8377;65.4 at 80% revenue growth, 23% EBITDA margin</td></tr>
+      <tr><td>P/B</td><td>26.2x</td><td class="tx">Latest reported book</td></tr>
+      <tr><td>EV / sales, TTM</td><td>20.1x</td><td class="tx tn">EV &#8377;21,699 cr</td></tr>
+      <tr><td>EV / sales, FY27E</td><td>13.8x</td><td class="tx">FY27E revenue &#8377;1,577 cr</td></tr>
+      <tr><td>EV / EBITDA, FY27E</td><td>59.8x</td><td class="tx">FY27E EBITDA &#8377;363 cr</td></tr>
+      <tr><td>EV / EBITDA, FY28E base</td><td>50.9x</td><td class="tx">FY28E EBITDA &#8377;426 cr</td></tr>
+      <tr><td>Dividend yield</td><td>Nil</td><td class="tx">No dividend paid; payout ratio zero</td></tr>
     </tbody>
     <tfoot><tr><td colspan="3">EV uses net debt of &#8377;44.6 cr, being gross debt of &#8377;423.6 cr at 30-Jun-2026 less investments of &#8377;379.0 cr, both stated by the CFO on the earnings call of 30-Jul-2026. Market cap &#8377;21,654 cr on 3.0759 cr shares. On the company's own account MTAR is close to debt free at the net level, which makes enterprise value almost entirely equity and removes leverage as any part of the explanation for the multiple.</td></tr></tfoot>
   </table></div></div>
@@ -1855,13 +1858,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Five thesis-killers: specific, observable, dated</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>#</th><th>The event that invalidates the case</th><th>Where you would see it</th></tr></thead>
+    <thead><tr><th>#</th><th class="tx">The event that invalidates the case</th><th class="tx">Where you would see it</th></tr></thead>
     <tbody>
-      <tr class="hl"><td>1</td><td><b>The blanket order does not convert.</b> Quarterly clean energy revenue flat below about &#8377;250 cr for two consecutive quarters while the order book stays flat or falls</td><td>Q2 and Q3 FY27 results, late Oct-2026 and late Jan-2027</td></tr>
-      <tr><td>2</td><td><b>The customer guides down, or announces in-house or alternate hot box capacity.</b> Any named second supplier, or any statement that hot box assembly is being brought onshore</td><td>The customer's quarterly results and investor days; its Q3 report is due shortly</td></tr>
-      <tr class="hl"><td>3</td><td><b>The October 2026 phase-two capacity commissioning slips.</b> That single milestone carries most of second-half FY27 revenue, in a company that has missed 94% of its commissioning dates</td><td>The Q2 FY27 call, late Oct or early Nov 2026</td></tr>
-      <tr><td>4</td><td><b>An equity raise at or near the prevailing price</b> to fund the &#8377;500 cr programme and the working capital behind an 80% revenue increase</td><td>A board meeting notice, at any time</td></tr>
-      <tr><td>5</td><td><b>EBITDA margin back below 18% for two quarters.</b> It was 12.53% as recently as Sep-2025, and the entire current margin is operating leverage on a falling gross margin</td><td>Any two consecutive results</td></tr>
+      <tr class="hl"><td>1</td><td class="tx"><b>The blanket order does not convert.</b> Quarterly clean energy revenue flat below about &#8377;250 cr for two consecutive quarters while the order book stays flat or falls</td><td class="tx">Q2 and Q3 FY27 results, late Oct-2026 and late Jan-2027</td></tr>
+      <tr><td>2</td><td class="tx"><b>The customer guides down, or announces in-house or alternate hot box capacity.</b> Any named second supplier, or any statement that hot box assembly is being brought onshore</td><td class="tx">The customer's quarterly results and investor days; its Q3 report is due shortly</td></tr>
+      <tr class="hl"><td>3</td><td class="tx"><b>The October 2026 phase-two capacity commissioning slips.</b> That single milestone carries most of second-half FY27 revenue, in a company that has missed 94% of its commissioning dates</td><td class="tx">The Q2 FY27 call, late Oct or early Nov 2026</td></tr>
+      <tr><td>4</td><td class="tx"><b>An equity raise at or near the prevailing price</b> to fund the &#8377;500 cr programme and the working capital behind an 80% revenue increase</td><td class="tx">A board meeting notice, at any time</td></tr>
+      <tr><td>5</td><td class="tx"><b>EBITDA margin back below 18% for two quarters.</b> It was 12.53% as recently as Sep-2025, and the entire current margin is operating leverage on a falling gross margin</td><td class="tx">Any two consecutive results</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1951,15 +1954,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
     <tbody>
       <tr><td>Revenue</td><td>573.75</td><td>580.75</td><td>676.00</td><td>876.21</td></tr>
       <tr><td>EBITDA</td><td>155.43</td><td>114.77</td><td>122.83</td><td>173.12</td></tr>
-      <tr><td>Depreciation and amortisation</td><td>18.70</td><td>23.20</td><td class="neg">not disclosed</td><td class="neg">not disclosed (~36 derived from the Q4 figure)</td></tr>
+      <tr><td>Depreciation and amortisation</td><td>18.70</td><td>23.20</td><td class="neg">not disclosed</td><td class="neg tx">not disclosed (~36 derived from the Q4 figure)</td></tr>
       <tr><td>Capital work in progress</td><td>72.90</td><td>87.20</td><td class="neg">not disclosed</td><td class="neg">not disclosed</td></tr>
       <tr class="hl"><td><b>Capital expenditure, purchase of property and equipment</b></td><td class="neg">not disclosed</td><td class="neg">not disclosed</td><td><b>101.59</b></td><td><b>128.30</b></td></tr>
       <tr><td>Cash from operations</td><td>~7</td><td>57.4</td><td>101.3</td><td>196.90</td></tr>
       <tr class="hl"><td><b>Free cash flow</b></td><td class="neg">-113.22</td><td class="neg">-58.13</td><td class="neg">-20.17</td><td class="pos">+35.41</td></tr>
       <tr><td>Net cash used in investing</td><td>n/d</td><td>-55.6</td><td>-102.7</td><td class="neg">-352.6</td></tr>
-      <tr><td>Net cash from financing</td><td>n/d</td><td>+25.3</td><td>-35.8</td><td>+154.77, including &#8377;110.10 of long-term borrowing</td></tr>
+      <tr><td>Net cash from financing</td><td>n/d</td><td>+25.3</td><td>-35.8</td><td class="tx">+154.77, including &#8377;110.10 of long-term borrowing</td></tr>
       <tr><td>Total assets</td><td>~1,100</td><td>~1,000</td><td>1,130.28</td><td class="neg">1,743.43, up 54.2%</td></tr>
-      <tr><td>Capex as a multiple of depreciation</td><td colspan="4" class="neg">Not computable. Depreciation is disclosed for only two of the four years and capex for only two, and they are different years.</td></tr>
+      <tr><td>Capex as a multiple of depreciation</td><td colspan="4" class="neg tx">Not computable. Depreciation is disclosed for only two of the four years and capex for only two, and they are different years.</td></tr>
     </tbody>
   </table></div></div>
   <p>The FY26 investing outflow of &#8377;352.6 cr against capex of &#8377;128.3 cr leaves a gap of about &#8377;224 cr, which is the purchase of the short-term investment pile discussed in Section 6. That confirms the &#8377;238.69 cr of investments was bought with the fourth-quarter operating inflow plus new borrowing.</p>
@@ -1970,16 +1973,16 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Capex by purpose, as far as management has stated it</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Deployment</th><th>Cost</th><th>Classification</th></tr></thead>
+    <thead><tr><th>Deployment</th><th class="tx">Cost</th><th class="tx">Classification</th></tr></thead>
     <tbody>
-      <tr><td>Oil and gas facility, FY26 plan</td><td>&#8377;70 cr</td><td>Pure growth, a new vertical</td></tr>
-      <tr><td>"Sustenance and nuclear support facilities", FY26 balance</td><td>&#8377;30 cr</td><td>A mix of maintenance and growth, not split</td></tr>
-      <tr><td><b>FY26 total as guided</b></td><td><b>&#8377;100 cr</b>, funded <b>70% by debt</b></td><td>Actual came in at &#8377;128.30 cr</td></tr>
-      <tr><td>Hot box capacity, 12,000 to 20,000 units</td><td>&#8377;50-60 cr, with infrastructure built to support 30,000</td><td>Growth. About &#8377;0.7 cr per 100 units of annual capacity</td></tr>
-      <tr><td>Data centre dedicated facility</td><td>&#8377;60-70 cr</td><td>Growth, into a vertical with one &#8377;45 cr order</td></tr>
-      <tr><td>Dedicated nuclear facility</td><td class="neg">Not disclosed</td><td>Management says existing capex is "sufficient for nuclear projects, with only minor investments needed to relieve bottlenecks"</td></tr>
-      <tr class="hl"><td><b>Relocation of all clean energy operations to a special economic zone near Hyderabad airport</b></td><td class="neg"><b>Not disclosed</b></td><td class="neg">Implies a land acquisition and a new build of unstated size</td></tr>
-      <tr class="hl"><td><b>FY27 and FY28 programme</b></td><td class="neg"><b>&#8377;500 cr, not broken down by project anywhere</b></td><td>Split roughly <b>70% clean energy, 30% everything else</b>. Only &#8377;35 cr spent in Q1 FY27</td></tr>
+      <tr><td>Oil and gas facility, FY26 plan</td><td class="tx tn">&#8377;70 cr</td><td class="tx">Pure growth, a new vertical</td></tr>
+      <tr><td>"Sustenance and nuclear support facilities", FY26 balance</td><td class="tx tn">&#8377;30 cr</td><td class="tx">A mix of maintenance and growth, not split</td></tr>
+      <tr><td><b>FY26 total as guided</b></td><td class="tx"><b>&#8377;100 cr</b>, funded <b>70% by debt</b></td><td class="tx">Actual came in at &#8377;128.30 cr</td></tr>
+      <tr><td>Hot box capacity, 12,000 to 20,000 units</td><td class="tx">&#8377;50-60 cr, with infrastructure built to support 30,000</td><td class="tx">Growth. About &#8377;0.7 cr per 100 units of annual capacity</td></tr>
+      <tr><td>Data centre dedicated facility</td><td class="tx tn">&#8377;60-70 cr</td><td class="tx">Growth, into a vertical with one &#8377;45 cr order</td></tr>
+      <tr><td>Dedicated nuclear facility</td><td class="neg tx tn">Not disclosed</td><td class="tx">Management says existing capex is "sufficient for nuclear projects, with only minor investments needed to relieve bottlenecks"</td></tr>
+      <tr class="hl"><td><b>Relocation of all clean energy operations to a special economic zone near Hyderabad airport</b></td><td class="neg tx tn"><b>Not disclosed</b></td><td class="neg tx">Implies a land acquisition and a new build of unstated size</td></tr>
+      <tr class="hl"><td><b>FY27 and FY28 programme</b></td><td class="neg tx"><b>&#8377;500 cr, not broken down by project anywhere</b></td><td class="tx">Split roughly <b>70% clean energy, 30% everything else</b>. Only &#8377;35 cr spent in Q1 FY27</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1997,14 +2000,14 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Return per deployment</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Deployment</th><th>Cost</th><th>Disclosed return</th><th>Assessment</th></tr></thead>
+    <thead><tr><th>Deployment</th><th>Cost</th><th class="tx">Disclosed return</th><th class="tx">Assessment</th></tr></thead>
     <tbody>
-      <tr><td>Hot box capacity, 8,000 to 12,000 units</td><td class="neg">Not disclosed separately</td><td class="neg">Not disclosed</td><td>Cannot compute</td></tr>
-      <tr class="hl"><td><b>Hot box capacity, 12,000 to 20,000 units</b></td><td><b>&#8377;50-60 cr</b></td><td class="neg">Not disclosed</td><td class="wr">The only deployment with both a cost and an inferable output - see below</td></tr>
-      <tr><td>Oil and gas facility</td><td>&#8377;70 cr</td><td class="neg">Not disclosed. <b>No oil and gas revenue line is separately reported and no oil and gas order announcement exists in 24 months</b></td><td class="neg">Cannot compute. The least-evidenced use of capital in the FY26 programme</td></tr>
-      <tr><td>Dedicated nuclear facility</td><td class="neg">Not disclosed</td><td class="neg">Not disclosed. Nuclear revenue was &#8377;23.6 cr against a &#8377;684 cr book</td><td>Cannot compute</td></tr>
-      <tr><td>Special economic zone relocation</td><td class="neg">Not disclosed</td><td class="neg">Not disclosed. The zone status implies a tax benefit of unstated quantum</td><td>Cannot compute</td></tr>
-      <tr><td>Data centre facility</td><td>&#8377;60-70 cr</td><td class="neg">Not disclosed. Against one &#8377;45 cr order</td><td>Cannot compute</td></tr>
+      <tr><td>Hot box capacity, 8,000 to 12,000 units</td><td class="neg tx">Not disclosed separately</td><td class="neg tx tn">Not disclosed</td><td class="tx tn">Cannot compute</td></tr>
+      <tr class="hl"><td><b>Hot box capacity, 12,000 to 20,000 units</b></td><td><b>&#8377;50-60 cr</b></td><td class="neg tx tn">Not disclosed</td><td class="wr tx">The only deployment with both a cost and an inferable output - see below</td></tr>
+      <tr><td>Oil and gas facility</td><td>&#8377;70 cr</td><td class="neg tx">Not disclosed. <b>No oil and gas revenue line is separately reported and no oil and gas order announcement exists in 24 months</b></td><td class="neg tx">Cannot compute. The least-evidenced use of capital in the FY26 programme</td></tr>
+      <tr><td>Dedicated nuclear facility</td><td class="neg">Not disclosed</td><td class="neg tx">Not disclosed. Nuclear revenue was &#8377;23.6 cr against a &#8377;684 cr book</td><td class="tx tn">Cannot compute</td></tr>
+      <tr><td>Special economic zone relocation</td><td class="neg">Not disclosed</td><td class="neg tx">Not disclosed. The zone status implies a tax benefit of unstated quantum</td><td class="tx tn">Cannot compute</td></tr>
+      <tr><td>Data centre facility</td><td>&#8377;60-70 cr</td><td class="neg tx">Not disclosed. Against one &#8377;45 cr order</td><td class="tx tn">Cannot compute</td></tr>
     </tbody>
   </table></div></div>
   <p><b>The one computable increment.</b> FY26 clean energy revenue of &#8377;615.4 cr was earned on capacity moving toward 12,000 units, implying roughly &#8377;5.1 lakh of revenue per unit of exit capacity. Applied to the 8,000 incremental units bought for &#8377;50-60 cr, that is about &#8377;410 cr of incremental revenue capacity for &#8377;50-60 cr of capital - an asset turn of roughly seven times, carrying perhaps &#8377;80 cr of incremental EBITDA at FY26 margins. That is an extremely high theoretical return on that specific increment, and it is the single best argument in the bull case. <b>It is also a derivation on assumed full utilisation and a blended revenue per unit that includes non-fuel-cell products. It is not a company disclosure and must not be treated as one.</b></p>
@@ -2097,7 +2100,7 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
       <tr><td>Clean energy: civil nuclear</td><td>26.3%</td><td>679.0</td><td>13.3%</td><td>684.0</td><td>+5.0</td></tr>
       <tr><td>Products and others</td><td>8.5%</td><td>219.5</td><td>12.6%</td><td>648.0</td><td class="pos">+428.5</td></tr>
       <tr><td>Aerospace and defence</td><td>14.0%</td><td>361.5</td><td>7.4%</td><td>380.6</td><td>+19.1</td></tr>
-      <tr><td>Data centre</td><td colspan="4">Not a disclosed order-book segment in either presentation</td><td>-</td></tr>
+      <tr><td>Data centre</td><td colspan="4" class="tx">Not a disclosed order-book segment in either presentation</td><td>-</td></tr>
     </tbody>
     <tfoot><tr><td colspan="6">INR crore. Derived from the company's own percentage splits applied to its own reported totals.</td></tr></tfoot>
   </table></div></div>
@@ -2105,15 +2108,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The order that is 44% of the book</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Field</th><th>Disclosure</th></tr></thead>
+    <thead><tr><th>Field</th><th class="tx">Disclosure</th></tr></thead>
     <tbody>
-      <tr><td>Filing date</td><td>14-May-2026, Regulation 30 disclosure to BSE and NSE</td></tr>
-      <tr><td>Value</td><td>USD 238.76 mn = &#8377;2,278.96 cr at &#8377;95.50 to the dollar</td></tr>
-      <tr class="hl"><td>Counterparty</td><td><b>Not disclosed.</b> "An international entity", withheld under confidentiality obligations</td></tr>
-      <tr><td>Nature</td><td><b>Blanket purchase orders</b>, "in continuation of its regular business relationship with the customer"</td></tr>
-      <tr class="hl"><td>Execution period</td><td><b>Not disclosed.</b> "Execution timelines will be decided at a later stage"</td></tr>
-      <tr><td>Segment</td><td>Not stated in the filing</td></tr>
-      <tr><td>Related party</td><td>Confirmed not a related-party transaction; promoter group holds no interest in the awarding entity</td></tr>
+      <tr><td>Filing date</td><td class="tx">14-May-2026, Regulation 30 disclosure to BSE and NSE</td></tr>
+      <tr><td>Value</td><td class="tx">USD 238.76 mn = &#8377;2,278.96 cr at &#8377;95.50 to the dollar</td></tr>
+      <tr class="hl"><td>Counterparty</td><td class="tx"><b>Not disclosed.</b> "An international entity", withheld under confidentiality obligations</td></tr>
+      <tr><td>Nature</td><td class="tx"><b>Blanket purchase orders</b>, "in continuation of its regular business relationship with the customer"</td></tr>
+      <tr class="hl"><td>Execution period</td><td class="tx"><b>Not disclosed.</b> "Execution timelines will be decided at a later stage"</td></tr>
+      <tr><td>Segment</td><td class="tx">Not stated in the filing</td></tr>
+      <tr><td>Related party</td><td class="tx">Confirmed not a related-party transaction; promoter group holds no interest in the awarding entity</td></tr>
     </tbody>
   </table></div></div>
 
@@ -2128,16 +2131,16 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Named orders, last 24 months</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Date</th><th>Counterparty</th><th>Value</th><th>Segment</th><th>Execution</th></tr></thead>
+    <thead><tr><th>Date</th><th class="tx">Counterparty</th><th>Value</th><th class="tx">Segment</th><th class="tx">Execution</th></tr></thead>
     <tbody>
-      <tr><td>10-Sep-2025</td><td><b>Bloom Energy Corporation</b></td><td>386.06</td><td>Clean energy fuel cells</td><td>204.86 by Mar-2026; 181.20 by Jun-2026</td></tr>
-      <tr><td>31-Oct-2025</td><td>Not disclosed, "existing international client"</td><td>264</td><td>Not obtained</td><td>Not obtained</td></tr>
-      <tr><td>06-Dec-2025</td><td><b>MEIL (Megha Engineering)</b></td><td>194</td><td>Civil nuclear, Kaiga 5 and 6</td><td>Staggered, part of the Kaiga programme</td></tr>
-      <tr><td>18-Dec-2025</td><td><b>Megha Engineering</b></td><td>310</td><td>Civil nuclear, Kaiga 5 and 6</td><td>Deliveries staggered to Feb-2030</td></tr>
-      <tr><td>01-Apr-2026</td><td>Not disclosed, "energy sector"</td><td>35.56</td><td>Data centre infrastructure</td><td>To 04-Dec-2026</td></tr>
-      <tr class="hl"><td>14-May-2026</td><td>Not disclosed, "international entity"</td><td>2,278.96</td><td>Not stated</td><td>Not disclosed</td></tr>
-      <tr><td>22-May-2026</td><td>Not disclosed, "existing overseas customer"</td><td>467.30</td><td>Not stated</td><td>Half by 20-Mar-2027, rest by 20-Jun-2027</td></tr>
-      <tr><td>26-Aug-2026</td><td><b>NPCIL</b></td><td>126.74</td><td>Civil nuclear refurbishment, RAPS-4 and MAPS-2</td><td>Not obtained</td></tr>
+      <tr><td>10-Sep-2025</td><td class="tx"><b>Bloom Energy Corporation</b></td><td>386.06</td><td class="tx">Clean energy fuel cells</td><td class="tx">204.86 by Mar-2026; 181.20 by Jun-2026</td></tr>
+      <tr><td>31-Oct-2025</td><td class="tx">Not disclosed, "existing international client"</td><td>264</td><td class="tx tn">Not obtained</td><td class="tx tn">Not obtained</td></tr>
+      <tr><td>06-Dec-2025</td><td class="tx"><b>MEIL (Megha Engineering)</b></td><td>194</td><td class="tx">Civil nuclear, Kaiga 5 and 6</td><td class="tx">Staggered, part of the Kaiga programme</td></tr>
+      <tr><td>18-Dec-2025</td><td class="tx tn"><b>Megha Engineering</b></td><td>310</td><td class="tx">Civil nuclear, Kaiga 5 and 6</td><td class="tx">Deliveries staggered to Feb-2030</td></tr>
+      <tr><td>01-Apr-2026</td><td class="tx">Not disclosed, "energy sector"</td><td>35.56</td><td class="tx">Data centre infrastructure</td><td class="tx tn">To 04-Dec-2026</td></tr>
+      <tr class="hl"><td>14-May-2026</td><td class="tx">Not disclosed, "international entity"</td><td>2,278.96</td><td class="tx tn">Not stated</td><td class="tx tn">Not disclosed</td></tr>
+      <tr><td>22-May-2026</td><td class="tx">Not disclosed, "existing overseas customer"</td><td>467.30</td><td class="tx tn">Not stated</td><td class="tx">Half by 20-Mar-2027, rest by 20-Jun-2027</td></tr>
+      <tr><td>26-Aug-2026</td><td class="tx tn"><b>NPCIL</b></td><td>126.74</td><td class="tx">Civil nuclear refurbishment, RAPS-4 and MAPS-2</td><td class="tx tn">Not obtained</td></tr>
     </tbody>
     <tfoot><tr><td colspan="5">INR crore. The 10-Sep-2025 Bloom order is the only large order in the window with a published phased delivery schedule, and the revenue outturn is consistent with it having been executed to that schedule.</td></tr></tfoot>
   </table></div></div>
@@ -2166,14 +2169,14 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Guidance versus delivery</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Year</th><th>Original guidance</th><th>Revised</th><th>Actual</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>Year</th><th>Original guidance</th><th class="tx">Revised</th><th>Actual</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr><td>FY24 revenue</td><td>&#8377;830-860 cr</td><td>Cut to &#8377;670-700 cr on 09-Nov-2023</td><td>&#8377;580.8 cr</td><td><span class="chip c-miss">Miss</span> 32% below original, 15% below even the cut</td></tr>
-      <tr><td>FY25 revenue growth</td><td>20-25%</td><td>Not revised</td><td>+16.4%</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>FY26 revenue growth</td><td>25%</td><td>Raised to 30-35%, then "will cross about 900 crores plus"</td><td>+30% to &#8377;876.0 cr</td><td><span class="chip c-part">Partial</span> met the raised range, missed the 900 statement by 2.7%</td></tr>
-      <tr><td>FY26 closing order book</td><td>~&#8377;2,800 cr</td><td>-</td><td>&#8377;2,581.9 cr</td><td><span class="chip c-miss">Miss</span> 7.8% short, attributed to deferred nuclear and defence orders</td></tr>
-      <tr><td>Civil nuclear inflow</td><td>~&#8377;1,000 cr "in the next 3 to 6 months"</td><td>-</td><td>&#8377;630.7 cr</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr class="hl"><td>FY27 revenue growth</td><td>50% on the Q4 FY26 call</td><td>Raised to 80% plus or minus 5, then "expects to beat" in Aug-2026</td><td>Q1 delivered +130.4%</td><td><span class="chip c-pend">Running ahead</span></td></tr>
+      <tr><td>FY24 revenue</td><td>&#8377;830-860 cr</td><td class="tx">Cut to &#8377;670-700 cr on 09-Nov-2023</td><td>&#8377;580.8 cr</td><td class="tx"><span class="chip c-miss">Miss</span> 32% below original, 15% below even the cut</td></tr>
+      <tr><td>FY25 revenue growth</td><td>20-25%</td><td class="tx tn">Not revised</td><td>+16.4%</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>FY26 revenue growth</td><td>25%</td><td class="tx">Raised to 30-35%, then "will cross about 900 crores plus"</td><td>+30% to &#8377;876.0 cr</td><td class="tx"><span class="chip c-part">Partial</span> met the raised range, missed the 900 statement by 2.7%</td></tr>
+      <tr><td>FY26 closing order book</td><td>~&#8377;2,800 cr</td><td class="tx tn">-</td><td>&#8377;2,581.9 cr</td><td class="tx"><span class="chip c-miss">Miss</span> 7.8% short, attributed to deferred nuclear and defence orders</td></tr>
+      <tr><td>Civil nuclear inflow</td><td class="tx">~&#8377;1,000 cr "in the next 3 to 6 months"</td><td class="tx tn">-</td><td>&#8377;630.7 cr</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr class="hl"><td>FY27 revenue growth</td><td class="tx">50% on the Q4 FY26 call</td><td class="tx">Raised to 80% plus or minus 5, then "expects to beat" in Aug-2026</td><td>Q1 delivered +130.4%</td><td class="tx tn"><span class="chip c-pend">Running ahead</span></td></tr>
     </tbody>
   </table></div></div>
   <p>The stated reason for the FY24 cut is the single most important sentence in MTAR's disclosure history: "deferment of shipment plans <em>against confirmed orders</em> from Clean Energy to the next fiscal year." The orders existed. The customer deferred. MTAR's revenue is not in its own control at the point of shipment, and the company has said so.</p>
@@ -2193,15 +2196,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Growth strategy as management has stated it</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Strand</th><th>What management said</th><th>Judgement</th></tr></thead>
+    <thead><tr><th>Strand</th><th class="tx">What management said</th><th class="tx">Judgement</th></tr></thead>
     <tbody>
-      <tr><td>1. Scale hot boxes to match the customer's build-out</td><td class="wr">8,000 to 12,000 to 20,000 to 30,000 units; move all Bloom operations to an SEZ near Hyderabad airport; anticipates ~&#8377;4,000 cr of clean energy inflows</td><td class="wr">Pure extension of demonstrated capability. Same product, same customer, more of it. Risk is entirely demand-side, not competence.</td></tr>
-      <tr><td>2. Convert the nuclear book from H2 FY27</td><td class="wr">Kaiga 5 and 6 to Feb-2030; refurbishment pipeline; "exponential growth from FY27"; dedicated facility being prepared</td><td class="wr">Component capability is genuine and hard to replicate. Volume delivery at &#8377;679 cr of backlog is a 28.8x step from &#8377;23.6 cr and is entirely unproven. No nuclear QA or code-stamp hiring was found.</td></tr>
-      <tr><td>3. Double aerospace and defence in FY27</td><td class="wr">From &#8377;103.8 cr to about &#8377;208 cr, further ramp over 3-4 years</td><td class="wr">Extension of long-standing capability, but the orders are not in the book. Demanding, not heroic.</td></tr>
-      <tr><td>4. Build an oil and gas vertical</td><td class="wr">&#8377;70 cr of the &#8377;100 cr FY26 capex; a reported ten-year Weatherford contract at about &#8377;90 cr a year from FY27; Adibatla plant, commissioning slipped from Jun-2026 to end-Sep-2026</td><td class="wr">A Schlumberger supply-chain executive was hired two years before the plant. That is a deliberate, sequenced build. But there is still no separately reported oil and gas revenue line and no oil and gas order announcement.</td></tr>
-      <tr><td>5. Establish a data centre vertical</td><td class="wr">First order &#8377;35.56 cr; potential "eight times that" year on year; a dedicated facility at &#8377;60-70 cr capex</td><td class="wr">The products have never been described, so it is impossible to say whether this extends what MTAR does or requires capability it has not hired for. Eight times &#8377;45 cr is about &#8377;360 cr - meaningful, but not transforming against a &#8377;5,143 cr book.</td></tr>
-      <tr><td>6. Reduce customer concentration</td><td class="wr">Diversification into nuclear, aerospace and storage</td><td class="wr">Stated in intent, failing in outcome, because the core is growing faster than the new verticals. That is a good problem. It should not be presented as diversification.</td></tr>
-      <tr><td>7. Improve margin on operating leverage and mix</td><td class="wr">FY27 EBITDA margin 22-24% plus or minus 100 bps</td><td class="wr">Already delivered in one quarter: 19.5% in FY26 to 23.54% in Q1 FY27. Supported by evidence.</td></tr>
+      <tr><td>1. Scale hot boxes to match the customer's build-out</td><td class="wr tx">8,000 to 12,000 to 20,000 to 30,000 units; move all Bloom operations to an SEZ near Hyderabad airport; anticipates ~&#8377;4,000 cr of clean energy inflows</td><td class="wr tx">Pure extension of demonstrated capability. Same product, same customer, more of it. Risk is entirely demand-side, not competence.</td></tr>
+      <tr><td>2. Convert the nuclear book from H2 FY27</td><td class="wr tx">Kaiga 5 and 6 to Feb-2030; refurbishment pipeline; "exponential growth from FY27"; dedicated facility being prepared</td><td class="wr tx">Component capability is genuine and hard to replicate. Volume delivery at &#8377;679 cr of backlog is a 28.8x step from &#8377;23.6 cr and is entirely unproven. No nuclear QA or code-stamp hiring was found.</td></tr>
+      <tr><td>3. Double aerospace and defence in FY27</td><td class="wr tx">From &#8377;103.8 cr to about &#8377;208 cr, further ramp over 3-4 years</td><td class="wr tx">Extension of long-standing capability, but the orders are not in the book. Demanding, not heroic.</td></tr>
+      <tr><td>4. Build an oil and gas vertical</td><td class="wr tx">&#8377;70 cr of the &#8377;100 cr FY26 capex; a reported ten-year Weatherford contract at about &#8377;90 cr a year from FY27; Adibatla plant, commissioning slipped from Jun-2026 to end-Sep-2026</td><td class="wr tx">A Schlumberger supply-chain executive was hired two years before the plant. That is a deliberate, sequenced build. But there is still no separately reported oil and gas revenue line and no oil and gas order announcement.</td></tr>
+      <tr><td>5. Establish a data centre vertical</td><td class="wr tx">First order &#8377;35.56 cr; potential "eight times that" year on year; a dedicated facility at &#8377;60-70 cr capex</td><td class="wr tx">The products have never been described, so it is impossible to say whether this extends what MTAR does or requires capability it has not hired for. Eight times &#8377;45 cr is about &#8377;360 cr - meaningful, but not transforming against a &#8377;5,143 cr book.</td></tr>
+      <tr><td>6. Reduce customer concentration</td><td class="wr tx">Diversification into nuclear, aerospace and storage</td><td class="wr tx">Stated in intent, failing in outcome, because the core is growing faster than the new verticals. That is a good problem. It should not be presented as diversification.</td></tr>
+      <tr><td>7. Improve margin on operating leverage and mix</td><td class="wr tx">FY27 EBITDA margin 22-24% plus or minus 100 bps</td><td class="wr tx">Already delivered in one quarter: 19.5% in FY26 to 23.54% in Q1 FY27. Supported by evidence.</td></tr>
     </tbody>
   </table></div></div>
 
@@ -2226,12 +2229,12 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Cross-check one: the cash flow disagreement</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>FY26 item</th><th>Company disclosure</th><th>Aggregator-derived</th><th>Gap</th></tr></thead>
+    <thead><tr><th>FY26 item</th><th class="tx">Company disclosure</th><th>Aggregator-derived</th><th>Gap</th></tr></thead>
     <tbody>
-      <tr><td>Cash from operations</td><td>&#8377;196.9 cr</td><td>&#8377;169.0 cr (implied)</td><td class="neg">&#8377;27.9 cr</td></tr>
-      <tr><td>Capital expenditure</td><td>Not separately surfaced</td><td>&#8377;133.6 cr</td><td>n/a</td></tr>
-      <tr><td>Free cash flow</td><td>Not disclosed as such</td><td>&#8377;35.4 cr</td><td>n/a</td></tr>
-      <tr><td>EBITDA</td><td>&#8377;171.2 cr</td><td>&#8377;173.1 cr</td><td>&#8377;1.9 cr</td></tr>
+      <tr><td>Cash from operations</td><td class="tx tn">&#8377;196.9 cr</td><td>&#8377;169.0 cr (implied)</td><td class="neg">&#8377;27.9 cr</td></tr>
+      <tr><td>Capital expenditure</td><td class="tx">Not separately surfaced</td><td>&#8377;133.6 cr</td><td>n/a</td></tr>
+      <tr><td>Free cash flow</td><td class="tx">Not disclosed as such</td><td>&#8377;35.4 cr</td><td>n/a</td></tr>
+      <tr><td>EBITDA</td><td class="tx tn">&#8377;171.2 cr</td><td>&#8377;173.1 cr</td><td>&#8377;1.9 cr</td></tr>
     </tbody>
     <tfoot><tr><td colspan="4">The aggregator's free-cash-flow figure and capex figure cannot both be right alongside the company's stated &#8377;196.9 cr operating cash flow. The company figure wins. The practical consequence: any screen ranking MTAR on aggregator free cash flow is working with a number that is roughly 14% light on the operating line.</td></tr></tfoot>
   </table></div></div>
@@ -2256,20 +2259,20 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Market-structure data the screens do carry</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Item</th><th>Value</th></tr></thead>
+    <thead><tr><th>Item</th><th class="tx">Value</th></tr></thead>
     <tbody>
-      <tr><td>Shares outstanding</td><td>3.0759 cr</td></tr>
-      <tr><td>Free float</td><td>70.8%</td></tr>
-      <tr><td>Average volume, 90 day</td><td>873,885 shares</td></tr>
-      <tr class="hl"><td>Average volume, 10 day</td><td>114,732 shares (13% of the 90-day figure)</td></tr>
-      <tr><td>Monthly traded volume, Jun-2026</td><td>41.36 mn shares</td></tr>
-      <tr><td>Monthly traded volume, Sep-2026 to 21st</td><td>1.61 mn shares</td></tr>
-      <tr><td>One-year beta</td><td>1.449</td></tr>
-      <tr><td>52-week range</td><td>&#8377;1,784 to &#8377;8,714</td></tr>
-      <tr><td>All-time high / all-time low</td><td>&#8377;8,714 / &#8377;860</td></tr>
-      <tr><td>Employees</td><td>2,562</td></tr>
-      <tr><td>Index membership</td><td>Not in Nifty 50; small-cap and thematic defence indices only</td></tr>
-      <tr><td>Promoter pledge</td><td>None reported</td></tr>
+      <tr><td>Shares outstanding</td><td class="tx tn">3.0759 cr</td></tr>
+      <tr><td>Free float</td><td class="tx tn">70.8%</td></tr>
+      <tr><td>Average volume, 90 day</td><td class="tx tn">873,885 shares</td></tr>
+      <tr class="hl"><td>Average volume, 10 day</td><td class="tx">114,732 shares (13% of the 90-day figure)</td></tr>
+      <tr><td>Monthly traded volume, Jun-2026</td><td class="tx tn">41.36 mn shares</td></tr>
+      <tr><td>Monthly traded volume, Sep-2026 to 21st</td><td class="tx tn">1.61 mn shares</td></tr>
+      <tr><td>One-year beta</td><td class="tx tn">1.449</td></tr>
+      <tr><td>52-week range</td><td class="tx tn">&#8377;1,784 to &#8377;8,714</td></tr>
+      <tr><td>All-time high / all-time low</td><td class="tx tn">&#8377;8,714 / &#8377;860</td></tr>
+      <tr><td>Employees</td><td class="tx tn">2,562</td></tr>
+      <tr><td>Index membership</td><td class="tx">Not in Nifty 50; small-cap and thematic defence indices only</td></tr>
+      <tr><td>Promoter pledge</td><td class="tx tn">None reported</td></tr>
     </tbody>
   </table></div></div>
 </section>
@@ -2285,22 +2288,22 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Addressable base: official statistic mapped to the revenue line it actually drives</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>MTAR revenue line</th><th>FY26</th><th>Official statistic</th><th>Value</th><th>Type</th><th>Does it apply?</th></tr></thead>
+    <thead><tr><th>MTAR revenue line</th><th class="tx">FY26</th><th class="tx">Official statistic</th><th class="tx">Value</th><th class="tx">Type</th><th class="tx">Does it apply?</th></tr></thead>
     <tbody>
-      <tr class="hl"><td><b>Clean energy</b></td><td>&#8377;615.4 cr, 70.2%</td><td class="wr"><b>No Indian official statistic applies.</b> This revenue is essentially 100% export to a US original equipment maker</td><td>-</td><td>-</td><td class="wr">The correct addressable base is the customer's own capacity plan: 1 GW to <b>2 GW by end-2026</b>, a <b>USD 20 bn backlog</b> and <b>USD 3.9-4.2 bn</b> of 2026 revenue guidance</td></tr>
-      <tr><td rowspan="6">Civil nuclear</td><td rowspan="6">&#8377;23.6 cr, 2.7%<br>Order book &#8377;684 cr</td><td>Nuclear Energy Mission allocation</td><td>&#8377;20,000 cr</td><td><b>Measured</b>, a Budget line</td><td class="wr">Funds small modular reactor development. <b>No MTAR order exists under it.</b> Zero current revenue linkage</td></tr>
-      <tr><td>Nuclear capacity target for 2047</td><td>100 GW</td><td class="neg"><b>Ministerial projection, directional only</b></td><td class="wr">Cited by the MD on 30-Jul-2026 as the basis for the long-term opportunity</td></tr>
-      <tr><td>Indigenous small modular reactors to be commissioned</td><td>5 by 2033</td><td class="neg"><b>Ministerial projection, directional only</b></td><td class="wr">Each takes 60-72 months after sanction, and the lead design has only in-principle approval with financial sanction pending Cabinet. Earliest realistic first unit is 2031-2033. Five by 2033 requires near-simultaneous sanction of all five</td></tr>
-      <tr><td>Independent cost of the 100 GW target</td><td>&#8377;25 lakh crore</td><td><b>Third-party estimate</b></td><td>A feasibility cross-check on the projection above</td></tr>
-      <tr class="hl"><td><b>Kaiga units 5 and 6</b></td><td>2 x 700 MW under construction</td><td class="pos"><b>Measured</b></td><td class="pos"><b>MTAR's actual order: &#8377;504 cr, deliveries staggered to Feb-2030.</b> The real linkage</td></tr>
-      <tr><td>Bharat Small Reactor programme</td><td>Twin 220 MWe units, 16 sites across 6 states</td><td><b>Measured</b>, pre-award</td><td class="neg"><b>No award. No MTAR order.</b> Tender being rewritten</td></tr>
-      <tr><td rowspan="4">Aerospace and defence</td><td rowspan="4">&#8377;103.8 cr, 11.8%</td><td>Total defence budget FY2026-27</td><td>&#8377;7.85 lakh crore, up more than 15%</td><td><b>Measured</b></td><td>Top of funnel only</td></tr>
-      <tr><td>Capital outlay, defence services</td><td>&#8377;2,19,306 crore, up 17.6%</td><td><b>Measured</b></td><td>The procurement pool</td></tr>
-      <tr class="hl"><td><b>Earmarked for domestic industry including private</b></td><td><b>&#8377;1.39 lakh crore, about 75%</b></td><td><b>Measured</b></td><td class="wr"><b>The closest official proxy to MTAR's domestic addressable base.</b> MTAR earns 0.07% of it</td></tr>
-      <tr><td>Acquisition council clearances, ~07-Jul-2026</td><td>&#8377;52,000 crore</td><td><b>Measured</b>, approvals not orders</td><td>Leading indicator</td></tr>
-      <tr class="hl"><td><b>Data centre infrastructure</b></td><td>Nil in FY26; &#8377;45 cr order for FY27</td><td class="wr">India data centre capacity: <b>1,789 MW</b> operational at 30-Jun-2026, 178 MW added in the first half, ~6 GW projected by 2029, USD 110 bn of investment required</td><td>Measured and projection</td><td class="neg"><b>NOT APPLICABLE.</b> The MD confirmed on 30-Jul-2026 the business is "all for export". <b>Indian data centre statistics do not describe MTAR's addressable base and must not be used to size it</b></td></tr>
-      <tr><td>All export lines</td><td>More than 70% of revenue</td><td>Rupee against the dollar</td><td><b>95.805 on 21-Sep-2026, weaker by 8.66% over a year</b></td><td><b>Measured</b></td><td class="pos">A direct translation tailwind. MTAR booked a stated &#8377;25 cr currency gain in FY26</td></tr>
-      <tr><td>Input costs</td><td>-</td><td>Copper</td><td>Up 48.0% over a year</td><td class="neg"><b>Measured but the wrong proxy</b></td><td class="neg">Weak directional support only for the "higher input costs" commentary. Nickel, stainless and titanium indices could not be obtained</td></tr>
+      <tr class="hl"><td><b>Clean energy</b></td><td class="tx tn">&#8377;615.4 cr, 70.2%</td><td class="wr tx"><b>No Indian official statistic applies.</b> This revenue is essentially 100% export to a US original equipment maker</td><td class="tx tn">-</td><td class="tx tn">-</td><td class="wr tx">The correct addressable base is the customer's own capacity plan: 1 GW to <b>2 GW by end-2026</b>, a <b>USD 20 bn backlog</b> and <b>USD 3.9-4.2 bn</b> of 2026 revenue guidance</td></tr>
+      <tr><td rowspan="6">Civil nuclear</td><td rowspan="6" class="tx">&#8377;23.6 cr, 2.7%<br>Order book &#8377;684 cr</td><td class="tx">Nuclear Energy Mission allocation</td><td class="tx tn">&#8377;20,000 cr</td><td class="tx"><b>Measured</b>, a Budget line</td><td class="wr tx">Funds small modular reactor development. <b>No MTAR order exists under it.</b> Zero current revenue linkage</td></tr>
+      <tr><td class="tx">Nuclear capacity target for 2047</td><td class="tx tn">100 GW</td><td class="neg tx"><b>Ministerial projection, directional only</b></td><td class="wr tx">Cited by the MD on 30-Jul-2026 as the basis for the long-term opportunity</td></tr>
+      <tr><td class="tx">Indigenous small modular reactors to be commissioned</td><td class="tx tn">5 by 2033</td><td class="neg tx"><b>Ministerial projection, directional only</b></td><td class="wr tx">Each takes 60-72 months after sanction, and the lead design has only in-principle approval with financial sanction pending Cabinet. Earliest realistic first unit is 2031-2033. Five by 2033 requires near-simultaneous sanction of all five</td></tr>
+      <tr><td class="tx">Independent cost of the 100 GW target</td><td class="tx tn">&#8377;25 lakh crore</td><td class="tx"><b>Third-party estimate</b></td><td class="tx">A feasibility cross-check on the projection above</td></tr>
+      <tr class="hl"><td class="tx"><b>Kaiga units 5 and 6</b></td><td class="tx">2 x 700 MW under construction</td><td class="pos tx tn"><b>Measured</b></td><td class="pos tx"><b>MTAR's actual order: &#8377;504 cr, deliveries staggered to Feb-2030.</b> The real linkage</td></tr>
+      <tr><td class="tx">Bharat Small Reactor programme</td><td class="tx">Twin 220 MWe units, 16 sites across 6 states</td><td class="tx"><b>Measured</b>, pre-award</td><td class="neg tx"><b>No award. No MTAR order.</b> Tender being rewritten</td></tr>
+      <tr><td rowspan="4">Aerospace and defence</td><td rowspan="4" class="tx tn">&#8377;103.8 cr, 11.8%</td><td class="tx">Total defence budget FY2026-27</td><td class="tx">&#8377;7.85 lakh crore, up more than 15%</td><td class="tx tn"><b>Measured</b></td><td class="tx tn">Top of funnel only</td></tr>
+      <tr><td class="tx">Capital outlay, defence services</td><td class="tx">&#8377;2,19,306 crore, up 17.6%</td><td class="tx tn"><b>Measured</b></td><td class="tx">The procurement pool</td></tr>
+      <tr class="hl"><td class="tx"><b>Earmarked for domestic industry including private</b></td><td class="tx"><b>&#8377;1.39 lakh crore, about 75%</b></td><td class="tx tn"><b>Measured</b></td><td class="wr tx"><b>The closest official proxy to MTAR's domestic addressable base.</b> MTAR earns 0.07% of it</td></tr>
+      <tr><td class="tx">Acquisition council clearances, ~07-Jul-2026</td><td class="tx tn">&#8377;52,000 crore</td><td class="tx"><b>Measured</b>, approvals not orders</td><td class="tx tn">Leading indicator</td></tr>
+      <tr class="hl"><td><b>Data centre infrastructure</b></td><td class="tx">Nil in FY26; &#8377;45 cr order for FY27</td><td class="wr tx">India data centre capacity: <b>1,789 MW</b> operational at 30-Jun-2026, 178 MW added in the first half, ~6 GW projected by 2029, USD 110 bn of investment required</td><td class="tx">Measured and projection</td><td class="neg tx"><b>NOT APPLICABLE.</b> The MD confirmed on 30-Jul-2026 the business is "all for export". <b>Indian data centre statistics do not describe MTAR's addressable base and must not be used to size it</b></td></tr>
+      <tr><td>All export lines</td><td class="tx">More than 70% of revenue</td><td class="tx">Rupee against the dollar</td><td class="tx"><b>95.805 on 21-Sep-2026, weaker by 8.66% over a year</b></td><td class="tx tn"><b>Measured</b></td><td class="pos tx">A direct translation tailwind. MTAR booked a stated &#8377;25 cr currency gain in FY26</td></tr>
+      <tr><td>Input costs</td><td class="tx tn">-</td><td class="tx tn">Copper</td><td class="tx">Up 48.0% over a year</td><td class="neg tx"><b>Measured but the wrong proxy</b></td><td class="neg tx">Weak directional support only for the "higher input costs" commentary. Nickel, stainless and titanium indices could not be obtained</td></tr>
     </tbody>
   </table></div></div>
 
@@ -2352,9 +2355,9 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Measured against projected: the labelling discipline</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Measured statistics - use these</th><th>Ministerial projections - directional only</th></tr></thead>
+    <thead><tr><th>Measured statistics - use these</th><th class="tx">Ministerial projections - directional only</th></tr></thead>
     <tbody>
-      <tr><td class="wr">&#8377;20,000 cr Nuclear Energy Mission allocation &#183; &#8377;7.85 lakh cr defence budget &#183; &#8377;2,19,306 cr capital outlay &#183; &#8377;1.39 lakh cr domestic earmark &#183; &#8377;52,000 cr of council clearances &#183; 1,789 MW of Indian data centre capacity &#183; 178 MW added in the half &#183; rupee at 95.805, 8.66% weaker over a year &#183; Kaiga 5 and 6 at 2 x 700 MW under construction &#183; operator liability of &#8377;100 cr to &#8377;3,000 cr under the draft rules</td><td class="wr">100 GW of nuclear by 2047 &#183; at least five indigenous small modular reactors by 2033 &#183; about 6 GW of Indian data centre capacity by 2029 &#183; USD 110 bn of data centre investment &#183; 30-40 GW of global AI data centre additions by 2027, which is a <em>company</em> projection, not even a government one</td></tr>
+      <tr><td class="wr">&#8377;20,000 cr Nuclear Energy Mission allocation &#183; &#8377;7.85 lakh cr defence budget &#183; &#8377;2,19,306 cr capital outlay &#183; &#8377;1.39 lakh cr domestic earmark &#183; &#8377;52,000 cr of council clearances &#183; 1,789 MW of Indian data centre capacity &#183; 178 MW added in the half &#183; rupee at 95.805, 8.66% weaker over a year &#183; Kaiga 5 and 6 at 2 x 700 MW under construction &#183; operator liability of &#8377;100 cr to &#8377;3,000 cr under the draft rules</td><td class="wr tx">100 GW of nuclear by 2047 &#183; at least five indigenous small modular reactors by 2033 &#183; about 6 GW of Indian data centre capacity by 2029 &#183; USD 110 bn of data centre investment &#183; 30-40 GW of global AI data centre additions by 2027, which is a <em>company</em> projection, not even a government one</td></tr>
     </tbody>
   </table></div></div>
 
@@ -2396,25 +2399,25 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Claims that could not be verified from a primary source</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Item</th><th>Status</th></tr></thead>
+    <thead><tr><th>Item</th><th class="tx">Status</th></tr></thead>
     <tbody>
-      <tr><td>Contingent liabilities, all years</td><td class="neg">Note not retrievable. Quantum, trend and nature unknown. One secondary figure of &#8377;2.27 cr for FY25 is used only with that label</td></tr>
-      <tr class="hl"><td><b>Related party transactions and guarantees to related parties</b></td><td class="neg"><b>Schedule not retrievable for any year. Their existence is confirmed by a broker's section headings; the quantum and direction are unknown. The single most important unresolved item in this report</b></td></tr>
-      <tr><td>Statutory auditor identity, tenure, fee and audit annexure</td><td class="neg">Not named in any accessible source. No change or resignation is reported anywhere, which is an absence of evidence</td></tr>
-      <tr><td>Other income decomposition</td><td class="neg">Not disclosed for any year. This single note would resolve the currency gain, the Q2 FY26 concentration, the treasury yield and the Q4 FY26 conversion anomaly</td></tr>
-      <tr><td>Audited cash flow statements and the property note</td><td class="neg">Not retrievable. Capex could be established for only two of five years; capital work in progress for none; annual depreciation for only two</td></tr>
-      <tr><td>Trade payables and payable days</td><td class="neg">Not disclosed, so the cash conversion cycle cannot be computed on an audited basis</td></tr>
-      <tr><td>Off-balance-sheet items: guarantees, letters of credit, lease commitments</td><td class="neg">Not disclosed for any year</td></tr>
-      <tr><td>The credit rating rationale document</td><td class="neg">Not retrievable. <b>No risk is quoted as the agency's, because quoting one without the document would be fabrication.</b> The rating action itself is reported</td></tr>
-      <tr><td>Employee stock option scheme size, grants and profit-and-loss charge</td><td class="neg">Not disclosed. Net dilution is nonetheless measured at zero from the share count</td></tr>
-      <tr><td>Retail shareholder count</td><td class="neg">Not obtained, so the froth test could not be run</td></tr>
-      <tr><td>Promoter litigation, political exposure, prior ventures</td><td class="neg">Never checked. The research budget ran out and the offer document's litigation section was blocked. <b>This is not a clean bill of health</b></td></tr>
-      <tr><td>The counterparty of the &#8377;2,278.96 cr order</td><td class="neg"><b>Not disclosed by the company.</b> The identification in Section 18 is an inference from segment arithmetic and filing language, explicitly labelled as such</td></tr>
-      <tr><td>The ~&#8377;800 cr of orders stated on the 30-Jul-2026 call</td><td class="neg">No exchange filing, counterparty or execution period could be located</td></tr>
-      <tr><td>Hot box units shipped, capacity utilisation, any year</td><td class="neg">Not disclosed by the company. Utilisation cannot be derived</td></tr>
-      <tr><td>Steel, nickel, superalloy and titanium price indices</td><td class="neg">Not obtained, so the "higher input costs" commentary could not be tested</td></tr>
-      <tr><td>Post-plant-visit broker notes from 21-Aug-2026, and management television interviews</td><td class="neg">Not retrievable. A known gap in the freshest available commentary</td></tr>
-      <tr><td>A facility at "Sadasivpet"</td><td class="neg">No evidence of an MTAR facility there was found in any source. Treat as unverified</td></tr>
+      <tr><td>Contingent liabilities, all years</td><td class="neg tx">Note not retrievable. Quantum, trend and nature unknown. One secondary figure of &#8377;2.27 cr for FY25 is used only with that label</td></tr>
+      <tr class="hl"><td><b>Related party transactions and guarantees to related parties</b></td><td class="neg tx"><b>Schedule not retrievable for any year. Their existence is confirmed by a broker's section headings; the quantum and direction are unknown. The single most important unresolved item in this report</b></td></tr>
+      <tr><td>Statutory auditor identity, tenure, fee and audit annexure</td><td class="neg tx">Not named in any accessible source. No change or resignation is reported anywhere, which is an absence of evidence</td></tr>
+      <tr><td>Other income decomposition</td><td class="neg tx">Not disclosed for any year. This single note would resolve the currency gain, the Q2 FY26 concentration, the treasury yield and the Q4 FY26 conversion anomaly</td></tr>
+      <tr><td>Audited cash flow statements and the property note</td><td class="neg tx">Not retrievable. Capex could be established for only two of five years; capital work in progress for none; annual depreciation for only two</td></tr>
+      <tr><td>Trade payables and payable days</td><td class="neg tx">Not disclosed, so the cash conversion cycle cannot be computed on an audited basis</td></tr>
+      <tr><td>Off-balance-sheet items: guarantees, letters of credit, lease commitments</td><td class="neg tx">Not disclosed for any year</td></tr>
+      <tr><td>The credit rating rationale document</td><td class="neg tx">Not retrievable. <b>No risk is quoted as the agency's, because quoting one without the document would be fabrication.</b> The rating action itself is reported</td></tr>
+      <tr><td>Employee stock option scheme size, grants and profit-and-loss charge</td><td class="neg tx">Not disclosed. Net dilution is nonetheless measured at zero from the share count</td></tr>
+      <tr><td>Retail shareholder count</td><td class="neg tx">Not obtained, so the froth test could not be run</td></tr>
+      <tr><td>Promoter litigation, political exposure, prior ventures</td><td class="neg tx">Never checked. The research budget ran out and the offer document's litigation section was blocked. <b>This is not a clean bill of health</b></td></tr>
+      <tr><td>The counterparty of the &#8377;2,278.96 cr order</td><td class="neg tx"><b>Not disclosed by the company.</b> The identification in Section 18 is an inference from segment arithmetic and filing language, explicitly labelled as such</td></tr>
+      <tr><td>The ~&#8377;800 cr of orders stated on the 30-Jul-2026 call</td><td class="neg tx">No exchange filing, counterparty or execution period could be located</td></tr>
+      <tr><td>Hot box units shipped, capacity utilisation, any year</td><td class="neg tx">Not disclosed by the company. Utilisation cannot be derived</td></tr>
+      <tr><td>Steel, nickel, superalloy and titanium price indices</td><td class="neg tx">Not obtained, so the "higher input costs" commentary could not be tested</td></tr>
+      <tr><td>Post-plant-visit broker notes from 21-Aug-2026, and management television interviews</td><td class="neg tx">Not retrievable. A known gap in the freshest available commentary</td></tr>
+      <tr><td>A facility at "Sadasivpet"</td><td class="neg tx">No evidence of an MTAR facility there was found in any source. Treat as unverified</td></tr>
     </tbody>
   </table></div></div>
 

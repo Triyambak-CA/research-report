@@ -249,6 +249,9 @@ body.badges-off .badge{display:none;}
   .stats{grid-template-columns:1fr 1fr;}
 }
 @media print{#ctl,#prog,.rail{display:none;} body{background:#fff;color:#000;} body::before,body::after{display:none;}}
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -348,16 +351,16 @@ body.badges-off .badge{display:none;}
   <h3>The single most important number in this report</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Period</th><th>GMV (Rs cr)</th><th>Revenue from ops (Rs cr)</th><th>Implied take rate</th><th>Read</th></tr></thead>
+    <thead><tr><th>Period</th><th>GMV (Rs cr)</th><th>Revenue from ops (Rs cr)</th><th>Implied take rate</th><th class="tx">Read</th></tr></thead>
     <tbody>
-      <tr><td>FY24</td><td>1,41,388</td><td>316.25</td><td class="a">0.224%</td><td style="text-align:left">Peak volume, minimum fee</td></tr>
-      <tr><td>FY25</td><td>89,824</td><td>310.96</td><td class="a">0.346%</td><td style="text-align:left">Lost Coal India and PSB NPAs</td></tr>
-      <tr><td>FY26</td><td>79,737</td><td>369.66</td><td class="a">0.464%</td><td style="text-align:left">Mineral block events carry the year</td></tr>
-      <tr><td>Q1 FY26</td><td>14,088</td><td>77.43</td><td class="a">0.550%</td><td style="text-align:left">Highest take rate on record</td></tr>
+      <tr><td>FY24</td><td>1,41,388</td><td>316.25</td><td class="a">0.224%</td><td style="text-align:left" class="tx">Peak volume, minimum fee</td></tr>
+      <tr><td>FY25</td><td>89,824</td><td>310.96</td><td class="a">0.346%</td><td style="text-align:left" class="tx">Lost Coal India and PSB NPAs</td></tr>
+      <tr><td>FY26</td><td>79,737</td><td>369.66</td><td class="a">0.464%</td><td style="text-align:left" class="tx">Mineral block events carry the year</td></tr>
+      <tr><td>Q1 FY26</td><td>14,088</td><td>77.43</td><td class="a">0.550%</td><td style="text-align:left" class="tx">Highest take rate on record</td></tr>
       <tr><td>Q2 FY26</td><td>16,079</td><td>85.00</td><td class="a">0.529%</td><td style="text-align:left"></td></tr>
-      <tr><td>Q3 FY26</td><td>22,388</td><td>88.43</td><td class="a">0.395%</td><td style="text-align:left">Volume back, fee gives way</td></tr>
+      <tr><td>Q3 FY26</td><td>22,388</td><td>88.43</td><td class="a">0.395%</td><td style="text-align:left" class="tx">Volume back, fee gives way</td></tr>
       <tr><td>Q4 FY26</td><td>27,182</td><td>118.80</td><td class="a">0.437%</td><td style="text-align:left"></td></tr>
-      <tr class="tot"><td>Q1 FY27</td><td>23,814</td><td>94.25</td><td>0.396%</td><td style="text-align:left">GMV +69% YoY, revenue +21.7%</td></tr>
+      <tr class="tot"><td>Q1 FY27</td><td>23,814</td><td>94.25</td><td>0.396%</td><td style="text-align:left" class="tx">GMV +69% YoY, revenue +21.7%</td></tr>
     </tbody>
     <caption>GMV derived from management's disclosed cumulative "value of goods transacted" (Q1 FY26 Rs 140.88 bn, H1 Rs 301.67 bn, 9M Rs 525.55 bn, FY26 Rs 797.37 bn, Q1 FY27 Rs 238.14 bn) less the prior stub. FY24 and FY25 from the annual reports. Revenue is standalone revenue from operations, which from FY24 equals consolidated.</caption>
   </table>
@@ -433,12 +436,12 @@ body.badges-off .badge{display:none;}
   <h3>Reportable segments as MSTC files them</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Segment (Ind AS 108)</th><th>FY26 revenue (Rs cr)</th><th>FY25 (Rs cr)</th><th>Change</th><th>Status</th></tr></thead>
+    <thead><tr><th>Segment (Ind AS 108)</th><th>FY26 revenue (Rs cr)</th><th>FY25 (Rs cr)</th><th>Change</th><th class="tx">Status</th></tr></thead>
     <tbody>
-      <tr><td>E-commerce: e-auction / e-sale</td><td>321.29</td><td>275.78</td><td class="g">+16.5%</td><td style="text-align:left">The business</td></tr>
-      <tr><td>E-commerce: e-procurement</td><td>8.43</td><td>5.43</td><td class="g">+55.3%</td><td style="text-align:left">Small, facilitative</td></tr>
-      <tr><td>Marketing (trading)</td><td>1.49</td><td>1.85</td><td class="r">-19.5%</td><td style="text-align:left">Rs 0.00 in Q1 FY27. Exited.</td></tr>
-      <tr><td>Others (other operating revenue + other income)</td><td>121.83</td><td>104.44</td><td class="g">+16.7%</td><td style="text-align:left">Float interest, registration fees, write-backs</td></tr>
+      <tr><td>E-commerce: e-auction / e-sale</td><td>321.29</td><td>275.78</td><td class="g">+16.5%</td><td style="text-align:left" class="tx tn">The business</td></tr>
+      <tr><td>E-commerce: e-procurement</td><td>8.43</td><td>5.43</td><td class="g">+55.3%</td><td style="text-align:left" class="tx">Small, facilitative</td></tr>
+      <tr><td>Marketing (trading)</td><td>1.49</td><td>1.85</td><td class="r">-19.5%</td><td style="text-align:left" class="tx">Rs 0.00 in Q1 FY27. Exited.</td></tr>
+      <tr><td>Others (other operating revenue + other income)</td><td>121.83</td><td>104.44</td><td class="g">+16.7%</td><td style="text-align:left" class="tx">Float interest, registration fees, write-backs</td></tr>
       <tr class="tot"><td>Total income</td><td>453.04</td><td>387.50</td><td>+16.9%</td><td style="text-align:left"></td></tr>
     </tbody>
     <caption>From the FY26 investor presentation, 29-May-2026. Note that "Others" at Rs 121.83 cr does not equal other income of Rs 83.38 cr in the audited P&amp;L; the difference of Rs 38.45 cr is other operating revenue reclassified. The audited segment note (Ind AS 108) is separately near-useless: it allocates almost all cost to an unallocated bucket, and discloses no segment assets or liabilities at all on the grounds that they are "used interchangeably". Segment ROCE cannot be computed.</caption>
@@ -758,18 +761,18 @@ body.badges-off .badge{display:none;}
   <h4>Margin bridge, FY25 to FY26</h4>
   <div class="tw">
   <table>
-    <thead><tr><th>Driver</th><th>Rs cr</th><th>Comment</th></tr></thead>
+    <thead><tr><th>Driver</th><th>Rs cr</th><th class="tx">Comment</th></tr></thead>
     <tbody>
       <tr><td>FY25 PBT before exceptional</td><td>244.80</td><td style="text-align:left"></td></tr>
-      <tr><td>Revenue from operations</td><td class="g">+58.70</td><td style="text-align:left">Mineral and coal block events, scrap volume, DGFT portal</td></tr>
-      <tr><td>Other income</td><td class="g">+6.84</td><td style="text-align:left">Of which Rs 14.71 cr is a liability write-back; core interest fell</td></tr>
-      <tr><td>Employee benefit expense</td><td class="r">-7.41</td><td style="text-align:left">+8.1%, includes Rs 2.38 cr gratuity ceiling change</td></tr>
-      <tr><td>Other expenses</td><td class="r">-12.10</td><td style="text-align:left">+34.0%, the new Delhi corporate office</td></tr>
+      <tr><td>Revenue from operations</td><td class="g">+58.70</td><td style="text-align:left" class="tx">Mineral and coal block events, scrap volume, DGFT portal</td></tr>
+      <tr><td>Other income</td><td class="g">+6.84</td><td style="text-align:left" class="tx">Of which Rs 14.71 cr is a liability write-back; core interest fell</td></tr>
+      <tr><td>Employee benefit expense</td><td class="r">-7.41</td><td style="text-align:left" class="tx">+8.1%, includes Rs 2.38 cr gratuity ceiling change</td></tr>
+      <tr><td>Other expenses</td><td class="r">-12.10</td><td style="text-align:left" class="tx">+34.0%, the new Delhi corporate office</td></tr>
       <tr><td>Depreciation</td><td class="r">-1.27</td><td style="text-align:left"></td></tr>
-      <tr><td>Provisions and write-offs</td><td class="g">+1.42</td><td style="text-align:left">Net reversal in FY26 versus a charge in FY25</td></tr>
-      <tr><td>Share of JV loss</td><td class="g">+1.27</td><td style="text-align:left">MMRPL loss narrowing</td></tr>
-      <tr><td>Impairment on JV</td><td class="g">+8.62</td><td style="text-align:left">Rs 1.44 cr in FY26 against Rs 10.06 cr in FY25 (standalone line)</td></tr>
-      <tr class="tot"><td>FY26 PBT before exceptional</td><td>292.43</td><td style="text-align:left">+19.5%</td></tr>
+      <tr><td>Provisions and write-offs</td><td class="g">+1.42</td><td style="text-align:left" class="tx">Net reversal in FY26 versus a charge in FY25</td></tr>
+      <tr><td>Share of JV loss</td><td class="g">+1.27</td><td style="text-align:left" class="tx">MMRPL loss narrowing</td></tr>
+      <tr><td>Impairment on JV</td><td class="g">+8.62</td><td style="text-align:left" class="tx">Rs 1.44 cr in FY26 against Rs 10.06 cr in FY25 (standalone line)</td></tr>
+      <tr class="tot"><td>FY26 PBT before exceptional</td><td>292.43</td><td style="text-align:left" class="tx tn">+19.5%</td></tr>
     </tbody>
     <caption>Built from the audited consolidated results, 29-May-2026. Note that Rs 14.71 cr of write-back and Rs 8.62 cr of lower impairment together contribute Rs 23.33 cr of the Rs 47.63 cr increase, or 49%. Underlying operating improvement is real but roughly half the headline.</caption>
   </table>
@@ -803,14 +806,14 @@ body.badges-off .badge{display:none;}
   <h3>Working capital and the debtor-days illusion</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Measure</th><th>FY25</th><th>FY26</th><th>What it means</th></tr></thead>
+    <thead><tr><th>Measure</th><th>FY25</th><th>FY26</th><th class="tx">What it means</th></tr></thead>
     <tbody>
-      <tr><td>Net trade receivables (Rs cr)</td><td>309.54</td><td class="g">226.90</td><td style="text-align:left">Down 26.7% as trading unwinds</td></tr>
-      <tr><td>Headline debtor days</td><td>363</td><td>224</td><td style="text-align:left">What screener shows</td></tr>
-      <tr><td>Less: the Standard Chartered item (Rs cr)</td><td>97.67</td><td>~97.67</td><td style="text-align:left">A 2008-09 export receivable, still carried, unprovided</td></tr>
-      <tr class="tot"><td>Adjusted debtor days ex-SCB</td><td>249</td><td>128</td><td style="text-align:left">The number a model should use</td></tr>
-      <tr><td>Facilitator-mode receivables (Rs cr)</td><td>147.82</td><td>n/d</td><td style="text-align:left">Exiting; FY26 split not yet published</td></tr>
-      <tr><td>E-commerce receivables (Rs cr)</td><td>64.06</td><td>n/d</td><td style="text-align:left">75 days on FY25 revenue. This is the real business.</td></tr>
+      <tr><td>Net trade receivables (Rs cr)</td><td>309.54</td><td class="g">226.90</td><td style="text-align:left" class="tx">Down 26.7% as trading unwinds</td></tr>
+      <tr><td>Headline debtor days</td><td>363</td><td>224</td><td style="text-align:left" class="tx">What screener shows</td></tr>
+      <tr><td>Less: the Standard Chartered item (Rs cr)</td><td>97.67</td><td>~97.67</td><td style="text-align:left" class="tx">A 2008-09 export receivable, still carried, unprovided</td></tr>
+      <tr class="tot"><td>Adjusted debtor days ex-SCB</td><td>249</td><td>128</td><td style="text-align:left" class="tx">The number a model should use</td></tr>
+      <tr><td>Facilitator-mode receivables (Rs cr)</td><td>147.82</td><td>n/d</td><td style="text-align:left" class="tx">Exiting; FY26 split not yet published</td></tr>
+      <tr><td>E-commerce receivables (Rs cr)</td><td>64.06</td><td>n/d</td><td style="text-align:left" class="tx">75 days on FY25 revenue. This is the real business.</td></tr>
     </tbody>
     <caption>FY25 splits from Notes 8.5 and 8.6 of the FY25 annual report. FY26 splits are not available until the FY26 annual report is published after the 24-Sep-2026 AGM. There is no evidence of quarter-end window dressing: receivables fall steadily rather than spiking at year end, and the Q4 revenue concentration is explained by the auction calendar.</caption>
   </table>
@@ -863,18 +866,18 @@ body.badges-off .badge{display:none;}
   <h3>Check by check</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Forensic check</th><th>Finding</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>Forensic check</th><th class="tx">Finding</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr><td>Receivables growth vs revenue growth</td><td style="text-align:left">FY24 to FY26: revenue +16.9%, net receivables <em>down</em> 28.4% (Rs 316.90 cr to Rs 226.90 cr). Receivables are shrinking while revenue grows.</td><td><span class="chip c-hit">Clean</span></td></tr>
-      <tr><td>Cash yield: is the cash real?</td><td style="text-align:left">FY25 FDR interest Rs 72.46 cr on average deposits of roughly Rs 1,040 cr, a yield of about 6.97%, consistent with Indian bank term deposit rates. Interest actually received in cash Rs 69.90 cr (FY25) and Rs 77.33 cr (FY26).</td><td><span class="chip c-hit">Cash is real</span></td></tr>
-      <tr><td>CWIP ageing</td><td style="text-align:left">Capital work in progress has been nil since FY22. Intangibles under development of Rs 0.48 cr at FY26. No stranded CWIP.</td><td><span class="chip c-hit">Clean</span></td></tr>
-      <tr><td>Other income as a share of PBT</td><td style="text-align:left">FY26 other income Rs 83.38 cr on PBT of Rs 292.44 cr, 28.5%. FY25 Rs 76.54 cr on Rs 244.81 cr pre-exceptional, 31.3%. Adding customer interest inside operating revenue takes FY25 to 35.9%.</td><td><span class="chip c-part">See framing below</span></td></tr>
-      <tr><td>Effective tax rate vs statutory</td><td style="text-align:left">FY26 25.3% against a 25.168% Section 115BAA rate. FY25's 19.9% is fully explained by the 14.625% long-term capital gains rate on the FSNL sale. FY24's 41% is the one-time Rs 37.07 cr charge-off of MAT credit on electing 115BAA. Cash taxes paid Rs 43.34 cr and Rs 68.83 cr.</td><td><span class="chip c-hit">Clean, no shelter</span></td></tr>
-      <tr><td>Contingent liabilities vs net worth</td><td style="text-align:left">FY25 Rs 395.03 cr against Rs 306.52 cr in FY24, up 28.9%, equal to 53.5% of FY25 net worth. Add the post-balance-sheet Section 201 demand and it is Rs 573.43 cr, 78% of FY25 net worth or 63% of FY26 net worth.</td><td><span class="chip c-miss">Elevated and rising</span></td></tr>
-      <tr><td>Related party transactions</td><td style="text-align:left">Essentially nil beyond the joint venture: Rs 5.00 cr invested in MMRPL and Rs 0.32 cr of expense reimbursement received in FY25. No loans to directors, KMP or related parties. Total KMP remuneration Rs 2.78 cr, 1.3% of FY26 PAT. No royalty, no brand fee, no ESOP.</td><td><span class="chip c-hit">Clean</span></td></tr>
-      <tr><td>Auditor quality and tenure</td><td style="text-align:left">S. Guha &amp; Associates (FRN 322493E), appointed by the Comptroller and Auditor General under Section 139(5), not by the board. Unmodified opinions FY25 and FY26. No resignation or change. CAG supplementary audit under Section 143(6)(b) for FY25: "nothing significant has come to my knowledge" on both standalone and consolidated.</td><td><span class="chip c-hit">Clean</span></td></tr>
-      <tr><td>Accounting policy changes and capitalisation</td><td style="text-align:left">No frequent policy changes. No expense capitalisation flagged. Subsidiary losses are not parked outside consolidation: there is now only one joint venture and its losses are equity-accounted and separately impaired.</td><td><span class="chip c-hit">Clean</span></td></tr>
-      <tr><td>Discretionary write-back policy</td><td style="text-align:left">Rs 14.71 cr of liabilities ageing more than five years written back to other income in FY26 "in terms of Accounting Policy approved by the Board". Flagged by the auditor as an emphasis of matter.</td><td><span class="chip c-miss">Discretionary lever</span></td></tr>
+      <tr><td>Receivables growth vs revenue growth</td><td style="text-align:left" class="tx">FY24 to FY26: revenue +16.9%, net receivables <em>down</em> 28.4% (Rs 316.90 cr to Rs 226.90 cr). Receivables are shrinking while revenue grows.</td><td class="tx tn"><span class="chip c-hit">Clean</span></td></tr>
+      <tr><td>Cash yield: is the cash real?</td><td style="text-align:left" class="tx">FY25 FDR interest Rs 72.46 cr on average deposits of roughly Rs 1,040 cr, a yield of about 6.97%, consistent with Indian bank term deposit rates. Interest actually received in cash Rs 69.90 cr (FY25) and Rs 77.33 cr (FY26).</td><td class="tx tn"><span class="chip c-hit">Cash is real</span></td></tr>
+      <tr><td>CWIP ageing</td><td style="text-align:left" class="tx">Capital work in progress has been nil since FY22. Intangibles under development of Rs 0.48 cr at FY26. No stranded CWIP.</td><td class="tx tn"><span class="chip c-hit">Clean</span></td></tr>
+      <tr><td>Other income as a share of PBT</td><td style="text-align:left" class="tx">FY26 other income Rs 83.38 cr on PBT of Rs 292.44 cr, 28.5%. FY25 Rs 76.54 cr on Rs 244.81 cr pre-exceptional, 31.3%. Adding customer interest inside operating revenue takes FY25 to 35.9%.</td><td class="tx tn"><span class="chip c-part">See framing below</span></td></tr>
+      <tr><td>Effective tax rate vs statutory</td><td style="text-align:left" class="tx">FY26 25.3% against a 25.168% Section 115BAA rate. FY25's 19.9% is fully explained by the 14.625% long-term capital gains rate on the FSNL sale. FY24's 41% is the one-time Rs 37.07 cr charge-off of MAT credit on electing 115BAA. Cash taxes paid Rs 43.34 cr and Rs 68.83 cr.</td><td class="tx tn"><span class="chip c-hit">Clean, no shelter</span></td></tr>
+      <tr><td>Contingent liabilities vs net worth</td><td style="text-align:left" class="tx">FY25 Rs 395.03 cr against Rs 306.52 cr in FY24, up 28.9%, equal to 53.5% of FY25 net worth. Add the post-balance-sheet Section 201 demand and it is Rs 573.43 cr, 78% of FY25 net worth or 63% of FY26 net worth.</td><td class="tx"><span class="chip c-miss">Elevated and rising</span></td></tr>
+      <tr><td>Related party transactions</td><td style="text-align:left" class="tx">Essentially nil beyond the joint venture: Rs 5.00 cr invested in MMRPL and Rs 0.32 cr of expense reimbursement received in FY25. No loans to directors, KMP or related parties. Total KMP remuneration Rs 2.78 cr, 1.3% of FY26 PAT. No royalty, no brand fee, no ESOP.</td><td class="tx tn"><span class="chip c-hit">Clean</span></td></tr>
+      <tr><td>Auditor quality and tenure</td><td style="text-align:left" class="tx">S. Guha &amp; Associates (FRN 322493E), appointed by the Comptroller and Auditor General under Section 139(5), not by the board. Unmodified opinions FY25 and FY26. No resignation or change. CAG supplementary audit under Section 143(6)(b) for FY25: "nothing significant has come to my knowledge" on both standalone and consolidated.</td><td class="tx tn"><span class="chip c-hit">Clean</span></td></tr>
+      <tr><td>Accounting policy changes and capitalisation</td><td style="text-align:left" class="tx">No frequent policy changes. No expense capitalisation flagged. Subsidiary losses are not parked outside consolidation: there is now only one joint venture and its losses are equity-accounted and separately impaired.</td><td class="tx tn"><span class="chip c-hit">Clean</span></td></tr>
+      <tr><td>Discretionary write-back policy</td><td style="text-align:left" class="tx">Rs 14.71 cr of liabilities ageing more than five years written back to other income in FY26 "in terms of Accounting Policy approved by the Board". Flagged by the auditor as an emphasis of matter.</td><td class="tx"><span class="chip c-miss">Discretionary lever</span></td></tr>
     </tbody>
   </table>
   </div>
@@ -981,14 +984,14 @@ body.badges-off .badge{display:none;}
   <h4>Exchange fines: seven consecutive quarters and counting</h4>
   <div class="tw">
   <table>
-    <thead><tr><th>Quarter</th><th>Fine per exchange (Rs)</th><th>Regulations breached</th><th>Status</th></tr></thead>
+    <thead><tr><th>Quarter</th><th>Fine per exchange (Rs)</th><th class="tx">Regulations breached</th><th class="tx">Status</th></tr></thead>
     <tbody>
-      <tr><td>Q3 FY25 (Dec-24)</td><td>11,21,000</td><td style="text-align:left">17(1) board composition and woman ID, 17(2A) quorum, 18 audit committee, 19 NRC, 20 SRC</td><td><span class="chip c-miss">Levied by NSE and BSE</span></td></tr>
-      <tr><td>Q4 FY25 (Mar-25)</td><td>disclosed 18-Mar-2025</td><td style="text-align:left">Same set</td><td><span class="chip c-miss">Levied</span></td></tr>
-      <tr><td>Q1 FY26 (Jun-25)</td><td>8,90,900</td><td style="text-align:left">17(1), 18, 19, 20</td><td><span class="chip c-part">Partly waived by NSE</span></td></tr>
-      <tr><td>Q2 FY26 (Sep-25)</td><td>5,42,800</td><td style="text-align:left">17(1) board composition</td><td><span class="chip c-miss">Levied</span></td></tr>
-      <tr><td>Q3 FY26 (Dec-25)</td><td>5,42,800</td><td style="text-align:left">17(1) board composition</td><td><span class="chip c-miss">Levied</span></td></tr>
-      <tr class="tot"><td>Q4 FY26 (Mar-26)</td><td>5,31,000</td><td style="text-align:left">17(1) board composition</td><td><span class="chip c-miss">Still unresolved</span></td></tr>
+      <tr><td>Q3 FY25 (Dec-24)</td><td>11,21,000</td><td style="text-align:left" class="tx">17(1) board composition and woman ID, 17(2A) quorum, 18 audit committee, 19 NRC, 20 SRC</td><td class="tx"><span class="chip c-miss">Levied by NSE and BSE</span></td></tr>
+      <tr><td>Q4 FY25 (Mar-25)</td><td class="tx">disclosed 18-Mar-2025</td><td style="text-align:left" class="tx tn">Same set</td><td class="tx tn"><span class="chip c-miss">Levied</span></td></tr>
+      <tr><td>Q1 FY26 (Jun-25)</td><td>8,90,900</td><td style="text-align:left" class="tx tn">17(1), 18, 19, 20</td><td class="tx"><span class="chip c-part">Partly waived by NSE</span></td></tr>
+      <tr><td>Q2 FY26 (Sep-25)</td><td>5,42,800</td><td style="text-align:left" class="tx">17(1) board composition</td><td class="tx tn"><span class="chip c-miss">Levied</span></td></tr>
+      <tr><td>Q3 FY26 (Dec-25)</td><td>5,42,800</td><td style="text-align:left" class="tx">17(1) board composition</td><td class="tx tn"><span class="chip c-miss">Levied</span></td></tr>
+      <tr class="tot"><td>Q4 FY26 (Mar-26)</td><td>5,31,000</td><td style="text-align:left" class="tx">17(1) board composition</td><td class="tx tn"><span class="chip c-miss">Still unresolved</span></td></tr>
     </tbody>
     <caption>From MSTC's own Regulation 30 filings. Cumulative cash cost is under Rs 1 cr and financially irrelevant. What matters is that the breach was still live at the end of FY26, eighteen months after it began, and that it is structurally un-fixable by the company: with an executive chairman, Regulation 17(1)(b) requires half the board to be independent, and only the Ministry can supply them. MSTC has asked the exchanges to waive the fines on that basis.</caption>
   </table>
@@ -1005,15 +1008,15 @@ body.badges-off .badge{display:none;}
   <h3>Capital allocation over ten years</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Decision</th><th>Amount</th><th>Outcome</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>Decision</th><th class="tx">Amount</th><th class="tx">Outcome</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr><td>The trading business, FY15-FY19</td><td style="text-align:left">Rs 5,689 cr of revenue at peak</td><td style="text-align:left">Cumulative losses of Rs 554 cr across FY16 and FY19; Rs 441.93 cr of receivables ultimately written down to nil</td><td><span class="chip c-miss">Value destroyed</span></td></tr>
-      <tr><td>Winding down trading, FY20-FY27</td><td style="text-align:left">Revenue from Rs 3,292 cr to zero</td><td style="text-align:left">Operating margin from negative 6% to 59%; ROCE to 30%; exit completed Q1 FY27</td><td><span class="chip c-hit">Correct and completed</span></td></tr>
-      <tr><td>Sale of Ferro Scrap Nigam, Jan-2025</td><td style="text-align:left">Rs 320 cr received</td><td style="text-align:left">Gain of Rs 301.69 cr on a Rs 15.81 cr carrying cost. Proceeds largely distributed: a Rs 32.00 per share special interim dividend, Rs 225.28 cr, of which about Rs 145.9 cr went to the Government.</td><td><span class="chip c-hit">Good price, not reinvested</span></td></tr>
-      <tr><td>Mahindra MSTC Recycling, the 50:50 JV</td><td style="text-align:left">Rs 35.00 cr invested, including Rs 5.00 cr in FY25</td><td style="text-align:left">Cumulative impairment of Rs 11.50 cr (Rs 10.06 cr in FY25, Rs 1.44 cr in FY26) plus five years of equity-accounted losses. Turned a Rs 0.20 cr profit in Q1 FY27, the first in four years.</td><td><span class="chip c-part">Capital sink, just turning</span></td></tr>
-      <tr class="tot"><td>Corporate office, World Trade Centre New Delhi</td><td style="text-align:left">Rs ~141 cr capitalised in FY26</td><td style="text-align:left">The single largest discretionary deployment in a decade, roughly 16% of net worth. No return framework disclosed.</td><td><span class="chip c-miss">Unjustified on the record</span></td></tr>
-      <tr><td>Dividends</td><td style="text-align:left">Rs 471 cr over FY24-FY26</td><td style="text-align:left">FY24 Rs 15.50 per share (66% payout), FY25 Rs 40.50 (70%), FY26 Rs 15.70 (50.6%). DIPAM floor is the binding constraint.</td><td><span class="chip c-hit">Consistent</span></td></tr>
-      <tr><td>Buybacks and dilution</td><td style="text-align:left">Nil either way</td><td style="text-align:left">No buyback ever. No QIP, preferential allotment or rights issue since listing. Share count unchanged at 7.04 cr.</td><td><span class="chip c-na">Not available to management</span></td></tr>
+      <tr><td>The trading business, FY15-FY19</td><td style="text-align:left" class="tx">Rs 5,689 cr of revenue at peak</td><td style="text-align:left" class="tx">Cumulative losses of Rs 554 cr across FY16 and FY19; Rs 441.93 cr of receivables ultimately written down to nil</td><td class="tx tn"><span class="chip c-miss">Value destroyed</span></td></tr>
+      <tr><td>Winding down trading, FY20-FY27</td><td style="text-align:left" class="tx">Revenue from Rs 3,292 cr to zero</td><td style="text-align:left" class="tx">Operating margin from negative 6% to 59%; ROCE to 30%; exit completed Q1 FY27</td><td class="tx"><span class="chip c-hit">Correct and completed</span></td></tr>
+      <tr><td>Sale of Ferro Scrap Nigam, Jan-2025</td><td style="text-align:left" class="tx tn">Rs 320 cr received</td><td style="text-align:left" class="tx">Gain of Rs 301.69 cr on a Rs 15.81 cr carrying cost. Proceeds largely distributed: a Rs 32.00 per share special interim dividend, Rs 225.28 cr, of which about Rs 145.9 cr went to the Government.</td><td class="tx"><span class="chip c-hit">Good price, not reinvested</span></td></tr>
+      <tr><td>Mahindra MSTC Recycling, the 50:50 JV</td><td style="text-align:left" class="tx">Rs 35.00 cr invested, including Rs 5.00 cr in FY25</td><td style="text-align:left" class="tx">Cumulative impairment of Rs 11.50 cr (Rs 10.06 cr in FY25, Rs 1.44 cr in FY26) plus five years of equity-accounted losses. Turned a Rs 0.20 cr profit in Q1 FY27, the first in four years.</td><td class="tx"><span class="chip c-part">Capital sink, just turning</span></td></tr>
+      <tr class="tot"><td>Corporate office, World Trade Centre New Delhi</td><td style="text-align:left" class="tx">Rs ~141 cr capitalised in FY26</td><td style="text-align:left" class="tx">The single largest discretionary deployment in a decade, roughly 16% of net worth. No return framework disclosed.</td><td class="tx"><span class="chip c-miss">Unjustified on the record</span></td></tr>
+      <tr><td>Dividends</td><td style="text-align:left" class="tx">Rs 471 cr over FY24-FY26</td><td style="text-align:left" class="tx">FY24 Rs 15.50 per share (66% payout), FY25 Rs 40.50 (70%), FY26 Rs 15.70 (50.6%). DIPAM floor is the binding constraint.</td><td class="tx tn"><span class="chip c-hit">Consistent</span></td></tr>
+      <tr><td>Buybacks and dilution</td><td style="text-align:left" class="tx tn">Nil either way</td><td style="text-align:left" class="tx">No buyback ever. No QIP, preferential allotment or rights issue since listing. Share count unchanged at 7.04 cr.</td><td class="tx"><span class="chip c-na">Not available to management</span></td></tr>
     </tbody>
   </table>
   </div>
@@ -1035,25 +1038,25 @@ body.badges-off .badge{display:none;}
 
   <div class="tw">
   <table>
-    <thead><tr><th>#</th><th>Claim</th><th>Made</th><th>Outcome</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>#</th><th class="tx">Claim</th><th>Made</th><th class="tx">Outcome</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td style="text-align:left">"In the past, we had witnessed a growth of about 10%, 12%. So we are ambitious and we want to have that kind of growth year-on-year."</td><td>Q4 FY25<br>30-May-25</td><td style="text-align:left">FY26 revenue from operations +18.9%</td><td><span class="chip c-hit">Overachieved</span></td></tr>
-      <tr><td>2</td><td style="text-align:left">EBITDA margin to be maintained "at similar levels"</td><td>Q4 FY25</td><td style="text-align:left">FY26 67.9% against FY25 67.1%</td><td><span class="chip c-hit">Hit</span></td></tr>
-      <tr><td>3</td><td style="text-align:left">Steady-state tax rate of about 25% under Section 115BAA</td><td>Q4 FY25</td><td style="text-align:left">FY26 effective rate 25.3%</td><td><span class="chip c-hit">Hit</span></td></tr>
-      <tr><td>4</td><td style="text-align:left">MMRPL to reach profit in "at least a couple of years"</td><td>Q4 FY25</td><td style="text-align:left">First quarterly profit of Rs 0.20 cr in Q1 FY27, about 15 months later</td><td><span class="chip c-hit">Overachieved</span></td></tr>
-      <tr><td>5</td><td style="text-align:left">MMRPL breakeven "not before the fourth quarter of this year"</td><td>Q1 FY26<br>14-Aug-25</td><td style="text-align:left">Share of JV loss in Q4 FY26 was Rs 0.02 cr, effectively breakeven, exactly as guided</td><td><span class="chip c-hit">Hit</span></td></tr>
-      <tr><td>6</td><td style="text-align:left">"I am sure that I will be able to contain that 10% growth that we have seen in the nine month comparison"</td><td>Q3 FY26<br>12-Feb-26</td><td style="text-align:left">FY26 delivered +18.9%</td><td><span class="chip c-hit">Overachieved</span></td></tr>
-      <tr><td>7</td><td style="text-align:left">"we hope for a steady revenue stream from here on" after winning back Coal India</td><td>Q4 FY25</td><td style="text-align:left">Declared L1 for a three-year Coal India NRS linkage mandate on 26-Feb-2026</td><td><span class="chip c-hit">Hit</span></td></tr>
-      <tr><td>8</td><td style="text-align:left">EPR revenue "may be a positive revenue input from the end of FY27 or the beginning of 2028 ... it may not be very significant"</td><td>Q2 FY26<br>13-Nov-25</td><td style="text-align:left">Consistent with reality so far, but contradicted one quarter later by the company itself</td><td><span class="chip c-na">Too early</span></td></tr>
-      <tr><td>9</td><td style="text-align:left">EPR "revenue start flowing right from the Q1 of next financial year" and will "contribute quite significantly in the next financial year"</td><td>Q3 FY26<br>12-Feb-26</td><td style="text-align:left">Q1 FY27 delivered zero EPR revenue. Portal still "awaiting go ahead" as at 13-Aug-2026.</td><td><span class="chip c-miss">Missed</span></td></tr>
-      <tr><td>10</td><td style="text-align:left">Travel portal "we should be making it operational" by Q1 FY27</td><td>Q2 FY26</td><td style="text-align:left">B2B "ready", B2C "being upgraded" as at Aug-2026. No revenue.</td><td><span class="chip c-miss">Missed</span></td></tr>
-      <tr><td>11</td><td style="text-align:left">Travel portal "we will be able to launch it by April or so"</td><td>Q3 FY26</td><td style="text-align:left">Not launched commercially four months past the date</td><td><span class="chip c-miss">Missed</span></td></tr>
-      <tr><td>12</td><td style="text-align:left">Corporate presentation and five-year vision: "we will try to implement this in this quarter"</td><td>Q3 FY26</td><td style="text-align:left">Not filed as at 22-Aug-2026, two quarters later</td><td><span class="chip c-miss">Missed</span></td></tr>
-      <tr><td>13</td><td style="text-align:left">Scrap versus non-scrap revenue split: "We have noted. Let us see how we can make it out"</td><td>Q2 FY26</td><td style="text-align:left">Never provided</td><td><span class="chip c-miss">Missed</span></td></tr>
-      <tr><td>14</td><td style="text-align:left">Data centre monetisation being worked on</td><td>Q2 FY26</td><td style="text-align:left">"Not yet" in Nov-2025 and not mentioned since</td><td><span class="chip c-miss">Missed</span></td></tr>
-      <tr><td>15</td><td style="text-align:left">Upkaran equipment leasing portal: "probably you can see some kind of revenue from this segment"</td><td>Q2 FY26</td><td style="text-align:left">No Upkaran revenue disclosed. Business model still not finalised.</td><td><span class="chip c-na">Pending</span></td></tr>
-      <tr><td>16</td><td style="text-align:left">"the attempt shall be to maintain a double-digit growth" on organic e-commerce</td><td>Q4 FY26<br>30-May-26</td><td style="text-align:left">Q1 FY27 e-commerce revenue +27.8%</td><td><span class="chip c-na">On track, early</span></td></tr>
-      <tr><td>17</td><td style="text-align:left">Coal auction revenue "roughly about INR3 crores to INR4 crores per quarter"</td><td>Q1 FY26</td><td style="text-align:left">Never disclosed again, and contradicted in tone by the CMD in Q4 FY26</td><td><span class="chip c-na">Unverifiable</span></td></tr>
+      <tr><td>1</td><td style="text-align:left" class="tx">"In the past, we had witnessed a growth of about 10%, 12%. So we are ambitious and we want to have that kind of growth year-on-year."</td><td>Q4 FY25<br>30-May-25</td><td style="text-align:left" class="tx">FY26 revenue from operations +18.9%</td><td class="tx tn"><span class="chip c-hit">Overachieved</span></td></tr>
+      <tr><td>2</td><td style="text-align:left" class="tx">EBITDA margin to be maintained "at similar levels"</td><td>Q4 FY25</td><td style="text-align:left" class="tx">FY26 67.9% against FY25 67.1%</td><td class="tx tn"><span class="chip c-hit">Hit</span></td></tr>
+      <tr><td>3</td><td style="text-align:left" class="tx">Steady-state tax rate of about 25% under Section 115BAA</td><td>Q4 FY25</td><td style="text-align:left" class="tx">FY26 effective rate 25.3%</td><td class="tx tn"><span class="chip c-hit">Hit</span></td></tr>
+      <tr><td>4</td><td style="text-align:left" class="tx">MMRPL to reach profit in "at least a couple of years"</td><td>Q4 FY25</td><td style="text-align:left" class="tx">First quarterly profit of Rs 0.20 cr in Q1 FY27, about 15 months later</td><td class="tx tn"><span class="chip c-hit">Overachieved</span></td></tr>
+      <tr><td>5</td><td style="text-align:left" class="tx">MMRPL breakeven "not before the fourth quarter of this year"</td><td>Q1 FY26<br>14-Aug-25</td><td style="text-align:left" class="tx">Share of JV loss in Q4 FY26 was Rs 0.02 cr, effectively breakeven, exactly as guided</td><td class="tx tn"><span class="chip c-hit">Hit</span></td></tr>
+      <tr><td>6</td><td style="text-align:left" class="tx">"I am sure that I will be able to contain that 10% growth that we have seen in the nine month comparison"</td><td>Q3 FY26<br>12-Feb-26</td><td style="text-align:left" class="tx">FY26 delivered +18.9%</td><td class="tx tn"><span class="chip c-hit">Overachieved</span></td></tr>
+      <tr><td>7</td><td style="text-align:left" class="tx">"we hope for a steady revenue stream from here on" after winning back Coal India</td><td>Q4 FY25</td><td style="text-align:left" class="tx">Declared L1 for a three-year Coal India NRS linkage mandate on 26-Feb-2026</td><td class="tx tn"><span class="chip c-hit">Hit</span></td></tr>
+      <tr><td>8</td><td style="text-align:left" class="tx">EPR revenue "may be a positive revenue input from the end of FY27 or the beginning of 2028 ... it may not be very significant"</td><td>Q2 FY26<br>13-Nov-25</td><td style="text-align:left" class="tx">Consistent with reality so far, but contradicted one quarter later by the company itself</td><td class="tx tn"><span class="chip c-na">Too early</span></td></tr>
+      <tr><td>9</td><td style="text-align:left" class="tx">EPR "revenue start flowing right from the Q1 of next financial year" and will "contribute quite significantly in the next financial year"</td><td>Q3 FY26<br>12-Feb-26</td><td style="text-align:left" class="tx">Q1 FY27 delivered zero EPR revenue. Portal still "awaiting go ahead" as at 13-Aug-2026.</td><td class="tx tn"><span class="chip c-miss">Missed</span></td></tr>
+      <tr><td>10</td><td style="text-align:left" class="tx">Travel portal "we should be making it operational" by Q1 FY27</td><td>Q2 FY26</td><td style="text-align:left" class="tx">B2B "ready", B2C "being upgraded" as at Aug-2026. No revenue.</td><td class="tx tn"><span class="chip c-miss">Missed</span></td></tr>
+      <tr><td>11</td><td style="text-align:left" class="tx">Travel portal "we will be able to launch it by April or so"</td><td>Q3 FY26</td><td style="text-align:left" class="tx">Not launched commercially four months past the date</td><td class="tx tn"><span class="chip c-miss">Missed</span></td></tr>
+      <tr><td>12</td><td style="text-align:left" class="tx">Corporate presentation and five-year vision: "we will try to implement this in this quarter"</td><td>Q3 FY26</td><td style="text-align:left" class="tx">Not filed as at 22-Aug-2026, two quarters later</td><td class="tx tn"><span class="chip c-miss">Missed</span></td></tr>
+      <tr><td>13</td><td style="text-align:left" class="tx">Scrap versus non-scrap revenue split: "We have noted. Let us see how we can make it out"</td><td>Q2 FY26</td><td style="text-align:left" class="tx tn">Never provided</td><td class="tx tn"><span class="chip c-miss">Missed</span></td></tr>
+      <tr><td>14</td><td style="text-align:left" class="tx">Data centre monetisation being worked on</td><td>Q2 FY26</td><td style="text-align:left" class="tx">"Not yet" in Nov-2025 and not mentioned since</td><td class="tx tn"><span class="chip c-miss">Missed</span></td></tr>
+      <tr><td>15</td><td style="text-align:left" class="tx">Upkaran equipment leasing portal: "probably you can see some kind of revenue from this segment"</td><td>Q2 FY26</td><td style="text-align:left" class="tx">No Upkaran revenue disclosed. Business model still not finalised.</td><td class="tx tn"><span class="chip c-na">Pending</span></td></tr>
+      <tr><td>16</td><td style="text-align:left" class="tx">"the attempt shall be to maintain a double-digit growth" on organic e-commerce</td><td>Q4 FY26<br>30-May-26</td><td style="text-align:left" class="tx">Q1 FY27 e-commerce revenue +27.8%</td><td class="tx tn"><span class="chip c-na">On track, early</span></td></tr>
+      <tr><td>17</td><td style="text-align:left" class="tx">Coal auction revenue "roughly about INR3 crores to INR4 crores per quarter"</td><td>Q1 FY26</td><td style="text-align:left" class="tx">Never disclosed again, and contradicted in tone by the CMD in Q4 FY26</td><td class="tx tn"><span class="chip c-na">Unverifiable</span></td></tr>
     </tbody>
     <caption>Built from the eight concall transcripts filed with the exchanges between 22-Aug-2024 and 04-Jun-2026, cross-checked against the audited results and investor presentations.</caption>
   </table>
@@ -1096,18 +1099,18 @@ body.badges-off .badge{display:none;}
   <h3>Live regulatory and tax matters</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Matter</th><th>Amount (Rs cr)</th><th>Status</th><th>Severity</th></tr></thead>
+    <thead><tr><th>Matter</th><th>Amount (Rs cr)</th><th class="tx">Status</th><th class="tx">Severity</th></tr></thead>
     <tbody>
-      <tr class="tot"><td>Section 201(1)/201(1A) TDS demand, AY 2024-25</td><td>178.40</td><td style="text-align:left">Notice under Section 156 received 15-Apr-2025. Company says appealable and will appeal. Not in the FY25 contingent liability schedule (post balance sheet). FY26 treatment unknown.</td><td><span class="chip c-miss">Critical</span></td></tr>
-      <tr><td>Income tax (in contingent liabilities)</td><td>184.75</td><td style="text-align:left">FY25, up from Rs 79.20 cr in FY24. More than doubled in one year.</td><td><span class="chip c-miss">High</span></td></tr>
-      <tr><td>Money suits</td><td>157.78</td><td style="text-align:left">FY25, down from Rs 177.06 cr</td><td><span class="chip c-part">Medium</span></td></tr>
-      <tr><td>Sales tax and VAT</td><td>20.06</td><td style="text-align:left">Unchanged</td><td><span class="chip c-part">Low</span></td></tr>
-      <tr><td>Service tax</td><td>14.90</td><td style="text-align:left">Unchanged</td><td><span class="chip c-part">Low</span></td></tr>
-      <tr><td>Customs Act</td><td>11.89</td><td style="text-align:left">Unchanged, legacy trading era</td><td><span class="chip c-part">Low</span></td></tr>
-      <tr><td>Outstanding bank guarantees</td><td>5.60</td><td style="text-align:left">Rs 29.68 cr held as margin against guarantees</td><td><span class="chip c-hit">Immaterial</span></td></tr>
-      <tr><td>GST</td><td>0.04</td><td style="text-align:left">New in FY25</td><td><span class="chip c-hit">Immaterial</span></td></tr>
-      <tr class="tot"><td>Disclosed contingent liabilities, FY25</td><td>395.03</td><td style="text-align:left">53.5% of FY25 net worth; 43.7% of FY26 net worth</td><td><span class="chip c-miss">Elevated</span></td></tr>
-      <tr class="tot"><td>Including the Section 201 demand</td><td>573.43</td><td style="text-align:left">78% of FY25 net worth; 63% of FY26 net worth</td><td><span class="chip c-miss">Elevated</span></td></tr>
+      <tr class="tot"><td>Section 201(1)/201(1A) TDS demand, AY 2024-25</td><td>178.40</td><td style="text-align:left" class="tx">Notice under Section 156 received 15-Apr-2025. Company says appealable and will appeal. Not in the FY25 contingent liability schedule (post balance sheet). FY26 treatment unknown.</td><td class="tx tn"><span class="chip c-miss">Critical</span></td></tr>
+      <tr><td>Income tax (in contingent liabilities)</td><td>184.75</td><td style="text-align:left" class="tx">FY25, up from Rs 79.20 cr in FY24. More than doubled in one year.</td><td class="tx tn"><span class="chip c-miss">High</span></td></tr>
+      <tr><td>Money suits</td><td>157.78</td><td style="text-align:left" class="tx">FY25, down from Rs 177.06 cr</td><td class="tx tn"><span class="chip c-part">Medium</span></td></tr>
+      <tr><td>Sales tax and VAT</td><td>20.06</td><td style="text-align:left" class="tx tn">Unchanged</td><td class="tx tn"><span class="chip c-part">Low</span></td></tr>
+      <tr><td>Service tax</td><td>14.90</td><td style="text-align:left" class="tx tn">Unchanged</td><td class="tx tn"><span class="chip c-part">Low</span></td></tr>
+      <tr><td>Customs Act</td><td>11.89</td><td style="text-align:left" class="tx">Unchanged, legacy trading era</td><td class="tx tn"><span class="chip c-part">Low</span></td></tr>
+      <tr><td>Outstanding bank guarantees</td><td>5.60</td><td style="text-align:left" class="tx">Rs 29.68 cr held as margin against guarantees</td><td class="tx tn"><span class="chip c-hit">Immaterial</span></td></tr>
+      <tr><td>GST</td><td>0.04</td><td style="text-align:left" class="tx tn">New in FY25</td><td class="tx tn"><span class="chip c-hit">Immaterial</span></td></tr>
+      <tr class="tot"><td>Disclosed contingent liabilities, FY25</td><td>395.03</td><td style="text-align:left" class="tx">53.5% of FY25 net worth; 43.7% of FY26 net worth</td><td class="tx tn"><span class="chip c-miss">Elevated</span></td></tr>
+      <tr class="tot"><td>Including the Section 201 demand</td><td>573.43</td><td style="text-align:left" class="tx">78% of FY25 net worth; 63% of FY26 net worth</td><td class="tx tn"><span class="chip c-miss">Elevated</span></td></tr>
     </tbody>
     <caption>Note 30, FY25 annual report, plus the Regulation 30 disclosure of 16-Apr-2025. Separately, the Standard Chartered Bank claim of Rs 222.51 cr (Rs 143.62 cr principal plus Rs 78.89 cr accrued interest) is already recognised on the balance sheet rather than sitting in contingent liabilities, and is discussed in Section 6.</caption>
   </table>
@@ -1238,16 +1241,16 @@ body.badges-off .badge{display:none;}
   <h3>Quantified macro sensitivities</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Variable</th><th>Move</th><th>Estimated pre-tax impact</th><th>As % of FY26 PBT</th><th>Basis</th></tr></thead>
+    <thead><tr><th>Variable</th><th>Move</th><th>Estimated pre-tax impact</th><th>As % of FY26 PBT</th><th class="tx">Basis</th></tr></thead>
     <tbody>
-      <tr><td>Policy / deposit rates</td><td>-100 bps</td><td class="r">Rs -6.5 to -9.3 cr</td><td>2.2% to 3.2%</td><td style="text-align:left">Applied to Rs 650-925 cr of client float</td></tr>
-      <tr><td>Client float balance</td><td>-25%</td><td class="r">Rs -11 to -16 cr</td><td>3.8% to 5.5%</td><td style="text-align:left">At a ~7% deposit yield; FY26 already saw a 26% fall</td></tr>
-      <tr><td>Scrap realisation</td><td>-10%</td><td class="r">Rs -18 cr</td><td>6.2%</td><td style="text-align:left">Scrap is ~50% of revenue, charged as % of value, near-100% incremental margin</td></tr>
-      <tr><td>Take rate</td><td>0.464% to 0.40%</td><td class="r">Rs -51 cr</td><td>17.4%</td><td style="text-align:left">On FY26 GMV. Q1 FY27 is already at 0.396%.</td></tr>
-      <tr><td>GMV</td><td>+20%</td><td class="g">Rs +30 cr</td><td>10.3%</td><td style="text-align:left">Only if take rate holds, which the quarterly data says it does not</td></tr>
-      <tr><td>Employee cost</td><td>+10%</td><td class="r">Rs -9.9 cr</td><td>3.4%</td><td style="text-align:left">Dearness allowance and gratuity ceiling changes are not discretionary</td></tr>
-      <tr><td>Section 201 crystallising</td><td>One year upheld</td><td class="r">Rs -178.40 cr</td><td>61%</td><td style="text-align:left">Rs 25 per share. Repeats annually if the underlying position is upheld.</td></tr>
-      <tr class="tot"><td>SCB litigation resolved in MSTC's favour</td><td>Final disposal</td><td class="g">Rs +125 cr</td><td>43%</td><td style="text-align:left">Rs 222.51 cr of liabilities reversed less a Rs 97.67 cr receivable write-off</td></tr>
+      <tr><td>Policy / deposit rates</td><td>-100 bps</td><td class="r">Rs -6.5 to -9.3 cr</td><td>2.2% to 3.2%</td><td style="text-align:left" class="tx">Applied to Rs 650-925 cr of client float</td></tr>
+      <tr><td>Client float balance</td><td>-25%</td><td class="r">Rs -11 to -16 cr</td><td>3.8% to 5.5%</td><td style="text-align:left" class="tx">At a ~7% deposit yield; FY26 already saw a 26% fall</td></tr>
+      <tr><td>Scrap realisation</td><td>-10%</td><td class="r">Rs -18 cr</td><td>6.2%</td><td style="text-align:left" class="tx">Scrap is ~50% of revenue, charged as % of value, near-100% incremental margin</td></tr>
+      <tr><td>Take rate</td><td>0.464% to 0.40%</td><td class="r">Rs -51 cr</td><td>17.4%</td><td style="text-align:left" class="tx">On FY26 GMV. Q1 FY27 is already at 0.396%.</td></tr>
+      <tr><td>GMV</td><td>+20%</td><td class="g">Rs +30 cr</td><td>10.3%</td><td style="text-align:left" class="tx">Only if take rate holds, which the quarterly data says it does not</td></tr>
+      <tr><td>Employee cost</td><td>+10%</td><td class="r">Rs -9.9 cr</td><td>3.4%</td><td style="text-align:left" class="tx">Dearness allowance and gratuity ceiling changes are not discretionary</td></tr>
+      <tr><td>Section 201 crystallising</td><td>One year upheld</td><td class="r">Rs -178.40 cr</td><td>61%</td><td style="text-align:left" class="tx">Rs 25 per share. Repeats annually if the underlying position is upheld.</td></tr>
+      <tr class="tot"><td>SCB litigation resolved in MSTC's favour</td><td>Final disposal</td><td class="g">Rs +125 cr</td><td>43%</td><td style="text-align:left" class="tx">Rs 222.51 cr of liabilities reversed less a Rs 97.67 cr receivable write-off</td></tr>
     </tbody>
     <caption>Analyst estimates built from disclosed balances. Rate and float sensitivities assume the FY25 realised deposit yield of about 6.97% and no reinvestment lag.</caption>
   </table>
@@ -1264,16 +1267,16 @@ body.badges-off .badge{display:none;}
   <h3>Live mandates won, with dates</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Date</th><th>Mandate</th><th>Counterparty</th><th>Term</th><th>Value disclosed</th></tr></thead>
+    <thead><tr><th>Date</th><th class="tx">Mandate</th><th class="tx">Counterparty</th><th class="tx">Term</th><th class="tx">Value disclosed</th></tr></thead>
     <tbody>
-      <tr><td>12-Sep-2025</td><td style="text-align:left">Design, develop and <em>operate</em> the National EPR Certificate Trading Platform. Revenue is a commission on volume traded.</td><td>CPCB</td><td>Per letter of award</td><td class="r">None</td></tr>
-      <tr><td>29-Oct-2025</td><td style="text-align:left">Selling agency agreement for liquor shop licence auctions</td><td>Karnataka State Excise</td><td>Not stated</td><td class="r">None</td></tr>
-      <tr><td>05-Nov-2025</td><td style="text-align:left">Nominated as service agency for online tariff rate quota allocation, gold bullion imports</td><td>DGFT</td><td>Not stated</td><td class="r">None</td></tr>
-      <tr class="tot"><td>26-Feb-2026</td><td style="text-align:left">External Service Provider for Non-Regulated Sector linkage auctions. Tender floated on the GeM portal.</td><td>Coal India</td><td>Three years</td><td class="r">None</td></tr>
-      <tr><td>Q1 FY27</td><td style="text-align:left">E-commerce services for leasing port property</td><td>Syama Prasad Mookerjee Port, Kolkata</td><td>Thirty years</td><td style="text-align:left">Client envisages Rs 5,000 cr of leasing; MSTC gets "a minuscule percentage"</td></tr>
-      <tr><td>Q1 FY27</td><td style="text-align:left">Selling agency for prime products and secondary arisings</td><td>RINL</td><td>Not stated</td><td class="r">None</td></tr>
-      <tr><td>Q1 FY27</td><td style="text-align:left">Selection of Charge Point Operators under PM E-DRIVE</td><td>Kerala State Electricity Board</td><td>Not stated</td><td class="r">None</td></tr>
-      <tr><td>FY25</td><td style="text-align:left">730 FM radio channels across 234 cities; 5G spectrum tranche 3; UDAN 5.5; offshore minerals tranche 1; BPCL selling agency; Chhattisgarh forest timber portal; SIMS 2.0</td><td>Various ministries</td><td>Event-based</td><td class="r">None</td></tr>
+      <tr><td>12-Sep-2025</td><td style="text-align:left" class="tx">Design, develop and <em>operate</em> the National EPR Certificate Trading Platform. Revenue is a commission on volume traded.</td><td class="tx tn">CPCB</td><td class="tx">Per letter of award</td><td class="r tx tn">None</td></tr>
+      <tr><td>29-Oct-2025</td><td style="text-align:left" class="tx">Selling agency agreement for liquor shop licence auctions</td><td class="tx">Karnataka State Excise</td><td class="tx tn">Not stated</td><td class="r tx tn">None</td></tr>
+      <tr><td>05-Nov-2025</td><td style="text-align:left" class="tx">Nominated as service agency for online tariff rate quota allocation, gold bullion imports</td><td class="tx tn">DGFT</td><td class="tx tn">Not stated</td><td class="r tx tn">None</td></tr>
+      <tr class="tot"><td>26-Feb-2026</td><td style="text-align:left" class="tx">External Service Provider for Non-Regulated Sector linkage auctions. Tender floated on the GeM portal.</td><td class="tx tn">Coal India</td><td class="tx tn">Three years</td><td class="r tx tn">None</td></tr>
+      <tr><td>Q1 FY27</td><td style="text-align:left" class="tx">E-commerce services for leasing port property</td><td class="tx">Syama Prasad Mookerjee Port, Kolkata</td><td class="tx tn">Thirty years</td><td style="text-align:left" class="tx">Client envisages Rs 5,000 cr of leasing; MSTC gets "a minuscule percentage"</td></tr>
+      <tr><td>Q1 FY27</td><td style="text-align:left" class="tx">Selling agency for prime products and secondary arisings</td><td class="tx tn">RINL</td><td class="tx tn">Not stated</td><td class="r tx tn">None</td></tr>
+      <tr><td>Q1 FY27</td><td style="text-align:left" class="tx">Selection of Charge Point Operators under PM E-DRIVE</td><td class="tx">Kerala State Electricity Board</td><td class="tx tn">Not stated</td><td class="r tx tn">None</td></tr>
+      <tr><td>FY25</td><td style="text-align:left" class="tx">730 FM radio channels across 234 cities; 5G spectrum tranche 3; UDAN 5.5; offshore minerals tranche 1; BPCL selling agency; Chhattisgarh forest timber portal; SIMS 2.0</td><td class="tx tn">Various ministries</td><td class="tx tn">Event-based</td><td class="r tx tn">None</td></tr>
     </tbody>
     <caption>MSTC's Regulation 30 order announcements never quantify consideration. Not one of these filings carries a rupee value; the standard formulation is "could not be quantified at this stage." <strong>An order book and a book-to-bill ratio cannot be computed for this company.</strong> That is a structural disclosure gap, not an oversight in this report.</caption>
   </table>
@@ -1406,16 +1409,16 @@ body.badges-off .badge{display:none;}
   <h3>Price action in context</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Measure</th><th>Value</th><th>Comment</th></tr></thead>
+    <thead><tr><th>Measure</th><th>Value</th><th class="tx">Comment</th></tr></thead>
     <tbody>
-      <tr><td>Close, 21-Aug-2026</td><td class="b">Rs 701</td><td style="text-align:left">Prior close 18-Aug-2026 Rs 702.65, up 7.47% that day from Rs 653.80</td></tr>
-      <tr><td>12-Aug-2026</td><td>Rs 588.85</td><td style="text-align:left">Day before the Q1 FY27 board meeting</td></tr>
-      <tr><td>Move since results</td><td class="g">+19.3%</td><td style="text-align:left">Three sessions</td></tr>
-      <tr><td>One-month move</td><td class="g">+57%</td><td style="text-align:left">Attributed in press to Delhi EV Policy scrappage incentives</td></tr>
-      <tr><td>52-week range</td><td>Rs 362 to Rs 744</td><td style="text-align:left">Currently 94% above the low and 6% below the high</td></tr>
-      <tr><td>5-year price CAGR</td><td>21%</td><td style="text-align:left">Against a 5-year sales CAGR of negative 14%</td></tr>
+      <tr><td>Close, 21-Aug-2026</td><td class="b">Rs 701</td><td style="text-align:left" class="tx">Prior close 18-Aug-2026 Rs 702.65, up 7.47% that day from Rs 653.80</td></tr>
+      <tr><td>12-Aug-2026</td><td>Rs 588.85</td><td style="text-align:left" class="tx">Day before the Q1 FY27 board meeting</td></tr>
+      <tr><td>Move since results</td><td class="g">+19.3%</td><td style="text-align:left" class="tx tn">Three sessions</td></tr>
+      <tr><td>One-month move</td><td class="g">+57%</td><td style="text-align:left" class="tx">Attributed in press to Delhi EV Policy scrappage incentives</td></tr>
+      <tr><td>52-week range</td><td>Rs 362 to Rs 744</td><td style="text-align:left" class="tx">Currently 94% above the low and 6% below the high</td></tr>
+      <tr><td>5-year price CAGR</td><td>21%</td><td style="text-align:left" class="tx">Against a 5-year sales CAGR of negative 14%</td></tr>
       <tr><td>3-year price CAGR</td><td>22%</td><td style="text-align:left"></td></tr>
-      <tr class="tot"><td>Trailing 12-month return</td><td class="g">48%</td><td style="text-align:left">Almost all of it in the last month</td></tr>
+      <tr class="tot"><td>Trailing 12-month return</td><td class="g">48%</td><td style="text-align:left" class="tx">Almost all of it in the last month</td></tr>
     </tbody>
     <caption>BSE live quote data and screener. The gap between a 21% five-year price CAGR and a negative 14% five-year sales CAGR is the entire re-rating story: the market has been paying progressively more for progressively less revenue, correctly, because the revenue being shed was loss-making trading.</caption>
   </table>
@@ -1439,12 +1442,12 @@ body.badges-off .badge{display:none;}
   <h3>Where the multiple sits against its own history</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Approximate date</th><th>Price (Rs)</th><th>Trailing EPS used (Rs)</th><th>Implied P/E</th><th>Note</th></tr></thead>
+    <thead><tr><th>Approximate date</th><th>Price (Rs)</th><th>Trailing EPS used (Rs)</th><th>Implied P/E</th><th class="tx">Note</th></tr></thead>
     <tbody>
-      <tr><td>Aug-2021</td><td>~271</td><td>16.05 (FY21)</td><td>~16.9x</td><td style="text-align:left">Trading still large, margins poor</td></tr>
-      <tr><td>Aug-2023</td><td>~387</td><td>34.37 (FY23)</td><td class="g">~11.3x</td><td style="text-align:left">Cheapest point; FSNL still consolidated</td></tr>
-      <tr><td>Aug-2025</td><td>~475</td><td>26.02 (FY25 ex-exceptional)</td><td>~18.3x</td><td style="text-align:left">8.2x on reported FY25 EPS of 57.82</td></tr>
-      <tr class="tot"><td>21-Aug-2026</td><td>701</td><td>33.29 (TTM)</td><td>21.1x</td><td style="text-align:left">Top of the post-listing range</td></tr>
+      <tr><td>Aug-2021</td><td>~271</td><td>16.05 (FY21)</td><td>~16.9x</td><td style="text-align:left" class="tx">Trading still large, margins poor</td></tr>
+      <tr><td>Aug-2023</td><td>~387</td><td>34.37 (FY23)</td><td class="g">~11.3x</td><td style="text-align:left" class="tx">Cheapest point; FSNL still consolidated</td></tr>
+      <tr><td>Aug-2025</td><td>~475</td><td class="tx">26.02 (FY25 ex-exceptional)</td><td>~18.3x</td><td style="text-align:left" class="tx">8.2x on reported FY25 EPS of 57.82</td></tr>
+      <tr class="tot"><td>21-Aug-2026</td><td>701</td><td>33.29 (TTM)</td><td>21.1x</td><td style="text-align:left" class="tx">Top of the post-listing range</td></tr>
     </tbody>
     <caption>Historical prices are DERIVED from screener's stated price CAGRs (5-year 21%, 3-year 22%, trailing twelve months 48%) applied backwards from the latest close. They are estimates, not observed closing prices, and the implied multiples should be read as a range indication rather than a precise percentile. On this basis today's multiple is at or very near the highest MSTC has traded since its March-2019 listing.</caption>
   </table>
@@ -1494,10 +1497,10 @@ body.badges-off .badge{display:none;}
       <tr><td>Take rate by FY29</td><td>0.35%</td><td>0.42%</td><td>0.48%</td></tr>
       <tr><td>EPR contribution by FY29 (Rs cr)</td><td>0</td><td>25</td><td>90</td></tr>
       <tr><td>Operating margin FY29</td><td>54%</td><td>60%</td><td>65%</td></tr>
-      <tr><td>Float interest (rate and balance)</td><td style="text-align:left">Float to Rs 500 cr, 100 bps of cuts</td><td style="text-align:left">Float stable, rates stable</td><td style="text-align:left">Float rebuilds with GMV</td></tr>
-      <tr><td>Section 201 outcome</td><td style="text-align:left">Upheld, Rs 178 cr paid, repeats</td><td style="text-align:left">Settled at a fraction</td><td style="text-align:left">Fully quashed on appeal</td></tr>
-      <tr><td>Coal exchange</td><td style="text-align:left">Displaces MSTC's agency role from FY29</td><td style="text-align:left">Slow rollout, MSTC retains linkage</td><td style="text-align:left">MSTC registered as an exchange</td></tr>
-      <tr><td>SCB litigation</td><td style="text-align:left">Unresolved</td><td style="text-align:left">Unresolved</td><td style="text-align:left">Resolved in MSTC's favour, +Rs 125 cr</td></tr>
+      <tr><td>Float interest (rate and balance)</td><td style="text-align:left" class="tx">Float to Rs 500 cr, 100 bps of cuts</td><td style="text-align:left" class="tx">Float stable, rates stable</td><td style="text-align:left" class="tx">Float rebuilds with GMV</td></tr>
+      <tr><td>Section 201 outcome</td><td style="text-align:left" class="tx">Upheld, Rs 178 cr paid, repeats</td><td style="text-align:left" class="tx">Settled at a fraction</td><td style="text-align:left" class="tx">Fully quashed on appeal</td></tr>
+      <tr><td>Coal exchange</td><td style="text-align:left" class="tx">Displaces MSTC's agency role from FY29</td><td style="text-align:left" class="tx">Slow rollout, MSTC retains linkage</td><td style="text-align:left" class="tx">MSTC registered as an exchange</td></tr>
+      <tr><td>SCB litigation</td><td style="text-align:left">Unresolved</td><td style="text-align:left">Unresolved</td><td style="text-align:left" class="tx">Resolved in MSTC's favour, +Rs 125 cr</td></tr>
       <tr class="tot"><td>FY29 PAT (Rs cr)</td><td>200</td><td>320</td><td>430</td></tr>
       <tr><td>Exit multiple</td><td>13x</td><td>18x</td><td>25x</td></tr>
       <tr><td>Plus net surplus cash (Rs cr)</td><td>250</td><td>350</td><td>500</td></tr>
@@ -1558,13 +1561,13 @@ body.badges-off .badge{display:none;}
   <h3>Thesis-killers: specific, observable, dated</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>#</th><th>Event that would invalidate the bull case</th><th>Where it would first appear</th></tr></thead>
+    <thead><tr><th>#</th><th class="tx">Event that would invalidate the bull case</th><th class="tx">Where it would first appear</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td style="text-align:left">The Section 201 demand is upheld at first appeal, or a similar order lands for AY 2025-26, taking cumulative exposure past Rs 350 cr</td><td style="text-align:left">FY26 annual report contingent liabilities (after 24-Sep-2026), or a Regulation 30 filing</td></tr>
-      <tr><td>2</td><td style="text-align:left">A competitor is registered as a coal exchange under the Coal Exchange Rules and MSTC is not</td><td style="text-align:left">Coal Controller Organisation registrations, expected FY27-FY28</td></tr>
-      <tr><td>3</td><td style="text-align:left">Coal India, a major state, or a top-five private client moves its auctions to GeM or an in-house portal</td><td style="text-align:left">Regulation 30 disclosure, or a sharp fall in quarterly e-commerce revenue</td></tr>
-      <tr><td>4</td><td style="text-align:left">The CPCB EPR mandate is withdrawn, re-tendered, or awarded to another operator at renewal</td><td style="text-align:left">CPCB notification or Regulation 30 filing</td></tr>
-      <tr><td>5</td><td style="text-align:left">Take rate falls below 0.35% for two consecutive quarters while GMV growth stalls below 10%</td><td style="text-align:left">Quarterly investor presentations, comparing disclosed GMV to revenue from operations</td></tr>
+      <tr><td>1</td><td style="text-align:left" class="tx">The Section 201 demand is upheld at first appeal, or a similar order lands for AY 2025-26, taking cumulative exposure past Rs 350 cr</td><td style="text-align:left" class="tx">FY26 annual report contingent liabilities (after 24-Sep-2026), or a Regulation 30 filing</td></tr>
+      <tr><td>2</td><td style="text-align:left" class="tx">A competitor is registered as a coal exchange under the Coal Exchange Rules and MSTC is not</td><td style="text-align:left" class="tx">Coal Controller Organisation registrations, expected FY27-FY28</td></tr>
+      <tr><td>3</td><td style="text-align:left" class="tx">Coal India, a major state, or a top-five private client moves its auctions to GeM or an in-house portal</td><td style="text-align:left" class="tx">Regulation 30 disclosure, or a sharp fall in quarterly e-commerce revenue</td></tr>
+      <tr><td>4</td><td style="text-align:left" class="tx">The CPCB EPR mandate is withdrawn, re-tendered, or awarded to another operator at renewal</td><td style="text-align:left" class="tx">CPCB notification or Regulation 30 filing</td></tr>
+      <tr><td>5</td><td style="text-align:left" class="tx">Take rate falls below 0.35% for two consecutive quarters while GMV growth stalls below 10%</td><td style="text-align:left" class="tx">Quarterly investor presentations, comparing disclosed GMV to revenue from operations</td></tr>
     </tbody>
   </table>
   </div>
@@ -1647,8 +1650,8 @@ body.badges-off .badge{display:none;}
       <tr><td>Depreciation and amortisation</td><td>7.32</td><td>9.09</td><td>10.36</td><td>26.77</td></tr>
       <tr><td>Capex as a multiple of depreciation</td><td>14.7x</td><td>2.7x</td><td>2.1x</td><td>5.8x</td></tr>
       <tr><td>Proceeds from disposal of PP&amp;E</td><td>0.04</td><td>0.01</td><td>0.08</td><td>0.13</td></tr>
-      <tr class="tot"><td>Of which: World Trade Centre corporate office, New Delhi</td><td colspan="3" style="text-align:left">Capitalised in FY26; cash paid as advances across FY24 to FY26</td><td class="r">~141</td></tr>
-      <tr class="tot"><td>Of which: everything else (hardware, software, network)</td><td colspan="3" style="text-align:left">Roughly Rs 4.5 cr a year</td><td>~14</td></tr>
+      <tr class="tot"><td>Of which: World Trade Centre corporate office, New Delhi</td><td colspan="3" style="text-align:left" class="tx">Capitalised in FY26; cash paid as advances across FY24 to FY26</td><td class="r">~141</td></tr>
+      <tr class="tot"><td>Of which: everything else (hardware, software, network)</td><td colspan="3" style="text-align:left" class="tx">Roughly Rs 4.5 cr a year</td><td>~14</td></tr>
     </tbody>
     <caption>FY24 from the FY25 annual report comparative, FY25 and FY26 from the filed audited results. The office is identifiable because property, plant and equipment rose from Rs 52.86 cr to Rs 194.13 cr in FY26 while other non-current assets, which held the capital advance, fell from Rs 149.72 cr to Rs 52.46 cr. The commitment note shows the outstanding purchase obligation running down from Rs 31.64 cr at FY24 to Rs 15.02 cr at FY25.</caption>
   </table>
@@ -1668,12 +1671,12 @@ body.badges-off .badge{display:none;}
   <h3>Capex IRR by bucket</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Capital deployed</th><th>Amount</th><th>Measurable return</th><th>Estimated IRR</th><th>Assessment</th></tr></thead>
+    <thead><tr><th>Capital deployed</th><th class="tx">Amount</th><th class="tx">Measurable return</th><th class="tx">Estimated IRR</th><th class="tx">Assessment</th></tr></thead>
     <tbody>
-      <tr><td>World Trade Centre office</td><td>~Rs 141 cr</td><td style="text-align:left">Rent saved up to Rs 3.6 cr less Rs 12.1 cr of added operating cost; no revenue attribution</td><td class="r">Negative before any property appreciation</td><td><span class="chip c-miss">Value destroyed on the record</span></td></tr>
-      <tr><td>Mahindra MSTC Recycling JV</td><td>Rs 35 cr since inception, Rs 10 cr in the last two years</td><td style="text-align:left">Carrying value Rs 11.88 cr on equity method; fair value Rs 24.94 cr per the FY25 Ind AS 36 test; first quarterly profit of Rs 0.20 cr in Q1 FY27 after four years of losses</td><td class="r">About -5% to -6% a year over six years</td><td><span class="chip c-part">Sunk, but inflecting</span></td></tr>
-      <tr><td>Technology, hardware and software</td><td>~Rs 14 cr over three years</td><td style="text-align:left">Not separately measurable; embedded in the platform</td><td><span class="chip c-na">Not computable</span></td><td><span class="chip c-miss">Under-invested, see below</span></td></tr>
-      <tr class="tot"><td>Aggregate incremental return on all capital deployed</td><td>Rs 164.58 cr</td><td style="text-align:left">PBT before exceptional rose from Rs 277.57 cr (FY24) to Rs 292.43 cr (FY26), an increment of Rs 14.86 cr</td><td>9.3% pre-tax<br>~7.0% post-tax</td><td><span class="chip c-miss">Below the cost of equity</span></td></tr>
+      <tr><td>World Trade Centre office</td><td class="tx tn">~Rs 141 cr</td><td style="text-align:left" class="tx">Rent saved up to Rs 3.6 cr less Rs 12.1 cr of added operating cost; no revenue attribution</td><td class="r tx">Negative before any property appreciation</td><td class="tx"><span class="chip c-miss">Value destroyed on the record</span></td></tr>
+      <tr><td>Mahindra MSTC Recycling JV</td><td class="tx">Rs 35 cr since inception, Rs 10 cr in the last two years</td><td style="text-align:left" class="tx">Carrying value Rs 11.88 cr on equity method; fair value Rs 24.94 cr per the FY25 Ind AS 36 test; first quarterly profit of Rs 0.20 cr in Q1 FY27 after four years of losses</td><td class="r tx">About -5% to -6% a year over six years</td><td class="tx"><span class="chip c-part">Sunk, but inflecting</span></td></tr>
+      <tr><td>Technology, hardware and software</td><td class="tx">~Rs 14 cr over three years</td><td style="text-align:left" class="tx">Not separately measurable; embedded in the platform</td><td class="tx tn"><span class="chip c-na">Not computable</span></td><td class="tx"><span class="chip c-miss">Under-invested, see below</span></td></tr>
+      <tr class="tot"><td>Aggregate incremental return on all capital deployed</td><td class="tx tn">Rs 164.58 cr</td><td style="text-align:left" class="tx">PBT before exceptional rose from Rs 277.57 cr (FY24) to Rs 292.43 cr (FY26), an increment of Rs 14.86 cr</td><td class="tx">9.3% pre-tax<br>~7.0% post-tax</td><td class="tx"><span class="chip c-miss">Below the cost of equity</span></td></tr>
     </tbody>
     <caption>The aggregate figure is crude because revenue growth in FY26 came from mandates, not from capex. That is precisely the point: MSTC's earnings growth was not produced by the capital it deployed. Against a 12.5% cost of equity and a ~70% return on genuinely operating capital, marginal capital earned roughly a term-deposit return.</caption>
   </table>
@@ -1703,18 +1706,18 @@ body.badges-off .badge{display:none;}
   <h3>Mandate register: what is actually contracted, and for how long</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Mandate</th><th>Client</th><th>Won</th><th>Term</th><th>Renewal exposure</th></tr></thead>
+    <thead><tr><th>Mandate</th><th class="tx">Client</th><th class="tx">Won</th><th class="tx">Term</th><th class="tx">Renewal exposure</th></tr></thead>
     <tbody>
-      <tr class="tot"><td>NRS coal linkage auctions</td><td>Coal India</td><td>26-Feb-2026</td><td class="g">3 years</td><td style="text-align:left">Secure to FY29. Tendered on GeM, so re-competed at expiry. Structurally exposed to the Coal Exchange Rules.</td></tr>
-      <tr class="tot"><td>Port land leasing e-commerce services</td><td>Syama Prasad Mookerjee Port, Kolkata</td><td>Q2 FY26</td><td class="g">30 years</td><td style="text-align:left">The longest contract MSTC has ever disclosed. Client envisages Rs 5,000 cr of leasing over the term; MSTC's share is "a minuscule percentage".</td></tr>
-      <tr><td>National EPR Certificate Trading Platform</td><td>CPCB</td><td>12-Sep-2025</td><td class="a">Per letter of award, not disclosed</td><td style="text-align:left">Revenue is a commission on certificate volume traded. Not yet live after four quarters.</td></tr>
-      <tr><td>Gold bullion tariff rate quota allocation</td><td>DGFT</td><td>05-Nov-2025</td><td>Not stated</td><td style="text-align:left">Nomination, not tender. First tranche executed. Extension to silver and other commodities flagged by management.</td></tr>
-      <tr><td>Liquor shop licence auctions</td><td>Karnataka State Excise</td><td>29-Oct-2025</td><td>Not stated</td><td style="text-align:left">Replicates the earlier Rajasthan engagement. Executed in Q1 FY27.</td></tr>
-      <tr><td>Prime products and secondary arisings</td><td>RINL</td><td>Q1 FY27</td><td>Not stated</td><td style="text-align:left">Selling agency agreement</td></tr>
-      <tr><td>Charge Point Operator selection, PM E-DRIVE</td><td>Kerala State Electricity Board</td><td>Q1 FY27</td><td>Not stated</td><td style="text-align:left">One state. Template for others if it works.</td></tr>
-      <tr><td>Defence scrap disposal</td><td>Ministry of Defence</td><td>Renewed Q1 FY26</td><td>Not stated</td><td style="text-align:left">Association since 1982. Management expects volumes "a little more than what we had done in the past".</td></tr>
-      <tr><td>Mineral and coal block auctions</td><td>Ministry of Mines, states, Coal Ministry</td><td>Ongoing</td><td class="r">Event by event</td><td style="text-align:left">No standing contract. Each tranche is a separate engagement. This is the largest revenue driver and it has the least contractual protection.</td></tr>
-      <tr><td>Scrap disposal, private sector</td><td>Indus Towers, Bharti Airtel, Tata, Reliance, Vedanta, JSW, ArcelorMittal, Jindal, L&amp;T</td><td>Ongoing</td><td class="r">Rolling</td><td style="text-align:left">Indus Towers and Bharti Airtel are single-provider. The rest keep multiple providers.</td></tr>
+      <tr class="tot"><td>NRS coal linkage auctions</td><td class="tx tn">Coal India</td><td class="tx tn">26-Feb-2026</td><td class="g tx tn">3 years</td><td style="text-align:left" class="tx">Secure to FY29. Tendered on GeM, so re-competed at expiry. Structurally exposed to the Coal Exchange Rules.</td></tr>
+      <tr class="tot"><td>Port land leasing e-commerce services</td><td class="tx">Syama Prasad Mookerjee Port, Kolkata</td><td class="tx tn">Q2 FY26</td><td class="g tx tn">30 years</td><td style="text-align:left" class="tx">The longest contract MSTC has ever disclosed. Client envisages Rs 5,000 cr of leasing over the term; MSTC's share is "a minuscule percentage".</td></tr>
+      <tr><td>National EPR Certificate Trading Platform</td><td class="tx tn">CPCB</td><td class="tx tn">12-Sep-2025</td><td class="a tx">Per letter of award, not disclosed</td><td style="text-align:left" class="tx">Revenue is a commission on certificate volume traded. Not yet live after four quarters.</td></tr>
+      <tr><td>Gold bullion tariff rate quota allocation</td><td class="tx tn">DGFT</td><td class="tx tn">05-Nov-2025</td><td class="tx tn">Not stated</td><td style="text-align:left" class="tx">Nomination, not tender. First tranche executed. Extension to silver and other commodities flagged by management.</td></tr>
+      <tr><td>Liquor shop licence auctions</td><td class="tx">Karnataka State Excise</td><td class="tx tn">29-Oct-2025</td><td class="tx tn">Not stated</td><td style="text-align:left" class="tx">Replicates the earlier Rajasthan engagement. Executed in Q1 FY27.</td></tr>
+      <tr><td>Prime products and secondary arisings</td><td class="tx tn">RINL</td><td class="tx tn">Q1 FY27</td><td class="tx tn">Not stated</td><td style="text-align:left" class="tx">Selling agency agreement</td></tr>
+      <tr><td>Charge Point Operator selection, PM E-DRIVE</td><td class="tx">Kerala State Electricity Board</td><td class="tx tn">Q1 FY27</td><td class="tx tn">Not stated</td><td style="text-align:left" class="tx">One state. Template for others if it works.</td></tr>
+      <tr><td>Defence scrap disposal</td><td class="tx">Ministry of Defence</td><td class="tx tn">Renewed Q1 FY26</td><td class="tx tn">Not stated</td><td style="text-align:left" class="tx">Association since 1982. Management expects volumes "a little more than what we had done in the past".</td></tr>
+      <tr><td>Mineral and coal block auctions</td><td class="tx">Ministry of Mines, states, Coal Ministry</td><td class="tx tn">Ongoing</td><td class="r tx tn">Event by event</td><td style="text-align:left" class="tx">No standing contract. Each tranche is a separate engagement. This is the largest revenue driver and it has the least contractual protection.</td></tr>
+      <tr><td>Scrap disposal, private sector</td><td class="tx">Indus Towers, Bharti Airtel, Tata, Reliance, Vedanta, JSW, ArcelorMittal, Jindal, L&amp;T</td><td class="tx tn">Ongoing</td><td class="r tx tn">Rolling</td><td style="text-align:left" class="tx">Indus Towers and Bharti Airtel are single-provider. The rest keep multiple providers.</td></tr>
     </tbody>
     <caption>Compiled from Regulation 30 filings and earnings calls. Note what this table shows: only two mandates in the entire register have a stated multi-year term, and the biggest revenue driver, mineral and coal block auctions, has none at all.</caption>
   </table>
@@ -1723,11 +1726,11 @@ body.badges-off .badge{display:none;}
   <h3>Execution track record, measured on what can be measured</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Operating metric</th><th>FY21</th><th>FY23</th><th>FY24</th><th>FY26</th><th>Read</th></tr></thead>
+    <thead><tr><th>Operating metric</th><th>FY21</th><th>FY23</th><th>FY24</th><th>FY26</th><th class="tx">Read</th></tr></thead>
     <tbody>
-      <tr><td>Coal mine blocks auctioned (count)</td><td>20</td><td>44</td><td>20</td><td class="r">10</td><td style="text-align:left">Halved since FY24, down 77% from the FY23 peak</td></tr>
-      <tr><td>Major mineral blocks auctioned (count)</td><td>-</td><td>94</td><td>92</td><td class="g">200</td><td style="text-align:left">More than doubled. This is the entire FY26 growth story.</td></tr>
-      <tr class="tot"><td>GMV (Rs cr)</td><td>1,28,986</td><td>3,01,590</td><td>1,41,586</td><td>79,737</td><td style="text-align:left">Down 74% from the FY23 peak</td></tr>
+      <tr><td>Coal mine blocks auctioned (count)</td><td>20</td><td>44</td><td>20</td><td class="r">10</td><td style="text-align:left" class="tx">Halved since FY24, down 77% from the FY23 peak</td></tr>
+      <tr><td>Major mineral blocks auctioned (count)</td><td>-</td><td>94</td><td>92</td><td class="g">200</td><td style="text-align:left" class="tx">More than doubled. This is the entire FY26 growth story.</td></tr>
+      <tr class="tot"><td>GMV (Rs cr)</td><td>1,28,986</td><td>3,01,590</td><td>1,41,586</td><td>79,737</td><td style="text-align:left" class="tx">Down 74% from the FY23 peak</td></tr>
     </tbody>
     <caption>Block counts extracted by Screener AI from MSTC's own investor presentations and cross-checked against the concall commentary. FY25 block counts were not disclosed. The GMV series is MSTC's own "total value of goods traded through the MSTC ecosystem".</caption>
   </table>
@@ -1807,16 +1810,16 @@ body.badges-off .badge{display:none;}
   <h3>What Screener's own valuation model says, and why it differs</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Screener premium metric</th><th>Value</th><th>This report's view</th></tr></thead>
+    <thead><tr><th>Screener premium metric</th><th>Value</th><th class="tx">This report's view</th></tr></thead>
     <tbody>
-      <tr><td>Intrinsic value (Screener's model)</td><td class="r">Rs 371</td><td style="text-align:left">47% below CMP. Screener's model is a generic earnings-based DCF and does not know that FY25 profit contained a Rs 263 cr exceptional or that the FY26 mandate pipeline inflected. Directionally it agrees with this report's bear case of Rs 400.</td></tr>
-      <tr><td>Enterprise value</td><td>Rs 3,756 cr</td><td style="text-align:left"><strong>Wrong for this business.</strong> It deducts the full Rs 1,183 cr of net cash. Most of that is client float. Section 14 uses Rs 400 cr of genuinely surplus cash and an operating value of about Rs 4,538 cr.</td></tr>
-      <tr><td>EV/EBITDA 11.6x, EV/EBIT 12.0x</td><td>-</td><td style="text-align:left">Understated for the same reason. On a Rs 4,538 cr operating value the true EV/EBIT is about 15.3x.</td></tr>
-      <tr><td>Free cash flow 3 years</td><td class="r">Rs -204 cr</td><td style="text-align:left">Float-distorted. Section 5 shows underlying cash generation of Rs 320 cr in FY26 alone, or Rs 222 cr excluding the trading wind-down release.</td></tr>
-      <tr><td>Cash from operations 3 years</td><td class="r">Rs -50 cr</td><td style="text-align:left">Same distortion. A mechanical screen would reject this company on cash flow and would be wrong.</td></tr>
-      <tr><td>Debt to equity 0.16</td><td>-</td><td style="text-align:left">The Rs 145 cr is a disputed 2008-09 bank claim, not borrowing. True gearing is zero and finance cost was Rs 0.00 in FY26.</td></tr>
-      <tr><td>PEG ratio -6.35</td><td>-</td><td style="text-align:left">Meaningless: the denominator uses reported profit growth, which is negative because FY25 contained the FSNL gain.</td></tr>
-      <tr><td>Industry P/E 22.3, Dividend payout 26.1%</td><td>-</td><td style="text-align:left">The payout figure captures only the Rs 7.60 interim. Full FY26 declaration is Rs 15.70, a 50.6% payout.</td></tr>
+      <tr><td>Intrinsic value (Screener's model)</td><td class="r">Rs 371</td><td style="text-align:left" class="tx">47% below CMP. Screener's model is a generic earnings-based DCF and does not know that FY25 profit contained a Rs 263 cr exceptional or that the FY26 mandate pipeline inflected. Directionally it agrees with this report's bear case of Rs 400.</td></tr>
+      <tr><td>Enterprise value</td><td>Rs 3,756 cr</td><td style="text-align:left" class="tx"><strong>Wrong for this business.</strong> It deducts the full Rs 1,183 cr of net cash. Most of that is client float. Section 14 uses Rs 400 cr of genuinely surplus cash and an operating value of about Rs 4,538 cr.</td></tr>
+      <tr><td>EV/EBITDA 11.6x, EV/EBIT 12.0x</td><td>-</td><td style="text-align:left" class="tx">Understated for the same reason. On a Rs 4,538 cr operating value the true EV/EBIT is about 15.3x.</td></tr>
+      <tr><td>Free cash flow 3 years</td><td class="r">Rs -204 cr</td><td style="text-align:left" class="tx">Float-distorted. Section 5 shows underlying cash generation of Rs 320 cr in FY26 alone, or Rs 222 cr excluding the trading wind-down release.</td></tr>
+      <tr><td>Cash from operations 3 years</td><td class="r">Rs -50 cr</td><td style="text-align:left" class="tx">Same distortion. A mechanical screen would reject this company on cash flow and would be wrong.</td></tr>
+      <tr><td>Debt to equity 0.16</td><td>-</td><td style="text-align:left" class="tx">The Rs 145 cr is a disputed 2008-09 bank claim, not borrowing. True gearing is zero and finance cost was Rs 0.00 in FY26.</td></tr>
+      <tr><td>PEG ratio -6.35</td><td>-</td><td style="text-align:left" class="tx">Meaningless: the denominator uses reported profit growth, which is negative because FY25 contained the FSNL gain.</td></tr>
+      <tr><td>Industry P/E 22.3, Dividend payout 26.1%</td><td>-</td><td style="text-align:left" class="tx">The payout figure captures only the Rs 7.60 interim. Full FY26 declaration is Rs 15.70, a 50.6% payout.</td></tr>
     </tbody>
     <caption>Screener premium data accessed 22-Aug-2026. The pattern is consistent: every standard screening metric is distorted in the same direction by the client float and by the FY25 exceptional. This is why MSTC screens badly on cash flow and cheaply on enterprise value at the same time, and why neither is true.</caption>
   </table>
@@ -1833,15 +1836,15 @@ body.badges-off .badge{display:none;}
   <h3>The addressable base, from IBEF</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Metric</th><th>FY25</th><th>FY26</th><th>Relevance to MSTC</th></tr></thead>
+    <thead><tr><th>Metric</th><th>FY25</th><th>FY26</th><th class="tx">Relevance to MSTC</th></tr></thead>
     <tbody>
-      <tr class="tot"><td>Value of mineral production</td><td>Rs 1,52,431 cr</td><td class="g">Rs 1,71,460 cr</td><td style="text-align:left">+12.5%. The base from which mineral auction mandates are generated, and MSTC's core FY26 growth driver.</td></tr>
-      <tr><td>Mining and quarrying GVA</td><td>Rs 5,40,788 cr</td><td class="r">Rs 5,08,554 cr</td><td style="text-align:left">Down 6.0%. Production value up while sector GVA falls means price, not volume, drove the increase.</td></tr>
-      <tr><td>Crude steel production</td><td>-</td><td>168.4 MT</td><td style="text-align:left">Target 330 MT by 2030. More steel means more scrap arisings, which is roughly half of MSTC's revenue.</td></tr>
-      <tr><td>Iron ore production, Apr-Oct FY26</td><td>-</td><td>156.6 MT</td><td style="text-align:left">October 2025 alone 24.8 MT against 22.9 MT a year earlier. MSTC sold 3.5 mn tonnes for NMDC in 9M FY26.</td></tr>
-      <tr><td>Reporting mines</td><td>1,973</td><td>-</td><td style="text-align:left">Down from 2,046 in FY24. Consolidation, which favours large formal auction processes.</td></tr>
-      <tr class="tot"><td>GeM cumulative GMV</td><td colspan="2" class="r">Rs 18.4 lakh cr cumulative; over Rs 5 lakh cr in FY26 alone</td><td style="text-align:left"><strong>Rs 5 lakh cr in one year is 6.3 times MSTC's entire FY26 GMV of Rs 79,737 cr.</strong> This is the scale of the platform now sitting above MSTC in government procurement.</td></tr>
-      <tr><td>India e-commerce market</td><td>-</td><td>USD 80 bn online retail</td><td style="text-align:left">Projected USD 345 bn by 2030 at 18.4% CAGR. B2B e-commerce opportunity estimated at USD 200 bn by 2030. MSTC is classified here but does not participate in retail e-commerce.</td></tr>
+      <tr class="tot"><td>Value of mineral production</td><td>Rs 1,52,431 cr</td><td class="g">Rs 1,71,460 cr</td><td style="text-align:left" class="tx">+12.5%. The base from which mineral auction mandates are generated, and MSTC's core FY26 growth driver.</td></tr>
+      <tr><td>Mining and quarrying GVA</td><td>Rs 5,40,788 cr</td><td class="r">Rs 5,08,554 cr</td><td style="text-align:left" class="tx">Down 6.0%. Production value up while sector GVA falls means price, not volume, drove the increase.</td></tr>
+      <tr><td>Crude steel production</td><td>-</td><td>168.4 MT</td><td style="text-align:left" class="tx">Target 330 MT by 2030. More steel means more scrap arisings, which is roughly half of MSTC's revenue.</td></tr>
+      <tr><td>Iron ore production, Apr-Oct FY26</td><td>-</td><td>156.6 MT</td><td style="text-align:left" class="tx">October 2025 alone 24.8 MT against 22.9 MT a year earlier. MSTC sold 3.5 mn tonnes for NMDC in 9M FY26.</td></tr>
+      <tr><td>Reporting mines</td><td>1,973</td><td>-</td><td style="text-align:left" class="tx">Down from 2,046 in FY24. Consolidation, which favours large formal auction processes.</td></tr>
+      <tr class="tot"><td>GeM cumulative GMV</td><td colspan="2" class="r tx">Rs 18.4 lakh cr cumulative; over Rs 5 lakh cr in FY26 alone</td><td style="text-align:left" class="tx"><strong>Rs 5 lakh cr in one year is 6.3 times MSTC's entire FY26 GMV of Rs 79,737 cr.</strong> This is the scale of the platform now sitting above MSTC in government procurement.</td></tr>
+      <tr><td>India e-commerce market</td><td>-</td><td class="tx">USD 80 bn online retail</td><td style="text-align:left" class="tx">Projected USD 345 bn by 2030 at 18.4% CAGR. B2B e-commerce opportunity estimated at USD 200 bn by 2030. MSTC is classified here but does not participate in retail e-commerce.</td></tr>
     </tbody>
     <caption>India Brand Equity Foundation industry data, accessed 22-Aug-2026.</caption>
   </table>
@@ -1866,16 +1869,16 @@ body.badges-off .badge{display:none;}
   <h3>NITI Aayog Trade Watch Quarterly, and the contradiction</h3>
   <div class="tw">
   <table>
-    <thead><tr><th>Q4 FY26 (Jan-Mar 2026) finding</th><th>Figure</th><th>Read for MSTC</th></tr></thead>
+    <thead><tr><th>Q4 FY26 (Jan-Mar 2026) finding</th><th class="tx">Figure</th><th class="tx">Read for MSTC</th></tr></thead>
     <tbody>
-      <tr><td>Total trade growth</td><td>+5.4% to USD 1.84 trillion</td><td style="text-align:left">Neutral backdrop</td></tr>
-      <tr><td>Merchandise exports</td><td class="r">-2.8% to USD 112.03 bn</td><td style="text-align:left">Industrial softness reduces scrap arisings at the margin</td></tr>
-      <tr><td>Merchandise imports</td><td class="g">+12% to USD 195 bn</td><td style="text-align:left">More imported material eventually becomes domestic scrap</td></tr>
-      <tr><td>Services exports, FY26</td><td>USD 421 bn against USD 442 bn of merchandise</td><td style="text-align:left">Structural shift toward services, of which MSTC is one</td></tr>
-      <tr class="tot"><td>Pearls, precious and semi-precious stones imports</td><td class="g">+82% year on year, USD 18.8 bn to USD 34.3 bn</td><td style="text-align:left"><strong>Directly relevant.</strong> Driven by gold and silver investment demand. MSTC runs the DGFT gold bullion tariff rate quota allocation portal, and management has flagged extension to silver.</td></tr>
-      <tr><td>Iron and steel imports</td><td class="g">-16.8%</td><td style="text-align:left">Import substitution supports domestic scrap demand and prices</td></tr>
-      <tr><td>Iron and steel exports</td><td class="g">+18.4%</td><td style="text-align:left">Domestic mills running hard</td></tr>
-      <tr class="tot"><td>Commodity price trend through FY26</td><td class="g">Metals, coal and precious metals prices "surged" toward the end of the fiscal year</td><td style="text-align:left"><strong>Contradicts management. See below.</strong></td></tr>
+      <tr><td>Total trade growth</td><td class="tx">+5.4% to USD 1.84 trillion</td><td style="text-align:left" class="tx tn">Neutral backdrop</td></tr>
+      <tr><td>Merchandise exports</td><td class="r tx">-2.8% to USD 112.03 bn</td><td style="text-align:left" class="tx">Industrial softness reduces scrap arisings at the margin</td></tr>
+      <tr><td>Merchandise imports</td><td class="g tx tn">+12% to USD 195 bn</td><td style="text-align:left" class="tx">More imported material eventually becomes domestic scrap</td></tr>
+      <tr><td>Services exports, FY26</td><td class="tx">USD 421 bn against USD 442 bn of merchandise</td><td style="text-align:left" class="tx">Structural shift toward services, of which MSTC is one</td></tr>
+      <tr class="tot"><td>Pearls, precious and semi-precious stones imports</td><td class="g tx">+82% year on year, USD 18.8 bn to USD 34.3 bn</td><td style="text-align:left" class="tx"><strong>Directly relevant.</strong> Driven by gold and silver investment demand. MSTC runs the DGFT gold bullion tariff rate quota allocation portal, and management has flagged extension to silver.</td></tr>
+      <tr><td>Iron and steel imports</td><td class="g tx tn">-16.8%</td><td style="text-align:left" class="tx">Import substitution supports domestic scrap demand and prices</td></tr>
+      <tr><td>Iron and steel exports</td><td class="g tx tn">+18.4%</td><td style="text-align:left" class="tx">Domestic mills running hard</td></tr>
+      <tr class="tot"><td>Commodity price trend through FY26</td><td class="g tx">Metals, coal and precious metals prices "surged" toward the end of the fiscal year</td><td style="text-align:left" class="tx"><strong>Contradicts management. See below.</strong></td></tr>
     </tbody>
     <caption>NITI Aayog, Trade Watch Quarterly, January to March (Q4) FY2025-26, published June 2026. The thematic focus of that edition was pharmaceutical trade and is not relevant to MSTC.</caption>
   </table>

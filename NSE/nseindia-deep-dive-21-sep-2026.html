@@ -494,6 +494,9 @@
   @media(max-width:760px){
     html[data-theme="glass"] .vstage:not(:last-child)::after{background:none}
   }
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}
 </style>
 <script>
   (function(){
@@ -636,17 +639,17 @@
       <div class="tw">
         <table>
           <caption>Structural drivers as presented in the RHP industry chapter, pages 155 to 179. Source: Redseer Report dated 08-Sep-2026, commissioned by the issuer. Projections are marked and are directional only.</caption>
-          <thead><tr><th>Measure</th><th>Figure</th><th>This report's assessment</th></tr></thead>
+          <thead><tr><th>Measure</th><th class="tx">Figure</th><th class="tx">This report's assessment</th></tr></thead>
           <tbody>
-            <tr><td>Nominal GDP, FY2001 to FY2026</td><td>US$0.47 trn to US$3.92 trn</td><td>Measured. Uncontroversial</td></tr>
-            <tr><td>Nominal GDP, FY2032 <span class="chip part">projection</span></td><td>US$6.79 trn, 9.61% a year</td><td>IMF-sourced projection, not a fact. Directional only</td></tr>
-            <tr><td>Gross national income per capita, FY2021 to FY2026</td><td>Rs 1,44,512 to Rs 2,40,147</td><td>Measured, but the two figures use different base years (2011-12 and 2022-23), so the growth is overstated by the rebasing</td></tr>
-            <tr><td>Households earning above Rs 0.80 mn a year</td><td>34.38% FY2026 to 42.74% FY2031 <span class="chip part">projection</span></td><td>The core financialisation claim. A projection, and the one most worth doubting</td></tr>
-            <tr><td>Gross household savings</td><td>21.70% of GDP, FY2025</td><td>Measured. The pool the industry competes for</td></tr>
-            <tr><td>Mutual fund assets under management</td><td>Rs 73.73 trn, 18.60% compound growth</td><td>Measured. Strong and directly relevant to index licensing</td></tr>
-            <tr><td>Index funds and exchange traded funds</td><td>15.22% of that, to Rs 23-27 trn by FY2030 <span class="chip part">projection</span></td><td>Matters most to NSE: this is the Nifty licensing base, currently Rs 8.95 trn</td></tr>
-            <tr><td>Foreign portfolio assets under custody</td><td>US$735 bn, Mar-2026</td><td>Measured</td></tr>
-            <tr><td>Unified payments interface transactions</td><td>241.62 bn, FY2026</td><td>Measured. Evidence of the digital rails, not of equity participation</td></tr>
+            <tr><td>Nominal GDP, FY2001 to FY2026</td><td class="tx">US$0.47 trn to US$3.92 trn</td><td class="tx">Measured. Uncontroversial</td></tr>
+            <tr><td>Nominal GDP, FY2032 <span class="chip part">projection</span></td><td class="tx">US$6.79 trn, 9.61% a year</td><td class="tx">IMF-sourced projection, not a fact. Directional only</td></tr>
+            <tr><td>Gross national income per capita, FY2021 to FY2026</td><td class="tx">Rs 1,44,512 to Rs 2,40,147</td><td class="tx">Measured, but the two figures use different base years (2011-12 and 2022-23), so the growth is overstated by the rebasing</td></tr>
+            <tr><td>Households earning above Rs 0.80 mn a year</td><td class="tx">34.38% FY2026 to 42.74% FY2031 <span class="chip part">projection</span></td><td class="tx">The core financialisation claim. A projection, and the one most worth doubting</td></tr>
+            <tr><td>Gross household savings</td><td class="tx">21.70% of GDP, FY2025</td><td class="tx">Measured. The pool the industry competes for</td></tr>
+            <tr><td>Mutual fund assets under management</td><td class="tx">Rs 73.73 trn, 18.60% compound growth</td><td class="tx">Measured. Strong and directly relevant to index licensing</td></tr>
+            <tr><td>Index funds and exchange traded funds</td><td class="tx">15.22% of that, to Rs 23-27 trn by FY2030 <span class="chip part">projection</span></td><td class="tx">Matters most to NSE: this is the Nifty licensing base, currently Rs 8.95 trn</td></tr>
+            <tr><td>Foreign portfolio assets under custody</td><td class="tx">US$735 bn, Mar-2026</td><td class="tx tn">Measured</td></tr>
+            <tr><td>Unified payments interface transactions</td><td class="tx tn">241.62 bn, FY2026</td><td class="tx">Measured. Evidence of the digital rails, not of equity participation</td></tr>
           </tbody>
         </table>
       </div>
@@ -675,12 +678,12 @@
       <div class="tw">
         <table>
           <caption>Market share by segment, from the RHP industry chapter, latest disclosed period. Turnover basis.</caption>
-          <thead><tr><th>Segment</th><th>NSE turnover</th><th>Industry</th><th>NSE share</th></tr></thead>
+          <thead><tr><th>Segment</th><th class="tx">NSE turnover</th><th class="tx">Industry</th><th>NSE share</th></tr></thead>
           <tbody>
-            <tr><td>Cash market</td><td>Rs 81.57 trn</td><td>Rs 87.66 trn</td><td><strong>93.05%</strong></td></tr>
-            <tr><td>Equity futures</td><td>Rs 91.85 trn</td><td>Rs 92.10 trn</td><td><strong>99.72%</strong></td></tr>
-            <tr><td><strong>Equity options (premium)</strong></td><td>Rs 38.61 trn</td><td>Rs 56.38 trn</td><td class="bear"><strong>68.48%</strong></td></tr>
-            <tr><td>Corporate bonds</td><td>Rs 4.35 trn</td><td>Rs 5.36 trn</td><td>81.15%</td></tr>
+            <tr><td>Cash market</td><td class="tx tn">Rs 81.57 trn</td><td class="tx tn">Rs 87.66 trn</td><td><strong>93.05%</strong></td></tr>
+            <tr><td>Equity futures</td><td class="tx tn">Rs 91.85 trn</td><td class="tx tn">Rs 92.10 trn</td><td><strong>99.72%</strong></td></tr>
+            <tr><td><strong>Equity options (premium)</strong></td><td class="tx tn">Rs 38.61 trn</td><td class="tx tn">Rs 56.38 trn</td><td class="bear"><strong>68.48%</strong></td></tr>
+            <tr><td>Corporate bonds</td><td class="tx tn">Rs 4.35 trn</td><td class="tx tn">Rs 5.36 trn</td><td>81.15%</td></tr>
           </tbody>
         </table>
       </div>
@@ -817,13 +820,13 @@
       <div class="tw">
         <table>
           <caption>Domestic comparables. NSE at the cap price of Rs 1,785 on trailing-twelve-month earnings to 30-Jun-2026. Peer market data from screener.in as at 18-Sep-2026, labelled aggregator; peer revenue and profit from company releases. BSE figures as reproduced in the offer document's own peer table.</caption>
-          <thead><tr><th>Company</th><th>Revenue (Rs cr)</th><th>Net profit (Rs cr)</th><th>Market cap (Rs cr)</th><th>P/E</th><th>Comment</th></tr></thead>
+          <thead><tr><th>Company</th><th>Revenue (Rs cr)</th><th>Net profit (Rs cr)</th><th>Market cap (Rs cr)</th><th>P/E</th><th class="tx">Comment</th></tr></thead>
           <tbody>
-            <tr><td><strong>NSE (at cap Rs 1,785)</strong></td><td><strong>16,601</strong></td><td><strong>10,498 TTM</strong></td><td><strong>4,41,788</strong></td><td><strong>42.1</strong></td><td>The subject</td></tr>
-            <tr><td>BSE Limited</td><td>4,834</td><td>2,487</td><td>1,33,231</td><td>47.0</td><td>The issuer's only named peer</td></tr>
-            <tr><td>Multi Commodity Exchange</td><td>2,429</td><td>1,332</td><td>83,127</td><td>53.9</td><td>Commodities only, not comparable in mix</td></tr>
-            <tr><td>Central Depository Services</td><td>1,239</td><td>455</td><td>29,051</td><td>61.6</td><td>Depository, different regulatory economics</td></tr>
-            <tr><td>Computer Age Management Services</td><td>1,516</td><td>~474</td><td>17,589</td><td>38.8</td><td>Registrar, a services business</td></tr>
+            <tr><td><strong>NSE (at cap Rs 1,785)</strong></td><td><strong>16,601</strong></td><td><strong>10,498 TTM</strong></td><td><strong>4,41,788</strong></td><td><strong>42.1</strong></td><td class="tx tn">The subject</td></tr>
+            <tr><td>BSE Limited</td><td>4,834</td><td>2,487</td><td>1,33,231</td><td>47.0</td><td class="tx">The issuer's only named peer</td></tr>
+            <tr><td>Multi Commodity Exchange</td><td>2,429</td><td>1,332</td><td>83,127</td><td>53.9</td><td class="tx">Commodities only, not comparable in mix</td></tr>
+            <tr><td>Central Depository Services</td><td>1,239</td><td>455</td><td>29,051</td><td>61.6</td><td class="tx">Depository, different regulatory economics</td></tr>
+            <tr><td>Computer Age Management Services</td><td>1,516</td><td>~474</td><td>17,589</td><td>38.8</td><td class="tx">Registrar, a services business</td></tr>
           </tbody>
         </table>
       </div>
@@ -833,15 +836,15 @@
       <div class="tw">
         <table>
           <caption>Global exchange comparables, most recent reported full year. Converted at approximately Rs 95.72 to the US dollar. Market capitalisations are aggregator-sourced and dated between Jul-2026 and Sep-2026, so they are indicative only and are labelled as such. Revenue mix is the analytically important column.</caption>
-          <thead><tr><th>Exchange</th><th>Period</th><th>Revenue</th><th>Net margin</th><th>Revenue mix, in one line</th></tr></thead>
+          <thead><tr><th>Exchange</th><th>Period</th><th class="tx">Revenue</th><th>Net margin</th><th class="tx">Revenue mix, in one line</th></tr></thead>
           <tbody>
-            <tr><td>CME Group</td><td>CY2025</td><td>USD 6.5 bn</td><td>~63%</td><td>Overwhelmingly derivatives transaction and clearing fees. The closest pure-derivatives analogue</td></tr>
-            <tr><td>Deutsche Boerse</td><td>FY2025</td><td>EUR 6,026 mn</td><td>~33%</td><td>63% recurring. Vertically integrated across Eurex and Clearstream. Structurally closest European name</td></tr>
-            <tr><td>Hong Kong Exchanges</td><td>CY2025</td><td>HKD 29.2 bn</td><td>~61%</td><td>Trading and clearing across cash, derivatives and LME. Single-market-gateway model, close to NSE's</td></tr>
-            <tr><td>Japan Exchange Group</td><td>FY to Mar-2025</td><td>JPY 162,230 mn</td><td>~38%</td><td>Cash equities plus Osaka derivatives. Vertically integrated, one dominant home market</td></tr>
-            <tr><td>Nasdaq Inc</td><td>CY2025</td><td>USD 5.2 bn</td><td>not isolated</td><td>Now majority index, data and software. A data company with an exchange attached</td></tr>
-            <tr><td>London Stock Exchange Group</td><td>CY2025</td><td>GBP 8,986 mn</td><td>not isolated</td><td>Predominantly data and analytics plus FTSE Russell. NOT a structural analogue despite the name</td></tr>
-            <tr><td>Singapore Exchange</td><td>FY to Jun-2026</td><td>SGD 1.48 bn</td><td>~51% adjusted</td><td>FICC and index derivatives on foreign underlyings. A genuine COMPETITOR for India-linked flow, not just a comparable</td></tr>
+            <tr><td>CME Group</td><td>CY2025</td><td class="tx tn">USD 6.5 bn</td><td>~63%</td><td class="tx">Overwhelmingly derivatives transaction and clearing fees. The closest pure-derivatives analogue</td></tr>
+            <tr><td>Deutsche Boerse</td><td>FY2025</td><td class="tx tn">EUR 6,026 mn</td><td>~33%</td><td class="tx">63% recurring. Vertically integrated across Eurex and Clearstream. Structurally closest European name</td></tr>
+            <tr><td>Hong Kong Exchanges</td><td>CY2025</td><td class="tx tn">HKD 29.2 bn</td><td>~61%</td><td class="tx">Trading and clearing across cash, derivatives and LME. Single-market-gateway model, close to NSE's</td></tr>
+            <tr><td>Japan Exchange Group</td><td>FY to Mar-2025</td><td class="tx tn">JPY 162,230 mn</td><td>~38%</td><td class="tx">Cash equities plus Osaka derivatives. Vertically integrated, one dominant home market</td></tr>
+            <tr><td>Nasdaq Inc</td><td>CY2025</td><td class="tx tn">USD 5.2 bn</td><td>not isolated</td><td class="tx">Now majority index, data and software. A data company with an exchange attached</td></tr>
+            <tr><td>London Stock Exchange Group</td><td>CY2025</td><td class="tx tn">GBP 8,986 mn</td><td>not isolated</td><td class="tx">Predominantly data and analytics plus FTSE Russell. NOT a structural analogue despite the name</td></tr>
+            <tr><td>Singapore Exchange</td><td>FY to Jun-2026</td><td class="tx tn">SGD 1.48 bn</td><td>~51% adjusted</td><td class="tx">FICC and index derivatives on foreign underlyings. A genuine COMPETITOR for India-linked flow, not just a comparable</td></tr>
           </tbody>
         </table>
       </div>
@@ -1118,20 +1121,20 @@
       <div class="tw">
         <table>
           <caption>Offer structure, DRHP dated 17-Jun-2026 against RHP dated 10-Sep-2026.</caption>
-          <thead><tr><th>Item</th><th>DRHP</th><th>RHP (governing)</th></tr></thead>
+          <thead><tr><th>Item</th><th class="tx">DRHP</th><th class="tx">RHP (governing)</th></tr></thead>
           <tbody>
-            <tr><td>Fresh issue</td><td>Not applicable</td><td>Not applicable</td></tr>
-            <tr><td>Offer for sale</td><td>148,905,525 shares</td><td><strong>126,436,650 shares</strong></td></tr>
-            <tr><td>Change</td><td></td><td><strong>cut by 22,468,875 shares, down 15.1%</strong></td></tr>
-            <tr><td>Capital, pre and post offer</td><td>2,475,000,000</td><td>2,475,000,000, unchanged</td></tr>
-            <tr><td>Offer as % of post-offer capital</td><td>6.016%</td><td><strong>5.109%</strong></td></tr>
-            <tr><td>Price band</td><td>not announced</td><td><strong>Rs 1,700 to Rs 1,785</strong></td></tr>
-            <tr><td>Bid lot</td><td>not announced</td><td>8 shares</td></tr>
-            <tr><td>Issue size at cap</td><td>not determinable</td><td><strong>about Rs 22,562 crore</strong></td></tr>
-            <tr><td>Eligibility route</td><td>Regulation 6(1)</td><td>Regulation 6(1)</td></tr>
-            <tr><td>Promoter</td><td>None identifiable</td><td>None identifiable</td></tr>
-            <tr><td>Listing venue</td><td>BSE only</td><td>BSE only</td></tr>
-            <tr><td>Employee reservation</td><td>up to 5% of post-offer capital</td><td>433,437 shares, about Rs 70 crore, at a Rs 170 discount</td></tr>
+            <tr><td>Fresh issue</td><td class="tx tn">Not applicable</td><td class="tx tn">Not applicable</td></tr>
+            <tr><td>Offer for sale</td><td class="tx tn">148,905,525 shares</td><td class="tx tn"><strong>126,436,650 shares</strong></td></tr>
+            <tr><td>Change</td><td></td><td class="tx"><strong>cut by 22,468,875 shares, down 15.1%</strong></td></tr>
+            <tr><td>Capital, pre and post offer</td><td class="tx tn">2,475,000,000</td><td class="tx">2,475,000,000, unchanged</td></tr>
+            <tr><td>Offer as % of post-offer capital</td><td class="tx tn">6.016%</td><td class="tx tn"><strong>5.109%</strong></td></tr>
+            <tr><td>Price band</td><td class="tx tn">not announced</td><td class="tx"><strong>Rs 1,700 to Rs 1,785</strong></td></tr>
+            <tr><td>Bid lot</td><td class="tx tn">not announced</td><td class="tx tn">8 shares</td></tr>
+            <tr><td>Issue size at cap</td><td class="tx tn">not determinable</td><td class="tx"><strong>about Rs 22,562 crore</strong></td></tr>
+            <tr><td>Eligibility route</td><td class="tx tn">Regulation 6(1)</td><td class="tx tn">Regulation 6(1)</td></tr>
+            <tr><td>Promoter</td><td class="tx tn">None identifiable</td><td class="tx tn">None identifiable</td></tr>
+            <tr><td>Listing venue</td><td class="tx tn">BSE only</td><td class="tx tn">BSE only</td></tr>
+            <tr><td>Employee reservation</td><td class="tx">up to 5% of post-offer capital</td><td class="tx">433,437 shares, about Rs 70 crore, at a Rs 170 discount</td></tr>
           </tbody>
         </table>
       </div>
@@ -1201,16 +1204,16 @@
       <div class="tw">
         <table>
           <caption>The scoreable KPI set, with the base from which future performance will be measured. Source: RHP key performance indicator table, certified 10-Sep-2026.</caption>
-          <thead><tr><th>KPI</th><th>FY26 base</th><th>Q1 FY27 latest</th><th>What it tests</th></tr></thead>
+          <thead><tr><th>KPI</th><th>FY26 base</th><th>Q1 FY27 latest</th><th class="tx">What it tests</th></tr></thead>
           <tbody>
-            <tr><td>Unique registered investors</td><td>129.09 mn</td><td>132.37 mn</td><td>Whether the financialisation engine keeps running</td></tr>
-            <tr><td>Listed entities</td><td>2,978</td><td>3,005</td><td>Listing-fee annuity growth</td></tr>
-            <tr><td>Colocation member racks</td><td>1,680</td><td>1,868</td><td>The highest-growth annuity line</td></tr>
-            <tr><td>Nifty-linked passive AUM</td><td>Rs 8.14 trn</td><td>Rs 8.95 trn</td><td>Index licensing durability</td></tr>
-            <tr><td><strong>Equity options premium ADTV</strong></td><td>Rs 576,618 mn</td><td><strong>Rs 643,518 mn</strong></td><td><strong>The single most important line in the model</strong></td></tr>
-            <tr><td>Cash market ADTV</td><td>Rs 1,055,167 mn</td><td>Rs 1,359,487 mn</td><td>Breadth of participation</td></tr>
-            <tr><td>Operating EBITDA margin, reported</td><td>66.85%</td><td>78.81%</td><td>Whether settlement costs really were one-off</td></tr>
-            <tr><td>Normalised operating EBITDA margin</td><td>76.23%</td><td>77.75%</td><td>Whether the gap to reported closes</td></tr>
+            <tr><td>Unique registered investors</td><td>129.09 mn</td><td>132.37 mn</td><td class="tx">Whether the financialisation engine keeps running</td></tr>
+            <tr><td>Listed entities</td><td>2,978</td><td>3,005</td><td class="tx">Listing-fee annuity growth</td></tr>
+            <tr><td>Colocation member racks</td><td>1,680</td><td>1,868</td><td class="tx">The highest-growth annuity line</td></tr>
+            <tr><td>Nifty-linked passive AUM</td><td>Rs 8.14 trn</td><td>Rs 8.95 trn</td><td class="tx">Index licensing durability</td></tr>
+            <tr><td><strong>Equity options premium ADTV</strong></td><td>Rs 576,618 mn</td><td><strong>Rs 643,518 mn</strong></td><td class="tx"><strong>The single most important line in the model</strong></td></tr>
+            <tr><td>Cash market ADTV</td><td>Rs 1,055,167 mn</td><td>Rs 1,359,487 mn</td><td class="tx">Breadth of participation</td></tr>
+            <tr><td>Operating EBITDA margin, reported</td><td>66.85%</td><td>78.81%</td><td class="tx">Whether settlement costs really were one-off</td></tr>
+            <tr><td>Normalised operating EBITDA margin</td><td>76.23%</td><td>77.75%</td><td class="tx">Whether the gap to reported closes</td></tr>
           </tbody>
         </table>
       </div>
@@ -1234,28 +1237,28 @@
       <div class="tw">
         <table>
           <caption>The co-location, dark fibre and governance matters, from show cause notice to settlement. All from the offer document and the Supreme Court record. Rs million.</caption>
-          <thead><tr><th>Date</th><th>Event</th><th>Amount</th></tr></thead>
+          <thead><tr><th>Date</th><th class="tx">Event</th><th>Amount</th></tr></thead>
           <tbody>
-            <tr><td>22-May-2017, 03-Jul-2018, 31-Jul-2018</td><td>Three SEBI show cause notices against NSE and former employees, on co-location, dark fibre, and governance and conflict of interest</td><td>n/a</td></tr>
-            <tr><td>30-Apr-2019</td><td>SEBI Whole-Time Member order, co-location: disgorgement plus 12% interest from 01-Apr-2014, and a six-month bar on accessing the securities market</td><td>6,248.90</td></tr>
-            <tr><td>30-Apr-2019</td><td>SEBI WTM order, dark fibre: deposit plus 12% interest from 11-Sep-2015</td><td>625.80</td></tr>
-            <tr><td>30-Apr-2019</td><td>SEBI WTM order, governance and conflict of interest: non-monetary and remedial directions</td><td>nil</td></tr>
-            <tr><td>10-Feb-2021</td><td>Adjudicating Officer order, co-location</td><td>10.00</td></tr>
-            <tr><td>28-Jun-2022</td><td>Adjudicating Officer order, dark fibre</td><td>70.00</td></tr>
-            <tr><td>30-Jun-2022</td><td>Adjudicating Officer order, governance</td><td>10.00</td></tr>
-            <tr><td>23-Jan-2023</td><td><strong>SAT sets aside the co-location disgorgement</strong>, upholds non-monetary directions, directs a payment to the Investor Education and Protection Fund for lack of due diligence</td><td>1,000.00</td></tr>
-            <tr><td>20-Mar-2023</td><td>Supreme Court interim order directs SEBI to refund NSE in the co-location appeal</td><td>3,000.00</td></tr>
-            <tr><td>12-Jul-2023</td><td>SAT sets aside the co-location Adjudicating Officer order</td><td>n/a</td></tr>
-            <tr><td>09-Aug-2023</td><td>SAT reverses the dark fibre disgorgement</td><td>n/a</td></tr>
-            <tr><td>17-Oct-2023</td><td>Supreme Court interim order directs SEBI to refund NSE in the dark fibre appeal</td><td>310.00</td></tr>
-            <tr><td>14-Dec-2023</td><td>SAT sets aside the dark fibre Adjudicating Officer order</td><td>n/a</td></tr>
-            <tr><td>24-Jul-2024</td><td><strong>NSE withdraws its governance appeals</strong> and pays the penalty with interest on 29-Jul-2024</td><td>10.00</td></tr>
-            <tr><td>20-Jun-2025</td><td>NSE files two settlement applications with SEBI</td><td>13,873.90</td></tr>
-            <tr><td>13-Mar-2026</td><td>NSE files revised settlement terms</td><td><strong>14,912.07</strong></td></tr>
-            <tr><td>30-Jul-2026</td><td>SEBI, by email, <strong>in principle</strong> agrees to accept the settlement terms and demands the balance</td><td>7,147.37</td></tr>
-            <tr><td><strong>31-Jul-2026</strong></td><td><strong>NSE pays the balance.</strong> With the Rs 7,764.70 million already on deposit, the full Rs 14,912.07 million is settled</td><td><strong>7,147.37</strong></td></tr>
-            <tr><td><strong>03-Sep-2026</strong></td><td><strong>Supreme Court disposes Civil Appeal 6471/2023 and Civil Appeal 4273/2024 in terms of the settlement.</strong> Bench: Pardiwala J and K. Vinod Chandran J</td><td>n/a</td></tr>
-            <tr><td>04-Sep-2026</td><td>SEBI observation letter on the offer document</td><td>n/a</td></tr>
+            <tr><td>22-May-2017, 03-Jul-2018, 31-Jul-2018</td><td class="tx">Three SEBI show cause notices against NSE and former employees, on co-location, dark fibre, and governance and conflict of interest</td><td>n/a</td></tr>
+            <tr><td>30-Apr-2019</td><td class="tx">SEBI Whole-Time Member order, co-location: disgorgement plus 12% interest from 01-Apr-2014, and a six-month bar on accessing the securities market</td><td>6,248.90</td></tr>
+            <tr><td>30-Apr-2019</td><td class="tx">SEBI WTM order, dark fibre: deposit plus 12% interest from 11-Sep-2015</td><td>625.80</td></tr>
+            <tr><td>30-Apr-2019</td><td class="tx">SEBI WTM order, governance and conflict of interest: non-monetary and remedial directions</td><td>nil</td></tr>
+            <tr><td>10-Feb-2021</td><td class="tx">Adjudicating Officer order, co-location</td><td>10.00</td></tr>
+            <tr><td>28-Jun-2022</td><td class="tx">Adjudicating Officer order, dark fibre</td><td>70.00</td></tr>
+            <tr><td>30-Jun-2022</td><td class="tx">Adjudicating Officer order, governance</td><td>10.00</td></tr>
+            <tr><td>23-Jan-2023</td><td class="tx"><strong>SAT sets aside the co-location disgorgement</strong>, upholds non-monetary directions, directs a payment to the Investor Education and Protection Fund for lack of due diligence</td><td>1,000.00</td></tr>
+            <tr><td>20-Mar-2023</td><td class="tx">Supreme Court interim order directs SEBI to refund NSE in the co-location appeal</td><td>3,000.00</td></tr>
+            <tr><td>12-Jul-2023</td><td class="tx">SAT sets aside the co-location Adjudicating Officer order</td><td>n/a</td></tr>
+            <tr><td>09-Aug-2023</td><td class="tx">SAT reverses the dark fibre disgorgement</td><td>n/a</td></tr>
+            <tr><td>17-Oct-2023</td><td class="tx">Supreme Court interim order directs SEBI to refund NSE in the dark fibre appeal</td><td>310.00</td></tr>
+            <tr><td>14-Dec-2023</td><td class="tx">SAT sets aside the dark fibre Adjudicating Officer order</td><td>n/a</td></tr>
+            <tr><td>24-Jul-2024</td><td class="tx"><strong>NSE withdraws its governance appeals</strong> and pays the penalty with interest on 29-Jul-2024</td><td>10.00</td></tr>
+            <tr><td>20-Jun-2025</td><td class="tx">NSE files two settlement applications with SEBI</td><td>13,873.90</td></tr>
+            <tr><td>13-Mar-2026</td><td class="tx">NSE files revised settlement terms</td><td><strong>14,912.07</strong></td></tr>
+            <tr><td>30-Jul-2026</td><td class="tx">SEBI, by email, <strong>in principle</strong> agrees to accept the settlement terms and demands the balance</td><td>7,147.37</td></tr>
+            <tr><td><strong>31-Jul-2026</strong></td><td class="tx"><strong>NSE pays the balance.</strong> With the Rs 7,764.70 million already on deposit, the full Rs 14,912.07 million is settled</td><td><strong>7,147.37</strong></td></tr>
+            <tr><td><strong>03-Sep-2026</strong></td><td class="tx"><strong>Supreme Court disposes Civil Appeal 6471/2023 and Civil Appeal 4273/2024 in terms of the settlement.</strong> Bench: Pardiwala J and K. Vinod Chandran J</td><td>n/a</td></tr>
+            <tr><td>04-Sep-2026</td><td class="tx">SEBI observation letter on the offer document</td><td>n/a</td></tr>
           </tbody>
         </table>
       </div>
@@ -1331,15 +1334,15 @@
       <div class="tw">
         <table>
           <caption>Sensitivity map. Direction is the effect on NSE's earnings.</caption>
-          <thead><tr><th>Driver</th><th>Exposure</th><th>Direction and rough magnitude</th></tr></thead>
+          <thead><tr><th>Driver</th><th class="tx">Exposure</th><th class="tx">Direction and rough magnitude</th></tr></thead>
           <tbody>
-            <tr><td>Market volatility</td><td>Very high</td><td>The single biggest short-term swing factor. Options premium turnover rises with volatility, and premium is the fee base. A quiet market is a bad quarter regardless of investor count</td></tr>
-            <tr><td>Retail participation</td><td>Very high</td><td>Unique investors went 91.75 mn to 132.37 mn in nine quarters. This is the structural engine of every revenue line</td></tr>
-            <tr><td>Securities transaction tax</td><td>High and adverse</td><td>Options premium STT went 0.0625% to 0.1% on 01-Oct-2024 and to 0.15% on 01-Apr-2026. Futures went 0.02% to 0.05%. A direct tax on NSE's own fee base, raised twice in eighteen months</td></tr>
-            <tr><td>Interest rates</td><td>Moderate</td><td>Investment income is 19.9% of profit before tax. A 200 bp fall in short rates is roughly Rs 5,500 mn of pre-tax profit, with no change in market activity</td></tr>
-            <tr><td>Foreign portfolio flows</td><td>Moderate</td><td>Drives cash-market turnover and index derivative hedging. Indirect but real</td></tr>
-            <tr><td>Commodity prices, crude, INR/USD</td><td>Negligible direct</td><td>No input cost exposure worth modelling. Effects arrive only through market sentiment</td></tr>
-            <tr><td>Offshore competition</td><td>Low but rising</td><td>SGX's India-linked derivatives franchise contests flow NSE wants onshore, which is the strategic purpose of NSE IFSC in GIFT City</td></tr>
+            <tr><td>Market volatility</td><td class="tx tn">Very high</td><td class="tx">The single biggest short-term swing factor. Options premium turnover rises with volatility, and premium is the fee base. A quiet market is a bad quarter regardless of investor count</td></tr>
+            <tr><td>Retail participation</td><td class="tx tn">Very high</td><td class="tx">Unique investors went 91.75 mn to 132.37 mn in nine quarters. This is the structural engine of every revenue line</td></tr>
+            <tr><td>Securities transaction tax</td><td class="tx tn">High and adverse</td><td class="tx">Options premium STT went 0.0625% to 0.1% on 01-Oct-2024 and to 0.15% on 01-Apr-2026. Futures went 0.02% to 0.05%. A direct tax on NSE's own fee base, raised twice in eighteen months</td></tr>
+            <tr><td>Interest rates</td><td class="tx tn">Moderate</td><td class="tx">Investment income is 19.9% of profit before tax. A 200 bp fall in short rates is roughly Rs 5,500 mn of pre-tax profit, with no change in market activity</td></tr>
+            <tr><td>Foreign portfolio flows</td><td class="tx tn">Moderate</td><td class="tx">Drives cash-market turnover and index derivative hedging. Indirect but real</td></tr>
+            <tr><td>Commodity prices, crude, INR/USD</td><td class="tx tn">Negligible direct</td><td class="tx">No input cost exposure worth modelling. Effects arrive only through market sentiment</td></tr>
+            <tr><td>Offshore competition</td><td class="tx tn">Low but rising</td><td class="tx">SGX's India-linked derivatives franchise contests flow NSE wants onshore, which is the strategic purpose of NSE IFSC in GIFT City</td></tr>
           </tbody>
         </table>
       </div>
@@ -1452,16 +1455,16 @@
       <div class="tw">
         <table>
           <caption>What NSE committed to or was required to deliver, and what happened. Compiled from the offer document.</caption>
-          <thead><tr><th>Commitment or obligation</th><th>Outcome</th><th>Verdict</th></tr></thead>
+          <thead><tr><th>Commitment or obligation</th><th class="tx">Outcome</th><th class="tx">Verdict</th></tr></thead>
           <tbody>
-            <tr><td>Operate the world's largest derivatives exchange by contracts traded</td><td>Held the position for seven consecutive years</td><td>Delivered</td></tr>
-            <tr><td>Maintain system availability</td><td>Day-long outage 24-Feb-2021; settled with SEBI for Rs 497.68 mn by NSE and Rs 228.80 mn by NSE Clearing</td><td><strong>Failed once, materially</strong></td></tr>
-            <tr><td>Fair and non-preferential market access</td><td>Co-location and dark fibre matters, 2015 to 2026, settled for Rs 14,912.07 mn</td><td><strong>Failed, and it took a decade to close</strong></td></tr>
-            <tr><td>Reduce NSDL holding below 15% as required by regulation</td><td>Cut from 24.00% to 15.00% by selling into NSDL's IPO, listed 06-Aug-2025</td><td>Delivered, and profitably</td></tr>
-            <tr><td>Exit non-core education and technology businesses</td><td>NSEIT and subsidiaries sold in FY25 for a gain of Rs 6,540.28 mn net of tax; education business classified held for sale from FY23 and still not fully exited</td><td>Mostly delivered</td></tr>
-            <tr><td>Comply with the Oct-2024 uniform fee structure and derivatives framework</td><td>Implemented; discontinued four weekly contract series</td><td>Delivered</td></tr>
-            <tr><td>Launch NSE IFSC and the GIFT Connect</td><td>NSE IFSC-SGX Connect launched 29-Jul-2022, full-scale operations from 03-Jul-2023, roughly 21 hours of trading a day</td><td>Delivered, but immaterial to revenue</td></tr>
-            <tr><td>List the company</td><td>2016 draft document never reached the market. 2026 attempt reached bidding</td><td><strong>Failed once, ten years lost</strong></td></tr>
+            <tr><td>Operate the world's largest derivatives exchange by contracts traded</td><td class="tx">Held the position for seven consecutive years</td><td class="tx tn">Delivered</td></tr>
+            <tr><td>Maintain system availability</td><td class="tx">Day-long outage 24-Feb-2021; settled with SEBI for Rs 497.68 mn by NSE and Rs 228.80 mn by NSE Clearing</td><td class="tx"><strong>Failed once, materially</strong></td></tr>
+            <tr><td>Fair and non-preferential market access</td><td class="tx">Co-location and dark fibre matters, 2015 to 2026, settled for Rs 14,912.07 mn</td><td class="tx"><strong>Failed, and it took a decade to close</strong></td></tr>
+            <tr><td>Reduce NSDL holding below 15% as required by regulation</td><td class="tx">Cut from 24.00% to 15.00% by selling into NSDL's IPO, listed 06-Aug-2025</td><td class="tx">Delivered, and profitably</td></tr>
+            <tr><td>Exit non-core education and technology businesses</td><td class="tx">NSEIT and subsidiaries sold in FY25 for a gain of Rs 6,540.28 mn net of tax; education business classified held for sale from FY23 and still not fully exited</td><td class="tx tn">Mostly delivered</td></tr>
+            <tr><td>Comply with the Oct-2024 uniform fee structure and derivatives framework</td><td class="tx">Implemented; discontinued four weekly contract series</td><td class="tx tn">Delivered</td></tr>
+            <tr><td>Launch NSE IFSC and the GIFT Connect</td><td class="tx">NSE IFSC-SGX Connect launched 29-Jul-2022, full-scale operations from 03-Jul-2023, roughly 21 hours of trading a day</td><td class="tx">Delivered, but immaterial to revenue</td></tr>
+            <tr><td>List the company</td><td class="tx">2016 draft document never reached the market. 2026 attempt reached bidding</td><td class="tx"><strong>Failed once, ten years lost</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -1536,14 +1539,14 @@
       <div class="tw">
         <table>
           <caption>Addressable base, official statistic mapped to the company revenue line it drives.</caption>
-          <thead><tr><th>Official statistic</th><th>Latest official reading</th><th>NSE revenue line it drives</th><th>FY26 size (Rs mn)</th></tr></thead>
+          <thead><tr><th>Official statistic</th><th class="tx">Latest official reading</th><th class="tx">NSE revenue line it drives</th><th>FY26 size (Rs mn)</th></tr></thead>
           <tbody>
-            <tr><td>Index options premium turnover, market-wide</td><td>Falling year on year, rising over two years</td><td>Options transaction charges</td><td>99,975.68</td></tr>
-            <tr><td>Cash market turnover, market-wide</td><td>Falling year on year, rising over two years</td><td>Cash market transaction charges</td><td>15,546.43</td></tr>
-            <tr><td>Number of individual traders in derivatives</td><td>Down 20% year on year in the SEBI window</td><td>The base of all derivatives volume</td><td>drives 69.1% of revenue</td></tr>
-            <tr><td>Capital raised through public issues</td><td>Rising, 108 mainboard IPOs in FY26</td><td>Listing services</td><td>3,524.36</td></tr>
-            <tr><td>Passive fund assets tracking Indian indices</td><td>Rs 8.95 trillion, rising</td><td>Index licensing services</td><td>1,518.45</td></tr>
-            <tr><td>Securities transaction tax receipts</td><td>Rs 40,214.36 cr to 17-Sep-2026</td><td>Proxy for total transaction charges</td><td>130,570.12</td></tr>
+            <tr><td>Index options premium turnover, market-wide</td><td class="tx">Falling year on year, rising over two years</td><td class="tx">Options transaction charges</td><td>99,975.68</td></tr>
+            <tr><td>Cash market turnover, market-wide</td><td class="tx">Falling year on year, rising over two years</td><td class="tx">Cash market transaction charges</td><td>15,546.43</td></tr>
+            <tr><td>Number of individual traders in derivatives</td><td class="tx">Down 20% year on year in the SEBI window</td><td class="tx">The base of all derivatives volume</td><td class="tx">drives 69.1% of revenue</td></tr>
+            <tr><td>Capital raised through public issues</td><td class="tx">Rising, 108 mainboard IPOs in FY26</td><td class="tx tn">Listing services</td><td>3,524.36</td></tr>
+            <tr><td>Passive fund assets tracking Indian indices</td><td class="tx">Rs 8.95 trillion, rising</td><td class="tx">Index licensing services</td><td>1,518.45</td></tr>
+            <tr><td>Securities transaction tax receipts</td><td class="tx">Rs 40,214.36 cr to 17-Sep-2026</td><td class="tx">Proxy for total transaction charges</td><td>130,570.12</td></tr>
           </tbody>
         </table>
       </div>
@@ -1683,18 +1686,18 @@
       <div class="tw">
         <table>
           <caption>Aggregator figures against the filing, accessed 21-Sep-2026. Where they disagree, the filing wins and the disagreement is itself the finding.</caption>
-          <thead><tr><th>Item</th><th>Aggregator</th><th>Offer document / annual report</th><th>Verdict</th></tr></thead>
+          <thead><tr><th>Item</th><th>Aggregator</th><th>Offer document / annual report</th><th class="tx">Verdict</th></tr></thead>
           <tbody>
-            <tr><td>FY24 revenue from operations</td><td>14,780 cr</td><td>14,780.01 cr</td><td><span class="chip hit">Match</span></td></tr>
-            <tr><td>FY25 revenue from operations</td><td>17,141 cr</td><td>17,140.68 cr</td><td><span class="chip hit">Match</span></td></tr>
-            <tr><td>FY26 revenue from operations</td><td>16,601 cr</td><td>16,601.30 cr</td><td><span class="chip hit">Match</span></td></tr>
-            <tr><td>FY26 profit after tax</td><td>10,302 cr</td><td>10,302.06 cr</td><td><span class="chip hit">Match</span></td></tr>
-            <tr><td>FY26 earnings per share</td><td>41.62</td><td>41.62</td><td><span class="chip hit">Match</span></td></tr>
-            <tr><td>Market capitalisation</td><td>Rs 4,41,788 cr</td><td>Rs 1,785 x 2,475 mn = Rs 4,41,788 cr</td><td><span class="chip hit">Match</span></td></tr>
-            <tr><td><strong>FY26 total borrowings</strong></td><td><strong>Rs 412 cr</strong></td><td><strong>Nil, in every period</strong></td><td><span class="chip miss">Disagree</span></td></tr>
-            <tr><td><strong>Price to earnings</strong></td><td><strong>49.4</strong></td><td>42.1x at cap on trailing earnings</td><td><span class="chip miss">Disagree</span></td></tr>
-            <tr><td>Return on capital employed</td><td>40.6%</td><td>42.80%</td><td><span class="chip part">Differ</span></td></tr>
-            <tr><td>Return on equity</td><td>28.6%</td><td>32.98%</td><td><span class="chip part">Differ</span></td></tr>
+            <tr><td>FY24 revenue from operations</td><td>14,780 cr</td><td>14,780.01 cr</td><td class="tx tn"><span class="chip hit">Match</span></td></tr>
+            <tr><td>FY25 revenue from operations</td><td>17,141 cr</td><td>17,140.68 cr</td><td class="tx tn"><span class="chip hit">Match</span></td></tr>
+            <tr><td>FY26 revenue from operations</td><td>16,601 cr</td><td>16,601.30 cr</td><td class="tx tn"><span class="chip hit">Match</span></td></tr>
+            <tr><td>FY26 profit after tax</td><td>10,302 cr</td><td>10,302.06 cr</td><td class="tx tn"><span class="chip hit">Match</span></td></tr>
+            <tr><td>FY26 earnings per share</td><td>41.62</td><td>41.62</td><td class="tx tn"><span class="chip hit">Match</span></td></tr>
+            <tr><td>Market capitalisation</td><td>Rs 4,41,788 cr</td><td>Rs 1,785 x 2,475 mn = Rs 4,41,788 cr</td><td class="tx tn"><span class="chip hit">Match</span></td></tr>
+            <tr><td><strong>FY26 total borrowings</strong></td><td><strong>Rs 412 cr</strong></td><td class="tx"><strong>Nil, in every period</strong></td><td class="tx tn"><span class="chip miss">Disagree</span></td></tr>
+            <tr><td><strong>Price to earnings</strong></td><td><strong>49.4</strong></td><td class="tx">42.1x at cap on trailing earnings</td><td class="tx tn"><span class="chip miss">Disagree</span></td></tr>
+            <tr><td>Return on capital employed</td><td>40.6%</td><td>42.80%</td><td class="tx tn"><span class="chip part">Differ</span></td></tr>
+            <tr><td>Return on equity</td><td>28.6%</td><td>32.98%</td><td class="tx tn"><span class="chip part">Differ</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -1720,18 +1723,18 @@
       <div class="tw">
         <table>
           <caption>Largest shareholders before the offer, per the offer document. LIC's holding sits within the higher institutional ceiling permitted under the SECC Regulations.</caption>
-          <thead><tr><th>Shareholder</th><th>Pre-offer holding</th><th>Selling in the offer</th></tr></thead>
+          <thead><tr><th>Shareholder</th><th>Pre-offer holding</th><th class="tx">Selling in the offer</th></tr></thead>
           <tbody>
-            <tr><td>Life Insurance Corporation of India</td><td>10.72%</td><td>Not among the top sellers disclosed on the cover</td></tr>
-            <tr><td>Aranda Investments (Mauritius)</td><td>4.54%</td><td>Yes, 11,246,336 shares, tranche unchanged from the draft</td></tr>
-            <tr><td>Stock Holding Corporation of India</td><td>4.44%</td><td>Yes, cut to 6,187,500 from 10,890,000</td></tr>
-            <tr><td>SBI Capital Markets</td><td>4.33%</td><td>Yes, 8,780,590, added as a seller only by the Aug-2026 addendum</td></tr>
-            <tr><td>Mahagony</td><td>3.73%</td><td>Not disclosed among the top ten sellers</td></tr>
-            <tr><td>State Bank of India</td><td>3.23%</td><td>Yes, 15,969,410 shares</td></tr>
-            <tr><td>PI Opportunities</td><td>2.35%</td><td>Not disclosed among the top ten sellers</td></tr>
-            <tr><td>Crown Capital</td><td>2.07%</td><td>Not disclosed among the top ten sellers</td></tr>
-            <tr><td>DVI Fund (Mauritius)</td><td>1.83%</td><td>Not disclosed among the top ten sellers</td></tr>
-            <tr><td>TIMF Holdings</td><td>1.75%</td><td>Not disclosed among the top ten sellers</td></tr>
+            <tr><td>Life Insurance Corporation of India</td><td>10.72%</td><td class="tx">Not among the top sellers disclosed on the cover</td></tr>
+            <tr><td>Aranda Investments (Mauritius)</td><td>4.54%</td><td class="tx">Yes, 11,246,336 shares, tranche unchanged from the draft</td></tr>
+            <tr><td>Stock Holding Corporation of India</td><td>4.44%</td><td class="tx">Yes, cut to 6,187,500 from 10,890,000</td></tr>
+            <tr><td>SBI Capital Markets</td><td>4.33%</td><td class="tx">Yes, 8,780,590, added as a seller only by the Aug-2026 addendum</td></tr>
+            <tr><td>Mahagony</td><td>3.73%</td><td class="tx">Not disclosed among the top ten sellers</td></tr>
+            <tr><td>State Bank of India</td><td>3.23%</td><td class="tx">Yes, 15,969,410 shares</td></tr>
+            <tr><td>PI Opportunities</td><td>2.35%</td><td class="tx">Not disclosed among the top ten sellers</td></tr>
+            <tr><td>Crown Capital</td><td>2.07%</td><td class="tx">Not disclosed among the top ten sellers</td></tr>
+            <tr><td>DVI Fund (Mauritius)</td><td>1.83%</td><td class="tx">Not disclosed among the top ten sellers</td></tr>
+            <tr><td>TIMF Holdings</td><td>1.75%</td><td class="tx">Not disclosed among the top ten sellers</td></tr>
           </tbody>
         </table>
       </div>
@@ -1745,11 +1748,11 @@
         <div class="tw">
         <table>
           <caption>Indicative supply calendar from an allotment date of 22-Sep-2026 and listing on 24-Sep-2026.</caption>
-          <thead><tr><th>Date</th><th>Event</th><th>Approximate shares released</th><th>% of capital</th></tr></thead>
+          <thead><tr><th>Date</th><th class="tx">Event</th><th>Approximate shares released</th><th>% of capital</th></tr></thead>
           <tbody>
-            <tr><td>22-Oct-2026</td><td>Anchor lock-in, first tranche, 30 days</td><td>18,896,870</td><td>0.76%</td></tr>
-            <tr><td>21-Dec-2026</td><td>Anchor lock-in, second tranche, 90 days</td><td>18,896,869</td><td>0.76%</td></tr>
-            <tr><td><strong>22-Mar-2027</strong></td><td><strong>Regulation 17(1) six-month lock-in on ALL remaining pre-offer capital</strong></td><td><strong>approximately 2,348,563,350</strong></td><td><strong>about 94.9%</strong></td></tr>
+            <tr><td>22-Oct-2026</td><td class="tx">Anchor lock-in, first tranche, 30 days</td><td>18,896,870</td><td>0.76%</td></tr>
+            <tr><td>21-Dec-2026</td><td class="tx">Anchor lock-in, second tranche, 90 days</td><td>18,896,869</td><td>0.76%</td></tr>
+            <tr><td><strong>22-Mar-2027</strong></td><td class="tx"><strong>Regulation 17(1) six-month lock-in on ALL remaining pre-offer capital</strong></td><td class="tx"><strong>approximately 2,348,563,350</strong></td><td><strong>about 94.9%</strong></td></tr>
           </tbody>
         </table>
         </div>
@@ -1772,16 +1775,16 @@
       <div class="tw">
         <table>
           <caption>Anchor allocation, bid date 16-Sep-2026, at the cap price of Rs 1,785. Reserved floors are those in force since 01-Dec-2025 under ICDR Schedule XIII (10)(d).</caption>
-          <thead><tr><th>Measure</th><th>Value</th><th>Regulatory floor</th><th>Assessment</th></tr></thead>
+          <thead><tr><th>Measure</th><th class="tx">Value</th><th class="tx">Regulatory floor</th><th class="tx">Assessment</th></tr></thead>
           <tbody>
-            <tr><td>Total anchor book</td><td>Rs 6,746.18 crore</td><td>max 60% of the QIB portion</td><td>Large and fully taken</td></tr>
-            <tr><td>Shares allotted to anchors</td><td>37,793,739</td><td></td><td>29.9% of the whole offer</td></tr>
-            <tr><td>Number of anchor investors</td><td>189</td><td>min 5, max 15 plus 15 per additional Rs 250 crore</td><td>Comfortably compliant, and very broad</td></tr>
-            <tr><td><strong>Domestic mutual funds</strong></td><td><strong>36.98%</strong>, 13,977,524 shares</td><td><strong>33.33%</strong></td><td><strong>Exceeds the floor by 365 bps</strong></td></tr>
-            <tr><td>Mutual fund participation</td><td>29 fund houses, 98 schemes</td><td></td><td>Genuinely broad, not one house repeated</td></tr>
-            <tr><td><strong>Life insurers and pension funds</strong></td><td><strong>16.04%</strong>, 6,060,744 shares</td><td><strong>6.67%</strong></td><td><strong>Exceeds the floor by 937 bps</strong></td></tr>
-            <tr><td>Insurer and pension participation</td><td>27 entities</td><td></td><td>Broad</td></tr>
-            <tr><td>Largest single life insurer</td><td>LIC, Rs 400.30 crore</td><td></td><td>5.93% of the anchor book</td></tr>
+            <tr><td>Total anchor book</td><td class="tx tn">Rs 6,746.18 crore</td><td class="tx">max 60% of the QIB portion</td><td class="tx">Large and fully taken</td></tr>
+            <tr><td>Shares allotted to anchors</td><td class="tx tn">37,793,739</td><td></td><td class="tx">29.9% of the whole offer</td></tr>
+            <tr><td>Number of anchor investors</td><td class="tx tn">189</td><td class="tx">min 5, max 15 plus 15 per additional Rs 250 crore</td><td class="tx">Comfortably compliant, and very broad</td></tr>
+            <tr><td><strong>Domestic mutual funds</strong></td><td class="tx"><strong>36.98%</strong>, 13,977,524 shares</td><td class="tx tn"><strong>33.33%</strong></td><td class="tx"><strong>Exceeds the floor by 365 bps</strong></td></tr>
+            <tr><td>Mutual fund participation</td><td class="tx">29 fund houses, 98 schemes</td><td></td><td class="tx">Genuinely broad, not one house repeated</td></tr>
+            <tr><td><strong>Life insurers and pension funds</strong></td><td class="tx"><strong>16.04%</strong>, 6,060,744 shares</td><td class="tx tn"><strong>6.67%</strong></td><td class="tx"><strong>Exceeds the floor by 937 bps</strong></td></tr>
+            <tr><td>Insurer and pension participation</td><td class="tx tn">27 entities</td><td></td><td class="tx tn">Broad</td></tr>
+            <tr><td>Largest single life insurer</td><td class="tx">LIC, Rs 400.30 crore</td><td></td><td class="tx">5.93% of the anchor book</td></tr>
           </tbody>
         </table>
       </div>
@@ -1792,13 +1795,13 @@
       <div class="tw">
         <table>
           <caption>Category-wise subscription at the close of bidding on 21-Sep-2026. Reported as a point-in-time reading on the final day. Reserved proportions are those applicable to a Regulation 6(1) issue.</caption>
-          <thead><tr><th>Category</th><th>Subscription</th><th>Reading</th></tr></thead>
+          <thead><tr><th>Category</th><th>Subscription</th><th class="tx">Reading</th></tr></thead>
           <tbody>
-            <tr><td>Qualified institutional buyers</td><td><strong>1.53x</strong></td><td>Covered, but modestly, and this figure includes the anchor allocation</td></tr>
-            <tr><td>Non-institutional bidders</td><td>1.68x</td><td>Covered. The sub-bucket split reported by aggregators was internally inconsistent and is not relied on here</td></tr>
-            <tr><td><strong>Retail individual bidders</strong></td><td><strong>0.72x</strong></td><td><strong>UNDERSUBSCRIBED</strong></td></tr>
-            <tr><td>Employees</td><td>1.51x</td><td>Covered, with a Rs 170 per share discount</td></tr>
-            <tr><td><strong>Overall</strong></td><td><strong>1.16x</strong></td><td>Barely covered for India's largest offer for sale</td></tr>
+            <tr><td>Qualified institutional buyers</td><td><strong>1.53x</strong></td><td class="tx">Covered, but modestly, and this figure includes the anchor allocation</td></tr>
+            <tr><td>Non-institutional bidders</td><td>1.68x</td><td class="tx">Covered. The sub-bucket split reported by aggregators was internally inconsistent and is not relied on here</td></tr>
+            <tr><td><strong>Retail individual bidders</strong></td><td><strong>0.72x</strong></td><td class="tx tn"><strong>UNDERSUBSCRIBED</strong></td></tr>
+            <tr><td>Employees</td><td>1.51x</td><td class="tx">Covered, with a Rs 170 per share discount</td></tr>
+            <tr><td><strong>Overall</strong></td><td><strong>1.16x</strong></td><td class="tx">Barely covered for India's largest offer for sale</td></tr>
           </tbody>
         </table>
       </div>
@@ -1829,18 +1832,18 @@
       <div class="tw">
         <table>
           <caption>Selling shareholder tranches, DRHP against RHP. Shares.</caption>
-          <thead><tr><th>Selling shareholder</th><th>DRHP</th><th>RHP</th><th>Change</th><th>Cost per share (Rs)</th></tr></thead>
+          <thead><tr><th>Selling shareholder</th><th>DRHP</th><th>RHP</th><th class="tx">Change</th><th>Cost per share (Rs)</th></tr></thead>
           <tbody>
-            <tr><td>State Bank of India</td><td>24,750,000 combined</td><td>15,969,410</td><td>split with SBI Caps</td><td>0.80</td></tr>
-            <tr><td>SBI Capital Markets</td><td>8,780,590 (added by addendum)</td><td>8,780,590</td><td>unchanged</td><td>0.38</td></tr>
-            <tr><td>Canada Pension Plan Investment Board</td><td>11,874,060</td><td>11,874,060</td><td><strong>unchanged</strong></td><td>324.13</td></tr>
-            <tr><td>Aranda Investments (Mauritius)</td><td>11,246,336</td><td>11,246,336</td><td><strong>unchanged</strong></td><td>62.38</td></tr>
-            <tr><td>MS Strategic (Mauritius)</td><td>16,000,000</td><td>11,000,000</td><td>-5,000,000</td><td>66.54</td></tr>
-            <tr><td>The New India Assurance Company</td><td>10,500,000</td><td>10,500,000</td><td>unchanged</td><td>0.32</td></tr>
-            <tr><td>Bank of Baroda</td><td>10,986,250</td><td>7,690,375</td><td>-3,295,875</td><td>0.54</td></tr>
-            <tr><td>Stock Holding Corporation of India</td><td>10,890,000</td><td>6,187,500</td><td>-4,702,500</td><td>0.46</td></tr>
-            <tr><td>General Insurance Corporation of India</td><td>10,658,000</td><td>6,187,500</td><td>-4,470,500</td><td>5.26</td></tr>
-            <tr><td><strong>Total offer</strong></td><td><strong>148,905,525</strong></td><td><strong>126,436,650</strong></td><td><strong>-22,468,875, or -15.1%</strong></td><td></td></tr>
+            <tr><td>State Bank of India</td><td>24,750,000 combined</td><td>15,969,410</td><td class="tx">split with SBI Caps</td><td>0.80</td></tr>
+            <tr><td>SBI Capital Markets</td><td class="tx">8,780,590 (added by addendum)</td><td>8,780,590</td><td class="tx tn">unchanged</td><td>0.38</td></tr>
+            <tr><td>Canada Pension Plan Investment Board</td><td>11,874,060</td><td>11,874,060</td><td class="tx tn"><strong>unchanged</strong></td><td>324.13</td></tr>
+            <tr><td>Aranda Investments (Mauritius)</td><td>11,246,336</td><td>11,246,336</td><td class="tx tn"><strong>unchanged</strong></td><td>62.38</td></tr>
+            <tr><td>MS Strategic (Mauritius)</td><td>16,000,000</td><td>11,000,000</td><td class="tx tn">-5,000,000</td><td>66.54</td></tr>
+            <tr><td>The New India Assurance Company</td><td>10,500,000</td><td>10,500,000</td><td class="tx tn">unchanged</td><td>0.32</td></tr>
+            <tr><td>Bank of Baroda</td><td>10,986,250</td><td>7,690,375</td><td class="tx tn">-3,295,875</td><td>0.54</td></tr>
+            <tr><td>Stock Holding Corporation of India</td><td>10,890,000</td><td>6,187,500</td><td class="tx tn">-4,702,500</td><td>0.46</td></tr>
+            <tr><td>General Insurance Corporation of India</td><td>10,658,000</td><td>6,187,500</td><td class="tx tn">-4,470,500</td><td>5.26</td></tr>
+            <tr><td><strong>Total offer</strong></td><td><strong>148,905,525</strong></td><td><strong>126,436,650</strong></td><td class="tx"><strong>-22,468,875, or -15.1%</strong></td><td></td></tr>
           </tbody>
         </table>
       </div>
@@ -1853,12 +1856,12 @@
       <div class="tw">
         <table>
           <caption>How the co-location and dark fibre disclosure changed.</caption>
-          <thead><tr><th></th><th>DRHP, 17-Jun-2026</th><th>RHP, 10-Sep-2026</th></tr></thead>
+          <thead><tr><th></th><th class="tx">DRHP, 17-Jun-2026</th><th class="tx">RHP, 10-Sep-2026</th></tr></thead>
           <tbody>
-            <tr><td>Settlement status</td><td>"pending for final disposal with SEBI, the future outcome of which is uncertain at this stage"</td><td>SEBI "in principle agreed to accept the terms" by email of 30-Jul-2026</td></tr>
-            <tr><td>Payment</td><td>Provision of Rs 13,912.07 mn; Rs 7,147.37 mn shown as payable</td><td><strong>Rs 7,147.37 mn paid on 31-Jul-2026</strong>, completing Rs 14,912.07 mn with the Rs 7,764.70 mn on deposit</td></tr>
-            <tr><td>Supreme Court</td><td>Four appeals pending for final hearing and disposal</td><td><strong>Order of 03-Sep-2026 disposes C.A. 6471/2023 and C.A. 4273/2024</strong> in terms of the settlement; other appeals remain alive with questions of law kept open</td></tr>
-            <tr><td>Formal settlement order</td><td>not applicable</td><td><strong>"The settlement order by SEBI in this regard is yet to be passed"</strong></td></tr>
+            <tr><td>Settlement status</td><td class="tx">"pending for final disposal with SEBI, the future outcome of which is uncertain at this stage"</td><td class="tx">SEBI "in principle agreed to accept the terms" by email of 30-Jul-2026</td></tr>
+            <tr><td>Payment</td><td class="tx">Provision of Rs 13,912.07 mn; Rs 7,147.37 mn shown as payable</td><td class="tx"><strong>Rs 7,147.37 mn paid on 31-Jul-2026</strong>, completing Rs 14,912.07 mn with the Rs 7,764.70 mn on deposit</td></tr>
+            <tr><td>Supreme Court</td><td class="tx">Four appeals pending for final hearing and disposal</td><td class="tx"><strong>Order of 03-Sep-2026 disposes C.A. 6471/2023 and C.A. 4273/2024</strong> in terms of the settlement; other appeals remain alive with questions of law kept open</td></tr>
+            <tr><td>Formal settlement order</td><td class="tx tn">not applicable</td><td class="tx"><strong>"The settlement order by SEBI in this regard is yet to be passed"</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -1873,17 +1876,17 @@
       <div class="tw">
         <table>
           <caption>A decade between two attempts.</caption>
-          <thead><tr><th>Measure</th><th>2016 draft</th><th>2026 offer</th></tr></thead>
+          <thead><tr><th>Measure</th><th class="tx">2016 draft</th><th class="tx">2026 offer</th></tr></thead>
           <tbody>
-            <tr><td>Offer size, as filed</td><td>111,411,970 shares</td><td>126,436,650 shares</td></tr>
-            <tr><td>Offer size, bonus-adjusted to today's basis</td><td>equivalent to 557,059,850</td><td>126,436,650</td></tr>
-            <tr><td>Percentage of post-offer capital</td><td><strong>22.5%</strong></td><td><strong>5.11%</strong></td></tr>
-            <tr><td>Regime</td><td>ICDR 2009</td><td>ICDR 2018</td></tr>
-            <tr><td>Promoter</td><td>None identifiable</td><td>None identifiable</td></tr>
-            <tr><td>Listing venue</td><td>BSE</td><td>BSE</td></tr>
-            <tr><td>Revenue</td><td>about Rs 18.6 bn</td><td>Rs 166.0 bn</td></tr>
-            <tr><td>Profit</td><td>about Rs 9.8 bn</td><td>Rs 103.0 bn</td></tr>
-            <tr><td>Outcome</td><td><strong>Never reached the market</strong></td><td>Bidding closed 21-Sep-2026</td></tr>
+            <tr><td>Offer size, as filed</td><td class="tx tn">111,411,970 shares</td><td class="tx tn">126,436,650 shares</td></tr>
+            <tr><td>Offer size, bonus-adjusted to today's basis</td><td class="tx">equivalent to 557,059,850</td><td class="tx tn">126,436,650</td></tr>
+            <tr><td>Percentage of post-offer capital</td><td class="tx tn"><strong>22.5%</strong></td><td class="tx tn"><strong>5.11%</strong></td></tr>
+            <tr><td>Regime</td><td class="tx tn">ICDR 2009</td><td class="tx tn">ICDR 2018</td></tr>
+            <tr><td>Promoter</td><td class="tx tn">None identifiable</td><td class="tx tn">None identifiable</td></tr>
+            <tr><td>Listing venue</td><td class="tx tn">BSE</td><td class="tx tn">BSE</td></tr>
+            <tr><td>Revenue</td><td class="tx tn">about Rs 18.6 bn</td><td class="tx tn">Rs 166.0 bn</td></tr>
+            <tr><td>Profit</td><td class="tx tn">about Rs 9.8 bn</td><td class="tx tn">Rs 103.0 bn</td></tr>
+            <tr><td>Outcome</td><td class="tx"><strong>Never reached the market</strong></td><td class="tx">Bidding closed 21-Sep-2026</td></tr>
           </tbody>
         </table>
       </div>
