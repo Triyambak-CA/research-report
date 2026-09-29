@@ -179,6 +179,7 @@ tbody tr.hl td{background:rgba(var(--accent-r),.07);color:var(--bright)}
 tfoot td{padding:7px;font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;background:var(--card2)}
 td.pos,.pos{color:var(--bull)}
 td.neg,.neg{color:var(--bear)}
+td.amb,.amb{color:var(--amber)}
 td.wr{white-space:normal;min-width:180px}
 
 /* ===== CHIPS / BADGES ===== */
