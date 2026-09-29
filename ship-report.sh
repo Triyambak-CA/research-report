@@ -111,6 +111,7 @@ update_master() {
   [ "$(git -C "$m" rev-parse --abbrev-ref HEAD)" = "$BRANCH" ] \
     || { say "master copy: skipped, it is not on branch $BRANCH"; return 0; }
   if [ "$DRY" -eq 1 ]; then
+    export GIT_OPTIONAL_LOCKS=0   # no index refresh: a dry run writes nothing in the master copy
     # Read-only: judge from the commit this clone just fetched, write nothing there.
     local head; head=$(git -C "$m" rev-parse HEAD)
     git cat-file -e "$head^{commit}" 2>/dev/null || { say "master copy: dry run, cannot judge (it holds commits this clone lacks); not touched"; return 0; }
