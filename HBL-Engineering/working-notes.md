@@ -104,3 +104,14 @@ CIN L40109TG1986PLC006745. Price basis: Rs 808 at 29-Sep-2026 close (screener ex
   INCLUSIVE of GST: CARE quotes new orders gross of GST (trap 7a). Mixed bases.
   Implication for "who else delivered": 5 suppliers in the 2024 loco tender, ~3,000 of 10,000 delivered in total, HBL
   1,659 of them = ~55% of all on-board units delivered industry-wide (company estimate, unverified).
+- 15-JAN-2026 LETTER (nse/15-Jan-2026_..._Updates_January_2026.txt, verified by lead): "From the CLW loco Kavach tender
+  for 6,300 units, decided this week, HBL did not get any order, because other bidder's prices were lower." Visible loco
+  demand 18,429 -> 12,129 units. FY27 Kavach "at least": loco Rs 1,000 cr + stations Rs 900 cr (Rs 400 cr more stations
+  in FY28). "in FY 2026, HBL expects total sales of Kavach to be Rs.1,880 Crores."
+  => GUIDANCE MISS: FY26 electronics segment revenue (all of Kavach + TMS + other electronics) was Rs 1,626.25 cr;
+  standalone railway electronics Rs 1,538.61 cr. Kavach FY26 therefore <= ~Rs 1,540-1,626 cr vs Rs 1,880 cr expected
+  on 15-Jan-2026 with 2.5 months left: miss of at least Rs 254 cr (13.5%+). Q4 electronics revenue 179 vs implied
+  ~Rs 430 cr needed. Never explained (no call, no note).
+  => Kernex's CLW 3,024 sets (15-Jan-2026) and GGT's CLW Rs 433 cr (30-Jan-2026) are from the 6,300-unit tender HBL
+  lost on price. HBL won later orders (ICF, BLW, PLW, CLW-May) after that letter, so FY27 intake exceeds the Jan view.
+  Stock -9.4% on 16-Jan-2026 (notes-10 E/F3).
