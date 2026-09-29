@@ -1,5 +1,7 @@
 # HBL Engineering: Annual Report Notes, FY22-FY24
 
+> WARNING (lead, 30-Sep-2026): some segment tables below convert lakh to crore by dividing by 10,000 instead of 100, so they are 100 times too small. The report takes segment figures from the annual reports directly, not from this file.
+
 **Source:** AR-FY22.txt, AR-FY23.txt, AR-FY24.txt (consolidated)
 **Extracted:** 30-Sep-2026
 **Purpose:** Five-year segment, investment, related party, and governance trends for deep-dive report

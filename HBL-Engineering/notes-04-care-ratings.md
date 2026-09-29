@@ -358,7 +358,7 @@ Kavach is the Indian Railways' indigenously developed collision avoidance system
 
 **2022 to 2023:** TOI sensitivity raised from "20% yoy, PBILDT 12%+" to "above Rs 1,700 cr PBILDT 12%". ROCE target raised from 13% to 15%. Operating cycle threshold and gearing cap remained consistent. CARE shifted to absolute rupee targets.
 
-**2023 to 2024:** Major shift. Sensitivities simplified to single PBILDT margin floor (18%+, no longer % threshold). ROCE dropped as explicit metric. Debt covenant moved from gearing (0.75x) to Debt/EBITDA ratio (>1x) as negative trigger—reflecting capex funding focus. Operating cycle threshold retained at 250 days. **Rationale:** FY24 saw 63% yoy revenue growth; CARE upgraded to A+ and raised the bar to 18% PBILDT.
+**2023 to 2024:** Major shift. Sensitivities simplified to single PBILDT margin floor (18%+, no longer % threshold). ROCE dropped as explicit metric. Debt covenant moved from gearing (0.75x) to Debt/EBITDA ratio (>1x) as negative trigger-reflecting capex funding focus. Operating cycle threshold retained at 250 days. **Rationale:** FY24 saw 63% yoy revenue growth; CARE upgraded to A+ and raised the bar to 18% PBILDT.
 
 **2024 to 2025/2026:** Sensitivities remained stable; TOI threshold increased from implicit "above Rs 1,700" to explicit "₹2,800 crore and above" (reflecting Kavach order impact and higher revenue base). PBILDT margin and Debt/EBITDA thresholds unchanged. **Rationale:** Kavach order secured (Dec-2024), FY25 was a transition year (inventory buildup pre-approval), FY26 showed 80% yoy growth; CARE shifted outlook from Stable to Positive (Oct-2025) and held it in Feb-2026.
 
@@ -470,7 +470,7 @@ Kavach is the Indian Railways' indigenously developed collision avoidance system
 
 2. **Kavach emergence:** CLW Rs 1,522 cr TCAS order (Dec-2024) transformed order book from Rs 1,178.75 cr (Aug-24) to Rs 3,174+ cr (Feb-25). 76% executed by Dec-2025; new Rs 1,375 cr Kavach orders in Q1FY26 provide medium-term visibility. Kavach profit margins (34% PBILDT, 23% PAT in Q1FY26) significantly exceed legacy telecom segment.
 
-3. **Financial momentum:** FY26 9M TOI Rs 2,698.71 cr (80% yoy growth); PBILDT margin 37.23%, PAT margin 27.65%—well above CARE's 18% PBILDT sensitivity threshold. Consolidated net worth strong at Rs 1,346.52 cr (Mar-25); gearing healthy at 0.05x.
+3. **Financial momentum:** FY26 9M TOI Rs 2,698.71 cr (80% yoy growth); PBILDT margin 37.23%, PAT margin 27.65%-well above CARE's 18% PBILDT sensitivity threshold. Consolidated net worth strong at Rs 1,346.52 cr (Mar-25); gearing healthy at 0.05x.
 
 4. **Working capital inflection:** Operating cycle improved from 219 days (FY21) to 114 days (FY24), elongated to 147 days (FY25) due to pre-approval Kavach inventory, now improving post-approval (reflected in Q1FY26 strong growth). CARE's 250-day downgrade threshold not at risk.
 
