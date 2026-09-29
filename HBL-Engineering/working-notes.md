@@ -87,3 +87,20 @@ CIN L40109TG1986PLC006745. Price basis: Rs 808 at 29-Sep-2026 close (screener ex
   internal road trials. Marine sales limited until end Sep-2027. JV already ordered batteries for two electric tugs.
   Siemens Germany chose HBL as one of two LIB suppliers. PLT data-centre sales +100%, PLT capacity being doubled.
   NiCad "second largest supplier globally"; NiCad exports ~+15%. No Li-ion telecom packs (margins too low).
+- CLW ORDER PART-CANCELLED (the Jul-Dec 2025 order-book drop): NSE 18-Dec-2025 "Information to the stakeholders":
+  2,200-loco TCAS order, last delivery date 13-Dec-2025; HBL "delivered and installed 1659 (75.4 %); the undelivered
+  541 units are deemed cancelled according to the terms of PO". The 2024 tender was 10,000 units across five
+  suppliers; about 3,000 delivered by all suppliers; ~7,000 deemed cancelled, expected to be re-tendered (date
+  unknown); three other tenders floated totalling 11,429 units, may be decided before 31-Mar-2026; "total expected
+  demand, already visible for the next year" 18,429 units. CARE 25-Feb-2026 repeats: "supplied systems 76% ...
+  balance order stands cancelled per order terms".
+  Arithmetic: Rs 1,522.40 cr / 2,200 = Rs 69.2 lakh per loco set (ex tax). 1,659 x 69.2 lakh = ~Rs 1,148 cr of
+  revenue, delivered Apr-Dec 2025: ~71% of FY26 electronics revenue (1,626) and ~35% of group revenue. Cancelled
+  541 x 69.2 lakh = ~Rs 374 cr.
+  ORDER BOOK ROLL-FORWARD NOW RECONCILES: 31-Jul-2025 4,479 + intake Aug-Dec (WCR 45.9) - electronics billing
+  Aug-Dec (~1,170 est: Q2 794 less ~Jul share + Q3 473) - cancellation ~374 = ~2,980 vs CARE 2,999.
+  Feb->Jul 2025 also reconciles on an EX-GST intake basis (3,174 + 1,543 ex-GST intake - ~260 billed = ~4,457 vs
+  4,479). BUT CARE's "fresh orders aggregating Rs 1,375 crore" (Jan-Feb 2026) equals ICF 575 + BLW 800.36 = 1,375.36
+  INCLUSIVE of GST: CARE quotes new orders gross of GST (trap 7a). Mixed bases.
+  Implication for "who else delivered": 5 suppliers in the 2024 loco tender, ~3,000 of 10,000 delivered in total, HBL
+  1,659 of them = ~55% of all on-board units delivered industry-wide (company estimate, unverified).
