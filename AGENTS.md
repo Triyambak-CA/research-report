@@ -143,8 +143,10 @@ UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, l
 ```
 
 **BSE filing PDFs download with `curl`; the BSE and NSE listing APIs do not.**
-`https://www.bseindia.com/xml-data/corpfiling/AttachHis/<file>.pdf` works with the UA
-and a BSE referer but WITHOUT `-L` (with `-L` it returns an HTML page). BSE's
+Both `https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=<file>.pdf` and
+`https://www.bseindia.com/xml-data/corpfiling/AttachHis/<file>.pdf` work with the UA
+and a BSE referer. (In zsh, `set -- $x` does not split words: loop over pairs in
+`bash` or the file name comes out empty and BSE returns an HTML page.) BSE's
 announcements API is Akamai-blocked, and its announcements page shows only a
 three-month window in automation. NSE's `nsearchives.nseindia.com` PDFs download with
 plain `curl`; NSE's JSON APIs (`/api/corporate-announcements?index=equities&symbol=X&from_date=DD-MM-YYYY&to_date=...`,
