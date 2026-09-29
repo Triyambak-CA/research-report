@@ -34,3 +34,11 @@ CIN L40109TG1986PLC006745. Price basis: Rs 808 at 29-Sep-2026 close (screener ex
   an interest; reply 28-Nov-2022 is an image scan (forensic agent reading it).
 - No speech-to-text tool on the machine; installing mlx-whisper in scratch to transcribe the 08-Jul-2024 call mp3
   (1h51m). If it fails, the call is a named gap.
+- ORDER REGISTER (notes-05) needs re-bucketing by the lead: the agent put Apr-Jun 2025 orders in FY25 and Apr-May 2026
+  orders in FY26, and counted two Sep-2022 BIDS (WCR, WR; not awarded) as intake. Rebuild FY intake from the row table.
+- Verified myself: 28-May-2026 CLW LoA for on-board Kavach Ver 4.0, Rs 1,714 cr EXCLUDING 18% GST (a second large CLW
+  order, after the Rs 1,522.40 cr + taxes order of 14-Dec-2024). 11-Feb-2026 BLW Ver 4.0 Rs 800.36 cr incl GST.
+  31-Jan-2026 ICF Rs 575 cr incl GST "accepted an order, to be received" (announced before receipt). So Jan-Aug 2026
+  announced on-board intake is about Rs 2,980 cr ex GST: the backlog was refilled after the Dec-2025 CARE low of
+  Rs 2,999 cr. This changes the "one-off peak" framing: FY27 has a second on-board wave. Test: are the Ver 4.0 on-board
+  sets for the SAME locomotive fleet (upgrade of Ver 3.2 sets fitted under the 2024 CLW order) or new locos?
