@@ -16,7 +16,15 @@ CIN L40109TG1986PLC006745. Price basis: Rs 808 at 29-Sep-2026 close (screener ex
   transcript. Verify on exchange whether any Reg 30 transcript was ever filed.
 
 ## Named gaps
-(none yet)
+- No earnings-call transcript exists (HBL has never held a quarterly earnings call); guidance scored from filed letters,
+  decks, the 2025 AGM transcript, annual reports and a machine transcript of the 08-Jul-2024 call audio.
+- Screener premium: the FY26 Insights year was not yet populated, and the related-party panel stops at FY24; both
+  rebuilt from the FY25 and FY26 annual reports. Screener AI chat not used (no credits). No premium-only figure
+  material to the conclusions was missing.
+- The company discloses no order book and no Kavach revenue line; CARE's order book (to Dec-2025) is the only series.
+- Vendor-wise Kavach awards, Medha's orders, unit counts on HBL's 2026 orders: not published anywhere.
+- Moebius Power Electronics' current business and share register: no MCA filings on file.
+- HBL publishes only half-yearly balance sheets, so no eight-quarter working-capital cycle.
 
 ## Primary findings logged by the lead (30-Sep-2026)
 - Q2 FY26 results outcome (NSE 08-Nov-2025, nse/08-Nov-2025_..._Outcomeandresults.txt p1): board note "Q2 of FY 26 has
