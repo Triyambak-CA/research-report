@@ -45,4 +45,17 @@ CMD 29-May-2026 remark: the most natural reading is that Jyoti shipped to Russia
 stopped; the answer contradicts itself ("we have never exported anything"). Present as an
 implication, not an admission.
 
-## V4, V5 - pending at time of writing (promoter LLP loans; pledge chain and late filings)
+## V4. Promoter LLP loans - PARTLY CONFIRMED (narrowed)
+Taken 133.69 (FY25) / 197.57 (FY26); repaid 144.49 / 200.96; interest 4.42 / 3.25; nil closing; 12%
+then 15%; CMD holds 84.27% of the LLP. Materiality (Reg 23(1): lower of Rs 1,000 cr or 10% of last
+audited consolidated turnover): FY26 gross 197.57 > 181.77 (exceeds); FY25 gross 133.69 < 133.85 (Rs
+0.16 cr BELOW; crosses only if interest is aggregated, 138.12). Average balance implied by interest:
+about 36.8 (FY25) and 21.7 (FY26); audit committee approved Rs 100 cr per half. Half-year filings
+switch basis: net (FY25), nil in H1 FY26 though 0.92 interest paid, gross +/-122.80 in H2 FY26; about
+Rs 75 cr of H1 FY26 drawdowns appear in no half-year filing. No shareholder RPT approval on record;
+company affirms Reg 23 compliance and "no material RPTs". Classification dispute, not a proven breach.
+
+## V5. Pledge chain - numbers CONFIRMED; late-filing limb WITHDRAWN
+All nine filings read; each before = previous after; quarter-end figures confirmed. Reg 31(1)/(2)
+proviso (since 01-Apr-2022): no disclosure duty for encumbrances "undertaken in a depository". The
+manual filings were probably voluntary. Dates stand as facts; no breach established.

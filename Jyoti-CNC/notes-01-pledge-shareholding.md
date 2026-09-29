@@ -158,3 +158,13 @@ report filed 28-Dec-2024, numbers unchanged. Format lapse only.
 - Virani's cost: 3,28,56,340 shares received from Eknath Infracon LLP on 28-Aug-2023 at Rs 31.20
   per Rs 2 share (Rs 102.51 cr), under five months before the Rs 331 IPO (prospectus). At Rs 1,061
   the holding is worth about Rs 3,486 cr; the encumbered 1,52,40,000 shares about Rs 1,617 cr.
+
+## 10. Correction after verification (notes-14 V5), 29-Sep-2026
+Section 4 ("Disclosure timeliness") is WITHDRAWN as a compliance finding. Since 01-Apr-2022, SAST
+Reg 31(1) and 31(2) each carry a proviso that the disclosure requirement "shall not be applicable where
+such encumbrance is undertaken in a depository". All of Virani's shares are in demat form; these are
+almost certainly depository pledges disclosed through the system-driven mechanism, so the manual
+filings were probably voluntary and the seven-working-day clock of Reg 31(3) did not bind. The dates
+stand as facts: the 22-Jun and 29-Jun creations, three of the six early-July releases (02, 03, 06-Jul)
+and the 12-Aug creation were filed on BSE more than seven working days after the event; the 10-Jul and
+16-Jul releases were not. Every number and the full chain were confirmed by the verifier.
