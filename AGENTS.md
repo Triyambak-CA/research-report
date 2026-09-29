@@ -186,7 +186,13 @@ three-month window in automation. NSE's `nsearchives.nseindia.com` PDFs download
 plain `curl`; NSE's JSON APIs (`/api/corporate-announcements?index=equities&symbol=X&from_date=DD-MM-YYYY&to_date=...`,
 `/api/corporate-pledgedata`, `/api/corporate-sast-reg29`) answer an in-page `fetch`
 from a HEADED `chrome-devtools-axi` session (`CHROME_DEVTOOLS_AXI_HEADED=1`, its own
-browser, not the owner's) opened on nseindia.com; headless is refused. **The
+browser, not the owner's) opened on nseindia.com; headless is refused. One
+announcements call with a multi-year range returns the whole history, and
+`/api/corporate-share-holdings-master` lists every quarter's XBRL shareholding file
+(plain `curl` fetches those). `chrome-devtools-axi eval` truncates output at about
+3,000 characters: store the result in a `window` variable and page it out in slices.
+Audio-only investor calls transcribe locally with `mlx_whisper` in a scratch venv;
+pass `--condition-on-previous-text False` or it loops on one phrase (HBL, Sep-2026). **The
 company's own investor site** often carries what the exchanges hide: quarterly
 shareholding patterns, monitoring agency reports, half-year RPT filings and
 subsidiary accounts (Jyoti CNC, Sep-2026).

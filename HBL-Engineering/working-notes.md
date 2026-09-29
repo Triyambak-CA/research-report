@@ -115,3 +115,16 @@ CIN L40109TG1986PLC006745. Price basis: Rs 808 at 29-Sep-2026 close (screener ex
   => Kernex's CLW 3,024 sets (15-Jan-2026) and GGT's CLW Rs 433 cr (30-Jan-2026) are from the 6,300-unit tender HBL
   lost on price. HBL won later orders (ICF, BLW, PLW, CLW-May) after that letter, so FY27 intake exceeds the Jan view.
   Stock -9.4% on 16-Jan-2026 (notes-10 E/F3).
+
+## Verification round (30-Sep-2026, 01:40-01:50 IST)
+Six verifiers on the top claims. Outcomes applied to the report:
+- FY26 "audited column changed after audit": NARROWED. Profit unchanged (814.44 before NCI both times). The Aug-2026
+  reprint moved associates' share to after-tax (12.01, as AR note 9A); the audited P&L face shows it gross (16.34).
+  Recast as a presentation inconsistency inside the audited accounts. Q3 labour-code reclass was disclosed.
+- Official Kavach spend vs HBL billing: NARROWED. Rs 813.90 cr is Mar-25..Feb-26 and the series lags deliveries;
+  1,538.61 is a customer category; rolling-stock explanation unsupported. Recast in s20.
+- Rs 1,880 cr FY26 Kavach forecast: NARROWED. Miss holds only if net of GST (likely). Unscored in the ratio.
+- CLW cancellation: NARROWED. 1,148 cr is contract value (upper bound); roll-forward fits only if battery and defence
+  orders matched their billing.
+- CMD pay and AGM vote counting: see sources table in the report.
+- 08-Jul-2024 call: second mlx_whisper run (condition-on-previous-text False) worked; scored in s08, labelled.
