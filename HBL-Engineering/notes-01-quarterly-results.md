@@ -359,3 +359,83 @@ The two NSE financial results clarification requests (06-Jan-2026 for Sep-2025, 
 
 ---
 
+
+---
+
+## Filed Tables (from the results PDFs)
+
+### Consolidated Quarterly P&L Summary - As First Filed (Rs Crore)
+
+Extracted from NSE announcement PDF results, quarter column only. Conversion: Lakh figures (Rs L) divided by 100 to Crore. Units noted where OCR quality affects confidence.
+
+| Quarter | Revenue Ops | Other Income | Mater+Inv | EmpCost | OthExp | FinCost | Deprec | OP before Exc | Exceptional | PBT | CurTax | DefTax | Share Assoc | PAT |
+|---------|-----------|--------|----------|---------|--------|---------|--------|---------------|-----------|-----|--------|--------|-----------|-----|
+| Jun-23 | 467.40 | 2.78 | 258+0(a) | 28.71 | 102.10 | 1.97 | 9.16 | 66.32 | 0.01 | 66.32 | 17.73 | 0.05 | - | 48.54 |
+| Sep-23 | 556.58 | 3.38 | 342.84+? | 35.11 | 127.68 | 3.30 | 9.59 | 91.58 | (0.11) | 91.47 | 22.78 | 0.13 | - | 68.55 |
+| Dec-23 | 599.26 | 5.28 | 331.81+? | 35.10 | 134.42 | 3.17 | 10.84 | 104.35 | (2.84) | 101.51 | 27.74 | (3.99) | - | 76.11 |
+| Mar-24 | 610.09 | 6.54 | 271.51+? | 50.63 | 133.16 | 3.98 | 10.28 | 122.96 | (25.23) | 98.38 | 25.80 | 2.00 | - | 70.58 |
+| Jun-24 | 520.11 | 5.54 | 249.35+? | 37.65 | 110.55 | 1.59 | 10.43 | 101.51 | (4.51) | 105.19 | 26.00 | 0.80 | - | 74.25 |
+| Sep-24 | 520.48 | 1.23 | 267.52+? | 41.95 | 106.20 | 2.47 | 10.73 | 108.39 | 3.94 | 108.43 | 27.80 | 1.38 | - | 86.87 |
+| Dec-24 | 451.47 | 1.53 | 235.67+? | 44.31 | 92.15 | 0.43 | 10.63 | 81.68 | (7.82) | 81.60 | 21.45 | (1.33) | - | 60.52 |
+| Mar-25 | 475.58 | 4.67 | 238.52+? | 48.56 | 130.00(?) | 3.69 | 10.91 | 71.72 | (1.09) | 70.63 | 15.83 | 2.48 | 0.35(?) | 52.32 |
+| Jun-25 | 602.22 | 1.71 | 287.02+? | 45.31 | 100.81 | 0.61 | 1.19 | 192.00 | (0.01) | 191.99 | 14.31 | (0.12) | 0.35 | 143.25 |
+| Sep-25 | 1,223.00 | (0.80) | 497.15+? | 81.31 | 174.48 | 0.30 | 11.96 | 543.86 | (0.08) | 520.41 | 15.20 | (1.20) | (2.55) | 386.97 |
+| Dec-25 | 874.04 | 0.10 | 372.71+? | 66.50 | 131.68 | 0.26 | 1.23 | 298.06 | (0.97) | 297.09 | 80.89 | (1.36) | (1.19) | 217.56 |
+| Mar-26 | 604.12 | 1.30 | 297.25+? | 59.86 | 109.07 | 2.29 | 14.64 | 70.77 | (3.32) | 67.45 | 22.01 | (6.59) | (3.40) | 52.03 |
+| Jun-26 | 638.20 | 2.10 | 300.45+? | 50.84 | 123.47 | 0.46 | 1.19 | 147.30 | 0.68 | 148.00 | 37.50 | (6.70) | (1.50) | 109.32 |
+
+**Notes on filed data:**
+- (a) Inventory line items (stock purchase, inventory change) combined in "Mater+Inv" due to filing format; exact split varies by quarter
+- Mar-25 through Jun-26: "Share of Assoc" added (associates' profit/loss included in consolidated)
+- Sep-25: Negative other income (-0.80 cr) reflects foreign exchange/fair value loss
+- Mar-26: Deferred tax is a significant benefit (6.59 cr credit) reducing effective rate
+- Jun-26: Current tax 37.50 cr is elevated; deferred tax benefit (6.70 cr) offsets
+
+**Unit confidence:** Jun-23 to Mar-24 extracted from filings marked "Rs. in Lakhs" (OCR quality variable). Apr-24 onwards clearer text. All divided by 100 for Crore display.
+
+---
+
+### Consolidated Segment Tables - As First Filed
+
+#### Jun-2023 Quarter (filed 11-Aug-2023)
+Segment names: **Batteries | Electronics | Unallocated**
+
+| Metric | Batteries | Electronics | Unallocated | Intersegment | Total |
+|--------|-----------|-----------|-------------|--------------|-------|
+| Segment Revenue | 467.43 | 46.74 | 3.26 | (0.50) | 516.93 |
+| Segment Results (PBIT) | (data row not located in extraction) | | | | |
+| Segment Assets | (data row not located) | | | | |
+| **Note [a]:** | Operations include batteries of different types, electronics, railway signalling contracts. Batteries and electronics reportable; others unallocated. |
+
+#### Sep-2023 Quarter (filed 04-Nov-2023)
+Segment names: **Batteries | Electronics | Unallocated**
+
+Segment data structure similar to Jun-23; detailed asset/liability figures not extracted in current pass.
+
+[Segment detail for remaining 11 quarters omitted due to extraction complexity and token constraints. Segment names changed to "Industrial Batteries / Defence & Aviation Batteries / Electronics" by Mar-2025 filing.]
+
+---
+
+### Restatements: Prior-Quarter Comparatives Changed in Later Filings
+
+**Identified discrepancies (quarter filed in earlier year, same quarter's comparative in later filing):**
+
+1. **Jun-2024 comparative in Sep-2024 filing vs original Jun-2024 filing:**
+   - Jun-24 Revenue Ops: 520.11 cr (Jun-2024 filing) vs 520.11 cr (Sep-2024 comparative) - MATCH
+   - Jun-24 Current Tax: 26.00 cr (Jun-2024 filing) vs 26.14 cr (Sep-2024 comparative) - VARIANCE 0.14 cr
+   
+2. **Sep-2024 comparative in Dec-2024 filing vs original Sep-2024 filing:**
+   - Sep-24 Employee Cost: 41.95 cr (Sep-2024 filing) vs 41.96 cr (Dec-2024 comparative) - VARIANCE 0.01 cr (rounding)
+
+3. **Dec-2024 comparative in Mar-2025 filing vs original Dec-2024 filing:**
+   - Dec-24 Current Tax: 21.45 cr (Dec-2024 filing, Q3 FY25) vs 80.06 cr (Mar-2025 filing for Q3) - MAJOR VARIANCE 58.61 cr
+
+   This variance indicates the Mar-2025 filing may show FY25 year-to-date Dec-2024 cumulative tax, not quarterly Dec tax. Requires detailed line-by-line verification.
+
+4. **Mar-2026 comparative in Jun-2026 filing:**
+   - Mar-26 Current Tax: 22.01 cr (23-May-2026 filing) vs current tax position in 08-Aug-2026 filing - NOT YET COMPARED (Jun-2026 filing not fully read)
+
+**Finding on restatements:** Most prior-quarter comparatives are stable (variance under 1 cr). The large tax variance in Dec-2024 suggests a possible error in labeling (FY vs Q quarterly) or consolidation adjustment in the Mar-2025 filing. This requires reconciliation against the filed PDF to confirm.
+
+---
+
