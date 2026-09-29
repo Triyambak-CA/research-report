@@ -1,0 +1,43 @@
+Market cap Rs 22,406 cr; net cash and treasury Rs 757 cr; operating equity value Rs 21,649 cr
+
+CoE 12.0%, incremental RoIC 25%, terminal growth 5%
+  FY26 reported PAT (Kavach peak)      base Rs   814.9 cr -> implied 10y PAT CAGR  19.8%  FY36 PAT Rs    4,954 cr
+  TTM PAT Q2FY26-Q1FY27                base Rs   780.0 cr -> implied 10y PAT CAGR  20.5%  FY36 PAT Rs    5,052 cr
+  FY25 PAT (pre-peak)                  base Rs   276.9 cr -> implied 10y PAT CAGR  38.2%  FY36 PAT Rs    7,037 cr
+  Q1 FY27 x4                           base Rs   436.6 cr -> implied 10y PAT CAGR  30.4%  FY36 PAT Rs    6,229 cr
+  Normalised (segment build)           base Rs   450.0 cr -> implied 10y PAT CAGR  29.9%  FY36 PAT Rs    6,172 cr
+
+CoE 12.0%, incremental RoIC 40%, terminal growth 5%
+  FY26 reported PAT (Kavach peak)      base Rs   814.9 cr -> implied 10y PAT CAGR  16.4%  FY36 PAT Rs    3,708 cr
+  TTM PAT Q2FY26-Q1FY27                base Rs   780.0 cr -> implied 10y PAT CAGR  17.0%  FY36 PAT Rs    3,763 cr
+  FY25 PAT (pre-peak)                  base Rs   276.9 cr -> implied 10y PAT CAGR  33.0%  FY36 PAT Rs    4,790 cr
+  Q1 FY27 x4                           base Rs   436.6 cr -> implied 10y PAT CAGR  26.0%  FY36 PAT Rs    4,391 cr
+  Normalised (segment build)           base Rs   450.0 cr -> implied 10y PAT CAGR  25.5%  FY36 PAT Rs    4,362 cr
+
+CoE 12.5%, incremental RoIC 25%, terminal growth 5%
+  FY26 reported PAT (Kavach peak)      base Rs   814.9 cr -> implied 10y PAT CAGR  21.6%  FY36 PAT Rs    5,776 cr
+  TTM PAT Q2FY26-Q1FY27                base Rs   780.0 cr -> implied 10y PAT CAGR  22.4%  FY36 PAT Rs    5,894 cr
+  FY25 PAT (pre-peak)                  base Rs   276.9 cr -> implied 10y PAT CAGR  40.6%  FY36 PAT Rs    8,355 cr
+  Q1 FY27 x4                           base Rs   436.6 cr -> implied 10y PAT CAGR  32.6%  FY36 PAT Rs    7,337 cr
+  Normalised (segment build)           base Rs   450.0 cr -> implied 10y PAT CAGR  32.1%  FY36 PAT Rs    7,266 cr
+
+CoE 12.5%, incremental RoIC 40%, terminal growth 5%
+  FY26 reported PAT (Kavach peak)      base Rs   814.9 cr -> implied 10y PAT CAGR  17.8%  FY36 PAT Rs    4,181 cr
+  TTM PAT Q2FY26-Q1FY27                base Rs   780.0 cr -> implied 10y PAT CAGR  18.5%  FY36 PAT Rs    4,244 cr
+  FY25 PAT (pre-peak)                  base Rs   276.9 cr -> implied 10y PAT CAGR  34.7%  FY36 PAT Rs    5,440 cr
+  Q1 FY27 x4                           base Rs   436.6 cr -> implied 10y PAT CAGR  27.5%  FY36 PAT Rs    4,973 cr
+  Normalised (segment build)           base Rs   450.0 cr -> implied 10y PAT CAGR  27.1%  FY36 PAT Rs    4,939 cr
+
+CoE 13.5%, incremental RoIC 25%, terminal growth 5%
+  FY26 reported PAT (Kavach peak)      base Rs   814.9 cr -> implied 10y PAT CAGR  25.5%  FY36 PAT Rs    7,867 cr
+  TTM PAT Q2FY26-Q1FY27                base Rs   780.0 cr -> implied 10y PAT CAGR  26.3%  FY36 PAT Rs    8,042 cr
+  FY25 PAT (pre-peak)                  base Rs   276.9 cr -> implied 10y PAT CAGR  45.7%  FY36 PAT Rs   11,913 cr
+  Q1 FY27 x4                           base Rs   436.6 cr -> implied 10y PAT CAGR  37.1%  FY36 PAT Rs   10,248 cr
+  Normalised (segment build)           base Rs   450.0 cr -> implied 10y PAT CAGR  36.5%  FY36 PAT Rs   10,136 cr
+
+CoE 13.5%, incremental RoIC 40%, terminal growth 5%
+  FY26 reported PAT (Kavach peak)      base Rs   814.9 cr -> implied 10y PAT CAGR  20.5%  FY36 PAT Rs    5,267 cr
+  TTM PAT Q2FY26-Q1FY27                base Rs   780.0 cr -> implied 10y PAT CAGR  21.2%  FY36 PAT Rs    5,349 cr
+  FY25 PAT (pre-peak)                  base Rs   276.9 cr -> implied 10y PAT CAGR  38.0%  FY36 PAT Rs    6,953 cr
+  Q1 FY27 x4                           base Rs   436.6 cr -> implied 10y PAT CAGR  30.6%  FY36 PAT Rs    6,318 cr
+  Normalised (segment build)           base Rs   450.0 cr -> implied 10y PAT CAGR  30.1%  FY36 PAT Rs    6,272 cr
