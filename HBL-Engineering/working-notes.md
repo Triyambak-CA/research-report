@@ -70,3 +70,20 @@ CIN L40109TG1986PLC006745. Price basis: Rs 808 at 29-Sep-2026 close (screener ex
   Q1 FY27 and applied for strike-off under CCFS-2026; new associate Xalten Systems Pvt Ltd (Rs 6.37 cr for 9.84% fully
   diluted; CFO/ED M S S Srinath is nominee director); Green Maritime Propulsion incorporated 11-Jun-2026, HBL 60%, not
   yet subscribed.
+- DEFENCE CAPITAL EMPLOYED answered from AR FY26 MD&A p.8-9: "HBL has invested about Rs 200 crores for R&D and a
+  modern production plant" for defence lithium-ion cells (technology licensed from NSTL of DRDO, i.e. Naval Science
+  & Technological Laboratory; NOT the associate Naval Systems & Technologies Pvt Ltd, also abbreviated NSTL), plus
+  "a licensed facility for the manufacturing of fuzes has been established in Telangana". Grenade fuzes MHA-approved,
+  sales started; Army approval "expected during 2027"; 155mm artillery fuze approval "during 2027". Torpedo battery
+  development written off Rs 26.49 cr (FY26 exceptional). Underwater/sonar sales "may occur from FY 28".
+- SEGMENT ASSET BASES DIFFER: AR FY25 (audited, p.269, lakh) FY25 segment assets: defence 297.54 cr, unallocated
+  583.74. The quarterly filings' "31-Mar-2025 audited" column (e.g. 08-Nov-2025) shows defence 356.12, unallocated
+  525.16 (Rs 58.6 cr moved). Screener's capital-employed series follows the quarterly filings. Same year, two
+  segment allocations, both labelled audited.
+- MD&A: Kavach ~50% of FY26 sales and "about the same even in FY 27, although HBL expects some growth in sales over
+  FY 26"; "sales will continue to be good in FY 27 and FY 28 ... both sales and PBT could decline from FY 29".
+  "top two (in market share) are profitable. The third survives." Drivetrain: last AR said sales from Oct-2026;
+  magnet-less redesign, nine-month delay; approval for 55 T trucks by Mar-2027, pilot sales Jul-2027; 40,000 km of
+  internal road trials. Marine sales limited until end Sep-2027. JV already ordered batteries for two electric tugs.
+  Siemens Germany chose HBL as one of two LIB suppliers. PLT data-centre sales +100%, PLT capacity being doubled.
+  NiCad "second largest supplier globally"; NiCad exports ~+15%. No Li-ion telecom packs (margins too low).
