@@ -142,8 +142,20 @@ a referer to everything; a plain `curl` is refused.
 UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 ```
 
-**bseindia.com works, nseindia.com returns 403.** Use BSE. The company's own site
-works too.
+**BSE filing PDFs download with `curl`; the BSE and NSE listing APIs do not.**
+Both `https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=<file>.pdf` and
+`https://www.bseindia.com/xml-data/corpfiling/AttachHis/<file>.pdf` work with the UA
+and a BSE referer. (In zsh, `set -- $x` does not split words: loop over pairs in
+`bash` or the file name comes out empty and BSE returns an HTML page.) BSE's
+announcements API is Akamai-blocked, and its announcements page shows only a
+three-month window in automation. NSE's `nsearchives.nseindia.com` PDFs download with
+plain `curl`; NSE's JSON APIs (`/api/corporate-announcements?index=equities&symbol=X&from_date=DD-MM-YYYY&to_date=...`,
+`/api/corporate-pledgedata`, `/api/corporate-sast-reg29`) answer an in-page `fetch`
+from a HEADED `chrome-devtools-axi` session (`CHROME_DEVTOOLS_AXI_HEADED=1`, its own
+browser, not the owner's) opened on nseindia.com; headless is refused. **The
+company's own investor site** often carries what the exchanges hide: quarterly
+shareholding patterns, monitoring agency reports, half-year RPT filings and
+subsidiary accounts (Jyoti CNC, Sep-2026).
 
 **The fastest route to a company's filing links is screener's public page**, which
 needs no login and lists annual reports, concall transcripts, presentations and
@@ -180,7 +192,9 @@ pdftoppm -r 150 -png -f 1 -l 1 filing.pdf out
 
 Bulk and block deals are on a **different BSE feed** from corporate
 announcements. An announcements query that returns none is not evidence that
-none occurred.
+none occurred. **A late manual Reg 31 encumbrance filing is not a breach** when
+the pledge was made through a depository: since Apr-2022 Reg 31(1)-(2) do not
+apply to those, and the depository system discloses them.
 
 ## Fetching offer documents from SEBI
 
@@ -217,3 +231,10 @@ Extract with `pdftotext -layout`. Newspaper-advertisement addenda are usually
 image-only and need `pdftoppm -r 170 -png` plus a visual read. Offer documents
 run 550 to 700 pages; build a printed-page index once (printed page N is
 usually form-feed page N+5) and address the document by its own page numbers.
+
+## Maintaining this file
+
+Keep this file for knowledge useful to almost every future agent session in this project.
+Do not repeat what the codebase already shows; point to the authoritative file or command instead.
+Prefer rewriting or pruning existing entries over appending new ones.
+When updating this file, preserve this bar for all agents and keep entries concise.
