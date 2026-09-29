@@ -67,3 +67,18 @@ So the whole Q1 FY27 profit fall is the subsidiaries (Huron under French investi
 Apr-2026); standalone PAT rose 21%. Order book 30-Jun-2026 Rs 4,848 cr (opening 4,732 + intake 601
 - executed 485). Deck now claims "1,40,000+ machines installed across the globe" (prospectus:
 "30,000+ CNC machines supplied since April 2004") - basis differs, test in notes-09.
+
+## Customer concentration (annual report financial-risk notes, primary)
+| Rs cr | FY23 | FY24 | FY25 | FY26 |
+|---|---|---|---|---|
+| Consolidated: top customer | 89.26 | 335.73 | 326.07 | 470.66 |
+| Consolidated: top 5 | 149.95 | 507.75 | 883.35 | 683.97 |
+| Top customer % of consolidated revenue | 9.6% | 25.1% | 17.9% | 22.5% |
+| Standalone: top customer | 89.26 | 335.73 | 362.07 | n/a |
+| Standalone: top 5 | 143.41 | 467.56 | 783.41 | n/a |
+Sources: FY24 AR (Rs mn: 3,357.27 / 892.64; 5,077.50 / 1,499.53 consolidated), FY25 AR lines 6343
+(standalone) and 8672 (consolidated), FY26 AR line 8667 (consolidated). FY25 standalone top
+customer (362.07) EXCEEDS the consolidated one (326.07): possible only if the standalone top
+customer is an intra-group entity (Huron/Jyoti SAS) eliminated on consolidation - INFERENCE.
+The consolidated top customer is not named in any AR, transcript or rating rationale read. The FY26
+top customer alone (470.66) is 58% of FY26 A&D revenue (39% x 2,093 = 816, derived).
