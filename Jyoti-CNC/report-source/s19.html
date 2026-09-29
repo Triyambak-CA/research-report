@@ -2,5 +2,54 @@
   <div class="ghost">19</div>
   <div class="stag">Section 19</div>
   <h2>Data-aggregator insights cross-check</h2>
-  <p class="lead">Draft in progress.</p>
+  <p class="lead">Screener's premium Insights panel, pulled from the owner's logged-in session on 29-Sep-2026, machine-extracts operating series the company has never published in one place. Laid against the filings, the order-book series is exact, the volume series mixes four sources and gets two years wrong, and several headline screen metrics would mislead anyone reading them without the filings.</p>
+  <div class="flag f-amb">
+    <span class="fl">Source status</span>
+    <p>Everything labelled "screener" in this section is aggregator output, "Extracted by Screener AI", and is <b>not</b> a primary source. Each figure was tested against the document screener cites or the nearest primary filing. Where they disagree, the filing wins and the disagreement is recorded as a finding.</p>
+  </div>
+
+  <h3>The operating series</h3>
+  <div class="tw"><div class="ts"><table>
+    <thead><tr><th>Series (screener)</th><th>What the filings say</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Order book FY24 3,438.30 / FY25 4,346.00 / FY26 4,732.00; quarterly Sep-2023 to Mar-2026</td><td>Identical to the deck waterfalls in every quarter</td><td class="pos">Correct</td></tr>
+      <tr><td>Order intake FY25 2,611.60 / FY26 2,364.00; quarterly 276.5 ... 703</td><td>Identical to deck bridges and Infomerics</td><td class="pos">Correct</td></tr>
+      <tr class="hl"><td>Machines sold FY21 1,578 / FY22 2,556 / FY23 3,103</td><td>Prospectus certified table: group totals (India + France); India alone 1,540 / 2,515 / 3,053</td><td class="pos">Correct on a group basis; the "disagreement" in the brief is a basis difference</td></tr>
+      <tr class="hl"><td>Machines sold FY24 3,495</td><td>FY24 annual report: "sold ... 3,063", production 3,106; 3,063 = prospectus H1 1,275 + Q3 797 + Q4 991 exactly. 3,495 is one of two figures (with 3,450 "produced") given orally on one call and cannot be rebuilt from any quarterly figure. Infomerics says 3,600</td><td class="neg">Wrong: 3,063 is the filed figure</td></tr>
+      <tr class="hl"><td>Machines sold FY25 3,517</td><td>Company: 4,072 (four quarterly call figures sum to it; the annual report calls it "manufactured"). 3,517 is Infomerics' figure, which divides into standalone revenue at the realisation Infomerics prints</td><td class="neg">Carries the rating agency's figure, not the company's; FY24-FY25 growth shows +1% instead of +33%</td></tr>
+      <tr><td>Machines sold FY26 5,550</td><td>Calls: 5,550 "sold / executed / built", which ties to executed order value; annual report: 5,369 "manufactured" in Rajkot</td><td class="wr">Right for group deliveries; 5,369 for Rajkot output</td></tr>
+      <tr><td>Installed capacity 4,521 (FY21-24) / 6,121 (FY25) / 6,240 (FY26)</td><td>Filings: 4,400 India + 121 France; 6,000 India (FY25, FY26); Huron doubled to 240 in FY26. No filing prints 4,521, 6,121 or 6,240</td><td class="wr">Screener's own addition, not a filing; it also contradicts the May-2026 claim that 6,000 covers "India and Huron together"</td></tr>
+      <tr><td>Capacity utilisation FY21 34.9 / FY22 56.5 / FY23 68.6 / FY24 70.6</td><td>FY21-23 are units SOLD over capacity (prospectus); FY24 is units PRODUCED over capacity (annual report); FY25-26 annual reports use "manufactured"</td><td class="wr">Correct figures, silently changing basis</td></tr>
+      <tr><td>A&amp;D share FY24 40 / FY25 45 / FY26 39</td><td>FY25 45% (call, Infomerics); FY26 39% (29-May-2026 call); FY24 about 40% (H1 FY24 prospectus 37.2%)</td><td class="pos">Consistent</td></tr>
+      <tr><td>Cumulative machines installed 130,000 to 135,000</td><td>Prospectus: "30,000+ CNC machines supplied since April 2004"; Q1 FY27 deck: "1,40,000+ machines installed across the globe"</td><td class="wr">A marketing number that has grown four and a half times; the larger figure must include Huron's history and pre-2004 machines. Not used in this report</td></tr>
+      <tr><td>Sales and service centres 29 in 12 states</td><td>Deck: 29 in 12 states; FY26 annual report: 27 branches</td><td class="wr">Minor inconsistency between company documents</td></tr>
+    </tbody>
+  </table></div></div>
+
+  <h3>The financial tables and derived metrics</h3>
+  <div class="tw"><div class="ts"><table>
+    <thead><tr><th>Screener metric</th><th>Filing or reality</th><th>How a screen would be misled</th></tr></thead>
+    <tbody>
+      <tr><td>Revenue, EBITDA, PAT, CFO FY24-FY26; borrowings</td><td>Agree with the audited statements (borrowings include &#8377;3.04 cr of leases)</td><td>-</td></tr>
+      <tr class="hl"><td>Other income FY25 "5"</td><td>&#8377;14.48 cr (FY26 annual report Note 25 comparative)</td><td class="neg">Screener wrong; FY26's jump to &#8377;60 cr looks larger than it was</td></tr>
+      <tr><td>Net profit FY23 "-5"</td><td>&#8377;15.1 cr including the &#8377;30.45 cr Huron creditor waiver (prospectus restated)</td><td class="wr">Basis unclear; the filed figure is a profit</td></tr>
+      <tr class="hl"><td>Debtor days 104</td><td>211 including &#8377;613 cr unbilled revenue</td><td class="neg">Halves the true figure; the unbilled balance is the single most important working-capital item</td></tr>
+      <tr><td>Inventory days 453</td><td>On cost of materials; 203 on revenue</td><td class="wr">Correct on its basis, but not comparable with the company's own "days"</td></tr>
+      <tr class="hl"><td>Pledged percentage 20.9%</td><td>That is the 30-Jun-2026 quarter-end. After nine Jul-Sep 2026 filings: 1,52,40,000 shares, 10.7% of the promoter group's holding, 6.70% of the company</td><td class="neg">Stale by half</td></tr>
+      <tr><td>EV/EBITDA 42.9</td><td>47.0x on the company's EBITDA definition (which excludes other income); screener's EBITDA evidently includes it</td><td class="wr">Understates the multiple on operating profit</td></tr>
+      <tr><td>PEG 0.48</td><td>TTM profit growth is -4%; FY26 +6.3%</td><td class="neg">A PEG below 1 on a company whose profit fell year on year signals a multi-year historical growth input, not the current trend</td></tr>
+      <tr><td>Industry P/E 34.3</td><td>Screener's "industry" is EMS, security products and automation, not machine tools (Section 3)</td><td class="neg">Meaningless comparison</td></tr>
+      <tr><td>Intrinsic value 364</td><td>A formula on book value and earnings; ignores working-capital quality entirely</td><td class="wr">Not used</td></tr>
+      <tr><td>Free cash flow 3 years -847</td><td>-&#8377;846.6 cr (audited)</td><td class="pos">Correct, and the most useful number on the page</td></tr>
+      <tr><td>Default company page</td><td>Screener's plain URL shows STANDALONE results for Jyoti: revenue &#8377;1,949 cr, PAT &#8377;391 cr, P/E 59x, hiding the French losses</td><td class="neg">Any comparison built on the default page overstates FY26 profit by &#8377;55 cr</td></tr>
+      <tr><td>"10% India market share" (About text)</td><td>A company claim from the paid industry chapter; fits a share of Indian production, not consumption (Section 1)</td><td class="wr">Unverified</td></tr>
+    </tbody>
+  </table></div></div>
+
+  <h3>Restatements found by laying the series side by side</h3>
+  <p>No silent restatement of revenue or profit was found: every quarterly figure used in later decks as a comparative matches the figure first reported, and four quarters sum to the audited year in FY25 and FY26. The drift is in <b>operating metrics</b>: the basis of "utilisation" changed three times without notice; realisation per machine moved from a revenue basis to an executed-order basis around Feb-2026, which lowers it by 5-6%; the unit wording moved between "sold", "delivered", "produced", "manufactured", "executed" and "built"; and the order book's stated life moved between 18 months and 2.5 years. None of these is in screener's panel, because none is labelled as a change in the source documents.</p>
+
+  <h3>Other data captured</h3>
+  <p>Index membership: Nifty 500, MidSmallcap 400, Smallcap 250 and Smallcap 100; not in F&amp;O (NSE files, 29-Sep-2026). Twelve-month average daily volume 11.5 lakh shares, average delivery 42.6% (screener price series). Market capitalisation &#8377;24,136 cr at &#8377;1,061 (29-Sep-2026 12:17 IST, screener). Shares outstanding 22,74,23,096 (shareholding pattern).</p>
+  <p><b>Named gap.</b> Screener's AI chat panel was not used (no prepaid credits). No premium-only figure material to this report was found missing: every Insights series shown on the panel was captured and tested.</p>
 </section>
