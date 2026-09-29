@@ -232,6 +232,9 @@
   .uu ul{margin:6px 0 0 17px;font-size:12.5px;color:var(--text)}
   .uu li{margin:6px 0;line-height:1.5}
   .uu li::marker{color:var(--amber)}
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -437,14 +440,14 @@
       <h3>Indian listed comparables</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Company</th><th>What it does</th><th>Balance sheet / status</th><th>Read-across</th></tr></thead>
+          <thead><tr><th>Company</th><th class="tx">What it does</th><th class="tx">Balance sheet / status</th><th class="tx">Read-across</th></tr></thead>
           <tbody>
-            <tr><td>Aban Offshore</td><td>Offshore jack-up/drillship contractor - once the largest Indian private driller</td><td>Collapsed under ~INR 15,000+ Cr debt taken on at the 2013-14 peak; years of defaults, insolvency proceedings, near-zero equity</td><td>The canonical warning: same business, killed by leverage into a downcycle</td></tr>
-            <tr><td>Shiv-Vani Oil &amp; Gas</td><td>Large onshore drilling / OFS contractor</td><td>Defunct - debt-driven collapse, delisted / insolvency</td><td>Second data point that this sector's cause of death is the balance sheet</td></tr>
-            <tr><td>Deep Industries</td><td>Onshore gas dehydration, workover/drilling rigs, OFS</td><td>Low-debt, profitable; different (onshore/gas-services) niche</td><td>Healthier peer but not a jack-up competitor</td></tr>
-            <tr><td>Dolphin Offshore</td><td>Offshore installation / diving / OFS services</td><td>Long-troubled, sub-scale</td><td>Not a rig-charter competitor</td></tr>
-            <tr><td>Asian Energy (Asian Oilfield)</td><td>Seismic / OFS services</td><td>Sub-scale, services-only</td><td>Adjacent, not competing for rig tenders</td></tr>
-            <tr><td>Selan Exploration</td><td>Small onshore E&amp;P (owns fields)</td><td>Debt-free, small</td><td>Different model (owns barrels, not rigs)</td></tr>
+            <tr><td>Aban Offshore</td><td class="tx">Offshore jack-up/drillship contractor - once the largest Indian private driller</td><td class="tx">Collapsed under ~INR 15,000+ Cr debt taken on at the 2013-14 peak; years of defaults, insolvency proceedings, near-zero equity</td><td class="tx">The canonical warning: same business, killed by leverage into a downcycle</td></tr>
+            <tr><td>Shiv-Vani Oil &amp; Gas</td><td class="tx">Large onshore drilling / OFS contractor</td><td class="tx">Defunct - debt-driven collapse, delisted / insolvency</td><td class="tx">Second data point that this sector's cause of death is the balance sheet</td></tr>
+            <tr><td>Deep Industries</td><td class="tx">Onshore gas dehydration, workover/drilling rigs, OFS</td><td class="tx">Low-debt, profitable; different (onshore/gas-services) niche</td><td class="tx">Healthier peer but not a jack-up competitor</td></tr>
+            <tr><td>Dolphin Offshore</td><td class="tx">Offshore installation / diving / OFS services</td><td class="tx">Long-troubled, sub-scale</td><td class="tx">Not a rig-charter competitor</td></tr>
+            <tr><td>Asian Energy (Asian Oilfield)</td><td class="tx">Seismic / OFS services</td><td class="tx">Sub-scale, services-only</td><td class="tx">Adjacent, not competing for rig tenders</td></tr>
+            <tr><td>Selan Exploration</td><td class="tx">Small onshore E&amp;P (owns fields)</td><td class="tx tn">Debt-free, small</td><td class="tx">Different model (owns barrels, not rigs)</td></tr>
           </tbody>
           <caption>Peer financial multiples were not individually verified in this research pass (flagged); the qualitative positioning is the point. No listed Indian peer today combines Jindal's jack-up fleet, ONGC incumbency and near-zero debt.</caption>
         </table>
@@ -607,13 +610,13 @@
 
       <div class="tw">
         <table>
-          <thead><tr><th>Commitment / signal</th><th>Outcome</th><th>Status</th></tr></thead>
+          <thead><tr><th>Commitment / signal</th><th class="tx">Outcome</th><th class="tx">Status</th></tr></thead>
           <tbody>
-            <tr><td>Deploy Jindal Supreme with ONGC (re-contracted)</td><td>Deployed Oct-2024 at ~USD 88,859/day</td><td><span class="chip hit">Delivered</span></td></tr>
-            <tr><td>Secure Jindal Explorer ONGC charter</td><td>3-year charter from Nov-2025 (at a low USD 35,139/day)</td><td><span class="chip part">Delivered, low rate</span></td></tr>
-            <tr><td>Acquire Jindal Pioneer from the Singapore JV</td><td>Completed Mar-2025 (~USD 75 mn); deployed Mexico</td><td><span class="chip hit">Delivered</span></td></tr>
-            <tr><td>Reduce debt / strengthen balance sheet</td><td>Borrowings 294 -&gt; 164 -&gt; 93 Cr (FY24-26)</td><td><span class="chip hit">Delivered</span></td></tr>
-            <tr><td>"Expects to order new rigs" once contracts operationalise</td><td>Directional intent; no firm order placed</td><td><span class="chip part">Pending</span></td></tr>
+            <tr><td>Deploy Jindal Supreme with ONGC (re-contracted)</td><td class="tx">Deployed Oct-2024 at ~USD 88,859/day</td><td class="tx tn"><span class="chip hit">Delivered</span></td></tr>
+            <tr><td>Secure Jindal Explorer ONGC charter</td><td class="tx">3-year charter from Nov-2025 (at a low USD 35,139/day)</td><td class="tx"><span class="chip part">Delivered, low rate</span></td></tr>
+            <tr><td>Acquire Jindal Pioneer from the Singapore JV</td><td class="tx">Completed Mar-2025 (~USD 75 mn); deployed Mexico</td><td class="tx tn"><span class="chip hit">Delivered</span></td></tr>
+            <tr><td>Reduce debt / strengthen balance sheet</td><td class="tx">Borrowings 294 -&gt; 164 -&gt; 93 Cr (FY24-26)</td><td class="tx tn"><span class="chip hit">Delivered</span></td></tr>
+            <tr><td>"Expects to order new rigs" once contracts operationalise</td><td class="tx">Directional intent; no firm order placed</td><td class="tx tn"><span class="chip part">Pending</span></td></tr>
           </tbody>
           <caption>A full eight-quarter concall-transcript scorecard (with credibility ratio and language-drift forensics) was not completed in this research pass - transcripts for Feb-2026, Nov-2025, Aug-2025, Jun-2025 and earlier are available and this table should be treated as indicative, not exhaustive.</caption>
         </table>
@@ -686,11 +689,11 @@
       <h3>Quantified sensitivity (order-of-magnitude)</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Sensitivity</th><th>Driver</th><th>Approx. earnings impact</th></tr></thead>
+          <thead><tr><th>Sensitivity</th><th class="tx">Driver</th><th class="tx">Approx. earnings impact</th></tr></thead>
           <tbody>
-            <tr><td>Day-rate, one rig</td><td>+USD 5,000/day (~350 days, 95.5 INR/USD)</td><td>~INR 16-17 Cr revenue, most drops to EBIT</td></tr>
-            <tr><td>Day-rate, whole fleet</td><td>+USD 5,000/day across ~5 rigs</td><td>~INR 84 Cr/year - huge vs ~INR 349 Cr EBITDA</td></tr>
-            <tr><td>Rupee</td><td>Re 1 move in USD/INR on ~USD 90-100 mn revenue</td><td>~INR 9-10 Cr revenue, partly offset by USD costs</td></tr>
+            <tr><td>Day-rate, one rig</td><td class="tx">+USD 5,000/day (~350 days, 95.5 INR/USD)</td><td class="tx">~INR 16-17 Cr revenue, most drops to EBIT</td></tr>
+            <tr><td>Day-rate, whole fleet</td><td class="tx">+USD 5,000/day across ~5 rigs</td><td class="tx">~INR 84 Cr/year - huge vs ~INR 349 Cr EBITDA</td></tr>
+            <tr><td>Rupee</td><td class="tx">Re 1 move in USD/INR on ~USD 90-100 mn revenue</td><td class="tx">~INR 9-10 Cr revenue, partly offset by USD costs</td></tr>
           </tbody>
           <caption>Analyst estimates (order-of-magnitude). The takeaway: earnings are highly geared to the re-contracting day-rate in BOTH directions. Explorer's roll to USD 35k is the downside in action; a recovery of Star/Discovery-I toward the ~USD 80k "operating" tier is the upside optionality.</caption>
         </table>
@@ -773,13 +776,13 @@
       <h3>Where it trades</h3>
       <div class="tw">
         <table>
-          <thead><tr><th>Multiple (FY26)</th><th>Value</th><th>Read</th></tr></thead>
+          <thead><tr><th>Multiple (FY26)</th><th>Value</th><th class="tx">Read</th></tr></thead>
           <tbody>
-            <tr><td>P/E (consolidated)</td><td>~8x</td><td>Flattered by other income; true operating P/E ~11-13x</td></tr>
-            <tr><td>EV/EBITDA</td><td>~4.5-5x</td><td>EV ~INR 1,620 Cr (mcap 1,748 less ~130 net cash) / EBITDA 349</td></tr>
-            <tr><td>P/B (consolidated)</td><td>~0.96x</td><td>CMP 603 vs BV 628 - below book</td></tr>
-            <tr><td>P/B (standalone)</td><td>~1.19x</td><td>vs standalone BV 507</td></tr>
-            <tr><td>Dividend yield</td><td>~0.17%</td><td>Token - no income support</td></tr>
+            <tr><td>P/E (consolidated)</td><td>~8x</td><td class="tx">Flattered by other income; true operating P/E ~11-13x</td></tr>
+            <tr><td>EV/EBITDA</td><td>~4.5-5x</td><td class="tx">EV ~INR 1,620 Cr (mcap 1,748 less ~130 net cash) / EBITDA 349</td></tr>
+            <tr><td>P/B (consolidated)</td><td>~0.96x</td><td class="tx">CMP 603 vs BV 628 - below book</td></tr>
+            <tr><td>P/B (standalone)</td><td>~1.19x</td><td class="tx">vs standalone BV 507</td></tr>
+            <tr><td>Dividend yield</td><td>~0.17%</td><td class="tx">Token - no income support</td></tr>
           </tbody>
           <caption>An EV/EBITDA of ~4.5-5x on peak-cycle EBITDA is a trough-type multiple - the market is not extrapolating the 35% margin. Below-book with net cash + an investment portfolio is the genuine downside cushion.</caption>
         </table>

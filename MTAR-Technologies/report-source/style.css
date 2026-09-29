@@ -292,3 +292,7 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   .hero{padding:34px 0 20px}
   .trk-ticks{font-size:8.5px}
 }
+
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}

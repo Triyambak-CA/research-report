@@ -498,6 +498,9 @@
   @media(max-width:760px){
     html[data-theme="glass"] .vstage:not(:last-child)::after{background:none}
   }
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}
 </style>
 <script>
   (function(){
@@ -779,15 +782,15 @@
       <div class="tw">
         <table>
           <caption>Peer snapshot, latest reported financial year (mostly FY26 ended Mar-2026). SOUTHWEST figures consolidated. Multiples as at 28-Aug-2026. Overlap column states how comparable the business actually is.</caption>
-          <thead><tr><th>Company</th><th>Revenue (Cr)</th><th>EBITDA %</th><th>ROCE %</th><th>D/E</th><th>Mkt cap (Cr)</th><th>P/E (x)</th><th>Overlap</th></tr></thead>
+          <thead><tr><th>Company</th><th>Revenue (Cr)</th><th>EBITDA %</th><th>ROCE %</th><th>D/E</th><th>Mkt cap (Cr)</th><th>P/E (x)</th><th class="tx">Overlap</th></tr></thead>
           <tbody>
-            <tr><td><strong>South West Pinnacle</strong></td><td>243</td><td>24.0</td><td>20.0</td><td>0.39</td><td>682</td><td>17.1</td><td>Base case</td></tr>
-            <tr><td>Asian Energy Services</td><td>791</td><td>12.5</td><td>16.5</td><td>0.32</td><td>2,342</td><td>36.2</td><td>Closest - mineral segment Rs 158 Cr</td></tr>
-            <tr><td>Deep Industries</td><td>891</td><td>44.0</td><td>16.5</td><td>0.10</td><td>3,072+</td><td>10.4</td><td>Gas compression, adjacent</td></tr>
-            <tr><td>Jindal Drilling</td><td>see note</td><td>~35</td><td>13.7</td><td>~0.05</td><td>~1,830</td><td>9.3</td><td>Offshore oil rigs, low</td></tr>
-            <tr><td>Ashapura Minechem</td><td>5,237</td><td>12.9</td><td>20.7</td><td>0.88</td><td>5,565</td><td>13.5</td><td>Miner, scale reference</td></tr>
-            <tr><td>GMDC</td><td>2,653</td><td>16.0</td><td>10.8</td><td>0.04</td><td>18,046</td><td>31.6</td><td>State miner, reference</td></tr>
-            <tr><td>MECL (unlisted CPSE)</td><td>406 (FY25)</td><td>30.7 gross</td><td>n/a</td><td>n/a</td><td>unlisted</td><td>n/a</td><td><strong>Direct - same activity</strong></td></tr>
+            <tr><td><strong>South West Pinnacle</strong></td><td>243</td><td>24.0</td><td>20.0</td><td>0.39</td><td>682</td><td>17.1</td><td class="tx tn">Base case</td></tr>
+            <tr><td>Asian Energy Services</td><td>791</td><td>12.5</td><td>16.5</td><td>0.32</td><td>2,342</td><td>36.2</td><td class="tx">Closest - mineral segment Rs 158 Cr</td></tr>
+            <tr><td>Deep Industries</td><td>891</td><td>44.0</td><td>16.5</td><td>0.10</td><td>3,072+</td><td>10.4</td><td class="tx">Gas compression, adjacent</td></tr>
+            <tr><td>Jindal Drilling</td><td>see note</td><td>~35</td><td>13.7</td><td>~0.05</td><td>~1,830</td><td>9.3</td><td class="tx">Offshore oil rigs, low</td></tr>
+            <tr><td>Ashapura Minechem</td><td>5,237</td><td>12.9</td><td>20.7</td><td>0.88</td><td>5,565</td><td>13.5</td><td class="tx">Miner, scale reference</td></tr>
+            <tr><td>GMDC</td><td>2,653</td><td>16.0</td><td>10.8</td><td>0.04</td><td>18,046</td><td>31.6</td><td class="tx">State miner, reference</td></tr>
+            <tr><td>MECL (unlisted CPSE)</td><td>406 (FY25)</td><td>30.7 gross</td><td>n/a</td><td>n/a</td><td>unlisted</td><td>n/a</td><td class="tx"><strong>Direct - same activity</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -1100,26 +1103,26 @@
       <div class="tw">
         <table>
           <caption>Quantifiable claims and outcomes. [D] investor deck, [T] earnings-call transcript, [PR] press release, [CR] CRISIL rating rationale.</caption>
-          <thead><tr><th>Claimed</th><th>The claim</th><th>What happened</th><th>Verdict</th></tr></thead>
+          <thead><tr><th>Claimed</th><th class="tx">The claim</th><th class="tx">What happened</th><th class="tx">Verdict</th></tr></thead>
           <tbody>
-            <tr><td>19-Apr-2024 [D]</td><td>Core exploration growth about +15% near to medium term</td><td>FY21 to FY26 revenue CAGR 18.5%; FY24 to FY26 CAGR 35%</td><td><span class="chip over">Overachieved</span></td></tr>
-            <tr><td>19-Apr-2024 [D]</td><td>Exploration EBITDA margin band of 20-22%</td><td>FY25 18.9%, FY26 24.0%</td><td><span class="chip hit">Hit (FY26)</span></td></tr>
-            <tr><td>30-Oct-2025 [T]</td><td>FY26 revenue growth of 15-20%</td><td>FY26 came in at +35%. Issued seven months into the year with H1 already +81%</td><td><span class="chip over">Overachieved</span></td></tr>
-            <tr><td>30-Oct-2025 [T]</td><td>H2 FY26 will be stronger than H1</td><td>H1 Rs 102.66 cr, H2 Rs 140.37 cr, +37%</td><td><span class="chip hit">Hit</span></td></tr>
-            <tr><td>06-May-2026 [T]</td><td>"Continuity in the growth across all quarters... all-around growth"</td><td>Q1 FY27 revenue fell 20.6% against Q4 FY26; management reverted to the seasonality explanation one quarter later</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td>03-Nov-2023 [PR]</td><td>"Present order book of over INR 300 crores"</td><td>The company's own later deck puts the April-2023 order book at Rs 222 cr and 31-Mar-2023 at Rs 260.7 cr</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td>01-Jan-2025 [PR]</td><td>Contract value being worked on "has gone up to Rs 495 crores"</td><td>Order book at 31-Mar-2025 published as Rs 328.7 cr</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td>09-Mar-2026 [PR]</td><td>"The order book now stands at INR 700 crores"</td><td>Order book at 31-Mar-2026, published three weeks later: <strong>Rs 581.2 cr</strong></td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td>19-Apr-2024 [D]</td><td>Coal production to start <strong>FY2026-27</strong></td><td>Now FY2028-29 per management; CRISIL says fiscal 2029</td><td><span class="chip miss">Miss, 2 years</span></td></tr>
-            <tr><td>19-Apr-2024 [D]</td><td>Coal block capex about <strong>Rs 240 cr all-in to production</strong></td><td>Rs 400 cr total, with Rs 200-225 cr in Phase I alone</td><td><span class="chip miss">Miss, +67%</span></td></tr>
-            <tr><td>19-Apr-2024 [D]</td><td>Coal block revenue of Rs 700-800 cr across FY27-FY29</td><td>Zero. Production now starts FY2028-29 and the mining plan is not written</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td>19-Apr-2024 [D]</td><td>"Mine development activities started"</td><td>Twenty-seven months later the geological report is still "under preparation"</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td>30-Oct-2025 [T]</td><td>Five rigs arriving within three months</td><td>Fleet went 40 to 43 over nine months</td><td><span class="chip part">Partial</span></td></tr>
-            <tr><td>30-Oct-2025 [T] CFO</td><td>Cash conversion cycle "average 45 to 90 days"; "no bad debts in 18 years"</td><td>Audited FY26 debtor days 175. CRISIL: receivables above 150 days for three years</td><td><span class="chip miss">Miss, 2-4x</span></td></tr>
-            <tr><td>28-Feb-2026 [PR]</td><td>Hindustan Zinc mobilisation "within 45 days"</td><td>Started around early June - roughly seven weeks late</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td>19-Dec-2024 [PR]</td><td>Oil India seismic tomography, Rs 60 cr over 20 months</td><td>About Rs 23.8 cr unexecuted at month 19; an extension is being sought</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td>19-Apr-2024 [D]</td><td>Oman JV "assured yearly profit of Rs 2-3 crores"</td><td>Rs 1.5 cr in FY26</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td>06-May-2026 [T]</td><td>Underground coal gasification to deliver "phenomenal results... this financial year"</td><td>Same call: "We don't have anything on UCG right now". Still only "in talks" in July</td><td><span class="chip miss">Miss</span></td></tr>
+            <tr><td>19-Apr-2024 [D]</td><td class="tx">Core exploration growth about +15% near to medium term</td><td class="tx">FY21 to FY26 revenue CAGR 18.5%; FY24 to FY26 CAGR 35%</td><td class="tx tn"><span class="chip over">Overachieved</span></td></tr>
+            <tr><td>19-Apr-2024 [D]</td><td class="tx">Exploration EBITDA margin band of 20-22%</td><td class="tx">FY25 18.9%, FY26 24.0%</td><td class="tx tn"><span class="chip hit">Hit (FY26)</span></td></tr>
+            <tr><td>30-Oct-2025 [T]</td><td class="tx">FY26 revenue growth of 15-20%</td><td class="tx">FY26 came in at +35%. Issued seven months into the year with H1 already +81%</td><td class="tx tn"><span class="chip over">Overachieved</span></td></tr>
+            <tr><td>30-Oct-2025 [T]</td><td class="tx">H2 FY26 will be stronger than H1</td><td class="tx">H1 Rs 102.66 cr, H2 Rs 140.37 cr, +37%</td><td class="tx tn"><span class="chip hit">Hit</span></td></tr>
+            <tr><td>06-May-2026 [T]</td><td class="tx">"Continuity in the growth across all quarters... all-around growth"</td><td class="tx">Q1 FY27 revenue fell 20.6% against Q4 FY26; management reverted to the seasonality explanation one quarter later</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td>03-Nov-2023 [PR]</td><td class="tx">"Present order book of over INR 300 crores"</td><td class="tx">The company's own later deck puts the April-2023 order book at Rs 222 cr and 31-Mar-2023 at Rs 260.7 cr</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td>01-Jan-2025 [PR]</td><td class="tx">Contract value being worked on "has gone up to Rs 495 crores"</td><td class="tx">Order book at 31-Mar-2025 published as Rs 328.7 cr</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td>09-Mar-2026 [PR]</td><td class="tx">"The order book now stands at INR 700 crores"</td><td class="tx">Order book at 31-Mar-2026, published three weeks later: <strong>Rs 581.2 cr</strong></td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td>19-Apr-2024 [D]</td><td class="tx">Coal production to start <strong>FY2026-27</strong></td><td class="tx">Now FY2028-29 per management; CRISIL says fiscal 2029</td><td class="tx tn"><span class="chip miss">Miss, 2 years</span></td></tr>
+            <tr><td>19-Apr-2024 [D]</td><td class="tx">Coal block capex about <strong>Rs 240 cr all-in to production</strong></td><td class="tx">Rs 400 cr total, with Rs 200-225 cr in Phase I alone</td><td class="tx tn"><span class="chip miss">Miss, +67%</span></td></tr>
+            <tr><td>19-Apr-2024 [D]</td><td class="tx">Coal block revenue of Rs 700-800 cr across FY27-FY29</td><td class="tx">Zero. Production now starts FY2028-29 and the mining plan is not written</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td>19-Apr-2024 [D]</td><td class="tx">"Mine development activities started"</td><td class="tx">Twenty-seven months later the geological report is still "under preparation"</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td>30-Oct-2025 [T]</td><td class="tx">Five rigs arriving within three months</td><td class="tx">Fleet went 40 to 43 over nine months</td><td class="tx tn"><span class="chip part">Partial</span></td></tr>
+            <tr><td>30-Oct-2025 [T] CFO</td><td class="tx">Cash conversion cycle "average 45 to 90 days"; "no bad debts in 18 years"</td><td class="tx">Audited FY26 debtor days 175. CRISIL: receivables above 150 days for three years</td><td class="tx tn"><span class="chip miss">Miss, 2-4x</span></td></tr>
+            <tr><td>28-Feb-2026 [PR]</td><td class="tx">Hindustan Zinc mobilisation "within 45 days"</td><td class="tx">Started around early June - roughly seven weeks late</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td>19-Dec-2024 [PR]</td><td class="tx">Oil India seismic tomography, Rs 60 cr over 20 months</td><td class="tx">About Rs 23.8 cr unexecuted at month 19; an extension is being sought</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td>19-Apr-2024 [D]</td><td class="tx">Oman JV "assured yearly profit of Rs 2-3 crores"</td><td class="tx tn">Rs 1.5 cr in FY26</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td>06-May-2026 [T]</td><td class="tx">Underground coal gasification to deliver "phenomenal results... this financial year"</td><td class="tx">Same call: "We don't have anything on UCG right now". Still only "in talks" in July</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -1206,16 +1209,16 @@
       <div class="tw">
         <table>
           <caption>Ground-level signals, 28-Aug-2026. Reliability stated per row. Nothing in this table should be treated as established fact.</caption>
-          <thead><tr><th>Channel</th><th>What was found</th><th>Reliability</th></tr></thead>
+          <thead><tr><th>Channel</th><th class="tx">What was found</th><th class="tx">Reliability</th></tr></thead>
           <tbody>
-            <tr><td>LinkedIn headcount</td><td>Company page reads about 115 employees on one source and a "11-50" band on another - inconsistent, neither is reliable. About 24 open roles listed.</td><td>Low, conflicting</td></tr>
-            <tr><td>Senior hires and exits</td><td><strong>Nothing found.</strong> No named CXO joining from a larger competitor, no senior exit.</td><td>Nothing verified</td></tr>
-            <tr><td>Job portals</td><td>No itemised open-role breakdown by function or location could be obtained beyond the LinkedIn headline count.</td><td>Incomplete</td></tr>
-            <tr><td>Employer review sites</td><td>Footprint too thin to read - a handful of salary entries and a compensation-only rating. No recurring theme could be established. A "4.0/5, 79% recommend" figure that surfaced in search belongs to a different company entirely and is explicitly not attributed here.</td><td>Too thin to use</td></tr>
-            <tr><td>Promoter media presence</td><td>No 2026 podcast, long-form interview or conference profile located. The quarterly earnings call is the only substantive management channel.</td><td>Access-limited</td></tr>
-            <tr><td>Trade media</td><td>Order-win press releases only (NALCO bauxite consultancy LOA, CMPDI coal awards, the Reliance CBM extension). No client-satisfaction commentary and no reported loss of work.</td><td>Company-sourced</td></tr>
-            <tr><td>Overseas operations</td><td><strong>Confirmed active and expanding</strong> via the company's own Reg-30 filing of 06-Jul-2026 - the only item in this table at primary-source strength. See Sections 2 and 7.</td><td>Primary, verified</td></tr>
-            <tr><td>Retail attention</td><td>Shareholder count rose from 10,405 to 15,210 in the Jun-2026 quarter alone, up 46%.</td><td>Filing-derived</td></tr>
+            <tr><td>LinkedIn headcount</td><td class="tx">Company page reads about 115 employees on one source and a "11-50" band on another - inconsistent, neither is reliable. About 24 open roles listed.</td><td class="tx tn">Low, conflicting</td></tr>
+            <tr><td>Senior hires and exits</td><td class="tx"><strong>Nothing found.</strong> No named CXO joining from a larger competitor, no senior exit.</td><td class="tx tn">Nothing verified</td></tr>
+            <tr><td>Job portals</td><td class="tx">No itemised open-role breakdown by function or location could be obtained beyond the LinkedIn headline count.</td><td class="tx tn">Incomplete</td></tr>
+            <tr><td>Employer review sites</td><td class="tx">Footprint too thin to read - a handful of salary entries and a compensation-only rating. No recurring theme could be established. A "4.0/5, 79% recommend" figure that surfaced in search belongs to a different company entirely and is explicitly not attributed here.</td><td class="tx tn">Too thin to use</td></tr>
+            <tr><td>Promoter media presence</td><td class="tx">No 2026 podcast, long-form interview or conference profile located. The quarterly earnings call is the only substantive management channel.</td><td class="tx tn">Access-limited</td></tr>
+            <tr><td>Trade media</td><td class="tx">Order-win press releases only (NALCO bauxite consultancy LOA, CMPDI coal awards, the Reliance CBM extension). No client-satisfaction commentary and no reported loss of work.</td><td class="tx tn">Company-sourced</td></tr>
+            <tr><td>Overseas operations</td><td class="tx"><strong>Confirmed active and expanding</strong> via the company's own Reg-30 filing of 06-Jul-2026 - the only item in this table at primary-source strength. See Sections 2 and 7.</td><td class="tx tn">Primary, verified</td></tr>
+            <tr><td>Retail attention</td><td class="tx">Shareholder count rose from 10,405 to 15,210 in the Jun-2026 quarter alone, up 46%.</td><td class="tx tn">Filing-derived</td></tr>
           </tbody>
         </table>
       </div>
@@ -1332,13 +1335,13 @@
       <div class="tw">
         <table>
           <caption>Every disclosed promoter transaction, netted. Values at disclosed or bulk-deal prices. Derived where the filing did not state a rupee value.</caption>
-          <thead><tr><th>Leg</th><th>Date</th><th>Shares</th><th>Price (Rs)</th><th>Value (Rs cr)</th></tr></thead>
+          <thead><tr><th>Leg</th><th class="tx">Date</th><th>Shares</th><th>Price (Rs)</th><th class="tx">Value (Rs cr)</th></tr></thead>
           <tbody>
-            <tr><td>Warrant conversion</td><td>10-Jul-2026</td><td>+22,69,288</td><td>132.20</td><td>+30.00 paid in</td></tr>
-            <tr><td>Open-market sale</td><td>22-23 Jun-2026</td><td>-11,65,820</td><td>~248.70</td><td>-28.99 out</td></tr>
-            <tr><td>Open-market sale</td><td>29-30 Jun-2026</td><td>-1,11,651</td><td>~248.00</td><td>-2.77 out</td></tr>
-            <tr><td>Open-market sale</td><td><strong>18-Aug-2026</strong></td><td>-5,63,138</td><td>229.49</td><td>-12.92 out</td></tr>
-            <tr><td><strong>Net</strong></td><td>-</td><td><strong>+4,28,679</strong></td><td>-</td><td><strong>-14.69 extracted</strong></td></tr>
+            <tr><td>Warrant conversion</td><td class="tx tn">10-Jul-2026</td><td>+22,69,288</td><td>132.20</td><td class="tx tn">+30.00 paid in</td></tr>
+            <tr><td>Open-market sale</td><td class="tx tn">22-23 Jun-2026</td><td>-11,65,820</td><td>~248.70</td><td class="tx tn">-28.99 out</td></tr>
+            <tr><td>Open-market sale</td><td class="tx tn">29-30 Jun-2026</td><td>-1,11,651</td><td>~248.00</td><td class="tx tn">-2.77 out</td></tr>
+            <tr><td>Open-market sale</td><td class="tx tn"><strong>18-Aug-2026</strong></td><td>-5,63,138</td><td>229.49</td><td class="tx tn">-12.92 out</td></tr>
+            <tr><td><strong>Net</strong></td><td class="tx tn">-</td><td><strong>+4,28,679</strong></td><td>-</td><td class="tx tn"><strong>-14.69 extracted</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -1372,15 +1375,15 @@
       <div class="tw">
         <table>
           <caption>Current multiples, 28-Aug-2026 close of Rs 209.06. Enterprise value Rs 752 cr on 3.27 cr shares post warrant conversion, Rs 80 cr borrowings, Rs 12 cr cash.</caption>
-          <thead><tr><th>Measure</th><th>Value</th><th>Context</th></tr></thead>
+          <thead><tr><th>Measure</th><th>Value</th><th class="tx">Context</th></tr></thead>
           <tbody>
-            <tr><td>P/E (TTM)</td><td>17.1x</td><td>Industry 19.3x; peer set 9.3x to 36.2x</td></tr>
-            <tr><td>EV / EBITDA (TTM)</td><td>11.2x</td><td>Aggregator shows 10.3x</td></tr>
-            <tr><td>EV / Revenue</td><td>2.84x</td><td>High for a contractor</td></tr>
-            <tr><td>Price / Book</td><td>3.06x</td><td>Book value Rs 68.2</td></tr>
-            <tr><td>ROCE</td><td>20.0%</td><td>Highest in the peer set</td></tr>
-            <tr><td>Price / FCF</td><td>negative</td><td>3-year FCF is minus Rs 18.5 cr</td></tr>
-            <tr><td>Dividend yield</td><td>0.00%</td><td>No dividend for two years despite record profit</td></tr>
+            <tr><td>P/E (TTM)</td><td>17.1x</td><td class="tx">Industry 19.3x; peer set 9.3x to 36.2x</td></tr>
+            <tr><td>EV / EBITDA (TTM)</td><td>11.2x</td><td class="tx">Aggregator shows 10.3x</td></tr>
+            <tr><td>EV / Revenue</td><td>2.84x</td><td class="tx">High for a contractor</td></tr>
+            <tr><td>Price / Book</td><td>3.06x</td><td class="tx tn">Book value Rs 68.2</td></tr>
+            <tr><td>ROCE</td><td>20.0%</td><td class="tx">Highest in the peer set</td></tr>
+            <tr><td>Price / FCF</td><td>negative</td><td class="tx">3-year FCF is minus Rs 18.5 cr</td></tr>
+            <tr><td>Dividend yield</td><td>0.00%</td><td class="tx">No dividend for two years despite record profit</td></tr>
           </tbody>
         </table>
       </div>
@@ -1406,11 +1409,11 @@
       <div class="tw">
         <table>
           <caption>Sensitivity: implied ten-year EBIT CAGR needed to justify Rs 752 cr of enterprise value, on TTM NOPAT of Rs 41.8 cr.</caption>
-          <thead><tr><th>WACC</th><th>ROIC 16%</th><th>ROIC 20%</th><th>ROIC 25%</th></tr></thead>
+          <thead><tr><th>WACC</th><th class="tx">ROIC 16%</th><th>ROIC 20%</th><th>ROIC 25%</th></tr></thead>
           <tbody>
-            <tr><td>12.0%</td><td>23.1%</td><td><strong>17.7%</strong></td><td>15.4%</td></tr>
-            <tr><td>13.5%</td><td>above 60%</td><td><strong>26.2%</strong></td><td>21.1%</td></tr>
-            <tr><td>15.0%</td><td>no solution</td><td>no solution</td><td>27.8%</td></tr>
+            <tr><td>12.0%</td><td class="tx tn">23.1%</td><td><strong>17.7%</strong></td><td>15.4%</td></tr>
+            <tr><td>13.5%</td><td class="tx tn">above 60%</td><td><strong>26.2%</strong></td><td>21.1%</td></tr>
+            <tr><td>15.0%</td><td class="tx tn">no solution</td><td>no solution</td><td>27.8%</td></tr>
           </tbody>
         </table>
       </div>
@@ -1583,20 +1586,20 @@
       <div class="tw">
         <table>
           <caption>Everything publicly disclosed about the block. Note how much is not.</caption>
-          <thead><tr><th>Item</th><th>Disclosure</th></tr></thead>
+          <thead><tr><th>Item</th><th class="tx">Disclosure</th></tr></thead>
           <tbody>
-            <tr><td>Block name</td><td><strong>Jogeshwar and Khas Jogeshwar</strong>, won by forward auction for commercial mining</td></tr>
-            <tr><td>Location and vintage</td><td>Jharkhand, won by forward auction from the Ministry of Coal in 2021</td></tr>
-            <tr><td>Area and grade</td><td>2.66 sq km (266 hectares); grade W-IV</td></tr>
-            <tr><td>Geological reserves</td><td>84 million tonnes; minable reserves not stated</td></tr>
-            <tr><td>Capitalised to date</td><td>Rs 19.31 cr at 31-Mar-2026 (Rs 7.58 cr of it before FY24). Cash capex spent on the block has <strong>never been quantified</strong> in any deck, call or rating rationale</td></tr>
-            <tr><td>Statutory status</td><td>Prospecting Licence cum Mining Lease <strong>applied for; grant never confirmed in any filing</strong></td></tr>
-            <tr><td>Latest operational status</td><td>Exploration complete; geological report in preparation; mining plan, environmental and forest clearance all still ahead</td></tr>
-            <tr><td>Capex, as first stated</td><td>Apr-2024 deck: <strong>about Rs 240 cr all-in to production</strong></td></tr>
-            <tr><td>Capex, as stated now</td><td><strong>About Rs 400 cr total; Phase I alone Rs 200-225 cr</strong>, including a Rs 70-80 cr performance guarantee</td></tr>
-            <tr><td>Government revenue share</td><td><strong>24.25% of revenue</strong> - disclosed only on the earnings call, never in an annual report</td></tr>
-            <tr><td>First production</td><td>Drifted from <strong>FY2026-27</strong> (Apr-2024 deck) to FY2027-28 to <strong>FY2028-29</strong> (management, Jul-2026). CRISIL says fiscal 2029. The current deck still prints FY2027-28</td></tr>
-            <tr><td>FY26 segment revenue / result</td><td><strong>nil / nil</strong>; segment assets Rs 19.31 cr</td></tr>
+            <tr><td>Block name</td><td class="tx"><strong>Jogeshwar and Khas Jogeshwar</strong>, won by forward auction for commercial mining</td></tr>
+            <tr><td>Location and vintage</td><td class="tx">Jharkhand, won by forward auction from the Ministry of Coal in 2021</td></tr>
+            <tr><td>Area and grade</td><td class="tx">2.66 sq km (266 hectares); grade W-IV</td></tr>
+            <tr><td>Geological reserves</td><td class="tx">84 million tonnes; minable reserves not stated</td></tr>
+            <tr><td>Capitalised to date</td><td class="tx">Rs 19.31 cr at 31-Mar-2026 (Rs 7.58 cr of it before FY24). Cash capex spent on the block has <strong>never been quantified</strong> in any deck, call or rating rationale</td></tr>
+            <tr><td>Statutory status</td><td class="tx">Prospecting Licence cum Mining Lease <strong>applied for; grant never confirmed in any filing</strong></td></tr>
+            <tr><td>Latest operational status</td><td class="tx">Exploration complete; geological report in preparation; mining plan, environmental and forest clearance all still ahead</td></tr>
+            <tr><td>Capex, as first stated</td><td class="tx">Apr-2024 deck: <strong>about Rs 240 cr all-in to production</strong></td></tr>
+            <tr><td>Capex, as stated now</td><td class="tx"><strong>About Rs 400 cr total; Phase I alone Rs 200-225 cr</strong>, including a Rs 70-80 cr performance guarantee</td></tr>
+            <tr><td>Government revenue share</td><td class="tx"><strong>24.25% of revenue</strong> - disclosed only on the earnings call, never in an annual report</td></tr>
+            <tr><td>First production</td><td class="tx">Drifted from <strong>FY2026-27</strong> (Apr-2024 deck) to FY2027-28 to <strong>FY2028-29</strong> (management, Jul-2026). CRISIL says fiscal 2029. The current deck still prints FY2027-28</td></tr>
+            <tr><td>FY26 segment revenue / result</td><td class="tx"><strong>nil / nil</strong>; segment assets Rs 19.31 cr</td></tr>
           </tbody>
         </table>
       </div>
@@ -1648,19 +1651,19 @@
       <div class="tw">
         <table>
           <caption>Principal mandates. Values as announced, including GST. "Not disclosed" is stated where the company filed an award without a value.</caption>
-          <thead><tr><th>Date</th><th>Counterparty</th><th>Value (Rs cr)</th><th>Term</th><th>Status</th></tr></thead>
+          <thead><tr><th>Date</th><th class="tx">Counterparty</th><th>Value (Rs cr)</th><th>Term</th><th class="tx">Status</th></tr></thead>
           <tbody>
-            <tr><td>07-Jul-2026</td><td><strong>Reliance Industries</strong> - CBM extension</td><td><strong>166.82</strong></td><td>15 months + 6-month option</td><td>Revenue from Q2 FY27</td></tr>
-            <tr><td>28-Feb-2026</td><td><strong>Hind Metal Exploration Services</strong> (Hindustan Zinc subsidiary), Rajasthan</td><td><strong>307.00</strong></td><td>4 years post mobilisation</td><td>Started early Jun-2026, ~7 weeks late</td></tr>
-            <tr><td>01-Jan-2025</td><td>Reliance Industries - CBM Phase 2</td><td>158.00, restated 153.00</td><td>15 months exec after 7 mob</td><td>Running, Rs 24-25 cr a quarter</td></tr>
-            <tr><td>19-Dec-2024</td><td>Oil India - passive seismic tomography</td><td>60.00</td><td>20 months, due ~Aug-2026</td><td><strong>~Rs 23.8 cr unexecuted at month 19</strong></td></tr>
-            <tr><td>Mar / Aug-2024</td><td>Central Ground Water Board - aquifer mapping</td><td>54.81 + 49.52</td><td>to Dec-2025 / Jun-2026</td><td><strong>Behind - 65% complete at Jul-2026</strong></td></tr>
-            <tr><td>Sep-2024 to Aug-2026</td><td>CMPDI - six coal exploration awards</td><td>~74 cumulative</td><td>180-910 days</td><td>Running</td></tr>
-            <tr><td>13-Aug-2026</td><td>Odisha Lift Irrigation - 500 deep borewells</td><td>18.71</td><td>180 days</td><td>Just awarded</td></tr>
-            <tr><td>25-Nov-2025</td><td>NALCO - bauxite exploration consultancy</td><td>11.78</td><td>24 months</td><td>Running</td></tr>
-            <tr><td>13-Oct-2025</td><td>JSW Energy (Utkal) + CMPDI</td><td>16.93</td><td>3.5 months</td><td>Presumed complete</td></tr>
-            <tr><td>04-Jun-2026</td><td>Oil India - 2D/3D seismic <strong>empanelment</strong></td><td>not disclosed</td><td>3 years</td><td>Permission to bid only</td></tr>
-            <tr><td>27-Jun-2025</td><td>Minerals Development Oman, via 35% Alara JV</td><td>OMR 13.56 lakh (~30)</td><td>2 years</td><td>At JV level</td></tr>
+            <tr><td>07-Jul-2026</td><td class="tx"><strong>Reliance Industries</strong> - CBM extension</td><td><strong>166.82</strong></td><td class="tx">15 months + 6-month option</td><td class="tx">Revenue from Q2 FY27</td></tr>
+            <tr><td>28-Feb-2026</td><td class="tx"><strong>Hind Metal Exploration Services</strong> (Hindustan Zinc subsidiary), Rajasthan</td><td><strong>307.00</strong></td><td class="tx">4 years post mobilisation</td><td class="tx">Started early Jun-2026, ~7 weeks late</td></tr>
+            <tr><td>01-Jan-2025</td><td class="tx">Reliance Industries - CBM Phase 2</td><td class="tx">158.00, restated 153.00</td><td class="tx">15 months exec after 7 mob</td><td class="tx">Running, Rs 24-25 cr a quarter</td></tr>
+            <tr><td>19-Dec-2024</td><td class="tx">Oil India - passive seismic tomography</td><td>60.00</td><td class="tx">20 months, due ~Aug-2026</td><td class="tx"><strong>~Rs 23.8 cr unexecuted at month 19</strong></td></tr>
+            <tr><td>Mar / Aug-2024</td><td class="tx">Central Ground Water Board - aquifer mapping</td><td>54.81 + 49.52</td><td class="tx">to Dec-2025 / Jun-2026</td><td class="tx"><strong>Behind - 65% complete at Jul-2026</strong></td></tr>
+            <tr><td>Sep-2024 to Aug-2026</td><td class="tx">CMPDI - six coal exploration awards</td><td>~74 cumulative</td><td>180-910 days</td><td class="tx tn">Running</td></tr>
+            <tr><td>13-Aug-2026</td><td class="tx">Odisha Lift Irrigation - 500 deep borewells</td><td>18.71</td><td>180 days</td><td class="tx tn">Just awarded</td></tr>
+            <tr><td>25-Nov-2025</td><td class="tx">NALCO - bauxite exploration consultancy</td><td>11.78</td><td>24 months</td><td class="tx tn">Running</td></tr>
+            <tr><td>13-Oct-2025</td><td class="tx">JSW Energy (Utkal) + CMPDI</td><td>16.93</td><td>3.5 months</td><td class="tx tn">Presumed complete</td></tr>
+            <tr><td>04-Jun-2026</td><td class="tx">Oil India - 2D/3D seismic <strong>empanelment</strong></td><td>not disclosed</td><td>3 years</td><td class="tx">Permission to bid only</td></tr>
+            <tr><td>27-Jun-2025</td><td class="tx">Minerals Development Oman, via 35% Alara JV</td><td class="tx">OMR 13.56 lakh (~30)</td><td>2 years</td><td class="tx tn">At JV level</td></tr>
           </tbody>
         </table>
       </div>
@@ -1691,16 +1694,16 @@
       <div class="tw">
         <table>
           <caption>Jogeshwar and Khas Jogeshwar coal block. Date and capex drift shown by source.</caption>
-          <thead><tr><th>Item</th><th>Position</th></tr></thead>
+          <thead><tr><th>Item</th><th class="tx">Position</th></tr></thead>
           <tbody>
-            <tr><td>Block</td><td><strong>Jogeshwar and Khas Jogeshwar, Jharkhand</strong>, won by forward auction for commercial mining</td></tr>
-            <tr><td>Size and grade</td><td>2.66 sq km (266 ha); 84 mt estimated geological reserves; grade W-IV</td></tr>
-            <tr><td>Government revenue share</td><td><strong>24.25%</strong></td></tr>
-            <tr><td>Obtained</td><td>DGPS survey done; Ministry of Coal accreditation as a prospecting agency, 27-Nov-2025; exploration complete Jul-2026</td></tr>
-            <tr><td>Still pending</td><td>Geological report unsubmitted; mining plan not prepared; environment clearance, forest clearance and state mining lease <strong>not yet applied for</strong></td></tr>
-            <tr><td>Capex spent to date</td><td><strong>Never quantified in any deck, call, release or rating rationale</strong></td></tr>
-            <tr><td>Production date drift</td><td>FY2026-27 (Apr-2024 deck) to FY2027-28 (May-2025 through Jul-2026 decks) to <strong>FY2028-29</strong> (management, Jul-2026). CRISIL says fiscal 2029</td></tr>
-            <tr><td>Capex drift</td><td>Rs 240 cr all-in to production (Apr-2024) to "more than Rs 400 cr" with Phase I of Rs 200-225 cr (Oct-2025 and May-2026)</td></tr>
+            <tr><td>Block</td><td class="tx"><strong>Jogeshwar and Khas Jogeshwar, Jharkhand</strong>, won by forward auction for commercial mining</td></tr>
+            <tr><td>Size and grade</td><td class="tx">2.66 sq km (266 ha); 84 mt estimated geological reserves; grade W-IV</td></tr>
+            <tr><td>Government revenue share</td><td class="tx tn"><strong>24.25%</strong></td></tr>
+            <tr><td>Obtained</td><td class="tx">DGPS survey done; Ministry of Coal accreditation as a prospecting agency, 27-Nov-2025; exploration complete Jul-2026</td></tr>
+            <tr><td>Still pending</td><td class="tx">Geological report unsubmitted; mining plan not prepared; environment clearance, forest clearance and state mining lease <strong>not yet applied for</strong></td></tr>
+            <tr><td>Capex spent to date</td><td class="tx"><strong>Never quantified in any deck, call, release or rating rationale</strong></td></tr>
+            <tr><td>Production date drift</td><td class="tx">FY2026-27 (Apr-2024 deck) to FY2027-28 (May-2025 through Jul-2026 decks) to <strong>FY2028-29</strong> (management, Jul-2026). CRISIL says fiscal 2029</td></tr>
+            <tr><td>Capex drift</td><td class="tx">Rs 240 cr all-in to production (Apr-2024) to "more than Rs 400 cr" with Phase I of Rs 200-225 cr (Oct-2025 and May-2026)</td></tr>
           </tbody>
         </table>
       </div>
@@ -1765,15 +1768,15 @@
       <div class="tw">
         <table>
           <caption>Where a mechanical screen would misread this company.</caption>
-          <thead><tr><th>Screen metric</th><th>Shown</th><th>What is wrong with it</th></tr></thead>
+          <thead><tr><th>Screen metric</th><th>Shown</th><th class="tx">What is wrong with it</th></tr></thead>
           <tbody>
-            <tr><td>Intrinsic value</td><td>Rs 177</td><td>A formula output with no view on the Rs 200 cr coal-block commitment, the 9.46% post-year-end dilution, or the unaudited JV profit. Coincidentally close to this note's base case, for entirely different reasons.</td></tr>
-            <tr><td>PEG ratio</td><td>0.31</td><td>Computed off a profit CAGR flattered by a depressed FY23 base and by cyclical margin expansion. Reads as deeply cheap; the growth it annualises is not the growth that repeats.</td></tr>
-            <tr><td>Price / free cash flow</td><td>-111</td><td>Correctly negative and the most honest number on the page - but a screen filtering on positive FCF would simply drop this company, and a screen ignoring FCF would miss the entire thesis.</td></tr>
-            <tr><td>Debt to equity</td><td>0.39</td><td>Uses the 31-March balance. Implied interest cost suggests average debt during the year ran materially above year-end balances, so period-end leverage understates the true position.</td></tr>
-            <tr><td>ROE 17.7%</td><td>Latest year</td><td>Three-year average is 12.4% and ten-year 11%. One cyclical peak year, presented without that context, is the single most misleading figure on the screen.</td></tr>
-            <tr><td>Promoter holding 65.94%</td><td>Jul-2026</td><td><strong>Stale.</strong> It predates the 18-Aug-2026 promoter sale of 5,63,138 shares, which is not yet in any shareholding pattern.</td></tr>
-            <tr><td>Pledge 0.00%</td><td>-</td><td>Probably right, but a competing aggregator shows 91.24% for four quarters. Neither is verified against the exchange encumbrance column.</td></tr>
+            <tr><td>Intrinsic value</td><td>Rs 177</td><td class="tx">A formula output with no view on the Rs 200 cr coal-block commitment, the 9.46% post-year-end dilution, or the unaudited JV profit. Coincidentally close to this note's base case, for entirely different reasons.</td></tr>
+            <tr><td>PEG ratio</td><td>0.31</td><td class="tx">Computed off a profit CAGR flattered by a depressed FY23 base and by cyclical margin expansion. Reads as deeply cheap; the growth it annualises is not the growth that repeats.</td></tr>
+            <tr><td>Price / free cash flow</td><td>-111</td><td class="tx">Correctly negative and the most honest number on the page - but a screen filtering on positive FCF would simply drop this company, and a screen ignoring FCF would miss the entire thesis.</td></tr>
+            <tr><td>Debt to equity</td><td>0.39</td><td class="tx">Uses the 31-March balance. Implied interest cost suggests average debt during the year ran materially above year-end balances, so period-end leverage understates the true position.</td></tr>
+            <tr><td>ROE 17.7%</td><td>Latest year</td><td class="tx">Three-year average is 12.4% and ten-year 11%. One cyclical peak year, presented without that context, is the single most misleading figure on the screen.</td></tr>
+            <tr><td>Promoter holding 65.94%</td><td>Jul-2026</td><td class="tx"><strong>Stale.</strong> It predates the 18-Aug-2026 promoter sale of 5,63,138 shares, which is not yet in any shareholding pattern.</td></tr>
+            <tr><td>Pledge 0.00%</td><td>-</td><td class="tx">Probably right, but a competing aggregator shows 91.24% for four quarters. Neither is verified against the exchange encumbrance column.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1793,17 +1796,17 @@
       <div class="tw">
         <table>
           <caption>Official statistics mapped to the company revenue line each one drives. Measured statistics and ministerial projections are labelled separately.</caption>
-          <thead><tr><th>Official statistic</th><th>Figure</th><th>Type</th><th>Revenue line it drives</th></tr></thead>
+          <thead><tr><th>Official statistic</th><th class="tx">Figure</th><th class="tx">Type</th><th class="tx">Revenue line it drives</th></tr></thead>
           <tbody>
-            <tr><td>Ministry of Coal exploration programme, FY2026-27 to FY2030-31</td><td><strong>Rs 5,925 cr; 55.50 lakh metres; 1,845 sq km</strong></td><td>Announced plan</td><td>Coal exploratory drilling</td></tr>
-            <tr><td>CMPDI detailed drilling target FY24-25</td><td>10.00 lakh m, of which <strong>5.80 lakh m outsourced</strong></td><td>Measured target</td><td>Coal exploratory drilling</td></tr>
-            <tr><td>CMPDI non-CIL block drilling, outsourced share</td><td><strong>about 60%</strong></td><td>Measured</td><td>Captive-block drilling</td></tr>
-            <tr><td>MECL drilling, FY25</td><td>4,51,539 m, 91.5% in-house</td><td>Measured</td><td>Competitor benchmark</td></tr>
-            <tr><td>Coal production, FY25-26</td><td>Above 1 bn tonnes; captive and commercial 210.46 MT</td><td>Measured</td><td>Downstream demand driver</td></tr>
-            <tr><td>National Critical Mineral Mission outlay</td><td><strong>Rs 34,300 cr total = Rs 16,300 cr government + Rs 18,000 cr expected PSU/private</strong></td><td>Approved outlay</td><td>Mineral exploration</td></tr>
-            <tr><td>CBM production target</td><td>5.0 MMSCMD by 2027-28</td><td>Ministerial projection</td><td>CBM drilling</td></tr>
-            <tr><td>Global non-ferrous exploration budget, 2025</td><td>USD 12.40 bn, third year of decline</td><td>Measured</td><td>Global context</td></tr>
-            <tr><td>Reporting mines in India</td><td>2,046 (FY24) to <strong>1,973 (FY25)</strong></td><td>Measured</td><td>Counter-indicator</td></tr>
+            <tr><td>Ministry of Coal exploration programme, FY2026-27 to FY2030-31</td><td class="tx"><strong>Rs 5,925 cr; 55.50 lakh metres; 1,845 sq km</strong></td><td class="tx tn">Announced plan</td><td class="tx">Coal exploratory drilling</td></tr>
+            <tr><td>CMPDI detailed drilling target FY24-25</td><td class="tx">10.00 lakh m, of which <strong>5.80 lakh m outsourced</strong></td><td class="tx tn">Measured target</td><td class="tx">Coal exploratory drilling</td></tr>
+            <tr><td>CMPDI non-CIL block drilling, outsourced share</td><td class="tx tn"><strong>about 60%</strong></td><td class="tx tn">Measured</td><td class="tx">Captive-block drilling</td></tr>
+            <tr><td>MECL drilling, FY25</td><td class="tx">4,51,539 m, 91.5% in-house</td><td class="tx tn">Measured</td><td class="tx">Competitor benchmark</td></tr>
+            <tr><td>Coal production, FY25-26</td><td class="tx">Above 1 bn tonnes; captive and commercial 210.46 MT</td><td class="tx tn">Measured</td><td class="tx">Downstream demand driver</td></tr>
+            <tr><td>National Critical Mineral Mission outlay</td><td class="tx"><strong>Rs 34,300 cr total = Rs 16,300 cr government + Rs 18,000 cr expected PSU/private</strong></td><td class="tx tn">Approved outlay</td><td class="tx">Mineral exploration</td></tr>
+            <tr><td>CBM production target</td><td class="tx">5.0 MMSCMD by 2027-28</td><td class="tx">Ministerial projection</td><td class="tx tn">CBM drilling</td></tr>
+            <tr><td>Global non-ferrous exploration budget, 2025</td><td class="tx">USD 12.40 bn, third year of decline</td><td class="tx tn">Measured</td><td class="tx tn">Global context</td></tr>
+            <tr><td>Reporting mines in India</td><td class="tx">2,046 (FY24) to <strong>1,973 (FY25)</strong></td><td class="tx tn">Measured</td><td class="tx tn">Counter-indicator</td></tr>
           </tbody>
         </table>
       </div>
@@ -1826,14 +1829,14 @@
       <div class="tw">
         <table>
           <caption>Management claims from the Q1 FY27 earnings call, tested against official sources.</caption>
-          <thead><tr><th>Management claim</th><th>Official record</th><th>Verdict</th></tr></thead>
+          <thead><tr><th>Management claim</th><th class="tx">Official record</th><th class="tx">Verdict</th></tr></thead>
           <tbody>
-            <tr><td>"The government has auctioned around 200 coal blocks"</td><td>141 commercial coal mines auctioned cumulatively under the transparent regime; the 14th round drew bids for 24 of 41 blocks offered</td><td><span class="chip part">Overstated</span></td></tr>
-            <tr><td>"Approximately 500 mining blocks including critical metals and base metals in the coming times"</td><td>NCMM targets 1,200 exploration projects by 2030-31; a block-count target of 500 could not be located in any official document</td><td><span class="chip part">Unverified</span></td></tr>
-            <tr><td>Coal production "has already touched 1 billion... crossed 1 billion"</td><td>Confirmed. Captive and commercial mines alone were 210.46 MT in FY25-26, above 200 MT for the first time</td><td><span class="chip hit">Correct</span></td></tr>
-            <tr><td>Exploration upcycle should "go on for the next three to five years"</td><td>Coal programme supports it through FY2030-31. Critical-minerals and groundwater disbursement does not yet support it</td><td><span class="chip part">Partly</span></td></tr>
-            <tr><td>All domains "firing well", including aquifer mapping from CGWB</td><td>Jal Jeevan Mission revised estimate 75% below budget with zero central releases to states in FY25-26</td><td><span class="chip miss">Contradicted</span></td></tr>
-            <tr><td>Underground coal gasification is a new opportunity</td><td>Confirmed - four UCG blocks awarded to two companies by the Ministry of Coal; tenders being floated</td><td><span class="chip hit">Correct</span></td></tr>
+            <tr><td>"The government has auctioned around 200 coal blocks"</td><td class="tx">141 commercial coal mines auctioned cumulatively under the transparent regime; the 14th round drew bids for 24 of 41 blocks offered</td><td class="tx tn"><span class="chip part">Overstated</span></td></tr>
+            <tr><td>"Approximately 500 mining blocks including critical metals and base metals in the coming times"</td><td class="tx">NCMM targets 1,200 exploration projects by 2030-31; a block-count target of 500 could not be located in any official document</td><td class="tx tn"><span class="chip part">Unverified</span></td></tr>
+            <tr><td>Coal production "has already touched 1 billion... crossed 1 billion"</td><td class="tx">Confirmed. Captive and commercial mines alone were 210.46 MT in FY25-26, above 200 MT for the first time</td><td class="tx tn"><span class="chip hit">Correct</span></td></tr>
+            <tr><td>Exploration upcycle should "go on for the next three to five years"</td><td class="tx">Coal programme supports it through FY2030-31. Critical-minerals and groundwater disbursement does not yet support it</td><td class="tx tn"><span class="chip part">Partly</span></td></tr>
+            <tr><td>All domains "firing well", including aquifer mapping from CGWB</td><td class="tx">Jal Jeevan Mission revised estimate 75% below budget with zero central releases to states in FY25-26</td><td class="tx tn"><span class="chip miss">Contradicted</span></td></tr>
+            <tr><td>Underground coal gasification is a new opportunity</td><td class="tx">Confirmed - four UCG blocks awarded to two companies by the Ministry of Coal; tenders being floated</td><td class="tx tn"><span class="chip hit">Correct</span></td></tr>
           </tbody>
         </table>
       </div>

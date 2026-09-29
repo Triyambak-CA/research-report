@@ -490,6 +490,9 @@
   @media(max-width:760px){
     html[data-theme="glass"] .vstage:not(:last-child)::after{background:none}
   }
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}
 </style>
 <script>
   (function(){
@@ -917,18 +920,18 @@
       <div class="tw">
         <table>
           <caption>Forensic checklist - direction and reading.</caption>
-          <thead><tr><th>Check</th><th>Reading</th><th>Flag</th></tr></thead>
+          <thead><tr><th>Check</th><th class="tx">Reading</th><th class="tx">Flag</th></tr></thead>
           <tbody>
-            <tr><td class="rowlabel">Receivables vs revenue growth</td><td>Debtor days flat ~100-108; grows with sales, not ahead of it</td><td><span class="chip hit">OK</span></td></tr>
-            <tr><td class="rowlabel">Cash yield / real cash</td><td>Minimal cash balances; company is a net borrower - little idle "cash" to fake</td><td><span class="chip hit">OK</span></td></tr>
-            <tr><td class="rowlabel">CWIP ageing</td><td>CWIP small (1-6 Cr), converts to gross block - no perpetual CWIP</td><td><span class="chip hit">OK</span></td></tr>
-            <tr><td class="rowlabel">Other-income dependence</td><td>Usually &lt;5% of PBT; Sep-24 had a ~16 Cr one-off that inflated that quarter</td><td><span class="chip part">Watch</span></td></tr>
-            <tr><td class="rowlabel">Effective tax rate</td><td>24-30%, near statutory - no suspicious low cash tax</td><td><span class="chip hit">OK</span></td></tr>
-            <tr><td class="rowlabel">Contingent liabilities</td><td>Small (&lt;1% of net worth per FY23 AR); tax matters only</td><td><span class="chip hit">OK</span></td></tr>
-            <tr><td class="rowlabel">Related-party transactions</td><td>~3% of sales to promoter-linked cos; ~1% services in; disclose but monitor</td><td><span class="chip part">Watch</span></td></tr>
-            <tr><td class="rowlabel">CFO / EBITDA conversion</td><td>~30% six-yr avg; FY25 ~1%. Chronic non-conversion</td><td><span class="chip miss">Red</span></td></tr>
-            <tr><td class="rowlabel">Auditor / CARO</td><td>No known resignation or adverse qualification surfaced; standard audit</td><td><span class="chip hit">OK</span></td></tr>
-            <tr><td class="rowlabel">Capitalisation / policy churn</td><td>No evidence of expense capitalisation or frequent policy changes</td><td><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Receivables vs revenue growth</td><td class="tx">Debtor days flat ~100-108; grows with sales, not ahead of it</td><td class="tx tn"><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Cash yield / real cash</td><td class="tx">Minimal cash balances; company is a net borrower - little idle "cash" to fake</td><td class="tx tn"><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">CWIP ageing</td><td class="tx">CWIP small (1-6 Cr), converts to gross block - no perpetual CWIP</td><td class="tx tn"><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Other-income dependence</td><td class="tx">Usually &lt;5% of PBT; Sep-24 had a ~16 Cr one-off that inflated that quarter</td><td class="tx tn"><span class="chip part">Watch</span></td></tr>
+            <tr><td class="rowlabel">Effective tax rate</td><td class="tx">24-30%, near statutory - no suspicious low cash tax</td><td class="tx tn"><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Contingent liabilities</td><td class="tx">Small (&lt;1% of net worth per FY23 AR); tax matters only</td><td class="tx tn"><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Related-party transactions</td><td class="tx">~3% of sales to promoter-linked cos; ~1% services in; disclose but monitor</td><td class="tx tn"><span class="chip part">Watch</span></td></tr>
+            <tr><td class="rowlabel">CFO / EBITDA conversion</td><td class="tx">~30% six-yr avg; FY25 ~1%. Chronic non-conversion</td><td class="tx tn"><span class="chip miss">Red</span></td></tr>
+            <tr><td class="rowlabel">Auditor / CARO</td><td class="tx">No known resignation or adverse qualification surfaced; standard audit</td><td class="tx tn"><span class="chip hit">OK</span></td></tr>
+            <tr><td class="rowlabel">Capitalisation / policy churn</td><td class="tx">No evidence of expense capitalisation or frequent policy changes</td><td class="tx tn"><span class="chip hit">OK</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -974,15 +977,15 @@
       <div class="tw">
         <table>
           <caption>Guidance vs delivery, compiled from concalls / investor presentations FY24-FY26.</caption>
-          <thead><tr><th>Claim / Target</th><th>Guided</th><th>Actual</th><th>Verdict</th></tr></thead>
+          <thead><tr><th>Claim / Target</th><th>Guided</th><th class="tx">Actual</th><th class="tx">Verdict</th></tr></thead>
           <tbody>
-            <tr><td class="rowlabel">ROCE by FY26</td><td>18%</td><td>~13%</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td class="rowlabel">Net working capital days by FY26</td><td>100</td><td>~180</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td class="rowlabel">Base revenue growth</td><td>18-23% p.a.</td><td>~24% (FY26)</td><td><span class="chip over">Hit+</span></td></tr>
-            <tr><td class="rowlabel">EBITDA margin expansion (+50-100bps)</td><td>~10.5-11%</td><td>8.4% (fell)</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td class="rowlabel">Smart meter revenue (aspiration)</td><td>~1,000 Cr at scale</td><td>~25 Cr in 9M FY26</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td class="rowlabel">Smart meter commercial start</td><td>Q1 FY25</td><td>Started, but trickle orders</td><td><span class="chip part">Partial</span></td></tr>
-            <tr><td class="rowlabel">DC fast charger commercialisation</td><td>FY25 initial sales</td><td>Nascent; buyback-led</td><td><span class="chip part">Partial</span></td></tr>
+            <tr><td class="rowlabel">ROCE by FY26</td><td>18%</td><td class="tx tn">~13%</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td class="rowlabel">Net working capital days by FY26</td><td>100</td><td class="tx tn">~180</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td class="rowlabel">Base revenue growth</td><td>18-23% p.a.</td><td class="tx tn">~24% (FY26)</td><td class="tx tn"><span class="chip over">Hit+</span></td></tr>
+            <tr><td class="rowlabel">EBITDA margin expansion (+50-100bps)</td><td>~10.5-11%</td><td class="tx tn">8.4% (fell)</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td class="rowlabel">Smart meter revenue (aspiration)</td><td class="tx tn">~1,000 Cr at scale</td><td class="tx tn">~25 Cr in 9M FY26</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td class="rowlabel">Smart meter commercial start</td><td>Q1 FY25</td><td class="tx">Started, but trickle orders</td><td class="tx tn"><span class="chip part">Partial</span></td></tr>
+            <tr><td class="rowlabel">DC fast charger commercialisation</td><td>FY25 initial sales</td><td class="tx">Nascent; buyback-led</td><td class="tx tn"><span class="chip part">Partial</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -1128,15 +1131,15 @@
       <div class="tw">
         <table>
           <caption>Valuation snapshot. CMP 633 (03-Jul-2026); ~1.77 Cr shares; net debt ~470 Cr.</caption>
-          <thead><tr><th>Metric</th><th>Value</th><th>Read</th></tr></thead>
+          <thead><tr><th>Metric</th><th>Value</th><th class="tx">Read</th></tr></thead>
           <tbody>
-            <tr><td class="rowlabel">Market cap</td><td>~1,123 Cr</td><td>Micro-cap</td></tr>
-            <tr><td class="rowlabel">Enterprise value</td><td>~1,590 Cr</td><td>Debt is ~30% of EV</td></tr>
-            <tr><td class="rowlabel">P/E (FY26)</td><td>~21x</td><td>vs peer median ~31x</td></tr>
-            <tr><td class="rowlabel">P/B</td><td>~1.9x</td><td>vs peer ~2.3x</td></tr>
-            <tr><td class="rowlabel">EV/EBITDA (FY26)</td><td>~10.8x</td><td>Fair for the quality</td></tr>
-            <tr><td class="rowlabel">EV/Sales</td><td>~0.9x</td><td>Low, reflecting thin margin</td></tr>
-            <tr><td class="rowlabel">Dividend yield</td><td>~0.4%</td><td>Token; cash goes to WC</td></tr>
+            <tr><td class="rowlabel">Market cap</td><td>~1,123 Cr</td><td class="tx tn">Micro-cap</td></tr>
+            <tr><td class="rowlabel">Enterprise value</td><td>~1,590 Cr</td><td class="tx tn">Debt is ~30% of EV</td></tr>
+            <tr><td class="rowlabel">P/E (FY26)</td><td>~21x</td><td class="tx">vs peer median ~31x</td></tr>
+            <tr><td class="rowlabel">P/B</td><td>~1.9x</td><td class="tx tn">vs peer ~2.3x</td></tr>
+            <tr><td class="rowlabel">EV/EBITDA (FY26)</td><td>~10.8x</td><td class="tx">Fair for the quality</td></tr>
+            <tr><td class="rowlabel">EV/Sales</td><td>~0.9x</td><td class="tx">Low, reflecting thin margin</td></tr>
+            <tr><td class="rowlabel">Dividend yield</td><td>~0.4%</td><td class="tx">Token; cash goes to WC</td></tr>
           </tbody>
         </table>
       </div>

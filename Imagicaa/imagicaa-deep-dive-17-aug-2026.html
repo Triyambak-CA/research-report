@@ -235,6 +235,9 @@
   .uu ul{margin:6px 0 0 17px;font-size:12.5px;color:var(--text)}
   .uu li{margin:6px 0;line-height:1.5}
   .uu li::marker{color:var(--amber)}
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -378,14 +381,14 @@
   <p>Nine parks (eight owned plus one under operations and maintenance) and one five-star hotel, across four catchments.</p>
 
   <div class="tw"><table>
-    <thead><tr><th>Catchment</th><th>Assets</th><th>Q1FY27 footfall</th><th>Q1FY27 ARPU (Rs)</th><th>Q1FY27 revenue (Rs cr)</th><th>YoY ARPU</th></tr></thead>
+    <thead><tr><th>Catchment</th><th class="tx">Assets</th><th>Q1FY27 footfall</th><th>Q1FY27 ARPU (Rs)</th><th>Q1FY27 revenue (Rs cr)</th><th>YoY ARPU</th></tr></thead>
     <tbody>
-      <tr><td>Mumbai-Pune</td><td class="wrap2">Imagicaa Theme Park Khopoli, Imagicaa Water Park Khopoli, Wet'n Joy Water Park Lonavala, Wet'n Joy Amusement Park Lonavala</td><td>6,22,199</td><td>1,774</td><td>110.35</td><td>-1%</td></tr>
-      <tr><td>Rest of Maharashtra</td><td class="wrap2">Wet'n Joy Water Park Shirdi, Sai Teerth Religious Theme Park Shirdi</td><td>2,74,813</td><td>970</td><td>26.66</td><td>+17%</td></tr>
-      <tr><td>Central India</td><td class="wrap2">Aqua Imagicaa Water Park, Indore</td><td>1,64,938</td><td>942</td><td>15.54</td><td>-3%</td></tr>
-      <tr><td>Gujarat</td><td class="wrap2">Aqua Imagicaa Water Park Surat; Shanku's Water Park Mehsana (O&amp;M only, excluded)</td><td>92,248</td><td>915</td><td>8.44</td><td>-13%</td></tr>
-      <tr><td><strong>All parks</strong></td><td>-</td><td><strong>11,54,198</strong></td><td><strong>1,395</strong></td><td><strong>161.00</strong></td><td><strong>0%</strong></td></tr>
-      <tr><td>Novotel Imagicaa (hotel)</td><td class="wrap2">287 keys, five-star, Khopoli</td><td>62% occupancy</td><td>ARR 9,657</td><td>15.83</td><td>ARR +1%</td></tr>
+      <tr><td>Mumbai-Pune</td><td class="wrap2 tx">Imagicaa Theme Park Khopoli, Imagicaa Water Park Khopoli, Wet'n Joy Water Park Lonavala, Wet'n Joy Amusement Park Lonavala</td><td>6,22,199</td><td>1,774</td><td>110.35</td><td>-1%</td></tr>
+      <tr><td>Rest of Maharashtra</td><td class="wrap2 tx">Wet'n Joy Water Park Shirdi, Sai Teerth Religious Theme Park Shirdi</td><td>2,74,813</td><td>970</td><td>26.66</td><td>+17%</td></tr>
+      <tr><td>Central India</td><td class="wrap2 tx">Aqua Imagicaa Water Park, Indore</td><td>1,64,938</td><td>942</td><td>15.54</td><td>-3%</td></tr>
+      <tr><td>Gujarat</td><td class="wrap2 tx">Aqua Imagicaa Water Park Surat; Shanku's Water Park Mehsana (O&amp;M only, excluded)</td><td>92,248</td><td>915</td><td>8.44</td><td>-13%</td></tr>
+      <tr><td><strong>All parks</strong></td><td class="tx tn">-</td><td><strong>11,54,198</strong></td><td><strong>1,395</strong></td><td><strong>161.00</strong></td><td><strong>0%</strong></td></tr>
+      <tr><td>Novotel Imagicaa (hotel)</td><td class="wrap2 tx">287 keys, five-star, Khopoli</td><td>62% occupancy</td><td>ARR 9,657</td><td>15.83</td><td>ARR +1%</td></tr>
     </tbody>
     <caption>Source: Q1 FY27 investor presentation, 07-Aug-2026. Snow Park is inside the Khopoli complex. Hotel revenue fell 2% YoY and occupancy fell from 65% to 62%.</caption>
   </table></div>
@@ -474,7 +477,7 @@
       <tr><td>Book value per share (Rs)</td><td>22.2</td><td>283</td><td>22.2</td></tr>
       <tr><td>Annual footfall</td><td>24.7 lakh</td><td>32.19 lakh</td><td>n.d.</td></tr>
       <tr><td>Footfall growth YoY</td><td>-8.7%</td><td>+5.58%</td><td>-17.6%</td></tr>
-      <tr><td>Parks</td><td>9 + 1 hotel</td><td>5 + 1 resort</td><td>1</td></tr>
+      <tr><td>Parks</td><td class="tx tn">9 + 1 hotel</td><td class="tx tn">5 + 1 resort</td><td>1</td></tr>
       <tr><td>Free cash flow FY24-FY26 (Rs cr)</td><td>-516</td><td>-412</td><td>n.d.</td></tr>
     </tbody>
     <caption>IMAGICAA from audited consolidated FY26 results, 14-May-2026. Wonderla and Nicco from screener.in standalone pages accessed 14-Aug-2026; Wonderla footfall from its FY2025-26 annual report directors' report. *Nicco standalone PAT includes an exceptional gain of Rs 15.41 cr on divesting Nicco Engineering Services; its <strong>consolidated</strong> FY26 result was a net loss of Rs 2.73 cr. Nicco also had roughly 1.46 acres repossessed on 08-Nov-2025, causing operational disruption.</caption>
@@ -705,14 +708,14 @@
   <h3>Who controls this company</h3>
   <p>The promoter is <strong>Malpani Parks Private Limited</strong>, part of the Malpani Group of Sangamner, Maharashtra, a diversified family business spanning FMCG, renewable energy, real estate, hospitality, education and entertainment. Malpani Parks became the promoter <strong>effective June 2022</strong>, consolidating the group's entire parks business under the listed entity. Promoter holding is 74.02%.</p>
   <div class="tw"><table>
-    <thead><tr><th>Person</th><th>Role</th><th>Note</th></tr></thead>
+    <thead><tr><th>Person</th><th class="tx">Role</th><th class="tx">Note</th></tr></thead>
     <tbody>
-      <tr><td>Jai Malpani</td><td>Managing Director</td><td class="wrap2">Economics graduate. Drew no remuneration in FY25.</td></tr>
-      <tr><td>Rajesh Malpani</td><td>Director</td><td class="wrap2">Also a partner of Giriraj Enterprises, the counterparty to the Rs 629 cr park sale and the Rs 16 cr solar sale. No remuneration.</td></tr>
-      <tr><td>Manish Malpani</td><td>Director</td><td class="wrap2">Also a partner of Giriraj Enterprises. No remuneration.</td></tr>
-      <tr><td>Dhimant Bakshi</td><td>CEO &amp; Chief Marketing Officer</td><td class="wrap2">Professional management hire.</td></tr>
-      <tr><td>Mayuresh Kore</td><td>CFO &amp; Head Legal</td><td class="wrap2">Also the BRSR contact.</td></tr>
-      <tr><td>Suresh Bharathwaj</td><td>Independent Director</td><td class="wrap2">Re-appointed for a second term from 18-Oct-2024.</td></tr>
+      <tr><td>Jai Malpani</td><td class="tx tn">Managing Director</td><td class="wrap2 tx">Economics graduate. Drew no remuneration in FY25.</td></tr>
+      <tr><td>Rajesh Malpani</td><td class="tx tn">Director</td><td class="wrap2 tx">Also a partner of Giriraj Enterprises, the counterparty to the Rs 629 cr park sale and the Rs 16 cr solar sale. No remuneration.</td></tr>
+      <tr><td>Manish Malpani</td><td class="tx tn">Director</td><td class="wrap2 tx">Also a partner of Giriraj Enterprises. No remuneration.</td></tr>
+      <tr><td>Dhimant Bakshi</td><td class="tx">CEO &amp; Chief Marketing Officer</td><td class="wrap2 tx">Professional management hire.</td></tr>
+      <tr><td>Mayuresh Kore</td><td class="tx tn">CFO &amp; Head Legal</td><td class="wrap2 tx">Also the BRSR contact.</td></tr>
+      <tr><td>Suresh Bharathwaj</td><td class="tx">Independent Director</td><td class="wrap2 tx">Re-appointed for a second term from 18-Oct-2024.</td></tr>
     </tbody>
     <caption>Source: FY25 annual report. No CFO or Company Secretary resignation was identified over FY24-FY26.</caption>
   </table></div>
@@ -724,13 +727,13 @@
 
   <h3>The recapitalisation and the dilution it caused</h3>
   <div class="tw"><table>
-    <thead><tr><th>Event</th><th>When</th><th>Price (Rs)</th><th>Shares issued</th><th>Note</th></tr></thead>
+    <thead><tr><th>Event</th><th class="tx">When</th><th>Price (Rs)</th><th>Shares issued</th><th class="tx">Note</th></tr></thead>
     <tbody>
-      <tr><td>Conversion of debt to equity</td><td>FY23</td><td>15.29</td><td>-</td><td class="wrap2">Malpani entry alongside the lender settlement</td></tr>
-      <tr><td>OCRPS conversion</td><td>FY24</td><td>36.81</td><td>7,00,00,000</td><td class="wrap2">2,57,67,000 OCRPS of Rs 100 face converted</td></tr>
-      <tr><td>OCRPS conversion</td><td>11-Apr-2024</td><td>36.81</td><td>6,03,99,348</td><td class="wrap2">2,22,33,000 OCRPS of Rs 100 face converted (Rs 222.3 cr)</td></tr>
-      <tr><td>Preferential equity</td><td>Mar-2025</td><td>73.50</td><td>2,34,82,500</td><td class="wrap2">Rs 172.60 cr. Promoter took 1,70,06,800 (Rs 125 cr)</td></tr>
-      <tr><td>Convertible warrants</td><td>Mar-2025</td><td>73.50</td><td>2,34,82,500 (potential)</td><td class="wrap2">Rs 172.60 cr. Issue period 24-26 Mar-2025. Rs 18.375 (25%) paid upfront = Rs 43.15 cr; Rs 55.125 (75%) = Rs 129.45 cr on exercise within 18 months, i.e. by about 26-Sep-2026. <strong>Nil converted as at 30-Jun-2026</strong></td></tr>
+      <tr><td>Conversion of debt to equity</td><td class="tx tn">FY23</td><td>15.29</td><td>-</td><td class="wrap2 tx">Malpani entry alongside the lender settlement</td></tr>
+      <tr><td>OCRPS conversion</td><td class="tx tn">FY24</td><td>36.81</td><td>7,00,00,000</td><td class="wrap2 tx">2,57,67,000 OCRPS of Rs 100 face converted</td></tr>
+      <tr><td>OCRPS conversion</td><td class="tx tn">11-Apr-2024</td><td>36.81</td><td>6,03,99,348</td><td class="wrap2 tx">2,22,33,000 OCRPS of Rs 100 face converted (Rs 222.3 cr)</td></tr>
+      <tr><td>Preferential equity</td><td class="tx tn">Mar-2025</td><td>73.50</td><td>2,34,82,500</td><td class="wrap2 tx">Rs 172.60 cr. Promoter took 1,70,06,800 (Rs 125 cr)</td></tr>
+      <tr><td>Convertible warrants</td><td class="tx tn">Mar-2025</td><td>73.50</td><td class="tx">2,34,82,500 (potential)</td><td class="wrap2 tx">Rs 172.60 cr. Issue period 24-26 Mar-2025. Rs 18.375 (25%) paid upfront = Rs 43.15 cr; Rs 55.125 (75%) = Rs 129.45 cr on exercise within 18 months, i.e. by about 26-Sep-2026. <strong>Nil converted as at 30-Jun-2026</strong></td></tr>
     </tbody>
     <caption>Source: FY25 annual report and EGM notice dated 13-Mar-2025. Relevant date for warrant pricing was 11-Feb-2025.</caption>
   </table></div>
@@ -759,12 +762,12 @@
   </div>
 
   <div class="tw"><table>
-    <thead><tr><th>Vote</th><th>Resolution</th><th>Non-promoter turnout</th><th>Institutional votes AGAINST</th></tr></thead>
+    <thead><tr><th>Vote</th><th class="tx">Resolution</th><th>Non-promoter turnout</th><th class="tx">Institutional votes AGAINST</th></tr></thead>
     <tbody>
-      <tr><td>18-Mar-2024 EGM</td><td class="wrap2">Giriraj park acquisition RPT</td><td>14.36% (321 members of 72,675 on record)</td><td><strong>Nil.</strong> 100% in favour throughout</td></tr>
-      <tr><td>31-Jul-2024 postal ballot</td><td class="wrap2">Material modification, Giriraj</td><td>4.09%</td><td>Negligible. 99.97% in favour</td></tr>
-      <tr><td>13-Mar-2025 EGM</td><td class="wrap2">RPTs with Malpani Parks, Malpani Retails, Giriraj</td><td>12.9%</td><td><strong>40.4%</strong> (398,920 against, 589,028 for)</td></tr>
-      <tr><td>Sep-2025 AGM</td><td class="wrap2">RPT with Malpani Parks Ahmedabad</td><td>2.50%</td><td><strong>50.09%, an outright majority against</strong> (500,524 against, 498,786 for)</td></tr>
+      <tr><td>18-Mar-2024 EGM</td><td class="wrap2 tx">Giriraj park acquisition RPT</td><td class="tx">14.36% (321 members of 72,675 on record)</td><td class="tx"><strong>Nil.</strong> 100% in favour throughout</td></tr>
+      <tr><td>31-Jul-2024 postal ballot</td><td class="wrap2 tx">Material modification, Giriraj</td><td>4.09%</td><td class="tx">Negligible. 99.97% in favour</td></tr>
+      <tr><td>13-Mar-2025 EGM</td><td class="wrap2 tx">RPTs with Malpani Parks, Malpani Retails, Giriraj</td><td>12.9%</td><td class="tx"><strong>40.4%</strong> (398,920 against, 589,028 for)</td></tr>
+      <tr><td>Sep-2025 AGM</td><td class="wrap2 tx">RPT with Malpani Parks Ahmedabad</td><td>2.50%</td><td class="tx"><strong>50.09%, an outright majority against</strong> (500,524 against, 498,786 for)</td></tr>
     </tbody>
     <caption>Sources: scrutinizer reports and voting-results filings for each meeting. Retail voted 99.97-100% in favour throughout and numerically swamped the institutional block every time.</caption>
   </table></div>
@@ -802,16 +805,16 @@
 
   <h3>Capital allocation, FY23 to FY26</h3>
   <div class="tw"><table>
-    <thead><tr><th>Use of capital</th><th>Amount (Rs cr)</th><th>Outcome so far</th></tr></thead>
+    <thead><tr><th>Use of capital</th><th class="tx">Amount (Rs cr)</th><th class="tx">Outcome so far</th></tr></thead>
     <tbody>
-      <tr><td>Settle old Adlabs lenders</td><td>~700 debt extinguished</td><td class="wrap2">Unambiguously value-creating. Removed Rs 188 cr of annual interest.</td></tr>
-      <tr><td>Acquire Aqua Imagicaa Surat</td><td>Not separately disclosed</td><td class="wrap2">Operating. Q1 FY27 ARPU Rs 915, down 13% YoY.</td></tr>
-      <tr><td>Acquire 4 Giriraj parks (related party)</td><td>629.38</td><td class="wrap2"><span class="chip miss">Miss</span> FY25 contribution Rs 111.73 cr, below both the Rs 148.7 cr TTM used to price the deal and the parks' own Rs 124.7 cr FY23 revenue. Structure: Rs 30 cr at closing then Rs 100 cr at 3, 6, 12, 18, 24 and 30 months. A <strong>Rs 50 cr prepayment discount was available if settled within 12 months and was not taken</strong>; delayed tranches carry 14% p.a.</td></tr>
-      <tr><td>Malpani Parks Indore (related party)</td><td>55 equity + 153 ICD</td><td class="wrap2">Aqua Imagicaa Indore opened 24-Mar-2025, broadly on schedule. Q1 FY27 footfall +48%, ARPU Rs 942.</td></tr>
-      <tr><td>Mandrup solar plant (related party)</td><td>16.00</td><td class="wrap2">Bought below the Rs 16.5 cr independent valuation. Claimed 4-year payback.</td></tr>
-      <tr><td>Shanku's Water Park, Mehsana (Gujarat SPV)</td><td>50 for 50.002%</td><td class="wrap2"><span class="chip pend">Pending</span> Expected to close by 30-Sep-2026.</td></tr>
-      <tr><td>Dividends / buybacks</td><td>Nil</td><td class="wrap2">None, ever. Appropriate given accumulated losses.</td></tr>
-      <tr><td>Ride refresh at flagship Khopoli</td><td>Not disclosed</td><td class="wrap2"><span class="chip miss">Concern</span> No new ride identified since Jun-2022. See Section 10.</td></tr>
+      <tr><td>Settle old Adlabs lenders</td><td class="tx">~700 debt extinguished</td><td class="wrap2 tx">Unambiguously value-creating. Removed Rs 188 cr of annual interest.</td></tr>
+      <tr><td>Acquire Aqua Imagicaa Surat</td><td class="tx">Not separately disclosed</td><td class="wrap2 tx">Operating. Q1 FY27 ARPU Rs 915, down 13% YoY.</td></tr>
+      <tr><td>Acquire 4 Giriraj parks (related party)</td><td class="tx tn">629.38</td><td class="wrap2 tx"><span class="chip miss">Miss</span> FY25 contribution Rs 111.73 cr, below both the Rs 148.7 cr TTM used to price the deal and the parks' own Rs 124.7 cr FY23 revenue. Structure: Rs 30 cr at closing then Rs 100 cr at 3, 6, 12, 18, 24 and 30 months. A <strong>Rs 50 cr prepayment discount was available if settled within 12 months and was not taken</strong>; delayed tranches carry 14% p.a.</td></tr>
+      <tr><td>Malpani Parks Indore (related party)</td><td class="tx">55 equity + 153 ICD</td><td class="wrap2 tx">Aqua Imagicaa Indore opened 24-Mar-2025, broadly on schedule. Q1 FY27 footfall +48%, ARPU Rs 942.</td></tr>
+      <tr><td>Mandrup solar plant (related party)</td><td class="tx tn">16.00</td><td class="wrap2 tx">Bought below the Rs 16.5 cr independent valuation. Claimed 4-year payback.</td></tr>
+      <tr><td>Shanku's Water Park, Mehsana (Gujarat SPV)</td><td class="tx tn">50 for 50.002%</td><td class="wrap2 tx"><span class="chip pend">Pending</span> Expected to close by 30-Sep-2026.</td></tr>
+      <tr><td>Dividends / buybacks</td><td class="tx tn">Nil</td><td class="wrap2 tx">None, ever. Appropriate given accumulated losses.</td></tr>
+      <tr><td>Ride refresh at flagship Khopoli</td><td class="tx tn">Not disclosed</td><td class="wrap2 tx"><span class="chip miss">Concern</span> No new ride identified since Jun-2022. See Section 10.</td></tr>
     </tbody>
   </table></div>
 
@@ -832,23 +835,23 @@
   <p>The scorecard below is therefore built mainly from the 19-Feb-2024 transcript, quarterly press releases and exchange filings. Every claim is dated, quantified and sourced.</p>
 
   <div class="tw"><table>
-    <thead><tr><th>Claim</th><th>Made</th><th>Outcome</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>Claim</th><th class="tx">Made</th><th class="tx">Outcome</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr><td class="wrap2">Combined entity: 2.8 mn footfall, over Rs 400 cr revenue, more than Rs 175 cr EBITDA</td><td>19-Feb-2024 concall</td><td class="wrap2">FY25: 27.0 lakh, Rs 410.2 cr, Rs 175.5 cr</td><td><span class="chip hit">Hit</span></td></tr>
-      <tr><td class="wrap2">Bakshi: "revenues upward of 400 odd crores, EBITDA almost touching about 200 crores, healthy 48% to 50% EBITDA margins"</td><td>19-Feb-2024 concall</td><td class="wrap2">FY25 margin 42.8%; FY26 Rs 373.9 cr revenue, Rs 116.0 cr EBITDA, 31.0%</td><td><span class="chip miss">Miss</span></td></tr>
-      <tr><td class="wrap2">Kore: "we are a debt free Company... debt which will not exceed 2x of the EBITDA", later "combined debt could be in the range of 350 to 400 crores"</td><td>19-Feb-2024 concall</td><td class="wrap2">Mar-2026 borrowings Rs 342.5 cr = <strong>2.95x gross EBITDA</strong>, 2.72x net. Inside the absolute band, well outside the ratio</td><td><span class="chip miss">Miss</span></td></tr>
-      <tr><td class="wrap2">Acquired parks bring TTM revenue of Rs 148.7 cr and EBITDA of Rs 84.6 cr</td><td>19-Feb-2024 deck</td><td class="wrap2">FY25 contribution <strong>Rs 111.73 cr</strong>, 25% short (FY25 AR Note 55)</td><td><span class="chip miss">Miss</span></td></tr>
-      <tr><td class="wrap2">Indore park "set to commence its operations in Q1 of FY25"</td><td>19-Feb-2024</td><td class="wrap2">Soft-launched <strong>24-Mar-2025</strong>, i.e. Q4 FY25</td><td><span class="chip miss">Miss</span> ~9 months late</td></tr>
-      <tr><td class="wrap2">Kore on Indore: "total capex will be 140 crores... it will not cross 140 crores"</td><td>19-Feb-2024</td><td class="wrap2">Restructured 25-Jun-2024 to Rs 55 cr equity plus up to Rs 153 cr infusion, total project cost not to exceed <strong>Rs 208 cr</strong>, 48.6% above. Mitigant: freehold land acquired instead of an 18-acre lease at Rs 3.8 cr a year</td><td><span class="chip miss">Miss</span></td></tr>
-      <tr><td class="wrap2">Indore transaction "expected to be completed in the month of March 2024"</td><td>19-Feb-2024</td><td class="wrap2">Extended repeatedly; completed <strong>25-Feb-2025</strong></td><td><span class="chip miss">Miss</span> 11 months</td></tr>
-      <tr><td class="wrap2">Bakshi: marketing spend "sub 10%" of sales</td><td>19-Feb-2024</td><td class="wrap2">FY26 Rs 33.1 cr on Rs 373.9 cr = 8.9%; Q1 FY27 9.3%</td><td><span class="chip hit">Hit</span></td></tr>
-      <tr><td class="wrap2">Kore: combined margins "could inch upwards closer to 50% in the years to come"</td><td>19-Feb-2024</td><td class="wrap2">FY26 31.0%</td><td><span class="chip miss">Miss</span></td></tr>
-      <tr><td class="wrap2">Bakshi: Indore first full year footfall "somewhere around 3.5 lakh" (FY26)</td><td>19-Feb-2024</td><td class="wrap2">Q1 FY26 1,11,189; Q1 FY27 1,64,938. FY26 full-year Indore footfall not separately disclosed</td><td><span class="chip pend">Pending</span></td></tr>
-      <tr><td class="wrap2">QIP of up to Rs 600 cr</td><td>31-Jul-2024 resolution</td><td class="wrap2">Abandoned; Rs 1.39 cr of costs written off in Q1 FY26</td><td><span class="chip miss">Miss</span></td></tr>
-      <tr><td class="wrap2">Sabarmati Riverfront Ahmedabad PPP bid won</td><td>Mar-2024</td><td class="wrap2">Master plan ready, environment clearance received, "ready for groundbreaking" as at Aug-2026. Not started after ~29 months</td><td><span class="chip miss">Miss</span></td></tr>
-      <tr><td class="wrap2">Jai Malpani: "we continue to add one new park each year"</td><td>24-Mar-2025</td><td class="wrap2">The FY27 addition is a 50.002% SPV stake in Shanku's Mehsana for Rs 50 cr plus a 6-10% O&amp;M fee, not a park the company built</td><td><span class="chip part">Partial</span></td></tr>
-      <tr><td class="wrap2">"We expect a robust H2 driven by pent-up demand and improving footfalls"</td><td>06-Nov-2025 press release</td><td class="wrap2">H2 FY26 revenue Rs 183.9 cr vs Rs 186.2 cr; H2 EBITDA <strong>Rs 52.4 cr vs Rs 70.5 cr</strong></td><td><span class="chip miss">Miss</span></td></tr>
-      <tr><td class="wrap2">FY26 described as "steady progress... stable revenues and footfalls"</td><td>May-2026 press release</td><td class="wrap2">FY26 revenue -8.9%, footfall -8.7%, EBITDA -33.9%, PAT -99.2% to Rs 0.6 cr</td><td><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Combined entity: 2.8 mn footfall, over Rs 400 cr revenue, more than Rs 175 cr EBITDA</td><td class="tx">19-Feb-2024 concall</td><td class="wrap2 tx">FY25: 27.0 lakh, Rs 410.2 cr, Rs 175.5 cr</td><td class="tx tn"><span class="chip hit">Hit</span></td></tr>
+      <tr><td class="wrap2">Bakshi: "revenues upward of 400 odd crores, EBITDA almost touching about 200 crores, healthy 48% to 50% EBITDA margins"</td><td class="tx">19-Feb-2024 concall</td><td class="wrap2 tx">FY25 margin 42.8%; FY26 Rs 373.9 cr revenue, Rs 116.0 cr EBITDA, 31.0%</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Kore: "we are a debt free Company... debt which will not exceed 2x of the EBITDA", later "combined debt could be in the range of 350 to 400 crores"</td><td class="tx">19-Feb-2024 concall</td><td class="wrap2 tx">Mar-2026 borrowings Rs 342.5 cr = <strong>2.95x gross EBITDA</strong>, 2.72x net. Inside the absolute band, well outside the ratio</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Acquired parks bring TTM revenue of Rs 148.7 cr and EBITDA of Rs 84.6 cr</td><td class="tx tn">19-Feb-2024 deck</td><td class="wrap2 tx">FY25 contribution <strong>Rs 111.73 cr</strong>, 25% short (FY25 AR Note 55)</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Indore park "set to commence its operations in Q1 of FY25"</td><td class="tx tn">19-Feb-2024</td><td class="wrap2 tx">Soft-launched <strong>24-Mar-2025</strong>, i.e. Q4 FY25</td><td class="tx"><span class="chip miss">Miss</span> ~9 months late</td></tr>
+      <tr><td class="wrap2">Kore on Indore: "total capex will be 140 crores... it will not cross 140 crores"</td><td class="tx tn">19-Feb-2024</td><td class="wrap2 tx">Restructured 25-Jun-2024 to Rs 55 cr equity plus up to Rs 153 cr infusion, total project cost not to exceed <strong>Rs 208 cr</strong>, 48.6% above. Mitigant: freehold land acquired instead of an 18-acre lease at Rs 3.8 cr a year</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Indore transaction "expected to be completed in the month of March 2024"</td><td class="tx tn">19-Feb-2024</td><td class="wrap2 tx">Extended repeatedly; completed <strong>25-Feb-2025</strong></td><td class="tx tn"><span class="chip miss">Miss</span> 11 months</td></tr>
+      <tr><td class="wrap2">Bakshi: marketing spend "sub 10%" of sales</td><td class="tx tn">19-Feb-2024</td><td class="wrap2 tx">FY26 Rs 33.1 cr on Rs 373.9 cr = 8.9%; Q1 FY27 9.3%</td><td class="tx tn"><span class="chip hit">Hit</span></td></tr>
+      <tr><td class="wrap2">Kore: combined margins "could inch upwards closer to 50% in the years to come"</td><td class="tx tn">19-Feb-2024</td><td class="wrap2 tx tn">FY26 31.0%</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Bakshi: Indore first full year footfall "somewhere around 3.5 lakh" (FY26)</td><td class="tx tn">19-Feb-2024</td><td class="wrap2 tx">Q1 FY26 1,11,189; Q1 FY27 1,64,938. FY26 full-year Indore footfall not separately disclosed</td><td class="tx tn"><span class="chip pend">Pending</span></td></tr>
+      <tr><td class="wrap2">QIP of up to Rs 600 cr</td><td class="tx">31-Jul-2024 resolution</td><td class="wrap2 tx">Abandoned; Rs 1.39 cr of costs written off in Q1 FY26</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Sabarmati Riverfront Ahmedabad PPP bid won</td><td class="tx tn">Mar-2024</td><td class="wrap2 tx">Master plan ready, environment clearance received, "ready for groundbreaking" as at Aug-2026. Not started after ~29 months</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">Jai Malpani: "we continue to add one new park each year"</td><td class="tx tn">24-Mar-2025</td><td class="wrap2 tx">The FY27 addition is a 50.002% SPV stake in Shanku's Mehsana for Rs 50 cr plus a 6-10% O&amp;M fee, not a park the company built</td><td class="tx tn"><span class="chip part">Partial</span></td></tr>
+      <tr><td class="wrap2">"We expect a robust H2 driven by pent-up demand and improving footfalls"</td><td class="tx">06-Nov-2025 press release</td><td class="wrap2 tx">H2 FY26 revenue Rs 183.9 cr vs Rs 186.2 cr; H2 EBITDA <strong>Rs 52.4 cr vs Rs 70.5 cr</strong></td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+      <tr><td class="wrap2">FY26 described as "steady progress... stable revenues and footfalls"</td><td class="tx">May-2026 press release</td><td class="wrap2 tx">FY26 revenue -8.9%, footfall -8.7%, EBITDA -33.9%, PAT -99.2% to Rs 0.6 cr</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
     </tbody>
     <caption>Sources: earnings call transcript filed 23-Feb-2024 for the call held 19-Feb-2024; acquisition investor presentation filed 19-Feb-2024; quarterly press releases; Reg 30 filings; FY25 annual report Note 55. Pending items excluded from the ratio.</caption>
   </table></div>
@@ -878,16 +881,16 @@
   <p>India Ratings and Research affirmed and assigned <strong>IND A / Stable / IND A1</strong> on 14-May-2026, covering Rs 650 mn newly assigned plus Rs 3,750 mn affirmed, a total of <strong>Rs 440 cr</strong> of bank facilities. Investment grade, stable outlook. That is a meaningful endorsement and should not be brushed aside.</p>
 
   <div class="tw"><table>
-    <thead><tr><th>Rating agency disclosure</th><th>Detail</th></tr></thead>
+    <thead><tr><th>Rating agency disclosure</th><th class="tx">Detail</th></tr></thead>
     <tbody>
-      <tr><td class="wrap2">Acquisition cost and funding</td><td class="wrap2">Four parks bought from Giriraj Enterprises for nearly Rs 630 cr, using Rs 275 cr of debt; the rest from equity and internal accruals.</td></tr>
-      <tr><td class="wrap2">Amount still owed to the promoter's firm</td><td class="wrap2"><strong>Rs 200 cr unpaid as at end-9MFY26</strong>, to be funded by Rs 109 cr of already-sanctioned debt drawn in FY27.</td></tr>
-      <tr><td class="wrap2">Total cash outgo, next 12-18 months</td><td class="wrap2"><strong>About Rs 600 cr</strong>: remaining Giriraj consideration Rs 200 cr, Ahmedabad park development, Ahmedabad park investment, Hello Parks stores, maintenance.</td></tr>
-      <tr><td class="wrap2">Reliance on warrant money</td><td class="wrap2">Part funding expected from the "unpaid portion of share warrants, to the tune of Rs 130 cr".</td></tr>
-      <tr><td class="wrap2">Geographic concentration</td><td class="wrap2">Until 9MFY26, <strong>70-80% of revenue and EBITDA came from Lonavala and Khopoli alone</strong>.</td></tr>
-      <tr><td class="wrap2">9MFY26 operating deterioration</td><td class="wrap2">Revenue Rs 282 cr (vs Rs 315.8 cr), footfall 1.72 mn (vs 2.11 mn), EBITDA Rs 85.7 cr (vs Rs 136.3 cr). Interest cover fell to 6.1x from 16.4x.</td></tr>
-      <tr><td class="wrap2">Scheduled repayments</td><td class="wrap2">Rs 40-50 cr each in FY27 and FY28.</td></tr>
-      <tr><td class="wrap2">Negative rating trigger</td><td class="wrap2">Net leverage sustained above 3.5x, or lower-than-expected footfall and ARPU growth.</td></tr>
+      <tr><td class="wrap2">Acquisition cost and funding</td><td class="wrap2 tx">Four parks bought from Giriraj Enterprises for nearly Rs 630 cr, using Rs 275 cr of debt; the rest from equity and internal accruals.</td></tr>
+      <tr><td class="wrap2">Amount still owed to the promoter's firm</td><td class="wrap2 tx"><strong>Rs 200 cr unpaid as at end-9MFY26</strong>, to be funded by Rs 109 cr of already-sanctioned debt drawn in FY27.</td></tr>
+      <tr><td class="wrap2">Total cash outgo, next 12-18 months</td><td class="wrap2 tx"><strong>About Rs 600 cr</strong>: remaining Giriraj consideration Rs 200 cr, Ahmedabad park development, Ahmedabad park investment, Hello Parks stores, maintenance.</td></tr>
+      <tr><td class="wrap2">Reliance on warrant money</td><td class="wrap2 tx">Part funding expected from the "unpaid portion of share warrants, to the tune of Rs 130 cr".</td></tr>
+      <tr><td class="wrap2">Geographic concentration</td><td class="wrap2 tx">Until 9MFY26, <strong>70-80% of revenue and EBITDA came from Lonavala and Khopoli alone</strong>.</td></tr>
+      <tr><td class="wrap2">9MFY26 operating deterioration</td><td class="wrap2 tx">Revenue Rs 282 cr (vs Rs 315.8 cr), footfall 1.72 mn (vs 2.11 mn), EBITDA Rs 85.7 cr (vs Rs 136.3 cr). Interest cover fell to 6.1x from 16.4x.</td></tr>
+      <tr><td class="wrap2">Scheduled repayments</td><td class="wrap2 tx">Rs 40-50 cr each in FY27 and FY28.</td></tr>
+      <tr><td class="wrap2">Negative rating trigger</td><td class="wrap2 tx">Net leverage sustained above 3.5x, or lower-than-expected footfall and ARPU growth.</td></tr>
     </tbody>
     <caption>Source: India Ratings press release dated 14-May-2026, filed under Regulation 30.</caption>
   </table></div>
@@ -941,12 +944,12 @@
   <h3>Finding 2: official ride status conflicts with what visitors report</h3>
   <p>The company publishes a live ride-status page. As at 16-Aug-2026 it showed 5 items under maintenance out of 46 listed (1 of 12 theme-park indoor rides, 4 of 22 water-park rides, none of 12 theme-park outdoor rides). Against that, independent visitor reports:</p>
   <div class="tw"><table>
-    <thead><tr><th>When</th><th>Source</th><th>What was reported</th></tr></thead>
+    <thead><tr><th>When</th><th class="tx">Source</th><th class="tx">What was reported</th></tr></thead>
     <tbody>
-      <tr><td>Jul-2026</td><td>TripAdvisor</td><td class="wrap2">"half the rides are not functional... they didn't inform at the time of booking"</td></tr>
-      <tr><td>~May-2026</td><td>Reddit r/mumbai</td><td class="wrap2">"Many of the rides are randomly shut or under maintenance these days"</td></tr>
-      <tr><td>~Apr-2026</td><td>Reddit r/pune</td><td class="wrap2">Scream Machine reported closed for maintenance</td></tr>
-      <tr><td>Nov-2024</td><td>TripAdvisor</td><td class="wrap2">"Dare Drop closed for maintenance - a baffling decision for a weekend"</td></tr>
+      <tr><td>Jul-2026</td><td class="tx tn">TripAdvisor</td><td class="wrap2 tx">"half the rides are not functional... they didn't inform at the time of booking"</td></tr>
+      <tr><td>~May-2026</td><td class="tx tn">Reddit r/mumbai</td><td class="wrap2 tx">"Many of the rides are randomly shut or under maintenance these days"</td></tr>
+      <tr><td>~Apr-2026</td><td class="tx tn">Reddit r/pune</td><td class="wrap2 tx">Scream Machine reported closed for maintenance</td></tr>
+      <tr><td>Nov-2024</td><td class="tx tn">TripAdvisor</td><td class="wrap2 tx">"Dare Drop closed for maintenance - a baffling decision for a weekend"</td></tr>
     </tbody>
     <caption>Lower-reliability signal. Company booking terms state no refund is given for non-operational rides.</caption>
   </table></div>
@@ -1001,13 +1004,13 @@
 
   <h3>Quantified sensitivities</h3>
   <div class="tw"><table>
-    <thead><tr><th>Driver</th><th>Move</th><th>Approximate FY27E EBITDA impact</th><th>Basis</th></tr></thead>
+    <thead><tr><th>Driver</th><th class="tx">Move</th><th>Approximate FY27E EBITDA impact</th><th class="tx">Basis</th></tr></thead>
     <tbody>
-      <tr><td>Footfall</td><td>+/- 5%</td><td>+/- Rs 26 cr</td><td class="wrap2">On ~Rs 415 cr revenue at ~70% incremental margin, since marginal cost per visitor is near zero</td></tr>
-      <tr><td>ARPU</td><td>+/- 5%</td><td>+/- Rs 21 cr</td><td class="wrap2">Almost fully drops through to EBITDA</td></tr>
-      <tr><td>One week of Q1 closure</td><td>1 week</td><td>-Rs 7 to 9 cr</td><td class="wrap2">Q1 FY27 EBITDA of Rs 90.1 cr over 13 weeks, weighted to peak days</td></tr>
-      <tr><td>Government grants</td><td>Rs 28 cr steps down to nil</td><td>-Rs 28 cr</td><td class="wrap2">FY25 recognised grant quantum; FY26 quantum undisclosed</td></tr>
-      <tr><td>Interest rate</td><td>+100 bps on Rs 342.5 cr</td><td>-Rs 3.4 cr on PBT</td><td class="wrap2">Below EBITDA, but material against FY26 PBT of Rs 8.6 cr</td></tr>
+      <tr><td>Footfall</td><td class="tx tn">+/- 5%</td><td>+/- Rs 26 cr</td><td class="wrap2 tx">On ~Rs 415 cr revenue at ~70% incremental margin, since marginal cost per visitor is near zero</td></tr>
+      <tr><td>ARPU</td><td class="tx tn">+/- 5%</td><td>+/- Rs 21 cr</td><td class="wrap2 tx">Almost fully drops through to EBITDA</td></tr>
+      <tr><td>One week of Q1 closure</td><td class="tx tn">1 week</td><td>-Rs 7 to 9 cr</td><td class="wrap2 tx">Q1 FY27 EBITDA of Rs 90.1 cr over 13 weeks, weighted to peak days</td></tr>
+      <tr><td>Government grants</td><td class="tx">Rs 28 cr steps down to nil</td><td>-Rs 28 cr</td><td class="wrap2 tx">FY25 recognised grant quantum; FY26 quantum undisclosed</td></tr>
+      <tr><td>Interest rate</td><td class="tx">+100 bps on Rs 342.5 cr</td><td class="tx tn">-Rs 3.4 cr on PBT</td><td class="wrap2 tx">Below EBITDA, but material against FY26 PBT of Rs 8.6 cr</td></tr>
     </tbody>
     <caption>Analyst estimates. The footfall and ARPU sensitivities are the ones that matter; everything else is second order.</caption>
   </table></div>
@@ -1021,14 +1024,14 @@
 
   <h3>Live pipeline</h3>
   <div class="tw"><table>
-    <thead><tr><th>Project</th><th>Detail</th><th>Status / timing</th></tr></thead>
+    <thead><tr><th>Project</th><th class="tx">Detail</th><th class="tx">Status / timing</th></tr></thead>
     <tbody>
-      <tr><td class="wrap2">Shanku's Water Park, Mehsana, Gujarat</td><td class="wrap2">50.002% of Mehsana Next Parks Pvt Ltd (SPV) for Rs 50 cr; currently run under O&amp;M</td><td class="wrap2">Expected to close by <strong>30-Sep-2026</strong></td></tr>
-      <tr><td class="wrap2">Ahmedabad water park</td><td class="wrap2">Reported as India's largest water park, associated Rs 75 cr acquisition</td><td class="wrap2">Largely operational from FY27 per India Ratings</td></tr>
-      <tr><td class="wrap2">Sabarmati Riverfront, Ahmedabad</td><td class="wrap2">Multi-attraction entertainment hub, 11 acres, PPP bid won Mar-2024</td><td class="wrap2"><strong>Not yet started.</strong> Master plan ready and environment clearance received as at Aug-2026, described as ready for groundbreaking. India Ratings' expectation that Ahmedabad is "largely operational from FY27" looks optimistic against a project that has not broken ground</td></tr>
-      <tr><td class="wrap2">Malpani Parks Ahmedabad Pvt Ltd (RELATED PARTY)</td><td class="wrap2">~34 acres of non-agricultural land at Chandrala, Ahmedabad, wholly owned by promoter Malpani Parks Pvt Ltd. Up to Rs 50 cr for 100% equity plus up to Rs 30 cr infusion, capped at Rs 75 cr. Valuation by Pensar Valuation Pvt Ltd. Equals 18.29% of FY25 consolidated turnover</td><td class="wrap2">Approved at the Sep-2025 AGM, where <strong>50.09% of institutional votes cast were against</strong>. Completion was targeted on or before 31-Mar-2026; actual completion status <strong>UNVERIFIED</strong></td></tr>
-      <tr><td class="wrap2">Hello Parks (indoor FECs)</td><td class="wrap2">2 LOIs signed; first site indicated Hyderabad, also Surat</td><td class="wrap2">Pre-revenue</td></tr>
-      <tr><td class="wrap2">Broader expansion</td><td class="wrap2">9 to 13 parks, up to Rs 1,000 cr over 5-6 years, targeting Bengaluru, Hyderabad, Delhi NCR</td><td class="wrap2">Announced Jul-2026, secondary source, <strong>UNVERIFIED</strong></td></tr>
+      <tr><td class="wrap2">Shanku's Water Park, Mehsana, Gujarat</td><td class="wrap2 tx">50.002% of Mehsana Next Parks Pvt Ltd (SPV) for Rs 50 cr; currently run under O&amp;M</td><td class="wrap2 tx">Expected to close by <strong>30-Sep-2026</strong></td></tr>
+      <tr><td class="wrap2">Ahmedabad water park</td><td class="wrap2 tx">Reported as India's largest water park, associated Rs 75 cr acquisition</td><td class="wrap2 tx">Largely operational from FY27 per India Ratings</td></tr>
+      <tr><td class="wrap2">Sabarmati Riverfront, Ahmedabad</td><td class="wrap2 tx">Multi-attraction entertainment hub, 11 acres, PPP bid won Mar-2024</td><td class="wrap2 tx"><strong>Not yet started.</strong> Master plan ready and environment clearance received as at Aug-2026, described as ready for groundbreaking. India Ratings' expectation that Ahmedabad is "largely operational from FY27" looks optimistic against a project that has not broken ground</td></tr>
+      <tr><td class="wrap2">Malpani Parks Ahmedabad Pvt Ltd (RELATED PARTY)</td><td class="wrap2 tx">~34 acres of non-agricultural land at Chandrala, Ahmedabad, wholly owned by promoter Malpani Parks Pvt Ltd. Up to Rs 50 cr for 100% equity plus up to Rs 30 cr infusion, capped at Rs 75 cr. Valuation by Pensar Valuation Pvt Ltd. Equals 18.29% of FY25 consolidated turnover</td><td class="wrap2 tx">Approved at the Sep-2025 AGM, where <strong>50.09% of institutional votes cast were against</strong>. Completion was targeted on or before 31-Mar-2026; actual completion status <strong>UNVERIFIED</strong></td></tr>
+      <tr><td class="wrap2">Hello Parks (indoor FECs)</td><td class="wrap2 tx">2 LOIs signed; first site indicated Hyderabad, also Surat</td><td class="wrap2 tx tn">Pre-revenue</td></tr>
+      <tr><td class="wrap2">Broader expansion</td><td class="wrap2 tx">9 to 13 parks, up to Rs 1,000 cr over 5-6 years, targeting Bengaluru, Hyderabad, Delhi NCR</td><td class="wrap2 tx">Announced Jul-2026, secondary source, <strong>UNVERIFIED</strong></td></tr>
     </tbody>
   </table></div>
 
@@ -1130,20 +1133,20 @@
 
   <h3>Current multiples</h3>
   <div class="tw"><table>
-    <thead><tr><th>Measure</th><th>Value</th><th>Note</th></tr></thead>
+    <thead><tr><th>Measure</th><th>Value</th><th class="tx">Note</th></tr></thead>
     <tbody>
-      <tr><td>Market cap</td><td>Rs 2,699 cr</td><td>56.59 cr shares at Rs 47.70</td></tr>
-      <tr><td>Net debt</td><td>Rs 315.4 cr</td><td>Borrowings 342.5 less cash 16.1 and bank 11.0</td></tr>
-      <tr><td>Enterprise value</td><td><strong>Rs 3,015 cr</strong></td><td>Rs 3,123 cr if the Rs 107.7 cr of deferred consideration is treated as debt</td></tr>
-      <tr><td>EV / EBITDA (FY26)</td><td>26.0x</td><td>On Rs 116.0 cr</td></tr>
-      <tr><td>EV / EBITDA (TTM incl. Q1 FY27)</td><td><strong>22.7x</strong></td><td>On Rs 133.1 cr. The fairest current multiple</td></tr>
-      <tr><td>EV / EBITDA (FY25)</td><td>17.2x</td><td>On Rs 175.5 cr, the peak year</td></tr>
-      <tr><td>EV / Sales (FY26)</td><td>8.06x</td><td>Very high for a business earning 1.9% ROCE</td></tr>
-      <tr><td>P / B</td><td>2.15x</td><td>Book Rs 22.2, of which Rs 3.18 per share is deferred tax asset</td></tr>
-      <tr><td>P / E</td><td>212x</td><td>Meaningless. Ignore it</td></tr>
-      <tr><td>EV per annual visitor</td><td>Rs 12,205</td><td>On FY26 footfall of 24.7 lakh</td></tr>
-      <tr><td>EBITDA per visitor</td><td>Rs 470</td><td>Against ARPU of Rs 1,259, a 37% flow-through</td></tr>
-      <tr><td>EV per acre (Khopoli 110 acres only)</td><td>Rs 27.4 cr</td><td>Ignores the eight other parks, so this overstates land value per acre</td></tr>
+      <tr><td>Market cap</td><td>Rs 2,699 cr</td><td class="tx">56.59 cr shares at Rs 47.70</td></tr>
+      <tr><td>Net debt</td><td>Rs 315.4 cr</td><td class="tx">Borrowings 342.5 less cash 16.1 and bank 11.0</td></tr>
+      <tr><td>Enterprise value</td><td><strong>Rs 3,015 cr</strong></td><td class="tx">Rs 3,123 cr if the Rs 107.7 cr of deferred consideration is treated as debt</td></tr>
+      <tr><td>EV / EBITDA (FY26)</td><td>26.0x</td><td class="tx tn">On Rs 116.0 cr</td></tr>
+      <tr><td>EV / EBITDA (TTM incl. Q1 FY27)</td><td><strong>22.7x</strong></td><td class="tx">On Rs 133.1 cr. The fairest current multiple</td></tr>
+      <tr><td>EV / EBITDA (FY25)</td><td>17.2x</td><td class="tx">On Rs 175.5 cr, the peak year</td></tr>
+      <tr><td>EV / Sales (FY26)</td><td>8.06x</td><td class="tx">Very high for a business earning 1.9% ROCE</td></tr>
+      <tr><td>P / B</td><td>2.15x</td><td class="tx">Book Rs 22.2, of which Rs 3.18 per share is deferred tax asset</td></tr>
+      <tr><td>P / E</td><td>212x</td><td class="tx">Meaningless. Ignore it</td></tr>
+      <tr><td>EV per annual visitor</td><td>Rs 12,205</td><td class="tx">On FY26 footfall of 24.7 lakh</td></tr>
+      <tr><td>EBITDA per visitor</td><td>Rs 470</td><td class="tx">Against ARPU of Rs 1,259, a 37% flow-through</td></tr>
+      <tr><td>EV per acre (Khopoli 110 acres only)</td><td>Rs 27.4 cr</td><td class="tx">Ignores the eight other parks, so this overstates land value per acre</td></tr>
     </tbody>
   </table></div>
 

@@ -304,6 +304,10 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   .trk-ticks{font-size:8.5px}
 }
 
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}
+
 </style>
 <script>
 (function(){
@@ -444,13 +448,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>What the issuer-commissioned chapter said, and where it has already been overtaken</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>F&amp;S claim (prospectus)</th><th>What has happened since</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>F&amp;S claim (prospectus)</th><th class="tx">What has happened since</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr><td>India CNC machining-centre consumption US$ 1,125 mn FY23 to US$ 1,706 mn FY27F, 11.0% CAGR (p.205)</td><td>All-machine-tool consumption already US$ 4.1 bn in FY26 (IMTMA); management now quotes "around USD 4 billion"</td><td class="wr">Overtaken; different base</td></tr>
-      <tr><td>Machine tool production US$ 2.0 bn by FY27F (p.204)</td><td>IMTMA FY26 production about US$ 2.0 bn, a year early</td><td class="pos">Reached early</td></tr>
-      <tr class="hl"><td>Import share of CNC consumption falls from 45.9% (FY23) to 40.5% (FY27F); "import substitution opportunity" (pp.211-212)</td><td>IMTMA import share rose every year: 55.7%, 56.3%, 58.8%, 59.4%. Imports grew 12%, 22% and 16% in FY24, FY25 and FY26</td><td class="neg">Direction wrong so far</td></tr>
-      <tr><td>Jyoti third-largest in India with about 10% of CNC consumption; BFW 16%, Ace Micromatic 11% (p.209)</td><td>Jyoti's FY26 standalone revenue is 11.2% of Indian production and 5.4% of consumption (derived). The 10-12% claim in the FY26 annual report fits a production denominator, not consumption</td><td class="wr">Unverifiable on a common base</td></tr>
-      <tr><td>Gardner rank: India 10th in output, 8th in consumption (p.203)</td><td>IMTMA, citing Gardner: 9th and 6th for CY2023, 9th and 4th for CY2024</td><td class="wr">Stale at listing</td></tr>
+      <tr><td>India CNC machining-centre consumption US$ 1,125 mn FY23 to US$ 1,706 mn FY27F, 11.0% CAGR (p.205)</td><td class="tx">All-machine-tool consumption already US$ 4.1 bn in FY26 (IMTMA); management now quotes "around USD 4 billion"</td><td class="wr tx">Overtaken; different base</td></tr>
+      <tr><td>Machine tool production US$ 2.0 bn by FY27F (p.204)</td><td class="tx">IMTMA FY26 production about US$ 2.0 bn, a year early</td><td class="pos tx tn">Reached early</td></tr>
+      <tr class="hl"><td>Import share of CNC consumption falls from 45.9% (FY23) to 40.5% (FY27F); "import substitution opportunity" (pp.211-212)</td><td class="tx">IMTMA import share rose every year: 55.7%, 56.3%, 58.8%, 59.4%. Imports grew 12%, 22% and 16% in FY24, FY25 and FY26</td><td class="neg tx">Direction wrong so far</td></tr>
+      <tr><td>Jyoti third-largest in India with about 10% of CNC consumption; BFW 16%, Ace Micromatic 11% (p.209)</td><td class="tx">Jyoti's FY26 standalone revenue is 11.2% of Indian production and 5.4% of consumption (derived). The 10-12% claim in the FY26 annual report fits a production denominator, not consumption</td><td class="wr tx">Unverifiable on a common base</td></tr>
+      <tr><td>Gardner rank: India 10th in output, 8th in consumption (p.203)</td><td class="tx">IMTMA, citing Gardner: 9th and 6th for CY2023, 9th and 4th for CY2024</td><td class="wr tx tn">Stale at listing</td></tr>
     </tbody>
   </table></div></div>
   <div class="flag f-amb">
@@ -481,14 +485,14 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Regulatory architecture</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Lever</th><th>Status at 29-Sep-2026</th><th>Effect on Jyoti</th></tr></thead>
+    <thead><tr><th>Lever</th><th class="tx">Status at 29-Sep-2026</th><th class="tx">Effect on Jyoti</th></tr></thead>
     <tbody>
-      <tr><td>Licensing</td><td>None required to make machine tools in India. Export of controlled 5-axis machines and controllers requires dual-use licences and end-user certificates (India SCOMET; EU dual-use regulation for Huron; German controller licences)</td><td class="wr">Barrier to rivals; execution risk for Jyoti's own exports (Aug-2026 call: licences "taking longer")</td></tr>
-      <tr><td>Anti-dumping (DGTR)</td><td>No case on CNC machines found; adjacent cases on laser machines and plastic machinery from China</td><td>None</td></tr>
-      <tr><td>Quality control order</td><td>Machinery safety omnibus order rescinded 14-Jan-2026</td><td class="neg">Removes a barrier that would have slowed imports</td></tr>
-      <tr><td>Import duty</td><td>Basic customs duty on machine tools not verified. Direction of trade policy is down (US and EU deals)</td><td class="neg">Adverse, unsized</td></tr>
-      <tr><td>Incentives</td><td>ECMS capex incentive up to 25% on approved &#8377;1,020.65 cr (derived ceiling &#8377;255.16 cr over five years; approval letter not disclosed). No PLI for machine tools. DHI capital goods scheme funds shared facilities, not machines</td><td class="pos">Supportive, contingent</td></tr>
-      <tr><td>Defence procurement</td><td>About 75% of FY27 capital acquisition reserved for domestic industry</td><td class="pos">Supportive, indirect</td></tr>
+      <tr><td>Licensing</td><td class="tx">None required to make machine tools in India. Export of controlled 5-axis machines and controllers requires dual-use licences and end-user certificates (India SCOMET; EU dual-use regulation for Huron; German controller licences)</td><td class="wr tx">Barrier to rivals; execution risk for Jyoti's own exports (Aug-2026 call: licences "taking longer")</td></tr>
+      <tr><td>Anti-dumping (DGTR)</td><td class="tx">No case on CNC machines found; adjacent cases on laser machines and plastic machinery from China</td><td class="tx tn">None</td></tr>
+      <tr><td>Quality control order</td><td class="tx">Machinery safety omnibus order rescinded 14-Jan-2026</td><td class="neg tx">Removes a barrier that would have slowed imports</td></tr>
+      <tr><td>Import duty</td><td class="tx">Basic customs duty on machine tools not verified. Direction of trade policy is down (US and EU deals)</td><td class="neg tx tn">Adverse, unsized</td></tr>
+      <tr><td>Incentives</td><td class="tx">ECMS capex incentive up to 25% on approved &#8377;1,020.65 cr (derived ceiling &#8377;255.16 cr over five years; approval letter not disclosed). No PLI for machine tools. DHI capital goods scheme funds shared facilities, not machines</td><td class="pos tx">Supportive, contingent</td></tr>
+      <tr><td>Defence procurement</td><td class="tx">About 75% of FY27 capital acquisition reserved for domestic industry</td><td class="pos tx">Supportive, indirect</td></tr>
     </tbody>
   </table></div></div>
 </section>
@@ -527,12 +531,12 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
         <div class="st"><div class="h">End use</div><ul><li>Machining engine, transmission and chassis parts</li><li>Moulds and dies for plastics and pressings</li><li>Phone and electronics housings</li><li>Pumps, valves, general parts</li></ul></div>
       </div>
       <div class="tw"><div class="ts"><table>
-        <thead><tr><th>Dimension</th><th>Detail</th></tr></thead>
+        <thead><tr><th>Dimension</th><th class="tx">Detail</th></tr></thead>
         <tbody>
-          <tr><td>Dominant input</td><td>The CNC controller and drive package. The prospectus names controllers first among key inputs and says the company holds no long-term supply agreement for any input (p.51)</td></tr>
-          <tr><td>Channel</td><td>Mostly direct; the company owns the customer relationship at the machine level</td></tr>
-          <tr><td>Competition</td><td>Ace Micromatic and BFW at volume; Chinese, Taiwanese and Japanese imports (China 30% of imports in FY26)</td></tr>
-          <tr><td>Value-chain position</td><td>System integrator and brand owner, with backward integration into castings; buys the brain of the machine</td></tr>
+          <tr><td>Dominant input</td><td class="tx">The CNC controller and drive package. The prospectus names controllers first among key inputs and says the company holds no long-term supply agreement for any input (p.51)</td></tr>
+          <tr><td>Channel</td><td class="tx">Mostly direct; the company owns the customer relationship at the machine level</td></tr>
+          <tr><td>Competition</td><td class="tx">Ace Micromatic and BFW at volume; Chinese, Taiwanese and Japanese imports (China 30% of imports in FY26)</td></tr>
+          <tr><td>Value-chain position</td><td class="tx">System integrator and brand owner, with backward integration into castings; buys the brain of the machine</td></tr>
         </tbody>
       </table></div></div>
       <div class="flag f-unk">
@@ -559,12 +563,12 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
         <div class="st"><div class="h">End use</div><ul><li>Aircraft structural parts and engine components</li><li>Missile and munitions parts</li><li>Moulds, medical and energy parts</li></ul></div>
       </div>
       <div class="tw"><div class="ts"><table>
-        <thead><tr><th>Dimension</th><th>Detail</th></tr></thead>
+        <thead><tr><th>Dimension</th><th class="tx">Detail</th></tr></thead>
         <tbody>
-          <tr><td>Why it matters</td><td>The group's claim to technology leadership and the reason for its margin premium rests on 5-axis</td></tr>
-          <tr><td>Revenue recognition</td><td>Huron recognises revenue on some machines over time, by percentage of completion. About &#8377;67 cr was reversed in Q4 FY26 when machines were caught in the investigation (May-2026 deck p.10)</td></tr>
-          <tr><td>Subsidiaries' contribution</td><td>Consolidated minus standalone revenue: &#8377;202.7 cr FY25, &#8377;144.1 cr FY26, minus &#8377;0.6 cr Q1 FY27. Profit, by the same difference: plus &#8377;5.9 cr FY25, minus &#8377;55.3 cr FY26, minus &#8377;30.4 cr Q1 FY27. The subsidiary group's own consolidated figure (Note 38.2): plus &#8377;6.68 cr FY25, minus &#8377;56.65 cr FY26; Huron alone on its own books: minus &#8377;80.16 cr FY26</td></tr>
-          <tr><td>Parent exposure</td><td>Investments &#8377;341.60 cr plus loans and advances &#8377;160.11 cr in Jyoti SAS, not impaired (FY26 annual report note 42)</td></tr>
+          <tr><td>Why it matters</td><td class="tx">The group's claim to technology leadership and the reason for its margin premium rests on 5-axis</td></tr>
+          <tr><td>Revenue recognition</td><td class="tx">Huron recognises revenue on some machines over time, by percentage of completion. About &#8377;67 cr was reversed in Q4 FY26 when machines were caught in the investigation (May-2026 deck p.10)</td></tr>
+          <tr><td>Subsidiaries' contribution</td><td class="tx">Consolidated minus standalone revenue: &#8377;202.7 cr FY25, &#8377;144.1 cr FY26, minus &#8377;0.6 cr Q1 FY27. Profit, by the same difference: plus &#8377;5.9 cr FY25, minus &#8377;55.3 cr FY26, minus &#8377;30.4 cr Q1 FY27. The subsidiary group's own consolidated figure (Note 38.2): plus &#8377;6.68 cr FY25, minus &#8377;56.65 cr FY26; Huron alone on its own books: minus &#8377;80.16 cr FY26</td></tr>
+          <tr><td>Parent exposure</td><td class="tx">Investments &#8377;341.60 cr plus loans and advances &#8377;160.11 cr in Jyoti SAS, not impaired (FY26 annual report note 42)</td></tr>
         </tbody>
       </table></div></div>
       <div class="flag f-unk">
@@ -582,11 +586,11 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
     <div class="seg-h"><div><div class="nm">Service, spares and retrofits</div><div class="ds">Installation, annual maintenance, spare parts and repairs on an installed base the company puts at "1,40,000+" machines</div></div><div class="sh">8.4% of revenue</div></div>
     <div class="seg-b">
       <div class="tw"><div class="ts"><table>
-        <thead><tr><th>Dimension</th><th>Detail</th></tr></thead>
+        <thead><tr><th>Dimension</th><th class="tx">Detail</th></tr></thead>
         <tbody>
-          <tr><td>Size</td><td>Services &#8377;101.5 cr and parts &#8377;75.1 cr in FY26 (8.4% of revenue); services grew 40% while parts fell 15%</td></tr>
-          <tr><td>Installed base</td><td>The prospectus said "30,000+ CNC machines supplied since April 2004" (p.170); the Q1 FY27 deck says "1,40,000+ machines installed across the globe". Both cannot describe the same thing; the larger figure must include Huron's history and pre-2004 machines. Treated as a marketing number (Section 19)</td></tr>
-          <tr><td>Why it matters</td><td>Recurring, higher-margin, cash-generative. At 8.4% of revenue it is too small to carry the working capital the machine business consumes</td></tr>
+          <tr><td>Size</td><td class="tx">Services &#8377;101.5 cr and parts &#8377;75.1 cr in FY26 (8.4% of revenue); services grew 40% while parts fell 15%</td></tr>
+          <tr><td>Installed base</td><td class="tx">The prospectus said "30,000+ CNC machines supplied since April 2004" (p.170); the Q1 FY27 deck says "1,40,000+ machines installed across the globe". Both cannot describe the same thing; the larger figure must include Huron's history and pre-2004 machines. Treated as a marketing number (Section 19)</td></tr>
+          <tr><td>Why it matters</td><td class="tx">Recurring, higher-margin, cash-generative. At 8.4% of revenue it is too small to carry the working capital the machine business consumes</td></tr>
         </tbody>
       </table></div></div>
     </div>
@@ -610,14 +614,14 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Why screener's peer list is set aside</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Screener "peer"</th><th>Market cap 29-Sep-2026</th><th>Business</th><th>Reason excluded</th></tr></thead>
+    <thead><tr><th>Screener "peer"</th><th>Market cap 29-Sep-2026</th><th class="tx">Business</th><th class="tx">Reason excluded</th></tr></thead>
     <tbody>
-      <tr><td>Indo-MIM</td><td>&#8377;61,563 cr</td><td>Metal injection moulding components</td><td>A component supplier, not a machine builder</td></tr>
-      <tr><td>Aditya Infotech (CP Plus)</td><td>&#8377;45,067 cr</td><td>Video surveillance products</td><td>No overlap</td></tr>
-      <tr><td>Syrma SGS</td><td>&#8377;32,878 cr</td><td>Electronics manufacturing services</td><td>At most a customer segment</td></tr>
-      <tr><td>Honeywell Automation</td><td>&#8377;29,864 cr</td><td>Building and process automation</td><td>Not machine tools</td></tr>
-      <tr><td>Kaynes Technology</td><td>&#8377;24,116 cr</td><td>Electronics manufacturing incl. A&amp;D electronics</td><td>Similar size and multiple, no product overlap</td></tr>
-      <tr><td>LMW</td><td>&#8377;18,199 cr</td><td>Textile machinery plus a machine tool and foundry division</td><td>Kept, segment only</td></tr>
+      <tr><td>Indo-MIM</td><td>&#8377;61,563 cr</td><td class="tx">Metal injection moulding components</td><td class="tx">A component supplier, not a machine builder</td></tr>
+      <tr><td>Aditya Infotech (CP Plus)</td><td>&#8377;45,067 cr</td><td class="tx">Video surveillance products</td><td class="tx tn">No overlap</td></tr>
+      <tr><td>Syrma SGS</td><td>&#8377;32,878 cr</td><td class="tx">Electronics manufacturing services</td><td class="tx">At most a customer segment</td></tr>
+      <tr><td>Honeywell Automation</td><td>&#8377;29,864 cr</td><td class="tx">Building and process automation</td><td class="tx tn">Not machine tools</td></tr>
+      <tr><td>Kaynes Technology</td><td>&#8377;24,116 cr</td><td class="tx">Electronics manufacturing incl. A&amp;D electronics</td><td class="tx">Similar size and multiple, no product overlap</td></tr>
+      <tr><td>LMW</td><td>&#8377;18,199 cr</td><td class="tx">Textile machinery plus a machine tool and foundry division</td><td class="tx tn">Kept, segment only</td></tr>
     </tbody>
   </table></div><p class="cap">Screener public pages, 29-Sep-2026 (aggregator). Market caps intraday.</p></div>
 
@@ -633,45 +637,45 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
       <tr><td>Net debt / equity</td><td>0.36x</td><td>net cash</td><td>net cash</td><td>0.70x</td><td>0.21x</td></tr>
       <tr><td>P/E (screener)</td><td>74.8x</td><td>54.5x</td><td>99.6x</td><td>167x</td><td>26.7x</td></tr>
       <tr class="hl"><td>EV/EBITDA, FY26 (derived)</td><td class="neg">47.0x</td><td>39.2x</td><td>99.6x</td><td>23.3x</td><td>21.2x</td></tr>
-      <tr><td>Overlap</td><td>Premium CNC incl. 5-axis; A&amp;D ~39%</td><td>Pure CNC, Rajkot, low ticket, negligible 5-axis</td><td>Machine tool and foundry segment only; textile-led group</td><td>CNC, SPM, defence small arms; OFAC-listed Oct-2024 to Jun-2026</td><td>Machine tools one of several lines</td></tr>
+      <tr><td>Overlap</td><td class="tx">Premium CNC incl. 5-axis; A&amp;D ~39%</td><td class="tx">Pure CNC, Rajkot, low ticket, negligible 5-axis</td><td class="tx">Machine tool and foundry segment only; textile-led group</td><td class="tx">CNC, SPM, defence small arms; OFAC-listed Oct-2024 to Jun-2026</td><td class="tx">Machine tools one of several lines</td></tr>
     </tbody>
   </table></div><p class="cap">Jyoti figures from the Q4 FY26 investor deck and FY26 annual report (primary). Macpower and Lokesh balance sheets from their FY26 annual reports; the rest screener (aggregator, 29-Sep-2026). LMW's multiple reflects a textile trough and a cash pile, not machine tools; its machine tool and foundry segment earned &#8377;97.2 cr on &#8377;1,147.6 cr of external revenue, about 8.1% (LMW FY26 annual report note 30.10). Full workings: notes-10.</p></div>
 
   <h3>The competitors that matter are unlisted</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th></th><th>Ace Designers (Ace Micromatic)</th><th>Bharat Fritz Werner (BFW)</th><th>Jyoti CNC</th></tr></thead>
+    <thead><tr><th></th><th class="tx">Ace Designers (Ace Micromatic)</th><th class="tx">Bharat Fritz Werner (BFW)</th><th class="tx">Jyoti CNC</th></tr></thead>
     <tbody>
-      <tr><td>Latest audited revenue</td><td>&#8377;2,214 cr FY24 (CARE, 08-Jan-2025)</td><td>&#8377;1,451.9 cr FY25 (ICRA, 29-Oct-2025)</td><td>&#8377;1,338.5 cr FY24; &#8377;2,093.1 cr FY26</td></tr>
-      <tr><td>Operating margin</td><td>9.75% FY24</td><td>5.5% FY24 and FY25</td><td>22.5% FY24; 25.2% FY26</td></tr>
-      <tr><td>Capacity</td><td>6,000 turning + 3,200 milling a year (CARE); Ahmedabad plant planned (trade press)</td><td>Hosur plant 10,000 machines a year (trade press, Apr-2024)</td><td>6,000 a year in India, 10,000 targeted</td></tr>
-      <tr><td>Share claim</td><td>"22% to 25%" of domestic CNC (management to CARE)</td><td>None stated</td><td>"10-12%" (FY26 annual report)</td></tr>
-      <tr><td>Balance sheet</td><td>Gearing 0.09x; Kotak alternates invested about &#8377;1,200 cr (trade press, Apr-2025)</td><td>Debt/OPBDIT 5.1x; Peenya plant shut</td><td>Net debt &#8377;716 cr at Mar-2026</td></tr>
+      <tr><td>Latest audited revenue</td><td class="tx">&#8377;2,214 cr FY24 (CARE, 08-Jan-2025)</td><td class="tx">&#8377;1,451.9 cr FY25 (ICRA, 29-Oct-2025)</td><td class="tx">&#8377;1,338.5 cr FY24; &#8377;2,093.1 cr FY26</td></tr>
+      <tr><td>Operating margin</td><td class="tx tn">9.75% FY24</td><td class="tx tn">5.5% FY24 and FY25</td><td class="tx">22.5% FY24; 25.2% FY26</td></tr>
+      <tr><td>Capacity</td><td class="tx">6,000 turning + 3,200 milling a year (CARE); Ahmedabad plant planned (trade press)</td><td class="tx">Hosur plant 10,000 machines a year (trade press, Apr-2024)</td><td class="tx">6,000 a year in India, 10,000 targeted</td></tr>
+      <tr><td>Share claim</td><td class="tx">"22% to 25%" of domestic CNC (management to CARE)</td><td class="tx tn">None stated</td><td class="tx">"10-12%" (FY26 annual report)</td></tr>
+      <tr><td>Balance sheet</td><td class="tx">Gearing 0.09x; Kotak alternates invested about &#8377;1,200 cr (trade press, Apr-2025)</td><td class="tx">Debt/OPBDIT 5.1x; Peenya plant shut</td><td class="tx">Net debt &#8377;716 cr at Mar-2026</td></tr>
     </tbody>
   </table></div><p class="cap">Ace's FY26 turnover "expected to exceed &#8377;2,800 cr" is a company claim in trade press (mtdcnc, 08-May-2026), not verified. Ace's ICRA rating was withdrawn at its request on 03-Jan-2025.</p></div>
   <p>Ace was 1.65 times Jyoti's size in FY24 at under half the margin. Both Ace and BFW are volume players in auto tier-one turning and vertical machining; Jyoti sells a higher ticket and more defence. On Jyoti's Aug-2026 call an analyst cited BFW as "already set up with 10,000 machine capacity"; management declined to comment on a competitor and called competition "tough" as always. <b>Two better-capitalised or larger domestic rivals are adding capacity into the same demand Jyoti is expanding for.</b></p>
 
   <h3>The global benchmark</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Builder</th><th>Latest FY revenue</th><th>Growth</th><th>EBITDA margin</th><th>EV/EBITDA</th></tr></thead>
+    <thead><tr><th>Builder</th><th class="tx">Latest FY revenue</th><th>Growth</th><th>EBITDA margin</th><th>EV/EBITDA</th></tr></thead>
     <tbody>
-      <tr><td>DMG Mori (Tokyo)</td><td>JPY 515.0 bn, Dec-2025</td><td class="neg">-4.8%</td><td>10.4%</td><td>9.4-10.8x</td></tr>
-      <tr><td>Okuma (Tokyo)</td><td>JPY 235.9 bn, Mar-2026</td><td class="pos">+14.1%</td><td>11.4% (TTM)</td><td>9.5x</td></tr>
-      <tr><td>Makino (Tokyo)</td><td>JPY 261.2 bn, Mar-2026</td><td>4.6% 3-yr CAGR</td><td>13.7% (TTM)</td><td>9.3x</td></tr>
-      <tr><td>Hurco (Nasdaq)</td><td>USD 178.6 mn, Oct-2025</td><td class="neg">-10.7% 3-yr CAGR</td><td>Negative</td><td>n/m</td></tr>
-      <tr class="hl"><td>Jyoti CNC</td><td>&#8377;2,093.1 cr, Mar-2026</td><td class="pos">31.1% 3-yr CAGR</td><td>25.2%</td><td class="neg">46-47x</td></tr>
+      <tr><td>DMG Mori (Tokyo)</td><td class="tx">JPY 515.0 bn, Dec-2025</td><td class="neg">-4.8%</td><td>10.4%</td><td>9.4-10.8x</td></tr>
+      <tr><td>Okuma (Tokyo)</td><td class="tx">JPY 235.9 bn, Mar-2026</td><td class="pos">+14.1%</td><td>11.4% (TTM)</td><td>9.5x</td></tr>
+      <tr><td>Makino (Tokyo)</td><td class="tx">JPY 261.2 bn, Mar-2026</td><td>4.6% 3-yr CAGR</td><td>13.7% (TTM)</td><td>9.3x</td></tr>
+      <tr><td>Hurco (Nasdaq)</td><td class="tx">USD 178.6 mn, Oct-2025</td><td class="neg">-10.7% 3-yr CAGR</td><td>Negative</td><td>n/m</td></tr>
+      <tr class="hl"><td>Jyoti CNC</td><td class="tx">&#8377;2,093.1 cr, Mar-2026</td><td class="pos">31.1% 3-yr CAGR</td><td>25.2%</td><td class="neg">46-47x</td></tr>
     </tbody>
   </table></div><p class="cap">DMG Mori from its FY2025 release (primary); others stockanalysis.com and news (aggregator/secondary), 29-Sep-2026. Mazak and Haas are private; DN Solutions' IPO was shelved in Apr-2025. Jyoti plus Huron held about 0.4% of the global CNC market in CY22 against Mazak 5.7% and DMG Mori 5.1% (F&amp;S, prospectus p.202, commissioned).</p></div>
   <p>The premium is paid for growth and margin: Jyoti grows faster and earns twice the margin of the global set. Whether it is also paying for a margin that is partly an accounting artefact is the subject of Section 6.</p>
 
   <h3>Where Jyoti ranks, and which way the gap is moving</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Dimension</th><th>Rank in the Indian set</th><th>Gap to leader</th></tr></thead>
+    <thead><tr><th>Dimension</th><th class="tx">Rank in the Indian set</th><th class="tx">Gap to leader</th></tr></thead>
     <tbody>
-      <tr><td>Revenue scale</td><td>Second to Ace (on FY24 audited), first among listed</td><td class="wr">Narrowing if Ace's unverified FY26 claim is wrong; flat if right</td></tr>
-      <tr><td>Operating margin</td><td>First by a wide margin</td><td class="pos">Jyoti leads</td></tr>
-      <tr><td>High-end product (5-axis, multitasking)</td><td>First among Indian builders, through Huron</td><td class="wr">Lead depends on Huron, which is under investigation</td></tr>
-      <tr><td>Balance sheet</td><td>Behind Ace (0.09x gearing) and the net-cash listed peers</td><td class="neg">Widening: debt up 71% in FY26</td></tr>
-      <tr><td>Cash conversion</td><td>Behind Macpower (29% ROCE, net cash)</td><td class="neg">Section 6</td></tr>
+      <tr><td>Revenue scale</td><td class="tx">Second to Ace (on FY24 audited), first among listed</td><td class="wr tx">Narrowing if Ace's unverified FY26 claim is wrong; flat if right</td></tr>
+      <tr><td>Operating margin</td><td class="tx">First by a wide margin</td><td class="pos tx tn">Jyoti leads</td></tr>
+      <tr><td>High-end product (5-axis, multitasking)</td><td class="tx">First among Indian builders, through Huron</td><td class="wr tx">Lead depends on Huron, which is under investigation</td></tr>
+      <tr><td>Balance sheet</td><td class="tx">Behind Ace (0.09x gearing) and the net-cash listed peers</td><td class="neg tx">Widening: debt up 71% in FY26</td></tr>
+      <tr><td>Cash conversion</td><td class="tx">Behind Macpower (29% ROCE, net cash)</td><td class="neg tx tn">Section 6</td></tr>
     </tbody>
   </table></div></div>
   <div class="flag f-bull">
@@ -729,14 +733,14 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
     <thead><tr><th>&#8377; cr</th><th>FY22</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26</th></tr></thead>
     <tbody>
       <tr><td>Revenue from operations</td><td>746.5</td><td>929.3</td><td>1,338.5</td><td>1,817.7</td><td>2,093.1</td></tr>
-      <tr><td>Growth</td><td>-</td><td>24.5%</td><td>44.0%</td><td>35.8%</td><td>15.2% (about 19% before the Huron reversal)</td></tr>
+      <tr><td>Growth</td><td>-</td><td>24.5%</td><td>44.0%</td><td>35.8%</td><td class="tx">15.2% (about 19% before the Huron reversal)</td></tr>
       <tr><td>Gross margin</td><td>43.8%</td><td>42.7%</td><td>49.7%</td><td>52.2%</td><td>55.1%</td></tr>
       <tr class="hl"><td>EBITDA (company definition, excludes other income)</td><td>72.7</td><td>97.4</td><td>300.9</td><td>490.9</td><td>526.8</td></tr>
       <tr class="hl"><td>EBITDA margin</td><td>9.7%</td><td>10.5%</td><td>22.5%</td><td>27.0%</td><td>25.2%</td></tr>
       <tr><td>Other income</td><td>3.6</td><td>23.3</td><td>6.5</td><td>14.5</td><td>60.5</td></tr>
       <tr><td>Finance cost</td><td>82.2</td><td>89.7</td><td>89.7</td><td>42.1</td><td>69.8</td></tr>
       <tr><td>Profit before tax</td><td>-41.7</td><td>27.8</td><td>184.9</td><td>417.7</td><td>467.2</td></tr>
-      <tr class="hl"><td>Profit after tax</td><td>-48.3</td><td>15.1 (incl. &#8377;30.45 cr Huron debt waiver)</td><td>150.9</td><td>316.0</td><td>336.0</td></tr>
+      <tr class="hl"><td>Profit after tax</td><td>-48.3</td><td class="tx">15.1 (incl. &#8377;30.45 cr Huron debt waiver)</td><td>150.9</td><td>316.0</td><td>336.0</td></tr>
       <tr class="hl"><td>Cash from operations</td><td>39 (screener)</td><td>42 (screener)</td><td class="neg">-48.3</td><td class="neg">-105.4</td><td>54.4</td></tr>
       <tr><td>Capex incl. capital advances</td><td>-</td><td>-</td><td>114.3</td><td>309.8</td><td>323.2</td></tr>
       <tr class="hl"><td>Free cash flow (CFO less capex)</td><td>-</td><td>-</td><td class="neg">-162.5</td><td class="neg">-415.3</td><td class="neg">-268.8</td></tr>
@@ -763,12 +767,12 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Revenue: volume and realisation</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th></th><th>FY24</th><th>FY25</th><th>FY26</th><th>Q1 FY27</th></tr></thead>
+    <thead><tr><th></th><th class="tx">FY24</th><th>FY25</th><th class="tx">FY26</th><th>Q1 FY27</th></tr></thead>
     <tbody>
-      <tr><td>Machines (best figure, Section 19)</td><td>3,063 sold</td><td>4,072</td><td>5,550 executed (5,369 made in Rajkot)</td><td>1,406</td></tr>
-      <tr><td>Revenue per machine (revenue basis, derived)</td><td>&#8377;43.7 lakh</td><td>&#8377;44.6 lakh</td><td>&#8377;37.7 lakh</td><td>&#8377;36.2 lakh</td></tr>
-      <tr><td>Aerospace and defence share</td><td>about 40%</td><td>45%</td><td>39%</td><td>37%</td></tr>
-      <tr><td>Exports share</td><td>42%</td><td>about 26% (Infomerics)</td><td>"35% to 40%" (management)</td><td>n/d</td></tr>
+      <tr><td>Machines (best figure, Section 19)</td><td class="tx tn">3,063 sold</td><td>4,072</td><td class="tx">5,550 executed (5,369 made in Rajkot)</td><td>1,406</td></tr>
+      <tr><td>Revenue per machine (revenue basis, derived)</td><td class="tx tn">&#8377;43.7 lakh</td><td>&#8377;44.6 lakh</td><td class="tx tn">&#8377;37.7 lakh</td><td>&#8377;36.2 lakh</td></tr>
+      <tr><td>Aerospace and defence share</td><td class="tx tn">about 40%</td><td>45%</td><td class="tx tn">39%</td><td>37%</td></tr>
+      <tr><td>Exports share</td><td class="tx tn">42%</td><td class="tx">about 26% (Infomerics)</td><td class="tx">"35% to 40%" (management)</td><td>n/d</td></tr>
     </tbody>
   </table></div><p class="cap">Machine counts from calls and annual reports; see Section 19 for why the FY24 figure is 3,063 and not the 3,495 screener carries. Realisation is not disclosed on a stable basis: management switched from revenue per machine to executed-order value per machine around Feb-2026, which lowers the figure by 5-6% (notes-09 F3).</p></div>
   <p>FY26 growth was volume-led: machines up about 36% while revenue per machine fell about 15%, as EMS and auto volume machines rose and high-ticket Huron revenue was reversed. <b>This is the opposite of the premiumisation story:</b> the fastest-growing units are the cheapest ones. Management's guidance of "more than 8,000" machines in FY27 depends on the new 10,000-machine plant, which was due in stages from Mar-2025 and is now due "end of September" 2026.</p>
@@ -786,7 +790,7 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
       <tr><td>Leverage (average assets / average equity)</td><td>n/c</td><td>1.74x</td></tr>
       <tr class="hl"><td>ROE</td><td>20.7%</td><td>18.2%</td></tr>
       <tr class="hl"><td>ROCE (EBIT incl. other income / average equity plus debt)</td><td>about 24%</td><td>21.3%</td></tr>
-      <tr><td>Incremental pre-tax ROCE, FY23 to FY26</td><td colspan="2">EBIT +&#8377;419.5 cr on capital employed +&#8377;1,934 cr = 21.7% (derived)</td></tr>
+      <tr><td>Incremental pre-tax ROCE, FY23 to FY26</td><td colspan="2" class="tx">EBIT +&#8377;419.5 cr on capital employed +&#8377;1,934 cr = 21.7% (derived)</td></tr>
     </tbody>
   </table></div><p class="cap">Derived from the audited statements. Asset turnover of 0.65x is low for a manufacturer and is the working-capital problem expressed as a ratio: &#8377;3,615 cr of assets to produce &#8377;2,093 cr of revenue.</p></div>
 
@@ -808,13 +812,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Balance sheet</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>31-Mar-2026, &#8377; cr</th><th>India</th><th>France</th><th>Total</th><th>Terms</th></tr></thead>
+    <thead><tr><th>31-Mar-2026, &#8377; cr</th><th>India</th><th>France</th><th>Total</th><th class="tx">Terms</th></tr></thead>
     <tbody>
-      <tr><td>Term loans</td><td>366.0</td><td>101.9</td><td>467.9</td><td>Union Bank &#8377;266.8 cr at 1Y MCLR + 0.25% to Sep-2033; Axis Finance &#8377;95.5 cr to Nov-2032; Axis Bank euro loan at 3M Euribor + 3.00% to Jan-2031</td></tr>
-      <tr><td>Working capital</td><td>223.3 of &#8377;410 cr limits</td><td>156.4 of 156.4 (fully drawn)</td><td>379.8</td><td>Union, SBI, Axis cash credit; SBI euro working capital EUR 15 mn</td></tr>
-      <tr class="hl"><td>Gross borrowings</td><td>589.4</td><td>260.4</td><td>849.7</td><td>31% of group debt sits in France</td></tr>
-      <tr><td>Standby letters of credit and comfort for subsidiaries</td><td colspan="3">264.3 (FY24: 54.1)</td><td>India stands behind essentially all of Huron's bank debt</td></tr>
-      <tr><td>LCs and bank guarantees</td><td colspan="3">176.8 (FY25: 115.4)</td><td>Off balance sheet</td></tr>
+      <tr><td>Term loans</td><td>366.0</td><td>101.9</td><td>467.9</td><td class="tx">Union Bank &#8377;266.8 cr at 1Y MCLR + 0.25% to Sep-2033; Axis Finance &#8377;95.5 cr to Nov-2032; Axis Bank euro loan at 3M Euribor + 3.00% to Jan-2031</td></tr>
+      <tr><td>Working capital</td><td class="tx">223.3 of &#8377;410 cr limits</td><td class="tx">156.4 of 156.4 (fully drawn)</td><td>379.8</td><td class="tx">Union, SBI, Axis cash credit; SBI euro working capital EUR 15 mn</td></tr>
+      <tr class="hl"><td>Gross borrowings</td><td>589.4</td><td>260.4</td><td>849.7</td><td class="tx">31% of group debt sits in France</td></tr>
+      <tr><td>Standby letters of credit and comfort for subsidiaries</td><td colspan="3">264.3 (FY24: 54.1)</td><td class="tx">India stands behind essentially all of Huron's bank debt</td></tr>
+      <tr><td>LCs and bank guarantees</td><td colspan="3">176.8 (FY25: 115.4)</td><td class="tx tn">Off balance sheet</td></tr>
     </tbody>
   </table></div><p class="cap">FY26 annual report notes 17A, 17B, 33 (primary); entity split derived and cross-checked to Huron's own FY26 accounts (notes-07 section 8). Borrowing costs are not capitalised on the new plant ("we have fully booked into cost", 07-Aug-2026 call).</p></div>
   <p>Net debt went from net cash of about &#8377;82 cr at Mar-2024 to about &#8377;713 cr at Mar-2026, against a Feb-2024 promise to be "a completely debt free Company" in two to three years. Interest cover fell from 11.1 times to 7.5 times (MD&amp;A). Q1 FY27 finance cost of &#8377;24.3 cr annualises to about &#8377;97 cr, about 11.5% of year-end debt, above the disclosed loan rates; the difference is unexplained (bank charges on the growing LC and SBLC book is one possibility). Management says debt has stayed at the March level and will be held at "1:2 EBITDA".</p>
@@ -851,19 +855,19 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The standard checks</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Test</th><th>Result</th></tr></thead>
+    <thead><tr><th>Test</th><th class="tx">Result</th></tr></thead>
     <tbody>
-      <tr><td>Receivables growth vs revenue, three years</td><td class="neg">Billed receivables +311% and receivables plus unbilled +338% (FY23 to FY26) against revenue +125%. The "more than 3 years" bucket has sat at &#8377;30-34 cr for three year-ends, still "considered good". ECL allowance raised from &#8377;6.34 cr to &#8377;21.25 cr in FY26. No ageing or ECL is disclosed for the &#8377;613 cr unbilled balance.</td></tr>
-      <tr><td>Does the cash look real?</td><td class="wr">There is little cash to test: &#8377;137 cr of cash and bank at Mar-2026 against &#8377;850 cr of debt, so the classic signature (a large idle cash pile beside expensive debt) is absent. But FY26 consolidated interest income of &#8377;21.87 cr is about 17% of average cash and bank balances and exceeds standalone interest income of &#8377;16.43 cr, which itself includes intra-group interest that should eliminate. The source is unexplained.</td></tr>
-      <tr><td>CWIP ageing</td><td class="pos">Standalone CWIP of &#8377;89.2 cr all under one year old at Mar-2026; Huron's &#8377;108.8 cr of CWIP was capitalised in FY26. Converting.</td></tr>
-      <tr><td>Other income dependence</td><td class="neg">12.9% of FY26 PBT (FY25 3.5%). &#8377;43.39 cr is a forex gain, and the cash flow statement strips out &#8377;57.60 cr of unrealised forex: FY26's forex gain is revaluation, not cash. Much of it probably arises on the parent's euro loans to its French subsidiary, which CARO says carry "no stipulation of repayment"; under Ind AS 21 such balances can form part of the net investment, with differences taken to other comprehensive income rather than profit (inference). It reversed to a &#8377;10 cr loss in Q1 FY27.</td></tr>
-      <tr><td>Forex presentation asymmetry</td><td class="neg">The FY26 gains sat in other income, below EBITDA, lifting profit. The Q1 FY27 loss sits inside other expenses, above EBITDA, and is presented as an "adjustment" to add back. A year earlier the &#8377;16 cr Q1 FY26 gain was never adjusted out. An analyst raised this on 07-Aug-2026; it was not answered.</td></tr>
-      <tr><td>Effective tax rate vs 25.17% statutory</td><td>FY24 18.4%, FY25 24.4%, FY26 28.1%. FY26 above statutory because French losses are only partly tax-effected; a deferred tax asset of &#8377;21.57 cr is nonetheless carried on subsidiary losses, although the auditor questions the subsidiary's going concern. Interest of &#8377;5.80 cr on late income-tax payment in FY26 (FY25 &#8377;1.68 cr).</td></tr>
-      <tr><td>Contingent liabilities</td><td class="wr">Tax disputes about &#8377;22 cr (CST 15.53, VAT 2.59, GST 4.03), about 1% of net worth. Off balance sheet: standby letters of credit and comfort for subsidiaries &#8377;264.34 cr and LCs and guarantees &#8377;176.78 cr, together 22% of net worth. The Board's report table mislabels every tax row by one line.</td></tr>
-      <tr><td>Related parties</td><td class="neg">Promoter LLP loans at 12-15% whose principal the half-yearly filings do not show; &#8377;881.66 cr of funded exposure to the French sub-group (Section 7).</td></tr>
-      <tr><td>Subsidiary losses parked outside consolidation</td><td class="pos">None: all five subsidiaries are fully consolidated. But see the impairment point below.</td></tr>
-      <tr><td>Accounting policy changes</td><td class="neg">Huron moved from over-time to dispatch-based recognition in Q1 FY27; the Chairman quantified it (about &#8377;35 cr of revenue deferred) and called it a change of "accounting method", but the Q1 FY27 result notes do not mention it (Ind AS 8).</td></tr>
-      <tr><td>Capitalisation of expenses</td><td class="pos">Conservative: interest on the new plant is expensed, not capitalised.</td></tr>
+      <tr><td>Receivables growth vs revenue, three years</td><td class="neg tx">Billed receivables +311% and receivables plus unbilled +338% (FY23 to FY26) against revenue +125%. The "more than 3 years" bucket has sat at &#8377;30-34 cr for three year-ends, still "considered good". ECL allowance raised from &#8377;6.34 cr to &#8377;21.25 cr in FY26. No ageing or ECL is disclosed for the &#8377;613 cr unbilled balance.</td></tr>
+      <tr><td>Does the cash look real?</td><td class="wr tx">There is little cash to test: &#8377;137 cr of cash and bank at Mar-2026 against &#8377;850 cr of debt, so the classic signature (a large idle cash pile beside expensive debt) is absent. But FY26 consolidated interest income of &#8377;21.87 cr is about 17% of average cash and bank balances and exceeds standalone interest income of &#8377;16.43 cr, which itself includes intra-group interest that should eliminate. The source is unexplained.</td></tr>
+      <tr><td>CWIP ageing</td><td class="pos tx">Standalone CWIP of &#8377;89.2 cr all under one year old at Mar-2026; Huron's &#8377;108.8 cr of CWIP was capitalised in FY26. Converting.</td></tr>
+      <tr><td>Other income dependence</td><td class="neg tx">12.9% of FY26 PBT (FY25 3.5%). &#8377;43.39 cr is a forex gain, and the cash flow statement strips out &#8377;57.60 cr of unrealised forex: FY26's forex gain is revaluation, not cash. Much of it probably arises on the parent's euro loans to its French subsidiary, which CARO says carry "no stipulation of repayment"; under Ind AS 21 such balances can form part of the net investment, with differences taken to other comprehensive income rather than profit (inference). It reversed to a &#8377;10 cr loss in Q1 FY27.</td></tr>
+      <tr><td>Forex presentation asymmetry</td><td class="neg tx">The FY26 gains sat in other income, below EBITDA, lifting profit. The Q1 FY27 loss sits inside other expenses, above EBITDA, and is presented as an "adjustment" to add back. A year earlier the &#8377;16 cr Q1 FY26 gain was never adjusted out. An analyst raised this on 07-Aug-2026; it was not answered.</td></tr>
+      <tr><td>Effective tax rate vs 25.17% statutory</td><td class="tx">FY24 18.4%, FY25 24.4%, FY26 28.1%. FY26 above statutory because French losses are only partly tax-effected; a deferred tax asset of &#8377;21.57 cr is nonetheless carried on subsidiary losses, although the auditor questions the subsidiary's going concern. Interest of &#8377;5.80 cr on late income-tax payment in FY26 (FY25 &#8377;1.68 cr).</td></tr>
+      <tr><td>Contingent liabilities</td><td class="wr tx">Tax disputes about &#8377;22 cr (CST 15.53, VAT 2.59, GST 4.03), about 1% of net worth. Off balance sheet: standby letters of credit and comfort for subsidiaries &#8377;264.34 cr and LCs and guarantees &#8377;176.78 cr, together 22% of net worth. The Board's report table mislabels every tax row by one line.</td></tr>
+      <tr><td>Related parties</td><td class="neg tx">Promoter LLP loans at 12-15% whose principal the half-yearly filings do not show; &#8377;881.66 cr of funded exposure to the French sub-group (Section 7).</td></tr>
+      <tr><td>Subsidiary losses parked outside consolidation</td><td class="pos tx">None: all five subsidiaries are fully consolidated. But see the impairment point below.</td></tr>
+      <tr><td>Accounting policy changes</td><td class="neg tx">Huron moved from over-time to dispatch-based recognition in Q1 FY27; the Chairman quantified it (about &#8377;35 cr of revenue deferred) and called it a change of "accounting method", but the Q1 FY27 result notes do not mention it (Ind AS 8).</td></tr>
+      <tr><td>Capitalisation of expenses</td><td class="pos tx">Conservative: interest on the new plant is expensed, not capitalised.</td></tr>
     </tbody>
   </table></div></div>
 
@@ -889,35 +893,35 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Who controls the company</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Holder</th><th>Shares</th><th>% of company</th><th>Role</th><th>Encumbered</th></tr></thead>
+    <thead><tr><th>Holder</th><th>Shares</th><th>% of company</th><th class="tx">Role</th><th class="tx">Encumbered</th></tr></thead>
     <tbody>
-      <tr><td>Parakramsinh G. Jadeja</td><td>6,11,88,760</td><td>26.91%</td><td>Chairman and Managing Director; founder</td><td>Nil</td></tr>
-      <tr><td>Jyoti International LLP</td><td>3,67,48,995</td><td>16.16%</td><td>Corporate promoter; the Chairman holds 84.27% of it</td><td>Nil</td></tr>
-      <tr><td>Sahdevsinh L. Jadeja</td><td>66,85,400</td><td>2.94%</td><td>Promoter; whole-time director</td><td>Nil</td></tr>
-      <tr><td>Vikramsinh R. Rana</td><td>45,47,500</td><td>2.00%</td><td>Promoter; whole-time director</td><td>Nil</td></tr>
-      <tr class="hl"><td>Anilkumar B. Virani</td><td>3,28,56,340</td><td>14.45%</td><td>Promoter group (ICDR 2(1)(pp)(v)); no board seat; Mumbai</td><td class="neg">1,52,40,000 at 16-Sep-2026</td></tr>
-      <tr><td>Vijaysinh P. Zala</td><td>2,19,500</td><td>0.10%</td><td>Promoter group; executive head, design</td><td>Nil</td></tr>
-      <tr><td><b>Promoter group</b></td><td><b>14,22,46,495</b></td><td><b>62.55%</b></td><td>Unchanged every quarter since listing</td><td>6.70% of company</td></tr>
+      <tr><td>Parakramsinh G. Jadeja</td><td>6,11,88,760</td><td>26.91%</td><td class="tx">Chairman and Managing Director; founder</td><td class="tx tn">Nil</td></tr>
+      <tr><td>Jyoti International LLP</td><td>3,67,48,995</td><td>16.16%</td><td class="tx">Corporate promoter; the Chairman holds 84.27% of it</td><td class="tx tn">Nil</td></tr>
+      <tr><td>Sahdevsinh L. Jadeja</td><td>66,85,400</td><td>2.94%</td><td class="tx">Promoter; whole-time director</td><td class="tx tn">Nil</td></tr>
+      <tr><td>Vikramsinh R. Rana</td><td>45,47,500</td><td>2.00%</td><td class="tx">Promoter; whole-time director</td><td class="tx tn">Nil</td></tr>
+      <tr class="hl"><td>Anilkumar B. Virani</td><td>3,28,56,340</td><td>14.45%</td><td class="tx">Promoter group (ICDR 2(1)(pp)(v)); no board seat; Mumbai</td><td class="neg tx">1,52,40,000 at 16-Sep-2026</td></tr>
+      <tr><td>Vijaysinh P. Zala</td><td>2,19,500</td><td>0.10%</td><td class="tx">Promoter group; executive head, design</td><td class="tx tn">Nil</td></tr>
+      <tr><td><b>Promoter group</b></td><td><b>14,22,46,495</b></td><td><b>62.55%</b></td><td class="tx">Unchanged every quarter since listing</td><td class="tx tn">6.70% of company</td></tr>
     </tbody>
   </table></div><p class="cap">Shareholding pattern 30-Jun-2026 and SAST disclosure 17-Sep-2026 (primary). The Chairman's economic interest, including his share of the LLP, is about 40.5% (derived).</p></div>
   <p><b>Background.</b> The Chairman has run the business since the Jyoti Enterprise partnership of 1989, won national small-industry entrepreneurship awards in 2003-05 and has sat on the board of the Indian Machine Tool Manufacturers' Association since Dec-2015 (company deck). The history the prospectus had to disclose is not a clean one: losses in FY20-FY22 and negative net worth of &#8377;29.7 cr in FY22; lender repayments rescheduled under a Flexible Restructuring Scheme from Apr-2020 to Mar-2023; a debt service coverage ratio below 1.0 in every period from FY21 to H1 FY24; delays in depositing provident fund, TDS and GST "due to cash flow mismatch and lack of sufficient liquidity", 53 late GST payments in FY21 alone; a TDS default spanning roughly a decade, compounded for &#8377;9.07 cr in Jun-2024 with notices to all three executive directors; and 19 late overseas-investment filings for the French subsidiary, compounded with the RBI in 2013 (prospectus risk factors 10, 13, 20; FY25 annual report). <b>None of this is current misconduct. All of it is the record of a company that ran short of cash for years and dealt with it by paying its obligations late.</b></p>
 
   <h3>The pledge, in full</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Date</th><th>Event</th><th>Shares</th><th>Lender</th><th>Encumbered after</th><th>% of company</th></tr></thead>
+    <thead><tr><th>Date</th><th class="tx">Event</th><th>Shares</th><th class="tx">Lender</th><th>Encumbered after</th><th>% of company</th></tr></thead>
     <tbody>
-      <tr><td>Jul-Sep 2024</td><td>First pledge (quarter-end filing)</td><td>25,52,000</td><td>Aditya Birla Capital (inferred from the matching release)</td><td>25,52,000</td><td>1.12%</td></tr>
-      <tr><td>By 31-Mar-2025</td><td>Step-up</td><td>33,00,000</td><td>Not established</td><td>58,52,000</td><td>2.57%</td></tr>
-      <tr><td>Feb-Mar 2026</td><td>Step-ups (aggregator dates 25-Feb and 23-Mar-2026)</td><td>1,61,00,000</td><td>HDFC Bank (aggregator)</td><td>2,19,52,000</td><td>9.65%</td></tr>
-      <tr><td>22-Jun-2026</td><td>Creation</td><td>23,00,000</td><td>Jio Credit</td><td>2,42,52,000</td><td>10.65%</td></tr>
-      <tr class="hl"><td>29-Jun-2026</td><td>Creation</td><td>55,00,000</td><td>Bajaj Finance</td><td>2,97,52,000</td><td class="neg">13.07% (90.55% of his stake)</td></tr>
-      <tr><td>02-16 Jul-2026</td><td>Six releases</td><td>1,14,00,000</td><td>HDFC Bank</td><td>1,83,52,000</td><td>8.07%</td></tr>
-      <tr><td>12-Aug-2026</td><td>Creation</td><td>19,00,000</td><td>Tata Capital</td><td>2,02,52,000</td><td>8.91%</td></tr>
-      <tr><td>20-Aug-2026</td><td>Creation</td><td>15,00,000</td><td>Jio Credit</td><td>2,17,52,000</td><td>9.57%</td></tr>
-      <tr><td>21, 25-Aug-2026</td><td>Two releases</td><td>38,00,000</td><td>HDFC Bank</td><td>1,79,52,000</td><td>7.89%</td></tr>
-      <tr><td>27-Aug-2026</td><td>Creation</td><td>17,40,000</td><td>Poonawalla Fincorp</td><td>1,96,92,000</td><td>8.66%</td></tr>
-      <tr><td>03-Sep-2026</td><td>Release</td><td>25,52,000</td><td>Aditya Birla Capital</td><td>1,71,40,000</td><td>7.54%</td></tr>
-      <tr class="hl"><td>16-Sep-2026</td><td>Release</td><td>19,00,000</td><td>HDFC Bank</td><td>1,52,40,000</td><td class="wr">6.70% (46.4% of his stake)</td></tr>
+      <tr><td>Jul-Sep 2024</td><td class="tx">First pledge (quarter-end filing)</td><td>25,52,000</td><td class="tx">Aditya Birla Capital (inferred from the matching release)</td><td>25,52,000</td><td>1.12%</td></tr>
+      <tr><td>By 31-Mar-2025</td><td class="tx tn">Step-up</td><td>33,00,000</td><td class="tx tn">Not established</td><td>58,52,000</td><td>2.57%</td></tr>
+      <tr><td>Feb-Mar 2026</td><td class="tx">Step-ups (aggregator dates 25-Feb and 23-Mar-2026)</td><td>1,61,00,000</td><td class="tx">HDFC Bank (aggregator)</td><td>2,19,52,000</td><td>9.65%</td></tr>
+      <tr><td>22-Jun-2026</td><td class="tx tn">Creation</td><td>23,00,000</td><td class="tx tn">Jio Credit</td><td>2,42,52,000</td><td>10.65%</td></tr>
+      <tr class="hl"><td>29-Jun-2026</td><td class="tx tn">Creation</td><td>55,00,000</td><td class="tx tn">Bajaj Finance</td><td>2,97,52,000</td><td class="neg tx">13.07% (90.55% of his stake)</td></tr>
+      <tr><td>02-16 Jul-2026</td><td class="tx tn">Six releases</td><td>1,14,00,000</td><td class="tx tn">HDFC Bank</td><td>1,83,52,000</td><td>8.07%</td></tr>
+      <tr><td>12-Aug-2026</td><td class="tx tn">Creation</td><td>19,00,000</td><td class="tx tn">Tata Capital</td><td>2,02,52,000</td><td>8.91%</td></tr>
+      <tr><td>20-Aug-2026</td><td class="tx tn">Creation</td><td>15,00,000</td><td class="tx tn">Jio Credit</td><td>2,17,52,000</td><td>9.57%</td></tr>
+      <tr><td>21, 25-Aug-2026</td><td class="tx tn">Two releases</td><td>38,00,000</td><td class="tx tn">HDFC Bank</td><td>1,79,52,000</td><td>7.89%</td></tr>
+      <tr><td>27-Aug-2026</td><td class="tx tn">Creation</td><td>17,40,000</td><td class="tx tn">Poonawalla Fincorp</td><td>1,96,92,000</td><td>8.66%</td></tr>
+      <tr><td>03-Sep-2026</td><td class="tx tn">Release</td><td>25,52,000</td><td class="tx">Aditya Birla Capital</td><td>1,71,40,000</td><td>7.54%</td></tr>
+      <tr class="hl"><td>16-Sep-2026</td><td class="tx tn">Release</td><td>19,00,000</td><td class="tx tn">HDFC Bank</td><td>1,52,40,000</td><td class="wr tx">6.70% (46.4% of his stake)</td></tr>
     </tbody>
   </table></div><p class="cap">Quarter-end figures from the shareholding patterns; Jun-Sep 2026 events from nine Reg 31 disclosures on BSE, image-only, read by rendering (primary). Feb-Mar 2026 dates and lender from an aggregator (InvestyWise); those filings were not retrieved. Each filing's "after" figure ties to the next filing's "before" figure. Stated purpose on every filing: "Pledge created as security for loan extended for my Business".</p></div>
   <div class="flag f-amb">
@@ -928,51 +932,51 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   <h3>Remuneration and related parties</h3>
   <p>Promoter pay is modest: about &#8377;1.20 cr a year to the Chairman, &#8377;0.42 cr to Vikramsinh Rana and about &#8377;0.72 cr to Sahdevsinh Jadeja (FY25 annual report; half-year RPT filings), together under 1% of FY26 profit. No royalty or brand fee. A handful of relatives are on the payroll at under &#8377;0.3 cr each per half. The related-party issue is money, not pay:</p>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Counterparty</th><th>FY24</th><th>FY25</th><th>FY26</th><th>What it is</th></tr></thead>
+    <thead><tr><th>Counterparty</th><th>FY24</th><th>FY25</th><th>FY26</th><th class="tx">What it is</th></tr></thead>
     <tbody>
-      <tr class="hl"><td>Loans taken from Jyoti International LLP (Chairman 84.27%)</td><td>&#8377;185.03 cr</td><td>&#8377;133.69 cr</td><td>&#8377;197.57 cr</td><td>Unsecured, 12% then 15% a year; repaid within the year; interest &#8377;2.66 / 4.42 / 3.25 cr</td></tr>
-      <tr><td>Same loans as shown in the half-yearly Reg 23(9) filings</td><td>net only</td><td>net repayments of 1.75 and 4.63 only</td><td>H1: nil, though &#8377;0.92 cr of interest was paid; H2: +122.80 and -122.80</td><td>Interest reconciles to the annual report; principal does not. About &#8377;75 cr of H1 FY26 drawdowns appear in no half-year filing</td></tr>
-      <tr><td>Investment in and loans to Jyoti SAS (Huron's parent)</td><td>exposure about &#8377;318.8 cr</td><td></td><td>about &#8377;592.1 cr</td><td>Loans at 6.25%; &#8377;114.92 cr lent in H2 FY26 alone; accrued interest receivable &#8377;88.04 cr, apparently not being paid in cash</td></tr>
-      <tr><td>"Advance to suppliers" paid by Jyoti to Huron</td><td>&#8377;130.94 cr</td><td>&#8377;141.74 cr</td><td>&#8377;170.62 cr</td><td>Eighteen years of FY26 purchases from Huron (&#8377;9.45 cr); Huron's own FY26 books carry &#8377;101.96 cr as a short-term borrowing from "Groupe JYOTI CNC". In substance a loan (inference); CARO says no advances in the nature of loans were granted</td></tr>
-      <tr class="hl"><td><b>Total funded exposure to the French sub-group</b></td><td></td><td></td><td><b>&#8377;881.66 cr</b></td><td>Investment 341.60, loan 160.11, accrued interest and commission 90.44, trade receivable from Huron 118.89, advance to Huron 170.62. 35.9% of standalone net worth; the impairment note covers only the first two (&#8377;501.71 cr). Sub-group net assets negative &#8377;111.05 cr</td></tr>
-      <tr><td>Standby letters of credit and comfort</td><td>&#8377;54.13 cr</td><td>&#8377;167.43 cr</td><td>&#8377;264.34 cr</td><td>2023 lender annexure labels SBLC lines "HGSAS" (Huron)</td></tr>
+      <tr class="hl"><td>Loans taken from Jyoti International LLP (Chairman 84.27%)</td><td>&#8377;185.03 cr</td><td>&#8377;133.69 cr</td><td>&#8377;197.57 cr</td><td class="tx">Unsecured, 12% then 15% a year; repaid within the year; interest &#8377;2.66 / 4.42 / 3.25 cr</td></tr>
+      <tr><td>Same loans as shown in the half-yearly Reg 23(9) filings</td><td>net only</td><td class="tx">net repayments of 1.75 and 4.63 only</td><td class="tx">H1: nil, though &#8377;0.92 cr of interest was paid; H2: +122.80 and -122.80</td><td class="tx">Interest reconciles to the annual report; principal does not. About &#8377;75 cr of H1 FY26 drawdowns appear in no half-year filing</td></tr>
+      <tr><td>Investment in and loans to Jyoti SAS (Huron's parent)</td><td class="tx">exposure about &#8377;318.8 cr</td><td></td><td>about &#8377;592.1 cr</td><td class="tx">Loans at 6.25%; &#8377;114.92 cr lent in H2 FY26 alone; accrued interest receivable &#8377;88.04 cr, apparently not being paid in cash</td></tr>
+      <tr><td>"Advance to suppliers" paid by Jyoti to Huron</td><td>&#8377;130.94 cr</td><td>&#8377;141.74 cr</td><td>&#8377;170.62 cr</td><td class="tx">Eighteen years of FY26 purchases from Huron (&#8377;9.45 cr); Huron's own FY26 books carry &#8377;101.96 cr as a short-term borrowing from "Groupe JYOTI CNC". In substance a loan (inference); CARO says no advances in the nature of loans were granted</td></tr>
+      <tr class="hl"><td><b>Total funded exposure to the French sub-group</b></td><td></td><td></td><td><b>&#8377;881.66 cr</b></td><td class="tx">Investment 341.60, loan 160.11, accrued interest and commission 90.44, trade receivable from Huron 118.89, advance to Huron 170.62. 35.9% of standalone net worth; the impairment note covers only the first two (&#8377;501.71 cr). Sub-group net assets negative &#8377;111.05 cr</td></tr>
+      <tr><td>Standby letters of credit and comfort</td><td>&#8377;54.13 cr</td><td>&#8377;167.43 cr</td><td>&#8377;264.34 cr</td><td class="tx">2023 lender annexure labels SBLC lines "HGSAS" (Huron)</td></tr>
     </tbody>
   </table></div><p class="cap">Annual report related-party notes and five half-year Reg 23(9) filings (primary); notes-08 B8. On a gross basis FY26 drawdowns (&#8377;197.57 cr) exceed the Reg 23 materiality line of 10% of the previous year's consolidated turnover (&#8377;181.77 cr); FY25 drawdowns (&#8377;133.69 cr) sit &#8377;0.16 cr below theirs (&#8377;133.85 cr) and cross only if interest is added. On an average-balance basis (implied by the interest: about &#8377;37 cr in FY25, &#8377;22 cr in FY26) or against the &#8377;100 cr per half the audit committee approved, neither year is material. The regulation does not say how a revolving loan is measured, and the company affirms compliance and states there were no material related-party transactions. No shareholder approval for any related-party transaction is on record. <b>This is a classification question, not a proven breach.</b> What is established is that the half-yearly filings changed basis three times (net, nil, gross). Verified 29-Sep-2026.</p></div>
   <p>In the second half of FY26 the company borrowed &#8377;122.80 cr from its Chairman's LLP at 15% and lent &#8377;114.92 cr to its French subsidiary at 6.25%, while holding undrawn bank limits (Union Bank cash credit &#8377;143 cr drawn of &#8377;250 cr) and an A+ rating. The spread is borne by all shareholders. The intent is not established.</p>
 
   <h3>Board and key people</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Date</th><th>Event</th></tr></thead>
+    <thead><tr><th>Date</th><th class="tx">Event</th></tr></thead>
     <tbody>
-      <tr><td>30-Sep-2024</td><td>Two independent directors leave on completing two terms (foreseeable since 2019)</td></tr>
-      <tr><td>01-24 Oct-2024</td><td>Independent director Yudhvir Singh Jain appointed; died 24 days later</td></tr>
-      <tr><td>14-Nov-2024</td><td>P. N. Prasad, former SBI deputy MD and an Axis Bank independent director, joins</td></tr>
-      <tr><td>06-Aug-2025</td><td>First professional COO (Alay Dave) and chief strategy officer appointed</td></tr>
-      <tr><td>26-Oct-2025</td><td>Prasad resigns after 11 months, "other pre-occupations"; board at five with two independents and the nomination committee at two members for 84 days, against the three Reg 19 requires</td></tr>
-      <tr><td>19-Jan-2026</td><td>Prafulla Shenoy appointed; approved 11-Apr-2026 with 6.61% against, about a quarter of non-promoter votes cast if every promoter share voted for (derived)</td></tr>
+      <tr><td>30-Sep-2024</td><td class="tx">Two independent directors leave on completing two terms (foreseeable since 2019)</td></tr>
+      <tr><td>01-24 Oct-2024</td><td class="tx">Independent director Yudhvir Singh Jain appointed; died 24 days later</td></tr>
+      <tr><td>14-Nov-2024</td><td class="tx">P. N. Prasad, former SBI deputy MD and an Axis Bank independent director, joins</td></tr>
+      <tr><td>06-Aug-2025</td><td class="tx">First professional COO (Alay Dave) and chief strategy officer appointed</td></tr>
+      <tr><td>26-Oct-2025</td><td class="tx">Prasad resigns after 11 months, "other pre-occupations"; board at five with two independents and the nomination committee at two members for 84 days, against the three Reg 19 requires</td></tr>
+      <tr><td>19-Jan-2026</td><td class="tx">Prafulla Shenoy appointed; approved 11-Apr-2026 with 6.61% against, about a quarter of non-promoter votes cast if every promoter share voted for (derived)</td></tr>
     </tbody>
   </table></div><p class="cap">Reg 30 intimations, postal-ballot results, FY26 corporate governance report (primary). One continuing independent director was born in 1945. The CFO (Kamlesh Solanki, with the company since 2004, CFO since 2015) and company secretary are unchanged. The same small Jamnagar practice is secretarial auditor, compliance-report signatory and postal-ballot scrutinizer; its FY26 reports find nothing to flag, including the 84-day committee shortfall, and state that "no Specific Act" applies to the company, which leaves export-control compliance outside their scope.</p></div>
 
   <h3>Disclosure quality: three omissions</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>What</th><th>What was public elsewhere</th><th>What the company's documents said</th></tr></thead>
+    <thead><tr><th>What</th><th class="tx">What was public elsewhere</th><th class="tx">What the company's documents said</th></tr></thead>
     <tbody>
-      <tr class="hl"><td>Credit rating</td><td>Brickwork moved the same &#8377;699.27 cr of bank lines from BBB+ (May-2022) to BBB- "issuer not cooperating" (23-Aug-2023), then to <b>BB+/A4+, below investment grade</b> (28-Feb-2024), reaffirmed 20-May-2025. Infomerics disclosed this in each of its three rationales</td><td>The prospectus rating table (risk factor 12, p.58) shows Brickwork BBB+ for Fiscals 2021-2023 and only Infomerics BBB+ for Fiscal 2024; it omits the Aug-2023 Brickwork non-cooperation downgrade, though it claims to show "the credit rating for the current fiscal". The FY24, FY25 and FY26 annual reports and every investor deck do not mention Brickwork at all. No Reg 30 intimation of the Feb-2024 action is on the company's site; BSE could not be checked. Brickwork still rated the full sanctioned limits in May-2025, so the rating was live, not dormant</td></tr>
-      <tr class="hl"><td>The French case</td><td>franceinfo (citing the PNAT) and AFP (citing a judicial source), 11-Apr-2026: a suspected scheme of exports "to Russia, via India" from 2022; four people in custody and accounts seized on 31-Mar; director general formally under investigation in early April</td><td>The 12-Apr-2026 Reg 30 letter disclosed the customs directorate, the director general's restriction, the seizures and a formal judicial investigation, but did not mention Russia or a route via India, described the custody as staff having "been interviewed", omitted the director general's formal-investigation status, and placed events "over this week"</td></tr>
-      <tr><td>Related-party loans</td><td>Annual reports show gross LLP borrowings of &#8377;133.69 cr and &#8377;197.57 cr</td><td>Half-yearly Reg 23(9) filings show net movements only (FY25) or &#8377;122.80 cr (FY26)</td></tr>
+      <tr class="hl"><td>Credit rating</td><td class="tx">Brickwork moved the same &#8377;699.27 cr of bank lines from BBB+ (May-2022) to BBB- "issuer not cooperating" (23-Aug-2023), then to <b>BB+/A4+, below investment grade</b> (28-Feb-2024), reaffirmed 20-May-2025. Infomerics disclosed this in each of its three rationales</td><td class="tx">The prospectus rating table (risk factor 12, p.58) shows Brickwork BBB+ for Fiscals 2021-2023 and only Infomerics BBB+ for Fiscal 2024; it omits the Aug-2023 Brickwork non-cooperation downgrade, though it claims to show "the credit rating for the current fiscal". The FY24, FY25 and FY26 annual reports and every investor deck do not mention Brickwork at all. No Reg 30 intimation of the Feb-2024 action is on the company's site; BSE could not be checked. Brickwork still rated the full sanctioned limits in May-2025, so the rating was live, not dormant</td></tr>
+      <tr class="hl"><td>The French case</td><td class="tx">franceinfo (citing the PNAT) and AFP (citing a judicial source), 11-Apr-2026: a suspected scheme of exports "to Russia, via India" from 2022; four people in custody and accounts seized on 31-Mar; director general formally under investigation in early April</td><td class="tx">The 12-Apr-2026 Reg 30 letter disclosed the customs directorate, the director general's restriction, the seizures and a formal judicial investigation, but did not mention Russia or a route via India, described the custody as staff having "been interviewed", omitted the director general's formal-investigation status, and placed events "over this week"</td></tr>
+      <tr><td>Related-party loans</td><td class="tx">Annual reports show gross LLP borrowings of &#8377;133.69 cr and &#8377;197.57 cr</td><td class="tx">Half-yearly Reg 23(9) filings show net movements only (FY25) or &#8377;122.80 cr (FY26)</td></tr>
     </tbody>
   </table></div><p class="cap">Verified 29-Sep-2026 against the three Brickwork rationales and the prospectus. The Brickwork actions were non-cooperation actions after the company moved its mandate to Infomerics in Mar-2023 (first Infomerics rating 26-Apr-2023), at a time when the RBI had barred fresh Brickwork ratings for bank purposes (Oct-2022). They carry no credit analysis, and the company's actual credit improved sharply after the IPO. Brickwork's own May-2025 table showed debt to net worth of 0.05x while it reaffirmed BB+: an information failure, not credit stress. The finding is a disclosure gap in the offer document and the annual reports, not a breach and not a credit view. Smaller disclosure errors: the FY26 Board's report contingent-liability table has every label shifted one row, showing a &#8377;15.53 cr TDS dispute that the audited note calls CST; the TDS compounding period is described three different ways.</p></div>
 
   <h3>Capital allocation over the long run</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Decision</th><th>What it cost</th><th>What it earned</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>Decision</th><th class="tx">What it cost</th><th class="tx">What it earned</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr><td>Huron acquisition, 2007</td><td>Parent investment &#8377;341.60 cr plus loans &#8377;160.11 cr plus accrued interest &#8377;88 cr by Mar-2026; a conditional creditor waiver in FY23; &#8377;153 cr of parent loans converted to Jyoti SAS equity in FY23</td><td>5-axis technology and the aerospace door. Huron on its own books: profit &#8377;16.0 cr (FY24) and &#8377;8.7 cr (FY25), loss &#8377;80.2 cr (FY26). Subsidiary group in consolidation (Note 38.2): +&#8377;6.68 cr FY25, -&#8377;56.65 cr FY26; Q1 FY27 -&#8377;30.4 cr (consolidated minus standalone)</td><td class="neg">Strategic value real; financial return negative over nineteen years on the evidence available</td></tr>
-      <tr><td>IPO, Jan-2024</td><td>13.3% dilution at &#8377;331</td><td>&#8377;475 cr of debt repaid, &#8377;360 cr working capital, &#8377;115.9 cr general purposes; fully used by Dec-2024 with no deviation (CARE monitoring reports)</td><td class="pos">Used as promised</td></tr>
-      <tr><td>Pre-IPO promoter conversions</td><td>&#8377;50.0 cr (Mar-2023, &#8377;29 a share) and &#8377;89.9 cr (19-Aug-2023, &#8377;30.8 a share) of promoter loans converted "at a price not exceeding the book value"</td><td>In Jun-Aug 2023 outside investors paid &#8377;196 a share in preferential issues; CCPS converted into equity at &#8377;266 (Dec-2023); IPO at &#8377;331 five months later</td><td class="wr">Disclosed and agreed in Jun-2022, when the company needed the money; the price gap is the size of the promoters' reward for that support</td></tr>
-      <tr><td>Re-leveraging, FY25-FY26</td><td>Borrowings &#8377;303.8 cr to &#8377;849.7 cr; finance cost &#8377;42.1 cr to &#8377;69.8 cr</td><td>Capex &#8377;310-323 cr a year for the 10,000-machine plant; working capital</td><td class="wr">See Section 17</td></tr>
-      <tr><td>Dividends and buybacks</td><td>None ever</td><td>-</td><td>All cash retained</td></tr>
-      <tr><td>ESOPs</td><td>None outstanding (shareholding pattern)</td><td>-</td><td class="pos">No dilution</td></tr>
+      <tr><td>Huron acquisition, 2007</td><td class="tx">Parent investment &#8377;341.60 cr plus loans &#8377;160.11 cr plus accrued interest &#8377;88 cr by Mar-2026; a conditional creditor waiver in FY23; &#8377;153 cr of parent loans converted to Jyoti SAS equity in FY23</td><td class="tx">5-axis technology and the aerospace door. Huron on its own books: profit &#8377;16.0 cr (FY24) and &#8377;8.7 cr (FY25), loss &#8377;80.2 cr (FY26). Subsidiary group in consolidation (Note 38.2): +&#8377;6.68 cr FY25, -&#8377;56.65 cr FY26; Q1 FY27 -&#8377;30.4 cr (consolidated minus standalone)</td><td class="neg tx">Strategic value real; financial return negative over nineteen years on the evidence available</td></tr>
+      <tr><td>IPO, Jan-2024</td><td class="tx">13.3% dilution at &#8377;331</td><td class="tx">&#8377;475 cr of debt repaid, &#8377;360 cr working capital, &#8377;115.9 cr general purposes; fully used by Dec-2024 with no deviation (CARE monitoring reports)</td><td class="pos tx tn">Used as promised</td></tr>
+      <tr><td>Pre-IPO promoter conversions</td><td class="tx">&#8377;50.0 cr (Mar-2023, &#8377;29 a share) and &#8377;89.9 cr (19-Aug-2023, &#8377;30.8 a share) of promoter loans converted "at a price not exceeding the book value"</td><td class="tx">In Jun-Aug 2023 outside investors paid &#8377;196 a share in preferential issues; CCPS converted into equity at &#8377;266 (Dec-2023); IPO at &#8377;331 five months later</td><td class="wr tx">Disclosed and agreed in Jun-2022, when the company needed the money; the price gap is the size of the promoters' reward for that support</td></tr>
+      <tr><td>Re-leveraging, FY25-FY26</td><td class="tx">Borrowings &#8377;303.8 cr to &#8377;849.7 cr; finance cost &#8377;42.1 cr to &#8377;69.8 cr</td><td class="tx">Capex &#8377;310-323 cr a year for the 10,000-machine plant; working capital</td><td class="wr tx tn">See Section 17</td></tr>
+      <tr><td>Dividends and buybacks</td><td class="tx tn">None ever</td><td class="tx tn">-</td><td class="tx tn">All cash retained</td></tr>
+      <tr><td>ESOPs</td><td class="tx">None outstanding (shareholding pattern)</td><td class="tx tn">-</td><td class="pos tx tn">No dilution</td></tr>
     </tbody>
   </table></div><p class="cap">Per-share prices converted to the current &#8377;2 face value (derived from &#8377;145, &#8377;154 and &#8377;980 per &#8377;10 share; the Dec-2023 CCPS conversion was already at &#8377;2 face value; prospectus pp.117-120). Mar-2023: &#8377;31.9 cr of the Chairman's loans and &#8377;18.1 cr of the LLP's. Aug-2023: &#8377;60.1 cr and &#8377;29.9 cr. Promoter conversions: 2.92 crore shares at today's face value in Aug-2023 alone, 12.8% of post-IPO equity.</p></div>
 </section>
@@ -992,29 +996,29 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The scorecard, by theme</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Claim (date)</th><th>Actual</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>Claim (date)</th><th class="tx">Actual</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr><td>EBITDA margin "25 to 27 percentage is going to be sustainable" (21-May-2024, repeated each call)</td><td>FY25 27.0%, FY26 25.2%</td><td><span class="chip c-hit">Hit</span></td></tr>
-      <tr><td>FY25 order intake "INR2,500 to INR3,000 crores" (21-May-2024)</td><td>&#8377;2,611.6 cr</td><td><span class="chip c-hit">Hit</span></td></tr>
-      <tr><td>FY25 "close to 4,000 and 4,500" machines (11-Feb-2025)</td><td>4,072</td><td><span class="chip c-hit">Hit</span></td></tr>
-      <tr><td>FY25-end order book "the similar number" (about 3,400) (14-Aug-2024)</td><td>&#8377;4,346 cr</td><td><span class="chip c-hit">Over</span></td></tr>
-      <tr><td>Margin: "We are not going to down below this" (24.4%) (07-Aug-2025)</td><td>Q1 FY27 21.4% reported, 23.4% adjusted</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>FY26 growth 30-35%: "Correct. Absolutely." (10-Nov-2025)</td><td>+15.2% (+19% before the Huron reversal)</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>FY25 A&amp;D intake "1,500-2,000" crores, "we are on track" (May-Aug 2024)</td><td>About &#8377;701 cr</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>EMS book of about &#8377;700 cr: "This we have to deliver in one year" (18-Nov-2024)</td><td>About &#8377;630 cr still in the book at Jun-2026</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>6,000-machine capacity "by end of this second quarter" (Sep-2024) (21-May-2024)</td><td>Re-dated by management to the last quarter of FY25</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>Additional 10,000 machines: before Mar-2025, Dec-2025, Q3 FY26, "June ... in one go" (Aug-2024 to May-2025)</td><td>Not commissioned; now "end of September" 2026, foundry "October"</td><td><span class="chip c-miss">Miss x5</span></td></tr>
-      <tr><td>10,000-machine cost "200 crores to 250 crores ... from the internal accruals" (14-Aug-2024)</td><td>&#8377;425.83 cr, &#8377;300 cr term loan</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>"Not large much CapEx" after the IPO; "30 crore ... another 20 crores to 30 crores" (Feb/Aug-2024)</td><td>FY25 capex &#8377;309.8 cr</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>Inventory days 210-220 (FY24), 160-170 (FY25), 150-160 (FY26)</td><td>236, 181, 203</td><td><span class="chip c-part">Partial, partial, miss</span></td></tr>
-      <tr><td>Unbilled revenue will "reduce drastically" by Q4 FY25 (18-Nov-2024)</td><td>&#8377;162 cr to &#8377;529 cr</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>"Completely debt free Company" in two to three years (16-Feb-2024)</td><td>Net cash about &#8377;82 cr then; net debt about &#8377;713 cr at Mar-2026</td><td><span class="chip c-miss">Miss (window ends Feb-2027)</span></td></tr>
-      <tr><td>Positive operating cash flow in FY26 (26-May-2025)</td><td>&#8377;54.4 cr</td><td><span class="chip c-hit">Hit, thin</span></td></tr>
-      <tr><td>First-half FY26 operating cash flow "crossed Rs. 50 crores" (10-Nov-2025)</td><td>Filed: &#8377;13.15 cr</td><td><span class="chip c-miss">Not supported by the filing</span></td></tr>
-      <tr><td>Huron FY25 revenue "EUR50 million to EUR55 million" (21-May-2024)</td><td>About EUR 27-28 mn</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>Huron assembly line: Q1 FY25, Sep-2024, Nov-Dec 2024, Jan-2025, Jun-2025</td><td>Opened 19-Nov-2025</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>Huron "growth trajectory from quarter 1 onwards" (11-Feb-2026)</td><td>Q1 FY27 subsidiaries revenue &#8377;32.2 cr, loss &#8377;30.1 cr</td><td><span class="chip c-miss">Miss</span></td></tr>
-      <tr><td>Huron's reversed &#8377;67 cr to be recognised in Q1 FY27: "Yes, absolutely"; further impact: "It's all are done" (29-May-2026)</td><td>Not recognised; a further ~&#8377;35 cr withheld under a changed method</td><td><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>EBITDA margin "25 to 27 percentage is going to be sustainable" (21-May-2024, repeated each call)</td><td class="tx">FY25 27.0%, FY26 25.2%</td><td class="tx tn"><span class="chip c-hit">Hit</span></td></tr>
+      <tr><td>FY25 order intake "INR2,500 to INR3,000 crores" (21-May-2024)</td><td class="tx tn">&#8377;2,611.6 cr</td><td class="tx tn"><span class="chip c-hit">Hit</span></td></tr>
+      <tr><td>FY25 "close to 4,000 and 4,500" machines (11-Feb-2025)</td><td class="tx tn">4,072</td><td class="tx tn"><span class="chip c-hit">Hit</span></td></tr>
+      <tr><td>FY25-end order book "the similar number" (about 3,400) (14-Aug-2024)</td><td class="tx tn">&#8377;4,346 cr</td><td class="tx tn"><span class="chip c-hit">Over</span></td></tr>
+      <tr><td>Margin: "We are not going to down below this" (24.4%) (07-Aug-2025)</td><td class="tx">Q1 FY27 21.4% reported, 23.4% adjusted</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>FY26 growth 30-35%: "Correct. Absolutely." (10-Nov-2025)</td><td class="tx">+15.2% (+19% before the Huron reversal)</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>FY25 A&amp;D intake "1,500-2,000" crores, "we are on track" (May-Aug 2024)</td><td class="tx tn">About &#8377;701 cr</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>EMS book of about &#8377;700 cr: "This we have to deliver in one year" (18-Nov-2024)</td><td class="tx">About &#8377;630 cr still in the book at Jun-2026</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>6,000-machine capacity "by end of this second quarter" (Sep-2024) (21-May-2024)</td><td class="tx">Re-dated by management to the last quarter of FY25</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>Additional 10,000 machines: before Mar-2025, Dec-2025, Q3 FY26, "June ... in one go" (Aug-2024 to May-2025)</td><td class="tx">Not commissioned; now "end of September" 2026, foundry "October"</td><td class="tx tn"><span class="chip c-miss">Miss x5</span></td></tr>
+      <tr><td>10,000-machine cost "200 crores to 250 crores ... from the internal accruals" (14-Aug-2024)</td><td class="tx">&#8377;425.83 cr, &#8377;300 cr term loan</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>"Not large much CapEx" after the IPO; "30 crore ... another 20 crores to 30 crores" (Feb/Aug-2024)</td><td class="tx">FY25 capex &#8377;309.8 cr</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>Inventory days 210-220 (FY24), 160-170 (FY25), 150-160 (FY26)</td><td class="tx tn">236, 181, 203</td><td class="tx"><span class="chip c-part">Partial, partial, miss</span></td></tr>
+      <tr><td>Unbilled revenue will "reduce drastically" by Q4 FY25 (18-Nov-2024)</td><td class="tx tn">&#8377;162 cr to &#8377;529 cr</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>"Completely debt free Company" in two to three years (16-Feb-2024)</td><td class="tx">Net cash about &#8377;82 cr then; net debt about &#8377;713 cr at Mar-2026</td><td class="tx"><span class="chip c-miss">Miss (window ends Feb-2027)</span></td></tr>
+      <tr><td>Positive operating cash flow in FY26 (26-May-2025)</td><td class="tx tn">&#8377;54.4 cr</td><td class="tx tn"><span class="chip c-hit">Hit, thin</span></td></tr>
+      <tr><td>First-half FY26 operating cash flow "crossed Rs. 50 crores" (10-Nov-2025)</td><td class="tx tn">Filed: &#8377;13.15 cr</td><td class="tx"><span class="chip c-miss">Not supported by the filing</span></td></tr>
+      <tr><td>Huron FY25 revenue "EUR50 million to EUR55 million" (21-May-2024)</td><td class="tx tn">About EUR 27-28 mn</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>Huron assembly line: Q1 FY25, Sep-2024, Nov-Dec 2024, Jan-2025, Jun-2025</td><td class="tx tn">Opened 19-Nov-2025</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>Huron "growth trajectory from quarter 1 onwards" (11-Feb-2026)</td><td class="tx">Q1 FY27 subsidiaries revenue &#8377;32.2 cr, loss &#8377;30.1 cr</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
+      <tr><td>Huron's reversed &#8377;67 cr to be recognised in Q1 FY27: "Yes, absolutely"; further impact: "It's all are done" (29-May-2026)</td><td class="tx">Not recognised; a further ~&#8377;35 cr withheld under a changed method</td><td class="tx tn"><span class="chip c-miss">Miss</span></td></tr>
     </tbody>
   </table></div><p class="cap">A selection of the 52 scored claims; the full table with page references is in notes-09 Part B. Transcripts filed with the exchanges, Feb-2024 to Aug-2026. Repeated claims are merged. FY27 claims are unresolved and excluded: 25-30% growth, EBITDA about 25%, "more than 8,000" machines, intake &#8377;2,500-3,000 cr, Huron &#8377;300-325 cr at 8-10% EBITDA, operating cash flow "close to 50% of EBITDA", capex &#8377;200-250 cr, debt at "1:2 EBITDA".</p></div>
   <p><b>The strongest counter-argument, tested.</b> Many misses share one root cause: one capacity delay drives five lines, Huron's new building three, EMS customers' unbuilt plants three. Some were caused by customers or regulators, not by over-reach. Collapsing to root causes still leaves a record in which nearly every dated operational promise slipped, and the capex cost, debt path, inventory targets, the half-year cash-flow statement and the 30-35% growth assent are not explained by customers or regulators.</p>
@@ -1024,16 +1028,16 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Concall forensics</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Signal</th><th>Evidence</th></tr></thead>
+    <thead><tr><th>Signal</th><th class="tx">Evidence</th></tr></thead>
     <tbody>
-      <tr><td>Who answers</td><td>The Chairman answered every question on all eleven calls. The CFO, in post since 2015, was listed as present once and has not answered one question.</td></tr>
-      <tr><td>Guidance posture</td><td>Specific numbers volunteered (2024), disowned when missed ("we have not made any guidance like that", 11-Feb-2025; "I never made a guidance", 07-Aug-2025), re-adopted under analyst framing ("Correct. Absolutely", Nov-2025), then described as formal guidance ("25% to 30% as the guideline has been given", Aug-2026).</td></tr>
-      <tr><td>Order book life</td><td>"Next 18 months" (Feb-2024), "close to 2.5 years" (Feb-2025), decks "24-30 months" (Aug/Nov-2025) while the call says 18-24, "18-month order book is a very happy order book" (Feb-2026), "18 to 20 months" (May-2026). Arithmetic says 2.4 years.</td></tr>
-      <tr><td>Deck versus call</td><td>Nov-2025 deck: the Tumakuru land "will serve as the company's next major manufacturing base"; same-day call: "not looking to be any furthermore large capacity expansion over there ... demo centers and warehouses".</td></tr>
-      <tr><td>Questions dodged</td><td>A &#8377;135 cr fall in the EMS order book in Q4 FY24 ("I will ... come back to you", never answered); unbilled-revenue ageing (asked on four calls); the Dec-2025 inventory split ("I'm sitting in France right now"); interest drivers (Aug-2026); the Huron seizure, custody and director general's status (never volunteered).</td></tr>
-      <tr><td>Never raised</td><td>The promoter-group pledge: no analyst asked and management never mentioned it on any call, although it went from 17.8% to 90.6% of the holder's stake during the Aug-2025 to Aug-2026 calls.</td></tr>
-      <tr><td>Coverage</td><td>Analysts asking questions: 9, 8, 8, 7, 8, 9, 14, 10, 8, 12, 17. Participation rose after each piece of bad news. An investor-relations firm appears from Aug-2025; transcripts from Nov-2025 carry "E&amp;OE - edited for factual errors". Hosts rotate among covering brokers; the Aug-2026 moderator also asked questions.</td></tr>
-      <tr><td>Tone</td><td>Patience thins under repeated questions on per-machine economics ("I'm answering to you on consecutive last 6 calls on the same question") and on investigation precedents ("if you ask to any the AI or ... Google ... you can able to find out").</td></tr>
+      <tr><td>Who answers</td><td class="tx">The Chairman answered every question on all eleven calls. The CFO, in post since 2015, was listed as present once and has not answered one question.</td></tr>
+      <tr><td>Guidance posture</td><td class="tx">Specific numbers volunteered (2024), disowned when missed ("we have not made any guidance like that", 11-Feb-2025; "I never made a guidance", 07-Aug-2025), re-adopted under analyst framing ("Correct. Absolutely", Nov-2025), then described as formal guidance ("25% to 30% as the guideline has been given", Aug-2026).</td></tr>
+      <tr><td>Order book life</td><td class="tx">"Next 18 months" (Feb-2024), "close to 2.5 years" (Feb-2025), decks "24-30 months" (Aug/Nov-2025) while the call says 18-24, "18-month order book is a very happy order book" (Feb-2026), "18 to 20 months" (May-2026). Arithmetic says 2.4 years.</td></tr>
+      <tr><td>Deck versus call</td><td class="tx">Nov-2025 deck: the Tumakuru land "will serve as the company's next major manufacturing base"; same-day call: "not looking to be any furthermore large capacity expansion over there ... demo centers and warehouses".</td></tr>
+      <tr><td>Questions dodged</td><td class="tx">A &#8377;135 cr fall in the EMS order book in Q4 FY24 ("I will ... come back to you", never answered); unbilled-revenue ageing (asked on four calls); the Dec-2025 inventory split ("I'm sitting in France right now"); interest drivers (Aug-2026); the Huron seizure, custody and director general's status (never volunteered).</td></tr>
+      <tr><td>Never raised</td><td class="tx">The promoter-group pledge: no analyst asked and management never mentioned it on any call, although it went from 17.8% to 90.6% of the holder's stake during the Aug-2025 to Aug-2026 calls.</td></tr>
+      <tr><td>Coverage</td><td class="tx">Analysts asking questions: 9, 8, 8, 7, 8, 9, 14, 10, 8, 12, 17. Participation rose after each piece of bad news. An investor-relations firm appears from Aug-2025; transcripts from Nov-2025 carry "E&amp;OE - edited for factual errors". Hosts rotate among covering brokers; the Aug-2026 moderator also asked questions.</td></tr>
+      <tr><td>Tone</td><td class="tx">Patience thins under repeated questions on per-machine economics ("I'm answering to you on consecutive last 6 calls on the same question") and on investigation precedents ("if you ask to any the AI or ... Google ... you can able to find out").</td></tr>
     </tbody>
   </table></div></div>
 </section>
@@ -1046,18 +1050,18 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The French judicial investigation</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Date</th><th>Event</th><th>Source</th></tr></thead>
+    <thead><tr><th>Date</th><th class="tx">Event</th><th class="tx">Source</th></tr></thead>
     <tbody>
-      <tr><td>Apr-2024</td><td>Customs control of Huron by the customs intelligence directorate (DNRED)</td><td>AFP and franceinfo, 11-Apr-2026 (media)</td></tr>
-      <tr><td>09-Oct-2025</td><td>Preliminary investigation opened on a complaint by the Director General of Customs</td><td>AFP (media)</td></tr>
-      <tr><td>31-Mar-2026</td><td>Four current or former Huron staff in custody; bank accounts and two properties seized</td><td>AFP (media); seizures confirmed by the company</td></tr>
-      <tr><td>03-Apr-2026</td><td>Judicial investigation opened; the director general placed under formal investigation ("mis en examen") in early April and under judicial supervision</td><td>franceinfo, AFP (media)</td></tr>
-      <tr><td>11-Apr-2026</td><td>First press reports: a suspected scheme, "from 2022", of "fraudulent exports to Russia, via India, of machine tools classified as dual-use goods"</td><td>franceinfo citing the PNAT; AFP citing a judicial source</td></tr>
-      <tr><td>12-Apr-2026 (Sunday)</td><td>Reg 30 letter: investigation, director general restricted, ~EUR 4.0 mn of accounts and two Jyoti SAS properties seized, formal judicial investigation; Huron "refutes the allegations"; no impact expected on Jyoti standalone. No mention of Russia or a route via India</td><td>Company (primary)</td></tr>
-      <tr><td>13-Apr-2026</td><td>Shares fall 14.7% on 15 times normal volume</td><td>Exchange data via aggregator</td></tr>
-      <tr><td>Q4 FY26</td><td>~&#8377;67 cr of Huron revenue reversed "as a matter of prudence" on machines awaiting export licences; &#8377;32.91 cr of seized cash charged to operating cash flow</td><td>May-2026 deck; FY26 annual report (primary)</td></tr>
-      <tr><td>29-May-2026</td><td>Auditor's emphasis of matter: material uncertainty over the subsidiary's going concern; investments and loans not impaired. Seizure now stated as EUR 3.02 mn</td><td>FY26 annual report (primary)</td></tr>
-      <tr><td>Q1 FY27</td><td>Huron moves to dispatch-based revenue; ~&#8377;35 cr more deferred; about &#8377;100 cr on 7-8 machines for Chinese and Turkish customers awaits licences; subsidiaries lose &#8377;30.4 cr</td><td>Aug-2026 call and results (primary)</td></tr>
+      <tr><td>Apr-2024</td><td class="tx">Customs control of Huron by the customs intelligence directorate (DNRED)</td><td class="tx">AFP and franceinfo, 11-Apr-2026 (media)</td></tr>
+      <tr><td>09-Oct-2025</td><td class="tx">Preliminary investigation opened on a complaint by the Director General of Customs</td><td class="tx tn">AFP (media)</td></tr>
+      <tr><td>31-Mar-2026</td><td class="tx">Four current or former Huron staff in custody; bank accounts and two properties seized</td><td class="tx">AFP (media); seizures confirmed by the company</td></tr>
+      <tr><td>03-Apr-2026</td><td class="tx">Judicial investigation opened; the director general placed under formal investigation ("mis en examen") in early April and under judicial supervision</td><td class="tx">franceinfo, AFP (media)</td></tr>
+      <tr><td>11-Apr-2026</td><td class="tx">First press reports: a suspected scheme, "from 2022", of "fraudulent exports to Russia, via India, of machine tools classified as dual-use goods"</td><td class="tx">franceinfo citing the PNAT; AFP citing a judicial source</td></tr>
+      <tr><td>12-Apr-2026 (Sunday)</td><td class="tx">Reg 30 letter: investigation, director general restricted, ~EUR 4.0 mn of accounts and two Jyoti SAS properties seized, formal judicial investigation; Huron "refutes the allegations"; no impact expected on Jyoti standalone. No mention of Russia or a route via India</td><td class="tx tn">Company (primary)</td></tr>
+      <tr><td>13-Apr-2026</td><td class="tx">Shares fall 14.7% on 15 times normal volume</td><td class="tx">Exchange data via aggregator</td></tr>
+      <tr><td>Q4 FY26</td><td class="tx">~&#8377;67 cr of Huron revenue reversed "as a matter of prudence" on machines awaiting export licences; &#8377;32.91 cr of seized cash charged to operating cash flow</td><td class="tx">May-2026 deck; FY26 annual report (primary)</td></tr>
+      <tr><td>29-May-2026</td><td class="tx">Auditor's emphasis of matter: material uncertainty over the subsidiary's going concern; investments and loans not impaired. Seizure now stated as EUR 3.02 mn</td><td class="tx">FY26 annual report (primary)</td></tr>
+      <tr><td>Q1 FY27</td><td class="tx">Huron moves to dispatch-based revenue; ~&#8377;35 cr more deferred; about &#8377;100 cr on 7-8 machines for Chinese and Turkish customers awaits licences; subsidiaries lose &#8377;30.4 cr</td><td class="tx">Aug-2026 call and results (primary)</td></tr>
     </tbody>
   </table></div><p class="cap">Media items verified against the franceinfo article and the AFP wire on 29-Sep-2026 (notes-14 V3). The offences reported include organised smuggling of dual-use goods, delivery to a foreign power of material liable to harm the nation's fundamental interests, and breach of international economic restrictions. No court date is published.</p></div>
 
@@ -1071,26 +1075,26 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Why it matters beyond Huron's own numbers</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Channel</th><th>Exposure</th><th>Evidence</th></tr></thead>
+    <thead><tr><th>Channel</th><th class="tx">Exposure</th><th class="tx">Evidence</th></tr></thead>
     <tbody>
-      <tr><td>Direct financial</td><td>&#8377;881.66 cr of funded exposure plus &#8377;264.34 cr of standby letters of credit to the French sub-group; seized cash; ~&#8377;100 cr of deferred revenue; legal cost undisclosed</td><td>Section 6; FY26 annual report</td></tr>
-      <tr><td>Technology</td><td>Huron is the stated "technology backbone" of the 5-axis range and the door to European aerospace customers</td><td>Company deck p.14</td></tr>
-      <tr><td>Export licensing</td><td>Every future Huron export of a controlled machine needs a licence the same authorities are now scrutinising; German controller licences also cited as slow</td><td>Aug-2026 call</td></tr>
-      <tr><td>Sanctions, by precedent</td><td>The US Treasury designated an Indian machine-tool maker, Lokesh Machines, on 30-Oct-2024 under the Russia sanctions order, citing "dozens of shipments of machine tools to various Russian manufacturing companies" since 2023; it was removed from the list on 30-Jun-2026 without a stated reason. No action of any kind has been reported against any Jyoti group company</td><td>OFAC press release jy2700; OFAC recent actions 30-Jun-2026 (verified)</td></tr>
-      <tr><td>Disclosure</td><td>The Reg 30 letter omitted the Russia allegation and the director general's formal-investigation status; the consolidated accounts omit the note the auditor cites</td><td>Sections 6, 7</td></tr>
+      <tr><td>Direct financial</td><td class="tx">&#8377;881.66 cr of funded exposure plus &#8377;264.34 cr of standby letters of credit to the French sub-group; seized cash; ~&#8377;100 cr of deferred revenue; legal cost undisclosed</td><td class="tx">Section 6; FY26 annual report</td></tr>
+      <tr><td>Technology</td><td class="tx">Huron is the stated "technology backbone" of the 5-axis range and the door to European aerospace customers</td><td class="tx tn">Company deck p.14</td></tr>
+      <tr><td>Export licensing</td><td class="tx">Every future Huron export of a controlled machine needs a licence the same authorities are now scrutinising; German controller licences also cited as slow</td><td class="tx tn">Aug-2026 call</td></tr>
+      <tr><td>Sanctions, by precedent</td><td class="tx">The US Treasury designated an Indian machine-tool maker, Lokesh Machines, on 30-Oct-2024 under the Russia sanctions order, citing "dozens of shipments of machine tools to various Russian manufacturing companies" since 2023; it was removed from the list on 30-Jun-2026 without a stated reason. No action of any kind has been reported against any Jyoti group company</td><td class="tx">OFAC press release jy2700; OFAC recent actions 30-Jun-2026 (verified)</td></tr>
+      <tr><td>Disclosure</td><td class="tx">The Reg 30 letter omitted the Russia allegation and the director general's formal-investigation status; the consolidated accounts omit the note the auditor cites</td><td class="tx tn">Sections 6, 7</td></tr>
     </tbody>
   </table></div></div>
 
   <h3>Other live matters</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Matter</th><th>Amount</th><th>Status</th></tr></thead>
+    <thead><tr><th>Matter</th><th class="tx">Amount</th><th class="tx">Status</th></tr></thead>
     <tbody>
-      <tr><td>TDS deposited late across roughly a decade; compounding with notices to all three executive directors</td><td>&#8377;9.07 cr (FY25 exceptional)</td><td>Paid, Jun-2024. Period described three different ways across company documents</td></tr>
-      <tr><td>GST demand on e-way bill non-compliance (Rajkot CGST)</td><td>&#8377;4.46 cr tax plus penalty</td><td>Set aside in full on appeal, 29-May-2026; departmental appeal not known</td></tr>
-      <tr><td>Disputed income tax (contingent)</td><td>&#8377;20.00 cr (FY24), &#8377;19.57 cr (FY25), nil (FY26)</td><td>How it closed is not explained</td></tr>
-      <tr><td>Disputed CST, VAT, GST, excise (contingent)</td><td>About &#8377;22 cr</td><td>Pending before appellate authorities</td></tr>
-      <tr><td>SEBI or exchange action</td><td>None found</td><td>Routine price and volume queries only, answered "market driven"</td></tr>
-      <tr><td>Promoter-group SAST filings</td><td>Several manual encumbrance disclosures reached BSE more than seven working days after the event</td><td>No breach established: the Reg 31 filing duty does not apply to depository pledges, which these almost certainly are (Section 7)</td></tr>
+      <tr><td>TDS deposited late across roughly a decade; compounding with notices to all three executive directors</td><td class="tx">&#8377;9.07 cr (FY25 exceptional)</td><td class="tx">Paid, Jun-2024. Period described three different ways across company documents</td></tr>
+      <tr><td>GST demand on e-way bill non-compliance (Rajkot CGST)</td><td class="tx">&#8377;4.46 cr tax plus penalty</td><td class="tx">Set aside in full on appeal, 29-May-2026; departmental appeal not known</td></tr>
+      <tr><td>Disputed income tax (contingent)</td><td class="tx">&#8377;20.00 cr (FY24), &#8377;19.57 cr (FY25), nil (FY26)</td><td class="tx">How it closed is not explained</td></tr>
+      <tr><td>Disputed CST, VAT, GST, excise (contingent)</td><td class="tx tn">About &#8377;22 cr</td><td class="tx">Pending before appellate authorities</td></tr>
+      <tr><td>SEBI or exchange action</td><td class="tx tn">None found</td><td class="tx">Routine price and volume queries only, answered "market driven"</td></tr>
+      <tr><td>Promoter-group SAST filings</td><td class="tx">Several manual encumbrance disclosures reached BSE more than seven working days after the event</td><td class="tx">No breach established: the Reg 31 filing duty does not apply to depository pledges, which these almost certainly are (Section 7)</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1132,14 +1136,14 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>People</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Date</th><th>Signal</th><th>Tier</th></tr></thead>
+    <thead><tr><th>Date</th><th class="tx">Signal</th><th class="tx">Tier</th></tr></thead>
     <tbody>
-      <tr><td>30-Sep-2024</td><td>Independent directors Yogesh Kathrecha and Vijay Paranjape completed two terms and left</td><td>Primary</td></tr>
-      <tr><td>02 and 30-Oct-2024</td><td>Yudhvir Singh appointed a director on 02-Oct-2024; the company reported his death on 30-Oct-2024</td><td>Primary (NSE)</td></tr>
-      <tr><td>06-Aug-2025</td><td>Alay M. Dave appointed Chief Operating Officer and Vijay Pratap Singh Chief Strategy and Transformation Officer: the first professional operating layer below the promoters</td><td>Primary</td></tr>
-      <tr><td>26-Oct-2025</td><td>Independent director Prasad P. Naga, a member of the audit committee, resigned; substantive reason not found in the letter text</td><td>Primary</td></tr>
-      <tr><td>2004 to date</td><td>CFO Kamlesh Solanki (CFO since 2015, with the company since 2004) and CS Maulik Gandhi unchanged</td><td>Primary</td></tr>
-      <tr><td>31-Mar-2026</td><td>Huron's director general in French custody, then restricted from his duties. Marc Troia was named Huron CEO at the Nov-2025 inauguration; no source links him to the proceedings, and none is inferred here</td><td>Media</td></tr>
+      <tr><td>30-Sep-2024</td><td class="tx">Independent directors Yogesh Kathrecha and Vijay Paranjape completed two terms and left</td><td class="tx tn">Primary</td></tr>
+      <tr><td>02 and 30-Oct-2024</td><td class="tx">Yudhvir Singh appointed a director on 02-Oct-2024; the company reported his death on 30-Oct-2024</td><td class="tx tn">Primary (NSE)</td></tr>
+      <tr><td>06-Aug-2025</td><td class="tx">Alay M. Dave appointed Chief Operating Officer and Vijay Pratap Singh Chief Strategy and Transformation Officer: the first professional operating layer below the promoters</td><td class="tx tn">Primary</td></tr>
+      <tr><td>26-Oct-2025</td><td class="tx">Independent director Prasad P. Naga, a member of the audit committee, resigned; substantive reason not found in the letter text</td><td class="tx tn">Primary</td></tr>
+      <tr><td>2004 to date</td><td class="tx">CFO Kamlesh Solanki (CFO since 2015, with the company since 2004) and CS Maulik Gandhi unchanged</td><td class="tx tn">Primary</td></tr>
+      <tr><td>31-Mar-2026</td><td class="tx">Huron's director general in French custody, then restricted from his duties. Marc Troia was named Huron CEO at the Nov-2025 inauguration; no source links him to the proceedings, and none is inferred here</td><td class="tx tn">Media</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1148,11 +1152,11 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The Rajkot fire, 26-Sep-2026</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Source</th><th>Location</th><th>Duration</th><th>Loss</th></tr></thead>
+    <thead><tr><th>Source</th><th class="tx">Location</th><th class="tx">Duration</th><th class="tx">Loss</th></tr></thead>
     <tbody>
-      <tr><td>Company Reg 30 clarification, 27-Sep-2026 (primary)</td><td>"One of coating facilities"</td><td>Contained in 30-60 minutes; operations resumed</td><td>No casualty; no material financial loss</td></tr>
-      <tr><td>Sandesh (Gujarati), 26-Sep-2026 (media)</td><td>"Main assembling unit"</td><td>Water cannons "over several hours"</td><td>Survey pending</td></tr>
-      <tr><td>TV9 Gujarati, 26-Sep-2026 (media)</td><td>Assembly unit; thick smoke visible from far</td><td>n/a</td><td>Unclear</td></tr>
+      <tr><td>Company Reg 30 clarification, 27-Sep-2026 (primary)</td><td class="tx">"One of coating facilities"</td><td class="tx">Contained in 30-60 minutes; operations resumed</td><td class="tx">No casualty; no material financial loss</td></tr>
+      <tr><td>Sandesh (Gujarati), 26-Sep-2026 (media)</td><td class="tx">"Main assembling unit"</td><td class="tx">Water cannons "over several hours"</td><td class="tx tn">Survey pending</td></tr>
+      <tr><td>TV9 Gujarati, 26-Sep-2026 (media)</td><td class="tx">Assembly unit; thick smoke visible from far</td><td class="tx tn">n/a</td><td class="tx tn">Unclear</td></tr>
     </tbody>
   </table></div><p class="cap">Unresolved. The company's letter was a response to media reports under Reg 30(11). If the assembly hall was affected in the month the new capacity was due to open, the Q2 and Q3 FY27 numbers will show it; the company says they will not. The stock fell 1.8% on 28-Sep-2026 and recovered on 29-Sep.</p></div>
 
@@ -1171,15 +1175,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Macro sensitivities, quantified where the filings allow</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Variable</th><th>Exposure (31-Mar-2026)</th><th>Sensitivity</th><th>Source</th></tr></thead>
+    <thead><tr><th>Variable</th><th class="tx">Exposure (31-Mar-2026)</th><th class="tx">Sensitivity</th><th class="tx">Source</th></tr></thead>
     <tbody>
-      <tr class="hl"><td>Rupee versus euro and dollar</td><td>Standalone, unhedged (forward contracts: nil): euro and dollar receivables &#8377;130.9 cr; loans and advances to subsidiaries incl. interest &#8377;261.6 cr; payables &#8377;19.3 cr. Net long about &#8377;373 cr</td><td>1% rupee move = about &#8377;3.7 cr of pre-tax profit, 0.8% of FY26 PBT. FY26's 13% euro rise produced a &#8377;43 cr gain; Q1 FY27 a &#8377;10 cr loss</td><td>FY26 AR p.113 (derived)</td></tr>
-      <tr><td>Euro debt in France</td><td>&#8377;260.4 cr, 3M Euribor + 3.00% and SBI euro working capital</td><td>Natural hedge inside Huron; translation through OCI (&#8377;18 cr loss in FY26)</td><td>FY26 AR Note 17</td></tr>
-      <tr class="hl"><td>Interest rates</td><td>Floating debt &#8377;846 cr (INR &#8377;585.6 cr, EUR &#8377;260.4 cr); fixed &#8377;3.7 cr</td><td>+100 bps = about &#8377;8.5 cr of pre-tax profit, 1.8% of FY26 PBT</td><td>FY26 AR p.104 (derived)</td></tr>
-      <tr><td>Imported inputs</td><td>Directly imported material was 5.5-6.8% of total expenses pre-IPO; CNC controllers are sourced from Japan and Germany on a 12-month lead time, partly through Indian distributors</td><td>A 10% yen or euro rise on controllers is not quantifiable from disclosures; management said raw material costs were up "2 to 3 percentage" on a fixed-price order book (May-2026)</td><td>Prospectus p.66; Infomerics Feb-2026</td></tr>
-      <tr><td>Steel, pig iron, scrap</td><td>Castings made in-house from pig iron and scrap</td><td>Not disclosed; a fixed-price book with a 2.4-year life absorbs input inflation until repricing</td><td>Prospectus p.51</td></tr>
-      <tr><td>Auto demand</td><td>26% of FY26 revenue, 35% in Q1 FY27</td><td>SIAM production +11.8% FY26; component imports +13% with China 36% of them</td><td>SIAM; ACMA</td></tr>
-      <tr><td>Defence budget</td><td>39% of FY26 revenue in A&amp;D</td><td>FY27 capital acquisition &#8377;1.85 lakh cr, +24%, about 75% domestic</td><td>PIB 03-Feb-2026</td></tr>
+      <tr class="hl"><td>Rupee versus euro and dollar</td><td class="tx">Standalone, unhedged (forward contracts: nil): euro and dollar receivables &#8377;130.9 cr; loans and advances to subsidiaries incl. interest &#8377;261.6 cr; payables &#8377;19.3 cr. Net long about &#8377;373 cr</td><td class="tx">1% rupee move = about &#8377;3.7 cr of pre-tax profit, 0.8% of FY26 PBT. FY26's 13% euro rise produced a &#8377;43 cr gain; Q1 FY27 a &#8377;10 cr loss</td><td class="tx">FY26 AR p.113 (derived)</td></tr>
+      <tr><td>Euro debt in France</td><td class="tx">&#8377;260.4 cr, 3M Euribor + 3.00% and SBI euro working capital</td><td class="tx">Natural hedge inside Huron; translation through OCI (&#8377;18 cr loss in FY26)</td><td class="tx tn">FY26 AR Note 17</td></tr>
+      <tr class="hl"><td>Interest rates</td><td class="tx">Floating debt &#8377;846 cr (INR &#8377;585.6 cr, EUR &#8377;260.4 cr); fixed &#8377;3.7 cr</td><td class="tx">+100 bps = about &#8377;8.5 cr of pre-tax profit, 1.8% of FY26 PBT</td><td class="tx">FY26 AR p.104 (derived)</td></tr>
+      <tr><td>Imported inputs</td><td class="tx">Directly imported material was 5.5-6.8% of total expenses pre-IPO; CNC controllers are sourced from Japan and Germany on a 12-month lead time, partly through Indian distributors</td><td class="tx">A 10% yen or euro rise on controllers is not quantifiable from disclosures; management said raw material costs were up "2 to 3 percentage" on a fixed-price order book (May-2026)</td><td class="tx">Prospectus p.66; Infomerics Feb-2026</td></tr>
+      <tr><td>Steel, pig iron, scrap</td><td class="tx">Castings made in-house from pig iron and scrap</td><td class="tx">Not disclosed; a fixed-price book with a 2.4-year life absorbs input inflation until repricing</td><td class="tx tn">Prospectus p.51</td></tr>
+      <tr><td>Auto demand</td><td class="tx">26% of FY26 revenue, 35% in Q1 FY27</td><td class="tx">SIAM production +11.8% FY26; component imports +13% with China 36% of them</td><td class="tx tn">SIAM; ACMA</td></tr>
+      <tr><td>Defence budget</td><td class="tx">39% of FY26 revenue in A&amp;D</td><td class="tx">FY27 capital acquisition &#8377;1.85 lakh cr, +24%, about 75% domestic</td><td class="tx tn">PIB 03-Feb-2026</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1211,30 +1215,30 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Live triggers</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Trigger</th><th>What to watch</th><th>Direction if it lands</th></tr></thead>
+    <thead><tr><th>Trigger</th><th class="tx">What to watch</th><th class="tx">Direction if it lands</th></tr></thead>
     <tbody>
-      <tr><td>Rajkot capacity to 16,000 a year</td><td>A Reg 30 commissioning intimation; management said "end of September" 2026, foundry October; Infomerics COD October 2026. None on file at 29-Sep-2026</td><td class="pos">Positive if on time; a sixth slip would be telling</td></tr>
-      <tr class="hl"><td>H1 FY27 balance sheet (with Q2 results, due by 14-Nov-2026)</td><td>Unbilled revenue (Note 13 / other financial assets) against &#8377;613 cr at March; inventory against &#8377;1,166 cr; half-year operating cash flow against the "50% of EBITDA" FY27 guide</td><td>The single most informative data point in the next quarter</td></tr>
-      <tr class="hl"><td>French investigation</td><td>Any charge, dismissal, release of seized funds or machines, or return of Huron's director general; any EU or US sanctions action involving any group entity</td><td>Binary; the largest single swing factor (Section 14)</td></tr>
-      <tr><td>Huron export licences</td><td>About &#8377;100 cr of revenue on 7-8 machines awaiting licences; the "&#8377;67 cr to be recognised" promise</td><td class="pos">Positive if granted</td></tr>
-      <tr><td>Sep-2026 shareholding pattern (due by 21-Oct-2026)</td><td>Pledge should show about 1.52 crore shares (6.70%); any further Virani sales above 2% would need a Reg 29 filing</td><td>Confirms or reverses the halving</td></tr>
-      <tr><td>EMS orders</td><td>Delivery of the ~&#8377;630 cr book booked by Sep-2024; any new EMS intake after ECMS clearances</td><td class="pos">Positive if shipped; ageing risk if not</td></tr>
-      <tr><td>ECMS approval</td><td>Board decision and disclosure of the approval letter, product list and conditions; incentive up to 25% of &#8377;1,020.65 cr over five years</td><td class="pos">Positive, contingent</td></tr>
-      <tr><td>Fire, 26-Sep-2026</td><td>Q2 and Q3 FY27 output and any insurance claim; company says no material loss, two outlets say the assembly unit</td><td class="wr">Resolves with Q2 numbers</td></tr>
-      <tr><td>35th AGM, 30-Sep-2026</td><td>Four ordinary resolutions: adopt the standalone and consolidated accounts, re-appoint the Chairman as a director retiring by rotation, ratify cost auditor pay. No related-party or borrowing resolution</td><td>Low</td></tr>
-      <tr><td>Parekh brothers' 4.79%</td><td>Both prior sell-downs came near price highs; no lock-in</td><td class="neg">Supply overhang</td></tr>
+      <tr><td>Rajkot capacity to 16,000 a year</td><td class="tx">A Reg 30 commissioning intimation; management said "end of September" 2026, foundry October; Infomerics COD October 2026. None on file at 29-Sep-2026</td><td class="pos tx">Positive if on time; a sixth slip would be telling</td></tr>
+      <tr class="hl"><td>H1 FY27 balance sheet (with Q2 results, due by 14-Nov-2026)</td><td class="tx">Unbilled revenue (Note 13 / other financial assets) against &#8377;613 cr at March; inventory against &#8377;1,166 cr; half-year operating cash flow against the "50% of EBITDA" FY27 guide</td><td class="tx">The single most informative data point in the next quarter</td></tr>
+      <tr class="hl"><td>French investigation</td><td class="tx">Any charge, dismissal, release of seized funds or machines, or return of Huron's director general; any EU or US sanctions action involving any group entity</td><td class="tx">Binary; the largest single swing factor (Section 14)</td></tr>
+      <tr><td>Huron export licences</td><td class="tx">About &#8377;100 cr of revenue on 7-8 machines awaiting licences; the "&#8377;67 cr to be recognised" promise</td><td class="pos tx">Positive if granted</td></tr>
+      <tr><td>Sep-2026 shareholding pattern (due by 21-Oct-2026)</td><td class="tx">Pledge should show about 1.52 crore shares (6.70%); any further Virani sales above 2% would need a Reg 29 filing</td><td class="tx">Confirms or reverses the halving</td></tr>
+      <tr><td>EMS orders</td><td class="tx">Delivery of the ~&#8377;630 cr book booked by Sep-2024; any new EMS intake after ECMS clearances</td><td class="pos tx">Positive if shipped; ageing risk if not</td></tr>
+      <tr><td>ECMS approval</td><td class="tx">Board decision and disclosure of the approval letter, product list and conditions; incentive up to 25% of &#8377;1,020.65 cr over five years</td><td class="pos tx">Positive, contingent</td></tr>
+      <tr><td>Fire, 26-Sep-2026</td><td class="tx">Q2 and Q3 FY27 output and any insurance claim; company says no material loss, two outlets say the assembly unit</td><td class="wr tx">Resolves with Q2 numbers</td></tr>
+      <tr><td>35th AGM, 30-Sep-2026</td><td class="tx">Four ordinary resolutions: adopt the standalone and consolidated accounts, re-appoint the Chairman as a director retiring by rotation, ratify cost auditor pay. No related-party or borrowing resolution</td><td class="tx tn">Low</td></tr>
+      <tr><td>Parekh brothers' 4.79%</td><td class="tx">Both prior sell-downs came near price highs; no lock-in</td><td class="neg tx tn">Supply overhang</td></tr>
     </tbody>
   </table></div></div>
 
   <h3>Government scheme linkage</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Scheme</th><th>Jyoti's entitlement</th><th>Delivery status</th></tr></thead>
+    <thead><tr><th>Scheme</th><th class="tx">Jyoti's entitlement</th><th class="tx">Delivery status</th></tr></thead>
     <tbody>
-      <tr><td>Electronics Component Manufacturing Scheme (MeitY)</td><td>Approval for a &#8377;1,020.65 cr capital programme at Rajkot over five years; capex incentive "up to 25%" (ceiling about &#8377;255 cr, derived)</td><td>Approved 17-Aug-2026; letter undisclosed; nothing received. Also drives customers' demand for EMS machines</td></tr>
-      <tr><td>Defence indigenisation and domestic procurement</td><td>Indirect: supplies machines to defence manufacturers; first Indian defence order "the first time" in Jul-Sep 2025 (&#8377;~180 cr, management)</td><td>A&amp;D book flat at &#8377;1,700-1,900 cr for eleven quarters</td></tr>
-      <tr><td>Scheme for Enhancement of Competitiveness in Capital Goods (DHI, Phase II)</td><td>None directly; funds technology platforms and common facilities, not machine purchases</td><td>29 projects, &#8377;714.64 cr government share (Nov-2025)</td></tr>
-      <tr><td>PLI</td><td>No PLI exists for machine tools</td><td>-</td></tr>
-      <tr><td>Hi-Tech Tool Rooms (Budget 2026-27)</td><td>A possible buyer, and a public-sector competitor in precision parts</td><td>Announced, unsized</td></tr>
+      <tr><td>Electronics Component Manufacturing Scheme (MeitY)</td><td class="tx">Approval for a &#8377;1,020.65 cr capital programme at Rajkot over five years; capex incentive "up to 25%" (ceiling about &#8377;255 cr, derived)</td><td class="tx">Approved 17-Aug-2026; letter undisclosed; nothing received. Also drives customers' demand for EMS machines</td></tr>
+      <tr><td>Defence indigenisation and domestic procurement</td><td class="tx">Indirect: supplies machines to defence manufacturers; first Indian defence order "the first time" in Jul-Sep 2025 (&#8377;~180 cr, management)</td><td class="tx">A&amp;D book flat at &#8377;1,700-1,900 cr for eleven quarters</td></tr>
+      <tr><td>Scheme for Enhancement of Competitiveness in Capital Goods (DHI, Phase II)</td><td class="tx">None directly; funds technology platforms and common facilities, not machine purchases</td><td class="tx">29 projects, &#8377;714.64 cr government share (Nov-2025)</td></tr>
+      <tr><td>PLI</td><td class="tx">No PLI exists for machine tools</td><td class="tx tn">-</td></tr>
+      <tr><td>Hi-Tech Tool Rooms (Budget 2026-27)</td><td class="tx">A possible buyer, and a public-sector competitor in precision parts</td><td class="tx tn">Announced, unsized</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1294,12 +1298,12 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The overhang that is already half gone</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Date</th><th>Event</th><th>Shares</th><th>Price</th><th>Buyers named</th></tr></thead>
+    <thead><tr><th>Date</th><th class="tx">Event</th><th>Shares</th><th class="tx">Price</th><th class="tx">Buyers named</th></tr></thead>
     <tbody>
-      <tr><td>28-Aug-2023 and Nov-2023</td><td>Eknath Infracon LLP, the largest pre-IPO holder at 45.49%, splits its stake: 49% to Virani, 25.5% to each Parekh brother</td><td>6.71 crore (post-split)</td><td>&#8377;31.20 (Virani, cash)</td><td>-</td></tr>
-      <tr><td>29-Jul-2024</td><td>Each Parekh brother sells 48,02,500 in bulk and block deals</td><td>96,05,000 (4.22%)</td><td>about &#8377;1,123</td><td>Axis MF (11 schemes), Morgan Stanley Asia, Edelweiss, Societe Generale, HSBC</td></tr>
-      <tr><td>30-Jun-2025</td><td>Each Parekh brother sells 68,50,000</td><td>1,37,00,000 (6.02%)</td><td>about &#8377;1,087</td><td>Kotak Funds India Midcap 37,92,500; the rest not identified</td></tr>
-      <tr class="hl"><td>Now</td><td>Parekh brothers hold 54,46,205 each</td><td>1,08,92,410 (4.79%)</td><td>worth about &#8377;1,156 cr</td><td>No lock-in</td></tr>
+      <tr><td>28-Aug-2023 and Nov-2023</td><td class="tx">Eknath Infracon LLP, the largest pre-IPO holder at 45.49%, splits its stake: 49% to Virani, 25.5% to each Parekh brother</td><td class="tx">6.71 crore (post-split)</td><td class="tx">&#8377;31.20 (Virani, cash)</td><td class="tx tn">-</td></tr>
+      <tr><td>29-Jul-2024</td><td class="tx">Each Parekh brother sells 48,02,500 in bulk and block deals</td><td>96,05,000 (4.22%)</td><td class="tx tn">about &#8377;1,123</td><td class="tx">Axis MF (11 schemes), Morgan Stanley Asia, Edelweiss, Societe Generale, HSBC</td></tr>
+      <tr><td>30-Jun-2025</td><td class="tx">Each Parekh brother sells 68,50,000</td><td>1,37,00,000 (6.02%)</td><td class="tx tn">about &#8377;1,087</td><td class="tx">Kotak Funds India Midcap 37,92,500; the rest not identified</td></tr>
+      <tr class="hl"><td>Now</td><td class="tx">Parekh brothers hold 54,46,205 each</td><td>1,08,92,410 (4.79%)</td><td class="tx">worth about &#8377;1,156 cr</td><td class="tx tn">No lock-in</td></tr>
     </tbody>
   </table></div><p class="cap">NSE Reg 29(2) disclosures (read 29-Sep-2026), shareholding patterns, prospectus pp.135-136; deal counterparties from Trendlyne and PTI (aggregator/media). Together the Parekhs have realised about &#8377;2,568 cr (derived).</p></div>
   <p>The first Parekh sale came two weeks after the six-month lock-in on pre-IPO shares expired and the first Virani pledge was created the same quarter. Timing is recorded; no link between the two is claimed. Each Parekh sale came near a price high. The remaining 4.79% is the one known block of stock that could come to market in size.</p>
@@ -1316,14 +1320,14 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Index, derivatives and surveillance</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Item</th><th>Status</th><th>Source</th></tr></thead>
+    <thead><tr><th>Item</th><th class="tx">Status</th><th class="tx">Source</th></tr></thead>
     <tbody>
-      <tr><td>NSE indices</td><td>Nifty 500, MidSmallcap 400, Smallcap 250, Smallcap 100. Not in Midcap 150</td><td>NSE Indices constituent files, 29-Sep-2026</td></tr>
-      <tr><td>Sep-2026 review</td><td>Not named in any inclusion or exclusion list (effective 30-Sep-2026)</td><td>NSE Indices release 10-Aug-2026</td></tr>
-      <tr><td>MSCI</td><td>Not in the Aug-2026 India Domestic Small Cap additions or deletions; membership of MSCI India Small Cap probable, not verified</td><td>MSCI list; aggregator</td></tr>
-      <tr><td>F&amp;O</td><td>Not in F&amp;O</td><td>NSE lot file, 29-Sep-2026</td></tr>
-      <tr><td>Price band</td><td>20%</td><td>NSE, 29-Sep-2026</td></tr>
-      <tr><td>Surveillance</td><td>BSE short-term ASM Stage I three times Feb-Apr 2024 and 11-20 Mar-2025; long-term ASM Stage I 20-Jun to 25-Oct-2024. No GSM. Exchange price or volume queries in Mar-2024, Jul-2024, Mar-2025, Oct-2025, Nov-2025, Dec-2025 and Mar-2026, each answered "market driven"</td><td>Aggregator (ASM); company replies on NSE (primary)</td></tr>
+      <tr><td>NSE indices</td><td class="tx">Nifty 500, MidSmallcap 400, Smallcap 250, Smallcap 100. Not in Midcap 150</td><td class="tx">NSE Indices constituent files, 29-Sep-2026</td></tr>
+      <tr><td>Sep-2026 review</td><td class="tx">Not named in any inclusion or exclusion list (effective 30-Sep-2026)</td><td class="tx">NSE Indices release 10-Aug-2026</td></tr>
+      <tr><td>MSCI</td><td class="tx">Not in the Aug-2026 India Domestic Small Cap additions or deletions; membership of MSCI India Small Cap probable, not verified</td><td class="tx">MSCI list; aggregator</td></tr>
+      <tr><td>F&amp;O</td><td class="tx tn">Not in F&amp;O</td><td class="tx">NSE lot file, 29-Sep-2026</td></tr>
+      <tr><td>Price band</td><td class="tx tn">20%</td><td class="tx tn">NSE, 29-Sep-2026</td></tr>
+      <tr><td>Surveillance</td><td class="tx">BSE short-term ASM Stage I three times Feb-Apr 2024 and 11-20 Mar-2025; long-term ASM Stage I 20-Jun to 25-Oct-2024. No GSM. Exchange price or volume queries in Mar-2024, Jul-2024, Mar-2025, Oct-2025, Nov-2025, Dec-2025 and Mar-2026, each answered "market driven"</td><td class="tx">Aggregator (ASM); company replies on NSE (primary)</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1351,15 +1355,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   <h3>Reverse DCF first: what the price already assumes</h3>
   <p>Method: free cash flow to the firm = operating EBIT after 25.17% tax, less reinvestment; reinvestment = the year's revenue increase divided by a sales-to-capital ratio (rupees of new revenue per rupee of new capital). Ten years at a constant growth rate, a five-year fade to 5% terminal growth, and a terminal value that reinvests at the implied return. Base year FY26: revenue &#8377;2,093.1 cr, operating EBIT margin (excluding other income) 22.8%. The table shows the ten-year revenue growth rate the enterprise value of &#8377;24,845 cr requires.</p>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Cost of capital</th><th>EBIT margin</th><th>Sales-to-capital 0.6 (realised)</th><th>1.0</th><th>1.5</th></tr></thead>
+    <thead><tr><th>Cost of capital</th><th>EBIT margin</th><th class="tx">Sales-to-capital 0.6 (realised)</th><th>1.0</th><th>1.5</th></tr></thead>
     <tbody>
-      <tr><td>11.5%</td><td>20.0%</td><td class="neg">No growth rate reaches the price</td><td>36.6%</td><td>30.1%</td></tr>
-      <tr><td>11.5%</td><td>22.8%</td><td class="neg">None</td><td>32.0%</td><td>27.4%</td></tr>
-      <tr><td>11.5%</td><td>25.0%</td><td>51.9%</td><td>29.4%</td><td>25.6%</td></tr>
-      <tr class="hl"><td>12.5%</td><td>22.8%</td><td class="neg">None: maximum value &#8377;2,789 cr, at zero growth</td><td><b>36.0%</b></td><td>30.4%</td></tr>
-      <tr><td>12.5%</td><td>25.0%</td><td class="neg">None</td><td>33.0%</td><td>28.5%</td></tr>
-      <tr><td>13.5%</td><td>22.8%</td><td class="neg">None</td><td>40.2%</td><td>33.3%</td></tr>
-      <tr><td>13.5%</td><td>25.0%</td><td class="neg">None</td><td>36.6%</td><td>31.2%</td></tr>
+      <tr><td>11.5%</td><td>20.0%</td><td class="neg tx">No growth rate reaches the price</td><td>36.6%</td><td>30.1%</td></tr>
+      <tr><td>11.5%</td><td>22.8%</td><td class="neg tx tn">None</td><td>32.0%</td><td>27.4%</td></tr>
+      <tr><td>11.5%</td><td>25.0%</td><td class="tx tn">51.9%</td><td>29.4%</td><td>25.6%</td></tr>
+      <tr class="hl"><td>12.5%</td><td>22.8%</td><td class="neg tx">None: maximum value &#8377;2,789 cr, at zero growth</td><td><b>36.0%</b></td><td>30.4%</td></tr>
+      <tr><td>12.5%</td><td>25.0%</td><td class="neg tx tn">None</td><td>33.0%</td><td>28.5%</td></tr>
+      <tr><td>13.5%</td><td>22.8%</td><td class="neg tx tn">None</td><td>40.2%</td><td>33.3%</td></tr>
+      <tr><td>13.5%</td><td>25.0%</td><td class="neg tx tn">None</td><td>36.6%</td><td>31.2%</td></tr>
     </tbody>
   </table></div><p class="cap">Derived; model and inputs in notes-15. Realised incremental sales-to-capital: 0.62 (FY24-FY25), 0.42 (FY25-FY26), 0.63 over three years (Section 17). At 0.6 the after-tax return on new capital (about 10%) is below every cost of capital tested, so growth destroys value and the model's value is highest at zero growth.</p></div>
   <div class="flag f-bear">
@@ -1372,13 +1376,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
   <div class="tw"><div class="ts"><table>
     <thead><tr><th>Assumption</th><th>Bear</th><th>Base</th><th>Bull</th></tr></thead>
     <tbody>
-      <tr><td>Revenue growth FY27 / FY28</td><td>10% / 10%</td><td>20% / 20%</td><td>28% / 28% (management's range)</td></tr>
+      <tr><td>Revenue growth FY27 / FY28</td><td>10% / 10%</td><td>20% / 20%</td><td class="tx">28% / 28% (management's range)</td></tr>
       <tr><td>FY28 revenue</td><td>&#8377;2,533 cr</td><td>&#8377;3,014 cr</td><td>&#8377;3,429 cr</td></tr>
       <tr><td>EBITDA margin</td><td>20.0%</td><td>24.0%</td><td>25.5%</td></tr>
       <tr><td>Depreciation / finance cost / other income</td><td>75 / 110 / 0</td><td>75 / 95 / 10</td><td>75 / 90 / 15</td></tr>
       <tr><td>Tax rate</td><td>27%</td><td>26%</td><td>25%</td></tr>
       <tr><td>FY28 PAT / EPS</td><td>&#8377;235 cr / &#8377;10.3</td><td>&#8377;417 cr / &#8377;18.3</td><td>&#8377;543 cr / &#8377;23.9</td></tr>
-      <tr><td>Exit P/E</td><td>35x (below the own-history low)</td><td>45x</td><td>60x</td></tr>
+      <tr><td>Exit P/E</td><td class="tx">35x (below the own-history low)</td><td>45x</td><td>60x</td></tr>
       <tr class="hl"><td>Scenario value per share</td><td>&#8377;362</td><td>&#8377;825</td><td>&#8377;1,433</td></tr>
       <tr><td>Probability weight</td><td>35%</td><td>45%</td><td>20%</td></tr>
     </tbody>
@@ -1427,13 +1431,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Thesis-killers: observable events that would break the buy case</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>#</th><th>Event</th><th>Why it breaks the case</th></tr></thead>
+    <thead><tr><th>#</th><th class="tx">Event</th><th class="tx">Why it breaks the case</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td>The H1 FY27 balance sheet shows unbilled revenue above &#8377;650 cr and negative half-year operating cash flow</td><td>The "timing" explanation for three years of cash shortfall would fail its first test</td></tr>
-      <tr><td>2</td><td>A charge or finding against Huron in France, or any EU or US sanctions action against any group entity</td><td>Precedent exists for the second: the US designated Indian machine-tool maker Lokesh Machines on 30-Oct-2024 for Russia-related shipments (removed 30-Jun-2026). No action against Jyoti has been reported</td></tr>
-      <tr><td>3</td><td>An impairment of the investment in or loans to Jyoti SAS, or further revenue reversals in India</td><td>Would confirm that part of the balance sheet and past profit was not recoverable</td></tr>
-      <tr><td>4</td><td>The 10,000-machine plant not producing by Dec-2026</td><td>FY27 volume guidance ("more than 8,000") depends on it</td></tr>
-      <tr><td>5</td><td>FY27 consolidated revenue growth below 15% or EBITDA margin below 22%</td><td>Both core promises that have so far held would have broken</td></tr>
+      <tr><td>1</td><td class="tx">The H1 FY27 balance sheet shows unbilled revenue above &#8377;650 cr and negative half-year operating cash flow</td><td class="tx">The "timing" explanation for three years of cash shortfall would fail its first test</td></tr>
+      <tr><td>2</td><td class="tx">A charge or finding against Huron in France, or any EU or US sanctions action against any group entity</td><td class="tx">Precedent exists for the second: the US designated Indian machine-tool maker Lokesh Machines on 30-Oct-2024 for Russia-related shipments (removed 30-Jun-2026). No action against Jyoti has been reported</td></tr>
+      <tr><td>3</td><td class="tx">An impairment of the investment in or loans to Jyoti SAS, or further revenue reversals in India</td><td class="tx">Would confirm that part of the balance sheet and past profit was not recoverable</td></tr>
+      <tr><td>4</td><td class="tx">The 10,000-machine plant not producing by Dec-2026</td><td class="tx">FY27 volume guidance ("more than 8,000") depends on it</td></tr>
+      <tr><td>5</td><td class="tx">FY27 consolidated revenue growth below 15% or EBITDA margin below 22%</td><td class="tx">Both core promises that have so far held would have broken</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1496,33 +1500,33 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
       <tr><td>Purchase of PP&amp;E incl. capital advances</td><td>114.3</td><td>309.8</td><td>323.2</td><td>747.3</td></tr>
       <tr><td>Depreciation and amortisation</td><td>32.8</td><td>36.5</td><td>50.2</td><td>119.4</td></tr>
       <tr class="hl"><td>Capex / depreciation</td><td>3.5x</td><td>8.5x</td><td>6.4x</td><td>6.3x</td></tr>
-      <tr><td>Parent's investment in and loans to Jyoti SAS (standalone)</td><td>about 60.6 (H2 only)</td><td>about 91.2</td><td>about 148.9</td><td>about 300.7</td></tr>
+      <tr><td>Parent's investment in and loans to Jyoti SAS (standalone)</td><td class="tx">about 60.6 (H2 only)</td><td>about 91.2</td><td>about 148.9</td><td>about 300.7</td></tr>
       <tr><td>Increase in working capital (inventory, receivables, unbilled revenue, net of liabilities)</td><td>about 300</td><td>about 523</td><td>about 309</td><td>about 1,132</td></tr>
     </tbody>
   </table></div><p class="cap">Consolidated cash flow statements (FY25 annual report p.81; FY26 p.92). Parent funding from the half-year related-party filings (investment and loan flows). Working-capital increase from the cash flow statement's three working-capital lines. Capital advances rose from &#8377;7.21 cr to &#8377;85.45 cr in FY26 (Note 11).</p></div>
 
   <h3>By purpose</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Bucket</th><th>Cost</th><th>What it bought</th><th>Status</th></tr></thead>
+    <thead><tr><th>Bucket</th><th class="tx">Cost</th><th class="tx">What it bought</th><th class="tx">Status</th></tr></thead>
     <tbody>
-      <tr><td>India, 4,400 to 6,000 machines a year</td><td>About &#8377;215-310 cr (analyst figure of &#8377;310 cr undisputed on the 26-May-2025 call; guided at "30 crore ... another 20 crores to 30 crores" in Aug-2024)</td><td>+1,600 machines a year of nameplate</td><td class="pos">Complete in Q4 FY25; running above 90%</td></tr>
-      <tr class="hl"><td>India, +10,000 machines a year (Rajkot)</td><td>&#8377;425.83 cr project (&#8377;317.32 cr spent by 15-Dec-2025; &#8377;300 cr Union Bank term loan). Guided at &#8377;200-250 cr from internal accruals in Aug-2024</td><td>+10,000 machines; "70-80%" earmarked for EMS and semiconductors (MD&amp;A)</td><td class="wr">Five dates missed; due "end of September" 2026, foundry October</td></tr>
-      <tr><td>Huron, doubling to 240 machines a year (Strasbourg)</td><td>About &#8377;109 cr of Huron CWIP at Mar-2025, capitalised in FY26</td><td>Capacity for EUR 70-75 mn of revenue (management)</td><td class="neg">Opened 19-Nov-2025; revenue flat, losses since</td></tr>
-      <tr><td>Tumakuru, Karnataka, about 20 acres</td><td>Not disclosed (capital advances up &#8377;78 cr in FY26 may include it)</td><td>Deck: "the company's next major manufacturing base"; call the same day: "demo centers and warehouses"</td><td class="wr">A land bank whose purpose changed between two documents on one day</td></tr>
-      <tr><td>ECMS-approved programme, Rajkot</td><td>&#8377;1,020.65 cr over five years, incentive up to 25%</td><td>Backward integration into electronic devices for CNC machines, and capacity</td><td class="wr">Approved 17-Aug-2026; not in the numbers yet; the letter is undisclosed</td></tr>
-      <tr><td>Maintenance and replacement</td><td>Not separately disclosed; depreciation &#8377;50.2 cr in FY26</td><td>-</td><td>Total capex at 6.3 times depreciation leaves no sign of under-investment</td></tr>
+      <tr><td>India, 4,400 to 6,000 machines a year</td><td class="tx">About &#8377;215-310 cr (analyst figure of &#8377;310 cr undisputed on the 26-May-2025 call; guided at "30 crore ... another 20 crores to 30 crores" in Aug-2024)</td><td class="tx">+1,600 machines a year of nameplate</td><td class="pos tx">Complete in Q4 FY25; running above 90%</td></tr>
+      <tr class="hl"><td>India, +10,000 machines a year (Rajkot)</td><td class="tx">&#8377;425.83 cr project (&#8377;317.32 cr spent by 15-Dec-2025; &#8377;300 cr Union Bank term loan). Guided at &#8377;200-250 cr from internal accruals in Aug-2024</td><td class="tx">+10,000 machines; "70-80%" earmarked for EMS and semiconductors (MD&amp;A)</td><td class="wr tx">Five dates missed; due "end of September" 2026, foundry October</td></tr>
+      <tr><td>Huron, doubling to 240 machines a year (Strasbourg)</td><td class="tx">About &#8377;109 cr of Huron CWIP at Mar-2025, capitalised in FY26</td><td class="tx">Capacity for EUR 70-75 mn of revenue (management)</td><td class="neg tx">Opened 19-Nov-2025; revenue flat, losses since</td></tr>
+      <tr><td>Tumakuru, Karnataka, about 20 acres</td><td class="tx">Not disclosed (capital advances up &#8377;78 cr in FY26 may include it)</td><td class="tx">Deck: "the company's next major manufacturing base"; call the same day: "demo centers and warehouses"</td><td class="wr tx">A land bank whose purpose changed between two documents on one day</td></tr>
+      <tr><td>ECMS-approved programme, Rajkot</td><td class="tx">&#8377;1,020.65 cr over five years, incentive up to 25%</td><td class="tx">Backward integration into electronic devices for CNC machines, and capacity</td><td class="wr tx">Approved 17-Aug-2026; not in the numbers yet; the letter is undisclosed</td></tr>
+      <tr><td>Maintenance and replacement</td><td class="tx">Not separately disclosed; depreciation &#8377;50.2 cr in FY26</td><td class="tx tn">-</td><td class="tx">Total capex at 6.3 times depreciation leaves no sign of under-investment</td></tr>
     </tbody>
   </table></div></div>
   <p>No large non-operating asset was found inside the three-year total (no head office, aircraft or guest house); the one discretionary item is the Tumakuru land, whose cost is not disclosed and whose stated purpose changed between a filed deck and the call held the same day. FY27 capex guidance is &#8377;200-250 cr, against "the entire CAPEX should be completed before the year end" of FY26 ("Absolutely", Nov-2024).</p>
 
   <h3>Return on each bucket</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Bucket</th><th>What it earns (disclosed or derived)</th><th>Hurdle</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>Bucket</th><th class="tx">What it earns (disclosed or derived)</th><th class="tx">Hurdle</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr><td>6,000 step</td><td>Machines 3,063 (FY24) to 5,550 (FY26); at FY26's &#8377;37.7 lakh per machine and 25% EBITDA, about &#8377;235 cr a year of incremental EBITDA on about &#8377;310 cr of capex and roughly &#8377;800 cr of working capital (derived). Pre-tax return about 20% on total capital</td><td>About 12.5% (cost of capital, assumed)</td><td class="pos">Clears, on the fixed capex alone easily; with working capital, comfortably</td></tr>
-      <tr><td>10,000 plant</td><td>Nothing yet. If filled at 10,000 machines at &#8377;30-35 lakh and 25% EBITDA: &#8377;750-875 cr of EBITDA; but at the FY26 working-capital intensity (86% of revenue) it would need &#8377;2,600-3,000 cr of working capital (derived)</td><td>12.5%</td><td class="wr">Not computable yet. The binding constraint is working capital, not the plant: at current intensity, filling it needs more capital than the company's entire net worth</td></tr>
-      <tr><td>Huron expansion</td><td>Revenue &#8377;253 cr (FY25) to &#8377;244 cr (FY26); Huron's own loss &#8377;80 cr (FY26)</td><td>12.5%</td><td class="neg">Negative so far</td></tr>
-      <tr><td>Parent funding of Jyoti SAS</td><td>Loans at 6.25%, interest accrued (&#8377;90.44 cr receivable) but apparently not paid in cash</td><td>The parent borrows at 9-15%</td><td class="neg">Below the parent's own cost of debt</td></tr>
+      <tr><td>6,000 step</td><td class="tx">Machines 3,063 (FY24) to 5,550 (FY26); at FY26's &#8377;37.7 lakh per machine and 25% EBITDA, about &#8377;235 cr a year of incremental EBITDA on about &#8377;310 cr of capex and roughly &#8377;800 cr of working capital (derived). Pre-tax return about 20% on total capital</td><td class="tx">About 12.5% (cost of capital, assumed)</td><td class="pos tx">Clears, on the fixed capex alone easily; with working capital, comfortably</td></tr>
+      <tr><td>10,000 plant</td><td class="tx">Nothing yet. If filled at 10,000 machines at &#8377;30-35 lakh and 25% EBITDA: &#8377;750-875 cr of EBITDA; but at the FY26 working-capital intensity (86% of revenue) it would need &#8377;2,600-3,000 cr of working capital (derived)</td><td class="tx tn">12.5%</td><td class="wr tx">Not computable yet. The binding constraint is working capital, not the plant: at current intensity, filling it needs more capital than the company's entire net worth</td></tr>
+      <tr><td>Huron expansion</td><td class="tx">Revenue &#8377;253 cr (FY25) to &#8377;244 cr (FY26); Huron's own loss &#8377;80 cr (FY26)</td><td class="tx tn">12.5%</td><td class="neg tx tn">Negative so far</td></tr>
+      <tr><td>Parent funding of Jyoti SAS</td><td class="tx">Loans at 6.25%, interest accrued (&#8377;90.44 cr receivable) but apparently not paid in cash</td><td class="tx">The parent borrows at 9-15%</td><td class="neg tx">Below the parent's own cost of debt</td></tr>
     </tbody>
   </table></div><p class="cap">The company's own realised deposit yield is not a usable hurdle: it holds little cash and is a net borrower. The cost of capital is an assumption (Section 14). Each return is derived from disclosed figures; none is disclosed by the company.</p></div>
 
@@ -1575,7 +1579,7 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
       <tr><td>Revenue</td><td>1,817.7</td><td>2,093.1</td><td>508.5</td></tr>
       <tr><td>Book-to-bill on revenue</td><td>1.44</td><td>1.13</td><td>1.18</td></tr>
       <tr><td>Closing book / executed in the year</td><td>2.55 years</td><td>2.39 years</td><td>-</td></tr>
-      <tr><td>Order book growth</td><td>+26.4%</td><td>+8.9%</td><td>+2.5% in the quarter</td></tr>
+      <tr><td>Order book growth</td><td>+26.4%</td><td>+8.9%</td><td class="tx">+2.5% in the quarter</td></tr>
       <tr><td>Customer advances as % of book</td><td>1.4%</td><td>1.7%</td><td>-</td></tr>
     </tbody>
   </table></div><p class="cap">FY24 intake cannot be computed: no 31-Mar-2023 order book is published. FY25 intake confirmed by Infomerics ("Rs 2611.60 crore was secured in FY25").</p></div>
@@ -1590,14 +1594,14 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>What is never disclosed</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Basis</th><th>Status</th><th>Inference</th></tr></thead>
+    <thead><tr><th>Basis</th><th class="tx">Status</th><th class="tx">Inference</th></tr></thead>
     <tbody>
-      <tr><td>GST</td><td>Never stated</td><td>Probably ex-GST: execution runs at 92-98% of revenue every quarter; a GST-inclusive book would execute at about 118%</td></tr>
-      <tr><td>Currency</td><td>Never stated; no FX line in any bridge</td><td>Either euro orders are not revalued or movements are netted inside "intake"</td></tr>
-      <tr><td>Cancellations</td><td>"35 instances" in the three and a half years to Sep-2023, no value (prospectus p.63); none admitted since</td><td>Any cancellation would be netted inside intake</td></tr>
-      <tr><td>Ageing</td><td>Never disclosed</td><td>Life of the book described as 18 months to 2.5 years depending on the call</td></tr>
-      <tr><td>Domestic versus export</td><td>Never disclosed for the book</td><td>Revenue was 58% India / 42% exports in FY24</td></tr>
-      <tr><td>Customer names</td><td>"Very tight contracts", "very confidential agreement"</td><td>An analyst named Tata Electronics as an EMS customer (May-2026); not confirmed or denied</td></tr>
+      <tr><td>GST</td><td class="tx tn">Never stated</td><td class="tx">Probably ex-GST: execution runs at 92-98% of revenue every quarter; a GST-inclusive book would execute at about 118%</td></tr>
+      <tr><td>Currency</td><td class="tx">Never stated; no FX line in any bridge</td><td class="tx">Either euro orders are not revalued or movements are netted inside "intake"</td></tr>
+      <tr><td>Cancellations</td><td class="tx">"35 instances" in the three and a half years to Sep-2023, no value (prospectus p.63); none admitted since</td><td class="tx">Any cancellation would be netted inside intake</td></tr>
+      <tr><td>Ageing</td><td class="tx tn">Never disclosed</td><td class="tx">Life of the book described as 18 months to 2.5 years depending on the call</td></tr>
+      <tr><td>Domestic versus export</td><td class="tx">Never disclosed for the book</td><td class="tx">Revenue was 58% India / 42% exports in FY24</td></tr>
+      <tr><td>Customer names</td><td class="tx">"Very tight contracts", "very confidential agreement"</td><td class="tx">An analyst named Tata Electronics as an EMS customer (May-2026); not confirmed or denied</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1610,15 +1614,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Growth strategy, as management states it</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>#</th><th>Strand (source)</th><th>Judgement</th></tr></thead>
+    <thead><tr><th>#</th><th class="tx">Strand (source)</th><th class="tx">Judgement</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td>Capacity from 6,000 to 16,000 machines a year at Rajkot, "end of September" 2026; FY27 "more than 8,000" machines (Aug-2026 call)</td><td class="wr">Extension of demonstrated capability; timing record poor; the plant must fill with volume machines at lower realisation</td></tr>
-      <tr><td>2</td><td>Auto and general engineering at 15-25% a year for three to five years (FY26 annual report MD&amp;A)</td><td class="pos">Demonstrated</td></tr>
-      <tr><td>3</td><td>Aerospace and defence via Huron technology and Indian defence orders</td><td class="neg">Demonstrated capability, now constrained by licensing and the investigation</td></tr>
-      <tr><td>4</td><td>EMS to 20-25% of the business within five years; "1 lakh machines" of demand (MD&amp;A)</td><td class="neg">Not yet demonstrated; depends on customers' ECMS-funded plants</td></tr>
-      <tr><td>5</td><td>Semiconductor equipment: 2-3 products in R&amp;D</td><td class="neg">Capability not shown</td></tr>
-      <tr><td>6</td><td>Backward integration into controllers, servo motors and drives (HUMA controller; ECMS approval for &#8377;1,020.65 cr over five years)</td><td class="wr">Strategically right; requires electronics capability the company is only now building; the approval letter is undisclosed</td></tr>
-      <tr><td>7</td><td>US entry "within the next year"; Southeast Asia representatives; Huron Shanghai subsidiary (Jun-2026)</td><td class="wr">A Chinese subsidiary for a 5-axis group under a dual-use export investigation is a choice worth watching</td></tr>
+      <tr><td>1</td><td class="tx">Capacity from 6,000 to 16,000 machines a year at Rajkot, "end of September" 2026; FY27 "more than 8,000" machines (Aug-2026 call)</td><td class="wr tx">Extension of demonstrated capability; timing record poor; the plant must fill with volume machines at lower realisation</td></tr>
+      <tr><td>2</td><td class="tx">Auto and general engineering at 15-25% a year for three to five years (FY26 annual report MD&amp;A)</td><td class="pos tx tn">Demonstrated</td></tr>
+      <tr><td>3</td><td class="tx">Aerospace and defence via Huron technology and Indian defence orders</td><td class="neg tx">Demonstrated capability, now constrained by licensing and the investigation</td></tr>
+      <tr><td>4</td><td class="tx">EMS to 20-25% of the business within five years; "1 lakh machines" of demand (MD&amp;A)</td><td class="neg tx">Not yet demonstrated; depends on customers' ECMS-funded plants</td></tr>
+      <tr><td>5</td><td class="tx">Semiconductor equipment: 2-3 products in R&amp;D</td><td class="neg tx">Capability not shown</td></tr>
+      <tr><td>6</td><td class="tx">Backward integration into controllers, servo motors and drives (HUMA controller; ECMS approval for &#8377;1,020.65 cr over five years)</td><td class="wr tx">Strategically right; requires electronics capability the company is only now building; the approval letter is undisclosed</td></tr>
+      <tr><td>7</td><td class="tx">US entry "within the next year"; Southeast Asia representatives; Huron Shanghai subsidiary (Jun-2026)</td><td class="wr tx">A Chinese subsidiary for a 5-axis group under a dual-use export investigation is a choice worth watching</td></tr>
     </tbody>
   </table></div></div>
 </section>
@@ -1635,39 +1639,39 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>The operating series</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Series (screener)</th><th>What the filings say</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>Series (screener)</th><th class="tx">What the filings say</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr><td>Order book FY24 3,438.30 / FY25 4,346.00 / FY26 4,732.00; quarterly Sep-2023 to Mar-2026</td><td>Identical to the deck waterfalls in every quarter</td><td class="pos">Correct</td></tr>
-      <tr><td>Order intake FY25 2,611.60 / FY26 2,364.00; quarterly 276.5 ... 703</td><td>Identical to deck bridges and Infomerics</td><td class="pos">Correct</td></tr>
-      <tr class="hl"><td>Machines sold FY21 1,578 / FY22 2,556 / FY23 3,103</td><td>Prospectus certified table: group totals (India + France); India alone 1,540 / 2,515 / 3,053</td><td class="pos">Correct on a group basis; the "disagreement" in the brief is a basis difference</td></tr>
-      <tr class="hl"><td>Machines sold FY24 3,495</td><td>FY24 annual report: "sold ... 3,063", production 3,106; 3,063 = prospectus H1 1,275 + Q3 797 + Q4 991 exactly. 3,495 is one of two figures (with 3,450 "produced") given orally on one call and cannot be rebuilt from any quarterly figure. Infomerics says 3,600</td><td class="neg">Wrong: 3,063 is the filed figure</td></tr>
-      <tr class="hl"><td>Machines sold FY25 3,517</td><td>Company: 4,072 (four quarterly call figures sum to it; the annual report calls it "manufactured"). 3,517 is Infomerics' figure, which divides into standalone revenue at the realisation Infomerics prints</td><td class="neg">Carries the rating agency's figure, not the company's; FY24-FY25 growth shows +1% instead of +33%</td></tr>
-      <tr><td>Machines sold FY26 5,550</td><td>Calls: 5,550 "sold / executed / built", which ties to executed order value; annual report: 5,369 "manufactured" in Rajkot</td><td class="wr">Right for group deliveries; 5,369 for Rajkot output</td></tr>
-      <tr><td>Installed capacity 4,521 (FY21-24) / 6,121 (FY25) / 6,240 (FY26)</td><td>Filings: 4,400 India + 121 France; 6,000 India (FY25, FY26); Huron doubled to 240 in FY26. No filing prints 4,521, 6,121 or 6,240</td><td class="wr">Screener's own addition, not a filing; it also contradicts the May-2026 claim that 6,000 covers "India and Huron together"</td></tr>
-      <tr><td>Capacity utilisation FY21 34.9 / FY22 56.5 / FY23 68.6 / FY24 70.6</td><td>FY21-23 are units SOLD over capacity (prospectus); FY24 is units PRODUCED over capacity (annual report); FY25-26 annual reports use "manufactured"</td><td class="wr">Correct figures, silently changing basis</td></tr>
-      <tr><td>A&amp;D share FY24 40 / FY25 45 / FY26 39</td><td>FY25 45% (call, Infomerics); FY26 39% (29-May-2026 call); FY24 about 40% (H1 FY24 prospectus 37.2%)</td><td class="pos">Consistent</td></tr>
-      <tr><td>Cumulative machines installed 130,000 to 135,000</td><td>Prospectus: "30,000+ CNC machines supplied since April 2004"; Q1 FY27 deck: "1,40,000+ machines installed across the globe"</td><td class="wr">A marketing number that has grown four and a half times; the larger figure must include Huron's history and pre-2004 machines. Not used in this report</td></tr>
-      <tr><td>Sales and service centres 29 in 12 states</td><td>Deck: 29 in 12 states; FY26 annual report: 27 branches</td><td class="wr">Minor inconsistency between company documents</td></tr>
+      <tr><td>Order book FY24 3,438.30 / FY25 4,346.00 / FY26 4,732.00; quarterly Sep-2023 to Mar-2026</td><td class="tx">Identical to the deck waterfalls in every quarter</td><td class="pos tx tn">Correct</td></tr>
+      <tr><td>Order intake FY25 2,611.60 / FY26 2,364.00; quarterly 276.5 ... 703</td><td class="tx">Identical to deck bridges and Infomerics</td><td class="pos tx tn">Correct</td></tr>
+      <tr class="hl"><td>Machines sold FY21 1,578 / FY22 2,556 / FY23 3,103</td><td class="tx">Prospectus certified table: group totals (India + France); India alone 1,540 / 2,515 / 3,053</td><td class="pos tx">Correct on a group basis; the "disagreement" in the brief is a basis difference</td></tr>
+      <tr class="hl"><td>Machines sold FY24 3,495</td><td class="tx">FY24 annual report: "sold ... 3,063", production 3,106; 3,063 = prospectus H1 1,275 + Q3 797 + Q4 991 exactly. 3,495 is one of two figures (with 3,450 "produced") given orally on one call and cannot be rebuilt from any quarterly figure. Infomerics says 3,600</td><td class="neg tx">Wrong: 3,063 is the filed figure</td></tr>
+      <tr class="hl"><td>Machines sold FY25 3,517</td><td class="tx">Company: 4,072 (four quarterly call figures sum to it; the annual report calls it "manufactured"). 3,517 is Infomerics' figure, which divides into standalone revenue at the realisation Infomerics prints</td><td class="neg tx">Carries the rating agency's figure, not the company's; FY24-FY25 growth shows +1% instead of +33%</td></tr>
+      <tr><td>Machines sold FY26 5,550</td><td class="tx">Calls: 5,550 "sold / executed / built", which ties to executed order value; annual report: 5,369 "manufactured" in Rajkot</td><td class="wr tx">Right for group deliveries; 5,369 for Rajkot output</td></tr>
+      <tr><td>Installed capacity 4,521 (FY21-24) / 6,121 (FY25) / 6,240 (FY26)</td><td class="tx">Filings: 4,400 India + 121 France; 6,000 India (FY25, FY26); Huron doubled to 240 in FY26. No filing prints 4,521, 6,121 or 6,240</td><td class="wr tx">Screener's own addition, not a filing; it also contradicts the May-2026 claim that 6,000 covers "India and Huron together"</td></tr>
+      <tr><td>Capacity utilisation FY21 34.9 / FY22 56.5 / FY23 68.6 / FY24 70.6</td><td class="tx">FY21-23 are units SOLD over capacity (prospectus); FY24 is units PRODUCED over capacity (annual report); FY25-26 annual reports use "manufactured"</td><td class="wr tx">Correct figures, silently changing basis</td></tr>
+      <tr><td>A&amp;D share FY24 40 / FY25 45 / FY26 39</td><td class="tx">FY25 45% (call, Infomerics); FY26 39% (29-May-2026 call); FY24 about 40% (H1 FY24 prospectus 37.2%)</td><td class="pos tx tn">Consistent</td></tr>
+      <tr><td>Cumulative machines installed 130,000 to 135,000</td><td class="tx">Prospectus: "30,000+ CNC machines supplied since April 2004"; Q1 FY27 deck: "1,40,000+ machines installed across the globe"</td><td class="wr tx">A marketing number that has grown four and a half times; the larger figure must include Huron's history and pre-2004 machines. Not used in this report</td></tr>
+      <tr><td>Sales and service centres 29 in 12 states</td><td class="tx">Deck: 29 in 12 states; FY26 annual report: 27 branches</td><td class="wr tx">Minor inconsistency between company documents</td></tr>
     </tbody>
   </table></div></div>
 
   <h3>The financial tables and derived metrics</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Screener metric</th><th>Filing or reality</th><th>How a screen would be misled</th></tr></thead>
+    <thead><tr><th>Screener metric</th><th class="tx">Filing or reality</th><th class="tx">How a screen would be misled</th></tr></thead>
     <tbody>
-      <tr><td>Revenue, EBITDA, PAT, CFO FY24-FY26; borrowings</td><td>Agree with the audited statements (borrowings include &#8377;3.04 cr of leases)</td><td>-</td></tr>
-      <tr class="hl"><td>Other income FY25 "5"</td><td>&#8377;14.48 cr (FY26 annual report Note 25 comparative)</td><td class="neg">Screener wrong; FY26's jump to &#8377;60 cr looks larger than it was</td></tr>
-      <tr><td>Net profit FY23 "-5"</td><td>&#8377;15.1 cr including the &#8377;30.45 cr Huron creditor waiver (prospectus restated)</td><td class="wr">Basis unclear; the filed figure is a profit</td></tr>
-      <tr class="hl"><td>Debtor days 104</td><td>211 including &#8377;613 cr unbilled revenue</td><td class="neg">Halves the true figure; the unbilled balance is the single most important working-capital item</td></tr>
-      <tr><td>Inventory days 453</td><td>On cost of materials; 203 on revenue</td><td class="wr">Correct on its basis, but not comparable with the company's own "days"</td></tr>
-      <tr class="hl"><td>Pledged percentage 20.9%</td><td>That is the 30-Jun-2026 quarter-end. After nine Jul-Sep 2026 filings: 1,52,40,000 shares, 10.7% of the promoter group's holding, 6.70% of the company</td><td class="neg">Stale by half</td></tr>
-      <tr><td>EV/EBITDA 42.9</td><td>47.0x on the company's EBITDA definition (which excludes other income); screener's EBITDA evidently includes it</td><td class="wr">Understates the multiple on operating profit</td></tr>
-      <tr><td>PEG 0.48</td><td>TTM profit growth is -4%; FY26 +6.3%</td><td class="neg">A PEG below 1 on a company whose profit fell year on year signals a multi-year historical growth input, not the current trend</td></tr>
-      <tr><td>Industry P/E 34.3</td><td>Screener's "industry" is EMS, security products and automation, not machine tools (Section 3)</td><td class="neg">Meaningless comparison</td></tr>
-      <tr><td>Intrinsic value 364</td><td>A formula on book value and earnings; ignores working-capital quality entirely</td><td class="wr">Not used</td></tr>
-      <tr><td>Free cash flow 3 years -847</td><td>-&#8377;846.6 cr (audited)</td><td class="pos">Correct, and the most useful number on the page</td></tr>
-      <tr><td>Default company page</td><td>Screener's plain URL shows STANDALONE results for Jyoti: revenue &#8377;1,949 cr, PAT &#8377;391 cr, P/E 59x, hiding the French losses</td><td class="neg">Any comparison built on the default page overstates FY26 profit by &#8377;55 cr</td></tr>
-      <tr><td>"10% India market share" (About text)</td><td>A company claim from the paid industry chapter; fits a share of Indian production, not consumption (Section 1)</td><td class="wr">Unverified</td></tr>
+      <tr><td>Revenue, EBITDA, PAT, CFO FY24-FY26; borrowings</td><td class="tx">Agree with the audited statements (borrowings include &#8377;3.04 cr of leases)</td><td class="tx tn">-</td></tr>
+      <tr class="hl"><td>Other income FY25 "5"</td><td class="tx">&#8377;14.48 cr (FY26 annual report Note 25 comparative)</td><td class="neg tx">Screener wrong; FY26's jump to &#8377;60 cr looks larger than it was</td></tr>
+      <tr><td>Net profit FY23 "-5"</td><td class="tx">&#8377;15.1 cr including the &#8377;30.45 cr Huron creditor waiver (prospectus restated)</td><td class="wr tx">Basis unclear; the filed figure is a profit</td></tr>
+      <tr class="hl"><td>Debtor days 104</td><td class="tx">211 including &#8377;613 cr unbilled revenue</td><td class="neg tx">Halves the true figure; the unbilled balance is the single most important working-capital item</td></tr>
+      <tr><td>Inventory days 453</td><td class="tx">On cost of materials; 203 on revenue</td><td class="wr tx">Correct on its basis, but not comparable with the company's own "days"</td></tr>
+      <tr class="hl"><td>Pledged percentage 20.9%</td><td class="tx">That is the 30-Jun-2026 quarter-end. After nine Jul-Sep 2026 filings: 1,52,40,000 shares, 10.7% of the promoter group's holding, 6.70% of the company</td><td class="neg tx tn">Stale by half</td></tr>
+      <tr><td>EV/EBITDA 42.9</td><td class="tx">47.0x on the company's EBITDA definition (which excludes other income); screener's EBITDA evidently includes it</td><td class="wr tx">Understates the multiple on operating profit</td></tr>
+      <tr><td>PEG 0.48</td><td class="tx">TTM profit growth is -4%; FY26 +6.3%</td><td class="neg tx">A PEG below 1 on a company whose profit fell year on year signals a multi-year historical growth input, not the current trend</td></tr>
+      <tr><td>Industry P/E 34.3</td><td class="tx">Screener's "industry" is EMS, security products and automation, not machine tools (Section 3)</td><td class="neg tx">Meaningless comparison</td></tr>
+      <tr><td>Intrinsic value 364</td><td class="tx">A formula on book value and earnings; ignores working-capital quality entirely</td><td class="wr tx tn">Not used</td></tr>
+      <tr><td>Free cash flow 3 years -847</td><td class="tx">-&#8377;846.6 cr (audited)</td><td class="pos tx">Correct, and the most useful number on the page</td></tr>
+      <tr><td>Default company page</td><td class="tx">Screener's plain URL shows STANDALONE results for Jyoti: revenue &#8377;1,949 cr, PAT &#8377;391 cr, P/E 59x, hiding the French losses</td><td class="neg tx">Any comparison built on the default page overstates FY26 profit by &#8377;55 cr</td></tr>
+      <tr><td>"10% India market share" (About text)</td><td class="tx">A company claim from the paid industry chapter; fits a share of Indian production, not consumption (Section 1)</td><td class="wr tx tn">Unverified</td></tr>
     </tbody>
   </table></div></div>
 
@@ -1687,17 +1691,17 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Addressable base: each official statistic against the revenue line it drives</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Jyoti revenue line</th><th>Official or independent statistic</th><th>Latest value</th><th>Type</th><th>Link quality</th></tr></thead>
+    <thead><tr><th>Jyoti revenue line</th><th class="tx">Official or independent statistic</th><th class="tx">Latest value</th><th class="tx">Type</th><th class="tx">Link quality</th></tr></thead>
     <tbody>
-      <tr><td>Whole company</td><td>IMTMA machine tool consumption</td><td>&#8377;36,419 cr FY26, +15%</td><td>Measured (revised est.)</td><td>Direct, but includes presses and conventional machines</td></tr>
-      <tr><td>Whole company</td><td>IMTMA domestic production</td><td>&#8377;17,387 cr FY26, +19%</td><td>Measured</td><td>Direct. Jyoti standalone = 11.2% of it (upper bound, derived)</td></tr>
-      <tr><td>Import-substitution pool</td><td>IMTMA imports</td><td>&#8377;21,628 cr FY26, 59.4% of consumption; China 30%, Japan 21%, Germany 12%</td><td>Measured</td><td>Direct</td></tr>
-      <tr><td>Aerospace and defence (39% of FY26 revenue)</td><td>MoD capital acquisition</td><td>&#8377;1.85 lakh cr FY27 BE, ~75% domestic; FY26 capital budget &#8377;1.86 lakh cr fully used</td><td>Budget estimate / measured</td><td>Indirect: no official figure for machine-tool spend inside defence capex</td></tr>
-      <tr><td>A&amp;D</td><td>Defence production and exports</td><td>&#8377;1.78 lakh cr production (+15.6%), exports &#8377;38,424 cr (+62.7%) FY26</td><td>Measured (MoD via IBEF, secondary)</td><td>Indirect</td></tr>
-      <tr><td>Auto and components (26% FY26; 35% Q1 FY27)</td><td>SIAM production; ACMA turnover; IIP motor vehicles</td><td>3.47 crore units (+11.8%); &#8377;7.60 lakh cr (+12.7%); IIP +12.5%</td><td>Measured</td><td>Direct on volume. ACMA: component imports +13%, China 36% of them</td></tr>
-      <tr><td>General engineering (23%)</td><td>IIP capital goods; IIP machinery n.e.c.; RBI capacity utilisation</td><td>+8.3%; +6.5%; 74.8% (Q2 FY26)</td><td>Measured</td><td>Direct, cyclical</td></tr>
-      <tr><td>Die and mould (7%)</td><td>No standalone official series</td><td>Budget 2026-27 Hi-Tech Tool Rooms by public-sector units at two locations</td><td>Announced</td><td>Unsized</td></tr>
-      <tr><td>EMS (1% FY26; 13% of order book)</td><td>ECMS approvals</td><td>106 projects, &#8377;69,548 cr cumulative by 17-Aug-2026</td><td>Press (secondary)</td><td>Indirect: machine-tool share of that capex unknown</td></tr>
+      <tr><td>Whole company</td><td class="tx">IMTMA machine tool consumption</td><td class="tx">&#8377;36,419 cr FY26, +15%</td><td class="tx">Measured (revised est.)</td><td class="tx">Direct, but includes presses and conventional machines</td></tr>
+      <tr><td>Whole company</td><td class="tx">IMTMA domestic production</td><td class="tx">&#8377;17,387 cr FY26, +19%</td><td class="tx tn">Measured</td><td class="tx">Direct. Jyoti standalone = 11.2% of it (upper bound, derived)</td></tr>
+      <tr><td>Import-substitution pool</td><td class="tx tn">IMTMA imports</td><td class="tx">&#8377;21,628 cr FY26, 59.4% of consumption; China 30%, Japan 21%, Germany 12%</td><td class="tx tn">Measured</td><td class="tx tn">Direct</td></tr>
+      <tr><td>Aerospace and defence (39% of FY26 revenue)</td><td class="tx">MoD capital acquisition</td><td class="tx">&#8377;1.85 lakh cr FY27 BE, ~75% domestic; FY26 capital budget &#8377;1.86 lakh cr fully used</td><td class="tx">Budget estimate / measured</td><td class="tx">Indirect: no official figure for machine-tool spend inside defence capex</td></tr>
+      <tr><td>A&amp;D</td><td class="tx">Defence production and exports</td><td class="tx">&#8377;1.78 lakh cr production (+15.6%), exports &#8377;38,424 cr (+62.7%) FY26</td><td class="tx">Measured (MoD via IBEF, secondary)</td><td class="tx tn">Indirect</td></tr>
+      <tr><td>Auto and components (26% FY26; 35% Q1 FY27)</td><td class="tx">SIAM production; ACMA turnover; IIP motor vehicles</td><td class="tx">3.47 crore units (+11.8%); &#8377;7.60 lakh cr (+12.7%); IIP +12.5%</td><td class="tx tn">Measured</td><td class="tx">Direct on volume. ACMA: component imports +13%, China 36% of them</td></tr>
+      <tr><td>General engineering (23%)</td><td class="tx">IIP capital goods; IIP machinery n.e.c.; RBI capacity utilisation</td><td class="tx">+8.3%; +6.5%; 74.8% (Q2 FY26)</td><td class="tx tn">Measured</td><td class="tx tn">Direct, cyclical</td></tr>
+      <tr><td>Die and mould (7%)</td><td class="tx">No standalone official series</td><td class="tx">Budget 2026-27 Hi-Tech Tool Rooms by public-sector units at two locations</td><td class="tx tn">Announced</td><td class="tx tn">Unsized</td></tr>
+      <tr><td>EMS (1% FY26; 13% of order book)</td><td class="tx tn">ECMS approvals</td><td class="tx">106 projects, &#8377;69,548 cr cumulative by 17-Aug-2026</td><td class="tx tn">Press (secondary)</td><td class="tx">Indirect: machine-tool share of that capex unknown</td></tr>
     </tbody>
   </table></div><p class="cap">Sources: IMTMA Annual Report 2023-24 and IMTMA notes via mmindia; PIB "Defence in Union Budget 2026-27" (03-Feb-2026); MoSPI IIP quick estimate for Mar-2026 (28-Apr-2026); SIAM release (14-Apr-2026); Economic Survey 2025-26; ACMA review via Business Standard (07-Jul-2026). Detail and dates in notes-11.</p></div>
 
@@ -1706,15 +1710,15 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Contradictions between official data and management's commentary</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>#</th><th>What the company or its paid report said</th><th>What the official record says</th><th>Verdict</th></tr></thead>
+    <thead><tr><th>#</th><th class="tx">What the company or its paid report said</th><th class="tx">What the official record says</th><th class="tx">Verdict</th></tr></thead>
     <tbody>
-      <tr class="hl"><td>1</td><td>Imports would fall as a share of consumption; "import substitution opportunity" (F&amp;S, prospectus pp.204, 211-212)</td><td>Import share rose from 55.7% (FY23) to 59.4% (FY26); imports grew 12%, 22%, 16% a year</td><td class="neg">Contradicted so far</td></tr>
-      <tr class="hl"><td>2</td><td>"Nearly 60% of domestic machine tool demand met through imports, primarily from Japan, Europe and South Korea" (Aug-2026 call)</td><td>Share confirmed at 59.4%. Largest source is <b>China at 30%</b>; South Korea is not in the top three</td><td class="neg">Partly wrong; the omission matters because Chinese machines compete at Jyoti's volume end</td></tr>
-      <tr><td>3</td><td>Market "consuming more than 20% CAGR over the last 3 years" (29-May-2026 call)</td><td>14.1% CAGR FY23-FY26; 26% only from the FY22 trough</td><td class="wr">Depends on the base year chosen</td></tr>
-      <tr><td>4</td><td>F&amp;S FY27 market of US$ 2.6 bn</td><td>US$ 4.1 bn already in FY26 (different universe)</td><td class="wr">Market larger than sized; share claims not comparable</td></tr>
-      <tr><td>5</td><td>Policy support for import substitution (company narrative)</td><td>Machinery safety order rescinded 14-Jan-2026; no DGTR case; India-US and India-EU deals cut industrial tariffs; Survey argues for input tariff neutrality</td><td class="neg">Support comes through demand, not barriers</td></tr>
-      <tr><td>6</td><td>A&amp;D "a very steady-state business" (company)</td><td>Domestic defence budget up and fully spent; but management itself says export licences and end-user certificates for Huron deliveries are slowing (Aug-2026 call)</td><td class="wr">Domestic side supports; export side has a gap official data does not show</td></tr>
-      <tr><td>7</td><td>Demand "strong"</td><td>IIP capital goods +8.3%, utilisation 74.8%, SIAM +11.8%</td><td class="pos">Confirmed</td></tr>
+      <tr class="hl"><td>1</td><td class="tx">Imports would fall as a share of consumption; "import substitution opportunity" (F&amp;S, prospectus pp.204, 211-212)</td><td class="tx">Import share rose from 55.7% (FY23) to 59.4% (FY26); imports grew 12%, 22%, 16% a year</td><td class="neg tx">Contradicted so far</td></tr>
+      <tr class="hl"><td>2</td><td class="tx">"Nearly 60% of domestic machine tool demand met through imports, primarily from Japan, Europe and South Korea" (Aug-2026 call)</td><td class="tx">Share confirmed at 59.4%. Largest source is <b>China at 30%</b>; South Korea is not in the top three</td><td class="neg tx">Partly wrong; the omission matters because Chinese machines compete at Jyoti's volume end</td></tr>
+      <tr><td>3</td><td class="tx">Market "consuming more than 20% CAGR over the last 3 years" (29-May-2026 call)</td><td class="tx">14.1% CAGR FY23-FY26; 26% only from the FY22 trough</td><td class="wr tx">Depends on the base year chosen</td></tr>
+      <tr><td>4</td><td class="tx">F&amp;S FY27 market of US$ 2.6 bn</td><td class="tx">US$ 4.1 bn already in FY26 (different universe)</td><td class="wr tx">Market larger than sized; share claims not comparable</td></tr>
+      <tr><td>5</td><td class="tx">Policy support for import substitution (company narrative)</td><td class="tx">Machinery safety order rescinded 14-Jan-2026; no DGTR case; India-US and India-EU deals cut industrial tariffs; Survey argues for input tariff neutrality</td><td class="neg tx">Support comes through demand, not barriers</td></tr>
+      <tr><td>6</td><td class="tx">A&amp;D "a very steady-state business" (company)</td><td class="tx">Domestic defence budget up and fully spent; but management itself says export licences and end-user certificates for Huron deliveries are slowing (Aug-2026 call)</td><td class="wr tx">Domestic side supports; export side has a gap official data does not show</td></tr>
+      <tr><td>7</td><td class="tx tn">Demand "strong"</td><td class="tx">IIP capital goods +8.3%, utilisation 74.8%, SIAM +11.8%</td><td class="pos tx tn">Confirmed</td></tr>
     </tbody>
   </table></div></div>
   <div class="flag f-bear">
@@ -1737,13 +1741,13 @@ html[data-theme="glass"] .ctl button{backdrop-filter:blur(22px);-webkit-backdrop
 
   <h3>Adversarial verification of the five most consequential claims (29-Sep-2026)</h3>
   <div class="tw"><div class="ts"><table>
-    <thead><tr><th>Claim</th><th>Verdict</th><th>What changed in the report</th><th>Where</th></tr></thead>
+    <thead><tr><th>Claim</th><th class="tx">Verdict</th><th class="tx">What changed in the report</th><th class="tx">Where</th></tr></thead>
     <tbody>
-      <tr><td>Unbilled revenue &#8377;613.30 cr is the cash mechanism; the audit report and MD&amp;A describe different recognition bases</td><td class="pos">Survives, narrower</td><td>Numbers exact. The contradiction is framed as the FY26 key audit matter against the MD&amp;A and against the FY25 key audit matter, not against the policy note, which covers both methods. "No Ind AS 115 disclosures" rather than "no contract balances". The innocent reading is stated; the finding is an undisclosed basis, not inflated revenue</td><td>Sections 5, 6</td></tr>
-      <tr><td>Brickwork's below-investment-grade trail omitted from the prospectus and annual reports</td><td class="pos">Survives</td><td>"Omits the non-cooperation downgrade" (the prospectus shows Brickwork BBB+ for FY21-23). Presented as a disclosure gap, not a breach and not a credit view</td><td>Sections 7, 9</td></tr>
-      <tr><td>French press reports of a Russia-via-India scheme; custody and seizure dates; the company letter's omissions; the Lokesh Machines precedent</td><td class="pos">Survives, narrower</td><td>franceinfo is France T&#233;l&#233;visions; the wording is attributed to the PNAT by franceinfo and to a judicial source by AFP; customs control was in Apr-2024; seizure on 31-Mar-2026 is inside FY26 (so an earlier criticism of the cash-flow treatment was withdrawn); the Chairman's 29-May remark is presented as an implication, not an admission; Lokesh is cited only with its Jun-2026 delisting</td><td>Sections 7, 9, 10</td></tr>
-      <tr><td>Promoter-LLP loans under-reported in half-year filings and above the materiality line</td><td class="wr">Partly confirmed</td><td>FY26 gross drawdowns exceed the line; FY25 fall &#8377;0.16 cr short unless interest is added; on average balances neither year is material. Recast as a classification question with filings that changed basis three times, not a breach</td><td>Section 7</td></tr>
-      <tr><td>Pledge chain and late SAST filings</td><td class="wr">Numbers confirmed; one limb withdrawn</td><td>Every figure and the chain confirmed. The late-filing point was withdrawn: the Reg 31 duty does not apply to depository pledges, which these almost certainly are</td><td>Sections 7, 13</td></tr>
+      <tr><td>Unbilled revenue &#8377;613.30 cr is the cash mechanism; the audit report and MD&amp;A describe different recognition bases</td><td class="pos tx tn">Survives, narrower</td><td class="tx">Numbers exact. The contradiction is framed as the FY26 key audit matter against the MD&amp;A and against the FY25 key audit matter, not against the policy note, which covers both methods. "No Ind AS 115 disclosures" rather than "no contract balances". The innocent reading is stated; the finding is an undisclosed basis, not inflated revenue</td><td class="tx tn">Sections 5, 6</td></tr>
+      <tr><td>Brickwork's below-investment-grade trail omitted from the prospectus and annual reports</td><td class="pos tx tn">Survives</td><td class="tx">"Omits the non-cooperation downgrade" (the prospectus shows Brickwork BBB+ for FY21-23). Presented as a disclosure gap, not a breach and not a credit view</td><td class="tx tn">Sections 7, 9</td></tr>
+      <tr><td>French press reports of a Russia-via-India scheme; custody and seizure dates; the company letter's omissions; the Lokesh Machines precedent</td><td class="pos tx tn">Survives, narrower</td><td class="tx">franceinfo is France T&#233;l&#233;visions; the wording is attributed to the PNAT by franceinfo and to a judicial source by AFP; customs control was in Apr-2024; seizure on 31-Mar-2026 is inside FY26 (so an earlier criticism of the cash-flow treatment was withdrawn); the Chairman's 29-May remark is presented as an implication, not an admission; Lokesh is cited only with its Jun-2026 delisting</td><td class="tx tn">Sections 7, 9, 10</td></tr>
+      <tr><td>Promoter-LLP loans under-reported in half-year filings and above the materiality line</td><td class="wr tx tn">Partly confirmed</td><td class="tx">FY26 gross drawdowns exceed the line; FY25 fall &#8377;0.16 cr short unless interest is added; on average balances neither year is material. Recast as a classification question with filings that changed basis three times, not a breach</td><td class="tx tn">Section 7</td></tr>
+      <tr><td>Pledge chain and late SAST filings</td><td class="wr tx">Numbers confirmed; one limb withdrawn</td><td class="tx">Every figure and the chain confirmed. The late-filing point was withdrawn: the Reg 31 duty does not apply to depository pledges, which these almost certainly are</td><td class="tx tn">Sections 7, 13</td></tr>
     </tbody>
   </table></div></div>
 

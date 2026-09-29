@@ -232,6 +232,9 @@
   .uu ul{margin:6px 0 0 17px;font-size:12.5px;color:var(--text)}
   .uu li{margin:6px 0;line-height:1.5}
   .uu li::marker{color:var(--amber)}
+/* prose cells: left-aligned and wrapping; figure cells stay right-aligned */
+td.tx,th.tx{text-align:left;white-space:normal}
+td.tn{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -655,12 +658,12 @@
       <div class="tw">
         <table>
           <caption>Promoter shareholding. Source: Screener / FY24-25 ARs. The decline is primarily dilution, layered with one genuine promoter-group exit.</caption>
-          <thead><tr><th>Period</th><th>Promoter %</th><th>Driver</th></tr></thead>
+          <thead><tr><th>Period</th><th>Promoter %</th><th class="tx">Driver</th></tr></thead>
           <tbody>
-            <tr><td>Mar-2022</td><td>73.16</td><td>SME IPO base (Sep-2021)</td></tr>
-            <tr><td>Mar-2024</td><td>71.32</td><td>Minor drift</td></tr>
-            <tr><td>Mar-2025</td><td>58.14</td><td>Sep-2024 preferential + warrants; Bora-family sell-down</td></tr>
-            <tr><td>Jun-2026</td><td>55.00</td><td>Warrant conversions to non-promoters</td></tr>
+            <tr><td>Mar-2022</td><td>73.16</td><td class="tx">SME IPO base (Sep-2021)</td></tr>
+            <tr><td>Mar-2024</td><td>71.32</td><td class="tx tn">Minor drift</td></tr>
+            <tr><td>Mar-2025</td><td>58.14</td><td class="tx">Sep-2024 preferential + warrants; Bora-family sell-down</td></tr>
+            <tr><td>Jun-2026</td><td>55.00</td><td class="tx">Warrant conversions to non-promoters</td></tr>
           </tbody>
         </table>
       </div>
@@ -687,15 +690,15 @@
       <div class="tw">
         <table>
           <caption>Guidance vs delivery. Sources: Q3 FY26 (16-Mar-2026) guidance interaction; Q4 FY26 concall (29-May-2026); results releases.</caption>
-          <thead><tr><th>Claim (date)</th><th>Actual / status</th><th>Verdict</th></tr></thead>
+          <thead><tr><th>Claim (date)</th><th class="tx">Actual / status</th><th class="tx">Verdict</th></tr></thead>
           <tbody>
-            <tr><td>FY26 revenue INR 375-400 Cr (16-Mar-26)</td><td>INR 348.5 Cr (consol)</td><td><span class="chip miss">Miss</span></td></tr>
-            <tr><td>FY27 growth 40-50% (16-Mar-26)</td><td>Cut to "at least 30%" (29-May-26)</td><td><span class="chip miss">Downgraded</span></td></tr>
-            <tr><td>Order book INR 695 Cr (Dec-25)</td><td>~INR 600 Cr by Mar-26</td><td><span class="chip miss">Declined</span></td></tr>
-            <tr><td>PAT margin "steady 7-8%"</td><td>FY26 ~7.5%</td><td><span class="chip hit">On track</span></td></tr>
-            <tr><td>INR 1,000 Cr revenue in ~3 yrs</td><td>Aspiration; "trying to prepone"</td><td><span class="chip part">TBD</span></td></tr>
-            <tr><td>Merger complete by FY27-end</td><td>NCLT pending; no order yet</td><td><span class="chip part">TBD</span></td></tr>
-            <tr><td>FY27 capex ~INR 10 Cr</td><td>Pending</td><td><span class="chip part">TBD</span></td></tr>
+            <tr><td>FY26 revenue INR 375-400 Cr (16-Mar-26)</td><td class="tx">INR 348.5 Cr (consol)</td><td class="tx tn"><span class="chip miss">Miss</span></td></tr>
+            <tr><td>FY27 growth 40-50% (16-Mar-26)</td><td class="tx">Cut to "at least 30%" (29-May-26)</td><td class="tx tn"><span class="chip miss">Downgraded</span></td></tr>
+            <tr><td>Order book INR 695 Cr (Dec-25)</td><td class="tx">~INR 600 Cr by Mar-26</td><td class="tx tn"><span class="chip miss">Declined</span></td></tr>
+            <tr><td>PAT margin "steady 7-8%"</td><td class="tx tn">FY26 ~7.5%</td><td class="tx tn"><span class="chip hit">On track</span></td></tr>
+            <tr><td>INR 1,000 Cr revenue in ~3 yrs</td><td class="tx">Aspiration; "trying to prepone"</td><td class="tx tn"><span class="chip part">TBD</span></td></tr>
+            <tr><td>Merger complete by FY27-end</td><td class="tx">NCLT pending; no order yet</td><td class="tx tn"><span class="chip part">TBD</span></td></tr>
+            <tr><td>FY27 capex ~INR 10 Cr</td><td class="tx tn">Pending</td><td class="tx tn"><span class="chip part">TBD</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -714,14 +717,14 @@
       <div class="tw">
         <table>
           <caption>Live matters (FY25 AR contingent-liability schedule + filings).</caption>
-          <thead><tr><th>Matter</th><th>Amount</th><th>Status</th></tr></thead>
+          <thead><tr><th>Matter</th><th>Amount</th><th class="tx">Status</th></tr></thead>
           <tbody>
-            <tr><td>Service-tax / excise dispute (FY15-17)</td><td>INR 10.38 Cr</td><td>Part-paid; appeal before CESTAT</td></tr>
-            <tr><td>Bank guarantees</td><td>INR 41.76 Cr</td><td>Outstanding (Fin. 17.6 + Perf. 24.2)</td></tr>
-            <tr><td>GST / VAT demands (multi-state)</td><td>~INR 1.9 Cr</td><td>Under appeal</td></tr>
-            <tr><td>SEBI (Reg 32 fund-utilisation)</td><td>INR 12.35 lakh</td><td>Settled Apr-2026</td></tr>
-            <tr><td>Sec 441 compounding (Sec 96/185/186)</td><td>Unquantified</td><td>Pending before RoC/RD since 2021</td></tr>
-            <tr><td>NCLT (MIL merger)</td><td>-</td><td>Petition pending; no order</td></tr>
+            <tr><td>Service-tax / excise dispute (FY15-17)</td><td>INR 10.38 Cr</td><td class="tx">Part-paid; appeal before CESTAT</td></tr>
+            <tr><td>Bank guarantees</td><td>INR 41.76 Cr</td><td class="tx">Outstanding (Fin. 17.6 + Perf. 24.2)</td></tr>
+            <tr><td>GST / VAT demands (multi-state)</td><td>~INR 1.9 Cr</td><td class="tx tn">Under appeal</td></tr>
+            <tr><td>SEBI (Reg 32 fund-utilisation)</td><td>INR 12.35 lakh</td><td class="tx tn">Settled Apr-2026</td></tr>
+            <tr><td>Sec 441 compounding (Sec 96/185/186)</td><td>Unquantified</td><td class="tx">Pending before RoC/RD since 2021</td></tr>
+            <tr><td>NCLT (MIL merger)</td><td>-</td><td class="tx">Petition pending; no order</td></tr>
           </tbody>
         </table>
       </div>
@@ -736,14 +739,14 @@
       <div class="tw">
         <table>
           <caption>What Ind-Ra flags (PR, Jan-2026) - and what the investor presentation omits.</caption>
-          <thead><tr><th>Metric</th><th>Ind-Ra figure</th><th>Deck says</th></tr></thead>
+          <thead><tr><th>Metric</th><th class="tx">Ind-Ra figure</th><th class="tx">Deck says</th></tr></thead>
           <tbody>
-            <tr><td>Debtor days (FY25)</td><td>261 (FY24: 149)</td><td>"disciplined balance sheet"</td></tr>
-            <tr><td>Net working capital / revenue</td><td>55% FY25 (FY24: 28%)</td><td>never quantified</td></tr>
-            <tr><td>Operating cash flow FY25</td><td>NEGATIVE INR 37 Cr</td><td>"disciplined, prudent capital allocation"</td></tr>
-            <tr><td>Free cash &amp; equivalents</td><td>~INR 0.5 Cr</td><td>not mentioned</td></tr>
-            <tr><td>WC line utilisation</td><td>~91% avg; 100% some months</td><td>not mentioned</td></tr>
-            <tr><td>Net leverage / interest cover</td><td>1.66x / &gt;5x (genuine strengths)</td><td>emphasised</td></tr>
+            <tr><td>Debtor days (FY25)</td><td class="tx tn">261 (FY24: 149)</td><td class="tx">"disciplined balance sheet"</td></tr>
+            <tr><td>Net working capital / revenue</td><td class="tx">55% FY25 (FY24: 28%)</td><td class="tx tn">never quantified</td></tr>
+            <tr><td>Operating cash flow FY25</td><td class="tx tn">NEGATIVE INR 37 Cr</td><td class="tx">"disciplined, prudent capital allocation"</td></tr>
+            <tr><td>Free cash &amp; equivalents</td><td class="tx tn">~INR 0.5 Cr</td><td class="tx tn">not mentioned</td></tr>
+            <tr><td>WC line utilisation</td><td class="tx">~91% avg; 100% some months</td><td class="tx tn">not mentioned</td></tr>
+            <tr><td>Net leverage / interest cover</td><td class="tx">1.66x / &gt;5x (genuine strengths)</td><td class="tx tn">emphasised</td></tr>
           </tbody>
         </table>
       </div>
@@ -853,11 +856,11 @@
       <div class="tw">
         <table>
           <caption>Reverse-DCF anchor. EV = market cap ~INR 370 Cr + net debt ~INR 70 Cr = ~INR 440 Cr. Ke ~14% (microcap, illiquid, BBB-, single-state, high working-capital risk). NOPAT = core EBIT ~INR 34 Cr &times; (1-25%).</caption>
-          <thead><tr><th>Lens</th><th>Implied by the price</th><th>Reality check</th></tr></thead>
+          <thead><tr><th>Lens</th><th class="tx">Implied by the price</th><th class="tx">Reality check</th></tr></thead>
           <tbody>
-            <tr><td>P/E &rarr; implied growth</td><td>14x at Ke 14% implies ~7% perpetual growth <em>if</em> retained capital earns Ke</td><td>Incremental ROCE is only ~5-7% (below Ke) - so retention is value-neutral-to-destructive</td></tr>
-            <tr><td>No-growth perpetuity (EV)</td><td>NOPAT ~INR 25.5 Cr / WACC ~12.5% = ~INR 204 Cr</td><td>EV is ~INR 440 Cr - so ~54% of EV is "growth value" not yet in cash</td></tr>
-            <tr><td>Cash vs accounting return</td><td>15% accounting ROCE priced</td><td>~5% cash ROCE delivered (negative cumulative CFO)</td></tr>
+            <tr><td>P/E &rarr; implied growth</td><td class="tx">14x at Ke 14% implies ~7% perpetual growth <em>if</em> retained capital earns Ke</td><td class="tx">Incremental ROCE is only ~5-7% (below Ke) - so retention is value-neutral-to-destructive</td></tr>
+            <tr><td>No-growth perpetuity (EV)</td><td class="tx">NOPAT ~INR 25.5 Cr / WACC ~12.5% = ~INR 204 Cr</td><td class="tx">EV is ~INR 440 Cr - so ~54% of EV is "growth value" not yet in cash</td></tr>
+            <tr><td>Cash vs accounting return</td><td class="tx">15% accounting ROCE priced</td><td class="tx">~5% cash ROCE delivered (negative cumulative CFO)</td></tr>
           </tbody>
         </table>
       </div>
