@@ -105,9 +105,12 @@ against the FY26 filings for the reason above.
 
 ## 6. Other ownership events (primary)
 
-- Parekh group (Vijay Mohanlal Parekh and Paresh Mohanlal Parekh, non-promoter, filing jointly):
-  sold 48,02,500 shares (2.11%) on 29-Jul-2024 in the open market, leaving 1,22,96,205 (5.41%);
-  sold 68,50,000 (3.01%) on 30-Jun-2025, leaving 54,46,205 (2.39%). NSE Reg 29(2) feed. The first
+- Parekh brothers (Vijay Mohanlal Parekh and Paresh Mohanlal Parekh, non-promoter, "Public"):
+  CORRECTED 29-Sep-2026 - each files separately and each held 1,70,98,705 shares (7.52%) after
+  Eknath Infracon LLP split its stake to them in Nov-2023. EACH sold 48,02,500 on 29-Jul-2024 and
+  EACH sold 68,50,000 on 30-Jun-2025 (NSE Reg 29(2) feed; bulk deals at about Rs 1,123 and
+  Rs 1,087). Each now holds 54,46,205 (2.39%); together 1,08,92,410 (4.79%). Together they sold
+  2,33,05,000 shares = 10.25% of equity for about Rs 2,568 cr (notes-12 B1, derived). The first
   sale came two weeks after the six-month lock-in on pre-IPO shares lapsed.
 - Mutual funds: 5.55% (Mar-2024), 10.35% (Mar-2025), 11.84% (Mar-2026), 9.78% (Jun-2026). MFs cut
   2.06 points in Q1 FY27, the same quarter FIIs cut 2.66 points (screener, AGGREGATOR: FII 8.95 to
@@ -134,3 +137,24 @@ report filed 28-Dec-2024, numbers unchanged. Format lapse only.
 - Section 15 monitorables: Virani encumbrance (6.70% of company at 16-Sep-2026); any invocation;
   the Sep-2026 SHP (due by 21-Oct-2026) as the next check.
 - Section 19: screener's 20.9% is a stale quarter-end figure; the live figure is about half.
+
+## 9. Addendum 29-Sep-2026 - lender reconciliation with notes-12
+
+- An aggregator (InvestyWise) summarising the 04-Sep-2026 BSE filing reports a NEW pledge of
+  1,71,40,000 shares to Aditya Birla Capital. The filing itself (sast/sast-2026-09-04b.pdf, read
+  by rendering) shows a RELEASE of 25,52,000 shares from Aditya Birla Capital on 03-Sep-2026, with
+  1,71,40,000 the post-event TOTAL encumbered. The aggregator misread the post-event total as a new
+  pledge. The primary filing governs; the conflict flagged in notes-12 is closed.
+- The same aggregator reports creations to HDFC Bank of 70,00,000 on 25-Feb-2026 and 1,01,00,000
+  on 23-Mar-2026 (AGGREGATOR, filings not retrieved). HDFC Bank's releases read in the primary
+  filings total exactly 1,71,00,000 (six in Jul, two in Aug, one in Sep-2026). If the aggregator
+  is right, HDFC Bank is now fully released. (The aggregator's two creations plus the 58,52,000
+  already pledged sum to 2,29,52,000, 10,00,000 more than the 31-Mar-2026 SHP's 2,19,52,000, so
+  its figures are not fully consistent; the HDFC total is therefore probable, not established.)
+- Of the 1,52,40,000 shares encumbered after 16-Sep-2026, 1,29,40,000 (85%) are identifiable from
+  the primary Jun-Sep 2026 filings as NBFC pledges: Jio Credit 38,00,000; Bajaj Finance 55,00,000;
+  Tata Capital 19,00,000; Poonawalla Fincorp 17,40,000. The lender of the remaining 23,00,000 is
+  not established from filings read.
+- Virani's cost: 3,28,56,340 shares received from Eknath Infracon LLP on 28-Aug-2023 at Rs 31.20
+  per Rs 2 share (Rs 102.51 cr), under five months before the Rs 331 IPO (prospectus). At Rs 1,061
+  the holding is worth about Rs 3,486 cr; the encumbered 1,52,40,000 shares about Rs 1,617 cr.
