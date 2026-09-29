@@ -49,7 +49,8 @@ reviews and merges it there, then brings it into the master copy with a plain:
 git pull
 ```
 
-That is the normal route. Use it.
+That is the normal route. Use it. (`ship-report.sh` also fast-forwards the master
+copy when it can, and skips with one line when it cannot.)
 
 `./pull-from-fleet.sh` is the fallback, for taking work straight from firstmate's
 own clone when it has not been raised as a pull request yet. It fast-forwards
@@ -101,15 +102,48 @@ Finished reports go to a **separate public repo** served by GitHub Pages at
 https://triyambak-ca.github.io/equity-deep-dives/ . This repo stays private,
 because it holds the notes, the internal material and the filings.
 
-```sh
-./publish-report.sh <report.html> "<Company>" <YYYY-MM-DD> "<one-line note>"
-./publish-report.sh --remove "<Company>"     # unpublish
-./publish-report.sh --list
+**A deep-dive worker writes `<Company>/publish.json` beside its report and
+never runs the ship step.** Workers do not merge and cannot reach the site
+repository. The file holds everything the publish step used to take by hand:
+
+```json
+{ "company": "Jyoti CNC Automation", "report": "jyoticnc-deep-dive-29-sep-2026.html",
+  "date": "2026-09-29", "note": "one line for the index row", "published": true }
 ```
 
-Then commit and push in `~/Documents/1_Claude_AI/GitHub-Repos/equity-deep-dives`.
-The script refuses any file containing an ht-ml `update_key`, an ht-ml.app URL or
-a local machine path, so a publish sidecar cannot reach a public repo by accident.
+`report` is the file to publish, relative to the company folder; `date` is the
+report date as YYYY-MM-DD; `published` is `false` for a company that must stay
+off the site (Crizac, unpublished 18-Sep-2026). Only the edition named in
+`report` is published, so a company with two editions ships one. A new edition
+gets a new `report` and `date`; the older row on the site stays until removed
+with `publish-report.sh --remove`, and the ship step says so.
+
+**After the PR merges**, run the ship step from a clone of this repo:
+
+```sh
+./ship-report.sh <Company-folder> [<Company-folder> ...]   # ship these
+./ship-report.sh --all                                     # re-ship every report marked published
+./ship-report.sh --dry-run --all                           # rehearse; writes nothing anywhere
+```
+
+`--all` is what a shared layout fix across every report needs. It does, in order:
+checks each report, `publish.json` and the publish scripts are byte-identical to
+`origin/main` (refuses otherwise: `git pull` first); fast-forwards the master copy
+(`MASTER=`, default `~/Documents/1_Claude_AI/Others/Research Report`), skipping
+with one line if it cannot fast-forward or a file it would touch has uncommitted
+changes, and never stashing or resetting anything; publishes through
+`publish-report.sh` into a staging copy, keeping its refusals (publish key,
+ht-ml URL, local path); commits only the files that changed and pushes the site
+repo; polls the live page (`POLL_MAX`, default 300s); prints the live URLs.
+Re-shipping an unchanged report makes no commit. `SITE=`, `SITE_URL=`, `REMOTE=`
+and `BRANCH=` override the site checkout, its address and the private remote.
+
+`publish-report.sh` is still the engine underneath, and its other modes stand:
+
+```sh
+./publish-report.sh --remove "<Company>"     # unpublish, then commit and push the site by hand
+./publish-report.sh --list
+```
 
 `index.html` on that site is GENERATED from `reports.json` by
 `site/site-template.html`. Never hand-edit it; it is overwritten on every rebuild.
