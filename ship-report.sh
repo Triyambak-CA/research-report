@@ -215,7 +215,7 @@ fi
 LIVE_OK=1
 if [ "$DRY" -eq 0 ]; then
   poll_ok() {  # poll_ok <file>: the served page equals the one just shipped
-    local deadline=$(( $(date +%s) + POLL_MAX )) got
+    local got
     got="$(mktemp "${TMPDIR:-/tmp}/ship-poll.XXXXXX")"
     while :; do
       if curl -sf --max-time 20 -H 'Cache-Control: no-cache' "$SITE_URL/$1?ship=$(date +%s)" -o "$got" 2>/dev/null \
@@ -224,6 +224,7 @@ if [ "$DRY" -eq 0 ]; then
       sleep "$POLL_EVERY"
     done
   }
+  deadline=$(( $(date +%s) + POLL_MAX ))   # one budget for all pages, not one each
   say "waiting for the pages to go live (up to ${POLL_MAX}s)..."
   for f in "${FILES[@]}"; do
     if poll_ok "$f"; then say "live: $f"; else say "NOT CONFIRMED LIVE after ${POLL_MAX}s: $f"; LIVE_OK=0; fi

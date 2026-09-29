@@ -49,7 +49,8 @@ reviews and merges it there, then brings it into the master copy with a plain:
 git pull
 ```
 
-That is the normal route. Use it.
+That is the normal route. Use it. (`ship-report.sh` also fast-forwards the master
+copy when it can, and skips with one line when it cannot.)
 
 `./pull-from-fleet.sh` is the fallback, for taking work straight from firstmate's
 own clone when it has not been raised as a pull request yet. It fast-forwards
