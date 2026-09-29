@@ -991,3 +991,9 @@ contradicts the Schedule III note on stock statements filed with banks.
 **Not a finding:** the quarter-end revenue share (33.6%, 31.7%, 28.6%) is falling and ordinary for the
 industry.
 
+
+## Addendum by the lead, 29-Sep-2026 (after verification, notes-14 V3)
+Section 7.4's "INFERRED timing problem" is WITHDRAWN. AFP (11-Apr-2026) reports the bank accounts were
+seized on 31-Mar-2026, the day of the custody, i.e. inside FY26. Charging the Rs 32.91 cr to FY26
+operating cash flow is consistent with that date. The EUR 4.0 mn (Reg 30 letter; Huron's own books Rs
+41.57 cr) versus EUR 3.02 mn (Rs 32.91 cr, consolidated) difference remains unexplained.
