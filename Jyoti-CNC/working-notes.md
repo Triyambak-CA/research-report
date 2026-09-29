@@ -1,7 +1,43 @@
 # Jyoti CNC Automation deep dive - working notes index
-Run date 29-Sep-2026. Listed company (BSE 544081, NSE JYOTICNC, listed Jan-2024). Latest reported
+Run date 29-Sep-2026. Listed company (BSE 544081, NSE JYOTICNC, listed 16-Jan-2024). Latest reported
 quarter Q1 FY27 (ended 30-Jun-2026). CMP Rs 1,061 at 29-Sep-2026 12:17 IST (screener, aggregator).
 Section spec: listed-company report-sections.md (20 sections), NOT ipo-mode.
+
+## Deliverable
+jyoticnc-deep-dive-29-sep-2026.html - built from report-source/ with build.py (copied from MTAR,
+storage keys re-keyed to jyoticnc_). Validator: 0 FAIL, 0 WARN. Edit report-source/ and rebuild; do not
+hand-patch the built file.
+
+## Notes files
+notes-01 pledge chain (nine SAST filings read by rendering) and shareholding register
+notes-02/03/04 FY24 (Rs MILLION) / FY25 / FY26 annual report extractions (extractor tier; spot-check
+               figures before use - agent summaries mislabelled units)
+notes-05 prospectus extraction (Rs MILLION; some mislabelled rows, verify before use)
+notes-06 IPO proceeds trail, incl. the Dec-2024 closing monitoring report (NSE only)
+notes-07 cash forensics (forensic tier): unbilled revenue, French exposure, score 3/10
+notes-08 ratings and governance (forensic tier): Brickwork trail, LLP loans, board
+notes-09 guidance scorecard (17%), order book bridges, machines-sold reconciliation, Huron calls
+notes-10 peers; notes-11 industry and official macro; notes-12 scuttlebutt, positioning, French press
+notes-13 quarterly series rebuilt from decks (first extractor version withdrawn, never committed)
+notes-14 five verifier results and the corrections applied
+notes-15 valuation workings + notes-15-reverse-dcf.py
+
+## Findings in one screen (detail in the notes and the report)
+1. Profits vs cash: unbilled revenue 131 (FY23) -> 613 cr (FY26) = 60% of 3-yr PAT; true debtor days
+   211; FY26 KAM (point in time) vs MD&A (percentage of completion); no Ind AS 115 disclosures.
+2. Huron: French judicial investigation (custody and seizures 31-Mar-2026; press cites prosecutors on
+   "exports to Russia, via India" from 2022); Rs 67 cr POC reversal Q4 FY26; parent exposure Rs 882 cr
+   funded + Rs 264 cr SBLC, unimpaired; going-concern EoM; Reg 30 letter omitted the Russia allegation.
+3. Pledge: one promoter-group holder (Virani); 90.6% of his stake at Jun-2026, halved by 16-Sep-2026;
+   screener's 20.9% stale; late-filing point withdrawn (depository pledges).
+4. Brickwork BB+ INC (sub-investment grade) Feb-2024 to May-2025, omitted from prospectus and ARs.
+5. Guidance credibility 17%; machines FY24 3,063 (screener's 3,495 wrong); EMS book aged.
+6. Valuation: 75x P/E, 47x EV/EBITDA; reverse DCF needs ~36% CAGR for 10 years at capital turn 1.0.
+
+## Named gaps
+Top customer identity; unbilled revenue ageing; Reg 31 filings Sep-2024 to Jun-2026 (BSE window);
+Brickwork Reg 30 intimations; Huron loss gap (80.16 vs 56.65); French court documents. No premium-only
+screener figure material to the report was missing (AI chat panel not used: no credits).
 
 ## Sources on disk (source-docs/, NOT versioned; linked into the master copy)
 - Annual reports FY24, FY25, FY26 (BSE) + corrigenda FY24 and FY25 (company site)
