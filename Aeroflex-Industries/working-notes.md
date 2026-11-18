@@ -78,6 +78,25 @@ Latest quarter: Q2 FY27 (Sep-2026), results 28-Oct-2026, call 29-Oct-2026.
     Sep-2026. MF 4.87% -> 0.92%; Nippon SC anchor exited ~mid-2026. ASM: BSE LT-ASM Stage I 08-May to
     14-Aug-2026 (secondary). Skid plant at Chakan, Pune. Parent sold MR Organisation for Rs 227 cr Apr-2026.
 
+## PAUSED 18-Nov-2026 16:37 IST (owner out of usage) - RESUME PLAN
+State: research ~85% done, report not yet written. Branch worktree-aeroflex-deep-dive, all notes committed.
+Done: notes-01 (financial series), 02 (operating KPIs, 5 decks rendered), 06 (peers/macro), 07 (ownership/
+scuttlebutt), 08 (screener insights), 09 (reverse DCF), report-source/ scaffolding (head, toc, css, js, build).
+Partial (agents stopped mid-task, notes on disk are usable as they stand):
+ - notes-03 AR forensics: looks complete (12 topics + questions). Check its severity list and EQ score.
+ - notes-04 transcripts: parts 1-5 written; parts 6 (growth strategy as stated) and 7 (order-book quotes)
+   missing - fill inline from Q2FY27/Q1FY27 transcripts, ~10 min.
+ - notes-05 promoter/IPO/ratings: F1-F8 + sections 2-8 written; the SEBI prospectus itself was not yet read
+   (IPO OFS/fresh split may be from secondary sources - check section 2 labels).
+Next steps on resume, in order:
+ 1. Read notes-03/04/05 severity lists; fill notes-04 parts 6-7 inline.
+ 2. Verifiers (parallel) on: depreciation tax-effect inconsistency; skid single-customer concentration;
+    preferential floor price + timing vs 29-Jan-2026 skid disclosure; promoter netting; UAE-trader RPT jump.
+ 3. Write report-source/hero, exec, s01-s20, sources (hero band = FY28E EPS x named exit multiple, NOT a
+    target price, as in HBL). Earnings base: TTM PAT on WDV basis Rs 83.3 cr (H2FY26 34.1 + H1FY27 49.2).
+ 4. Build, validate.py until clean, publish.json, commit, push branch, draft PR.
+Estimated: ~1.5 hours of agent time after resume.
+
 ## Named gaps
 - NSE in-page API not run (sandbox refused eval): retail/HNI split 10 of 12 quarters, FPI names, exchange
   bulk-deal cross-check, primary delivery series - secondary (Trendlyne) only.
