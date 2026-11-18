@@ -64,5 +64,20 @@ Latest quarter: Q2 FY27 (Sep-2026), results 28-Oct-2026, call 29-Oct-2026.
 12. Ratings: CRISIL BB/Stable reaffirmed and WITHDRAWN at company request 17-Oct-2022; Infomerics after.
     company/Credit_Rating.pdf has no text layer (scan) - render.
 
+13. TAX DEMANDS (primary, Reg 30 filings): (a) IT order u/s 147 r/w 144B dated 25-Mar-2026, demand
+    Rs 41,75,88,940 for AY 2018-19: disallowance of claim that WAIVER OF INTEREST ON WORKING CAPITAL LOAN IN A
+    ONE-TIME SETTLEMENT was non-taxable (s.41). => company did an OTS with lenders c. FY2017-18 (pre-Sat
+    Industries acquisition 2018). Disclosed 27-Mar-2026, after the 24-hour limit (festival leave). Company
+    "does not expect material impact"; appeal intended. ~8.4% of Sep-26 net worth (497).
+    (b) CGST s.74 order 07-Apr-2026: Rs 3.60 cr tax + Rs 3.60 cr penalty = Rs 7.19 cr, ITC on IPO expenses
+    and other matters, Apr-2021 to Mar-2024. s.74 = fraud/suppression section (penalty 100%).
+14. Ownership agent (notes-07): skid customer "a very large US multinational", exclusive India, 5-year
+    agreement - stated on 29-Jan-2026 call, i.e. AFTER pref pricing (18-Dec-2025), BEFORE allotment
+    (03-Feb-2026). Vertiv implied ("Vertiv's design team works with ours"), never named as the customer.
+    Kacholia + Bengal Finance held since at least Dec-2023 (not new); no post-lock-in selling visible to
+    Sep-2026. MF 4.87% -> 0.92%; Nippon SC anchor exited ~mid-2026. ASM: BSE LT-ASM Stage I 08-May to
+    14-Aug-2026 (secondary). Skid plant at Chakan, Pune. Parent sold MR Organisation for Rs 227 cr Apr-2026.
+
 ## Named gaps
-- (to fill)
+- NSE in-page API not run (sandbox refused eval): retail/HNI split 10 of 12 quarters, FPI names, exchange
+  bulk-deal cross-check, primary delivery series - secondary (Trendlyne) only.
