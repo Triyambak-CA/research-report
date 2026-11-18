@@ -1,0 +1,16 @@
+MCAP 6,577  EV 6,568
+TTM EBIT (WDV basis) 110.8  NOPAT0 82.9  EV/NOPAT 79.2x
+
+Implied 10-yr NOPAT growth, by WACC and incremental ROIC (terminal g 5%, terminal ROIC 16%)
+WACC   ROIC=18%  ROIC=22%  ROIC=30%
+11.5%    66.8%    57.2%    50.4%
+12.5%    90.0%    67.0%    56.7%
+13.5%    90.0%    80.1%    63.2%
+
+Base case (WACC 12.5%, ROIC 22%): g = 67.0% for 5 yrs then fade; year-5 NOPAT = 1,077 cr, year-10 NOPAT = 3,787 cr
+
+PAT needed in FY31 (5 yrs) for a 12.5% annual return from Rs 497, by exit P/E
+  exit 25x: PAT 474 cr = 5.7x TTM, CAGR 41.6%
+  exit 30x: PAT 395 cr = 4.7x TTM, CAGR 36.5%
+  exit 40x: PAT 296 cr = 3.6x TTM, CAGR 28.9%
+  exit 50x: PAT 237 cr = 2.8x TTM, CAGR 23.3%
